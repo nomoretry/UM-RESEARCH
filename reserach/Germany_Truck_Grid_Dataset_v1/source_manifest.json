@@ -1,0 +1,79 @@
+[
+  {
+    "source_id": "DT01",
+    "path": "raw/dt_cargo/fleet.csv",
+    "url": "https://raw.githubusercontent.com/TUMFTM/dt-cargo/805c534c73ed4d247babd053f60468b486f92519/input/public/fleet.csv",
+    "title": "DT-CARGO vehicle register",
+    "data_class": "observed_anonymized",
+    "retrieved_utc": "2026-09-17T00:15:15.690434+00:00",
+    "sha256": "ef21179d2b383044046bd6e226f43daa6c09a330e81bb5192bc6b0b68d3e1bd0",
+    "bytes": 1130,
+    "git_commit": "805c534c73ed4d247babd053f60468b486f92519"
+  },
+  {
+    "source_id": "DT02",
+    "path": "raw/dt_cargo/tracks.csv",
+    "url": "https://raw.githubusercontent.com/TUMFTM/dt-cargo/805c534c73ed4d247babd053f60468b486f92519/input/public/tracks.csv",
+    "title": "DT-CARGO track summaries",
+    "data_class": "observed_anonymized",
+    "retrieved_utc": "2026-09-17T00:15:16.826639+00:00",
+    "sha256": "93843c433deb3f3347cb261a7458cdba827b96225f828413f3aa1b42489af548",
+    "bytes": 16381647,
+    "git_commit": "805c534c73ed4d247babd053f60468b486f92519"
+  },
+  {
+    "source_id": "DT03",
+    "path": "raw/dt_cargo/README.md",
+    "url": "https://raw.githubusercontent.com/TUMFTM/dt-cargo/805c534c73ed4d247babd053f60468b486f92519/README.md",
+    "title": "DT-CARGO source codebook",
+    "data_class": "documentation",
+    "retrieved_utc": "2026-09-17T00:15:15.736313+00:00",
+    "sha256": "ff1badbda69e11af90120f8d351490ac90f21d0d49b306515943829d494615d7",
+    "bytes": 4433,
+    "git_commit": "805c534c73ed4d247babd053f60468b486f92519"
+  },
+  {
+    "source_id": "DT04",
+    "path": "raw/dt_cargo/LICENSE",
+    "url": "https://raw.githubusercontent.com/TUMFTM/dt-cargo/805c534c73ed4d247babd053f60468b486f92519/LICENSE",
+    "title": "DT-CARGO licence",
+    "data_class": "licence",
+    "retrieved_utc": "2026-09-17T00:15:15.737402+00:00",
+    "sha256": "9c6638f084d380c09bc689eec94320af86cac5d362a8bb2e6b793f3fca3d6a44",
+    "bytes": 25278,
+    "git_commit": "805c534c73ed4d247babd053f60468b486f92519"
+  },
+  {
+    "source_id": "SB01",
+    "path": "raw/simbench/1-MV-urban--0-sw.zip",
+    "url": "https://daks.uni-kassel.de/bitstreams/6ad5e5f8-6b47-4275-906d-db780344b9ee/download",
+    "title": "SimBench urban medium-voltage network scenario 0 with switches",
+    "data_class": "benchmark",
+    "retrieved_utc": "2026-09-17T00:15:33.338792+00:00",
+    "sha256": "fe1f2b13369fc5ebeffbeb78117dba72ff0dabe960da0a0ee0ef24a0c46299cc",
+    "bytes": 2250320,
+    "git_commit": ""
+  },
+  {
+    "source_id": "SB02",
+    "path": "raw/simbench/LICENSE",
+    "url": "https://raw.githubusercontent.com/e2nIEE/simbench/c426a1a3fecbe986a868edc2beed56349c37baf7/LICENSE",
+    "title": "SimBench repository licence",
+    "data_class": "licence",
+    "retrieved_utc": "2026-09-17T00:15:15.720829+00:00",
+    "sha256": "0cfdc8e5b990cee1e6d0e15e66094177a4d1d48479f7d0efb247b7949bdc114f",
+    "bytes": 2054,
+    "git_commit": "c426a1a3fecbe986a868edc2beed56349c37baf7"
+  },
+  {
+    "source_id": "SB03",
+    "path": "raw/simbench/format_information.py",
+    "url": "https://raw.githubusercontent.com/e2nIEE/simbench/c426a1a3fecbe986a868edc2beed56349c37baf7/simbench/converter/format_information.py",
+    "title": "SimBench official CSV format and unit conversions",
+    "data_class": "documentation",
+    "retrieved_utc": "2026-09-17T00:35:52.647082+00:00",
+    "sha256": "355c60bf32e29435c0212b6d4ad809a590c2494b29ae9c62e5f46419d12dbfc5",
+    "bytes": 19195,
+    "git_commit": "c426a1a3fecbe986a868edc2beed56349c37baf7"
+  }
+]

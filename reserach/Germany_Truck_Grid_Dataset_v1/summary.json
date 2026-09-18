@@ -1,0 +1,91 @@
+{
+  "country": "Germany",
+  "created_utc": "2026-09-17T00:32:57.399728+00:00",
+  "raw_vehicles": 53,
+  "raw_tracks": 101826,
+  "fleets": 4,
+  "raw_distance_km": 1269133.2829999998,
+  "first_record": "2021-08-26 13:27:59.533000+00:00",
+  "last_record": "2022-04-11 10:24:27.913000+00:00",
+  "observed_vehicle_days": 6869,
+  "quality_eligible_cycles": 3520,
+  "quality_eligible_distance_km": 431315.69299999997,
+  "quality_eligible_grid_energy_mwh": 544.8198227368421,
+  "baseline_profile_cycles": 2546,
+  "baseline_profile_vehicles": 49,
+  "baseline_grid_energy_mwh": 76.74989684210526,
+  "baseline_profile_energy_coverage": 0.14087207116760297,
+  "demo_date": "2021-12-17",
+  "demo_vehicle_count": 17,
+  "demo_event_count": 28,
+  "demo_immediate_peak_kw": 450.0,
+  "demo_uniform_peak_kw": 215.68687500300493,
+  "grid_model": "1-MV-urban--0-sw",
+  "grid_profile_demo_date": "2016-01-01",
+  "grid_counts": {
+    "Node": 440,
+    "Line": 147,
+    "LineType": 24,
+    "Transformer": 2,
+    "TransformerType": 12,
+    "Load": 139,
+    "RES": 134,
+    "Switch": 305,
+    "ExternalNet": 1,
+    "LoadProfile": 35136,
+    "RESProfile": 35136
+  },
+  "parameters": {
+    "energy_kwh_per_km": 1.2,
+    "charger_ac_kw": 150.0,
+    "efficiency": 0.95,
+    "battery_nominal_kwh": 500.0,
+    "soc_high": 0.9,
+    "soc_low": 0.1,
+    "max_boundary_gap_m": 500.0,
+    "max_signal_loss_ratio": 0.2,
+    "min_window_h": 0.25,
+    "max_window_h": 48.0,
+    "min_cycle_km": 1.0,
+    "max_avg_speed_kmh": 130.0,
+    "slot_minutes": 15
+  },
+  "validation_checks": [
+    {
+      "check": "track_unique_key",
+      "pass_": true
+    },
+    {
+      "check": "all_vehicle_foreign_keys",
+      "pass_": true
+    },
+    {
+      "check": "retained_raw_count",
+      "pass_": true
+    },
+    {
+      "check": "daily_distance_reconciles",
+      "pass_": true
+    },
+    {
+      "check": "profile_immediate_energy_conservation",
+      "pass_": true
+    },
+    {
+      "check": "profile_uniform_energy_conservation",
+      "pass_": true
+    },
+    {
+      "check": "mapping_nodes_exist",
+      "pass_": true
+    },
+    {
+      "check": "line_endpoints_exist",
+      "pass_": true
+    },
+    {
+      "check": "load_profile_complete",
+      "pass_": true
+    }
+  ]
+}

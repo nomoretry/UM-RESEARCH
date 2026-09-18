@@ -1,0 +1,243 @@
+﻿file,column,unit,description_zh
+charging_profiles_15min.csv,time_utc,UTC timestamp,统一计算时间；本地时间须转Europe/Berlin
+charging_profiles_15min.csv,fleet_test_id,,原始匿名车队编号；四个样本车队，不代表四个省份
+charging_profiles_15min.csv,p_immediate_kw,kW AC,独立周期到达即充情景，时段平均电网侧功率
+charging_profiles_15min.csv,p_uniform_kw,kW AC,独立周期在窗口均匀补能情景，非优化解
+charging_profiles_15min.csv,evidence_class,,数据性质标签：观测/推导/情景/基准模型
+demo_charging_day.csv,time_utc,UTC timestamp,统一计算时间；本地时间须转Europe/Berlin
+demo_charging_day.csv,p_immediate_kw,kW AC,独立周期到达即充情景，时段平均电网侧功率
+demo_charging_day.csv,p_uniform_kw,kW AC,独立周期在窗口均匀补能情景，非优化解
+demo_charging_day.csv,time_local,HH:MM,示例UTC时刻转Europe/Berlin得到的当地钟表时间
+demo_grid_load_overlay.csv,time_utc,UTC timestamp,统一计算时间；本地时间须转Europe/Berlin
+demo_grid_load_overlay.csv,p_immediate_kw,kW AC,独立周期到达即充情景，时段平均电网侧功率
+demo_grid_load_overlay.csv,p_uniform_kw,kW AC,独立周期在窗口均匀补能情景，非优化解
+demo_grid_load_overlay.csv,time_local,HH:MM,示例UTC时刻转Europe/Berlin得到的当地钟表时间
+demo_grid_load_overlay.csv,grid_profile_time,benchmark time,叠加所用2016年网模曲线时刻，显式区别车辆日期
+demo_grid_load_overlay.csv,background_net_mw,MW,选定网模日的负荷减发电，不含损耗
+demo_grid_load_overlay.csv,immediate_total_mw,MW,背景净需求＋立即补能功率/1000；不是潮流结果
+demo_grid_load_overlay.csv,uniform_total_mw,MW,背景净需求＋均匀补能功率/1000；不是潮流结果
+demo_grid_load_overlay.csv,alignment_class,text,标记不同年份按星期/钟表时刻作情景对齐
+distance_histogram.csv,distance_bin,km interval,无标记且记录里程≥1km的车辆日分箱；区间左闭右开
+distance_histogram.csv,observed_vehicle_days,count,有记录的车辆×日期数；直方图中另要求日内均通过质量及≥1km
+duty_cycle_scenarios.csv,cycle_id,,本处理版本的周期唯一编号；不等于原tour_id
+duty_cycle_scenarios.csv,vehicle_id,,原始匿名车辆编号；跨表关联，不能识别企业或司机
+duty_cycle_scenarios.csv,fleet_test_id,,原始匿名车队编号；四个样本车队，不代表四个省份
+duty_cycle_scenarios.csv,previous_home_track_id,,界定周期之前基地端点的原记录ID
+duty_cycle_scenarios.csv,first_track_id,,该周期第一条纳入里程合计的原记录ID
+duty_cycle_scenarios.csv,last_track_id,,该周期返回基地的末条原记录ID
+duty_cycle_scenarios.csv,track_count,count,当前车辆/车辆日/周期的原始片段数
+duty_cycle_scenarios.csv,departure_utc,UTC timestamp,周期首段记录开始；不补造出场GPS
+duty_cycle_scenarios.csv,arrival_utc,UTC timestamp,周期末段记录结束；候选补能起点
+duty_cycle_scenarios.csv,next_departure_utc,UTC timestamp,下一条记录起点，停靠窗口的观测边界
+duty_cycle_scenarios.csv,distance_km,km,观测记录里程换算或指定周期的里程合计
+duty_cycle_scenarios.csv,duration_h,h,该记录或周期的末时刻减首时刻；周期时长含中间停留
+duty_cycle_scenarios.csv,window_h,h,相邻记录之间的基地停靠候选时长
+duty_cycle_scenarios.csv,cycle_quality_pass,boolean,组成记录及双边空间缺口通过当前规则
+duty_cycle_scenarios.csv,window_quality_pass,boolean,周期末记录对应的base_window_candidate
+duty_cycle_scenarios.csv,scenario_eligible,boolean,满足周期和窗口证据要求，尚未检查电池或补能时长
+duty_cycle_scenarios.csv,energy_battery_kwh,kWh,场景值：记录里程×假设单位电耗
+duty_cycle_scenarios.csv,energy_grid_kwh,kWh,场景值：电池能量/充电效率
+duty_cycle_scenarios.csv,battery_feasible,boolean,本独立周期假设电池能耗≤500×(0.9−0.1)kWh；无跨周期SOC递推
+duty_cycle_scenarios.csv,window_energy_feasible,boolean,假设电网能量≤150kW×候选窗口小时数
+duty_cycle_scenarios.csv,baseline_profile_eligible,boolean,满足本版本独立周期电量和时间条件；不证明连续SOC可行
+duty_cycle_scenarios.csv,evidence_class,,数据性质标签：观测/推导/情景/基准模型
+duty_cycle_scenarios.csv,exclusion_reason,category,included_in_profile/quality_or_window_evidence/battery/window/battery_and_window
+fleet_summary.csv,fleet_test_id,,原始匿名车队编号；四个样本车队，不代表四个省份
+fleet_summary.csv,vehicles,count,分组内车辆数
+fleet_summary.csv,tracks,count,分组内原始片段数
+fleet_summary.csv,distance_km,km,观测记录里程换算或指定周期的里程合计
+fleet_summary.csv,observed_vehicle_days,count,有记录的车辆×日期数；直方图中另要求日内均通过质量及≥1km
+fleet_summary.csv,sample_mean_km_per_observed_day,km/day,分组内记录里程/有记录车辆日；不是总体平均日需求
+grid_background_15min.csv,profile_time,benchmark time,SimBench原始2016年时序标签，不假定与货车同时观测
+grid_background_15min.csv,gross_load_mw,MW,各pLoad×对应_pload曲线的求和
+grid_background_15min.csv,reactive_load_mvar,Mvar,各qLoad×对应_qload曲线的求和
+grid_background_15min.csv,res_generation_mw,MW,各pRES×对应发电曲线的求和
+grid_background_15min.csv,net_demand_before_losses_mw,MW,模型负荷减分布式发电，不含网络损耗或潮流结果
+grid_background_15min.csv,evidence_class,,数据性质标签：观测/推导/情景/基准模型
+grid_externalnet.csv,id,,本SimBench表的元件或型号主键
+grid_externalnet.csv,node,,连接节点，外键Node.id
+grid_externalnet.csv,calc_type,source code,潮流元件计算类型，例如pq、vavm；原样保留
+grid_externalnet.csv,dspf,ratio,外部电网有功平衡分配系数；保留源值
+grid_externalnet.csv,pExtNet,MW,外部电网有功给定值；空缺不补造
+grid_externalnet.csv,qExtNet,Mvar,外部电网无功给定值；空缺不补造
+grid_externalnet.csv,pWardShunt,MW,Ward并联等值有功参数；本模型为空
+grid_externalnet.csv,qWardShunt,Mvar,Ward并联等值无功参数；本模型为空
+grid_externalnet.csv,rXWard,ohm,扩展Ward等值电阻；本模型为空
+grid_externalnet.csv,xXWard,ohm,扩展Ward等值电抗；本模型为空
+grid_externalnet.csv,vmXWard,p.u.,扩展Ward内部电压幅值；本模型为空
+grid_externalnet.csv,subnet,,SimBench子网标识
+grid_externalnet.csv,voltLvl,source code,SimBench电压层级编码，不是以kV计的额定电压
+grid_line.csv,id,,本SimBench表的元件或型号主键
+grid_line.csv,nodeA,,线路/开关A端节点，外键Node.id
+grid_line.csv,nodeB,,线路/开关B端节点，外键Node.id
+grid_line.csv,type,source code,源表元件类别/型号；线路与变压器的type分别关联LineType.id与TransformerType.id
+grid_line.csv,length,km,线路长度
+grid_line.csv,loadingMax,%,原模型加载率上限；变压器原值50%，不可默改100%
+grid_line.csv,subnet,,SimBench子网标识
+grid_line.csv,voltLvl,source code,SimBench电压层级编码，不是以kV计的额定电压
+grid_linetype.csv,id,,本SimBench表的元件或型号主键
+grid_linetype.csv,r,ohm/km,线路型号的单位长度电阻
+grid_linetype.csv,x,ohm/km,线路型号的单位长度电抗
+grid_linetype.csv,b,microS/km,线路型号的单位长度并联电纳；50Hz转换定义见官方converter
+grid_linetype.csv,iMax,A,线路型号最大电流；官方converter转换成pandapower时乘1e-3
+grid_linetype.csv,type,source code,源表元件类别/型号；线路与变压器的type分别关联LineType.id与TransformerType.id
+grid_load.csv,id,,本SimBench表的元件或型号主键
+grid_load.csv,node,,连接节点，外键Node.id
+grid_load.csv,profile,,SimBench时序曲线键，必须与曲线列对应
+grid_load.csv,pLoad,MW,SimBench负荷有功基值；乘以对应_pload曲线
+grid_load.csv,qLoad,Mvar,SimBench负荷无功基值；乘以对应_qload曲线
+grid_load.csv,sR,MVA,元件额定视在功率
+grid_load.csv,subnet,,SimBench子网标识
+grid_load.csv,voltLvl,source code,SimBench电压层级编码，不是以kV计的额定电压
+grid_node.csv,id,,本SimBench表的元件或型号主键
+grid_node.csv,type,source code,源表元件类别/型号；线路与变压器的type分别关联LineType.id与TransformerType.id
+grid_node.csv,vmSetp,p.u.,节点电压设定幅值
+grid_node.csv,vaSetp,degree,节点电压设定相角
+grid_node.csv,vmR,kV,SimBench节点额定电压
+grid_node.csv,vmMin,p.u.,原模型电压下限，不替换为自拟限值
+grid_node.csv,vmMax,p.u.,原模型电压上限，不替换为自拟限值
+grid_node.csv,substation,,所属变电站标识；缺失不补造
+grid_node.csv,coordID,,对应raw/simbench/csv/Coordinates.csv坐标键；不是货车位置
+grid_node.csv,subnet,,SimBench子网标识
+grid_node.csv,voltLvl,source code,SimBench电压层级编码，不是以kV计的额定电压
+grid_res.csv,id,,本SimBench表的元件或型号主键
+grid_res.csv,node,,连接节点，外键Node.id
+grid_res.csv,type,source code,源表元件类别/型号；线路与变压器的type分别关联LineType.id与TransformerType.id
+grid_res.csv,profile,,SimBench时序曲线键，必须与曲线列对应
+grid_res.csv,calc_type,source code,潮流元件计算类型，例如pq、vavm；原样保留
+grid_res.csv,pRES,MW,SimBench分布式电源有功基值；乘以对应profile曲线
+grid_res.csv,qRES,Mvar,分布式电源无功基值
+grid_res.csv,sR,MVA,元件额定视在功率
+grid_res.csv,subnet,,SimBench子网标识
+grid_res.csv,voltLvl,source code,SimBench电压层级编码，不是以kV计的额定电压
+grid_switch.csv,id,,本SimBench表的元件或型号主键
+grid_switch.csv,nodeA,,线路/开关A端节点，外键Node.id
+grid_switch.csv,nodeB,,线路/开关B端节点，外键Node.id
+grid_switch.csv,type,source code,源表元件类别/型号；线路与变压器的type分别关联LineType.id与TransformerType.id
+grid_switch.csv,cond,boolean/code,开关状态，源表1为闭合，0为断开
+grid_switch.csv,substation,,所属变电站标识；缺失不补造
+grid_switch.csv,subnet,,SimBench子网标识
+grid_switch.csv,voltLvl,source code,SimBench电压层级编码，不是以kV计的额定电压
+grid_transformer.csv,id,,本SimBench表的元件或型号主键
+grid_transformer.csv,nodeHV,,变压器高压侧节点，外键Node.id
+grid_transformer.csv,nodeLV,,变压器低压侧节点，外键Node.id
+grid_transformer.csv,type,source code,源表元件类别/型号；线路与变压器的type分别关联LineType.id与TransformerType.id
+grid_transformer.csv,tappos,step,当前变压器分接头档位
+grid_transformer.csv,autoTap,source code,源模型自动调压设置，原样保留
+grid_transformer.csv,autoTapSide,source code,源模型自动调压所控制侧，原样保留
+grid_transformer.csv,loadingMax,%,原模型加载率上限；变压器原值50%，不可默改100%
+grid_transformer.csv,substation,,所属变电站标识；缺失不补造
+grid_transformer.csv,subnet,,SimBench子网标识
+grid_transformer.csv,voltLvl,source code,SimBench电压层级编码，不是以kV计的额定电压
+grid_transformertype.csv,id,,本SimBench表的元件或型号主键
+grid_transformertype.csv,sR,MVA,元件额定视在功率
+grid_transformertype.csv,vmHV,kV,变压器高压侧额定电压
+grid_transformertype.csv,vmLV,kV,变压器低压侧额定电压
+grid_transformertype.csv,va0,degree,变压器额定相移
+grid_transformertype.csv,vmImp,%,变压器短路电压百分数
+grid_transformertype.csv,pCu,kW,变压器额定负载铜耗
+grid_transformertype.csv,pFe,kW,变压器铁耗
+grid_transformertype.csv,iNoLoad,%,变压器空载电流百分数
+grid_transformertype.csv,tapable,boolean/code,源模型是否可调分接头
+grid_transformertype.csv,tapside,HV/LV,变压器型号分接头所在侧
+grid_transformertype.csv,dVm,%/step,每档分接头的电压幅值变化百分数
+grid_transformertype.csv,dVa,degree/step,每档分接头相角变化
+grid_transformertype.csv,tapNeutr,step,中性分接头档位
+grid_transformertype.csv,tapMin,step,分接头最低档位
+grid_transformertype.csv,tapMax,step,分接头最高档位
+quality_audit.csv,metric,text,质量审计统计项
+quality_audit.csv,value,count,该审计项的计数
+quality_audit.csv,interpretation_zh,text,审计口径与限制
+scenario_depot_grid_mapping.csv,fleet_test_id,,原始匿名车队编号；四个样本车队，不代表四个省份
+scenario_depot_grid_mapping.csv,hypothetical_depot_id,,人为车队基地情景ID，不对应公开真实场址
+scenario_depot_grid_mapping.csv,grid_node,,人为情景映射的SimBench节点；不是真实基地接入点
+scenario_depot_grid_mapping.csv,mapping_rule,text,网模现有MV负荷节点按名称排序后均匀取4个索引
+scenario_depot_grid_mapping.csv,evidence_class,,数据性质标签：观测/推导/情景/基准模型
+sensitivity_summary.csv,energy_kwh_per_km,kWh/km,假设电池侧单位里程能耗
+sensitivity_summary.csv,charger_ac_kw,kW,假设单车电网侧充电有功输入功率
+sensitivity_summary.csv,eligible_cycles,count,周期与窗口证据均通过的周期数
+sensitivity_summary.csv,battery_feasible_cycles,count,本参数情景下满足可用电池能量限制的周期数
+sensitivity_summary.csv,window_feasible_cycles,count,本参数情景下满足窗口补回能量条件的周期数
+sensitivity_summary.csv,both_feasible_cycles,count,同一周期同时满足电池与窗口条件的数量
+sensitivity_summary.csv,energy_grid_mwh,MWh,全部证据合格周期的假设需电量，包含电池/时间条件失败的周期
+sensitivity_summary.csv,evidence_class,,数据性质标签：观测/推导/情景/基准模型
+stop_windows.csv,track_id,,原始行驶记录主键；不是GPS点编号
+stop_windows.csv,next_track_id,,同车按开始时间排序后的下一条原始记录ID；末条为空
+stop_windows.csv,vehicle_id,,原始匿名车辆编号；跨表关联，不能识别企业或司机
+stop_windows.csv,fleet_test_id,,原始匿名车队编号；四个样本车队，不代表四个省份
+stop_windows.csv,stop_utc,UTC timestamp,原始终止时刻转换为UTC
+stop_windows.csv,next_start_utc,UTC timestamp,同车下一条记录开始时刻；末条为空
+stop_windows.csv,home_base,boolean,记录终点处于车队基地；不证明该处已有充电设施
+stop_windows.csv,cid,,匿名终点聚类编号；没有对应经纬度
+stop_windows.csv,inter_record_gap_h,h,下一记录开始减本记录结束；不自动证明期间静止
+stop_windows.csv,boundary_gap_conservative_m,m,相邻两条track_gap较大值；任一缺失则未知
+stop_windows.csv,window_time_plausible,boolean,记录间隔在0.25至48小时之间
+stop_windows.csv,base_window_candidate,boolean,基地标记、窗口时长、双边空间缺口、两端记录质量同时通过
+stop_windows.csv,evidence_class,,数据性质标签：观测/推导/情景/基准模型
+tracks_with_quality.csv,track_id,,原始行驶记录主键；不是GPS点编号
+tracks_with_quality.csv,vehicle_id,,原始匿名车辆编号；跨表关联，不能识别企业或司机
+tracks_with_quality.csv,tour_id,,原作者行程分组，保留但本版本不直接用作完整任务链
+tracks_with_quality.csv,start_time,timestamp,原始起始时间，保留UTC偏移
+tracks_with_quality.csv,stop_time,timestamp,原始结束时间，保留UTC偏移
+tracks_with_quality.csv,distance,m,单条记录的行驶距离
+tracks_with_quality.csv,track_gap,m,原README称与后一段的空间缺口；首段缺失模式提示方向需核实
+tracks_with_quality.csv,avg_speed,m/s,原始记录平均速度
+tracks_with_quality.csv,max_speed,m/s,原始记录最大速度
+tracks_with_quality.csv,n_signal_loss,count,原始记录内信号丢失次数
+tracks_with_quality.csv,d_signal_loss,m,原始记录内信号丢失期间路程
+tracks_with_quality.csv,r_signal_loss,ratio,原始信号丢失路程比例；异常/缺失保留质量标记
+tracks_with_quality.csv,avg_hdop,source unit,原README写m；HDOP含义/单位未独立确认，本版不据此筛选
+tracks_with_quality.csv,home_base,boolean,记录终点处于车队基地；不证明该处已有充电设施
+tracks_with_quality.csv,long_haul,boolean,原作者标记：记录终点距离基地超过150km
+tracks_with_quality.csv,rest_area,boolean,原作者标记：记录终点位于无服务休息区
+tracks_with_quality.csv,service_area_fuel,boolean,原作者标记：记录终点位于服务区
+tracks_with_quality.csv,industrial_area,boolean,原作者标记：记录终点位于工业区
+tracks_with_quality.csv,cid,,匿名终点聚类编号；没有对应经纬度
+tracks_with_quality.csv,start_utc,UTC timestamp,原始起始时刻转换为UTC
+tracks_with_quality.csv,stop_utc,UTC timestamp,原始终止时刻转换为UTC
+tracks_with_quality.csv,duration_h,h,该记录或周期的末时刻减首时刻；周期时长含中间停留
+tracks_with_quality.csv,distance_km,km,观测记录里程换算或指定周期的里程合计
+tracks_with_quality.csv,avg_speed_kmh,km/h,avg_speed乘3.6
+tracks_with_quality.csv,distance_over_time_kmh,km/h,该条记录里程除以持续时间
+tracks_with_quality.csv,local_start_date,date,开始时刻按Europe/Berlin本地日历归属；跨日整段归起始日
+tracks_with_quality.csv,next_start_utc,UTC timestamp,同车下一条记录开始时刻；末条为空
+tracks_with_quality.csv,next_track_id,,同车按开始时间排序后的下一条原始记录ID；末条为空
+tracks_with_quality.csv,next_track_gap_m,m,同车下一行track_gap，供双边保守筛查
+tracks_with_quality.csv,overlap_previous,boolean,本条开始早于同车上一条结束
+tracks_with_quality.csv,flag_missing_distance,boolean,原始distance缺失
+tracks_with_quality.csv,flag_speed,boolean,原始均速或距离/时长超过130km/h，或原始均速为负
+tracks_with_quality.csv,flag_signal_ratio,boolean,r_signal_loss>0.2或<0；研究者阈值
+tracks_with_quality.csv,flag_unknown_signal,boolean,正里程记录的r_signal_loss缺失
+tracks_with_quality.csv,basic_valid,boolean,距离存在且非负、时长正、不重叠、不触发速度标记
+tracks_with_quality.csv,strict_valid,boolean,研究者质量规则联合筛选结果，不等于完整无遗漏轨迹
+tracks_with_quality.csv,inter_record_gap_h,h,下一记录开始减本记录结束；不自动证明期间静止
+tracks_with_quality.csv,boundary_gap_conservative_m,m,相邻两条track_gap较大值；任一缺失则未知
+tracks_with_quality.csv,window_time_plausible,boolean,记录间隔在0.25至48小时之间
+tracks_with_quality.csv,base_window_candidate,boolean,基地标记、窗口时长、双边空间缺口、两端记录质量同时通过
+tracks_with_quality.csv,fleet_test_id,,原始匿名车队编号；四个样本车队，不代表四个省份
+validation_checks.csv,check,text,脚本执行的一致性检查名称
+validation_checks.csv,pass_,boolean,检查是否通过；失败会使脚本终止
+vehicle_days.csv,vehicle_id,,原始匿名车辆编号；跨表关联，不能识别企业或司机
+vehicle_days.csv,fleet_test_id,,原始匿名车队编号；四个样本车队，不代表四个省份
+vehicle_days.csv,local_start_date,date,开始时刻按Europe/Berlin本地日历归属；跨日整段归起始日
+vehicle_days.csv,track_count,count,当前车辆/车辆日/周期的原始片段数
+vehicle_days.csv,recorded_distance_km,km,原始非缺失里程合计；带异常记录时不代表有效总里程
+vehicle_days.csv,strict_valid_tracks,count,通过联合质量规则的片段数
+vehicle_days.csv,flagged_tracks,count,该车辆日未通过联合质量规则的片段数
+vehicle_days.csv,recording_h,h,该车辆日归属记录的持续时间之和，不是整日可用时长
+vehicle_days.csv,first_start_utc,UTC timestamp,分组内最早起始时刻
+vehicle_days.csv,last_stop_utc,UTC timestamp,分组内最晚终止时刻
+vehicle_days.csv,strict_recorded_distance_km,km,车辆日内仅通过联合质量的记录里程合计
+vehicle_days.csv,coverage_note,text,车辆日覆盖范围说明
+vehicles.csv,vehicle_id,,原始匿名车辆编号；跨表关联，不能识别企业或司机
+vehicles.csv,track_count,count,当前车辆/车辆日/周期的原始片段数
+vehicles.csv,recorded_distance_km,km,原始非缺失里程合计；带异常记录时不代表有效总里程
+vehicles.csv,strict_valid_tracks,count,通过联合质量规则的片段数
+vehicles.csv,first_start_utc,UTC timestamp,分组内最早起始时刻
+vehicles.csv,last_stop_utc,UTC timestamp,分组内最晚终止时刻
+vehicles.csv,fleet_test_id,,原始匿名车队编号；四个样本车队，不代表四个省份
+vehicles.csv,gross_vehicle_weight,kg,额定最大总质量，不是实际载荷
+vehicles.csv,total_mass_with_trailer,kg,含挂车最大组合质量，不是实测货物重量
+vehicles.csv,axle_class,source code,原作者车辆轴型分类编码；参见raw/dt_cargo/README.md的BASt引用
+vehicles.csv,observed_days,count,有记录的不同本地开始日期数，不是完整有效天数
+vehicles.csv,scenario_vehicle_type,text,假设电动替代的状态说明；不把原始样本认作电动车

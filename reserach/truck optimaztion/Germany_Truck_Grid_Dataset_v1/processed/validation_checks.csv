@@ -1,0 +1,10 @@
+﻿check,pass_
+track_unique_key,True
+all_vehicle_foreign_keys,True
+retained_raw_count,True
+daily_distance_reconciles,True
+profile_immediate_energy_conservation,True
+profile_uniform_energy_conservation,True
+mapping_nodes_exist,True
+line_endpoints_exist,True
+load_profile_complete,True

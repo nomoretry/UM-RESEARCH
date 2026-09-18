@@ -1,0 +1,5 @@
+﻿fleet_test_id,hypothetical_depot_id,grid_node,mapping_rule,evidence_class
+1,DEPOT_F1,MV3.101 Bus 100,evenly spaced indices in lexicographically sorted unique MV load nodes,ASSUMED_NO_GEOGRAPHIC_LINK
+2,DEPOT_F2,MV3.101 Bus 140,evenly spaced indices in lexicographically sorted unique MV load nodes,ASSUMED_NO_GEOGRAPHIC_LINK
+3,DEPOT_F3,MV3.101 Bus 55,evenly spaced indices in lexicographically sorted unique MV load nodes,ASSUMED_NO_GEOGRAPHIC_LINK
+4,DEPOT_F4,MV3.101 busbar1A,evenly spaced indices in lexicographically sorted unique MV load nodes,ASSUMED_NO_GEOGRAPHIC_LINK

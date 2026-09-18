@@ -1,0 +1,19 @@
+﻿metric,value,interpretation_zh
+raw_track_rows,101826,原始记录全部保留
+raw_vehicles,53,公开文件实际为53辆；关联论文描述54辆
+raw_distance_missing,49,不将缺失里程填成0用于单段能耗
+zero_distance_tracks,1270,保留，可能包含短暂或静止记录
+speed_flag_tracks,45,均速或里程/时长>130 km/h；研究者阈值
+overlap_previous_tracks,0,同车当前记录早于前段结束
+signal_quality_flag_tracks,1309,信号损失比例>20%、负值或正里程时缺失
+strict_valid_tracks,100427,联合质量标记后的记录数
+candidate_base_windows,43080,15分钟至48小时、基地端点、双边空间缺口≤500m
+derived_cycles_ge_1km,7073,相邻基地端点之间的记录里程≥1km
+quality_eligible_cycles,3520,周期连续性与停靠窗口均通过
+baseline_profile_cycles,2546,再通过400kWh可用电量及150kW窗口检查
+baseline_profile_vehicles,49,只表示参与示例的车辆数
+grid_nodes,440,含开关辅助节点；不等于440个独立负荷点
+grid_loads,139,SimBench负荷元素
+grid_lines,147,SimBench线路元素
+grid_transformers,2,110/10kV，额定值见原表
+grid_profile_rows,35136,2016年366天×96个15分钟时段
