@@ -1,0 +1,24 @@
+{
+  "schema_version": "fixed-facility-v1",
+  "instance_id": "minimal_three_trucks",
+  "description": "New synthetic verification case, 2026-11-04. Three fixed vehicles, two sites, two drive/charge cycles. Not DT-CARGO or a real port.",
+  "provenance": {
+    "observed": [],
+    "derived": [],
+    "assumed": ["slot_hours; representative_weight; sites: interface counts, available powers and prices; vehicles: energy bounds, initial energy, efficiency and power limits"],
+    "simulated": ["site and vehicle identities; slot_count; complete vehicle driving-energy and charging-site timelines; zero means an explicitly designed non-driving slot, never a missing observation"]
+  },
+  "units": {"energy": "kWh", "power": "kW", "time": "hour", "price": "synthetic_currency/kWh", "objective": "synthetic_currency"},
+  "slot_hours": 1.0,
+  "slot_count": 4,
+  "representative_weight": 1.0,
+  "sites": [
+    {"id": "A", "active": true, "interfaces": 2, "available_power_kw": [100.0, 100.0, 100.0, 100.0], "price_per_kwh": [1.0, 1.0, 2.0, 2.0]},
+    {"id": "B", "active": true, "interfaces": 1, "available_power_kw": [50.0, 50.0, 50.0, 50.0], "price_per_kwh": [1.0, 1.0, 2.0, 2.0]}
+  ],
+  "vehicles": [
+    {"id": "V1", "energy_min_kwh": 20.0, "energy_max_kwh": 100.0, "initial_energy_kwh": 100.0, "efficiency": 0.9, "power_limit_kw": {"A": 50.0, "B": 50.0}, "drive_energy_kwh": [30.0, 0.0, 30.0, 0.0], "charging_site": [null, "A", null, "A"]},
+    {"id": "V2", "energy_min_kwh": 20.0, "energy_max_kwh": 100.0, "initial_energy_kwh": 100.0, "efficiency": 0.9, "power_limit_kw": {"A": 50.0, "B": 50.0}, "drive_energy_kwh": [30.0, 0.0, 30.0, 0.0], "charging_site": [null, "A", null, "A"]},
+    {"id": "V3", "energy_min_kwh": 20.0, "energy_max_kwh": 100.0, "initial_energy_kwh": 100.0, "efficiency": 0.9, "power_limit_kw": {"A": 50.0, "B": 50.0}, "drive_energy_kwh": [30.0, 0.0, 30.0, 0.0], "charging_site": [null, "B", null, "B"]}
+  ]
+}

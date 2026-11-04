@@ -1,0 +1,99 @@
+{
+  "recovery_date": "2026-11-04",
+  "origin": "User-provided workspace, sibling truck_charging_v1 directory",
+  "method": "Byte-identical copy of source, tests, input/reference files and original documentation; original files unchanged",
+  "historical_docs_notice": "README claims are historical; see docs/research/STATUS.md and LEGACY_RECOVERY_20261104.md for current verification",
+  "excluded": [
+    ".venv",
+    "__pycache__",
+    ".pytest_cache",
+    "results"
+  ],
+  "files": [
+    {
+      "path": "CONTRACT.md",
+      "sha256": "a74f60222b701f60554b8f010e412e05e711a88d8d27537bb8d8e062c0a0a667"
+    },
+    {
+      "path": "data/collection/intake_template.json",
+      "sha256": "d21ec5023d0aee015aee0df26a639a83ac28b48707715efa058ba5d561b77f39"
+    },
+    {
+      "path": "data/reference/literature_parameters.json",
+      "sha256": "5fa3c8edfdcbf0590619703ddddaec68a3142514e18bb839562d97bfebef4698"
+    },
+    {
+      "path": "data/synthetic/demo.json",
+      "sha256": "31aee16cb20a899a490f2101929932862019b6dc63a3cfd9b3372d392e8305a9"
+    },
+    {
+      "path": "DATASET.zh.md",
+      "sha256": "e3fa54e5e5b8d126c7837335f92b4b975dd8dcd551787e72e168d00308499cb6"
+    },
+    {
+      "path": "MODEL.zh.md",
+      "sha256": "c0ab54b9e77afac608dc8b1c5e18db6304dee934a0467b463ac6173301afc06b"
+    },
+    {
+      "path": "README.md",
+      "sha256": "f28be8a7a4d91cbc7363cb4338748d6f564622cb9dfeaa49eea6a5f994c9f38a"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "03fab59c975e353e86abcee8a89962907cc2f9e0d34f705a369ecda646a9483f"
+    },
+    {
+      "path": "run.py",
+      "sha256": "fe178ab9773c6b21cbe81618de1961a556b28efe273399975d46dfacbb29dca7"
+    },
+    {
+      "path": "scripts/audit_source.py",
+      "sha256": "c9e6df86527e69f80b5e50170ff6f29e19ae984762302722cc47a6a65994351e"
+    },
+    {
+      "path": "tests/test_data_plans.py",
+      "sha256": "f6fa357b98af8bf1f2bf1652d1a4851dad824cadaef7fb3493d7da6e79284356"
+    },
+    {
+      "path": "tests/test_enumeration.py",
+      "sha256": "72725319df12b0b094235eade6d9b4bfac1755e62ea6733ff9712d80dfadbd57"
+    },
+    {
+      "path": "tests/test_integration.py",
+      "sha256": "f074839b7de0317afcf70bb3c8b988e252427aae5b8db1ad7a086127afeeb398"
+    },
+    {
+      "path": "tests/test_model.py",
+      "sha256": "05a23955e3e7c74a047952d830bdff072872a7f1f301049f452d5e86a1423131"
+    },
+    {
+      "path": "tests/test_verify.py",
+      "sha256": "1da731ac184ca9fff7160ce80bbb2507bf95c88ffc0f7cb96ffa948b9d8c0263"
+    },
+    {
+      "path": "truckplan/__init__.py",
+      "sha256": "e20227da2ea5c52809d77d403003eaf7f5c4e613b962665d0553b69f6340446f"
+    },
+    {
+      "path": "truckplan/data.py",
+      "sha256": "35468883219ae71bec54ca9a88aa6f9d348d514ab0fb82bc38fda078eb666ab2"
+    },
+    {
+      "path": "truckplan/model.py",
+      "sha256": "c753c4be2dea5b6378639a2d9221a8368ddec438792be222755d51e0906e81f1"
+    },
+    {
+      "path": "truckplan/plans.py",
+      "sha256": "3fe91d436b4759ad9aef975a039ce6e11b9b7acb80cc59f56319d75d0af99fb7"
+    },
+    {
+      "path": "truckplan/verify.py",
+      "sha256": "8ef0e3e01125cfa4e0545d4ece70ca1e8a00ebded28558cd5702fb208bd538aa"
+    }
+  ],
+  "historical_evidence_sha256": {
+    "results/test_report.xml": "4e2b5298ae25fe21d71f255a2fd04a43d0a7087c0b4807b56562f9f78985af99",
+    "results/comparison.json": "4af09dd5df56b9a1fcb0e2093fbf219d9c7effed07d4320b3aa79e3645c6a556",
+    "results/base/manifest.json": "f45e7d28e78d88782027cfefead13ae53d52079ca20311968b54af707aedf960"
+  }
+}
