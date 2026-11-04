@@ -42,10 +42,12 @@ def checked_output(path, source):
     ancestor = path.parent
     while not ancestor.exists():
         ancestor = ancestor.parent
-    run_root = Path(subprocess.check_output(["git", "-C", str(ancestor), "rev-parse", "--show-toplevel"], text=True).strip()).resolve()
+    # Git emits UTF-8 paths on this Windows installation; text=True alone uses
+    # cp936 and silently turns a real Chinese directory into a nonexistent one.
+    run_root = Path(subprocess.check_output(["git", "-C", str(ancestor), "rev-parse", "--show-toplevel"], encoding="utf-8").strip()).resolve()
     if run_root == source or not (run_root / ".git").is_dir():
         raise ValueError("output must belong to an independent ordinary Git repository")
-    if subprocess.check_output(["git", "-C", str(run_root), "remote"], text=True).strip():
+    if subprocess.check_output(["git", "-C", str(run_root), "remote"], encoding="utf-8").strip():
         raise ValueError("the local run repository must have no remotes")
     return path
 
@@ -61,8 +63,8 @@ def main():
     config = json.loads(args.config.read_text(encoding="utf-8"), object_pairs_hook=reject_duplicate_keys)
     validate_input(config)
     cases = make_scenarios(config) if args.suite else {"single": config}
-    commit = subprocess.check_output(["git", "-C", str(source), "rev-parse", "HEAD"], text=True).strip()
-    dirty = bool(subprocess.check_output(["git", "-C", str(source), "status", "--porcelain"], text=True).strip())
+    commit = subprocess.check_output(["git", "-C", str(source), "rev-parse", "HEAD"], encoding="utf-8").strip()
+    dirty = bool(subprocess.check_output(["git", "-C", str(source), "status", "--porcelain"], encoding="utf-8").strip())
     if dirty:
         raise ValueError("Commit the exact source before this canonical run; source repository is dirty")
     output.mkdir(parents=True)
