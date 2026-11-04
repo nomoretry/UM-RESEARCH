@@ -1,0 +1,78 @@
+{
+  "suite": {
+    "run_id": "20261104_legacy_suite",
+    "source_commit": "60c10fb0657f9164dd3c1a58e808e47f650e4d23",
+    "manifest_sha256": "b6e57d597bafa94a51ac1a9c11ba85cdc7aca2ced88bcc3758f18694bf36fd35",
+    "exit_code": 0
+  },
+  "tests": {
+    "tests": 106,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "run_id": "20261104_legacy_tests_retry",
+    "source_commit": "4d3f3a045cc02ddde35acd69249ff08f78270861",
+    "junit_sha256": "853510b0e9bd6f72c3b0dd55807303c01843cc09e3e7c96642e7cbf3e62bcf25",
+    "manifest_sha256": "5c5da3e4a77a8e7c8cc4b9e7f8d6f37be4a1afa89bb7422fc591cce15b808035"
+  },
+  "source_dirty": false,
+  "input_sha256": {
+    "base": "443eb8d115757ec1fe6989f1a7ef35d06d2bd2ac5a2cb4f30a26d5412a8ed3f3",
+    "no_charge_needed": "9aa8cef6f49d1792e1427f5750a46361b0c1eb1a20578bde399ab2648a3adc44",
+    "site_power_limited": "1dfccfe30d3628a1dbd66ecf293ae3e2b5b8c10c633a174847c34bf32646301a",
+    "tight_deadline_one_bay": "870114727d5d815cd37434f8d6504213c54a470612f3f38f5cad4de093aeb343",
+    "reverse_access_blocked": "86018f71fe00aaa6419d0cba66cc558a5988d4932f527580e69b66aa2bc80dd0",
+    "relaxed_service": "0499b5cc4e7b9837aeb74baa8dc4b7b6ed137338dda4c4dd7028d476cfacee4d"
+  },
+  "seed": null,
+  "environment": {
+    "scipy": "1.18.1",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "pytest": "9.1.1",
+    "networkx": "3.6.1"
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "solver": {
+    "name": "HiGHS via scipy.optimize.milp",
+    "version": null,
+    "note": "Legacy CLI does not emit a solver version banner"
+  },
+  "portable_commands": [
+    {
+      "cwd": "legacy/truck_charging_v1",
+      "argv": [
+        "python",
+        "-B",
+        "run.py",
+        "--scenario",
+        "all",
+        "--output",
+        "<external-local-git>/<new-run>/artifacts"
+      ]
+    },
+    {
+      "cwd": "legacy/truck_charging_v1",
+      "argv": [
+        "python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml",
+        "<external-local-git>/<new-run>/junit.xml",
+        "tests"
+      ]
+    }
+  ],
+  "earlier_failed_attempt": {
+    "run_id": "20261104_legacy_tests",
+    "source_commit": "60c10fb0657f9164dd3c1a58e808e47f650e4d23",
+    "manifest_sha256": "d92f80a2915c83d4225452e1ed017079c577a31d531b7e92682e28925994f2f0",
+    "exit_code": 4,
+    "reason": "PowerShell split --junitxml= and its path; no tests were executed. Corrected invocation uses separate option and value."
+  },
+  "source_note": "Suite and test commits differ only outside recovered legacy solver/test source. RECOVERY.json records exact bytes."
+}

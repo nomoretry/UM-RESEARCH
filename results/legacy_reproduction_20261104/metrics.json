@@ -1,0 +1,135 @@
+[
+  {
+    "scenario": "base",
+    "status": "optimal",
+    "objective_cny_per_year": 462000.0,
+    "valid_under_full_constraints": true,
+    "station_decisions": [
+      {
+        "site_id": "SA",
+        "build": 1,
+        "bays": 2
+      },
+      {
+        "site_id": "SB",
+        "build": 0,
+        "bays": 0
+      }
+    ],
+    "plan_count": 12,
+    "investment_cny_per_year": 12000.0,
+    "operation_cny_per_year": 450000.0,
+    "mip_gap": 0.0,
+    "dual_bound": null,
+    "bound_note": "Legacy exporter does not retain the solver dual bound; it is not inferred from the objective."
+  },
+  {
+    "scenario": "no_charge_needed",
+    "status": "optimal",
+    "objective_cny_per_year": 315000.0,
+    "valid_under_full_constraints": true,
+    "station_decisions": [
+      {
+        "site_id": "SA",
+        "build": 0,
+        "bays": 0
+      },
+      {
+        "site_id": "SB",
+        "build": 0,
+        "bays": 0
+      }
+    ],
+    "plan_count": 20,
+    "investment_cny_per_year": 0.0,
+    "operation_cny_per_year": 315000.0,
+    "mip_gap": 0.0,
+    "dual_bound": null,
+    "bound_note": "Legacy exporter does not retain the solver dual bound; it is not inferred from the objective."
+  },
+  {
+    "scenario": "site_power_limited",
+    "status": "optimal",
+    "objective_cny_per_year": 491000.0,
+    "valid_under_full_constraints": true,
+    "station_decisions": [
+      {
+        "site_id": "SA",
+        "build": 1,
+        "bays": 1
+      },
+      {
+        "site_id": "SB",
+        "build": 0,
+        "bays": 0
+      }
+    ],
+    "plan_count": 12,
+    "investment_cny_per_year": 11000.0,
+    "operation_cny_per_year": 480000.0,
+    "mip_gap": 0.0,
+    "dual_bound": null,
+    "bound_note": "Legacy exporter does not retain the solver dual bound; it is not inferred from the objective."
+  },
+  {
+    "scenario": "tight_deadline_one_bay",
+    "status": "infeasible",
+    "objective_cny_per_year": null,
+    "valid_under_full_constraints": false,
+    "station_decisions": [],
+    "plan_count": 2,
+    "investment_cny_per_year": null,
+    "operation_cny_per_year": null,
+    "mip_gap": null,
+    "dual_bound": null,
+    "bound_note": "Legacy exporter does not retain the solver dual bound; it is not inferred from the objective."
+  },
+  {
+    "scenario": "reverse_access_blocked",
+    "status": "optimal",
+    "objective_cny_per_year": 608000.0,
+    "valid_under_full_constraints": true,
+    "station_decisions": [
+      {
+        "site_id": "SA",
+        "build": 0,
+        "bays": 0
+      },
+      {
+        "site_id": "SB",
+        "build": 1,
+        "bays": 2
+      }
+    ],
+    "plan_count": 4,
+    "investment_cny_per_year": 6500.0,
+    "operation_cny_per_year": 601500.0,
+    "mip_gap": 0.0,
+    "dual_bound": null,
+    "bound_note": "Legacy exporter does not retain the solver dual bound; it is not inferred from the objective."
+  },
+  {
+    "scenario": "relaxed_service",
+    "status": "optimal",
+    "objective_cny_per_year": 461000.0,
+    "valid_under_full_constraints": false,
+    "station_decisions": [
+      {
+        "site_id": "SA",
+        "build": 1,
+        "bays": 1
+      },
+      {
+        "site_id": "SB",
+        "build": 0,
+        "bays": 0
+      }
+    ],
+    "plan_count": 12,
+    "investment_cny_per_year": 11000.0,
+    "operation_cny_per_year": 450000.0,
+    "mip_gap": 0.0,
+    "dual_bound": null,
+    "bound_note": "Legacy exporter does not retain the solver dual bound; it is not inferred from the objective."
+  }
+]

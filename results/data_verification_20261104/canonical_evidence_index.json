@@ -1,0 +1,104 @@
+[
+  {
+    "run_id": "20261104_dataset_snapshot_canonical",
+    "path": "byte_restoration.json",
+    "sha256": "ba4c34099759752df63df4e5ab0240ce241e305d6f643a70d8bebafe4ca2c7dd",
+    "bytes": 4767
+  },
+  {
+    "run_id": "20261104_dataset_snapshot_canonical",
+    "path": "command.json",
+    "sha256": "1b84b85ea69be1c205b29470b9b8469245cff21a810edb1acb1d761da5016c2f",
+    "bytes": 594
+  },
+  {
+    "run_id": "20261104_dataset_snapshot_canonical",
+    "path": "environment_stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "run_id": "20261104_dataset_snapshot_canonical",
+    "path": "environment_stdout.txt",
+    "sha256": "68073e758cdce8a763bee7819e61d6ddefc39f42e01766a6f4a4394d0eed102a",
+    "bytes": 305
+  },
+  {
+    "run_id": "20261104_dataset_snapshot_canonical",
+    "path": "exit.json",
+    "sha256": "75876e0e3f497cad271143ba85bd4f36569cd81195509043f860dab14265b716",
+    "bytes": 24
+  },
+  {
+    "run_id": "20261104_dataset_snapshot_canonical",
+    "path": "hash_checks.json",
+    "sha256": "09d288b9453a157ce3bf43d04677cf39c031c5ef6cd234e195104b33a290d9ca",
+    "bytes": 11422
+  },
+  {
+    "run_id": "20261104_dataset_snapshot_canonical",
+    "path": "input_inventory.json",
+    "sha256": "0c552f2eb646dd0ac51e6a1ebd1cb6d9865a27b90c8371d320e84b09d7bb8ab0",
+    "bytes": 9132
+  },
+  {
+    "run_id": "20261104_dataset_snapshot_canonical",
+    "path": "manifest.json",
+    "sha256": "1a093e0211cafb2e24ac5260e13a09be966bb60022f0a4c5cd6c55d4a676b073",
+    "bytes": 1624
+  },
+  {
+    "run_id": "20261104_dataset_snapshot_canonical",
+    "path": "runner_source.py",
+    "sha256": "9b49527256b635dc42996a0090027349baa278cfd13c3426e096e377a35fc10d",
+    "bytes": 12471
+  },
+  {
+    "run_id": "20261104_dataset_snapshot_canonical",
+    "path": "stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "run_id": "20261104_dataset_snapshot_canonical",
+    "path": "stdout.txt",
+    "sha256": "39be49af3d87e7a7a4625576dc8fddb0c97ca00c331ccc06ba931b004baec3f0",
+    "bytes": 189
+  },
+  {
+    "run_id": "20261104_dataset_snapshot_canonical",
+    "path": "validation.json",
+    "sha256": "975b3a3d0ca83df701cedb289f91a0713a02642cc8fa18f4d284b2ef7d7f1b37",
+    "bytes": 1003
+  },
+  {
+    "run_id": "20261104_dataset_snapshot_canonical",
+    "path": "verifier_command.json",
+    "sha256": "2c99ef9451688f0bf63c44b49b5be4f2f3741b8d9359e2d1107f717b8cdd82a9",
+    "bytes": 441
+  },
+  {
+    "run_id": "20261104_dataset_canonical_driver",
+    "path": "command.json",
+    "sha256": "bd44bf1e8765dbcdc678c5a6462407d596720ccdbfdf9b44d659b24b874ce4ec",
+    "bytes": 634
+  },
+  {
+    "run_id": "20261104_dataset_canonical_driver",
+    "path": "manifest.json",
+    "sha256": "7ad93e45483c0a7a756c9b221011400a14d01816af41cd75d995b7e9af9f303b",
+    "bytes": 1388
+  },
+  {
+    "run_id": "20261104_dataset_canonical_driver",
+    "path": "stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "run_id": "20261104_dataset_canonical_driver",
+    "path": "stdout.txt",
+    "sha256": "d200db0797bbe2e3885c6467c894f3898ad1894dd1d413bfc027b580d634860e",
+    "bytes": 638
+  }
+]

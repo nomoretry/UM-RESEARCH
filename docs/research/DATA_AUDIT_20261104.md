@@ -2,6 +2,8 @@
 
 数据源码基线：`bc892a70457721b4253066ac07d397287e6a0d0a`。本轮验证已有文件及其一致性，没有运行 `build_dataset.py`，没有重新下载来源，没有改原始清单或数据。
 
+正式复跑入口源码提交：`4d3f3a045cc02ddde35acd69249ff08f78270861`；运行时工作树干净。正式 run `20261104_dataset_snapshot_canonical` 已退出0，在 pandas 2.3.3、numpy 2.5.4 环境中通过验证，符合原依赖声明。
+
 ## 已找到的两个目录
 
 - 完整数据目录：`reserach/truck optimaztion/Germany_Truck_Grid_Dataset_v1/`，58 个 tracked 文件。
@@ -16,8 +18,11 @@
 | `20261104_dataset_verification_gitblob` | 从基线提交提取原始 Git blob；同一未修改验证器 | exit=1，`raw/simbench/csv/Coordinates.csv` 的 SHA-256 不符 |
 | `20261104_dataset_verification_restored_bytes` | Git blob 副本中，从版本化 SimBench ZIP 恢复 16 个 CSV 的原始字节；原清单保持不变 | exit=0，原验证器通过 |
 | `20261104_dataset_snapshot_smoke` | 新入口 `scripts/verify_dataset_snapshot.py` 的开发验证；同样恢复方法，增加独立计数和原始 LoadProfile 完整性检查 | exit=0，64 条清单记录全部匹配 |
+| `20261104_dataset_snapshot_canonical` | 提交精确入口源码后，在独立合规依赖环境中复跑 | exit=0，64 条原清单记录匹配；原验证器及额外独立计数通过 |
 
-以上四次使用 Python 3.12.14、numpy 2.5.3、pandas 3.0.5，均未启用 `-O`。pandas 3.0.5 超出了旧工程 `pandas>=2.0,<3.0` 的声明范围；因此这些成功是有环境差异的本次验证，不能写成原声明环境已经复现。正式复跑记录见[精选结果](../../results/data_verification_20261104/README.md)。
+前四次开发运行使用 Python 3.12.14、numpy 2.5.3、pandas 3.0.5，均未启用 `-O`。pandas 3.0.5 超出了旧工程 `pandas>=2.0,<3.0` 的声明范围；这些开发成功仍保留环境差异说明，不以正式结果改写历史。
+
+正式运行另用 Python 3.12.14、numpy 2.5.4、pandas 2.3.3，满足 `pandas>=2.0,<3.0` 和 `numpy>=1.24`，实测 `optimize=0`。正式运行时间为2026-11-04 06:24:44至06:25:18 UTC（北京时间14:24:44至14:25:18）。输入清单 SHA-256 为 `0c552f2eb646dd0ac51e6a1ebd1cb6d9865a27b90c8371d320e84b09d7bb8ab0`；命令、源版本、环境和本地证据哈希见[精选复现记录](../../results/data_verification_20261104/reproduction.json)。
 
 ## 失败原因及可重现处理
 
@@ -31,7 +36,7 @@
 
 ## 独立重算得到的范围
 
-开发验证从文件重新计数：53 辆、4 个车队、101826 条片段、6869 个有记录车辆日、7073 个派生周期。3520 个周期通过既有质量/窗口规则，2546 个周期进入规则曲线，涉及49辆车；其需电量为 76749.89684203 kWh，占质量合格周期需电量的约14.0872%。原始 LoadProfile 有35136行且未发现空单元格。
+开发验证与正式复跑分别从文件重新计数，结果一致：53 辆、4 个车队、101826 条片段、6869 个有记录车辆日、7073 个派生周期。3520 个周期通过既有质量/窗口规则，2546 个周期进入规则曲线，涉及49辆车；其需电量为 76749.89684203 kWh，占质量合格周期需电量的约14.0872%。原始 LoadProfile 有35136行且未发现空单元格。
 
 原 `verify_dataset.py` 重算主键、外键、里程、曲线能量和网模连接一致性，但对 `validation_checks.csv` 只读其已有 `pass_` 列，不能把该文件中的全部历史检查都称为重新计算。本轮新入口另行检查了原始 LoadProfile 的行数和非空性。
 

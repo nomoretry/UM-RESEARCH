@@ -19,3 +19,5 @@
 以上 `model.py`/`validation.py` 指 `src/um_charging/`；测试位于 [test_fixed_facility.py](../../tests/test_fixed_facility.py)。解析预期详见 [MINIMAL_INSTANCE](MINIMAL_INSTANCE.md)，执行证据单独保存在精选结果中。
 
 旧原型和单站脚本证据见 [恢复审计](../research/LEGACY_RECOVERY_20261104.md)。旧原型的每任务独立初始电量、定功率整槽方案和有限路径集合不代表本模型的C06/C07已验证。
+
+正式证据：源码提交 `4d3f3a045cc02ddde35acd69249ff08f78270861`；[新模型结果](../../results/fixed_facility_20261104/README.md)含37项测试与六情景，[旧原型本次结果](../../results/legacy_reproduction_20261104/README.md)含106项测试。数据正式run与失败记录见[数据结果](../../results/data_verification_20261104/README.md)。

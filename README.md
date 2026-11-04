@@ -1,44 +1,32 @@
 # UM-RESEARCH
 
-电动重卡充电设施容量与调度研究。当前重点是恢复可核实进度，并将研究问题、数学模型、代码和实验结果连接起来。
+电动重卡充电设施与调度研究。当前已恢复旧MILP原型、复跑德国数据校验，并新建和验证三车两站固定设施连续SOC模型。全部研究结果的来源、限制与下一任务见 [STATUS](docs/research/STATUS.md)。
 
-**当前状态：旧 truck_charging_v1 已在用户工作目录定位并恢复，历史测试证据已核实；德国数据完成隔离开发校验；三车两站固定设施连续 SOC 模型为本轮新建。正式运行状态与限制统一见 [STATUS](docs/research/STATUS.md)。**
+## 本轮可核验结果
 
-## 从这里开始
-
-- [当前进度与证据](docs/research/STATUS.md)
-- [研究决策与待确认项](docs/research/DECISIONS.md)
-- [固定任务 MILP 建模草案](docs/model/FORMULATION.md)
-- [公式—代码—验证对应表](docs/model/IMPLEMENTATION_MAP.md)
-- [本地运行记录与 GitHub 结果的保存规则](docs/workflow/STORAGE.md)
-- [首次恢复提示词](prompts/BOOTSTRAP.md)
-- [后续继续提示词](prompts/RESUME.md)
-
-AGENTS.md 提供会话入口规则；STATUS.md 是项目当前状态，不依赖聊天记忆。提示词中的命令须在真实工作环境执行后才可以记为成功。
-
-## 已有工程
-
-完整数据工程位于 `reserach/truck optimaztion/Germany_Truck_Grid_Dataset_v1/`。
-同名目录也出现在 `reserach/Germany_Truck_Grid_Dataset_v1/`，其 tracked 文件较少。先比较、确认路径依赖再整理，不删除其中任一版本。
-
-已有入口：
-- `build_dataset.py`：重建派生数据，会写文件。应在隔离副本中复现。
-- `verify_dataset.py`：读取已有数据与清单进行一致性检查，不要使用 Python -O。
-- `generate_metadata.py`：生成元数据。
-- `README_zh.md`、`summary.json`：历史数据快照及其限制。
-
-以上脚本存在并经部分内容审阅，不表示本次运行通过。
-
-## 逐步形成的结构
-
-| 位置 | 用途 | 状态 |
+| 内容 | 实际完成 | 入口 |
 |---|---|---|
-| docs/research/ | 进度、证据、研究决策 | 已添加恢复记录 |
-| docs/model/ | 公式、假设、代码对应关系 | 草案，待映射和求解 |
-| prompts/ | 首次恢复与继续执行提示词 | 已添加 |
-| 原有 reserach/、文献学习/ | 历史材料与数据工程 | 原样保留 |
-| src/、tests/、configs/ | 新的可安装模型、验证与配置 | 按实际开发需要添加；不要先制造空架构 |
-| results/ | 精选结果、分项指标、图表及复现清单 | 待真实实验后添加 |
-| 仓库外 UM-RESEARCH-runs-local/ | 完整运行记录，独立本地 Git，无远程 | 须在实际运行机器初始化 |
+| 旧原型恢复 | 20个必要文件按字节复制；本次106项测试通过 | [恢复审计](docs/research/LEGACY_RECOVERY_20261104.md)、[复现结果](results/legacy_reproduction_20261104/README.md) |
+| 德国数据工程 | 原验证器和独立重算通过；保留换行字节导致的两次失败 | [数据审计](docs/research/DATA_AUDIT_20261104.md)、[精选结果](results/data_verification_20261104/README.md) |
+| 新固定设施MILP | 37项测试、六情景；基准200kWh/300模拟货币，三类无解、零需求及零收益保留 | [实例与命令](docs/model/MINIMAL_INSTANCE.md)、[精选结果](results/fixed_facility_20261104/README.md) |
 
-本仓库保持现有私有状态。完整运行记录不上传，精选结果仍需足以解释来源和复现限制。
+旧历史报告、本次正式复现和计划分别记录。最小实例为四小时合成周期，不是德国或南沙实证。接口投资与离散扩容尚未实现，真实运营窗口尚未确认。
+
+## 接续入口
+
+- [AGENTS.md](AGENTS.md)、[首次恢复提示词](prompts/BOOTSTRAP.md)、[继续提示词](prompts/RESUME.md)
+- [研究状态](docs/research/STATUS.md)、[决策记录](docs/research/DECISIONS.md)
+- [数学规范](docs/model/FORMULATION.md)、[公式与验证对应](docs/model/IMPLEMENTATION_MAP.md)
+- [本地日志与结果保存规则](docs/workflow/STORAGE.md)
+
+## 现有结构
+
+- `src/um_charging/`、`tests/`、`configs/`：新固定设施模型、独立复算和合成配置；实际环境锁定见 `requirements-milp.txt`。
+- `legacy/truck_charging_v1/`：实物恢复的旧有限方案MILP。README中的旧“本次”文字属于历史说明，以当前STATUS为准。
+- `reserach/truck optimaztion/Germany_Truck_Grid_Dataset_v1/`：完整德国数据工程，58个基线tracked文件。
+- `reserach/Germany_Truck_Grid_Dataset_v1/`：较小同名目录，11个tracked文件；11个公共文件的Git字节完全一致，两目录均保留。
+- `scripts/verify_dataset_snapshot.py`：从指定commit建立仓库外隔离副本，用已核验ZIP恢复原始字节，再运行原验证器；不改原清单，不重建数据。
+- `results/`：可共享的精选指标、验证及复现清单。`build_dataset.py`与`generate_metadata.py`本轮未执行。
+- 仓库外并列 `UM-RESEARCH-runs-local/`：已初始化的独立本地Git，无remote；保存失败、stdout/stderr、完整输入及原始解，不推送。
+
+本仓库保持原有私有状态。数据仅用于德国匿名运营样本与典型电网情景，不能写成真实港口业务或实际接入关系。

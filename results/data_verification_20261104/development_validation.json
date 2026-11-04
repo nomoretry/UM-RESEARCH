@@ -1,0 +1,34 @@
+{
+  "original_verifier": {
+    "verified": true,
+    "vehicles": 53,
+    "tracks": 101826,
+    "cycles": 7073,
+    "quality_eligible_cycles": 3520,
+    "profile_cycles": 2546,
+    "profile_energy_kwh": 76749.89684203
+  },
+  "original_manifest_entries_checked": 64,
+  "restored_csv_count": 16,
+  "independent_summary": {
+    "raw_vehicles": 53,
+    "fleets": 4,
+    "raw_tracks": 101826,
+    "observed_vehicle_days": 6869,
+    "stored_cycles": 7073,
+    "quality_eligible_cycles": 3520,
+    "profile_cycles": 2546,
+    "profile_vehicles": 49,
+    "quality_eligible_grid_energy_kwh": 544819.82273679,
+    "profile_grid_energy_kwh": 76749.89684203,
+    "profile_energy_coverage": 0.1408720711674783,
+    "raw_load_profile_rows": 35136,
+    "raw_load_profile_complete": true,
+    "scope": "Recount and consistency validation of stored data; no data reconstruction, SOC optimization or power flow"
+  },
+  "solver": null,
+  "objective": null,
+  "bound": null,
+  "gap": null,
+  "status": "development validation in pandas 3.0.5, outside legacy declared range; canonical rerun is recorded separately when completed"
+}
