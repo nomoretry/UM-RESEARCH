@@ -21,3 +21,5 @@
 旧原型和单站脚本证据见 [恢复审计](../research/LEGACY_RECOVERY_20261104.md)。旧原型的每任务独立初始电量、定功率整槽方案和有限路径集合不代表本模型的C06/C07已验证。
 
 正式证据：源码提交 `4d3f3a045cc02ddde35acd69249ff08f78270861`；[新模型结果](../../results/fixed_facility_20261104/README.md)含37项测试与六情景，[旧原型本次结果](../../results/legacy_reproduction_20261104/README.md)含106项测试。数据正式run与失败记录见[数据结果](../../results/data_verification_20261104/README.md)。
+
+2026-11-09文献与代码复核：上述已实现范围未变，未重跑求解。投资、跨节点任务链和换电的建议见[建模衔接说明](../literature/20261109/BASELINE_DESIGN.md)，其公式为计划，不是新增实现。
