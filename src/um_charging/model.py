@@ -1,4 +1,4 @@
-"""C02-C07 for a supplied fixed transport timeline; no route/investment decisions."""
+"""C01-C07 for fixed transport; optional interface and discrete power investment."""
 from __future__ import annotations
 
 import copy
@@ -26,12 +26,63 @@ def _identifier(value, path):
         raise ValueError(f"{path}: nonempty string required")
 
 
+def _validate_investment_site(site, path):
+    if type(site["max_new_interfaces"]) is not int or site["max_new_interfaces"] < 0:
+        raise ValueError(f"{path}.max_new_interfaces: nonnegative integer required")
+    _number(site["interface_cost"], f"{path}.interface_cost")
+    if not isinstance(site["upgrade_options"], list):
+        raise ValueError(f"{path}.upgrade_options: list required")
+    option_ids = []
+    for m, option in enumerate(site["upgrade_options"]):
+        option_path = f"{path}.upgrade_options[{m}]"
+        _keys(option, {"id", "additional_power_kw", "cost"}, option_path)
+        _identifier(option["id"], f"{option_path}.id")
+        option_ids.append(option["id"])
+        _number(option["additional_power_kw"], f"{option_path}.additional_power_kw", strictly_positive=True)
+        _number(option["cost"], f"{option_path}.cost")
+    if len(set(option_ids)) != len(option_ids):
+        raise ValueError(f"{path}.upgrade_options: duplicate option id")
+
+
+def _validate_timeline(vehicle, site_ids, T, path):
+    timeline = vehicle["timeline"]
+    if not isinstance(timeline, list) or len(timeline) != T:
+        raise ValueError(f"{path}.timeline: exactly slot_count entries required")
+    for t, slot in enumerate(timeline):
+        slot_path = f"{path}.timeline[{t}]"
+        _keys(slot, {"from", "to", "activity", "plug_allowed"}, slot_path)
+        for field in ("from", "to"):
+            if not isinstance(slot[field], str) or slot[field] not in site_ids:
+                raise ValueError(f"{slot_path}.{field}: exact site id required")
+        if type(slot["plug_allowed"]) is not bool:
+            raise ValueError(f"{slot_path}.plug_allowed: boolean required")
+        energy = vehicle["drive_energy_kwh"][t]
+        charging_site = vehicle["charging_site"][t]
+        if slot["activity"] == "drive":
+            if slot["from"] == slot["to"] or energy <= 0 or slot["plug_allowed"] or charging_site is not None:
+                raise ValueError(f"{slot_path}: drive requires distinct endpoints, positive energy and no charging")
+        elif slot["activity"] == "dwell":
+            if slot["from"] != slot["to"] or energy != 0:
+                raise ValueError(f"{slot_path}: dwell requires identical endpoints and zero drive energy")
+            expected_site = slot["to"] if slot["plug_allowed"] else None
+            if charging_site != expected_site:
+                raise ValueError(f"{slot_path}: charging_site must match explicit plug eligibility")
+        else:
+            raise ValueError(f"{slot_path}.activity: exact drive or dwell required")
+        if t and timeline[t - 1]["to"] != slot["from"]:
+            raise ValueError(f"{slot_path}: discontinuous fixed route")
+    if timeline[-1]["to"] != timeline[0]["from"]:
+        raise ValueError(f"{path}.timeline: complete closed cycle required")
+
+
 def validate_input(data):
     """Reject missing slots, unknown keys, aliases and nonfinite physical inputs."""
-    _keys(data, {"schema_version", "instance_id", "description", "provenance", "units",
-                 "slot_hours", "slot_count", "representative_weight", "sites", "vehicles"}, "input")
-    if data["schema_version"] != "fixed-facility-v1":
+    if not isinstance(data, dict) or data.get("schema_version") not in ("fixed-facility-v1", "capacity-investment-v1"):
         raise ValueError("unsupported schema_version")
+    investment = data["schema_version"] == "capacity-investment-v1"
+    top_keys = {"schema_version", "instance_id", "description", "provenance", "units",
+                "slot_hours", "slot_count", "representative_weight", "sites", "vehicles"}
+    _keys(data, top_keys | ({"cost_basis"} if investment else set()), "input")
     _identifier(data["instance_id"], "instance_id")
     _identifier(data["description"], "description")
     _keys(data["provenance"], {"observed", "derived", "assumed", "simulated"}, "provenance")
@@ -43,6 +94,8 @@ def validate_input(data):
         raise ValueError("units: use the documented explicit units")
     _number(data["slot_hours"], "slot_hours", strictly_positive=True)
     _number(data["representative_weight"], "representative_weight", strictly_positive=True)
+    if investment and (data["cost_basis"] != "synthetic_cycle_equivalent" or data["representative_weight"] != 1):
+        raise ValueError("capacity-investment-v1 requires synthetic_cycle_equivalent costs and representative_weight=1")
     T = data["slot_count"]
     if type(T) is not int or T <= 0:
         raise ValueError("slot_count: positive integer required")
@@ -53,13 +106,16 @@ def validate_input(data):
     site_ids = []
     for j, site in enumerate(data["sites"]):
         path = f"sites[{j}]"
-        _keys(site, {"id", "active", "interfaces", "available_power_kw", "price_per_kwh"}, path)
+        site_keys = {"id", "active", "interfaces", "available_power_kw", "price_per_kwh"}
+        _keys(site, site_keys | ({"max_new_interfaces", "interface_cost", "upgrade_options"} if investment else set()), path)
         _identifier(site["id"], f"{path}.id")
         site_ids.append(site["id"])
         if type(site["active"]) is not bool:
             raise ValueError(f"{path}.active: boolean required")
         if type(site["interfaces"]) is not int or site["interfaces"] < 0:
             raise ValueError(f"{path}.interfaces: nonnegative integer required")
+        if investment:
+            _validate_investment_site(site, path)
         for field in ("available_power_kw", "price_per_kwh"):
             if not isinstance(site[field], list) or len(site[field]) != T:
                 raise ValueError(f"{path}.{field}: exactly slot_count entries required")
@@ -71,8 +127,9 @@ def validate_input(data):
     vehicle_ids = []
     for v, vehicle in enumerate(data["vehicles"]):
         path = f"vehicles[{v}]"
-        _keys(vehicle, {"id", "energy_min_kwh", "energy_max_kwh", "initial_energy_kwh",
-                        "efficiency", "power_limit_kw", "drive_energy_kwh", "charging_site"}, path)
+        vehicle_keys = {"id", "energy_min_kwh", "energy_max_kwh", "initial_energy_kwh",
+                        "efficiency", "power_limit_kw", "drive_energy_kwh", "charging_site"}
+        _keys(vehicle, vehicle_keys | ({"timeline"} if investment else set()), path)
         _identifier(vehicle["id"], f"{path}.id")
         vehicle_ids.append(vehicle["id"])
         for field in ("energy_min_kwh", "energy_max_kwh", "initial_energy_kwh"):
@@ -95,6 +152,8 @@ def validate_input(data):
                 raise ValueError(f"{path}.charging_site[{t}]: exact site id or null required")
             if energy > 0 and site_id is not None:
                 raise ValueError(f"{path}: C02 prohibits charging in a driving slot")
+        if investment:
+            _validate_timeline(vehicle, site_ids, T, path)
     if len(set(vehicle_ids)) != len(vehicle_ids):
         raise ValueError("duplicate vehicle id")
     return data
@@ -132,15 +191,24 @@ def make_scenarios(base):
 
 
 def solve(data, *, display=False, time_limit=60.0):
-    """Solve the fixed facilities problem; return raw arrays and solver evidence."""
+    """Solve fixed transport with fixed or investable capacity; retain raw values."""
     validate_input(data)
     _number(time_limit, "time_limit", strictly_positive=True)
     V, J, T = len(data["vehicles"]), len(data["sites"]), data["slot_count"]
+    investment = data["schema_version"] == "capacity-investment-v1"
     block = V * J * T
-    size = 2 * block + V * (T + 1)
+    operational_size = 2 * block + V * (T + 1)
+    # Additional variables follow the original a/p/e blocks without changing them.
+    upgrade_indices = []
+    size = operational_size + (J if investment else 0)
+    if investment:
+        for site in data["sites"]:
+            upgrade_indices.append(list(range(size, size + len(site["upgrade_options"]))))
+            size += len(site["upgrade_options"])
     def a(v, j, t): return (v * J + j) * T + t
     def p(v, j, t): return block + a(v, j, t)
     def e(v, t): return 2 * block + v * (T + 1) + t
+    def n(j): return operational_size + j
     lower, upper = np.zeros(size), np.full(size, np.inf)
     integer, objective = np.zeros(size), np.zeros(size)
     rows, cols, values, lb, ub = [], [], [], [], []
@@ -152,8 +220,21 @@ def solve(data, *, display=False, time_limit=60.0):
             rows.append(idx); cols.append(col); values.append(val)
         lb.append(low); ub.append(high); counts[constraint] += 1
 
-    # C01: all activation/interface/capacity inputs are fixed, not investment variables.
-    counts["C01"] = J
+    # C01: activation remains supplied; new interfaces and upgrades can be optimized.
+    if investment:
+        for j, site in enumerate(data["sites"]):
+            upper[n(j)] = site["max_new_interfaces"] * int(site["active"])
+            integer[n(j)] = 1
+            objective[n(j)] = site["interface_cost"]
+            counts["C01"] += 1  # Integer variable upper bound, including active-site link.
+            for m, idx in enumerate(upgrade_indices[j]):
+                upper[idx] = int(site["active"])
+                integer[idx] = 1
+                objective[idx] = site["upgrade_options"][m]["cost"]
+            if upgrade_indices[j]:
+                row({idx: 1.0 for idx in upgrade_indices[j]}, -np.inf, int(site["active"]), "C01")
+    else:
+        counts["C01"] = J
     for v, vehicle in enumerate(data["vehicles"]):
         for t in range(T + 1):
             lower[e(v, t)], upper[e(v, t)] = vehicle["energy_min_kwh"], vehicle["energy_max_kwh"]
@@ -172,8 +253,14 @@ def solve(data, *, display=False, time_limit=60.0):
             row(balance, -vehicle["drive_energy_kwh"][t], -vehicle["drive_energy_kwh"][t], "C06")
     for j, site in enumerate(data["sites"]):
         for t in range(T):
-            row({a(v, j, t): 1.0 for v in range(V)}, -np.inf, site["interfaces"], "C04")
-            row({p(v, j, t): 1.0 for v in range(V)}, -np.inf, site["available_power_kw"][t] * int(site["active"]), "C05")
+            interfaces = {a(v, j, t): 1.0 for v in range(V)}
+            power = {p(v, j, t): 1.0 for v in range(V)}
+            if investment:
+                interfaces[n(j)] = -1.0
+                for m, idx in enumerate(upgrade_indices[j]):
+                    power[idx] = -site["upgrade_options"][m]["additional_power_kw"]
+            row(interfaces, -np.inf, site["interfaces"], "C04")
+            row(power, -np.inf, site["available_power_kw"][t] * int(site["active"]), "C05")
     matrix = coo_matrix((values, (rows, cols)), shape=(len(lb), size)).tocsr()
     result = milp(objective, integrality=integer, bounds=Bounds(lower, upper),
                   constraints=LinearConstraint(matrix, lb, ub),
@@ -189,12 +276,16 @@ def solve(data, *, display=False, time_limit=60.0):
         "mip_gap": finite_or_none(getattr(result, "mip_gap", None)),
         "mip_node_count": finite_or_none(getattr(result, "mip_node_count", None)),
         "constraint_counts": counts, "solution": None,
-        "limitations": "Fixed facilities and supplied complete synthetic timeline; no routing, investment or power flow.",
+        "limitations": ("Fixed closed transport timeline; interface and discrete power investment with synthetic cycle-equivalent costs; no routing, siting or power flow."
+                        if investment else "Fixed facilities and supplied complete synthetic timeline; no routing, investment or power flow."),
     }
     if result.x is not None:
         output["solution"] = {
             "occupancy": result.x[:block].reshape(V, J, T).tolist(),
             "power_kw": result.x[block:2 * block].reshape(V, J, T).tolist(),
-            "energy_kwh": result.x[2 * block:].reshape(V, T + 1).tolist(),
+            "energy_kwh": result.x[2 * block:operational_size].reshape(V, T + 1).tolist(),
         }
+        if investment:
+            output["solution"]["new_interfaces"] = result.x[operational_size:operational_size + J].tolist()
+            output["solution"]["upgrade_selected"] = [[float(result.x[idx]) for idx in indices] for indices in upgrade_indices]
     return output
