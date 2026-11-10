@@ -16,7 +16,8 @@ def check_solution(data, result, tolerance=1e-7):
     solution = result["solution"]
     V, J, T = len(data["vehicles"]), len(data["sites"]), data["slot_count"]
     expected_shapes = {"occupancy": (V, J, T), "power_kw": (V, J, T), "energy_kwh": (V, T + 1)}
-    investing = data["schema_version"] == "capacity-investment-v1"
+    timegrid = data["schema_version"] == "capacity-investment-v2"
+    investing = data["schema_version"] in ("capacity-investment-v1", "capacity-investment-v2")
     expected_keys = set(expected_shapes)
     if investing:
         expected_keys.update(("new_interfaces", "upgrade_selected"))
@@ -34,6 +35,8 @@ def check_solution(data, result, tolerance=1e-7):
         return {"applicable": True, "passed": False, "errors": ["Malformed or nonfinite investment arrays"]}
     occupancy, power, energy = solution["occupancy"], solution["power_kw"], solution["energy_kwh"]
     maxima = {name: 0.0 for name in ("C01", "C02", "C03", "C04", "C05", "C06", "C07", "OBJECTIVE")}
+    if timegrid:
+        maxima["C08"] = 0.0
     errors, checks = [], 0
     def check(constraint, violation, detail):
         nonlocal checks
@@ -72,6 +75,13 @@ def check_solution(data, result, tolerance=1e-7):
                 allowed = int(site["active"] and vehicle["charging_site"][t] == site["id"])
                 check("C02", max(-a, a - allowed, abs(a - round(a))), f"{vehicle['id']}/{site['id']}/{t} occupancy")
                 check("C03", max(-p, p - vehicle["power_limit_kw"][site["id"]] * a), f"{vehicle['id']}/{site['id']}/{t} power")
+                # Independently compare the raw occupancies against the input
+                # window; never use solver constraint rows or grouping helpers.
+                if (timegrid and data["connector_policy"] == "fixed_dwell_connection" and t > 0
+                        and vehicle["charging_site"][t] is not None
+                        and vehicle["charging_site"][t - 1] == vehicle["charging_site"][t]):
+                    check("C08", abs(a - occupancy[v][j][t - 1]),
+                          f"{vehicle['id']}/{site['id']}/{t - 1}->{t} held dwell connection")
                 total_power += p; occupied += a
                 grid_energy += p * data["slot_hours"]
                 cost += data["representative_weight"] * site["price_per_kwh"][t] * p * data["slot_hours"]
