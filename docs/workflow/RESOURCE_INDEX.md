@@ -41,6 +41,10 @@
 
 上述源码/说明清单共 117 文件、982,638 bytes。有限凭据模式扫描未发现相关密钥；不把模式扫描当作绝对保证。未批量 add 外层未跟踪目录。
 
+随后另核查并保存外层 `literature_review_5papers.md`、`UM_重卡充电Proposa.md`、`UM_重卡充电Proposal与1V1汇报_2026-10-15.md` 三份研究说明。仅本地保护分支共保存 120 个研究文件及新增外层 AGENTS；最终保护提交为 `47ff93942eef96fc3d2c57ddd4bf419fc79fc800`，没有切换外层 HEAD 或改变暂存区。
+
 重要历史详细结果：`port-drayage-charging/results` 274 文件/7,345,651 bytes（被忽略）；`port-drayage-charging/reports` 96/3,338,966；`truck_charging_v1/results` 40/89,615；`outputs/2026-10-19_proposal_live_demo/runs` 70/1,789,645。这些不是可丢弃缓存，保护详情见当前对话的本地日志。
+
+以上 480 个历史结果文件已复制到外部本地记录库的当前对话 preservation 目录，原件保留；最终逐一验证 Git blob 与原件哈希相同。期间发现系统 CRLF 转换影响首次提交，已用本地 `* -text` 属性定点修正并保留前后审计；没有改写旧历史。
 
 个人简历、申请材料、课程作业、技能库、缓存和环境不纳入本次研究同步。`tmp` 部分环境目录读取被拒绝，不能声称全工作区逐文件无遗漏审计；这些目录未进入保存或上传范围。

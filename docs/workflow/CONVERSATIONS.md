@@ -1,15 +1,15 @@
 # 按对话组织的记录与版本管理
 
-需要 Python 3.10+ 和 Git；不安装第三方依赖。以下命令在已包含本机制的研究 worktree 根目录执行。Windows 也可将 `python scripts/conversation_records.py` 换为 `& .\scripts\records.ps1`。脚本只执行明确请求的操作，不在后台监听。
+需要 Python 3.10+ 和 Git；不安装第三方依赖。以下命令在已包含本机制的研究 worktree 根目录执行。Windows 也可将 `python -X utf8 scripts/conversation_records.py` 换为 `& .\scripts\records.ps1`。脚本只执行明确请求的操作，不在后台监听。
 
 ## 首次接入与继续
 
 本机日志路径仅保存于已忽略的 `.um-records.local.json`。初始化拒绝非空未知目录、未知用途的 Git 库、含 remote 的记录库，以及位于其他 Git 仓库内部的新记录库；不会覆盖或移动旧日志。
 
 ```powershell
-python scripts/conversation_records.py init --records-root '<外部日志库绝对路径>'
-python scripts/conversation_records.py bind --conversation 0001
-python scripts/conversation_records.py status --conversation 0001
+python -X utf8 scripts/conversation_records.py init --records-root '<外部日志库绝对路径>'
+python -X utf8 scripts/conversation_records.py bind --conversation 0001
+python -X utf8 scripts/conversation_records.py status --conversation 0001
 ```
 
 `0001` 仅属于本次记录机制聊天。新聊天不能直接沿用配置中的上次编号。先确认其真实登记关系；有明确编号时 bind；没有编号时从 INDEX 查找未使用的四位编号并登记。平台 ID 未取得时不传 `--platform-id`，registry 保留 null。标题为本地登记标题时明确写出，不声称平台原标题。
@@ -21,9 +21,9 @@ python scripts/conversation_records.py status --conversation 0001
 以下是操作示例；`0002`、`0003` 不代表本次已经登记的聊天，执行前先确认编号未占用。登记会读取创建时间和实际 HEAD，写入背景、来源主对话与目录，但不会切换或创建 Git 分支，也不会自动提交主仓库。
 
 ```powershell
-python scripts/conversation_records.py register --id 0002 --slug charging-study --title '充电研究（本地登记标题）' --kind main --background '填写已明确的任务、证据入口及边界'
-python scripts/conversation_records.py register --id 0003 --slug capacity-check --title '容量验证（本地登记标题）' --kind branch --parent 0002 --background '明确继承主对话哪些已验证结论、起始配置和待检验问题'
-python scripts/conversation_records.py bind --conversation 0003
+python -X utf8 scripts/conversation_records.py register --id 0002 --slug charging-study --title '充电研究（本地登记标题）' --kind main --background '填写已明确的任务、证据入口及边界'
+python -X utf8 scripts/conversation_records.py register --id 0003 --slug capacity-check --title '容量验证（本地登记标题）' --kind branch --parent 0002 --background '明确继承主对话哪些已验证结论、起始配置和待检验问题'
+python -X utf8 scripts/conversation_records.py bind --conversation 0003
 ```
 
 结构为 `conversations/0002_charging-study/branches/0003_capacity-check/`。主对话和分支各有 README、STATUS、DECISIONS、artifacts；INDEX 登记全局唯一编号、标题、父对话、目录和状态。`registry.json` 是索引源。
@@ -33,11 +33,11 @@ python scripts/conversation_records.py bind --conversation 0003
 ## 工作时记录与检查点
 
 ```powershell
-python scripts/conversation_records.py log --conversation 0001 --task '核查记录' --action 'inspect' --result '描述实际观察到的结果' --file docs/PROGRESS.md --verification '写明核验方法及边界'
-python scripts/conversation_records.py log --conversation 0001 --task '执行检查' --action 'validate' --result 'failed' --failure '实际失败原因与退出码' --artifact '<本地产物位置>'
+python -X utf8 scripts/conversation_records.py log --conversation 0001 --task '核查记录' --action 'inspect' --result '描述实际观察到的结果' --file docs/PROGRESS.md --verification '写明核验方法及边界'
+python -X utf8 scripts/conversation_records.py log --conversation 0001 --task '执行检查' --action 'validate' --result 'failed' --failure '实际失败原因与退出码' --artifact '<本地产物位置>'
 git diff --check
 git diff -- docs/PROGRESS.md conversations/0001_records/STATUS.md
-python scripts/conversation_records.py checkpoint --conversation 0001 --message 'Describe the verified work unit' --path docs/PROGRESS.md --path conversations/0001_records/STATUS.md
+python -X utf8 scripts/conversation_records.py checkpoint --conversation 0001 --message 'Describe the verified work unit' --path docs/PROGRESS.md --path conversations/0001_records/STATUS.md
 ```
 
 log 会追加时间、对话编号、任务、动作、文件、结果、失败原因、验证信息、产物位置和当前代码提交，并精确提交本地 JSONL。日志的常见凭据模式会脱敏；它不能保证识别任意敏感值，调用前仍须审核。
@@ -69,15 +69,18 @@ checkpoint 只接受显式列出的单个 UTF-8 文本文件（每个不超过 1
   "artifacts": [],
   "command": [],
   "environment": {},
-  "exit_code": 0
+  "exit_code": 0,
+  "failure_reason": null
 }
 ```
 
 ```powershell
-python scripts/conversation_records.py record-run --conversation 0001 --manifest '<本地实验清单绝对路径>'
+python -X utf8 scripts/conversation_records.py record-run --conversation 0001 --manifest '<本地实验清单绝对路径>'
 ```
 
 脚本要求提交与当前 HEAD 相同、dirty 标记与当前工作树一致、所有非忽略未跟踪文件被明确枚举。它保存配置/数据 SHA-256、配置与未跟踪文本快照、dirty patch（如有）以及调用者提供的种子、指标、环境、命令和产物位置。重复 run_id 拒绝覆盖；binary dirty patch 拒绝登记。详细 stdout/stderr/求解器产物需执行者保存在对应本地 runs 目录并精确提交，不由登记命令自动抓取。
+
+`failure_reason` 是可选字段；失败运行应明确填写实际原因，缺失时脚本记录为调用者未提供，不补造原因。
 
 事后观察到的文件不证明就是实验运行时使用的文件；运行前应提交准确源码并记录输入哈希，运行后及时登记，不在期间修改配置。若 patch 被脱敏，要明确它不能逐字节还原原始差异。历史运行保留原清单和原库，不伪装成新 helper 捕获的实验。
 
@@ -93,7 +96,7 @@ python scripts/conversation_records.py record-run --conversation 0001 --manifest
 
 ```powershell
 python -m unittest discover -s tests -p test_conversation_records.py -v
-python scripts/conversation_records.py status --conversation 0001
+python -X utf8 scripts/conversation_records.py status --conversation 0001
 ```
 
 测试使用独立临时 Git 目录，不把测试主对话、分支、日志或模拟实验写入正式研究登记。本地记录库不会自动上传；其文件还需要用户控制的离线备份。实际自动采集范围见 [APP_CAPTURE](APP_CAPTURE.md)。
