@@ -1,0 +1,240 @@
+{
+  "schema_version": "capacity-investment-v1",
+  "instance_id": "port_warehouse_cycle",
+  "description": "Synthetic four-hour closed PORT-WAREHOUSE-PORT task chain; identical transport across facility comparisons.",
+  "provenance": {
+    "observed": [],
+    "derived": [
+      "Each vehicle needs 40/0.9 kWh grid energy to recover its initial energy; not measured demand."
+    ],
+    "assumed": [
+      "All costs are synthetic cycle-equivalent capital allocations, not upfront CAPEX or annual costs.",
+      "All slots are complete one-hour intervals; one occupied connector cannot serve multiple vehicles within a slot.",
+      "Dwell plug eligibility is stipulated explicitly; no empirical port data.",
+      "Existing facilities are sunk; site activation is an exogenous service policy, not an investment variable."
+    ],
+    "simulated": [
+      "Three identical fixed truck task chains; initial energy 100 kWh, return target at least 100 kWh.",
+      "Site capacities, connector limits, expansion levels and costs are synthetic."
+    ]
+  },
+  "units": {
+    "energy": "kWh",
+    "power": "kW",
+    "time": "hour",
+    "price": "synthetic_currency/kWh",
+    "objective": "synthetic_currency"
+  },
+  "slot_hours": 1,
+  "slot_count": 4,
+  "representative_weight": 1,
+  "cost_basis": "synthetic_cycle_equivalent",
+  "sites": [
+    {
+      "id": "PORT",
+      "active": true,
+      "interfaces": 1,
+      "available_power_kw": [
+        75,
+        75,
+        75,
+        75
+      ],
+      "price_per_kwh": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "max_new_interfaces": 2,
+      "interface_cost": 20,
+      "upgrade_options": [
+        {
+          "id": "port_plus_50",
+          "additional_power_kw": 50,
+          "cost": 35
+        },
+        {
+          "id": "port_plus_75",
+          "additional_power_kw": 75,
+          "cost": 65
+        }
+      ]
+    },
+    {
+      "id": "WAREHOUSE",
+      "active": true,
+      "interfaces": 1,
+      "available_power_kw": [
+        75,
+        75,
+        75,
+        75
+      ],
+      "price_per_kwh": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "max_new_interfaces": 2,
+      "interface_cost": 30,
+      "upgrade_options": [
+        {
+          "id": "warehouse_plus_25",
+          "additional_power_kw": 25,
+          "cost": 10
+        }
+      ]
+    }
+  ],
+  "vehicles": [
+    {
+      "id": "V1",
+      "energy_min_kwh": 20,
+      "energy_max_kwh": 100,
+      "initial_energy_kwh": 100,
+      "efficiency": 0.9,
+      "power_limit_kw": {
+        "PORT": 50,
+        "WAREHOUSE": 50
+      },
+      "drive_energy_kwh": [
+        20,
+        0,
+        20,
+        0
+      ],
+      "charging_site": [
+        null,
+        "WAREHOUSE",
+        null,
+        "PORT"
+      ],
+      "timeline": [
+        {
+          "from": "PORT",
+          "to": "WAREHOUSE",
+          "activity": "drive",
+          "plug_allowed": false
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "WAREHOUSE",
+          "activity": "dwell",
+          "plug_allowed": true
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "PORT",
+          "activity": "drive",
+          "plug_allowed": false
+        },
+        {
+          "from": "PORT",
+          "to": "PORT",
+          "activity": "dwell",
+          "plug_allowed": true
+        }
+      ]
+    },
+    {
+      "id": "V2",
+      "energy_min_kwh": 20,
+      "energy_max_kwh": 100,
+      "initial_energy_kwh": 100,
+      "efficiency": 0.9,
+      "power_limit_kw": {
+        "PORT": 50,
+        "WAREHOUSE": 50
+      },
+      "drive_energy_kwh": [
+        20,
+        0,
+        20,
+        0
+      ],
+      "charging_site": [
+        null,
+        "WAREHOUSE",
+        null,
+        "PORT"
+      ],
+      "timeline": [
+        {
+          "from": "PORT",
+          "to": "WAREHOUSE",
+          "activity": "drive",
+          "plug_allowed": false
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "WAREHOUSE",
+          "activity": "dwell",
+          "plug_allowed": true
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "PORT",
+          "activity": "drive",
+          "plug_allowed": false
+        },
+        {
+          "from": "PORT",
+          "to": "PORT",
+          "activity": "dwell",
+          "plug_allowed": true
+        }
+      ]
+    },
+    {
+      "id": "V3",
+      "energy_min_kwh": 20,
+      "energy_max_kwh": 100,
+      "initial_energy_kwh": 100,
+      "efficiency": 0.9,
+      "power_limit_kw": {
+        "PORT": 50,
+        "WAREHOUSE": 50
+      },
+      "drive_energy_kwh": [
+        20,
+        0,
+        20,
+        0
+      ],
+      "charging_site": [
+        null,
+        "WAREHOUSE",
+        null,
+        "PORT"
+      ],
+      "timeline": [
+        {
+          "from": "PORT",
+          "to": "WAREHOUSE",
+          "activity": "drive",
+          "plug_allowed": false
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "WAREHOUSE",
+          "activity": "dwell",
+          "plug_allowed": true
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "PORT",
+          "activity": "drive",
+          "plug_allowed": false
+        },
+        {
+          "from": "PORT",
+          "to": "PORT",
+          "activity": "dwell",
+          "plug_allowed": true
+        }
+      ]
+    }
+  ]
+}

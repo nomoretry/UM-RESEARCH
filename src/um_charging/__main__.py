@@ -62,6 +62,8 @@ def main():
     output = checked_output(args.output, source)
     config = json.loads(args.config.read_text(encoding="utf-8"), object_pairs_hook=reject_duplicate_keys)
     validate_input(config)
+    if config["schema_version"] != "fixed-facility-v1":
+        raise ValueError("Use um_charging.investment_cli for capacity-investment-v1 and investment provenance")
     cases = make_scenarios(config) if args.suite else {"single": config}
     commit = subprocess.check_output(["git", "-C", str(source), "rev-parse", "HEAD"], encoding="utf-8").strip()
     dirty = bool(subprocess.check_output(["git", "-C", str(source), "status", "--porcelain"], encoding="utf-8").strip())
