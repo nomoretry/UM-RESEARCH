@@ -1,0 +1,107 @@
+{
+  "source_commit": "43e34cac0d9ad4268dc54e9aa98fcea25e977320",
+  "source_dirty": false,
+  "source_sha256": {
+    "src/um_charging/__init__.py": "e46e776694ace5243d7c2ad3f55ff875bab63c16bf820158ee7039a7e9882561",
+    "src/um_charging/__main__.py": "1e59e783fd9e565a785e94ca703a2c5ffe75c927178366cf64e27f1fc0c5f0dc",
+    "src/um_charging/investment_cli.py": "8956c794bc36976d3165c80667c5040ac2f02c339163fd34c8bf11a622651342",
+    "src/um_charging/investment_experiment.py": "e798f4a818e94632e27791bfaa7fa0aebbf3af06249052ef47716aaa4484aa3e",
+    "src/um_charging/model.py": "fa223481002cfc9b6ff0f663420d59cf966d0ccc1b2df89a7cd040d6306d89c7",
+    "src/um_charging/validation.py": "19f9baeb855f96c43b880d251dcb28662303dd8ee8a27164b0e01193e61d825b"
+  },
+  "config_sha256": {
+    "configs/port_warehouse_investment.json": "0d0f0011c245cf19f0b38aa42a5d949acef56bd58a093f307e877f292352245b",
+    "configs/minimal_three_trucks.json": "c6c4ed09bf6e16aa5dda0319797d797f85e2e10698b0ad586572e1ebd2d372c4"
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "pytest": "9.1.1"
+  },
+  "solver": {
+    "name": "HiGHS through scipy.optimize.milp",
+    "version": "1.12.0",
+    "version_evidence": "Captured solver banner",
+    "time_limit_seconds": 60.0,
+    "mip_rel_gap": 0.0,
+    "git_hash": "4f96ee8"
+  },
+  "seed": null,
+  "seed_reason": "Explicit deterministic inputs and exhaustive finite facility enumeration",
+  "tests": {
+    "tests": 102,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "source_commit": "43e34cac0d9ad4268dc54e9aa98fcea25e977320",
+    "run_id": "20261110_investment_tests",
+    "junit_sha256": "4419d0f2a76b629fff4c286dd56e4deeff6a44fafd75ed82639c3e76c0e6faf3",
+    "registration_sha256": "bb11db80a6f405a74a83ab233ccbc316df7d60e89bafd977978e229785f1e1d5",
+    "exit_code": 0
+  },
+  "run": {
+    "run_id": "20261110_investment_suite",
+    "registration_sha256": "4e7880ae09ab37f33b9c5a04559d3b446636bd5d6c28a4f0c0f8455e75038bb9",
+    "runtime_manifest_sha256": "edaa31e0c6b2a9508f9132f98b51f8acc9a4af1ae7561f4a0e202a302dbdc40a",
+    "stdout_sha256": "738613935fc6e22de3c7e76103e1077f4c810a44fee271389f67e956db6367a1",
+    "exit_code": 0
+  },
+  "portable_commands": [
+    {
+      "environment": {
+        "PYTHONPATH": "<repo>/src"
+      },
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "um_charging.investment_cli",
+        "--config",
+        "configs/port_warehouse_investment.json",
+        "--regression-config",
+        "configs/minimal_three_trucks.json",
+        "--output",
+        "<existing-local-git>/<new-evidence-directory>/artifacts"
+      ]
+    },
+    {
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml",
+        "<existing-local-git>/<new-test-evidence>/junit.xml",
+        "--basetemp",
+        "<system-temp>/<new-test-fixture>",
+        "tests/test_fixed_facility.py",
+        "tests/test_cli_paths.py",
+        "tests/test_investment_input.py",
+        "tests/test_investment.py"
+      ]
+    }
+  ],
+  "cost_basis": "One modeled cycle; synthetic cycle-equivalent investment and same-cycle operating costs, weight 1",
+  "modeled_cycle_hours": 4,
+  "scope": "Ye 2024-inspired project adaptation with fixed tasks and cycle-equivalent synthetic investment costs; no paper-case reproduction, annual economics, peak minimization or real grid validation.",
+  "local_evidence": {
+    "commit": "ac145694534ccbfb582e98d53f42d12e55455dfe",
+    "remotes": [],
+    "archived_file_count": 503,
+    "all_git_blob_hashes_match": true,
+    "artifact_index_sha256": {
+      "conversations/0001_records/runs/20261110_investment_tests_evidence/artifact_index.json": "4e755222c5eca0254c274a78529b4972fd27a5f6ba98bfbc4c03bcfdb935b0a9",
+      "conversations/0001_records/runs/20261110_investment_suite_evidence/artifact_index.json": "a527b7fa303a1fb7fbda13d2be00ce8e72a44ec90cb1a29c1cec2732d4fd50af"
+    },
+    "scope": "Private full run records in the pre-existing external Git repository; machine path intentionally omitted."
+  }
+}

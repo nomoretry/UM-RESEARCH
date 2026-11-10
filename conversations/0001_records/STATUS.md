@@ -1,5 +1,31 @@
 # 状态 — 0001
 
+## 2026-11-10科研接续：投资层已验证
+
+按用户明确绑定沿用0001，不扫描其他聊天、不init/register。原研究checkout与记录机制checkout的工作保持原位；研究在独立codex/investment-milp-20261110分支。
+
+已完成：Ye 2024作为问题/投资框架的本项目改编；新增接口整数、互斥扩容、闭合港区—仓库任务链及独立C01–C07/费用检查。源码43e34cac0d9ad4268dc54e9aa98fcea25e977320正式运行102测试、9投资情景/140组合及原6情景回归全部通过。[结果](../../results/investment_20261110/README.md)、[设计](artifacts/INVESTMENT_DESIGN_20261110.md)。
+
+结果：仅港区联合238.333，两地仅接口233.333，两地联合208.333；为同一四小时周期合成总费。仅扩功率仍无解，仓库已有功率75→100零收益。五个投资无解及非唯一调度保留，不推断真实经济性/最小峰值/潮流。
+
+历史核查：旧106、新37的原JUnit与记录哈希一致，原两套六情景确认；11月9日d07d452仅文献与设计。旧106本轮未重跑，原37包含在本轮102中。记录机制集成测试本轮没有重跑。
+
+失败与处理：系统Python缺pytest/scipy，改用历史command.json中的原虚拟环境，没有安装依赖。Git所有权差异采用当前进程精确safe.directory处理，不改全局信任。开发70项成功和缺pytest失败日志均保留；正式运行无失败。
+
+完整记录在机器配置所指外部本地Git的本对话runs下，登记名20261110_investment_tests、20261110_investment_suite；对应_evidence保存原始证据。仅测试用的临时Git夹具完整保留到系统临时目录，位置见本地temporary_fixture_location.json；研究输入/结果未移动。
+
+在干净源码提交及requirements-milp.txt对应环境重跑，输出必须是现有无remote独立Git内的全新目录：
+
+```powershell
+$env:PYTHONPATH = Join-Path (Get-Location) 'src'
+python -X utf8 -B -m um_charging.investment_cli --config configs/port_warehouse_investment.json --regression-config configs/minimal_three_trucks.json --output '<既有外部本地Git>/<全新运行目录>/artifacts'
+python -X utf8 -B -m pytest -q -p no:cacheprovider tests/test_fixed_facility.py tests/test_cli_paths.py tests/test_investment_input.py tests/test_investment.py
+```
+
+下一步：相同物理时长、耗能和费用下做时间粒度检验，再固定硬件做窗口扰动。真实窗口/成本、年化多代表日与上级供电未验证。同步仅推送本轮研究分支并实时核对远程SHA，不合并main。
+
+## 记录机制建设时的原状态（保留，不当作本轮验收）
+
 更新：2026-11-10。独立主对话，用户已确认；平台 ID 未取得，编号和标题为本地登记。目录固定为 `conversations/0001_records/`。
 
 ## 已验证

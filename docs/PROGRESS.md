@@ -4,9 +4,9 @@
 
 ## 当前科研状态
 
-[科研 STATUS](research/STATUS.md) 与 [科研 DECISIONS](research/DECISIONS.md) 保留原有证据边界。2026-11-04 的旧原型、德国数据校验与合成固定设施 MILP 结果是已有正式记录；2026-11-09 更新文献及基线建议，未重跑求解。本次仅建设记录和版本管理机制，不新增科研实验结论。
+[科研 STATUS](research/STATUS.md) 与 [科研 DECISIONS](research/DECISIONS.md) 保留历史边界。本轮沿用记录机制和用户明确绑定0001，在独立codex/investment-milp-20261110分支完成接口整数/离散扩容、闭合港区—仓库任务链、独立检查和组合枚举。源码43e34cac0d9ad4268dc54e9aa98fcea25e977320下102测试、9情景/140组合、原6情景回归通过。[精选结果](../results/investment_20261110/README.md)
 
-下一研究工作仍见科研 STATUS；接口投资与离散扩容尚未实现。真实港口数据及可信插枪窗口未确认。
+下一项是同一物理时间轴的时间粒度检验，再固定设施做窗口扰动。真实港口数据、可信插枪窗口、真实成本和年化多代表日未确认；当前费用为合成周期等效参数，Ye框架属本项目改编。
 
 ## 对话与工作接续
 
@@ -15,7 +15,7 @@
 - [操作说明与命令](workflow/CONVERSATIONS.md)、[App 采集边界](workflow/APP_CAPTURE.md)、[存储边界](workflow/STORAGE.md)。
 - [共享资源与历史材料索引](workflow/RESOURCE_INDEX.md)：包括两处德国数据目录关系、外层源码和重要被忽略结果。
 
-当前配置在 `codex/conversation-records-20261110` 独立分支和 worktree 中进行；原研究 checkout 保持 `codex/literature-baseline-20261109`。不会自动合并到 `main`。
+记录机制继承124c84a；原 `codex/conversation-records-20261110` 工作树及原文献checkout保持原位，其未提交工作未覆盖。本轮新投资分支包含既有记录机制，不重新初始化或登记，不自动合并main。同步通过实时远程SHA核验，详细证据留本地。
 
 ## 建设前的本地与远程差异
 
