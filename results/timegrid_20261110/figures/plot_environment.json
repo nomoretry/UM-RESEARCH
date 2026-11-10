@@ -1,0 +1,6 @@
+{
+  "matplotlib": "3.11.2",
+  "numpy": "2.5.4",
+  "source_metrics": "metrics.json",
+  "note": "Plotting-only environment, separate from the MILP environment"
+}

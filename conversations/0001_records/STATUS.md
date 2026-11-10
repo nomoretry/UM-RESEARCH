@@ -1,6 +1,26 @@
 # 状态 — 0001
 
-## 2026-11-10科研接续：投资层已验证
+## 当前：2026-11-10时间粒度检验已验证
+
+沿用明确绑定0001、当前codex/investment-milp-20261110及既有外部无remote记录Git；没有init/register、移动研究文件或迁移磁盘。起始HEAD与实时远程均318bf74，工作树干净。
+
+本轮正式源码1c4df03c6a6943ce221e09e05a2bce538de304a7：149测试、54情景、840设施枚举、18次60分钟历史状态/目标比较、原6情景回归全部通过；54次物理事件审计确认实际到离时刻和窗口不变。285个可行解共86,375检查通过，最大残差2.8422e-14；联合最大gap1.5503e-16，保留浮点级非零。
+
+核心结果：允许槽边界零耗时换枪时，两地联合投资60分钟75、30／15分钟50；两地仅接口100→50；仅港区联合105不变。整窗固定连接时粗细投资与可行硬件集合均不变。原投资结论应限定占用政策；不推断真实节约率或一般时间收敛。[结果表/图](../../results/timegrid_20261110/README.md)、[设计](artifacts/TIMEGRID_DESIGN_20261110.md)、[模型契约](../../docs/model/TIMEGRID_INPUT.md)。
+
+记录：`20261110_timegrid_tests`、`20261110_timegrid_suite`；完整证据2940文件存于既有外部Git并逐一核验blob。开发129/20测试与正式149分开。正式测试/求解无失败；后处理曾提前读取未完成的归档清单，并在受限进程读取临时绘图包时遇到访问问题，已等待归档并用相应访问权限重试，失败与恢复记本地。求解环境未改，绘图用独立临时依赖。
+
+在干净源码和requirements-milp.txt对应环境，输出使用既有外部无remote Git内新目录：
+
+```powershell
+$env:PYTHONPATH = Join-Path (Get-Location) 'src'
+python -X utf8 -B -m um_charging.timegrid_cli --config configs/timegrid_study.json --output '<既有外部本地Git>/<新运行目录>/artifacts'
+python -X utf8 -B -m pytest -q -p no:cacheprovider tests/test_fixed_facility.py tests/test_cli_paths.py tests/test_investment_input.py tests/test_investment.py tests/test_timegrid_model.py tests/test_timegrid.py --junitxml '<本地测试证据>/junit.xml' --basetemp '<系统临时目录>/<新夹具目录>'
+```
+
+下一任务：港区已有可用功率50/75/100/125/150 kW × 仓库插枪窗口0/15/30/45/60分钟（从60分钟起，停靠到离时刻不动），固定15分钟网格；比较仅港区/两地联合投资，并用整窗连接与枚举检查。该二维实验本轮仅设计、未执行。同步目标仍为研究分支，实时远程SHA核验留本地，不合并main。
+
+## 上轮：2026-11-10科研接续投资层验证（历史保留）
 
 按用户明确绑定沿用0001，不扫描其他聊天、不init/register。原研究checkout与记录机制checkout的工作保持原位；研究在独立codex/investment-milp-20261110分支。
 
