@@ -1,6 +1,7 @@
 # UM research working instructions
 
 This repository studies electric-truck charging capacity and scheduling. Read these files at the start of each task:
+0. docs/PROGRESS.md, conversations/INDEX.md and docs/workflow/CONVERSATIONS.md; confirm the explicit binding for this chat and read its STATUS.md and, for a branch, the parent STATUS.md. A machine-local last binding is a convenience, never proof that a different chat is the same conversation.
 1. README.md
 2. docs/research/STATUS.md
 3. docs/research/DECISIONS.md
@@ -36,3 +37,17 @@ Never publish raw chat exports, solver logs or private source records by acciden
 Run only checks appropriate to the change. Documentation changes need link/state consistency checks, not invented solver tests.
 Never report old validation JSON as a fresh successful run.
 When local-only run records are unavailable in a cloud session, use versioned summaries and state the missing evidence.
+
+## Conversation records and checkpoints
+- One main chat has one stable numbered directory; branch chats are nested under its branches/. Register other chats only on first explicit access. Do not scan chats or infer their relationship from research files. Ask only for the parent when it is unknown.
+- Platform IDs and titles must come from an actual API response or the user. Otherwise use a stable local number, identify the title as local, and keep platform_id null. Renaming a chat never renames its directory.
+- Use scripts/conversation_records.py (or scripts/records.ps1) for registration, binding, action logs, explicit-file checkpoints and status checks. Read its --help; do not guess argument or JSON field names.
+- Log observable actions throughout the task, including failures, verification and artifact locations; record substantive research decisions in DECISIONS.md. Do not write private reasoning transcripts, raw chat exports or secret values.
+- After each meaningful work unit, inspect the diff and commit only reviewed, explicitly named files. Before interruption, save a checkpoint and state verified, unverified and failed work in the chat STATUS.md, with the next step and exact rerun commands.
+- Full actions.jsonl and runs/ live only in the external local Git record repository without remotes. Keep the absolute records path and current binding in ignored .um-records.local.json. Verify that detailed evidence is actually tracked there; a broad *.log ignore must not discard it.
+- For experiments record exact source commit, dirty patch and necessary untracked source where applicable, configuration/data hashes, random seed or nonrandom reason, metrics, validation and artifact paths. Mark incomplete provenance rather than implying reproducibility. Commit exact source before a canonical run.
+- Chat artifacts belong in that chat's artifacts/. Shared code/data stay in existing shared paths and are linked relatively. Index existing files first; do not move, rename, merge or duplicate datasets for organization.
+- A chat folder is not a Git branch. Concurrent shared-code work requires separate worktrees and branches; do not switch branches in a shared checkout. Registration alone creates no Git branch.
+- Summarize a branch's supported conclusions into its main chat with evidence links and provenance. Preserve earlier conclusions and explain changes.
+- Push only the explicit authorized branch after local checks; verify its exact remote SHA with git ls-remote. Never claim synchronization solely because a commit exists or cached refs agree. Do not auto-merge into main.
+- This mechanism records explicitly invoked helper operations; the App tool surface does not provide a verified universal tool-call hook or automatic complete-chat export. AGENTS.md is an execution rule, not an event listener. State manual or assistant-triggered gaps honestly.

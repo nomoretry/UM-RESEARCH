@@ -47,3 +47,10 @@ Desktop.ini
 ~$*.docx
 ~$*.xlsx
 ~$*.pptx
+
+# Machine-only conversation binding and local record repository path
+/.um-records.local.json
+/.um-records.lock
+# Detailed actions and run evidence belong in the external local repository
+/conversations/**/actions.jsonl
+/conversations/**/runs/

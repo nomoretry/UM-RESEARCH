@@ -1,5 +1,7 @@
 # UM-RESEARCH
 
+整个项目从 [PROGRESS](docs/PROGRESS.md) 接续；按聊天记录见 [对话索引](conversations/INDEX.md) 和 [操作说明](docs/workflow/CONVERSATIONS.md)。共享科研状态继续保存在原位置。
+
 电动重卡充电设施与调度研究。当前已恢复旧MILP原型、复跑德国数据校验，并新建和验证三车两站固定设施连续SOC模型。全部研究结果的来源、限制与下一任务见 [STATUS](docs/research/STATUS.md)。
 
 ## 本轮可核验结果
