@@ -41,8 +41,9 @@ def enumerate_facilities(data, *, display=False, time_limit=60.0, on_combination
     hardware is consulted. Every permitted hardware tuple is enumerated.
     """
     validate_input(data)
-    if data["schema_version"] != "capacity-investment-v1":
-        raise ValueError("Enumeration requires capacity-investment-v1")
+    if data["schema_version"] not in ("capacity-investment-v1", "capacity-investment-v2"):
+        raise ValueError("Enumeration requires an explicit capacity-investment schema")
+    retain_policy = data["schema_version"] == "capacity-investment-v2"
     choices = []
     for site in data["sites"]:
         choices.append(list(itertools.product(
@@ -53,8 +54,9 @@ def enumerate_facilities(data, *, display=False, time_limit=60.0, on_combination
     best_choices = []
     for index, hardware in enumerate(itertools.product(*choices)):
         fixed = copy.deepcopy(data)
-        fixed["schema_version"] = "fixed-facility-v1"
-        fixed.pop("cost_basis")
+        if not retain_policy:
+            fixed["schema_version"] = "fixed-facility-v1"
+            fixed.pop("cost_basis")
         investment_cost = 0.0
         allocations = []
         for site, (n, level) in zip(fixed["sites"], hardware):
@@ -66,10 +68,15 @@ def enumerate_facilities(data, *, display=False, time_limit=60.0, on_combination
             investment_cost += connector_cost * n + (upgrade["cost"] if upgrade else 0.0)
             site["interfaces"] += n
             site["available_power_kw"] = [value + increment for value in site["available_power_kw"]]
+            if retain_policy:
+                # No investment freedom remains. Preserve transit and C08 policy
+                # rather than dropping them in a fixed-facility-v1 conversion.
+                site.update(max_new_interfaces=0, interface_cost=0.0, upgrade_options=[])
             allocations.append({"site_id": site["id"], "new_interfaces": n,
                                 "upgrade_id": upgrade["id"] if upgrade else None})
-        for vehicle in fixed["vehicles"]:
-            vehicle.pop("timeline")
+        if not retain_policy:
+            for vehicle in fixed["vehicles"]:
+                vehicle.pop("timeline")
         result = solve(fixed, display=display, time_limit=time_limit)
         validation = check_solution(fixed, result)
         record = {"combination": index, "hardware": allocations,

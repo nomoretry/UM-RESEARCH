@@ -1,0 +1,12 @@
+{
+  "schema_version": "timegrid-study-v1",
+  "base_config": "configs/port_warehouse_investment.json",
+  "fixed_regression_config": "configs/minimal_three_trucks.json",
+  "slot_minutes": [60, 30, 15],
+  "connector_policies": ["slot_boundary_switching", "fixed_dwell_connection"],
+  "changeover_minutes": 0,
+  "changeover_energy_kwh": 0,
+  "drive_energy_interpolation": "uniform_within_original_journey",
+  "cost_basis": "synthetic_cycle_equivalent",
+  "scope": "Same port transport service and site capacity constraints; time discretization and connection-policy diagnosis only. No additional parking windows or next-round power-window sweep."
+}
