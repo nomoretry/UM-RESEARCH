@@ -1,6 +1,28 @@
 # 状态 — 0001
 
-## 当前：2026-11-10时间粒度检验已验证
+## 当前：2026-11-10功率×窗口边界实验已验证
+
+仍为明确绑定0001、codex/investment-milp-20261110和原外部无remote记录库。起始3a618b6、本地/远程一致、工作树干净。长期研究与Claude协作规则已进入AGENTS/工作流，规则里程碑c9b3005已实时同步核对；没有新增记录系统、读取其他项目或迁移磁盘。
+
+正式源码a520cac2ea26dd237d4c6cccd32c0518cb8247f7：222测试、100情景/3150枚举、100任务审计、310性质比较、4历史重叠及原6回归通过。88联合最优、12无解；1048可行解497,502检查，最大残差2.5264e-13、联合最大gap3.5776e-16。[对照/图/解释/Windows命令](../../results/boundary_20261110/README.md)
+
+50同政策范围对照有23降费、17零收益、8恢复可行性、2均无解。运营费均400/3，费用变化来自周期合成投资。仓库+25kW在H75/W45有价值；原零收益结论需限定窗口。H100窗口30→45→60投资50→40→20，但接口组成(2,2)→(3,1)→(2,1)非单调。3格并列设施完整保留，不声称调度唯一。
+
+本地登记`20261110_boundary_tests`与`20261110_boundary_suite`，10,199个详细证据文件逐Git blob核验。开发73测试与正式222分开。正式实验无失败；Claude只读调用因未登录失败、0模型token，任务书已留存，未发生实际Claude审查。独立检查器原提交1b1aca1已集成；不能将Codex内部协作写成Claude协作。
+
+下一项仅设计：固定H100的港2/仓1和港3/仓1两套硬件，容量均100/75，延迟V1/V2仓库资格起点而保持运输事件不变；均继续采用槽边界零耗时换枪政策，只重求运营，不重选设施。尚未实施压力测试或情景规划。
+
+复现从本研究树根目录、requirements-milp.txt对应环境运行；输出为已有外部无remote Git内新目录：
+
+```powershell
+$env:PYTHONPATH = Join-Path $PWD.Path 'src'
+python -X utf8 -B -m um_charging.boundary_cli --config configs/power_window_study.json --output '<已有外部Git>/<新运行目录>/artifacts'
+python -X utf8 -B -m pytest -q -p no:cacheprovider tests/test_fixed_facility.py tests/test_cli_paths.py tests/test_investment_input.py tests/test_investment.py tests/test_timegrid_model.py tests/test_timegrid.py tests/test_boundary.py tests/test_boundary_validation.py
+```
+
+预期222通过、completion.json passed=true且100/3150/310；源码hash、环境、原始状态/界限/gap见精选复现清单。结果里程碑仅推送当前研究分支并实时核SHA，不合并main、不改变可见性。
+
+## 上一里程碑：2026-11-10时间粒度检验（历史保留）
 
 沿用明确绑定0001、当前codex/investment-milp-20261110及既有外部无remote记录Git；没有init/register、移动研究文件或迁移磁盘。起始HEAD与实时远程均318bf74，工作树干净。
 

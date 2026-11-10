@@ -2,9 +2,11 @@
 
 这是可直接转交的任务书，不是已完成协作的证明。实际调用/返回状态以本轮研究STATUS和外部本地记录为准。
 
-基准提交：`3a618b6f905b17edc689d064f8bbb189a24f3b44`，UM-RESEARCH。使用独立worktree/分支，当前任务是只读审查，不改文件、不提交、不推送、不新建记录系统。不读其他聊天、个人申请或半导体物流项目。
+更新：最初基准3a618b6的实际只读调用返回`Not logged in`，没有模型回复。现在可交接的**代码审查基准为`a520cac2ea26dd237d4c6cccd32c0518cb8247f7`**：新增读取`src/um_charging/boundary.py`、`src/um_charging/boundary_cli.py`、`src/um_charging/boundary_validation.py`、`tests/test_boundary.py`、`tests/test_boundary_validation.py`、`configs/power_window_study.json`和`conversations/0001_records/artifacts/BOUNDARY_DESIGN_20261110.md`。代码已完成222测试与正式100情景/3150枚举；请审查实现与边界，不重复初始化、不将后续审查写成先前已发生。最新精选结果可从本任务书所在研究分支读取，记录所读结果提交SHA。
 
-先读`AGENTS.md`、`configs/port_warehouse_investment.json`、`src/um_charging/model.py`、`validation.py`、`timegrid.py`、`investment_experiment.py`、`docs/model/TIMEGRID_INPUT.md`、`results/timegrid_20261110/README.md`。
+最初建模审查基准：`3a618b6f905b17edc689d064f8bbb189a24f3b44`，UM-RESEARCH；新版代码审查使用上段a520cac。使用独立worktree/分支，当前任务是只读审查，不改文件、不提交、不推送、不新建记录系统。不读其他聊天、个人申请或半导体物流项目。
+
+先读`AGENTS.md`、`configs/port_warehouse_investment.json`、`src/um_charging/model.py`、`src/um_charging/validation.py`、`src/um_charging/timegrid.py`、`src/um_charging/investment_experiment.py`、`docs/model/TIMEGRID_INPUT.md`、`results/timegrid_20261110/README.md`。
 
 本轮拟执行15分钟网格，港区已有可用功率50/75/100/125/150kW，仓库插枪窗口0/15/30/45/60分钟，从第60分钟起且限于原60–120分钟停车。每格比较仅港区/两地，分别采用槽边界零耗时换枪和整窗固定连接。保留原付费扩容、设备、任务、初末电量和周期等效合成成本，零窗口只关闭资格，不改变停车或任务。共100组联合求解，每组有限设施全枚举，共3150组合。
 

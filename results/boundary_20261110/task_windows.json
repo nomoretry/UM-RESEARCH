@@ -1,0 +1,680 @@
+{
+  "vehicle_ids": [
+    "V1",
+    "V2",
+    "V3"
+  ],
+  "cases": [
+    {
+      "warehouse_window_minutes": 0,
+      "task_audit_passed": true,
+      "slots": [
+        {
+          "from": "PORT",
+          "to": "transit_vehicle_0_event_0_boundary_1_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 0,
+          "end_minute": 15
+        },
+        {
+          "from": "transit_vehicle_0_event_0_boundary_1_of_4",
+          "to": "transit_vehicle_0_event_0_boundary_2_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 15,
+          "end_minute": 30
+        },
+        {
+          "from": "transit_vehicle_0_event_0_boundary_2_of_4",
+          "to": "transit_vehicle_0_event_0_boundary_3_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 30,
+          "end_minute": 45
+        },
+        {
+          "from": "transit_vehicle_0_event_0_boundary_3_of_4",
+          "to": "WAREHOUSE",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 45,
+          "end_minute": 60
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "WAREHOUSE",
+          "activity": "dwell",
+          "plug_allowed": false,
+          "start_minute": 60,
+          "end_minute": 75
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "WAREHOUSE",
+          "activity": "dwell",
+          "plug_allowed": false,
+          "start_minute": 75,
+          "end_minute": 90
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "WAREHOUSE",
+          "activity": "dwell",
+          "plug_allowed": false,
+          "start_minute": 90,
+          "end_minute": 105
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "WAREHOUSE",
+          "activity": "dwell",
+          "plug_allowed": false,
+          "start_minute": 105,
+          "end_minute": 120
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "transit_vehicle_0_event_2_boundary_1_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 120,
+          "end_minute": 135
+        },
+        {
+          "from": "transit_vehicle_0_event_2_boundary_1_of_4",
+          "to": "transit_vehicle_0_event_2_boundary_2_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 135,
+          "end_minute": 150
+        },
+        {
+          "from": "transit_vehicle_0_event_2_boundary_2_of_4",
+          "to": "transit_vehicle_0_event_2_boundary_3_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 150,
+          "end_minute": 165
+        },
+        {
+          "from": "transit_vehicle_0_event_2_boundary_3_of_4",
+          "to": "PORT",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 165,
+          "end_minute": 180
+        },
+        {
+          "from": "PORT",
+          "to": "PORT",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 180,
+          "end_minute": 195
+        },
+        {
+          "from": "PORT",
+          "to": "PORT",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 195,
+          "end_minute": 210
+        },
+        {
+          "from": "PORT",
+          "to": "PORT",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 210,
+          "end_minute": 225
+        },
+        {
+          "from": "PORT",
+          "to": "PORT",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 225,
+          "end_minute": 240
+        }
+      ]
+    },
+    {
+      "warehouse_window_minutes": 15,
+      "task_audit_passed": true,
+      "slots": [
+        {
+          "from": "PORT",
+          "to": "transit_vehicle_0_event_0_boundary_1_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 0,
+          "end_minute": 15
+        },
+        {
+          "from": "transit_vehicle_0_event_0_boundary_1_of_4",
+          "to": "transit_vehicle_0_event_0_boundary_2_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 15,
+          "end_minute": 30
+        },
+        {
+          "from": "transit_vehicle_0_event_0_boundary_2_of_4",
+          "to": "transit_vehicle_0_event_0_boundary_3_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 30,
+          "end_minute": 45
+        },
+        {
+          "from": "transit_vehicle_0_event_0_boundary_3_of_4",
+          "to": "WAREHOUSE",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 45,
+          "end_minute": 60
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "WAREHOUSE",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 60,
+          "end_minute": 75
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "WAREHOUSE",
+          "activity": "dwell",
+          "plug_allowed": false,
+          "start_minute": 75,
+          "end_minute": 90
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "WAREHOUSE",
+          "activity": "dwell",
+          "plug_allowed": false,
+          "start_minute": 90,
+          "end_minute": 105
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "WAREHOUSE",
+          "activity": "dwell",
+          "plug_allowed": false,
+          "start_minute": 105,
+          "end_minute": 120
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "transit_vehicle_0_event_2_boundary_1_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 120,
+          "end_minute": 135
+        },
+        {
+          "from": "transit_vehicle_0_event_2_boundary_1_of_4",
+          "to": "transit_vehicle_0_event_2_boundary_2_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 135,
+          "end_minute": 150
+        },
+        {
+          "from": "transit_vehicle_0_event_2_boundary_2_of_4",
+          "to": "transit_vehicle_0_event_2_boundary_3_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 150,
+          "end_minute": 165
+        },
+        {
+          "from": "transit_vehicle_0_event_2_boundary_3_of_4",
+          "to": "PORT",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 165,
+          "end_minute": 180
+        },
+        {
+          "from": "PORT",
+          "to": "PORT",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 180,
+          "end_minute": 195
+        },
+        {
+          "from": "PORT",
+          "to": "PORT",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 195,
+          "end_minute": 210
+        },
+        {
+          "from": "PORT",
+          "to": "PORT",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 210,
+          "end_minute": 225
+        },
+        {
+          "from": "PORT",
+          "to": "PORT",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 225,
+          "end_minute": 240
+        }
+      ]
+    },
+    {
+      "warehouse_window_minutes": 30,
+      "task_audit_passed": true,
+      "slots": [
+        {
+          "from": "PORT",
+          "to": "transit_vehicle_0_event_0_boundary_1_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 0,
+          "end_minute": 15
+        },
+        {
+          "from": "transit_vehicle_0_event_0_boundary_1_of_4",
+          "to": "transit_vehicle_0_event_0_boundary_2_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 15,
+          "end_minute": 30
+        },
+        {
+          "from": "transit_vehicle_0_event_0_boundary_2_of_4",
+          "to": "transit_vehicle_0_event_0_boundary_3_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 30,
+          "end_minute": 45
+        },
+        {
+          "from": "transit_vehicle_0_event_0_boundary_3_of_4",
+          "to": "WAREHOUSE",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 45,
+          "end_minute": 60
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "WAREHOUSE",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 60,
+          "end_minute": 75
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "WAREHOUSE",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 75,
+          "end_minute": 90
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "WAREHOUSE",
+          "activity": "dwell",
+          "plug_allowed": false,
+          "start_minute": 90,
+          "end_minute": 105
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "WAREHOUSE",
+          "activity": "dwell",
+          "plug_allowed": false,
+          "start_minute": 105,
+          "end_minute": 120
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "transit_vehicle_0_event_2_boundary_1_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 120,
+          "end_minute": 135
+        },
+        {
+          "from": "transit_vehicle_0_event_2_boundary_1_of_4",
+          "to": "transit_vehicle_0_event_2_boundary_2_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 135,
+          "end_minute": 150
+        },
+        {
+          "from": "transit_vehicle_0_event_2_boundary_2_of_4",
+          "to": "transit_vehicle_0_event_2_boundary_3_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 150,
+          "end_minute": 165
+        },
+        {
+          "from": "transit_vehicle_0_event_2_boundary_3_of_4",
+          "to": "PORT",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 165,
+          "end_minute": 180
+        },
+        {
+          "from": "PORT",
+          "to": "PORT",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 180,
+          "end_minute": 195
+        },
+        {
+          "from": "PORT",
+          "to": "PORT",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 195,
+          "end_minute": 210
+        },
+        {
+          "from": "PORT",
+          "to": "PORT",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 210,
+          "end_minute": 225
+        },
+        {
+          "from": "PORT",
+          "to": "PORT",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 225,
+          "end_minute": 240
+        }
+      ]
+    },
+    {
+      "warehouse_window_minutes": 45,
+      "task_audit_passed": true,
+      "slots": [
+        {
+          "from": "PORT",
+          "to": "transit_vehicle_0_event_0_boundary_1_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 0,
+          "end_minute": 15
+        },
+        {
+          "from": "transit_vehicle_0_event_0_boundary_1_of_4",
+          "to": "transit_vehicle_0_event_0_boundary_2_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 15,
+          "end_minute": 30
+        },
+        {
+          "from": "transit_vehicle_0_event_0_boundary_2_of_4",
+          "to": "transit_vehicle_0_event_0_boundary_3_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 30,
+          "end_minute": 45
+        },
+        {
+          "from": "transit_vehicle_0_event_0_boundary_3_of_4",
+          "to": "WAREHOUSE",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 45,
+          "end_minute": 60
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "WAREHOUSE",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 60,
+          "end_minute": 75
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "WAREHOUSE",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 75,
+          "end_minute": 90
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "WAREHOUSE",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 90,
+          "end_minute": 105
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "WAREHOUSE",
+          "activity": "dwell",
+          "plug_allowed": false,
+          "start_minute": 105,
+          "end_minute": 120
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "transit_vehicle_0_event_2_boundary_1_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 120,
+          "end_minute": 135
+        },
+        {
+          "from": "transit_vehicle_0_event_2_boundary_1_of_4",
+          "to": "transit_vehicle_0_event_2_boundary_2_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 135,
+          "end_minute": 150
+        },
+        {
+          "from": "transit_vehicle_0_event_2_boundary_2_of_4",
+          "to": "transit_vehicle_0_event_2_boundary_3_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 150,
+          "end_minute": 165
+        },
+        {
+          "from": "transit_vehicle_0_event_2_boundary_3_of_4",
+          "to": "PORT",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 165,
+          "end_minute": 180
+        },
+        {
+          "from": "PORT",
+          "to": "PORT",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 180,
+          "end_minute": 195
+        },
+        {
+          "from": "PORT",
+          "to": "PORT",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 195,
+          "end_minute": 210
+        },
+        {
+          "from": "PORT",
+          "to": "PORT",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 210,
+          "end_minute": 225
+        },
+        {
+          "from": "PORT",
+          "to": "PORT",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 225,
+          "end_minute": 240
+        }
+      ]
+    },
+    {
+      "warehouse_window_minutes": 60,
+      "task_audit_passed": true,
+      "slots": [
+        {
+          "from": "PORT",
+          "to": "transit_vehicle_0_event_0_boundary_1_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 0,
+          "end_minute": 15
+        },
+        {
+          "from": "transit_vehicle_0_event_0_boundary_1_of_4",
+          "to": "transit_vehicle_0_event_0_boundary_2_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 15,
+          "end_minute": 30
+        },
+        {
+          "from": "transit_vehicle_0_event_0_boundary_2_of_4",
+          "to": "transit_vehicle_0_event_0_boundary_3_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 30,
+          "end_minute": 45
+        },
+        {
+          "from": "transit_vehicle_0_event_0_boundary_3_of_4",
+          "to": "WAREHOUSE",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 45,
+          "end_minute": 60
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "WAREHOUSE",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 60,
+          "end_minute": 75
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "WAREHOUSE",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 75,
+          "end_minute": 90
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "WAREHOUSE",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 90,
+          "end_minute": 105
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "WAREHOUSE",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 105,
+          "end_minute": 120
+        },
+        {
+          "from": "WAREHOUSE",
+          "to": "transit_vehicle_0_event_2_boundary_1_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 120,
+          "end_minute": 135
+        },
+        {
+          "from": "transit_vehicle_0_event_2_boundary_1_of_4",
+          "to": "transit_vehicle_0_event_2_boundary_2_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 135,
+          "end_minute": 150
+        },
+        {
+          "from": "transit_vehicle_0_event_2_boundary_2_of_4",
+          "to": "transit_vehicle_0_event_2_boundary_3_of_4",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 150,
+          "end_minute": 165
+        },
+        {
+          "from": "transit_vehicle_0_event_2_boundary_3_of_4",
+          "to": "PORT",
+          "activity": "drive",
+          "plug_allowed": false,
+          "start_minute": 165,
+          "end_minute": 180
+        },
+        {
+          "from": "PORT",
+          "to": "PORT",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 180,
+          "end_minute": 195
+        },
+        {
+          "from": "PORT",
+          "to": "PORT",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 195,
+          "end_minute": 210
+        },
+        {
+          "from": "PORT",
+          "to": "PORT",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 210,
+          "end_minute": 225
+        },
+        {
+          "from": "PORT",
+          "to": "PORT",
+          "activity": "dwell",
+          "plug_allowed": true,
+          "start_minute": 225,
+          "end_minute": 240
+        }
+      ]
+    }
+  ],
+  "note": "All three vehicles share the displayed physical chain; these are five window conditions, not five different vehicles."
+}

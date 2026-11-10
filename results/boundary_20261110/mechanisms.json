@@ -1,0 +1,108 @@
+{
+  "interface_slot_counterexample": [
+    {
+      "scenario": "boundary_slot_boundary_switching_p100_w45_two_sites",
+      "input_sha256": "b59176beb51cb77a26de2f40c81c07ee9143db3c331e162de290aa25ee53ef71",
+      "warehouse_window_minutes": 45,
+      "fixed_hardware_enumeration": {
+        "combination": 18,
+        "hardware": [
+          {
+            "site_id": "PORT",
+            "new_interfaces": 1,
+            "upgrade_id": null
+          },
+          {
+            "site_id": "WAREHOUSE",
+            "new_interfaces": 0,
+            "upgrade_id": null
+          }
+        ],
+        "investment_cost": 20.0,
+        "status": "infeasible",
+        "operating_cost": null,
+        "operating_dual_bound": null,
+        "operating_mip_gap": null,
+        "validation_passed": null,
+        "validation_checks": null,
+        "total_cost": null
+      },
+      "aggregate_grid_energy_upper_bound_kwh": 137.5,
+      "grid_energy_required_kwh": 133.33333333333334,
+      "port_connector_slots": 8,
+      "warehouse_connector_slots": 3
+    },
+    {
+      "scenario": "boundary_slot_boundary_switching_p100_w60_two_sites",
+      "input_sha256": "e7d4b2956dcc773aede19734c738179cd4aa0d1c186efe8d2bbf7d12232a41a4",
+      "warehouse_window_minutes": 60,
+      "fixed_hardware_enumeration": {
+        "combination": 18,
+        "hardware": [
+          {
+            "site_id": "PORT",
+            "new_interfaces": 1,
+            "upgrade_id": null
+          },
+          {
+            "site_id": "WAREHOUSE",
+            "new_interfaces": 0,
+            "upgrade_id": null
+          }
+        ],
+        "investment_cost": 20.0,
+        "status": "optimal",
+        "operating_cost": 133.33333333333334,
+        "operating_dual_bound": 133.33333333333334,
+        "operating_mip_gap": 0.0,
+        "validation_passed": true,
+        "validation_checks": 465,
+        "total_cost": 153.33333333333331
+      },
+      "aggregate_grid_energy_upper_bound_kwh": 150.0,
+      "grid_energy_required_kwh": 133.33333333333334,
+      "port_connector_slots": 8,
+      "warehouse_connector_slots": 4
+    }
+  ],
+  "warehouse_power_bottleneck": {
+    "scenario": "boundary_slot_boundary_switching_p75_w45_two_sites",
+    "input_sha256": "ab2c2a6ac835201e8ce654c91df650f1933c037628c3c1fa2ad50507a58b8b74",
+    "optimal_investment_cost": 60.0,
+    "optimal_facilities": [
+      [
+        {
+          "site_id": "PORT",
+          "active": true,
+          "existing_interfaces": 1,
+          "new_interfaces": 1,
+          "total_interfaces": 2,
+          "existing_power_kw": 75,
+          "upgrade_id": null,
+          "added_power_kw": 0,
+          "total_available_power_kw": 75,
+          "interface_cost": 20,
+          "expansion_cost": 0
+        },
+        {
+          "site_id": "WAREHOUSE",
+          "active": true,
+          "existing_interfaces": 1,
+          "new_interfaces": 1,
+          "total_interfaces": 2,
+          "existing_power_kw": 75,
+          "upgrade_id": "warehouse_plus_25",
+          "added_power_kw": 25,
+          "total_available_power_kw": 100,
+          "interface_cost": 30,
+          "expansion_cost": 10
+        }
+      ]
+    ],
+    "best_total_without_warehouse_upgrade": 208.33333333333331,
+    "best_investment_without_warehouse_upgrade": 74.99999999999997,
+    "warehouse_required_if_port_not_expanded_kwh": 58.33333333333334,
+    "warehouse_base_capacity_window_bound_kwh": 56.25
+  },
+  "note": "Certificates selected from the formal complete enumeration, not additional stress-test runs. Costs are synthetic per cycle."
+}

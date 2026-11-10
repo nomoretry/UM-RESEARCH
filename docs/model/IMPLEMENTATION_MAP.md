@@ -1,6 +1,8 @@
 # 数学规范—代码—验证对应
 
-更新2026-11-10：`src/um_charging/`支持固定设施v1、投资v1与显式时间/连接政策v2。旧`legacy/truck_charging_v1/`仍为有限方案模型，两者任务/电量边界不同。本轮源码1c4df03c6a6943ce221e09e05a2bce538de304a7，149测试、54情景/840组合、18历史比较及原6回归见[时间粒度结果](../../results/timegrid_20261110/README.md)。上轮源码43e34ca及102测试/140组合保留为[历史结果](../../results/investment_20261110/README.md)。
+更新2026-11-10：`src/um_charging/`支持固定设施v1、投资v1与显式时间/连接政策v2。旧`legacy/truck_charging_v1/`仍为有限方案模型，两者任务/电量边界不同。最新源码a520cac2ea26dd237d4c6cccd32c0518cb8247f7完成222测试、100功率窗口情景/3150组合、100任务审计/310性质比较、4历史重叠及原6回归，[证据](../../results/boundary_20261110/README.md)。原模型代码未改，新增实验生成与审计。
+
+时间粒度源码1c4df03、149测试/840组合见[历史结果](../../results/timegrid_20261110/README.md)；投资源码43e34ca、102测试/140组合见[更早结果](../../results/investment_20261110/README.md)。
 
 | 编号 | 已实现位置 | 独立复核/验证入口 | 未覆盖部分 |
 |---|---|---|---|
@@ -20,8 +22,15 @@
 | 投资全枚举 | `investment_experiment.py:enumerate_facilities`、`compare_joint_to_enumeration` | 原140组合回归；本轮840组合，v2固定设施保留C08；`test_analytic_two_site_optimum_and_enum_preserve_policy` | 共享原运营模型和HiGHS，非独立求解器 |
 | 投资正式入口 | `investment_cli.py:main` | 干净源码要求、原始输入/解/独立检查、枚举/回归清单 | 全日志仅外部本地；单周期模式 |
 | 物理链细分 | `timegrid.py:refine_physical_cycle` | `physical_event_ledger`与`audit_physical_equivalence`重新聚合；篡改窗口/设备/能耗/费用拒绝测试 | 只支持本次明确的原一小时链与60/30/15分钟 |
-| 时间粒度正式入口 | `timegrid_cli.py:main`、`configs/timegrid_study.json` | 54物理审计、54联合—枚举比较、18历史比较、6回归；原始证据含界限/gap | 不可行解检查不适用，下一轮二维扫描尚未运行 |
+| 时间粒度正式入口 | `timegrid_cli.py:main`、`configs/timegrid_study.json` | 54物理审计、54联合—枚举比较、18历史比较、6回归；原始证据含界限/gap | 不可行解检查不适用；二维扫描见下方边界实验入口 |
 | 解析可行见证 | `tests/test_timegrid.py:test_explicit_two_connector_witness_without_extra_parking` | 手工30分钟功率及15分钟复制解；独立C01–C08检查 | 只是最优值见证，不是唯一调度或真实港口排程 |
+| B01任务保持 | [boundary.py:64](../../src/um_charging/boundary.py#L64) `audit_boundary_case`及`transport_ledger` | 屏蔽资格后重新聚合真实事件；逐槽能耗、归属/路线/到离保持；窗口0仍停车测试 | 输入一致性不证明真实车辆准时抵达 |
+| B02资格边界 | 同上；生成入口[build_boundary_case:32](../../src/um_charging/boundary.py#L32) | 每车每槽严格核对[60,60+w)与原港区窗，故意延长资格被拒绝 | 尚无实际插拔/调车资源约束 |
+| B03资源/B04费用 | `boundary.py::audit_boundary_case` | 现有功率、付费档位、初末电量、车辆/费用篡改测试 | 不是年化成本或新建整站成本 |
+| 边界全枚举 | [investment_experiment.py:37](../../src/um_charging/investment_experiment.py#L37) | 3150组合，外加投资逐项核对；并列硬件测试；`facility_details`分列已有/增量/总容量 | 同一HiGHS运营模型；非独立求解器 |
+| 跨情景性质 | [boundary_validation.py:46](../../src/um_charging/boundary_validation.py#L46) | 完整100格、310比较；缺格/未解决/非有限/伪造不变量拒绝测试 | 固定连接窗口单调仅针对共同窗口实例 |
+| 功率窗口正式入口 | [boundary_cli.py:89](../../src/um_charging/boundary_cli.py#L89)、`configs/power_window_study.json` | 干净源码/哈希、全部原始输入解/检查、100状态/界限/gap、4重叠/6回归 | 所有原始日志在外部无remote Git |
+| 接口槽反例 | `tests/test_boundary.py::test_interface_slot_bottleneck_despite_aggregate_energy_bound` | 港2/仓1、100/75kW，仓45min虽总量上界足够仍无解；60min同硬件可行；枚举证据见`mechanisms.json` | 这是验证例，不代表已实施固定设施压力测试 |
 
 以上 `model.py`/`validation.py` 指 `src/um_charging/`；测试位于 [test_fixed_facility.py](../../tests/test_fixed_facility.py)。解析预期详见 [MINIMAL_INSTANCE](MINIMAL_INSTANCE.md)，执行证据单独保存在精选结果中。
 
