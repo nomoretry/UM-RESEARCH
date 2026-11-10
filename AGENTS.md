@@ -9,13 +9,17 @@ This repository studies electric-truck charging capacity and scheduling. Read th
 5. docs/workflow/STORAGE.md before recording or publishing runs
 
 ## Evidence and scope
+- The UM question governs scope: under identical port transport tasks and service requirements, jointly configure port/warehouse interfaces and available connection capacity and schedule charging; explain when coordination reduces total facility/operating cost and when interfaces, parking eligibility or supply capacity bind.
+- Application emails, CVs and motivation letters are claim-audit/display material, not authorization to add research modules or borrow another project's achievements. Mark unsupported UM claims as unverified. Do not read or modify the semiconductor logistics project during UM work unless separately instructed.
 - Distinguish proposed, implemented, previously reported, and reproduced-in-this-session. Never upgrade a claim because an earlier assistant or CV said it was done.
 - Verify current code, inputs, and outputs when they conflict with documentation. Record the discrepancy and update the status; do not silently change the research question.
 - Existing evidence covers German DT-CARGO / SimBench preprocessing. The port-drayage proposal is a separate proposed application. Never relabel German data as Guangdong or equate an artificial grid mapping with an actual connection.
 - Keep transport and operations research central. First model: fixed tasks, fixed service order and primary routes, charging scheduling and capacity investment. Routing flexibility is a later extension. No automatic addition of RL, V2G, storage, swapping, or full power flow.
+- Development order: deterministic facility planning and applicability boundaries, then fixed-facility operating stress tests, then a scenario model only if evidence warrants it. Sensitivity/stress tests are not uncertainty planning. A scenario model must specify information timing, common prior investment and permitted operational recourse. Do not add electricity markets or multi-agent methods without a specific UM research need and later authorization.
 - Preserve infeasibility and zero-benefit results. Do not manufacture charging demand with arbitrary low initial energy.
 - Keep input provenance and units explicit: observed, derived, assumed, simulated. kW is not kWh; charger count is not connection capacity.
 - Each implemented constraint needs a stable ID, code location, meaningful verification and evidence link. A solver success status alone is insufficient.
+- Retain infeasibility, zero benefits and all tied optimal facility configurations. Compare charging scopes under the same connection policy and service requirements. An incumbent at a time limit is not proven optimal. Synthetic cost differences, site-capacity checks and observed schedule peaks are not real savings rates, power-flow feasibility or minimum-peak results.
 - Data verification uses Python without -O: the existing verifier relies on assert.
 
 ## Continuity
@@ -50,4 +54,12 @@ When local-only run records are unavailable in a cloud session, use versioned su
 - A chat folder is not a Git branch. Concurrent shared-code work requires separate worktrees and branches; do not switch branches in a shared checkout. Registration alone creates no Git branch.
 - Summarize a branch's supported conclusions into its main chat with evidence links and provenance. Preserve earlier conclusions and explain changes.
 - Push only the explicit authorized branch after local checks; verify its exact remote SHA with git ls-remote. Never claim synchronization solely because a commit exists or cached refs agree. Do not auto-merge into main.
+- Complete small implementation/experiment milestones with explicit local commits and publish their curated code/configuration/results once validated; do not accumulate all work until the whole research program ends. Never commit full logs to pushable history and then rely on deletion or .gitignore. Do not upload personal applications, credentials or unrelated files, change visibility, alter global configuration, or migrate disks.
 - This mechanism records explicitly invoked helper operations; the App tool surface does not provide a verified universal tool-call hook or automatic complete-chat export. AGENTS.md is an execution rule, not an event listener. State manual or assistant-triggered gaps honestly.
+
+## Collaboration and user-facing research evidence
+- Codex owns research continuity, task boundaries, integration, validation and publication. Claude may discuss models, implement bounded modules/checkers, review code or improve necessary structure. Do not restructure the whole repository merely to enable collaboration.
+- Every delegated task names an exact base commit, input/output contract, owned files, acceptance checks and scope exclusions. Concurrent edits use independent branches/worktrees. Integrate with commit provenance and rerun affected checks; do not overwrite another worktree.
+- A technical subtask of this same explicitly bound chat does not require a new user-chat registration or a duplicate record system. The root records its work in the existing conversation. Separate user chats still follow the explicit registration rules above.
+- If Claude cannot actually run, record the limitation, prepare a directly usable task with commit/file entry points and continue independent work. Never label other agents or a prepared prompt as completed Claude collaboration.
+- Keep an evidence-bounded capability checklist: implemented and verified, implemented awaiting verification, not implemented. A category may be empty. Deliver an understandable problem/input/decision summary, a task/charging-window diagram, actual facility/cost/feasibility comparisons, an explained bottleneck, formula-to-code links and copyable Windows commands with expected outputs.
