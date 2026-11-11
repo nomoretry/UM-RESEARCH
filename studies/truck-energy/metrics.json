@@ -1,0 +1,267 @@
+{
+  "source": {
+    "source_sha256": "d92ab77cafe21c1aad3e9be8de1e26b453846a677f91b07ee0ac5f652ec8c50e",
+    "published_tracks": 42701,
+    "tracks_with_original_energy": 27054,
+    "vehicles_with_original_energy": 150,
+    "excluded_missing_energy": 15647,
+    "signed_net_kwh": 1813321.727456,
+    "distance_km": 1604920.332,
+    "duration_h": 31355.557468333333
+  },
+  "warehouse_delay_minutes": 45,
+  "cases": [
+    {
+      "payload_t": 15.44,
+      "aux_kw": 3.0,
+      "energy_ratio": 0.7840842773510588,
+      "leg_kwh": 15.681685547021175,
+      "status": "optimal",
+      "investment": 20.0,
+      "operating_cost": 104.5445703134745,
+      "objective": 124.5445703134745,
+      "mip_gap": 0.0,
+      "physical_checks": 468,
+      "feasible_configurations": 36,
+      "configurations_checked": 54,
+      "optima": [
+        [
+          {
+            "site": "PORT",
+            "connectors": 2,
+            "added_kw": 0
+          },
+          {
+            "site": "WAREHOUSE",
+            "connectors": 1,
+            "added_kw": 0
+          }
+        ]
+      ]
+    },
+    {
+      "payload_t": 15.44,
+      "aux_kw": 5.0,
+      "energy_ratio": 0.8159157226489412,
+      "leg_kwh": 16.318314452978825,
+      "status": "optimal",
+      "investment": 20.0,
+      "operating_cost": 108.78876301985883,
+      "objective": 128.78876301985883,
+      "mip_gap": 0.0,
+      "physical_checks": 468,
+      "feasible_configurations": 36,
+      "configurations_checked": 54,
+      "optima": [
+        [
+          {
+            "site": "PORT",
+            "connectors": 2,
+            "added_kw": 0
+          },
+          {
+            "site": "WAREHOUSE",
+            "connectors": 1,
+            "added_kw": 0
+          }
+        ]
+      ]
+    },
+    {
+      "payload_t": 15.44,
+      "aux_kw": 7.0,
+      "energy_ratio": 0.8477471679468237,
+      "leg_kwh": 16.954943358936475,
+      "status": "optimal",
+      "investment": 40.0,
+      "operating_cost": 113.03295572624316,
+      "objective": 153.03295572624316,
+      "mip_gap": 0.0,
+      "physical_checks": 468,
+      "feasible_configurations": 30,
+      "configurations_checked": 54,
+      "optima": [
+        [
+          {
+            "site": "PORT",
+            "connectors": 3,
+            "added_kw": 0
+          },
+          {
+            "site": "WAREHOUSE",
+            "connectors": 1,
+            "added_kw": 0
+          }
+        ]
+      ]
+    },
+    {
+      "payload_t": 19.3,
+      "aux_kw": 3.0,
+      "energy_ratio": 0.9681685547021176,
+      "leg_kwh": 19.363371094042353,
+      "status": "optimal",
+      "investment": 40.0,
+      "operating_cost": 129.089140626949,
+      "objective": 169.089140626949,
+      "mip_gap": 0.0,
+      "physical_checks": 468,
+      "feasible_configurations": 30,
+      "configurations_checked": 54,
+      "optima": [
+        [
+          {
+            "site": "PORT",
+            "connectors": 3,
+            "added_kw": 0
+          },
+          {
+            "site": "WAREHOUSE",
+            "connectors": 1,
+            "added_kw": 0
+          }
+        ]
+      ]
+    },
+    {
+      "payload_t": 19.3,
+      "aux_kw": 5.0,
+      "energy_ratio": 1.0,
+      "leg_kwh": 20.0,
+      "status": "optimal",
+      "investment": 40.0,
+      "operating_cost": 133.33333333333331,
+      "objective": 173.33333333333331,
+      "mip_gap": 0.0,
+      "physical_checks": 468,
+      "feasible_configurations": 30,
+      "configurations_checked": 54,
+      "optima": [
+        [
+          {
+            "site": "PORT",
+            "connectors": 3,
+            "added_kw": 0
+          },
+          {
+            "site": "WAREHOUSE",
+            "connectors": 1,
+            "added_kw": 0
+          }
+        ]
+      ]
+    },
+    {
+      "payload_t": 19.3,
+      "aux_kw": 7.0,
+      "energy_ratio": 1.0318314452978823,
+      "leg_kwh": 20.636628905957647,
+      "status": "optimal",
+      "investment": 50.0,
+      "operating_cost": 137.57752603971767,
+      "objective": 187.57752603971767,
+      "mip_gap": 0.0,
+      "physical_checks": 468,
+      "feasible_configurations": 28,
+      "configurations_checked": 54,
+      "optima": [
+        [
+          {
+            "site": "PORT",
+            "connectors": 2,
+            "added_kw": 0
+          },
+          {
+            "site": "WAREHOUSE",
+            "connectors": 2,
+            "added_kw": 0
+          }
+        ]
+      ]
+    },
+    {
+      "payload_t": 23.16,
+      "aux_kw": 3.0,
+      "energy_ratio": 1.1522528320531762,
+      "leg_kwh": 23.045056641063525,
+      "status": "optimal",
+      "investment": 105.0,
+      "operating_cost": 153.6337109404235,
+      "objective": 258.6337109404235,
+      "mip_gap": 0.0,
+      "physical_checks": 468,
+      "feasible_configurations": 8,
+      "configurations_checked": 54,
+      "optima": [
+        [
+          {
+            "site": "PORT",
+            "connectors": 3,
+            "added_kw": 50
+          },
+          {
+            "site": "WAREHOUSE",
+            "connectors": 2,
+            "added_kw": 0
+          }
+        ]
+      ]
+    },
+    {
+      "payload_t": 23.16,
+      "aux_kw": 5.0,
+      "energy_ratio": 1.184084277351059,
+      "leg_kwh": 23.68168554702118,
+      "status": "optimal",
+      "investment": 105.0,
+      "operating_cost": 157.87790364680785,
+      "objective": 262.87790364680785,
+      "mip_gap": 0.0,
+      "physical_checks": 468,
+      "feasible_configurations": 8,
+      "configurations_checked": 54,
+      "optima": [
+        [
+          {
+            "site": "PORT",
+            "connectors": 3,
+            "added_kw": 50
+          },
+          {
+            "site": "WAREHOUSE",
+            "connectors": 2,
+            "added_kw": 0
+          }
+        ]
+      ]
+    },
+    {
+      "payload_t": 23.16,
+      "aux_kw": 7.0,
+      "energy_ratio": 1.2159157226489412,
+      "leg_kwh": 24.318314452978825,
+      "status": "optimal",
+      "investment": 105.0,
+      "operating_cost": 162.12209635319218,
+      "objective": 267.12209635319215,
+      "mip_gap": 2.1279938888188767e-16,
+      "physical_checks": 468,
+      "feasible_configurations": 8,
+      "configurations_checked": 54,
+      "optima": [
+        [
+          {
+            "site": "PORT",
+            "connectors": 3,
+            "added_kw": 50
+          },
+          {
+            "site": "WAREHOUSE",
+            "connectors": 2,
+            "added_kw": 0
+          }
+        ]
+      ]
+    }
+  ]
+}
