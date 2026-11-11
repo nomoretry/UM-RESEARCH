@@ -1,0 +1,163 @@
+{
+  "cases": [
+    {
+      "facility": "A",
+      "delay_minutes": 0,
+      "status": "optimal",
+      "planning_investment": 20,
+      "operating_cost": 133.33333333333331,
+      "grid_energy_kwh": 133.33333333333331,
+      "dual_bound": 133.33333333333334,
+      "mip_gap": 0.0,
+      "validation_passed": true,
+      "validation_checks": 465,
+      "hardware_sha256": "5c6a05263af3b5a49f0ddb727be6a30c93646866c2ca4214aee733415ade2592",
+      "input_sha256": "b75b7d7004b050e2c616d3a8d7d3325837db7b735764e9e904859937c820cf5c"
+    },
+    {
+      "facility": "A",
+      "delay_minutes": 15,
+      "status": "optimal",
+      "planning_investment": 20,
+      "operating_cost": 133.33333333333331,
+      "grid_energy_kwh": 133.33333333333331,
+      "dual_bound": 133.33333333333334,
+      "mip_gap": 0.0,
+      "validation_passed": true,
+      "validation_checks": 465,
+      "hardware_sha256": "5c6a05263af3b5a49f0ddb727be6a30c93646866c2ca4214aee733415ade2592",
+      "input_sha256": "4826ae27bdf742f28c212f11e7ed5dd38ff6f6a38ea28d804047b6f4b08736f6"
+    },
+    {
+      "facility": "A",
+      "delay_minutes": 30,
+      "status": "optimal",
+      "planning_investment": 20,
+      "operating_cost": 133.33333333333331,
+      "grid_energy_kwh": 133.33333333333331,
+      "dual_bound": 133.33333333333331,
+      "mip_gap": 0.0,
+      "validation_passed": true,
+      "validation_checks": 465,
+      "hardware_sha256": "5c6a05263af3b5a49f0ddb727be6a30c93646866c2ca4214aee733415ade2592",
+      "input_sha256": "9c857d10dddf7383110a52db1c8d69dbd50c71d53c5b13f0d20ff1d7d104b920"
+    },
+    {
+      "facility": "A",
+      "delay_minutes": 45,
+      "status": "infeasible",
+      "planning_investment": 20,
+      "operating_cost": null,
+      "grid_energy_kwh": null,
+      "dual_bound": null,
+      "mip_gap": null,
+      "validation_passed": null,
+      "validation_checks": null,
+      "hardware_sha256": "5c6a05263af3b5a49f0ddb727be6a30c93646866c2ca4214aee733415ade2592",
+      "input_sha256": "7dc3cf35a6cd2b6fdd5069bde72c00fb6417e8c789dee0857814fd1ba93df9d2"
+    },
+    {
+      "facility": "A",
+      "delay_minutes": 60,
+      "status": "infeasible",
+      "planning_investment": 20,
+      "operating_cost": null,
+      "grid_energy_kwh": null,
+      "dual_bound": null,
+      "mip_gap": null,
+      "validation_passed": null,
+      "validation_checks": null,
+      "hardware_sha256": "5c6a05263af3b5a49f0ddb727be6a30c93646866c2ca4214aee733415ade2592",
+      "input_sha256": "24d6668842bfe290e392b90dbd9c9f99a3c4faf452ae8aa0c2a805b4851e0428"
+    },
+    {
+      "facility": "B",
+      "delay_minutes": 0,
+      "status": "optimal",
+      "planning_investment": 40,
+      "operating_cost": 133.33333333333334,
+      "grid_energy_kwh": 133.33333333333334,
+      "dual_bound": 133.33333333333334,
+      "mip_gap": 0.0,
+      "validation_passed": true,
+      "validation_checks": 465,
+      "hardware_sha256": "c43a6d80057d5a91d96ea92d6a0f72e1ed8b2fb586cc7fd3501f4f52b4cbad69",
+      "input_sha256": "bc3989d5d7eaabbddd1182c41ae7072f921079cb5ac44ed68d4dea4dd6abe0b8"
+    },
+    {
+      "facility": "B",
+      "delay_minutes": 15,
+      "status": "optimal",
+      "planning_investment": 40,
+      "operating_cost": 133.33333333333334,
+      "grid_energy_kwh": 133.33333333333334,
+      "dual_bound": 133.33333333333334,
+      "mip_gap": 0.0,
+      "validation_passed": true,
+      "validation_checks": 465,
+      "hardware_sha256": "c43a6d80057d5a91d96ea92d6a0f72e1ed8b2fb586cc7fd3501f4f52b4cbad69",
+      "input_sha256": "c44ce1c5b785db832b427b019bbdf9fe5fa965c494cc6473bd464adb91886ab5"
+    },
+    {
+      "facility": "B",
+      "delay_minutes": 30,
+      "status": "optimal",
+      "planning_investment": 40,
+      "operating_cost": 133.33333333333331,
+      "grid_energy_kwh": 133.33333333333331,
+      "dual_bound": 133.33333333333331,
+      "mip_gap": 0.0,
+      "validation_passed": true,
+      "validation_checks": 465,
+      "hardware_sha256": "c43a6d80057d5a91d96ea92d6a0f72e1ed8b2fb586cc7fd3501f4f52b4cbad69",
+      "input_sha256": "7a625a1437cb004cfcc7b2d04f0c21e4acbdc3ccd43e0f633323452f8a7fe2c5"
+    },
+    {
+      "facility": "B",
+      "delay_minutes": 45,
+      "status": "optimal",
+      "planning_investment": 40,
+      "operating_cost": 133.33333333333334,
+      "grid_energy_kwh": 133.33333333333334,
+      "dual_bound": 133.33333333333331,
+      "mip_gap": 0.0,
+      "validation_passed": true,
+      "validation_checks": 465,
+      "hardware_sha256": "c43a6d80057d5a91d96ea92d6a0f72e1ed8b2fb586cc7fd3501f4f52b4cbad69",
+      "input_sha256": "3f3a6af760e5ab4548795505e38074e9047ec6830cc78fc6afc06e20f17cd1ff"
+    },
+    {
+      "facility": "B",
+      "delay_minutes": 60,
+      "status": "infeasible",
+      "planning_investment": 40,
+      "operating_cost": null,
+      "grid_energy_kwh": null,
+      "dual_bound": null,
+      "mip_gap": null,
+      "validation_passed": null,
+      "validation_checks": null,
+      "hardware_sha256": "c43a6d80057d5a91d96ea92d6a0f72e1ed8b2fb586cc7fd3501f4f52b4cbad69",
+      "input_sha256": "adbc34a7853aec66b51c23e78f51e53dee6c3de6a756e5e0a5679bf283a50ed3"
+    }
+  ],
+  "thresholds": {
+    "A": {
+      "last_feasible_minutes": 30,
+      "first_infeasible_minutes": 45
+    },
+    "B": {
+      "last_feasible_minutes": 45,
+      "first_infeasible_minutes": 60
+    }
+  },
+  "properties": {
+    "A_nested_feasibility": true,
+    "A_hardware_unchanged": true,
+    "B_nested_feasibility": true,
+    "B_hardware_unchanged": true,
+    "B_feasible_when_A_feasible": true,
+    "A_zero_matches_historical_enumeration": true
+  },
+  "passed": true
+}

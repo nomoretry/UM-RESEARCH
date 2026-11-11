@@ -1,0 +1,108 @@
+{
+  "source_commit": "b3728397e80830cd4a23f1a42e7d382eb8bed0e0",
+  "source_tree": "4327b5c12f6123bcab00154d18568ed739bee62b",
+  "source_clean_at_verification": true,
+  "scope": "H100 fixed-site operation; known warehouse plug eligibility delay; synthetic four-hour cycle",
+  "run_id": "20261111_eligibility_stress",
+  "verification_id": "20261111_eligibility_verification",
+  "units": {
+    "planning_investment": "synthetic four-hour-equivalent cost, fixed and excluded from operating objective",
+    "operating_cost": "synthetic four-hour cost",
+    "grid_energy_kwh": "grid-side kWh"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "solver": "scipy.optimize.milp / HiGHS",
+    "time_limit_seconds": 60,
+    "mip_rel_gap": 0,
+    "highs_version": "1.12.0"
+  },
+  "seed": "Deterministic case definitions; no scenarios sampled.",
+  "input_sha256": {
+    "configs/eligibility_stress.json": "c20181ea6af26376ef1a95693aa4ac49061c5ac18ccfbe39b4988a19c96f3c3a",
+    "configs/port_warehouse_investment.json": "0d0f0011c245cf19f0b38aa42a5d949acef56bd58a093f307e877f292352245b",
+    "results/boundary_20261110/mechanisms.json": "f97630f77c21a68f0356c920ef0772aa2454c30b54032178d8da8458fc717f49"
+  },
+  "outcomes": {
+    "optimal": 7,
+    "infeasible": 3,
+    "max_optimal_mip_gap": 0.0,
+    "primal_checks": 3255,
+    "maximum_primal_violation": 2.842170943040401e-14,
+    "scenario_input_audits_passed": 10
+  },
+  "independent_slot_check": {
+    "script": "scripts/check_eligibility_slots.py",
+    "script_sha256": "ecec9b8210b9be196b369a150b14b46aa59e8923a4e84ca21d13a80ad323ff13",
+    "matches_all_ten": true,
+    "warehouse_slot_allocations_enumerated": 496,
+    "results": [
+      {
+        "delay_min": 0,
+        "warehouse_assignments": 256,
+        "extendable_warehouse_assignments_A": 54,
+        "extendable_warehouse_assignments_B": 174,
+        "A_feasible": true,
+        "B_feasible": true,
+        "min_required_port_plug_slots": 8
+      },
+      {
+        "delay_min": 15,
+        "warehouse_assignments": 128,
+        "extendable_warehouse_assignments_A": 18,
+        "extendable_warehouse_assignments_B": 74,
+        "A_feasible": true,
+        "B_feasible": true,
+        "min_required_port_plug_slots": 8
+      },
+      {
+        "delay_min": 30,
+        "warehouse_assignments": 64,
+        "extendable_warehouse_assignments_A": 4,
+        "extendable_warehouse_assignments_B": 28,
+        "A_feasible": true,
+        "B_feasible": true,
+        "min_required_port_plug_slots": 8
+      },
+      {
+        "delay_min": 45,
+        "warehouse_assignments": 32,
+        "extendable_warehouse_assignments_A": 0,
+        "extendable_warehouse_assignments_B": 8,
+        "A_feasible": false,
+        "B_feasible": true,
+        "min_required_port_plug_slots": 9
+      },
+      {
+        "delay_min": 60,
+        "warehouse_assignments": 16,
+        "extendable_warehouse_assignments_A": 0,
+        "extendable_warehouse_assignments_B": 0,
+        "A_feasible": false,
+        "B_feasible": false,
+        "min_required_port_plug_slots": 10
+      }
+    ]
+  },
+  "tests": {
+    "passed": 232,
+    "added": 10,
+    "pytest": "9.1.1",
+    "scope": "previous 222 charging-model regressions and 10 eligibility-delay tests"
+  },
+  "powershell_from_repository_root": [
+    "$env:PYTHONPATH = \"src\"",
+    "python -m pip install -r requirements-milp.txt",
+    "$out = Join-Path $env:TEMP (\"um-eligibility-\" + [guid]::NewGuid())",
+    "python -m um_charging.eligibility_stress --config configs/eligibility_stress.json --output \"$out\"",
+    "python scripts/check_eligibility_slots.py",
+    "python -m pytest -q tests/test_eligibility_stress.py"
+  ],
+  "raw_metrics_sha256": "de6fd5ba90d08843c9c513bbda57fc517f92d83fd850ecc07ad4165100cac141",
+  "raw_record": {
+    "commit": "213eeffc9cdd159d39c1c539e0044c568676543f",
+    "location": "Separate no-remote evidence Git on the executing cloud workspace; Windows record store was not accessed."
+  }
+}
