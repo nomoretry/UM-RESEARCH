@@ -218,13 +218,26 @@ def make_scenarios(base):
     return cases
 
 
-def solve(data, *, display=False, time_limit=60.0):
+def solve(data, *, display=False, time_limit=60.0, minimize_site_peak=False, market_prices_eur_per_mwh=None):
     """Solve fixed transport with fixed or investable capacity; retain raw values."""
     validate_input(data)
     _number(time_limit, "time_limit", strictly_positive=True)
     V, J, T = len(data["vehicles"]), len(data["sites"]), data["slot_count"]
     timegrid = data["schema_version"] == "capacity-investment-v2"
     investment = data["schema_version"] in ("capacity-investment-v1", "capacity-investment-v2")
+    dispatch = minimize_site_peak or market_prices_eur_per_mwh is not None
+    if dispatch:
+        if investment and any(site["max_new_interfaces"] or site["upgrade_options"] for site in data["sites"]):
+            raise ValueError("Dispatch objectives require frozen facilities")
+        if minimize_site_peak and market_prices_eur_per_mwh is not None:
+            raise ValueError("Specify exactly one dispatch objective")
+        if market_prices_eur_per_mwh is not None and (
+            len(market_prices_eur_per_mwh) != T or any(
+                isinstance(price, bool) or not isinstance(price, (int, float)) or not math.isfinite(price)
+                for price in market_prices_eur_per_mwh
+            )
+        ):
+            raise ValueError("Supply one finite signed day-ahead price per slot")
     block = V * J * T
     operational_size = 2 * block + V * (T + 1)
     # Additional variables follow the original a/p/e blocks without changing them.
@@ -234,6 +247,9 @@ def solve(data, *, display=False, time_limit=60.0):
         for site in data["sites"]:
             upgrade_indices.append(list(range(size, size + len(site["upgrade_options"]))))
             size += len(site["upgrade_options"])
+    if minimize_site_peak:
+        peak_index = size
+        size += 1
     def a(v, j, t): return (v * J + j) * T + t
     def p(v, j, t): return block + a(v, j, t)
     def e(v, t): return 2 * block + v * (T + 1) + t
@@ -242,6 +258,9 @@ def solve(data, *, display=False, time_limit=60.0):
     integer, objective = np.zeros(size), np.zeros(size)
     rows, cols, values, lb, ub = [], [], [], [], []
     counts = {f"C{k:02d}": 0 for k in range(1, 9 if timegrid else 8)}
+    if minimize_site_peak:
+        objective[peak_index] = 1
+        counts["SITE_PEAK"] = 0
 
     def row(terms, low, high, constraint):
         idx = len(lb)
@@ -278,7 +297,10 @@ def solve(data, *, display=False, time_limit=60.0):
                 integer[a(v, j, t)] = 1
                 row({p(v, j, t): 1.0, a(v, j, t): -vehicle["power_limit_kw"][site["id"]]}, -np.inf, 0.0, "C03")
                 balance[p(v, j, t)] = -vehicle["efficiency"] * data["slot_hours"]
-                objective[p(v, j, t)] = data["representative_weight"] * site["price_per_kwh"][t] * data["slot_hours"]
+                if market_prices_eur_per_mwh is not None:
+                    objective[p(v, j, t)] = market_prices_eur_per_mwh[t] * data["slot_hours"] / 1000
+                elif not minimize_site_peak:
+                    objective[p(v, j, t)] = data["representative_weight"] * site["price_per_kwh"][t] * data["slot_hours"]
                 # Consecutive equal non-null eligibility belongs to one whole
                 # parking connection window; its selected connection is held.
                 if (timegrid and data["connector_policy"] == "fixed_dwell_connection" and t
@@ -296,6 +318,8 @@ def solve(data, *, display=False, time_limit=60.0):
                     power[idx] = -site["upgrade_options"][m]["additional_power_kw"]
             row(interfaces, -np.inf, site["interfaces"], "C04")
             row(power, -np.inf, site["available_power_kw"][t] * int(site["active"]), "C05")
+            if minimize_site_peak:
+                row({**power, peak_index: -1.0}, -np.inf, 0.0, "SITE_PEAK")
     matrix = coo_matrix((values, (rows, cols)), shape=(len(lb), size)).tocsr()
     result = milp(objective, integrality=integer, bounds=Bounds(lower, upper),
                   constraints=LinearConstraint(matrix, lb, ub),
@@ -314,6 +338,10 @@ def solve(data, *, display=False, time_limit=60.0):
         "limitations": ("Fixed closed transport timeline; interface and discrete power investment with synthetic cycle-equivalent costs; no routing, siting or power flow."
                         if investment else "Fixed facilities and supplied complete synthetic timeline; no routing, investment or power flow."),
     }
+    if dispatch:
+        output.update(objective_kind="highest_site_peak" if minimize_site_peak else "wholesale_purchase",
+                      objective_unit="kW" if minimize_site_peak else "EUR",
+                      limitations="Frozen hardware and supplied transport timeline. One-way dispatch over one cycle.")
     if result.x is not None:
         output["solution"] = {
             "occupancy": result.x[:block].reshape(V, J, T).tolist(),

@@ -1,0 +1,13 @@
+{
+  "base_config": "configs/port_warehouse_investment.json",
+  "facility_results": "results/known_delay_investment_20261111/metrics.json",
+  "delay_minutes": 60,
+  "delayed_vehicle_ids": ["V1", "V2"],
+  "site_ids": ["PORT", "WAREHOUSE"],
+  "assumptions": [
+    "The unique minimum-cost facility build in the published 60-minute delay row is already installed for all three policies. Its synthetic investment cost is sunk.",
+    "The four-hour synthetic cycle starts at the first delivery interval in the price file. Both sites share this wholesale market price without retail tariffs, taxes or demand charges.",
+    "Vehicle visits and plug eligibility are synthetic. The German driving-record parking interval is only an upper bound in its original context.",
+    "An available interface can change vehicles without lost time at slot boundaries. Grid draw is constant within each 15-minute slot."
+  ]
+}
