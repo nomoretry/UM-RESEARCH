@@ -1,0 +1,222 @@
+{
+  "joint": [
+    {
+      "vehicle": "V1",
+      "start_minute": 180.0,
+      "end_minute": 195.0,
+      "power_kw": {
+        "PORT": 27.77777777777778,
+        "WAREHOUSE": 0.0
+      }
+    },
+    {
+      "vehicle": "V1",
+      "start_minute": 195.0,
+      "end_minute": 210.0,
+      "power_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 0.0
+      }
+    },
+    {
+      "vehicle": "V1",
+      "start_minute": 210.0,
+      "end_minute": 225.0,
+      "power_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 0.0
+      }
+    },
+    {
+      "vehicle": "V1",
+      "start_minute": 225.0,
+      "end_minute": 240.0,
+      "power_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 0.0
+      }
+    },
+    {
+      "vehicle": "V2",
+      "start_minute": 105.0,
+      "end_minute": 120.0,
+      "power_kw": {
+        "PORT": 0.0,
+        "WAREHOUSE": 50.0
+      }
+    },
+    {
+      "vehicle": "V2",
+      "start_minute": 180.0,
+      "end_minute": 195.0,
+      "power_kw": {
+        "PORT": 27.77777777777778,
+        "WAREHOUSE": 0.0
+      }
+    },
+    {
+      "vehicle": "V2",
+      "start_minute": 195.0,
+      "end_minute": 210.0,
+      "power_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 0.0
+      }
+    },
+    {
+      "vehicle": "V2",
+      "start_minute": 210.0,
+      "end_minute": 225.0,
+      "power_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 0.0
+      }
+    },
+    {
+      "vehicle": "V3",
+      "start_minute": 60.0,
+      "end_minute": 75.0,
+      "power_kw": {
+        "PORT": 0.0,
+        "WAREHOUSE": 50.0
+      }
+    },
+    {
+      "vehicle": "V3",
+      "start_minute": 90.0,
+      "end_minute": 105.0,
+      "power_kw": {
+        "PORT": 0.0,
+        "WAREHOUSE": 38.88888888888886
+      }
+    },
+    {
+      "vehicle": "V3",
+      "start_minute": 180.0,
+      "end_minute": 195.0,
+      "power_kw": {
+        "PORT": 38.88888888888889,
+        "WAREHOUSE": 0.0
+      }
+    },
+    {
+      "vehicle": "V3",
+      "start_minute": 225.0,
+      "end_minute": 240.0,
+      "power_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 0.0
+      }
+    }
+  ],
+  "two_port": [
+    {
+      "vehicle": "V1",
+      "start_minute": 105.0,
+      "end_minute": 120.0,
+      "power_kw": {
+        "PORT": 0.0,
+        "WAREHOUSE": 27.77777777777778
+      }
+    },
+    {
+      "vehicle": "V1",
+      "start_minute": 195.0,
+      "end_minute": 210.0,
+      "power_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 0.0
+      }
+    },
+    {
+      "vehicle": "V1",
+      "start_minute": 210.0,
+      "end_minute": 225.0,
+      "power_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 0.0
+      }
+    },
+    {
+      "vehicle": "V1",
+      "start_minute": 225.0,
+      "end_minute": 240.0,
+      "power_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 0.0
+      }
+    },
+    {
+      "vehicle": "V2",
+      "start_minute": 105.0,
+      "end_minute": 120.0,
+      "power_kw": {
+        "PORT": 0.0,
+        "WAREHOUSE": 27.77777777777778
+      }
+    },
+    {
+      "vehicle": "V2",
+      "start_minute": 180.0,
+      "end_minute": 195.0,
+      "power_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 0.0
+      }
+    },
+    {
+      "vehicle": "V2",
+      "start_minute": 195.0,
+      "end_minute": 210.0,
+      "power_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 0.0
+      }
+    },
+    {
+      "vehicle": "V2",
+      "start_minute": 210.0,
+      "end_minute": 225.0,
+      "power_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 0.0
+      }
+    },
+    {
+      "vehicle": "V3",
+      "start_minute": 60.0,
+      "end_minute": 75.0,
+      "power_kw": {
+        "PORT": 0.0,
+        "WAREHOUSE": 50.0
+      }
+    },
+    {
+      "vehicle": "V3",
+      "start_minute": 90.0,
+      "end_minute": 105.0,
+      "power_kw": {
+        "PORT": 0.0,
+        "WAREHOUSE": 38.88888888888886
+      }
+    },
+    {
+      "vehicle": "V3",
+      "start_minute": 180.0,
+      "end_minute": 195.0,
+      "power_kw": {
+        "PORT": 38.88888888888889,
+        "WAREHOUSE": 0.0
+      }
+    },
+    {
+      "vehicle": "V3",
+      "start_minute": 225.0,
+      "end_minute": 240.0,
+      "power_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 0.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,423 @@
+{
+  "delay_known_before_investment": true,
+  "cost_basis": "synthetic_cycle_equivalent",
+  "first_change_between_tested_minutes": [
+    30,
+    45
+  ],
+  "cases": [
+    {
+      "status": "optimal",
+      "objective": 153.33333333333334,
+      "dual_bound": 153.33333333333334,
+      "mip_gap": 0.0,
+      "investment_cost": 20.0,
+      "operating_cost": 133.33333333333334,
+      "optimal_facilities": [
+        [
+          {
+            "site_id": "PORT",
+            "active": true,
+            "existing_interfaces": 1,
+            "new_interfaces": 1,
+            "total_interfaces": 2,
+            "existing_power_kw": 100,
+            "upgrade_id": null,
+            "added_power_kw": 0,
+            "total_available_power_kw": 100,
+            "interface_cost": 20,
+            "expansion_cost": 0
+          },
+          {
+            "site_id": "WAREHOUSE",
+            "active": true,
+            "existing_interfaces": 1,
+            "new_interfaces": 0,
+            "total_interfaces": 1,
+            "existing_power_kw": 75,
+            "upgrade_id": null,
+            "added_power_kw": 0,
+            "total_available_power_kw": 75,
+            "interface_cost": 0,
+            "expansion_cost": 0
+          }
+        ]
+      ],
+      "site_energy_kwh": {
+        "PORT": 100.0,
+        "WAREHOUSE": 33.33333333333333
+      },
+      "validation_checks": 468,
+      "input_sha256": "e7d4b2956dcc773aede19734c738179cd4aa0d1c186efe8d2bbf7d12232a41a4",
+      "enumeration_count": 54,
+      "enumeration_feasible": 36,
+      "delay_minutes": 0,
+      "source": "boundary_20261110/boundary_slot_boundary_switching_p100_w60_two_sites",
+      "joint_new": false,
+      "enumeration_new": 0,
+      "enumeration_reused": 54,
+      "fixed_facility_comparisons": [
+        {
+          "facility": "A",
+          "total_interfaces": {
+            "PORT": 2,
+            "WAREHOUSE": 1
+          },
+          "status": "optimal",
+          "investment_cost": 20,
+          "operating_cost": 133.33333333333331,
+          "total_cost": 153.33333333333331
+        },
+        {
+          "facility": "B",
+          "total_interfaces": {
+            "PORT": 3,
+            "WAREHOUSE": 1
+          },
+          "status": "optimal",
+          "investment_cost": 40,
+          "operating_cost": 133.33333333333334,
+          "total_cost": 173.33333333333334
+        }
+      ]
+    },
+    {
+      "delay_minutes": 15,
+      "source": "new_joint_and_enumeration",
+      "joint_new": true,
+      "input_sha256": "a233113faebe717f4a423b2168a9a08449bd89a4b6c2b220a5c29aef461e1314",
+      "status": "optimal",
+      "objective": 153.33333333333334,
+      "dual_bound": 153.33333333333334,
+      "mip_gap": 0.0,
+      "investment_cost": 20.0,
+      "operating_cost": 133.33333333333331,
+      "optimal_facilities": [
+        [
+          {
+            "site_id": "PORT",
+            "active": true,
+            "existing_interfaces": 1,
+            "new_interfaces": 1,
+            "total_interfaces": 2,
+            "existing_power_kw": 100,
+            "upgrade_id": null,
+            "added_power_kw": 0,
+            "total_available_power_kw": 100,
+            "interface_cost": 20,
+            "expansion_cost": 0
+          },
+          {
+            "site_id": "WAREHOUSE",
+            "active": true,
+            "existing_interfaces": 1,
+            "new_interfaces": 0,
+            "total_interfaces": 1,
+            "existing_power_kw": 75,
+            "upgrade_id": null,
+            "added_power_kw": 0,
+            "total_available_power_kw": 75,
+            "interface_cost": 0,
+            "expansion_cost": 0
+          }
+        ]
+      ],
+      "site_energy_kwh": {
+        "PORT": 94.44444444444444,
+        "WAREHOUSE": 38.888888888888886
+      },
+      "validation_checks": 468,
+      "enumeration_count": 54,
+      "enumeration_feasible": 36,
+      "enumeration_new": 52,
+      "enumeration_reused": 2,
+      "fixed_facility_comparisons": [
+        {
+          "facility": "A",
+          "total_interfaces": {
+            "PORT": 2,
+            "WAREHOUSE": 1
+          },
+          "status": "optimal",
+          "investment_cost": 20,
+          "operating_cost": 133.33333333333331,
+          "total_cost": 153.33333333333331
+        },
+        {
+          "facility": "B",
+          "total_interfaces": {
+            "PORT": 3,
+            "WAREHOUSE": 1
+          },
+          "status": "optimal",
+          "investment_cost": 40,
+          "operating_cost": 133.33333333333334,
+          "total_cost": 173.33333333333334
+        }
+      ]
+    },
+    {
+      "delay_minutes": 30,
+      "source": "new_joint_and_enumeration",
+      "joint_new": true,
+      "input_sha256": "826bb15c85f5ad0e8504e0c90a215baa3700880ce7b68a89a7726b1d7c7d8eeb",
+      "status": "optimal",
+      "objective": 153.33333333333331,
+      "dual_bound": 153.33333333333331,
+      "mip_gap": 0.0,
+      "investment_cost": 20.0,
+      "operating_cost": 133.33333333333331,
+      "optimal_facilities": [
+        [
+          {
+            "site_id": "PORT",
+            "active": true,
+            "existing_interfaces": 1,
+            "new_interfaces": 1,
+            "total_interfaces": 2,
+            "existing_power_kw": 100,
+            "upgrade_id": null,
+            "added_power_kw": 0,
+            "total_available_power_kw": 100,
+            "interface_cost": 20,
+            "expansion_cost": 0
+          },
+          {
+            "site_id": "WAREHOUSE",
+            "active": true,
+            "existing_interfaces": 1,
+            "new_interfaces": 0,
+            "total_interfaces": 1,
+            "existing_power_kw": 75,
+            "upgrade_id": null,
+            "added_power_kw": 0,
+            "total_available_power_kw": 75,
+            "interface_cost": 0,
+            "expansion_cost": 0
+          }
+        ]
+      ],
+      "site_energy_kwh": {
+        "PORT": 91.66666666666666,
+        "WAREHOUSE": 41.66666666666666
+      },
+      "validation_checks": 468,
+      "enumeration_count": 54,
+      "enumeration_feasible": 36,
+      "enumeration_new": 52,
+      "enumeration_reused": 2,
+      "fixed_facility_comparisons": [
+        {
+          "facility": "A",
+          "total_interfaces": {
+            "PORT": 2,
+            "WAREHOUSE": 1
+          },
+          "status": "optimal",
+          "investment_cost": 20,
+          "operating_cost": 133.33333333333331,
+          "total_cost": 153.33333333333331
+        },
+        {
+          "facility": "B",
+          "total_interfaces": {
+            "PORT": 3,
+            "WAREHOUSE": 1
+          },
+          "status": "optimal",
+          "investment_cost": 40,
+          "operating_cost": 133.33333333333331,
+          "total_cost": 173.33333333333331
+        }
+      ]
+    },
+    {
+      "delay_minutes": 45,
+      "source": "new_joint_and_enumeration",
+      "joint_new": true,
+      "input_sha256": "c29a4822114a4baea01f505bd96945a0f95865a918789675dc436d5e56172b95",
+      "status": "optimal",
+      "objective": 173.33333333333331,
+      "dual_bound": 173.3333333333333,
+      "mip_gap": 0.0,
+      "investment_cost": 40.0,
+      "operating_cost": 133.33333333333331,
+      "optimal_facilities": [
+        [
+          {
+            "site_id": "PORT",
+            "active": true,
+            "existing_interfaces": 1,
+            "new_interfaces": 2,
+            "total_interfaces": 3,
+            "existing_power_kw": 100,
+            "upgrade_id": null,
+            "added_power_kw": 0,
+            "total_available_power_kw": 100,
+            "interface_cost": 40,
+            "expansion_cost": 0
+          },
+          {
+            "site_id": "WAREHOUSE",
+            "active": true,
+            "existing_interfaces": 1,
+            "new_interfaces": 0,
+            "total_interfaces": 1,
+            "existing_power_kw": 75,
+            "upgrade_id": null,
+            "added_power_kw": 0,
+            "total_available_power_kw": 75,
+            "interface_cost": 0,
+            "expansion_cost": 0
+          }
+        ]
+      ],
+      "site_energy_kwh": {
+        "PORT": 98.61111111111111,
+        "WAREHOUSE": 34.722222222222214
+      },
+      "validation_checks": 468,
+      "enumeration_count": 54,
+      "enumeration_feasible": 30,
+      "enumeration_new": 52,
+      "enumeration_reused": 2,
+      "at_most_two_port_interfaces": {
+        "minimum_total_cost": 183.33333333333331,
+        "investment_cost": 50.0,
+        "optimal_facilities": [
+          [
+            {
+              "site_id": "PORT",
+              "active": true,
+              "existing_interfaces": 1,
+              "new_interfaces": 1,
+              "total_interfaces": 2,
+              "existing_power_kw": 100,
+              "upgrade_id": null,
+              "added_power_kw": 0,
+              "total_available_power_kw": 100,
+              "interface_cost": 20,
+              "expansion_cost": 0
+            },
+            {
+              "site_id": "WAREHOUSE",
+              "active": true,
+              "existing_interfaces": 1,
+              "new_interfaces": 1,
+              "total_interfaces": 2,
+              "existing_power_kw": 75,
+              "upgrade_id": null,
+              "added_power_kw": 0,
+              "total_available_power_kw": 75,
+              "interface_cost": 30,
+              "expansion_cost": 0
+            }
+          ]
+        ],
+        "combinations_at_minimum": [
+          20
+        ],
+        "feasible_count": 12
+      },
+      "fixed_facility_comparisons": [
+        {
+          "facility": "A",
+          "total_interfaces": {
+            "PORT": 2,
+            "WAREHOUSE": 1
+          },
+          "status": "infeasible",
+          "investment_cost": 20,
+          "operating_cost": null,
+          "total_cost": null
+        },
+        {
+          "facility": "B",
+          "total_interfaces": {
+            "PORT": 3,
+            "WAREHOUSE": 1
+          },
+          "status": "optimal",
+          "investment_cost": 40,
+          "operating_cost": 133.33333333333334,
+          "total_cost": 173.33333333333334
+        }
+      ]
+    },
+    {
+      "delay_minutes": 60,
+      "source": "new_joint_and_enumeration",
+      "joint_new": true,
+      "input_sha256": "42644ad6e95c30d0be12d7f8ea171ec91732bf104cc0d3456aa2c14a10e96b34",
+      "status": "optimal",
+      "objective": 208.33333333333331,
+      "dual_bound": 208.3333333333333,
+      "mip_gap": 2.7284841053187845e-16,
+      "investment_cost": 75.0,
+      "operating_cost": 133.33333333333331,
+      "optimal_facilities": [
+        [
+          {
+            "site_id": "PORT",
+            "active": true,
+            "existing_interfaces": 1,
+            "new_interfaces": 2,
+            "total_interfaces": 3,
+            "existing_power_kw": 100,
+            "upgrade_id": "port_plus_50",
+            "added_power_kw": 50,
+            "total_available_power_kw": 150,
+            "interface_cost": 40,
+            "expansion_cost": 35
+          },
+          {
+            "site_id": "WAREHOUSE",
+            "active": true,
+            "existing_interfaces": 1,
+            "new_interfaces": 0,
+            "total_interfaces": 1,
+            "existing_power_kw": 75,
+            "upgrade_id": null,
+            "added_power_kw": 0,
+            "total_available_power_kw": 75,
+            "interface_cost": 0,
+            "expansion_cost": 0
+          }
+        ]
+      ],
+      "site_energy_kwh": {
+        "PORT": 111.11111111111111,
+        "WAREHOUSE": 22.222222222222214
+      },
+      "validation_checks": 468,
+      "enumeration_count": 54,
+      "enumeration_feasible": 12,
+      "enumeration_new": 52,
+      "enumeration_reused": 2,
+      "fixed_facility_comparisons": [
+        {
+          "facility": "A",
+          "total_interfaces": {
+            "PORT": 2,
+            "WAREHOUSE": 1
+          },
+          "status": "infeasible",
+          "investment_cost": 20,
+          "operating_cost": null,
+          "total_cost": null
+        },
+        {
+          "facility": "B",
+          "total_interfaces": {
+            "PORT": 3,
+            "WAREHOUSE": 1
+          },
+          "status": "infeasible",
+          "investment_cost": 40,
+          "operating_cost": null,
+          "total_cost": null
+        }
+      ]
+    }
+  ]
+}
