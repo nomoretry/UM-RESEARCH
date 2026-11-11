@@ -105,9 +105,11 @@ def trace():
     start, end = check_gap(previous, following, stop, fleet["fleet_test_id"], params)
     seconds = (end - start).total_seconds()
     return {
-        "source": {"dataset": "DT-CARGO, German truck fleet",
+        "source": {"dataset": "DT-CARGO, German truck fleet", "version": "V1.1",
+                   "authors": ["Georg Balke", "Lennart Adenaw"],
                    "commit": sources[TRACKS]["git_commit"], "tracks_url": sources[TRACKS]["url"],
-                   "license": "ODC Open Database License (ODbL), raw/dt_cargo/LICENSE",
+                   "codebook_url": sources["raw/dt_cargo/README.md"]["url"],
+                   "database_license": "ODbL 1.0", "contents_license": "DbCL 1.0",
                    "lf_sha256": {name: sources[name]["sha256"] for name in (FLEET, TRACKS)}},
         "event_key": {key: int(stop[key]) for key in
                       ("fleet_test_id", "vehicle_id", "track_id", "next_track_id")},
