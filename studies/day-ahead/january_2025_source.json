@@ -1,0 +1,38 @@
+{
+  "market_area": "DE-LU",
+  "timezone": "Europe/Berlin",
+  "currency_unit": "EUR/MWh",
+  "selection": "First delivery hours 08:00, 09:00, 10:00, 11:00 CET on each calendar day of January 2025, including weekends. Extracted from SMARD series 4169, hourly timestamp in milliseconds UTC.",
+  "attribution": "Bundesnetzagentur | SMARD.de",
+  "terms": "https://www.smard.de/en/datennutzung",
+  "sources": [
+    {
+      "url": "https://www.smard.de/app/chart_data/4169/DE-LU/4169_DE-LU_hour_1735513200000.json",
+      "sha256": "62701fc0973911f32ce2ccd20312ab35ea784229de9c189d3c9249031afa63b8"
+    },
+    {
+      "url": "https://www.smard.de/app/chart_data/4169/DE-LU/4169_DE-LU_hour_1736118000000.json",
+      "sha256": "6887d94a448c09cd47a1af6e4d6c18775794050e0f0982e1133fc4ac8507a1f0"
+    },
+    {
+      "url": "https://www.smard.de/app/chart_data/4169/DE-LU/4169_DE-LU_hour_1736722800000.json",
+      "sha256": "a43f4ce9175d8d10cabf3327a8deccde6e160e57cae08702340147326fafa1d5"
+    },
+    {
+      "url": "https://www.smard.de/app/chart_data/4169/DE-LU/4169_DE-LU_hour_1737327600000.json",
+      "sha256": "9c2b85652b22a312af4052912535f3a8a0e3763d8dab6544ff4b619b9580592f"
+    },
+    {
+      "url": "https://www.smard.de/app/chart_data/4169/DE-LU/4169_DE-LU_hour_1737932400000.json",
+      "sha256": "3e4075d583cce3b47c8dbf53e70d23a71792354d44ccd4ed0cf7ac171fe02a9d"
+    }
+  ],
+  "price_csv_sha256": "1e898792fc26f7ff6e13887795715349f07007f750f551f55f5639b880d1134c",
+  "crosscheck": {
+    "url": "https://api.energy-charts.info/price?bzn=DE-LU&start=2025-01-01&end=2025-01-31",
+    "source": "Energy-Charts redistribution of Bundesnetzagentur / SMARD, same underlying observations",
+    "sha256": "165f8f260e1847653e76675fda5dc84418471a8bf612117cb453a6dd565be589",
+    "equal_hourly_values": 124,
+    "license": "CC BY 4.0"
+  }
+}

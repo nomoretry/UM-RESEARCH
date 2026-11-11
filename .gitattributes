@@ -1,2 +1,5 @@
 # Recovered historical sources retain the exact bytes listed in RECOVERY.json.
 legacy/** -text
+
+# Pinned price snapshots use the same bytes on Windows and Linux.
+studies/day-ahead/january_2025_prices.csv text eol=lf

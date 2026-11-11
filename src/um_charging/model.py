@@ -218,7 +218,8 @@ def make_scenarios(base):
     return cases
 
 
-def solve(data, *, display=False, time_limit=60.0, minimize_site_peak=False, market_prices_eur_per_mwh=None):
+def solve(data, *, display=False, time_limit=60.0, minimize_site_peak=False, market_prices_eur_per_mwh=None,
+          purchase_ceiling_eur=None):
     """Solve fixed transport with fixed or investable capacity; retain raw values."""
     validate_input(data)
     _number(time_limit, "time_limit", strictly_positive=True)
@@ -226,10 +227,15 @@ def solve(data, *, display=False, time_limit=60.0, minimize_site_peak=False, mar
     timegrid = data["schema_version"] == "capacity-investment-v2"
     investment = data["schema_version"] in ("capacity-investment-v1", "capacity-investment-v2")
     dispatch = minimize_site_peak or market_prices_eur_per_mwh is not None
+    if purchase_ceiling_eur is not None:
+        if not minimize_site_peak or market_prices_eur_per_mwh is None:
+            raise ValueError("A purchase ceiling requires prices and a peak objective")
+        if isinstance(purchase_ceiling_eur, bool) or not isinstance(purchase_ceiling_eur, (int, float)) or not math.isfinite(purchase_ceiling_eur):
+            raise ValueError("Supply a finite signed purchase ceiling in EUR")
     if dispatch:
         if investment and any(site["max_new_interfaces"] or site["upgrade_options"] for site in data["sites"]):
             raise ValueError("Dispatch objectives require frozen facilities")
-        if minimize_site_peak and market_prices_eur_per_mwh is not None:
+        if minimize_site_peak and market_prices_eur_per_mwh is not None and purchase_ceiling_eur is None:
             raise ValueError("Specify exactly one dispatch objective")
         if market_prices_eur_per_mwh is not None and (
             len(market_prices_eur_per_mwh) != T or any(
@@ -297,7 +303,7 @@ def solve(data, *, display=False, time_limit=60.0, minimize_site_peak=False, mar
                 integer[a(v, j, t)] = 1
                 row({p(v, j, t): 1.0, a(v, j, t): -vehicle["power_limit_kw"][site["id"]]}, -np.inf, 0.0, "C03")
                 balance[p(v, j, t)] = -vehicle["efficiency"] * data["slot_hours"]
-                if market_prices_eur_per_mwh is not None:
+                if market_prices_eur_per_mwh is not None and not minimize_site_peak:
                     objective[p(v, j, t)] = market_prices_eur_per_mwh[t] * data["slot_hours"] / 1000
                 elif not minimize_site_peak:
                     objective[p(v, j, t)] = data["representative_weight"] * site["price_per_kwh"][t] * data["slot_hours"]
@@ -320,6 +326,12 @@ def solve(data, *, display=False, time_limit=60.0, minimize_site_peak=False, mar
             row(power, -np.inf, site["available_power_kw"][t] * int(site["active"]), "C05")
             if minimize_site_peak:
                 row({**power, peak_index: -1.0}, -np.inf, 0.0, "SITE_PEAK")
+    if purchase_ceiling_eur is not None:
+        # Express both sides in milli-euros to retain small and negative price spreads.
+        coefficients = {p(v, j, t): price * data["slot_hours"] for v in range(V)
+                        for j in range(J) for t, price in enumerate(market_prices_eur_per_mwh)}
+        counts["PURCHASE_CEILING"] = 0
+        row(coefficients, -np.inf, purchase_ceiling_eur * 1000, "PURCHASE_CEILING")
     matrix = coo_matrix((values, (rows, cols)), shape=(len(lb), size)).tocsr()
     result = milp(objective, integrality=integer, bounds=Bounds(lower, upper),
                   constraints=LinearConstraint(matrix, lb, ub),
