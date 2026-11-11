@@ -22,7 +22,7 @@ python studies/fresia-2025/check_milan.py
 
 [任务与设备](configs/port_warehouse_investment.json) · [数学模型](docs/model/FORMULATION.md) · [五档最优配置与费用](results/known_delay_investment_20261111/metrics.json) · [MILP 运行记录](results/known_delay_investment_20261111/reproduction.json) · [论文复算](studies/fresia-2025/)
 
-单独的米兰缩例固定两辆配送车的访问顺序、服务任务和班末电量。在按铭牌限制功率的模型中，返场后允许充电 120、90、60 分钟，成本最低的设备依次为两台交流、一交一直、两台直流；30 分钟时所有组合均不可行。四档各枚举了九种配置。[原文参数、缩模假设与复算命令](studies/fresia-2025/)
+米兰双车缩例固定配送任务、访问顺序和班末电量。按原文图 4 读取的充电曲线，120 和 90 分钟窗口均选一台交流加一台直流，年化设备费 €1,746；60 和 30 分钟均不可行。两小时档对曲线读数敏感，两台交流设备每车仅差约 0.011 kWh 就能达标。仅施加铭牌限制会在两小时档选两台交流，并将一小时档判为可行。[设备枚举、曲线读数与复算命令](studies/fresia-2025/)
 
 真实停车记录单独处理。德国 DT-CARGO 样本中，一辆车的两段相邻行驶记录间隔 20 分 30.765 秒；这只能给出可能充电时长的上界，作业放行、插枪和开始供电时刻仍未知。[数据与单事件复算](results/dt_cargo_stop_20261111/event.json)
 
@@ -42,7 +42,7 @@ The four-hour synthetic case starts with 100 kW at the port and 75 kW at the war
 
 Costs are synthetic units for one operating cycle. At 45 minutes, two port connectors provide eight connector-slots, but the trucks need at least nine. A third port connector resolves this with the existing grid connection. Adding a second connector at the warehouse also works and costs ten units more.
 
-A separate two-van Milan study holds the visits, service and terminal charge fixed. With nameplate power limits, the cheapest build changes from two AC chargers (120 minutes available) to one AC and one DC (90 minutes), then two DC (60 minutes). All nine builds fail at 30 minutes. [Published inputs, reduced-model assumptions and replay](studies/fresia-2025/)
+In the separate two-van Milan study, the SOC-dependent power curves read from Figure 4 select one AC and one DC charger (€1,746/year) for both 120 and 90 minutes of depot charging. No build works at 60 or 30 minutes. At 120 minutes two AC chargers miss the target by only about 0.011 kWh per van, so this choice is sensitive to the plotted curve. Nameplate limits alone select two AC chargers at 120 minutes and permit charging within 60 minutes. [Equipment enumeration, curve inputs and replay](studies/fresia-2025/)
 
 Run the two commands above from the repository root with Python 3. The first checks the frozen-facility comparison without a solver. The second reproduces charger-cost and annual energy calculations using published Milan case tables. A separate [German stop record](results/dt_cargo_stop_20261111/event.json) gives an upper bound of 20 minutes 30.765 seconds between driving records. Actual plug-in and charging times are unknown.
 
