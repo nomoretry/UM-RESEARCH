@@ -1,0 +1,79 @@
+{
+  "input_sha256_lf": {
+    "reduced_milan.json": "5c5c9b6c8f05edb030908f35d688d3663abfa78e04d7960d9fef6674497363e0",
+    "service_slots.csv": "8fc1381db870db3485f96afd9ca8d7584e4c4129f13dea3ab9de1b3dbd657087",
+    "figure4_power.json": "57c3e6c7088a709cbace0f7d9d297916aa5fee3ceefb46587aec13df61749b34"
+  },
+  "scenarios": {
+    "two_hours": {
+      "status": "optimal",
+      "units": {
+        "ac_units": 1,
+        "dc_units": 1
+      },
+      "annual_eur": 1746.0,
+      "bound_eur_per_year": 1746.0,
+      "relative_gap": 0.0,
+      "feasible_facilities": 5,
+      "enumerated_facilities": 9,
+      "annual_cost_minimizers": [
+        {
+          "ac_units": 1,
+          "dc_units": 1
+        }
+      ],
+      "independent_check": "passed",
+      "initial_investment_eur": 18000,
+      "vehicle_1_max_terminal_kwh_dedicated_charger": {
+        "ac_units": 42.289325,
+        "dc_units": 47.0
+      }
+    },
+    "ninety_minutes": {
+      "status": "optimal",
+      "units": {
+        "ac_units": 1,
+        "dc_units": 1
+      },
+      "annual_eur": 1746.0,
+      "bound_eur_per_year": 1746.0,
+      "relative_gap": 0.0,
+      "feasible_facilities": 5,
+      "enumerated_facilities": 9,
+      "annual_cost_minimizers": [
+        {
+          "ac_units": 1,
+          "dc_units": 1
+        }
+      ],
+      "independent_check": "passed",
+      "initial_investment_eur": 18000,
+      "vehicle_1_max_terminal_kwh_dedicated_charger": {
+        "ac_units": 32.720569,
+        "dc_units": 47.0
+      }
+    },
+    "one_hour": {
+      "status": "infeasible",
+      "feasible_facilities": 0,
+      "enumerated_facilities": 9,
+      "annual_cost_minimizers": [],
+      "independent_check": "passed",
+      "vehicle_1_max_terminal_kwh_dedicated_charger": {
+        "ac_units": 23.151191,
+        "dc_units": 35.318161
+      }
+    },
+    "thirty_minutes": {
+      "status": "infeasible",
+      "feasible_facilities": 0,
+      "enumerated_facilities": 9,
+      "annual_cost_minimizers": [],
+      "independent_check": "passed",
+      "vehicle_1_max_terminal_kwh_dedicated_charger": {
+        "ac_units": 13.581191,
+        "dc_units": 14.823226
+      }
+    }
+  }
+}

@@ -47,7 +47,7 @@ def timelines(data):
     return result
 
 
-def solve(data, eligible_slots, routes):
+def solve(data, eligible_slots, routes, curves=None):
     """Keep SOC at every slot boundary; generate connection variables only for idle depot slots."""
     if (len(set(eligible_slots)) != len(eligible_slots)
             or any(type(t) is not int or not 0 <= t < SHIFT_SLOTS for t in eligible_slots)):
@@ -55,6 +55,13 @@ def solve(data, eligible_slots, routes):
     if not all(data["min_kwh"] <= data[key] <= data["max_kwh"]
                for key in ("initial_kwh", "terminal_kwh")):
         raise ValueError("Initial and terminal energy must lie within SOC bounds")
+    if curves is not None:
+        for kind in TYPES:
+            soc, kw = np.array(curves[kind], dtype=float).T
+            if (soc[0] != 0 or soc[-1] != 1 or np.any(np.diff(soc) <= 0)
+                    or np.any(kw < 0) or np.any(kw > data["equipment_grid_kw"][kind])
+                    or np.any(np.diff(np.diff(kw) / np.diff(soc)) > 1e-8)):
+                raise ValueError("Expected concave charging limits over SOC 0 to 1, within the device rating")
     lower, upper, integer, cost = [], [], [], []
 
     def variable(lo, hi, is_integer=False, price=0):
@@ -101,6 +108,12 @@ def solve(data, eligible_slots, routes):
                 for k in TYPES:
                     ix = (v, t, k)
                     constraint([(power[ix], 1), (connects[ix], -equipment[k])], -np.inf, 0)
+                    if curves is not None:
+                        # The minimum of these affine segments is the concave Fig. 4 envelope.
+                        for (s0, p0), (s1, p1) in zip(curves[k], curves[k][1:]):
+                            slope = (p1 - p0) / (s1 - s0)
+                            constraint([(power[ix], 1), (energy[v, t], -slope / data["max_kwh"])],
+                                       -np.inf, p0 - slope * s0)
                     balance.append((power[ix], -data["slot_hours"] * data["efficiency"][k]))
             demand = data["use_kwh_per_slot"][activity]
             constraint(balance, -demand, -demand)
@@ -130,19 +143,25 @@ def solve(data, eligible_slots, routes):
 
 
 def main():
-    from verify_reduced import check_solution, enumerate_facilities
+    from verify_reduced import check_solution, enumerate_facilities, reachable_energy
 
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dispatch", type=Path, help="Write complete schedules and SOC to this local JSON file")
+    parser.add_argument("--power-limit", choices=("nameplate", "figure4"), default="nameplate")
     args = parser.parse_args()
     config = HERE / "reduced_milan.json"
     data = json.loads(config.read_text(encoding="utf-8"))
     routes = timelines(data)
+    inputs = [config.name, "service_slots.csv"]
+    curves = None
+    if args.power_limit == "figure4":
+        inputs.append("figure4_power.json")
+        curves = json.loads((HERE / inputs[-1]).read_text(encoding="utf-8"))["soc_fraction_and_grid_kw"]
     selected, schedules = {}, {}
     for name, slots in data["plug_slots"].items():
-        solution = solve(data, slots, routes)
-        options = enumerate_facilities(data, slots, routes)
-        check_solution(data, slots, routes, solution, options)
+        solution = solve(data, slots, routes, curves)
+        options = enumerate_facilities(data, slots, routes, curves)
+        check_solution(data, slots, routes, solution, options, curves)
         schedules[name] = solution
         feasible = [r for r in options if r["feasible"]]
         selected[name] = {
@@ -158,10 +177,15 @@ def main():
             selected[name]["initial_investment_eur"] = sum(
                 solution["units"][k] * CHARGERS[k][0] for k in TYPES
             )
+        if curves is not None:
+            selected[name]["vehicle_1_max_terminal_kwh_dedicated_charger"] = {
+                k: round(reachable_energy(data, routes["1"], dict.fromkeys(slots, k), curves)[1], 6)
+                for k in TYPES
+            }
     if args.dispatch:
         args.dispatch.write_text(json.dumps(schedules, indent=2) + "\n", encoding="utf-8")
     hashes = {name: hashlib.sha256((HERE / name).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
-              for name in ("reduced_milan.json", "service_slots.csv")}
+              for name in inputs}
     print(json.dumps({"input_sha256_lf": hashes, "scenarios": selected}, indent=2))
 
 

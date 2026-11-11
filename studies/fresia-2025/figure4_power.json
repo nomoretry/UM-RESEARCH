@@ -1,0 +1,11 @@
+{
+  "source": "Fresia et al. (2025), Fig. 4 on printed page 10. Vertices read visually from the published plot. SOC is the fraction at the beginning of each 30-minute slot, and power is grid-side kW. The authors' numerical curve file is unavailable.",
+  "doi": "https://doi.org/10.1016/j.segan.2025.101898",
+  "repository_copy": "https://unige.iris.cineca.it/bitstream/11567/1267887/1/Optimal%20allocation%20and%20sizing%20of%20electric%20vehicle%20charging%20infrastructure%20for%20green%20last-mile%20logistics.pdf",
+  "reading_resolution": "Rounded breakpoints at whole percentage points of SOC and whole kW. The 9% AC sensitivity in the test shifts only the first nonzero knot of the 10% drawing.",
+  "published_pdf_sha256": "93f9d78ac8b80d4cc975fadd50d1a28b34ba63165aeffc7160626ceb5e41d867",
+  "soc_fraction_and_grid_kw": {
+    "ac_units": [[0.00, 0], [0.10, 22], [0.85, 22], [1.00, 0]],
+    "dc_units": [[0.00, 0], [0.20, 50], [0.80, 35], [1.00, 0]]
+  }
+}
