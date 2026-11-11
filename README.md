@@ -22,6 +22,8 @@ python studies/fresia-2025/check_milan.py
 
 [任务与设备](configs/port_warehouse_investment.json) · [数学模型](docs/model/FORMULATION.md) · [五档最优配置与费用](results/known_delay_investment_20261111/metrics.json) · [MILP 运行记录](results/known_delay_investment_20261111/reproduction.json) · [论文复算](studies/fresia-2025/)
 
+单独的米兰缩例固定两辆配送车的访问顺序、服务任务和班末电量。在按铭牌限制功率的模型中，返场后允许充电 120、90、60 分钟，成本最低的设备依次为两台交流、一交一直、两台直流；30 分钟时所有组合均不可行。四档各枚举了九种配置。[原文参数、缩模假设与复算命令](studies/fresia-2025/)
+
 真实停车记录单独处理。德国 DT-CARGO 样本中，一辆车的两段相邻行驶记录间隔 20 分 30.765 秒；这只能给出可能充电时长的上界，作业放行、插枪和开始供电时刻仍未知。[数据与单事件复算](results/dt_cargo_stop_20261111/event.json)
 
 在固定设施和运输服务下，下一步计划比较到站即充、削峰和按日前价格购电三种策略。价格序列、接入容量和真实可插枪时段的来源将分别记录。
@@ -39,6 +41,8 @@ The four-hour synthetic case starts with 100 kW at the port and 75 kW at the war
 | 60 | 3 / 1 | Port +50 kW | 75 | 208.33 |
 
 Costs are synthetic units for one operating cycle. At 45 minutes, two port connectors provide eight connector-slots, but the trucks need at least nine. A third port connector resolves this with the existing grid connection. Adding a second connector at the warehouse also works and costs ten units more.
+
+A separate two-van Milan study holds the visits, service and terminal charge fixed. With nameplate power limits, the cheapest build changes from two AC chargers (120 minutes available) to one AC and one DC (90 minutes), then two DC (60 minutes). All nine builds fail at 30 minutes. [Published inputs, reduced-model assumptions and replay](studies/fresia-2025/)
 
 Run the two commands above from the repository root with Python 3. The first checks the frozen-facility comparison without a solver. The second reproduces charger-cost and annual energy calculations using published Milan case tables. A separate [German stop record](results/dt_cargo_stop_20261111/event.json) gives an upper bound of 20 minutes 30.765 seconds between driving records. Actual plug-in and charging times are unknown.
 
