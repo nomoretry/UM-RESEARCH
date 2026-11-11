@@ -1,0 +1,63 @@
+{
+  "source_commit": "f9b8ab49d39a94eacb030f83d0d1ca33d2fdd73c",
+  "source_dirty": false,
+  "input_sha256": {
+    "configs/eligibility_stress.json": "c20181ea6af26376ef1a95693aa4ac49061c5ac18ccfbe39b4988a19c96f3c3a",
+    "configs/port_warehouse_investment.json": "0d0f0011c245cf19f0b38aa42a5d949acef56bd58a093f307e877f292352245b",
+    "results/boundary_20261110/metrics.json": "18b7aa8a3c32f48590f5dd25dd390ca9ab768b3cb4186f3dada79c89781f38f0",
+    "results/eligibility_stress_20261111/metrics.json": "de6fd5ba90d08843c9c513bbda57fc517f92d83fd850ecc07ad4165100cac141"
+  },
+  "python": "3.12.14",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "solver": "scipy.optimize.milp / HiGHS",
+  "time_limit_seconds": 60,
+  "requested_mip_rel_gap": 0,
+  "seed": null,
+  "sampling": "deterministic finite grid",
+  "new_joint_solves": 4,
+  "new_operating_solves": 208,
+  "reused_operating_results": 62,
+  "formal_source": "f9b8ab49d39a94eacb030f83d0d1ca33d2fdd73c",
+  "tests_passed": 245,
+  "hardware_cases": 270,
+  "hardware_feasible": 150,
+  "hardware_infeasible": 120,
+  "formerly_solved_and_newly_checked": {
+    "joint": 1,
+    "operating": 62,
+    "feasible_checked": 42,
+    "checks": 19533,
+    "max_residual": 5.684341886080802e-14,
+    "max_gap": 2.1316282072803005e-16
+  },
+  "new_solves_and_checks": {
+    "joint": 4,
+    "operating": 208,
+    "feasible_checked": 113,
+    "checks": 52557,
+    "max_residual": 1.2631870857957337e-13,
+    "max_gap": 2.7284841053187845e-16
+  },
+  "all_270_hardware_statuses_match_slot_and_capacity_conditions": true,
+  "joint_and_enumeration_match_each_delay": true,
+  "optimal_hardware_counts": [
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "zero_delay_history": "a520cac2ea26dd237d4c6cccd32c0518cb8247f7",
+  "fixed_history": "b3728397e80830cd4a23f1a42e7d382eb8bed0e0",
+  "local_replay_of_fixed": "703796366eceb03443827abd130561d373fc92cb",
+  "config": "configs/eligibility_stress.json",
+  "check": "Reintegrated continuous energy, connector/power and cost checks from each raw primal. Infeasible rows have no primal. Compared independently derived hardware feasibility for each tuple.",
+  "scope": "One synthetic cycle, known delay at planning, identical physical tasks and investment menu.",
+  "local_evidence_commit": "44d687618cbeff1f6823c2ae19bc42d61a527b75",
+  "run_id": "20261111_known_delay_investment",
+  "evidence_index_sha256": "1ac9b9b955db00120cf56c3e0a173a960aef75849c4cd9f5410c8712c1abcd6c",
+  "tests_junit_sha256": "4d4a1543049ecabdc3747d143cd1b16679c8800a12e431328b4bbcf431a2600e",
+  "output": "Fresh directory in the existing no-remote records Git; metrics.json plus delay_45/selected_dispatch.json.",
+  "entry_module": "um_charging.eligibility_investment"
+}

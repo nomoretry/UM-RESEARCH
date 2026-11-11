@@ -1,0 +1,14 @@
+{
+  "schema_version": "power-window-study-v1",
+  "base_config": "configs/port_warehouse_investment.json",
+  "fixed_regression_config": "configs/minimal_three_trucks.json",
+  "slot_minutes": 15,
+  "port_available_power_kw": [50, 75, 100, 125, 150],
+  "warehouse_window_minutes": [0, 15, 30, 45, 60],
+  "warehouse_window_start_minute": 60,
+  "charging_scopes": ["port_only", "two_sites"],
+  "connector_policies": ["slot_boundary_switching", "fixed_dwell_connection"],
+  "cost_basis": "synthetic_cycle_equivalent",
+  "changeover_minutes": 0,
+  "changeover_energy_kwh": 0
+}

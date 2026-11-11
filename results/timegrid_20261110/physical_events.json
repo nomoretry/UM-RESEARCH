@@ -1,0 +1,137 @@
+{
+  "passed": true,
+  "errors": [],
+  "physical_events": {
+    "V1": [
+      {
+        "start_minute": 0.0,
+        "end_minute": 60.0,
+        "from": "PORT",
+        "to": "WAREHOUSE",
+        "activity": "drive",
+        "drive_energy_kwh": 20.0,
+        "charging_site": null,
+        "plug_allowed": false
+      },
+      {
+        "start_minute": 60.0,
+        "end_minute": 120.0,
+        "from": "WAREHOUSE",
+        "to": "WAREHOUSE",
+        "activity": "dwell",
+        "drive_energy_kwh": 0.0,
+        "charging_site": "WAREHOUSE",
+        "plug_allowed": true
+      },
+      {
+        "start_minute": 120.0,
+        "end_minute": 180.0,
+        "from": "WAREHOUSE",
+        "to": "PORT",
+        "activity": "drive",
+        "drive_energy_kwh": 20.0,
+        "charging_site": null,
+        "plug_allowed": false
+      },
+      {
+        "start_minute": 180.0,
+        "end_minute": 240.0,
+        "from": "PORT",
+        "to": "PORT",
+        "activity": "dwell",
+        "drive_energy_kwh": 0.0,
+        "charging_site": "PORT",
+        "plug_allowed": true
+      }
+    ],
+    "V2": [
+      {
+        "start_minute": 0.0,
+        "end_minute": 60.0,
+        "from": "PORT",
+        "to": "WAREHOUSE",
+        "activity": "drive",
+        "drive_energy_kwh": 20.0,
+        "charging_site": null,
+        "plug_allowed": false
+      },
+      {
+        "start_minute": 60.0,
+        "end_minute": 120.0,
+        "from": "WAREHOUSE",
+        "to": "WAREHOUSE",
+        "activity": "dwell",
+        "drive_energy_kwh": 0.0,
+        "charging_site": "WAREHOUSE",
+        "plug_allowed": true
+      },
+      {
+        "start_minute": 120.0,
+        "end_minute": 180.0,
+        "from": "WAREHOUSE",
+        "to": "PORT",
+        "activity": "drive",
+        "drive_energy_kwh": 20.0,
+        "charging_site": null,
+        "plug_allowed": false
+      },
+      {
+        "start_minute": 180.0,
+        "end_minute": 240.0,
+        "from": "PORT",
+        "to": "PORT",
+        "activity": "dwell",
+        "drive_energy_kwh": 0.0,
+        "charging_site": "PORT",
+        "plug_allowed": true
+      }
+    ],
+    "V3": [
+      {
+        "start_minute": 0.0,
+        "end_minute": 60.0,
+        "from": "PORT",
+        "to": "WAREHOUSE",
+        "activity": "drive",
+        "drive_energy_kwh": 20.0,
+        "charging_site": null,
+        "plug_allowed": false
+      },
+      {
+        "start_minute": 60.0,
+        "end_minute": 120.0,
+        "from": "WAREHOUSE",
+        "to": "WAREHOUSE",
+        "activity": "dwell",
+        "drive_energy_kwh": 0.0,
+        "charging_site": "WAREHOUSE",
+        "plug_allowed": true
+      },
+      {
+        "start_minute": 120.0,
+        "end_minute": 180.0,
+        "from": "WAREHOUSE",
+        "to": "PORT",
+        "activity": "drive",
+        "drive_energy_kwh": 20.0,
+        "charging_site": null,
+        "plug_allowed": false
+      },
+      {
+        "start_minute": 180.0,
+        "end_minute": 240.0,
+        "from": "PORT",
+        "to": "PORT",
+        "activity": "dwell",
+        "drive_energy_kwh": 0.0,
+        "charging_site": "PORT",
+        "plug_allowed": true
+      }
+    ]
+  },
+  "total_duration_hours": 4.0,
+  "vehicle_count": 3,
+  "real_site_count": 2,
+  "energy_total_kwh": 120.0,
+  "method": "Collapse journeys at real-site arrivals and dwell at actual eligibility boundaries, then compare with base events; independently check static equipment, costs and time profiles."
+}

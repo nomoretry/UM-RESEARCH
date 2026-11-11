@@ -1,0 +1,5 @@
+{
+  "matplotlib": "3.11.2",
+  "numpy": "2.5.4",
+  "scope": "Separate plotting environment; input from curated actual results and audited task windows"
+}

@@ -1,0 +1,147 @@
+{
+  "source_commit": "1c4df03c6a6943ce221e09e05a2bce538de304a7",
+  "source_dirty": false,
+  "source_sha256": {
+    "src/um_charging/__init__.py": "e46e776694ace5243d7c2ad3f55ff875bab63c16bf820158ee7039a7e9882561",
+    "src/um_charging/__main__.py": "1e59e783fd9e565a785e94ca703a2c5ffe75c927178366cf64e27f1fc0c5f0dc",
+    "src/um_charging/investment_cli.py": "8956c794bc36976d3165c80667c5040ac2f02c339163fd34c8bf11a622651342",
+    "src/um_charging/investment_experiment.py": "af1dc9a8d16f49f1b7558d476a4f6ad6c1e0c2141c11c83d5e407c469648f48d",
+    "src/um_charging/model.py": "f152e3aa43d73bc61c8ca00f8526fe64878a21e21e11ced9b96a99798b3de2ae",
+    "src/um_charging/timegrid.py": "c5fde485e5246a4cc5c88fe1370910cf51c12da34c0a992cd915602c2b2ba15e",
+    "src/um_charging/timegrid_cli.py": "545134d519dbde0572dcf3e94827cbda063b04373ad5e9578523690cc4cdabf1",
+    "src/um_charging/validation.py": "fd9d597a39f051a40b3f7125687dbbd84071938eac24d7cb84fa6c441ffd697b"
+  },
+  "config_sha256": {
+    "configs/timegrid_study.json": "29901828d4d1a9c5cc00afc468aa33c72fd5a0057e71d0825ded1c103703d3ed",
+    "configs/port_warehouse_investment.json": "0d0f0011c245cf19f0b38aa42a5d949acef56bd58a093f307e877f292352245b",
+    "configs/minimal_three_trucks.json": "c6c4ed09bf6e16aa5dda0319797d797f85e2e10698b0ad586572e1ebd2d372c4"
+  },
+  "historical_reference": {
+    "path": "results/investment_20261110/metrics.json",
+    "sha256": "76697177e81d5a6bd22e4a0a077226d003b9bd832f5cafaea851a1884d5a49ce",
+    "role": "Prior formal investment results; compared only to the new 60-minute runs"
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "pytest": "9.1.1"
+  },
+  "solver": {
+    "name": "HiGHS through scipy.optimize.milp",
+    "version": "1.12.0",
+    "version_evidence": "Captured solver banner",
+    "time_limit_seconds": 60.0,
+    "mip_rel_gap": 0.0,
+    "git_hash": "4f96ee8"
+  },
+  "seed": null,
+  "seed_reason": "Deterministic physical subdivision and exhaustive finite hardware enumeration",
+  "study": {
+    "schema_version": "timegrid-study-v1",
+    "base_config": "configs/port_warehouse_investment.json",
+    "fixed_regression_config": "configs/minimal_three_trucks.json",
+    "slot_minutes": [
+      60,
+      30,
+      15
+    ],
+    "connector_policies": [
+      "slot_boundary_switching",
+      "fixed_dwell_connection"
+    ],
+    "changeover_minutes": 0,
+    "changeover_energy_kwh": 0,
+    "drive_energy_interpolation": "uniform_within_original_journey",
+    "cost_basis": "synthetic_cycle_equivalent",
+    "scope": "Same port transport service and site capacity constraints; time discretization and connection-policy diagnosis only. No additional parking windows or next-round power-window sweep."
+  },
+  "research_status": "Project model adaptation of Ye 2024 framework; not paper equation or numerical reproduction",
+  "runs": {
+    "tests": {
+      "run_id": "20261110_timegrid_tests",
+      "exit_code": 0,
+      "elapsed_seconds": 34.2758931999997,
+      "stdout_sha256": "417cfb365fa9627f3daaf397edfae2f43c98b8f15c8a3c0c847c889508660714",
+      "registration_sha256": "e75ea44d348d8843d7ce6ef581b03cf40e159be4ea20d0e21c982f0697ecd06a",
+      "tests": 149,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "junit_sha256": "0a1ac70932da4934bdce2ae759c04f32693563ba79cca088b042fb4b235a313e"
+    },
+    "suite": {
+      "run_id": "20261110_timegrid_suite",
+      "exit_code": 0,
+      "elapsed_seconds": 65.22923490000039,
+      "stdout_sha256": "471c848c2af79848e549ac25c0f8f4653b953e1d7e4397ac9d5538bfceeba6c3",
+      "registration_sha256": "0113e0d9821b34c51824d00e20fc4a13c089f53eb8f2ab0ae530117833c3bc8d",
+      "runtime_manifest_sha256": "9e0f8faf2a926d798e2a95452be3b90834186488de7234c5b0126584cc00f067"
+    }
+  },
+  "local_evidence": {
+    "archive_commit": "d6b378e58440573697924a8ea4f431f801108164",
+    "archived_file_count": 2940,
+    "all_git_blob_hashes_match": true,
+    "remotes": [],
+    "artifact_index_sha256": {
+      "conversations/0001_records/runs/20261110_timegrid_tests_evidence/artifact_index.json": "02cb007a474af0b45a1d34881bf843be03f76385eb3395a2b6df6a12e980c45d",
+      "conversations/0001_records/runs/20261110_timegrid_suite_evidence/artifact_index.json": "5a32d43430659d1296f2b3e03b9824e7cbde18425d5533b6b440d929c1ebb1f6",
+      "conversations/0001_records/runs/20261110_timegrid_development_evidence/artifact_index.json": "e25be7685ba21ec6cd7c67ffbec76b8bb40b16e79b08993ed64c110d5c4d09db"
+    }
+  },
+  "portable_commands": [
+    {
+      "environment": {
+        "PYTHONPATH": "<repo>/src"
+      },
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "um_charging.timegrid_cli",
+        "--config",
+        "configs/timegrid_study.json",
+        "--output",
+        "<existing-local-git>/<new-evidence-directory>/artifacts"
+      ]
+    },
+    {
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_fixed_facility.py",
+        "tests/test_cli_paths.py",
+        "tests/test_investment_input.py",
+        "tests/test_investment.py",
+        "tests/test_timegrid_model.py",
+        "tests/test_timegrid.py",
+        "--junitxml",
+        "<existing-local-git>/<new-test-evidence>/junit.xml",
+        "--basetemp",
+        "<system-temp>/<new-test-fixture>"
+      ]
+    },
+    {
+      "argv": [
+        "python",
+        "scripts/plot_timegrid.py",
+        "--metrics",
+        "results/timegrid_20261110/metrics.json",
+        "--output-dir",
+        "<plot-output>"
+      ],
+      "environment_note": "Separate plotting environment: matplotlib 3.11.2, numpy 2.5.4; solver environment unchanged"
+    }
+  ]
+}

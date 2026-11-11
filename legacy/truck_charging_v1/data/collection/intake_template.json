@@ -1,0 +1,20 @@
+{
+  "template_type": "collection_not_model_input",
+  "status": "unfilled",
+  "region_design": ["广州", "东莞", "深圳"],
+  "note": "这是新设计的采集清单，不是对外部数据字段的猜测。空表表示尚未取得核实记录；不允许自动补充经纬度、里程、OD、车次或成本。该文件不能直接输入求解器。",
+  "source_register": [],
+  "logistics_facilities": [],
+  "verified_road_connections": [],
+  "site_access_evidence": [],
+  "authorized_transport_tasks": [],
+  "vehicle_parameter_evidence": [],
+  "cost_parameter_evidence": [],
+  "unresolved_items": [
+    "现有stations_public.parquet为403错误网页，需取得有效原始文件或来源地址。",
+    "物流节点及真实出入口尚未核实。",
+    "路段里程、时间和重卡通行条件尚未采集。",
+    "没有已确认的三城真实重卡OD和充电运营记录。",
+    "车辆和建设成本参数需结合目标业务核实。"
+  ]
+}

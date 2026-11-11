@@ -1,0 +1,46 @@
+{
+  "original_verifier": {
+    "verified": true,
+    "vehicles": 53,
+    "tracks": 101826,
+    "cycles": 7073,
+    "quality_eligible_cycles": 3520,
+    "profile_cycles": 2546,
+    "profile_energy_kwh": 76749.89684203
+  },
+  "original_manifest_entries_checked": 64,
+  "restored_csv_count": 16,
+  "independent_summary": {
+    "raw_vehicles": 53,
+    "fleets": 4,
+    "raw_tracks": 101826,
+    "observed_vehicle_days": 6869,
+    "stored_cycles": 7073,
+    "quality_eligible_cycles": 3520,
+    "profile_cycles": 2546,
+    "profile_vehicles": 49,
+    "quality_eligible_grid_energy_kwh": 544819.82273679,
+    "profile_grid_energy_kwh": 76749.89684203,
+    "profile_energy_coverage": 0.1408720711674783,
+    "raw_load_profile_rows": 35136,
+    "raw_load_profile_complete": true,
+    "scope": "Recount and consistency validation of stored data; no data reconstruction, SOC optimization or power flow"
+  },
+  "solver": null,
+  "objective": null,
+  "bound": null,
+  "gap": null,
+  "run_id": "20261104_dataset_snapshot_canonical",
+  "dataset_source_commit": "bc892a70457721b4253066ac07d397287e6a0d0a",
+  "runner_source_commit": "4d3f3a045cc02ddde35acd69249ff08f78270861",
+  "status": "canonical reproduction passed in the declared dependency range",
+  "exit_code": 0,
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "executable": "C:\\Users\\27788\\OneDrive\\文档\\ChatGPT\\UM\\UM-RESEARCH-runs-local\\.venv-dataset\\Scripts\\python.exe",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "optimize": 0
+  }
+}

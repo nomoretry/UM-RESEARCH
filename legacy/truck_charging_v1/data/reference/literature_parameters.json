@@ -1,0 +1,139 @@
+{
+  "reference_only_not_model_inputs": true,
+  "purpose": "可追溯的文献学习参考。以下数值不自动导入模拟算例，不代表广东2026年重卡车型标准、充电设备标准或实测运营数据。",
+  "review_date": "2026-09-10",
+  "review_method": "只读核查用户提供的17页PDF全文及相关原文页面；未联网核验被引文献或当代车型参数。PDF页码从1开始。",
+  "paper_title": "Behavior-Driven Planning of Electric Truck Charging Infrastructure for Intercity Operations",
+  "paper_doi": "10.1109/TITS.2024.3375458",
+  "sourcefile": "C:/Users/27788/Desktop/UM/reserach/truck optimaztion/Behavior-Driven_Planning_of_Electric_Truck_Charging_Infrastructure_for_Intercity_Operations.pdf",
+  "parameters": [
+    {
+      "parameter": "单位行驶里程耗电量",
+      "sourcefile": "C:/Users/27788/Desktop/UM/reserach/truck optimaztion/Behavior-Driven_Planning_of_Electric_Truck_Charging_Infrastructure_for_Intercity_Operations.pdf",
+      "DOI": "10.1109/TITS.2024.3375458",
+      "pdfpage": 8,
+      "printedpage": 12056,
+      "section": "III.D",
+      "value": 1.125,
+      "unit": "kWh/km",
+      "nature": "作者引用文献[4]并采用的线性耗电简化：耗电量与距离近似成正比。",
+      "limitations": "不是本研究GPS样本直接测得的能耗，不是广东2026年重卡标准值。PDF15/12063明确指出忽略驾驶行为、车辆特征、运营和环境条件等能耗影响；被引文献[4]未在本次任务中独立核查。",
+      "validation_status": "verified_in_supplied_pdf_only"
+    },
+    {
+      "parameter": "电池容量示例",
+      "sourcefile": "C:/Users/27788/Desktop/UM/reserach/truck optimaztion/Behavior-Driven_Planning_of_Electric_Truck_Charging_Infrastructure_for_Intercity_Operations.pdf",
+      "DOI": "10.1109/TITS.2024.3375458",
+      "pdfpage": 10,
+      "printedpage": 12058,
+      "section": "IV.B.1",
+      "value": 282,
+      "unit": "kWh",
+      "nature": "作者引用文献[4]用于技术需求分析的容量参考值。",
+      "limitations": "未给出该值在轻、中、重型货车之间的分别适用范围，也不能据此确定可用电量、安全余量或广东2026年具体车型。",
+      "validation_status": "verified_in_supplied_pdf_only"
+    },
+    {
+      "parameter": "充电功率背景参考值",
+      "sourcefile": "C:/Users/27788/Desktop/UM/reserach/truck optimaztion/Behavior-Driven_Planning_of_Electric_Truck_Charging_Infrastructure_for_Intercity_Operations.pdf",
+      "DOI": "10.1109/TITS.2024.3375458",
+      "pdfpage": 12,
+      "printedpage": 12060,
+      "section": "IV.B.2",
+      "value": 120,
+      "unit": "kW",
+      "nature": "作者在论文写作背景下描述的常见充电功率，并用其说明282kWh电池理论充满需超过2小时。",
+      "limitations": "不是强制采用的规划设备规格或2026年中国市场统计。本段没有单独提供支持120kW市场占比的来源；铭牌功率不能等同全充电过程恒定有效功率。",
+      "validation_status": "verified_author_statement_not_current_market_fact"
+    },
+    {
+      "parameter": "基于示例容量与能耗的近似续航",
+      "sourcefile": "C:/Users/27788/Desktop/UM/reserach/truck optimaztion/Behavior-Driven_Planning_of_Electric_Truck_Charging_Infrastructure_for_Intercity_Operations.pdf",
+      "DOI": "10.1109/TITS.2024.3375458",
+      "pdfpage": 10,
+      "printedpage": 12058,
+      "section": "IV.B.1",
+      "value": 250,
+      "unit": "km",
+      "nature": "原文近似数值；282除以1.125约等于250.67km。",
+      "limitations": "这一近似没有额外扣除安全余量、环境影响或充电效率；不能直接用于承诺实际车辆续航。PDF13/12061据此筛选行程距离大于250km的7000条城际运输记录。",
+      "validation_status": "verified_rounded_illustration_in_supplied_pdf"
+    },
+    {
+      "parameter": "被视为潜在充电机会的停留时长阈值",
+      "sourcefile": "C:/Users/27788/Desktop/UM/reserach/truck optimaztion/Behavior-Driven_Planning_of_Electric_Truck_Charging_Infrastructure_for_Intercity_Operations.pdf",
+      "DOI": "10.1109/TITS.2024.3375458",
+      "pdfpage": 11,
+      "printedpage": 12059,
+      "section": "IV.B.1",
+      "value": 30,
+      "unit": "minute",
+      "comparison": "strictly_greater_than",
+      "nature": "作者参考文献[39]，将持续超过30分钟的停留视为具有充电机会的停留。",
+      "limitations": "不是实测充电时长，不意味着所有停车点都有充电设施，也不意味着每次充电恰好30分钟。不能和55分钟的行程终点识别阈值混为一谈。",
+      "validation_status": "verified_behavioral_assumption_in_supplied_pdf"
+    },
+    {
+      "parameter": "行程终点识别所用停留阈值",
+      "sourcefile": "C:/Users/27788/Desktop/UM/reserach/truck optimaztion/Behavior-Driven_Planning_of_Electric_Truck_Charging_Infrastructure_for_Intercity_Operations.pdf",
+      "DOI": "10.1109/TITS.2024.3375458",
+      "pdfpage": 7,
+      "printedpage": 12055,
+      "section": "III.C.2",
+      "value": 55,
+      "unit": "minute",
+      "nature": "作者利用带真实行程信息的小样本选取的GPS行程终点识别阈值。",
+      "limitations": "仅属于该文GPS分段方法，不是车辆必须停留或充电的时间约束。PDF8/12056还加入大于115度航向变化和GIS修正；不能仅凭55分钟复现完整算法。",
+      "validation_status": "verified_identification_threshold_not_charging_input"
+    },
+    {
+      "parameter": "每次研究行程出发前充满电",
+      "sourcefile": "C:/Users/27788/Desktop/UM/reserach/truck optimaztion/Behavior-Driven_Planning_of_Electric_Truck_Charging_Infrastructure_for_Intercity_Operations.pdf",
+      "DOI": "10.1109/TITS.2024.3375458",
+      "pdfpage": 8,
+      "printedpage": 12056,
+      "section": "III.D",
+      "value": true,
+      "unit": "assumption",
+      "nature": "作者基于城市充电设施充足的假设，设所有电动货车出发前已充满电；PDF9/12057式(12)将起终点的设施变量设为1。",
+      "limitations": "是模型边界而非观测事实。本项目若研究同一车辆连续任务，必须传递电量、位置并计入补能时间，不能自动对每个任务重置满电。",
+      "validation_status": "verified_model_assumption_in_supplied_pdf"
+    },
+    {
+      "parameter": "半小时补入282kWh的理论平均功率",
+      "sourcefile": "C:/Users/27788/Desktop/UM/reserach/truck optimaztion/Behavior-Driven_Planning_of_Electric_Truck_Charging_Infrastructure_for_Intercity_Operations.pdf",
+      "DOI": "10.1109/TITS.2024.3375458",
+      "pdfpage": 12,
+      "printedpage": 12060,
+      "section": "IV.B.2",
+      "value": 564,
+      "unit": "kW",
+      "nature": "282kWh除以0.5小时得到的理论平均补能功率。正文写564kW，摘要建议超过564kW。",
+      "limitations": "不是设备测试结论；实际所需电网功率和充电时间还受初始电量、效率、车辆受电能力、功率曲线等因素影响。不得当成全部车型的强制建设标准。",
+      "validation_status": "verified_theoretical_calculation_not_equipment_standard"
+    }
+  ],
+  "raw_gps_availability": {
+    "sourcefile": "C:/Users/27788/Desktop/UM/reserach/truck optimaztion/Behavior-Driven_Planning_of_Electric_Truck_Charging_Infrastructure_for_Intercity_Operations.pdf",
+    "DOI": "10.1109/TITS.2024.3375458",
+    "pdfpage": 3,
+    "printedpage": 12051,
+    "stated_source": "作者从中国公路物流互联网信息平台OFEX获得司机手机GPS及平台交易行程数据。",
+    "reported_gps_sample": {
+      "reported_truck_count": 978,
+      "reported_gps_record_count_approximate": 1100000,
+      "period_start": "2017-12-16",
+      "period_end": "2018-02-08",
+      "regions": ["云南", "贵州", "四川", "重庆"]
+    },
+    "public_download_url_in_supplied_pdf": null,
+    "open_license_in_supplied_pdf": null,
+    "validation_status": "no_raw_gps_release_or_access_statement_found_in_supplied_pdf",
+    "limitations": "仅确认所提供PDF全文未给出原始GPS公开下载地址或授权声明，不能据此推断作者绝不会提供数据。数据不是广东2026年电动重卡运营记录；PDF15/12063明确其为非电动货车行为数据。PDF3称978辆heavy trucks，而结果部分又区分轻、中、重型货车，分类口径说明不完整。"
+  },
+  "warnings": [
+    "PDF12/12060正文称约80%的停留超过30分钟，但PDF14/12062结论使用80%位于30分钟范围内的表述，存在口径/文字不一致。未据此构造停留时间分布。",
+    "PDF12/12060报告K-S检验p=0.011小于0.05后仍称支持beta分布，该解释与通常的拟合优度检验拒绝规则不符；未复制其beta分布作为本项目需求生成依据。",
+    "本文件只保存文献参考及适用边界；模拟验证数据仍使用单独声明的测试参数。"
+  ]
+}

@@ -1,0 +1,237 @@
+{
+  "completion": {
+    "completed": true,
+    "passed": true,
+    "boundary_scenarios": 100,
+    "enumerated_combinations": 3150,
+    "task_audits": 100,
+    "property_comparisons": 310,
+    "original_regressions": 6,
+    "historical_overlap_comparisons": 4
+  },
+  "tests": {
+    "tests": 222,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "independent_audit": {
+    "feasible_solutions_checked": 1048,
+    "checks": 497502,
+    "max_violation_by_constraint": {
+      "C01": 1.1102230246251565e-15,
+      "C02": 3.552713678800501e-15,
+      "C03": 2.5263741715914674e-13,
+      "C04": 3.774758283725532e-15,
+      "C05": 7.105427357601002e-14,
+      "C06": 5.684341886080802e-14,
+      "C07": 5.684341886080802e-14,
+      "OBJECTIVE": 2.842170943040401e-14,
+      "C08": 0.0
+    },
+    "all_passed": true
+  },
+  "joint_status_counts": {
+    "infeasible": 12,
+    "optimal": 88
+  },
+  "enumeration_optimal": 957,
+  "enumeration_infeasible": 2193,
+  "pair_outcomes": {
+    "both_infeasible": 2,
+    "cooperation_enables_service": 8,
+    "equal_total_cost": 17,
+    "lower_total_cost": 23
+  },
+  "maximum_joint_gap": 3.577557830400504e-16,
+  "tied_optimal_scenarios": [
+    {
+      "connector_policy": "fixed_dwell_connection",
+      "port_available_power_kw": 50,
+      "warehouse_window_minutes": 30,
+      "charging_scope": "two_sites",
+      "enumeration_best_hardware": [
+        [
+          {
+            "site_id": "PORT",
+            "new_interfaces": 2,
+            "upgrade_id": "port_plus_50"
+          },
+          {
+            "site_id": "WAREHOUSE",
+            "new_interfaces": 1,
+            "upgrade_id": null
+          }
+        ],
+        [
+          {
+            "site_id": "PORT",
+            "new_interfaces": 2,
+            "upgrade_id": "port_plus_75"
+          },
+          {
+            "site_id": "WAREHOUSE",
+            "new_interfaces": 0,
+            "upgrade_id": null
+          }
+        ]
+      ]
+    },
+    {
+      "connector_policy": "fixed_dwell_connection",
+      "port_available_power_kw": 50,
+      "warehouse_window_minutes": 45,
+      "charging_scope": "two_sites",
+      "enumeration_best_hardware": [
+        [
+          {
+            "site_id": "PORT",
+            "new_interfaces": 2,
+            "upgrade_id": "port_plus_50"
+          },
+          {
+            "site_id": "WAREHOUSE",
+            "new_interfaces": 1,
+            "upgrade_id": null
+          }
+        ],
+        [
+          {
+            "site_id": "PORT",
+            "new_interfaces": 2,
+            "upgrade_id": "port_plus_75"
+          },
+          {
+            "site_id": "WAREHOUSE",
+            "new_interfaces": 0,
+            "upgrade_id": null
+          }
+        ]
+      ]
+    },
+    {
+      "connector_policy": "fixed_dwell_connection",
+      "port_available_power_kw": 50,
+      "warehouse_window_minutes": 60,
+      "charging_scope": "two_sites",
+      "enumeration_best_hardware": [
+        [
+          {
+            "site_id": "PORT",
+            "new_interfaces": 2,
+            "upgrade_id": "port_plus_50"
+          },
+          {
+            "site_id": "WAREHOUSE",
+            "new_interfaces": 1,
+            "upgrade_id": null
+          }
+        ],
+        [
+          {
+            "site_id": "PORT",
+            "new_interfaces": 2,
+            "upgrade_id": "port_plus_75"
+          },
+          {
+            "site_id": "WAREHOUSE",
+            "new_interfaces": 0,
+            "upgrade_id": null
+          }
+        ]
+      ]
+    }
+  ],
+  "properties": {
+    "passed": true,
+    "errors": [],
+    "checks": 310,
+    "property_counts": {
+      "port_window_invariance": 40,
+      "zero_window_scope_equivalence": 10,
+      "power_monotonicity": 80,
+      "window_monotonicity": 80,
+      "scope_dominance": 50,
+      "switching_dominance": 50
+    },
+    "tolerance": 1e-07,
+    "matrix_complete": true,
+    "scope_note": "Declared common-arrival window experiment; not a general monotonicity claim for heterogeneous fixed-dwell windows."
+  },
+  "original_regressions": [
+    {
+      "scenario": "base",
+      "status": "optimal",
+      "objective": 300.0,
+      "dual_bound": 300.00000000000006,
+      "mip_gap": 0.0,
+      "validation_passed": true,
+      "checks": 125,
+      "matches_analytic_regression": true
+    },
+    {
+      "scenario": "interface_bottleneck",
+      "status": "infeasible",
+      "objective": null,
+      "dual_bound": null,
+      "mip_gap": null,
+      "validation_passed": null,
+      "checks": null,
+      "matches_analytic_regression": true
+    },
+    {
+      "scenario": "power_bottleneck",
+      "status": "infeasible",
+      "objective": null,
+      "dual_bound": null,
+      "mip_gap": null,
+      "validation_passed": null,
+      "checks": null,
+      "matches_analytic_regression": true
+    },
+    {
+      "scenario": "window_bottleneck",
+      "status": "infeasible",
+      "objective": null,
+      "dual_bound": null,
+      "mip_gap": null,
+      "validation_passed": null,
+      "checks": null,
+      "matches_analytic_regression": true
+    },
+    {
+      "scenario": "higher_power_no_benefit",
+      "status": "optimal",
+      "objective": 300.0,
+      "dual_bound": 300.00000000000006,
+      "mip_gap": 0.0,
+      "validation_passed": true,
+      "checks": 125,
+      "matches_analytic_regression": true
+    },
+    {
+      "scenario": "zero_demand",
+      "status": "optimal",
+      "objective": 0.0,
+      "dual_bound": 0.0,
+      "mip_gap": 0.0,
+      "validation_passed": true,
+      "checks": 125,
+      "matches_analytic_regression": true
+    }
+  ],
+  "infeasible_note": "No primal: solution checking not applicable. Solver status, full finite hardware enumeration and analytic limits reported; no invented costs or savings.",
+  "task_audit_check_count": 19800,
+  "maximum_enumeration_gap": 2.1316282072803005e-16,
+  "read_only_recheck": {
+    "raw_records": 3256,
+    "feasible_solutions": 1048,
+    "checks": 497502,
+    "source_hashes_matched": 11,
+    "config_hashes_matched": 3,
+    "full_raw_validation_matches": true,
+    "task_and_property_checks_match": true,
+    "investment_and_operating_costs_recomputed": true,
+    "method": "Separate read-only agent rechecked stored results without calling solve; not additional experiments."
+  }
+}

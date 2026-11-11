@@ -1,0 +1,24 @@
+{
+  "source_commit": "43e34cac0d9ad4268dc54e9aa98fcea25e977320",
+  "tolerance": 1e-07,
+  "joint_feasible_cases": 4,
+  "joint_infeasible_cases": 5,
+  "enumeration_total": 140,
+  "enumeration_feasible": 30,
+  "all_joint_enumeration_comparisons_passed": true,
+  "joint_and_enumeration_primal_checks": 4275,
+  "joint_and_enumeration_feasible_solutions": 34,
+  "max_violation_by_constraint": {
+    "C01": 0,
+    "C02": 0,
+    "C03": 4.824672897136483e-16,
+    "C04": 0,
+    "C05": 0,
+    "C06": 0,
+    "C07": 0,
+    "OBJECTIVE": 2.842170943040401e-14
+  },
+  "all_six_fixed_regressions_match": true,
+  "infeasible_primal_validation": "not applicable; preserved as null, finite hardware enumeration and analytic arguments used",
+  "independence_limit": "Enumeration independently fixes hardware and solves the original operations model, but shares the same solver and operating formulation. The raw checker does not use the MILP matrix; analytic bounds provide an additional check."
+}

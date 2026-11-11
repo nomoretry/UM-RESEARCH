@@ -1,0 +1,2 @@
+# Recovered historical sources retain the exact bytes listed in RECOVERY.json.
+legacy/** -text

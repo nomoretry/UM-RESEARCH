@@ -1,0 +1,339 @@
+[
+  {
+    "scenario": "port_only_no_investment",
+    "input_sha256": "6ab3993a304a25bb5130f9e2d2455bbc31303cb9eb2a67d7541b9f32171859a6",
+    "status": "infeasible",
+    "objective": null,
+    "dual_bound": null,
+    "mip_gap": null,
+    "validation_passed": null,
+    "validation_checks": null,
+    "max_violation_by_constraint": null,
+    "new_interfaces": null,
+    "upgrade_selected": null,
+    "investment_cost": null,
+    "operating_cost": null,
+    "grid_energy_kwh": null,
+    "site_energy_kwh": null,
+    "site_peak_kw": null,
+    "system_coincident_peak_kw": null,
+    "enumeration_count": 1,
+    "enumeration_feasible": 0,
+    "enumeration_best": null,
+    "enumeration_comparison": {
+      "passed": true,
+      "reason": "All finite facility combinations infeasible"
+    }
+  },
+  {
+    "scenario": "port_only_interfaces_only",
+    "input_sha256": "ba5e70347632b801aa37dcff04462a6ffb3c7fd3a6a1134c382f9dbcbcc1e93a",
+    "status": "infeasible",
+    "objective": null,
+    "dual_bound": null,
+    "mip_gap": null,
+    "validation_passed": null,
+    "validation_checks": null,
+    "max_violation_by_constraint": null,
+    "new_interfaces": null,
+    "upgrade_selected": null,
+    "investment_cost": null,
+    "operating_cost": null,
+    "grid_energy_kwh": null,
+    "site_energy_kwh": null,
+    "site_peak_kw": null,
+    "system_coincident_peak_kw": null,
+    "enumeration_count": 3,
+    "enumeration_feasible": 0,
+    "enumeration_best": null,
+    "enumeration_comparison": {
+      "passed": true,
+      "reason": "All finite facility combinations infeasible"
+    }
+  },
+  {
+    "scenario": "port_only_power_only",
+    "input_sha256": "e1c45d1a1c8f353dbcefc3a614b0604e7e144b2109e90a2cf0bd8ef3d8f9ee2b",
+    "status": "infeasible",
+    "objective": null,
+    "dual_bound": null,
+    "mip_gap": null,
+    "validation_passed": null,
+    "validation_checks": null,
+    "max_violation_by_constraint": null,
+    "new_interfaces": null,
+    "upgrade_selected": null,
+    "investment_cost": null,
+    "operating_cost": null,
+    "grid_energy_kwh": null,
+    "site_energy_kwh": null,
+    "site_peak_kw": null,
+    "system_coincident_peak_kw": null,
+    "enumeration_count": 3,
+    "enumeration_feasible": 0,
+    "enumeration_best": null,
+    "enumeration_comparison": {
+      "passed": true,
+      "reason": "All finite facility combinations infeasible"
+    }
+  },
+  {
+    "scenario": "port_only_joint",
+    "input_sha256": "a70393f19b611fc6d517471ab94dbd89eee27e941501ae96f6d8df62994bc246",
+    "status": "optimal",
+    "objective": 238.33333333333331,
+    "dual_bound": 238.33333333333331,
+    "mip_gap": 0.0,
+    "validation_passed": true,
+    "validation_checks": 132,
+    "max_violation_by_constraint": {
+      "C01": 0.0,
+      "C02": 0.0,
+      "C03": 0.0,
+      "C04": 0.0,
+      "C05": 0.0,
+      "C06": 0.0,
+      "C07": 0.0,
+      "OBJECTIVE": 0.0
+    },
+    "new_interfaces": [
+      2.0,
+      0.0
+    ],
+    "upgrade_selected": [
+      [
+        0.0,
+        1.0
+      ],
+      [
+        0.0
+      ]
+    ],
+    "investment_cost": 105.0,
+    "operating_cost": 133.33333333333331,
+    "grid_energy_kwh": 133.33333333333331,
+    "site_energy_kwh": {
+      "PORT": 133.33333333333331,
+      "WAREHOUSE": 0.0
+    },
+    "site_peak_kw": {
+      "PORT": 133.33333333333331,
+      "WAREHOUSE": 0.0
+    },
+    "system_coincident_peak_kw": 133.33333333333331,
+    "enumeration_count": 9,
+    "enumeration_feasible": 1,
+    "enumeration_best": 238.33333333333331,
+    "enumeration_comparison": {
+      "passed": true,
+      "objective_difference": 0.0,
+      "reason": "Joint optimum versus exhaustive hardware choices with optimal operations"
+    }
+  },
+  {
+    "scenario": "two_sites_no_investment",
+    "input_sha256": "0f8250e45c3b818a8e5ae4f79e6bfb54616622d966bb53616eee0b74793a437c",
+    "status": "infeasible",
+    "objective": null,
+    "dual_bound": null,
+    "mip_gap": null,
+    "validation_passed": null,
+    "validation_checks": null,
+    "max_violation_by_constraint": null,
+    "new_interfaces": null,
+    "upgrade_selected": null,
+    "investment_cost": null,
+    "operating_cost": null,
+    "grid_energy_kwh": null,
+    "site_energy_kwh": null,
+    "site_peak_kw": null,
+    "system_coincident_peak_kw": null,
+    "enumeration_count": 1,
+    "enumeration_feasible": 0,
+    "enumeration_best": null,
+    "enumeration_comparison": {
+      "passed": true,
+      "reason": "All finite facility combinations infeasible"
+    }
+  },
+  {
+    "scenario": "two_sites_interfaces_only",
+    "input_sha256": "6497502a7747beaa759f3d3ee6fbc3c0f637e3b29984a48d72af9e554de3720d",
+    "status": "optimal",
+    "objective": 233.33333333333331,
+    "dual_bound": 233.33333333333331,
+    "mip_gap": 0.0,
+    "validation_passed": true,
+    "validation_checks": 129,
+    "max_violation_by_constraint": {
+      "C01": 0.0,
+      "C02": 0.0,
+      "C03": 0.0,
+      "C04": 0.0,
+      "C05": 0.0,
+      "C06": 0.0,
+      "C07": 0.0,
+      "OBJECTIVE": 2.842170943040401e-14
+    },
+    "new_interfaces": [
+      2.0,
+      2.0
+    ],
+    "upgrade_selected": [
+      [],
+      []
+    ],
+    "investment_cost": 100.0,
+    "operating_cost": 133.33333333333334,
+    "grid_energy_kwh": 133.33333333333334,
+    "site_energy_kwh": {
+      "PORT": 75.0,
+      "WAREHOUSE": 58.33333333333333
+    },
+    "site_peak_kw": {
+      "PORT": 75.0,
+      "WAREHOUSE": 58.33333333333333
+    },
+    "system_coincident_peak_kw": 75.0,
+    "enumeration_count": 9,
+    "enumeration_feasible": 1,
+    "enumeration_best": 233.33333333333334,
+    "enumeration_comparison": {
+      "passed": true,
+      "objective_difference": 0.0,
+      "reason": "Joint optimum versus exhaustive hardware choices with optimal operations"
+    }
+  },
+  {
+    "scenario": "two_sites_power_only",
+    "input_sha256": "daa2bd9c3a344adf6ee7ba31e4c9877263e13ef2c7a809c78e49d7c57d20580a",
+    "status": "infeasible",
+    "objective": null,
+    "dual_bound": null,
+    "mip_gap": null,
+    "validation_passed": null,
+    "validation_checks": null,
+    "max_violation_by_constraint": null,
+    "new_interfaces": null,
+    "upgrade_selected": null,
+    "investment_cost": null,
+    "operating_cost": null,
+    "grid_energy_kwh": null,
+    "site_energy_kwh": null,
+    "site_peak_kw": null,
+    "system_coincident_peak_kw": null,
+    "enumeration_count": 6,
+    "enumeration_feasible": 0,
+    "enumeration_best": null,
+    "enumeration_comparison": {
+      "passed": true,
+      "reason": "All finite facility combinations infeasible"
+    }
+  },
+  {
+    "scenario": "two_sites_joint",
+    "input_sha256": "026fade0df2d54cda31ae255046e77598343efa06fe054d98ba8ad2c54a1d022",
+    "status": "optimal",
+    "objective": 208.33333333333334,
+    "dual_bound": 208.33333333333331,
+    "mip_gap": 0.0,
+    "validation_passed": true,
+    "validation_checks": 132,
+    "max_violation_by_constraint": {
+      "C01": 0.0,
+      "C02": 0.0,
+      "C03": 4.824672897136483e-16,
+      "C04": 0.0,
+      "C05": 0.0,
+      "C06": 0.0,
+      "C07": 0.0,
+      "OBJECTIVE": 2.842170943040401e-14
+    },
+    "new_interfaces": [
+      2.0,
+      0.0
+    ],
+    "upgrade_selected": [
+      [
+        1.0,
+        0.0
+      ],
+      [
+        0.0
+      ]
+    ],
+    "investment_cost": 75.0,
+    "operating_cost": 133.33333333333331,
+    "grid_energy_kwh": 133.33333333333331,
+    "site_energy_kwh": {
+      "PORT": 111.11111111111111,
+      "WAREHOUSE": 22.22222222222222
+    },
+    "site_peak_kw": {
+      "PORT": 111.11111111111111,
+      "WAREHOUSE": 22.22222222222222
+    },
+    "system_coincident_peak_kw": 111.11111111111111,
+    "enumeration_count": 54,
+    "enumeration_feasible": 14,
+    "enumeration_best": 208.33333333333331,
+    "enumeration_comparison": {
+      "passed": true,
+      "objective_difference": 0.0,
+      "reason": "Joint optimum versus exhaustive hardware choices with optimal operations"
+    }
+  },
+  {
+    "scenario": "two_sites_joint_redundant_warehouse_power",
+    "input_sha256": "13c85a9efaedcd7aa52e137963613d92fe9014a78e192ba3f0a5921d049b8cbc",
+    "status": "optimal",
+    "objective": 208.33333333333334,
+    "dual_bound": 208.33333333333331,
+    "mip_gap": 0.0,
+    "validation_passed": true,
+    "validation_checks": 132,
+    "max_violation_by_constraint": {
+      "C01": 0.0,
+      "C02": 0.0,
+      "C03": 4.824672897136483e-16,
+      "C04": 0.0,
+      "C05": 0.0,
+      "C06": 0.0,
+      "C07": 0.0,
+      "OBJECTIVE": 2.842170943040401e-14
+    },
+    "new_interfaces": [
+      2.0,
+      0.0
+    ],
+    "upgrade_selected": [
+      [
+        1.0,
+        0.0
+      ],
+      [
+        0.0
+      ]
+    ],
+    "investment_cost": 75.0,
+    "operating_cost": 133.33333333333331,
+    "grid_energy_kwh": 133.33333333333331,
+    "site_energy_kwh": {
+      "PORT": 111.11111111111111,
+      "WAREHOUSE": 22.22222222222222
+    },
+    "site_peak_kw": {
+      "PORT": 111.11111111111111,
+      "WAREHOUSE": 22.22222222222222
+    },
+    "system_coincident_peak_kw": 111.11111111111111,
+    "enumeration_count": 54,
+    "enumeration_feasible": 14,
+    "enumeration_best": 208.33333333333331,
+    "enumeration_comparison": {
+      "passed": true,
+      "objective_difference": 0.0,
+      "reason": "Joint optimum versus exhaustive hardware choices with optimal operations"
+    }
+  }
+]

@@ -1,0 +1,4 @@
+# Actual existing local environment used for this model; Python 3.12.
+numpy==2.5.3
+scipy==1.18.1
+pytest==9.1.1

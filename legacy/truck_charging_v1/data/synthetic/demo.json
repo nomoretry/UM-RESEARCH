@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "metadata": {
+    "dataset_id": "TEST_ONLY_4NODES_2TRIPS",
+    "data_kind": "synthetic",
+    "description": "仅用于代码与数学约束验证的四节点抽象网络。全部数量、里程、时间、车辆及成本参数为人为测试值，不代表广东任何城市、车型、报价或运输需求。",
+    "sources": [{"source_id": "TEST", "citation": "用户于2026-09-10批准使用模拟小算例；数值用于单元测试和可复现实验，不是调查或文献实测。", "evidence_type": "synthetic_test_fixture"}]
+  },
+  "settings": {
+    "slot_minutes": 60,
+    "horizon_slots": 8,
+    "operating_days_per_year": 300,
+    "annualization_factor": 0.1,
+    "electricity_cny_per_kwh": 1,
+    "driver_cny_per_hour": 100,
+    "vehicle_cny_per_km": 0.5,
+    "max_paths_per_job": 3,
+    "max_plans_per_job": 10000,
+    "solver_time_limit_seconds": 30
+  },
+  "vehicle": {"battery_kwh": 180, "minimum_kwh": 20, "consumption_kwh_per_km": 1, "charge_efficiency": 0.8},
+  "nodes": [
+    {"node_id": "O", "label": "抽象运输起点", "source_id": "TEST"},
+    {"node_id": "A", "label": "抽象接入位置A", "source_id": "TEST"},
+    {"node_id": "B", "label": "抽象接入位置B", "source_id": "TEST"},
+    {"node_id": "D", "label": "抽象运输终点", "source_id": "TEST"}
+  ],
+  "edges": [
+    {"edge_id": "OD", "from_node": "O", "to_node": "D", "distance_km": 200, "travel_minutes": 180, "source_id": "TEST"},
+    {"edge_id": "OA", "from_node": "O", "to_node": "A", "distance_km": 80, "travel_minutes": 60, "source_id": "TEST"},
+    {"edge_id": "AD", "from_node": "A", "to_node": "D", "distance_km": 120, "travel_minutes": 120, "source_id": "TEST"},
+    {"edge_id": "OB", "from_node": "O", "to_node": "B", "distance_km": 100, "travel_minutes": 120, "source_id": "TEST"},
+    {"edge_id": "BD", "from_node": "B", "to_node": "D", "distance_km": 130, "travel_minutes": 120, "source_id": "TEST"}
+  ],
+  "sites": [
+    {"site_id": "SA", "node_id": "A", "max_bays": 2, "charger_kw": 75, "site_power_kw": 150, "fixed_cost_cny": 100000, "bay_cost_cny": 10000, "open_slot": 0, "close_slot": 8, "source_id": "TEST"},
+    {"site_id": "SB", "node_id": "B", "max_bays": 2, "charger_kw": 75, "site_power_kw": 150, "fixed_cost_cny": 45000, "bay_cost_cny": 10000, "open_slot": 0, "close_slot": 8, "source_id": "TEST"}
+  ],
+  "jobs": [
+    {"job_id": "T1", "origin": "O", "destination": "D", "departure_slot": 0, "deadline_slot": 7, "initial_kwh": 160, "terminal_minimum_kwh": 20, "source_id": "TEST"},
+    {"job_id": "T2", "origin": "O", "destination": "D", "departure_slot": 0, "deadline_slot": 7, "initial_kwh": 160, "terminal_minimum_kwh": 20, "source_id": "TEST"}
+  ]
+}

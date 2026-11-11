@@ -1,0 +1,10 @@
+{
+  "schema_version": "fixed-eligibility-delay-v1",
+  "base_config": "configs/port_warehouse_investment.json",
+  "facilities": {
+    "A": {"PORT": 2, "WAREHOUSE": 1},
+    "B": {"PORT": 3, "WAREHOUSE": 1}
+  },
+  "delays_minutes": [0, 15, 30, 45, 60],
+  "delayed_vehicle_ids": ["V1", "V2"]
+}

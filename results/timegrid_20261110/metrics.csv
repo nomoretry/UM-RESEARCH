@@ -1,0 +1,55 @@
+﻿connector_policy,slot_minutes,scenario,status,new_interfaces,upgrade_selected,investment_cost,operating_cost,objective,dual_bound,mip_gap,enumeration_count,enumeration_feasible,enumeration_best,validation_passed,physical_equivalence_passed
+slot_boundary_switching,60,port_only_no_investment,infeasible,,,,,,,,1,0,,,True
+slot_boundary_switching,60,port_only_interfaces_only,infeasible,,,,,,,,3,0,,,True
+slot_boundary_switching,60,port_only_power_only,infeasible,,,,,,,,3,0,,,True
+slot_boundary_switching,60,port_only_joint,optimal,"[2.0, 0.0]","[[0.0, 1.0], [0.0]]",105.0,133.33333333333331,238.33333333333331,238.33333333333331,0.0,9,1,238.33333333333331,True,True
+slot_boundary_switching,60,two_sites_no_investment,infeasible,,,,,,,,1,0,,,True
+slot_boundary_switching,60,two_sites_interfaces_only,optimal,"[2.0, 2.0]","[[], []]",100.0,133.33333333333334,233.33333333333331,233.33333333333331,0.0,9,1,233.33333333333334,True,True
+slot_boundary_switching,60,two_sites_power_only,infeasible,,,,,,,,6,0,,,True
+slot_boundary_switching,60,two_sites_joint,optimal,"[2.0, 0.0]","[[1.0, 0.0], [0.0]]",75.0,133.33333333333331,208.33333333333334,208.33333333333331,0.0,54,14,208.33333333333331,True,True
+slot_boundary_switching,60,two_sites_joint_redundant_warehouse_power,optimal,"[2.0, 0.0]","[[1.0, 0.0], [0.0]]",75.0,133.33333333333331,208.33333333333334,208.33333333333331,0.0,54,14,208.33333333333331,True,True
+slot_boundary_switching,30,port_only_no_investment,infeasible,,,,,,,,1,0,,,True
+slot_boundary_switching,30,port_only_interfaces_only,infeasible,,,,,,,,3,0,,,True
+slot_boundary_switching,30,port_only_power_only,infeasible,,,,,,,,3,0,,,True
+slot_boundary_switching,30,port_only_joint,optimal,"[2.0, 0.0]","[[0.0, 1.0], [0.0]]",105.0,133.33333333333331,238.33333333333331,238.33333333333331,0.0,9,1,238.33333333333331,True,True
+slot_boundary_switching,30,two_sites_no_investment,infeasible,,,,,,,,1,0,,,True
+slot_boundary_switching,30,two_sites_interfaces_only,optimal,"[1.0, 1.0]","[[], []]",50.0,133.33333333333334,183.33333333333334,183.33333333333331,1.5502750598402185e-16,9,4,183.33333333333331,True,True
+slot_boundary_switching,30,two_sites_power_only,infeasible,,,,,,,,6,0,,,True
+slot_boundary_switching,30,two_sites_joint,optimal,"[1.0, 1.0]","[[0.0, 0.0], [0.0]]",50.0,133.33333333333331,183.33333333333334,183.33333333333334,0.0,54,32,183.33333333333331,True,True
+slot_boundary_switching,30,two_sites_joint_redundant_warehouse_power,optimal,"[1.0, 1.0]","[[0.0, 0.0], [0.0]]",50.0,133.33333333333331,183.33333333333334,183.33333333333334,0.0,54,32,183.33333333333334,True,True
+slot_boundary_switching,15,port_only_no_investment,infeasible,,,,,,,,1,0,,,True
+slot_boundary_switching,15,port_only_interfaces_only,infeasible,,,,,,,,3,0,,,True
+slot_boundary_switching,15,port_only_power_only,infeasible,,,,,,,,3,0,,,True
+slot_boundary_switching,15,port_only_joint,optimal,"[2.0, 0.0]","[[-0.0, 1.0], [0.0]]",105.0,133.33333333333331,238.33333333333334,238.33333333333331,1.1925192768001681e-16,9,1,238.33333333333331,True,True
+slot_boundary_switching,15,two_sites_no_investment,infeasible,,,,,,,,1,0,,,True
+slot_boundary_switching,15,two_sites_interfaces_only,optimal,"[1.0, 1.0]","[[], []]",50.0,133.33333333333331,183.33333333333334,183.33333333333334,0.0,9,4,183.33333333333334,True,True
+slot_boundary_switching,15,two_sites_power_only,infeasible,,,,,,,,6,0,,,True
+slot_boundary_switching,15,two_sites_joint,optimal,"[1.0, 1.0]","[[0.0, 0.0], [0.0]]",50.0,133.33333333333331,183.33333333333334,183.33333333333334,0.0,54,32,183.33333333333334,True,True
+slot_boundary_switching,15,two_sites_joint_redundant_warehouse_power,optimal,"[1.0, 1.0]","[[0.0, 0.0], [0.0]]",50.0,133.33333333333331,183.33333333333334,183.33333333333331,1.5502750598402185e-16,54,32,183.33333333333331,True,True
+fixed_dwell_connection,60,port_only_no_investment,infeasible,,,,,,,,1,0,,,True
+fixed_dwell_connection,60,port_only_interfaces_only,infeasible,,,,,,,,3,0,,,True
+fixed_dwell_connection,60,port_only_power_only,infeasible,,,,,,,,3,0,,,True
+fixed_dwell_connection,60,port_only_joint,optimal,"[2.0, 0.0]","[[0.0, 1.0], [0.0]]",105.0,133.33333333333331,238.33333333333331,238.33333333333331,0.0,9,1,238.33333333333331,True,True
+fixed_dwell_connection,60,two_sites_no_investment,infeasible,,,,,,,,1,0,,,True
+fixed_dwell_connection,60,two_sites_interfaces_only,optimal,"[2.0, 2.0]","[[], []]",100.0,133.33333333333334,233.33333333333331,233.33333333333331,0.0,9,1,233.33333333333334,True,True
+fixed_dwell_connection,60,two_sites_power_only,infeasible,,,,,,,,6,0,,,True
+fixed_dwell_connection,60,two_sites_joint,optimal,"[2.0, 0.0]","[[1.0, 0.0], [0.0]]",75.0,133.33333333333331,208.33333333333334,208.33333333333331,0.0,54,14,208.33333333333331,True,True
+fixed_dwell_connection,60,two_sites_joint_redundant_warehouse_power,optimal,"[2.0, 0.0]","[[1.0, 0.0], [0.0]]",75.0,133.33333333333331,208.33333333333334,208.33333333333331,0.0,54,14,208.33333333333331,True,True
+fixed_dwell_connection,30,port_only_no_investment,infeasible,,,,,,,,1,0,,,True
+fixed_dwell_connection,30,port_only_interfaces_only,infeasible,,,,,,,,3,0,,,True
+fixed_dwell_connection,30,port_only_power_only,infeasible,,,,,,,,3,0,,,True
+fixed_dwell_connection,30,port_only_joint,optimal,"[2.0, 0.0]","[[0.0, 1.0], [0.0]]",105.0,133.33333333333331,238.33333333333331,238.33333333333331,0.0,9,1,238.33333333333331,True,True
+fixed_dwell_connection,30,two_sites_no_investment,infeasible,,,,,,,,1,0,,,True
+fixed_dwell_connection,30,two_sites_interfaces_only,optimal,"[2.0, 2.0]","[[], []]",100.0,133.33333333333331,233.33333333333334,233.33333333333334,0.0,9,1,233.33333333333331,True,True
+fixed_dwell_connection,30,two_sites_power_only,infeasible,,,,,,,,6,0,,,True
+fixed_dwell_connection,30,two_sites_joint,optimal,"[2.0, 0.0]","[[1.0, 0.0], [0.0]]",75.0,133.33333333333334,208.33333333333334,208.33333333333334,0.0,54,14,208.33333333333331,True,True
+fixed_dwell_connection,30,two_sites_joint_redundant_warehouse_power,optimal,"[2.0, 0.0]","[[1.0, 0.0], [0.0]]",75.0,133.33333333333334,208.33333333333334,208.33333333333334,0.0,54,14,208.33333333333331,True,True
+fixed_dwell_connection,15,port_only_no_investment,infeasible,,,,,,,,1,0,,,True
+fixed_dwell_connection,15,port_only_interfaces_only,infeasible,,,,,,,,3,0,,,True
+fixed_dwell_connection,15,port_only_power_only,infeasible,,,,,,,,3,0,,,True
+fixed_dwell_connection,15,port_only_joint,optimal,"[2.0, 0.0]","[[-0.0, 1.0], [0.0]]",105.0,133.33333333333331,238.33333333333334,238.33333333333331,1.1925192768001681e-16,9,1,238.33333333333331,True,True
+fixed_dwell_connection,15,two_sites_no_investment,infeasible,,,,,,,,1,0,,,True
+fixed_dwell_connection,15,two_sites_interfaces_only,optimal,"[2.0, 2.0]","[[], []]",100.0,133.33333333333331,233.33333333333331,233.33333333333331,0.0,9,1,233.33333333333331,True,True
+fixed_dwell_connection,15,two_sites_power_only,infeasible,,,,,,,,6,0,,,True
+fixed_dwell_connection,15,two_sites_joint,optimal,"[2.0, 0.0]","[[1.0, 0.0], [0.0]]",75.0,133.33333333333334,208.33333333333334,208.33333333333334,0.0,54,14,208.33333333333331,True,True
+fixed_dwell_connection,15,two_sites_joint_redundant_warehouse_power,optimal,"[2.0, 0.0]","[[1.0, 0.0], [0.0]]",75.0,133.33333333333334,208.33333333333334,208.33333333333334,0.0,54,14,208.33333333333331,True,True

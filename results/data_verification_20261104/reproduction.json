@@ -1,0 +1,120 @@
+{
+  "dataset_source_commit": "bc892a70457721b4253066ac07d397287e6a0d0a",
+  "dataset_source_path": "reserach/truck optimaztion/Germany_Truck_Grid_Dataset_v1",
+  "seed": null,
+  "solver": null,
+  "objective": null,
+  "bound": null,
+  "gap": null,
+  "exploratory_runs": [
+    {
+      "run_id": "20261104_dataset_verification_initial",
+      "manifest_sha256": "6fe2d06c21e5d79b93c1cc6bc071c45da5e23e1534a57d34c73d6a503b139d19",
+      "local_evidence_package_sha256": "5fae7102698b13b4a800ba8bf96d66ddd89d85309f08a66f21ddc3b5d9bee632",
+      "exit_code": 1,
+      "environment": {
+        "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+        "executable": "C:\\Users\\27788\\OneDrive\\文档\\ChatGPT\\UM\\truck_charging_v1\\.venv\\Scripts\\python.exe",
+        "platform": "Windows-10-10.0.19045-SP0",
+        "numpy": "2.5.3",
+        "pandas": "3.0.5",
+        "optimize": 0
+      }
+    },
+    {
+      "run_id": "20261104_dataset_verification_gitblob",
+      "manifest_sha256": "4b4a303f956cdc7872be4d510dd7b6b76d84fb05db8a6441e42d2345d4990ce8",
+      "local_evidence_package_sha256": "374c0099a2547a7d3e3c2cc3594dcf5051c42282b0ac5cc3acface3f2053b80e",
+      "exit_code": 1,
+      "environment": {
+        "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+        "executable": "C:\\Users\\27788\\OneDrive\\文档\\ChatGPT\\UM\\truck_charging_v1\\.venv\\Scripts\\python.exe",
+        "platform": "Windows-10-10.0.19045-SP0",
+        "numpy": "2.5.3",
+        "pandas": "3.0.5",
+        "optimize": 0
+      }
+    },
+    {
+      "run_id": "20261104_dataset_verification_restored_bytes",
+      "manifest_sha256": "bf40a4b9dc025b3db7512146f99c08fa979bbe7443494033917e97b2351d297a",
+      "local_evidence_package_sha256": "723608cee120d737b75336dea66b19216e03e00862932f1b7659a3e47dccc245",
+      "exit_code": 0,
+      "environment": {
+        "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+        "executable": "C:\\Users\\27788\\OneDrive\\文档\\ChatGPT\\UM\\truck_charging_v1\\.venv\\Scripts\\python.exe",
+        "platform": "Windows-10-10.0.19045-SP0",
+        "numpy": "2.5.3",
+        "pandas": "3.0.5",
+        "optimize": 0
+      }
+    },
+    {
+      "run_id": "20261104_dataset_snapshot_smoke",
+      "manifest_sha256": "e3f2ba9751e1bececaf8ea02f7b1bb8acbc3b1c9d9de8ef788105ff0490db70c",
+      "local_evidence_package_sha256": "243032ee6bddba2e4224e94f7f5db4ec656eda163c5ec67c95eb7047e30d002f",
+      "exit_code": 0,
+      "environment": {
+        "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+        "executable": "C:\\Users\\27788\\OneDrive\\文档\\ChatGPT\\UM\\truck_charging_v1\\.venv\\Scripts\\python.exe",
+        "platform": "Windows-10-10.0.19045-SP0",
+        "numpy": "2.5.3",
+        "pandas": "3.0.5",
+        "optimize": 0
+      }
+    }
+  ],
+  "runner": "scripts/verify_dataset_snapshot.py",
+  "restoration": "Recover the 16 exact CSV members of versioned raw/simbench/1-MV-urban--0-sw.zip after checking the existing SHA-256; preserve original manifests",
+  "data_rebuild_executed": false,
+  "canonical_run": {
+    "run_id": "20261104_dataset_snapshot_canonical",
+    "driver_run_id": "20261104_dataset_canonical_driver",
+    "dataset_source_commit": "bc892a70457721b4253066ac07d397287e6a0d0a",
+    "runner_source_commit": "4d3f3a045cc02ddde35acd69249ff08f78270861",
+    "source_dirty": false,
+    "started_utc": "2026-11-04T06:24:44.066206+00:00",
+    "finished_utc": "2026-11-04T06:25:18.938713+00:00",
+    "exit_code": 0,
+    "runner_sha256": "9b49527256b635dc42996a0090027349baa278cfd13c3426e096e377a35fc10d",
+    "git_archive_sha256": "2109039d0288626900e01821dde2632788066cb26939444460fdccb5fafbe2ca",
+    "input_inventory_sha256": "0c552f2eb646dd0ac51e6a1ebd1cb6d9865a27b90c8371d320e84b09d7bb8ab0",
+    "environment": {
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "executable": "C:\\Users\\27788\\OneDrive\\文档\\ChatGPT\\UM\\UM-RESEARCH-runs-local\\.venv-dataset\\Scripts\\python.exe",
+      "platform": "Windows-10-10.0.19045-SP0",
+      "numpy": "2.5.4",
+      "pandas": "2.3.3",
+      "optimize": 0
+    },
+    "pandas_declared_range_satisfied": true,
+    "numpy_declared_range_satisfied": true,
+    "actual_command": {
+      "argv": [
+        "C:\\Users\\27788\\OneDrive\\文档\\ChatGPT\\UM\\truck_charging_v1\\.venv\\Scripts\\python.exe",
+        "scripts/verify_dataset_snapshot.py",
+        "--source-commit",
+        "bc892a70457721b4253066ac07d397287e6a0d0a",
+        "--output",
+        "C:\\Users\\27788\\OneDrive\\文档\\ChatGPT\\UM\\UM-RESEARCH-runs-local\\20261104_dataset_snapshot_canonical",
+        "--python-executable",
+        "C:\\Users\\27788\\OneDrive\\文档\\ChatGPT\\UM\\UM-RESEARCH-runs-local\\.venv-dataset\\Scripts\\python.exe"
+      ],
+      "cwd": "C:\\Users\\27788\\OneDrive\\文档\\ChatGPT\\UM\\UM-RESEARCH"
+    },
+    "local_manifest_sha256": "1a093e0211cafb2e24ac5260e13a09be966bb60022f0a4c5cd6c55d4a676b073",
+    "local_validation_sha256": "975b3a3d0ca83df701cedb289f91a0713a02642cc8fa18f4d284b2ef7d7f1b37",
+    "local_evidence_index": "canonical_evidence_index.json",
+    "local_evidence_index_sha256": "c65ff3d55e0df433e9523707453408d551f42a6baa2a7949ba863981f6ce17eb",
+    "rerun_command_powershell": "& '..\\UM-RESEARCH-runs-local\\.venv-dataset\\Scripts\\python.exe' scripts/verify_dataset_snapshot.py --source-commit bc892a70457721b4253066ac07d397287e6a0d0a --output '..\\UM-RESEARCH-runs-local\\20261104_dataset_snapshot_rerun' --python-executable '..\\UM-RESEARCH-runs-local\\.venv-dataset\\Scripts\\python.exe'",
+    "rerun_note": "Run from the research repository using scripts at runner_source_commit; the named rerun output is a new directory, not the preserved canonical run. Create the separate local Git repository without remotes and the stated dependency environment if absent.",
+    "published_input_inventory": "input_inventory.json",
+    "published_input_inventory_sha256": "28b811a1cf1a9f3b809235728eeb76f12b1b60cfecb8ecdc20b220146123e72f",
+    "published_input_inventory_note": "Published as UTF-8 LF; local original uses Windows newlines. JSON content, per-file byte counts and per-file data hashes are identical."
+  },
+  "limitations": [
+    "The four development runs used pandas 3.0.5 outside the old declared range; this limitation does not apply to the separate canonical run",
+    "No build_dataset.py reconstruction, SOC simulation, optimization or power flow in dataset validation",
+    "Complete runtime logs and isolated snapshots remain exclusively in the external Git repository without remotes"
+  ]
+}

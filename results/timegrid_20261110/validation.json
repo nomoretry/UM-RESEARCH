@@ -1,0 +1,106 @@
+{
+  "completion": {
+    "completed": true,
+    "passed": true,
+    "timegrid_scenarios": 54,
+    "enumerated_combinations": 840,
+    "physical_equivalence_checks": 54,
+    "original_fixed_regressions": 6,
+    "historical_60_minute_comparisons": 18
+  },
+  "tests": {
+    "tests": 149,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "independent_audit": {
+    "feasible_solutions_checked": 285,
+    "checks": 86375,
+    "max_violation_by_constraint": {
+      "C01": 0.0,
+      "C02": 0.0,
+      "C03": 4.824672897136483e-16,
+      "C04": 0.0,
+      "C05": 0.0,
+      "C06": 1.4210854715202004e-14,
+      "C07": 1.4210854715202004e-14,
+      "OBJECTIVE": 2.842170943040401e-14,
+      "C08": 0.0
+    },
+    "all_passed": true
+  },
+  "joint_optimal": 24,
+  "joint_infeasible": 30,
+  "enumeration_optimal": 258,
+  "enumeration_infeasible": 582,
+  "original_fixed_regressions": [
+    {
+      "scenario": "base",
+      "status": "optimal",
+      "objective": 300.0,
+      "dual_bound": 300.00000000000006,
+      "mip_gap": 0.0,
+      "validation_passed": true,
+      "checks": 125,
+      "matches_analytic_regression": true,
+      "input_sha256": "41fd46320c2810fc7a590fe9dc5f02224e02dbf8d1f39cde9392f6fa7ea2b08e"
+    },
+    {
+      "scenario": "interface_bottleneck",
+      "status": "infeasible",
+      "objective": null,
+      "dual_bound": null,
+      "mip_gap": null,
+      "validation_passed": null,
+      "checks": null,
+      "matches_analytic_regression": true,
+      "input_sha256": "cab4692d17ea0d0d9bab8c739bece213164b0515d06ebd478c59f37f94406f9a"
+    },
+    {
+      "scenario": "power_bottleneck",
+      "status": "infeasible",
+      "objective": null,
+      "dual_bound": null,
+      "mip_gap": null,
+      "validation_passed": null,
+      "checks": null,
+      "matches_analytic_regression": true,
+      "input_sha256": "ad120354b1cd825023ba112f939e2229a1b943291d4282312a71040ca5ce3428"
+    },
+    {
+      "scenario": "window_bottleneck",
+      "status": "infeasible",
+      "objective": null,
+      "dual_bound": null,
+      "mip_gap": null,
+      "validation_passed": null,
+      "checks": null,
+      "matches_analytic_regression": true,
+      "input_sha256": "a30d78152c8d0719ee2a8afa014c3e374b82b9072754128dbebbed41328844ed"
+    },
+    {
+      "scenario": "higher_power_no_benefit",
+      "status": "optimal",
+      "objective": 300.0,
+      "dual_bound": 300.00000000000006,
+      "mip_gap": 0.0,
+      "validation_passed": true,
+      "checks": 125,
+      "matches_analytic_regression": true,
+      "input_sha256": "a9acae56460b0739cc886cad4b6c87dc49b8cd8f055254ebda8b8bc601e28633"
+    },
+    {
+      "scenario": "zero_demand",
+      "status": "optimal",
+      "objective": 0.0,
+      "dual_bound": 0.0,
+      "mip_gap": 0.0,
+      "validation_passed": true,
+      "checks": 125,
+      "matches_analytic_regression": true,
+      "input_sha256": "4f78b069212373d9bce44dc0bd0ba5107b9c04a4a594f1772e46d996fe03faa0"
+    }
+  ],
+  "infeasible_check_note": "No primal solution: solution checker not applicable, not counted as passed; solver plus exhaustive facility checks and analytic limits are reported."
+}

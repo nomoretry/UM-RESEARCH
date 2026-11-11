@@ -1,0 +1,4 @@
+scenario,ac_units,dc_units,v2g_units,pv_kwh,bess_discharge_kwh,ev_discharge_kwh,grid_import_kwh,site_load_kwh,bess_charge_kwh,ev_charge_kwh,grid_export_kwh
+1,6,0,3,3138700,0,23540,596990,2246700,0,127930,1384600
+2,6,1,1,3717100,284360,6447,307040,2246700,324547,108400,1635300
+3,6,0,0,3411000,105510,0,513000,2246700,119510,100600,1562700

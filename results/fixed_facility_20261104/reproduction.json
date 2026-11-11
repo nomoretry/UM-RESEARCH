@@ -1,0 +1,103 @@
+{
+  "run": {
+    "run_id": "20261104_fixed_facility_suite_retry",
+    "source_commit": "4d3f3a045cc02ddde35acd69249ff08f78270861",
+    "manifest_sha256": "0f1432b6fd807d27a54b8fc7ec2859f46beeb699a83f2d893930037963281a3c",
+    "exit_code": 0
+  },
+  "tests": {
+    "tests": 37,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "run_id": "20261104_fixed_facility_tests_retry",
+    "source_commit": "4d3f3a045cc02ddde35acd69249ff08f78270861",
+    "junit_sha256": "d7b1fbdaaa4fa90606ef9719ed6de164230432e1116a876d3668bba0d4326968",
+    "manifest_sha256": "a9b4e505017144f9c8837e404d8368a41716db58db0395014da028b95a9ffa79"
+  },
+  "source_dirty": false,
+  "config_sha256": "c6c4ed09bf6e16aa5dda0319797d797f85e2e10698b0ad586572e1ebd2d372c4",
+  "source_sha256": {
+    "src/um_charging/__init__.py": "e46e776694ace5243d7c2ad3f55ff875bab63c16bf820158ee7039a7e9882561",
+    "src/um_charging/__main__.py": "3dacde2b343af32cd6adc7585f84efe290a6c3816b7da41d669d21936ee7f370",
+    "src/um_charging/model.py": "21c02a1afcdd0f0776b43f37499bfa0b839eb1f4c4e08da594276c254c7c6695",
+    "src/um_charging/validation.py": "8aead1e43ed22568dcc4f2a69b0bc7ddba6af614642fa2086d363805354bfc59"
+  },
+  "scenario_input_sha256": {
+    "base": "41fd46320c2810fc7a590fe9dc5f02224e02dbf8d1f39cde9392f6fa7ea2b08e",
+    "interface_bottleneck": "cab4692d17ea0d0d9bab8c739bece213164b0515d06ebd478c59f37f94406f9a",
+    "power_bottleneck": "ad120354b1cd825023ba112f939e2229a1b943291d4282312a71040ca5ce3428",
+    "window_bottleneck": "a30d78152c8d0719ee2a8afa014c3e374b82b9072754128dbebbed41328844ed",
+    "higher_power_no_benefit": "a9acae56460b0739cc886cad4b6c87dc49b8cd8f055254ebda8b8bc601e28633",
+    "zero_demand": "4f78b069212373d9bce44dc0bd0ba5107b9c04a4a594f1772e46d996fe03faa0"
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1"
+  },
+  "solver": {
+    "name": "HiGHS through scipy.optimize.milp",
+    "version": "1.12.0",
+    "version_evidence": "Captured HiGHS banner in local stdout",
+    "time_limit_seconds": 60.0,
+    "mip_rel_gap": 0.0,
+    "git_hash": "4f96ee8"
+  },
+  "seed": null,
+  "seed_note": "No random input generation or randomized scenarios",
+  "portable_commands": [
+    {
+      "cwd": ".",
+      "environment": {
+        "PYTHONPATH": "<repo>/src"
+      },
+      "argv": [
+        "python",
+        "-B",
+        "-m",
+        "um_charging",
+        "--config",
+        "configs/minimal_three_trucks.json",
+        "--suite",
+        "--output",
+        "<external-local-git>/<new-run>/artifacts"
+      ]
+    },
+    {
+      "cwd": ".",
+      "argv": [
+        "python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml",
+        "<external-local-git>/<new-run>/junit.xml",
+        "--basetemp",
+        "<external-local-git>/<new-run>/pytest_tmp",
+        "tests"
+      ]
+    }
+  ],
+  "earlier_failed_attempts": [
+    {
+      "run_id": "20261104_fixed_facility_tests",
+      "source_commit": "60c10fb0657f9164dd3c1a58e808e47f650e4d23",
+      "manifest_sha256": "2097b118a3c5bdb92aa4a4b23afcbc97bf1256cd52a5a339758d870a00ab124f",
+      "exit_code": 4,
+      "reason": "PowerShell option/path splitting before test execution"
+    },
+    {
+      "run_id": "20261104_fixed_facility_suite",
+      "source_commit": "60c10fb0657f9164dd3c1a58e808e47f650e4d23",
+      "manifest_sha256": "594f9689f7eb3a451d1619b8af2343a038a770cb361553e643e88b11755b6725",
+      "exit_code": 1,
+      "reason": "UTF-8 Git path decoded with Windows cp936; fixed in the canonical source commit and covered by a real Unicode-path test"
+    }
+  ],
+  "scope": "New synthetic four-hour, 3-vehicle, 2-site fixed-facility instance; no route or investment decisions, annual claim, real operations or power flow."
+}
