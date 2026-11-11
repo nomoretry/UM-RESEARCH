@@ -24,23 +24,29 @@ def make_reference(base):
     return build_boundary_case(base, 100, 60, "two_sites", "slot_boundary_switching")
 
 
-def build_case(reference, facility, delay_minutes, delayed_vehicle_ids):
-    """Keep the complete physical timeline. Restrict only specified vehicles' plug access."""
+def delayed_reference(reference, delay_minutes, delayed_vehicle_ids):
+    """Copy the common planning input and delay only the two warehouse plug masks."""
     if type(delay_minutes) is not int or delay_minutes not in (0, 15, 30, 45, 60):
         raise ValueError("Delay must be a 15-minute grid point in [0, 60].")
     if set(delayed_vehicle_ids) != {"V1", "V2"} or len(delayed_vehicle_ids) != 2:
         raise ValueError("The registered delay applies to V1 and V2.")
-    if set(facility) != {"PORT", "WAREHOUSE"} or any(type(n) is not int for n in facility.values()):
-        raise ValueError("Specify integer total interfaces at PORT and WAREHOUSE.")
     data = copy.deepcopy(reference)
-    data["instance_id"] = f"frozen_p{facility['PORT']}_w{facility['WAREHOUSE']}_delay{delay_minutes}"
-    for site in data["sites"]:
-        site.update(interfaces=facility[site["id"]], max_new_interfaces=0, interface_cost=0, upgrade_options=[])
     for vehicle in data["vehicles"]:
         if vehicle["id"] in delayed_vehicle_ids:
             for t in range(4, 4 + delay_minutes // 15):
                 vehicle["charging_site"][t] = None
                 vehicle["timeline"][t]["plug_allowed"] = False
+    return data
+
+
+def build_case(reference, facility, delay_minutes, delayed_vehicle_ids):
+    """Freeze the specified hardware on the delayed transport task."""
+    if set(facility) != {"PORT", "WAREHOUSE"} or any(type(n) is not int for n in facility.values()):
+        raise ValueError("Specify integer total interfaces at PORT and WAREHOUSE.")
+    data = delayed_reference(reference, delay_minutes, delayed_vehicle_ids)
+    data["instance_id"] = f"frozen_p{facility['PORT']}_w{facility['WAREHOUSE']}_delay{delay_minutes}"
+    for site in data["sites"]:
+        site.update(interfaces=facility[site["id"]], max_new_interfaces=0, interface_cost=0, upgrade_options=[])
     # Replace the boundary generator's declarations of investment freedom and a common full window.
     assumptions = data["provenance"]["assumed"]
     data["provenance"]["assumed"] = [line for line in assumptions if not line.startswith((
@@ -65,9 +71,10 @@ def audit_case(reference, case, facility, delay_minutes, delayed_vehicle_ids):
         compare(case[key], reference[key], key)
     compare([s["id"] for s in case["sites"]], ["PORT", "WAREHOUSE"], "site identities")
     for original, actual in zip(reference["sites"], case["sites"]):
-        expected = dict(original, interfaces=facility[original["id"]], max_new_interfaces=0,
-                        interface_cost=0, upgrade_options=[])
-        compare(actual, expected, f"{original['id']} fixed equipment, power and prices")
+        expected = original if facility is None else dict(
+            original, interfaces=facility[original["id"]], max_new_interfaces=0,
+            interface_cost=0, upgrade_options=[])
+        compare(actual, expected, f"{original['id']} equipment, investment options, power and prices")
     hardware = [(s["id"], s["active"], s["interfaces"], s["available_power_kw"], s["max_new_interfaces"],
                  s["upgrade_options"]) for s in case["sites"]]
     hardware_hash = hashlib.sha256(json.dumps(hardware, separators=(",", ":")).encode()).hexdigest()
