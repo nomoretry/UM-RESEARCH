@@ -15,3 +15,9 @@ From the repository root, run `python studies/fresia-2025/check_milan.py`. The s
 The annualized charger component excludes PV, stationary storage and electricity purchases or sales. Independent replication of the investment optimum requires rebuilding the vehicle and energy constraints and the chronological inputs, including the three sites’ load and PV profiles. The authors offer data on request. Where original inputs are missing, label substitute series and keep their results separate from Milan benchmarks.
 
 下一步可用原文表 6 的物流任务约束和表 5 的设备参数重建一个缩小的投资算例。若改用 UM 港区与仓库的固定运输任务或德国停车记录，应将结果标为重卡适配实验。德国记录提供部分停车上界，插枪资格仍需独立证据。
+
+## 米兰车辆的班内可用时间 · Time left during the working shift
+
+从仓库根目录运行 `python studies/fresia-2025/route_time.py`。表 6 给出六辆车各自的分区服务需求。按第 3 节的区间行驶时间，枚举从各自基地出发、服务所有必到分区并返回的访问顺序。在这个子问题中，服务可以在各区连续完成。区间时间满足三角不等式，重复访问无法缩短行驶时间。
+
+For each vehicle the 20 half-hour shift slots include 12 mandatory service slots and at least four travel slots. At most four slots (two hours) are left for any other activity during the shift. The program prints one shortest tour for each vehicle. This bound precedes charger availability and SOC constraints. It excludes overnight charging. It is an independently computed subproblem using Section 2.4.3 and Table 6, and does not identify the route or charging schedule chosen by the full energy-cost model.

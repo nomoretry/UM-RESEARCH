@@ -24,6 +24,8 @@ python studies/fresia-2025/check_milan.py
 
 真实停车记录单独处理。德国 DT-CARGO 样本中，一辆车的两段相邻行驶记录间隔 20 分 30.765 秒；这只能给出可能充电时长的上界，作业放行、插枪和开始供电时刻仍未知。[数据与单事件复算](results/dt_cargo_stop_20261111/event.json)
 
+在固定设施和运输服务下，下一步计划比较到站即充、削峰和按日前价格购电三种策略。价格序列、接入容量和真实可插枪时段的来源将分别记录。
+
 ## Electric truck charging at a port and warehouse
 
 Three electric trucks travel from a port to a warehouse, unload and return. If two trucks can plug in only during the last 15 minutes of their warehouse stop, where should an operator add a connector? Given a fixed transport service and terminal battery charge, the mixed-integer model selects connectors, grid connection upgrades and individual charging schedules to minimize investment and electricity cost over the same period.
@@ -41,3 +43,5 @@ Costs are synthetic units for one operating cycle. At 45 minutes, two port conne
 Run the two commands above from the repository root with Python 3. The first checks the frozen-facility comparison without a solver. The second reproduces charger-cost and annual energy calculations using published Milan case tables. A separate [German stop record](results/dt_cargo_stop_20261111/event.json) gives an upper bound of 20 minutes 30.765 seconds between driving records. Actual plug-in and charging times are unknown.
 
 [Truck and site inputs](configs/port_warehouse_investment.json) · [Model formulation](docs/model/FORMULATION.md) · [Optimal investments](results/known_delay_investment_20261111/metrics.json) · [MILP run details](results/known_delay_investment_20261111/reproduction.json) · [Milan replication](studies/fresia-2025/)
+
+The planned market study will hold facilities and freight service fixed and compare charging on arrival, peak shaving and day-ahead price scheduling. Each comparison will use the same electricity prices for settlement.
