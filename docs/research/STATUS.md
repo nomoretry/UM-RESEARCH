@@ -1,6 +1,18 @@
 # 研究状态
 
-## 当前 · 2026-11-11 固定设施下的仓库插枪延迟
+## 当前 · 从行驶片段核实一次停车上界
+
+DT-CARGO V1.1 的德国匿名车队 1、车辆 1，按车辆和 UTC 开始时刻排序后，片段 168 的记录终点标为基地，下一条记录为 169。2021-10-11 当地时间（UTC+02:00）00:05:28.378 到 00:25:59.143 相差 **1,230.765 秒**。本次直接读取两条原始片段，与已存停靠表的车辆、片段对、时刻和时长逐项匹配。从仓库根目录运行 `py -3 scripts/trace_dt_cargo_stop.py` 即可复算。[单事件结果](../../results/dt_cargo_stop_20261111/event.json) · [处理代码](../../reserach/truck%20optimaztion/Germany_Truck_Grid_Dataset_v1/build_dataset.py#L30)
+
+原处理器的基地停靠筛选要求前段在基地结束、间隔 15 分钟至 48 小时、前后片段均通过轨迹质量筛选，且相邻两条空间缺口的较大值不超过 500 m。本例的较大值为 13.30223472 m。复核脚本重算邻接、时长与空间缺口，并核对处理表已有的筛选结果。[输入清单](../../reserach/truck%20optimaztion/Germany_Truck_Grid_Dataset_v1/source_manifest.json) · [筛选参数](../../reserach/truck%20optimaztion/Germany_Truck_Grid_Dataset_v1/scenario_parameters.json)
+
+可匹配的是车辆和两条行驶记录。行驶表与车辆表均缺少该停靠的独立入场、作业放行、实际接枪和开始供电时间。**20.51275 分钟是记录间隔给出的上界，实际可插枪或充电时长未知。** 若另外要求时段对齐整刻钟且完整落在间隔内，本例容纳 0 个完整 15 分钟槽。此计数取决于网格起点，实际是否短时充电仍无记录。合成算例继续通过车辆资格配置给定窗口。[插枪延迟配置](../../configs/eligibility_stress.json)
+
+来源为 Georg Balke、Lennart Adenaw 的 DT-CARGO V1.1，固定上游提交 `805c534c73ed4d247babd053f60468b486f92519`。数据库使用 ODbL 1.0，单项内容使用 DbCL 1.0。flex-depot 中的 Fleet 3 是 `truck_fleet_electrification` 车队 3 的示例切片，按同一来源计数。本轮只使用现存车队 1 样本。[DT-CARGO 版本与署名](https://github.com/TUMFTM/dt-cargo/blob/805c534c73ed4d247babd053f60468b486f92519/README.md#license) · [数据论文](https://doi.org/10.1016/j.dib.2023.109246) · [Fleet 3 来源与使用条件](https://github.com/marcelbroedel/flex-depot/blob/0f498fe5ed67a58ca2cfb574b641d944d3ca6a32/data/example/flexibility/source/README.md)
+
+复算源码 `c2e5041`，4 项单事件测试通过。下一项证据需求是能用车辆、站点与停靠时间关联的放行记录和充电会话，届时才能量化停车上界中实际可用的部分。
+
+## 2026-11-11 固定设施下的仓库插枪延迟
 
 港区分别有两个或三个接口，仓库均为一个接口，两站供电容量分别为 100 / 75 kW。三车的运输任务、算例给定的到离站时刻及初末电量固定。仅将 V1、V2 在仓库允许插枪的起点延迟 0、15、30、45、60 分钟，V3 保留完整窗口。调度时已知延迟，15 分钟槽边界允许零耗时换枪。
 
@@ -13,7 +25,7 @@
 
 正式求解源码 `b372839`。10 个输入审计与 7 个可行调度的 3255 项物理/费用复核通过，3 个无解情景无可行解可供复核。独立整数枚举的结果与十格逐一相符。充电模型 232 项测试通过。[参数](../../configs/eligibility_stress.json) · [逐格结果](../../results/eligibility_stress_20261111/metrics.json) · [验证和命令](../../results/eligibility_stress_20261111/reproduction.json)
 
-下一步核实到站、作业放行与实际接枪的时间戳能否按车辆和停靠事件匹配。现有德国基地窗口由相邻行驶记录推得，停车时间只能给允许插枪时长提供上界。调度已知扰动的假设、零耗时换枪、供电余量和周期投资成本都限制本例的现实外推。
+本实验提出的时间戳配对问题已在上方单事件中核查。现有德国基地窗口由相邻行驶记录推得，停车时间只能给允许插枪时长提供上界。调度已知扰动的假设、零耗时换枪、供电余量和周期投资成本都限制本例的现实外推。
 
 ## 2026-11-10 协同补能适用边界
 

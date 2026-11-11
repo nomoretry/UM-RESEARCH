@@ -23,6 +23,12 @@ py -3 scripts/check_eligibility_slots.py
 | 运行完整 MILP 并检查解 | [Windows 命令和环境](results/eligibility_stress_20261111/reproduction.json) · [十组实际求解状态与费用](results/eligibility_stress_20261111/metrics.json) |
 | 比较仅港区与两地联合投资 | [港区功率 × 仓库补能窗口的设施、费用和可行性](results/boundary_20261110/README.md) |
 
-德国 DT-CARGO 行驶记录提供停车间隔的实证线索。上面合成算例的运输时刻、装卸等候和费用由情景给定。[德国数据来源与处理](docs/research/DATA_AUDIT_20261104.md)
+**停车多久，能有多久充电？** 德国 DT-CARGO 车队 1 的车辆 1 有一对相邻记录。片段 168 在当地时间 00:05:28.378 结束，片段 169 在 00:25:59.143 开始，相隔 20 分 30.765 秒。这给出了两次记录之间可用于充电的时间上界。作业放行、实际接枪和开始供电时刻均未知，港区合成算例的插枪资格仍由配置给定。
+
+```powershell
+py -3 scripts/trace_dt_cargo_stop.py
+```
+
+终端输出应显示 `recording_gap_seconds = 1230.765` 和 `verified_charging_minutes = null`。从车辆及片段键可核对前后两个时刻、处理表中的停靠间隔和四项独立时间戳的证据。[原始来源与固定版本](reserach/truck%20optimaztion/Germany_Truck_Grid_Dataset_v1/source_manifest.json) · [停靠筛选代码](reserach/truck%20optimaztion/Germany_Truck_Grid_Dataset_v1/build_dataset.py#L30) · [该事件的复算结果](results/dt_cargo_stop_20261111/event.json)
 
 [研究状态与下一步](docs/research/STATUS.md) · [历史进展与接续入口](docs/PROGRESS.md) · [开发与记录约定](AGENTS.md)
