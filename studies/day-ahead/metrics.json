@@ -1,0 +1,128 @@
+{
+  "market_area": "DE-LU",
+  "timezone": "Europe/Berlin",
+  "delivery_start": "2025-01-06T08:00:00+01:00",
+  "delivery_end": "2025-01-06T12:00:00+01:00",
+  "config_sha256": "3c0f9ad6aaefecc77981f1c11cf9fb0419161a6520a82b76616926cd30f64fdd",
+  "prices_sha256": "03101ed2d517cdd189520d8835f0b5cc17ce693d1727ebbf5fbc623b05d94901",
+  "hardware": {
+    "PORT": {
+      "interfaces": 3,
+      "available_power_kw": 150
+    },
+    "WAREHOUSE": {
+      "interfaces": 1,
+      "available_power_kw": 75
+    }
+  },
+  "policies": [
+    {
+      "policy": "immediate",
+      "status": "dispatched",
+      "trips_completed": 6,
+      "vehicles_completed": 3,
+      "terminal_kwh": {
+        "V1": 100.0,
+        "V2": 100.0,
+        "V3": 100.0
+      },
+      "grid_energy_kwh": 133.33333333333334,
+      "site_energy_kwh": {
+        "PORT": 111.11111111111111,
+        "WAREHOUSE": 22.22222222222222
+      },
+      "purchase_eur": 4.455777777777778,
+      "site_peak_kw": {
+        "PORT": 150.0,
+        "WAREHOUSE": 50.0
+      },
+      "objective_unit": null,
+      "objective": null,
+      "dual_bound": null,
+      "mip_gap": null,
+      "checks_passed": true,
+      "physical_checks": 465
+    },
+    {
+      "policy": "peak_shaving",
+      "status": "optimal",
+      "trips_completed": 6,
+      "vehicles_completed": 3,
+      "terminal_kwh": {
+        "V1": 100.0,
+        "V2": 100.0,
+        "V3": 100.0
+      },
+      "grid_energy_kwh": 133.33333333333334,
+      "site_energy_kwh": {
+        "PORT": 111.11111111111111,
+        "WAREHOUSE": 22.22222222222222
+      },
+      "purchase_eur": 4.455777777777778,
+      "site_peak_kw": {
+        "PORT": 111.11111111111111,
+        "WAREHOUSE": 50.0
+      },
+      "objective_unit": "kW",
+      "objective": 111.11111111111111,
+      "dual_bound": 111.11111111111111,
+      "mip_gap": 0.0,
+      "checks_passed": true,
+      "physical_checks": 465
+    },
+    {
+      "policy": "day_ahead",
+      "status": "optimal",
+      "trips_completed": 6,
+      "vehicles_completed": 3,
+      "terminal_kwh": {
+        "V1": 100.0,
+        "V2": 100.0,
+        "V3": 100.0
+      },
+      "grid_energy_kwh": 133.33333333333331,
+      "site_energy_kwh": {
+        "PORT": 133.33333333333334,
+        "WAREHOUSE": 0.0
+      },
+      "purchase_eur": 4.3773333333333335,
+      "site_peak_kw": {
+        "PORT": 150.0,
+        "WAREHOUSE": 0.0
+      },
+      "objective_unit": "EUR",
+      "objective": 4.3773333333333335,
+      "dual_bound": 4.377333333333333,
+      "mip_gap": 0.0,
+      "checks_passed": true,
+      "physical_checks": 465
+    }
+  ],
+  "reproduction": {
+    "source_commit": "fc419b030a8b318fb5e71f1f6c1614b740f6ddeb",
+    "source_dirty": false,
+    "python": "3.12.14",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "solver": "SciPy milp/HiGHS, 60 s, relative gap 0",
+    "base_config_sha256": "0d0f0011c245cf19f0b38aa42a5d949acef56bd58a093f307e877f292352245b",
+    "facility_results_sha256": "6185c27f3149508aefb7487c564caf395496b10ebc3a4bf7e457bcb6ffb28b7a",
+    "powershell": [
+      "python -m pip install -r requirements-milp.txt",
+      "$env:PYTHONPATH = 'src'",
+      "python -m um_charging.day_ahead"
+    ]
+  },
+  "interpretation": "Single historical wholesale curve and synthetic availability. Each row pays the same delivery-hour prices. Site peaks are those of the returned schedules. Peak shaving optimizes the highest site peak; the price policy optimizes only purchased energy cost.",
+  "same_price_feasible_schedule": {
+    "description": "Each truck takes 40/0.9 kW in each of the four final port slots, with no warehouse charging.",
+    "purchase_eur": 4.377333333333332,
+    "site_peak_kw": {
+      "PORT": 133.33333333333331,
+      "WAREHOUSE": 0.0
+    },
+    "checks_passed": true,
+    "trips_completed": 6,
+    "grid_energy_kwh": 133.33333333333334
+  }
+}

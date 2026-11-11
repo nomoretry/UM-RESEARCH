@@ -26,7 +26,25 @@ python studies/fresia-2025/check_milan.py
 
 真实停车记录单独处理。德国 DT-CARGO 样本中，一辆车的两段相邻行驶记录间隔 20 分 30.765 秒；这只能给出可能充电时长的上界，作业放行、插枪和开始供电时刻仍未知。[数据与单事件复算](results/dt_cargo_stop_20261111/event.json)
 
-在固定设施和运输服务下，下一步计划比较到站即充、削峰和按日前价格购电三种策略。价格序列、接入容量和真实可插枪时段的来源将分别记录。
+### 固定设施后，省电费与削峰怎样取舍？
+
+固定上表 60 分钟档的设施（港区 3 个接口、150 kW；仓库 1 个接口、75 kW）。前两辆车只能返港充电，第三辆在仓库有一小时的合成插枪窗口。将同一任务链放在 2025-01-06 柏林时间 08:00–12:00，三种策略均完成六段行驶，三车期末各 100 kWh，总购电量 133.333 kWh。以德国／卢森堡同一条日前批发价格曲线结算，仅计电能费。
+
+| 调度策略 | 四小时购电费（€） | 港区峰值（kW） | 仓库峰值（kW） |
+|---|---:|---:|---:|
+| 到站即充 | 4.45578 | 150.00 | 50.00 |
+| 最小化两站中较高的峰值 | 4.45578 | 111.11 | 50.00 |
+| 最小化日前购电费 | 4.37733 | 150.00 | 0.00 |
+
+仓库窗口所在小时的电价为 36.36 €/MWh，返港小时为 32.83 €/MWh。削峰把仓库能容纳的 22.222 kWh 用足，使港区在剩余一小时恰好达到 111.11 kW 的下界。电费最优解把电量全部留到返港后购买。表中为求解器返回的峰值；三车各以 44.444… kW 充满最后一小时，也能达到同一最低费用，港区峰值为 133.333… kW。[固定情景](studies/day-ahead/case.json) · [同价结算结果](studies/day-ahead/metrics.json) · [原始报价与署名](studies/day-ahead/prices.json)
+
+从仓库根目录用 PowerShell 复算。输出中 `purchase_eur` 为四小时购电费，`site_peak_kw` 为两站各自的峰值。
+
+```powershell
+python -m pip install -r requirements-milp.txt
+$env:PYTHONPATH = 'src'
+python -m um_charging.day_ahead
+```
 
 ## Electric truck charging at a port and warehouse
 
@@ -48,4 +66,14 @@ Run the two commands above from the repository root with Python 3. The first che
 
 [Truck and site inputs](configs/port_warehouse_investment.json) · [Model formulation](docs/model/FORMULATION.md) · [Optimal investments](results/known_delay_investment_20261111/metrics.json) · [MILP run details](results/known_delay_investment_20261111/reproduction.json) · [Milan replication](studies/fresia-2025/)
 
-The planned market study will hold facilities and freight service fixed and compare charging on arrival, peak shaving and day-ahead price scheduling. Each comparison will use the same electricity prices for settlement.
+### Energy cost and peak power with fixed facilities
+
+Freeze the 60-minute-delay build (three port connectors at 150 kW, one warehouse connector at 75 kW). Only the third truck can plug in during the warehouse dwell. All three policies complete six legs, return all three trucks to 100 kWh each, and buy 133.333 kWh. The assumed UM cycle runs from 08:00 to 12:00 Berlin time on 6 January 2025. Every policy pays the same DE-LU day-ahead wholesale price for each delivery hour. The comparison covers energy purchases only.
+
+| Dispatch policy | Four-hour purchase cost (€) | Port peak (kW) | Warehouse peak (kW) |
+|---|---:|---:|---:|
+| Charge on arrival | 4.45578 | 150.00 | 50.00 |
+| Minimize the higher site peak | 4.45578 | 111.11 | 50.00 |
+| Minimize day-ahead purchase cost | 4.37733 | 150.00 | 0.00 |
+
+The warehouse can deliver up to 22.222 kWh before the return trip. Using that energy leaves 111.111 kWh to deliver in the final port hour, which explains the peak lower bound. That port hour is cheaper (€32.83/MWh versus €36.36/MWh at the warehouse). Buying everything at the port minimizes the bill. The table reports the returned schedules. A flat 44.444… kW per truck during the final hour also attains the lowest cost, at a port peak of 133.333… kW. Run the PowerShell commands above to reproduce the table. [Fixed case](studies/day-ahead/case.json) · [Verified results](studies/day-ahead/metrics.json) · [SMARD price inputs](studies/day-ahead/prices.json)
