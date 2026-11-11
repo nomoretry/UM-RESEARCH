@@ -1,0 +1,25 @@
+{
+  "vehicles": ["1", "2"],
+  "depot": 1,
+  "slot_hours": 0.5,
+  "equipment_grid_kw": {"ac_units": 22.0, "dc_units": 50.0},
+  "efficiency": {"ac_units": 0.87, "dc_units": 0.87},
+  "self_discharge_fraction_per_slot": 0.000065,
+  "min_kwh": 0.0,
+  "max_kwh": 47.0,
+  "initial_kwh": 42.3,
+  "terminal_kwh": 42.3,
+  "use_kwh_per_slot": {"service": 2.025, "travel": 3.375, "idle": 0.0},
+  "plug_slots": {
+    "two_hours": [16, 17, 18, 19],
+    "ninety_minutes": [17, 18, 19],
+    "one_hour": [18, 19],
+    "thirty_minutes": [19]
+  },
+  "source": {
+    "paper": "https://doi.org/10.1016/j.segan.2025.101898",
+    "verified_inputs": "Table 5 (p. 9) supplies the battery capacity, service/interzone energy per half hour, self-discharge, charging efficiency, AC/DC nameplates and the economic inputs in check_milan.py. Section 3.4 limits each depot to two units of each type. Table 6 (p. 10) gives vehicle/zone service slots. Section 3 provides shift and travel intervals used in route_time.py.",
+    "reduction_assumptions": "One depot, fixed common order and tasks first, charging investment from zero, AC/DC import only, continuously adjustable grid input up to nameplate; the original Fig. 4 SOC-dependent taper and any positive minimum charging power are omitted. One vehicle per charger per slot and zero-time exchange at slot boundaries. No shared feeder limit. Only the specified depot idle slots are eligible. Service and travel exclude charging.",
+    "scenario_inputs": "One working shift with 90% at both boundaries and an allowed 0-100% battery range. Service placement, the return time and the four post-return plug windows are controlled scenarios."
+  }
+}
