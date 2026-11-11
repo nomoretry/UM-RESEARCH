@@ -34,11 +34,15 @@ def make_investment_scenarios(base):
     return cases
 
 
-def enumerate_facilities(data, *, display=False, time_limit=60.0, on_combination=None):
+def enumerate_facilities(data, *, display=False, time_limit=60.0, on_combination=None,
+                         reuse_operating=None):
     """Fix each discrete facility choice, solve original operations, add its cost.
 
     No joint-investment solution, matrix, objective coefficients or selected
     hardware is consulted. Every permitted hardware tuple is enumerated.
+    An optional reuse_operating(fixed, allocations, investment_cost) supplies
+    a checked historical operating summary or None. on_combination receives
+    only fresh solves, which have raw primal/solver output.
     """
     validate_input(data)
     if data["schema_version"] not in ("capacity-investment-v1", "capacity-investment-v2"):
@@ -77,21 +81,22 @@ def enumerate_facilities(data, *, display=False, time_limit=60.0, on_combination
         if not retain_policy:
             for vehicle in fixed["vehicles"]:
                 vehicle.pop("timeline")
-        result = solve(fixed, display=display, time_limit=time_limit)
-        validation = check_solution(fixed, result)
-        record = {"combination": index, "hardware": allocations,
-                  "investment_cost": investment_cost, "status": result["status"],
-                  "operating_cost": result["objective"],
-                  "operating_dual_bound": result["dual_bound"], "operating_mip_gap": result["mip_gap"],
-                  "validation_passed": validation["passed"], "validation_checks": validation.get("checks"),
-                  "total_cost": (investment_cost + validation["operating_cost"]
-                                 if result["has_solution"] and validation["passed"] else None)}
+        operating = reuse_operating(fixed, allocations, investment_cost) if reuse_operating else None
+        if operating is None:
+            result = solve(fixed, display=display, time_limit=time_limit)
+            validation = check_solution(fixed, result)
+            if on_combination is not None:
+                on_combination(index, fixed, result, validation)
+            if result["status"] not in {"optimal", "infeasible"} or (result["has_solution"] and not validation["passed"]):
+                raise RuntimeError(f"Enumeration combination {index} is unresolved or failed independent checks")
+            operating = {"status": result["status"], "operating_cost": result["objective"],
+                         "operating_dual_bound": result["dual_bound"], "operating_mip_gap": result["mip_gap"],
+                         "validation_passed": validation["passed"], "validation_checks": validation.get("checks"),
+                         "total_cost": (investment_cost + validation["operating_cost"]
+                                        if result["has_solution"] and validation["passed"] else None)}
+        record = {"combination": index, "hardware": allocations, "investment_cost": investment_cost, **operating}
         records.append(record)
-        if on_combination is not None:
-            on_combination(index, fixed, result, validation)
-        if result["status"] not in {"optimal", "infeasible"} or (result["has_solution"] and not validation["passed"]):
-            raise RuntimeError(f"Enumeration combination {index} is unresolved or failed independent checks")
-        if result["status"] == "optimal":
+        if record["status"] == "optimal":
             value = record["total_cost"]
             if best is None or value < best - 1e-7:
                 best, best_choices = value, [allocations]
