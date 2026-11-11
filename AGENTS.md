@@ -30,6 +30,11 @@ Use prompts/RESUME.md for subsequent sessions and prompts/BOOTSTRAP.md for recov
 Use existing code when sound. Do not rename or delete legacy directories merely to match a template.
 Consult other repositories only for general engineering practices. Do not create framework-comparison documents, method mappings, imitation narratives, copied prose or borrowed result targets.
 
+## Presenting the UM study
+- Write the README for a researcher opening the project for the first time. Start with a decision faced by the port or warehouse. Use one small UM case to connect the transport requirement, the observed or assumed plug-in window, the hardware and scheduling decisions, and a result the reader can explain. State units and identify synthetic inputs where they affect the conclusion.
+- Use the existing directories to give readers a short route from a case configuration to the model, a runnable command, and the resulting table or figure. Link to the detailed formulation and verification from there. Keep dated progress, test counts, and run history in the existing research and run records.
+- In a result, name the condition that changed, the outcome and the binding constraint when the evidence identifies it. Prefer the actual site, vehicle, time window and quantity to generic claims about the framework. Choose examples and figures from UM results. Credit external methods, data or code where used. Apply these conventions without a recurring review of external repositories.
+
 ## Runs and results
 Full runtime records belong in a separate local Git repository OUTSIDE this repository, with no remotes. They must never be committed to any branch that will be pushed here.
 The main repository stores code, model, research decisions, reproducible configurations and curated results with provenance. Results are also committed locally before pushing.
