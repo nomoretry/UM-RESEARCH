@@ -48,6 +48,8 @@ python -m um_charging.day_ahead
 
 在相同的 45 分钟插枪延迟下，以 TUM 车队行程的模拟能耗变化构造重卡情景。单程从 20.00 增至 20.64 kWh 后，最低费用配置从港区三个、仓库一个接口变为两地各两个。在另一组固定设施实验中，用 2025 年 1 月每天相同四个时段的 DE-LU 日前电价结算，31 次任务按电价调度共花 €469.15，削峰调度共花 €485.02。[载荷与接口配置](studies/truck-energy/) · [逐日费用和峰值](studies/day-ahead/january_2025.md)
 
+把两种设施放到同一组 45 分钟延迟、港区 100 kW／仓库 75 kW 的条件下。20.00 kWh/单程时，港三仓一与港二仓二均可完成 31 天任务。两地双接口整月只少付 €0.00525，全部来自 1 月 25 日，合成投资分别为 40 和 50。20.64 kWh/单程时，港三仓一返港后一小时至少需要 102.148 kWh，两地双接口可完成全部任务。[逐日费用、两站峰值及复算](studies/day-ahead/january_2025.md#fixed-builds-at-45-minutes)
+
 ## Electric truck charging at a port and warehouse
 
 Three electric trucks travel from a port to a warehouse, unload and return. If two trucks can plug in only during the last 15 minutes of their warehouse stop, where should an operator add a connector? Given a fixed transport service and terminal battery charge, the mixed-integer model selects connectors, grid connection upgrades and individual charging schedules to minimize investment and electricity cost over the same period.
@@ -81,3 +83,5 @@ Freeze the 60-minute-delay build (three port connectors at 150 kW, one warehouse
 The warehouse can deliver up to 22.222 kWh before the return trip. Using that energy leaves 111.111 kWh to deliver in the final port hour, which explains the peak lower bound. That port hour is cheaper (€32.83/MWh versus €36.36/MWh at the warehouse). Buying everything at the port minimizes the bill. The table reports the returned schedules. A flat 44.444… kW per truck during the final hour also attains the lowest cost, at a port peak of 133.333… kW. Run the PowerShell commands above to reproduce the table. [Fixed case](studies/day-ahead/case.json) · [Verified results](studies/day-ahead/metrics.json) · [SMARD price inputs](studies/day-ahead/prices.json)
 
 With the same 45-minute plug-in delay, trip-energy scenarios derived from TUM fleet simulations change the optimal build from three port connectors and one warehouse connector at 20.00 kWh per leg to two at each site at 20.64 kWh. In the separate frozen-facility study, settling 31 four-hour services on January 2025 DE-LU day-ahead prices gives €469.15 for price-aware dispatch and €485.02 for peak shaving. [Payload and facility sizing](studies/truck-energy/) · [Daily costs and peaks](studies/day-ahead/january_2025.md)
+
+At the same 45-minute delay and 100/75 kW site limits, both the 3-port/1-warehouse and 2-port/2-warehouse builds complete all 31 services at 20.00 kWh per leg. The latter saves €0.00525 over the entire month, all on 25 January. Their synthetic investment costs are 40 and 50 units respectively. At 20.64 kWh per leg the 3/1 build would need at least 102.148 kWh in its final port hour. The 2/2 build remains feasible throughout. [Daily bills, site peaks and replay](studies/day-ahead/january_2025.md#fixed-builds-at-45-minutes)
