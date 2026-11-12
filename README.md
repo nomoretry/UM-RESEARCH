@@ -1,6 +1,8 @@
 # 港区与仓库的重卡充电设施规划
 [English](#electric-truck-charging-at-a-port-and-warehouse)
 
+**同一套设备能否服务后续日期？** 德国一支车队的三辆车提供了 101 趟行程。各站一个接口、港区 100 kW／仓库 75 kW，已达到菜单能覆盖的上限：两档仓库放行下，设计集各完成 11/13 个车日，后续三天各完成 8/8。两个设计车日受车载电量限制。站点映射和插枪资格为 UM 假设。运行 `$env:PYTHONPATH='src'; python -m um_charging.fleet_design`。[来源与筛选](studies/fleet-service/DATA.md) · [冻结设施的留出结果](studies/fleet-service/selected.json)
+
 **一套设施覆盖多种工况。** 三车合成算例中，单独覆盖两种指定任务分别需投资 40、50；共同覆盖需 70，选港区 3 个接口／100 kW、仓库 2 个／75 kW。覆盖全部 40 个已测工况需 75，选港区 3 个／150 kW、仓库 1 个／75 kW。投资为合成单位。在仓库根目录运行 PowerShell 命令 `$env:PYTHONPATH='src'; python -m um_charging.shared_investment`。[服务范围表、失败下界和逐车排程](results/shared_investment_20261112/)
 
 三辆电动重卡从港区出发，到仓库装卸后返港。仓库有一个充电接口。如果两辆车要等 45 分钟才能插枪，应该在港区加一个接口，还是在仓库加？给定运输任务和期末电量，模型同时选择两站的接口数、接入扩容档位和逐车充电功率，以最小化同一周期的设施投资与购电费用。
@@ -55,6 +57,8 @@ python -m um_charging.day_ahead
 同一物理接口换车时，港二仓二在 20.00 和 20.64 kWh/单程下最多分别容忍 3 分 20 秒和约 2 分 26.28 秒。保留 15 分钟分配边界，按实际间隔扣时。沿用上面的 PowerShell 环境，运行 `python -m um_charging.changeover_study`。[临界排程与恢复投资](results/changeover_20261112/metrics.json)
 
 ## Electric truck charging at a port and warehouse
+
+On three later dates for the same German fleet, one connector at each site (100/75 kW) served 8/8 truck-days at both 0 and 45 minutes of warehouse release delay. Even the largest build served only 11/13 design truck-days per delay. Trip timestamps are recorded, trip energy is simulated, and site mapping and plug access are UM assumptions. Run `$env:PYTHONPATH='src'; python -m um_charging.fleet_design`. [Source and sampling](studies/fleet-service/DATA.md) · [Design and holdout results](studies/fleet-service/selected.json)
 
 A single build serving two specified synthetic duties costs 70 units, versus 40 and 50 when each is planned separately. All 40 tested conditions need 75 units, with three port connectors at 150 kW and one warehouse connector at 75 kW. In PowerShell run `$env:PYTHONPATH='src'; python -m um_charging.shared_investment`. [Service ranges and schedules](results/shared_investment_20261112/)
 

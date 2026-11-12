@@ -1,0 +1,572 @@
+{
+  "duties_sha256": "634576e39fbcb031522a065a7f05e1c333e434800d81ae54e419a70b06d17e80",
+  "investment_config_sha256": "0d0f0011c245cf19f0b38aa42a5d949acef56bd58a093f307e877f292352245b",
+  "source_commit": "4dc0201547a09851aa00d89864521b7933946ceb",
+  "assumptions": {
+    "boundaries_kwh": 150.0,
+    "capacity_kwh": 300.0,
+    "reserve_kwh": 30.0,
+    "truck_grid_kw": 50.0,
+    "efficiency": 0.9,
+    "release_min": [
+      0,
+      45
+    ],
+    "connector_reservation_min": 15,
+    "changeover_min": 0
+  },
+  "design_dates": [
+    "2021-09-13",
+    "2021-09-14",
+    "2021-09-15",
+    "2021-09-16",
+    "2021-09-17",
+    "2021-09-20"
+  ],
+  "holdout_dates": [
+    "2021-09-21",
+    "2021-09-22",
+    "2021-09-23"
+  ],
+  "typical_date": "2021-09-15",
+  "scale_comparison": [
+    {
+      "design_dates": 1,
+      "vehicle_days": 2,
+      "trips": 11,
+      "investment": 0,
+      "optimization_calls": 6,
+      "solve_seconds": 0.040757499999017455,
+      "slowest_solve_seconds": 0.014520799999445444,
+      "max_reported_gap": 0.0,
+      "covered_vehicle_day_scenarios": 2,
+      "requested_vehicle_day_scenarios": 4
+    },
+    {
+      "design_dates": 3,
+      "vehicle_days": 7,
+      "trips": 29,
+      "investment": 0,
+      "optimization_calls": 14,
+      "solve_seconds": 0.12054099999932077,
+      "slowest_solve_seconds": 0.01892480000060459,
+      "max_reported_gap": 0.0,
+      "covered_vehicle_day_scenarios": 12,
+      "requested_vehicle_day_scenarios": 14
+    },
+    {
+      "design_dates": 6,
+      "vehicle_days": 13,
+      "trips": 56,
+      "investment": 0,
+      "optimization_calls": 28,
+      "solve_seconds": 0.2634976000035749,
+      "slowest_solve_seconds": 0.03639030000067578,
+      "max_reported_gap": 0.0,
+      "covered_vehicle_day_scenarios": 22,
+      "requested_vehicle_day_scenarios": 26
+    }
+  ],
+  "designs": {
+    "immediate_release_design": {
+      "investment": 0,
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "ties": [
+        {
+          "PORT": {
+            "interfaces": 1,
+            "power_kw": 100
+          },
+          "WAREHOUSE": {
+            "interfaces": 1,
+            "power_kw": 75
+          }
+        }
+      ],
+      "full_coverage_possible": false,
+      "covered_vehicle_day_scenarios": 11,
+      "requested_vehicle_day_scenarios": 13,
+      "menu_size": 54,
+      "examined_builds": 1,
+      "unexamined_strictly_costlier": 53,
+      "optimization_calls": 14,
+      "solve_seconds": 0.12048910000066826,
+      "slowest_solve_seconds": 0.02232960000037565,
+      "max_reported_gap": 0.0,
+      "scenarios": [
+        {
+          "date": "2021-09-14",
+          "release_min": 0,
+          "requested": 3,
+          "max_complete": 3,
+          "maximal_build_failure": []
+        },
+        {
+          "date": "2021-09-13",
+          "release_min": 0,
+          "requested": 2,
+          "max_complete": 1,
+          "maximal_build_failure": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4404",
+              "trip_end_min": 987.6625166666666,
+              "reachable_raw_upper_kwh": 12.95224550000006,
+              "required_min_kwh": 30.0
+            }
+          ]
+        },
+        {
+          "date": "2021-09-15",
+          "release_min": 0,
+          "requested": 2,
+          "max_complete": 2,
+          "maximal_build_failure": []
+        },
+        {
+          "date": "2021-09-16",
+          "release_min": 0,
+          "requested": 2,
+          "max_complete": 2,
+          "maximal_build_failure": []
+        },
+        {
+          "date": "2021-09-17",
+          "release_min": 0,
+          "requested": 2,
+          "max_complete": 2,
+          "maximal_build_failure": []
+        },
+        {
+          "date": "2021-09-20",
+          "release_min": 0,
+          "requested": 2,
+          "max_complete": 1,
+          "maximal_build_failure": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4437",
+              "trip_end_min": 756.4075,
+              "reachable_raw_upper_kwh": -59.904738000000094,
+              "required_min_kwh": 30.0
+            }
+          ]
+        }
+      ],
+      "holdout": [
+        {
+          "date": "2021-09-21",
+          "release_min": 0,
+          "status": "optimal",
+          "requested_vehicle_days": 2,
+          "completed_vehicle_days": 2,
+          "completed_ids": [
+            "3",
+            "5"
+          ],
+          "failure_reasons": [],
+          "full_gap": 0.0,
+          "service_gap": 0.0,
+          "solve_seconds": 0.012280599999940023
+        },
+        {
+          "date": "2021-09-21",
+          "release_min": 45,
+          "status": "optimal",
+          "requested_vehicle_days": 2,
+          "completed_vehicle_days": 2,
+          "completed_ids": [
+            "3",
+            "5"
+          ],
+          "failure_reasons": [],
+          "full_gap": 0.0,
+          "service_gap": 0.0,
+          "solve_seconds": 0.0129891000005955
+        },
+        {
+          "date": "2021-09-22",
+          "release_min": 0,
+          "status": "optimal",
+          "requested_vehicle_days": 3,
+          "completed_vehicle_days": 3,
+          "completed_ids": [
+            "3",
+            "4",
+            "5"
+          ],
+          "failure_reasons": [],
+          "full_gap": 0.0,
+          "service_gap": 0.0,
+          "solve_seconds": 0.019127799999296258
+        },
+        {
+          "date": "2021-09-22",
+          "release_min": 45,
+          "status": "optimal",
+          "requested_vehicle_days": 3,
+          "completed_vehicle_days": 3,
+          "completed_ids": [
+            "3",
+            "4",
+            "5"
+          ],
+          "failure_reasons": [],
+          "full_gap": 0.0,
+          "service_gap": 0.0,
+          "solve_seconds": 0.025067699999453907
+        },
+        {
+          "date": "2021-09-23",
+          "release_min": 0,
+          "status": "optimal",
+          "requested_vehicle_days": 3,
+          "completed_vehicle_days": 3,
+          "completed_ids": [
+            "3",
+            "4",
+            "5"
+          ],
+          "failure_reasons": [],
+          "full_gap": 0.0,
+          "service_gap": 0.0,
+          "solve_seconds": 0.0257129999999961
+        },
+        {
+          "date": "2021-09-23",
+          "release_min": 45,
+          "status": "optimal",
+          "requested_vehicle_days": 3,
+          "completed_vehicle_days": 3,
+          "completed_ids": [
+            "3",
+            "4",
+            "5"
+          ],
+          "failure_reasons": [],
+          "full_gap": 0.0,
+          "service_gap": 0.0,
+          "solve_seconds": 0.01764980000007199
+        }
+      ]
+    },
+    "shared_release_design": {
+      "investment": 0,
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "ties": [
+        {
+          "PORT": {
+            "interfaces": 1,
+            "power_kw": 100
+          },
+          "WAREHOUSE": {
+            "interfaces": 1,
+            "power_kw": 75
+          }
+        }
+      ],
+      "full_coverage_possible": false,
+      "covered_vehicle_day_scenarios": 22,
+      "requested_vehicle_day_scenarios": 26,
+      "menu_size": 54,
+      "examined_builds": 1,
+      "unexamined_strictly_costlier": 53,
+      "optimization_calls": 28,
+      "solve_seconds": 0.2634976000035749,
+      "slowest_solve_seconds": 0.03639030000067578,
+      "max_reported_gap": 0.0,
+      "scenarios": [
+        {
+          "date": "2021-09-14",
+          "release_min": 45,
+          "requested": 3,
+          "max_complete": 3,
+          "maximal_build_failure": []
+        },
+        {
+          "date": "2021-09-13",
+          "release_min": 45,
+          "requested": 2,
+          "max_complete": 1,
+          "maximal_build_failure": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4404",
+              "trip_end_min": 987.6625166666666,
+              "reachable_raw_upper_kwh": -17.893891999999994,
+              "required_min_kwh": 30.0
+            }
+          ]
+        },
+        {
+          "date": "2021-09-15",
+          "release_min": 45,
+          "requested": 2,
+          "max_complete": 2,
+          "maximal_build_failure": []
+        },
+        {
+          "date": "2021-09-16",
+          "release_min": 45,
+          "requested": 2,
+          "max_complete": 2,
+          "maximal_build_failure": []
+        },
+        {
+          "date": "2021-09-17",
+          "release_min": 45,
+          "requested": 2,
+          "max_complete": 2,
+          "maximal_build_failure": []
+        },
+        {
+          "date": "2021-09-20",
+          "release_min": 45,
+          "requested": 2,
+          "max_complete": 1,
+          "maximal_build_failure": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4437",
+              "trip_end_min": 756.4075,
+              "reachable_raw_upper_kwh": -101.580138,
+              "required_min_kwh": 30.0
+            }
+          ]
+        },
+        {
+          "date": "2021-09-14",
+          "release_min": 0,
+          "requested": 3,
+          "max_complete": 3,
+          "maximal_build_failure": []
+        },
+        {
+          "date": "2021-09-13",
+          "release_min": 0,
+          "requested": 2,
+          "max_complete": 1,
+          "maximal_build_failure": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4404",
+              "trip_end_min": 987.6625166666666,
+              "reachable_raw_upper_kwh": 12.95224550000006,
+              "required_min_kwh": 30.0
+            }
+          ]
+        },
+        {
+          "date": "2021-09-15",
+          "release_min": 0,
+          "requested": 2,
+          "max_complete": 2,
+          "maximal_build_failure": []
+        },
+        {
+          "date": "2021-09-16",
+          "release_min": 0,
+          "requested": 2,
+          "max_complete": 2,
+          "maximal_build_failure": []
+        },
+        {
+          "date": "2021-09-17",
+          "release_min": 0,
+          "requested": 2,
+          "max_complete": 2,
+          "maximal_build_failure": []
+        },
+        {
+          "date": "2021-09-20",
+          "release_min": 0,
+          "requested": 2,
+          "max_complete": 1,
+          "maximal_build_failure": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4437",
+              "trip_end_min": 756.4075,
+              "reachable_raw_upper_kwh": -59.904738000000094,
+              "required_min_kwh": 30.0
+            }
+          ]
+        }
+      ],
+      "holdout": [
+        {
+          "date": "2021-09-21",
+          "release_min": 0,
+          "status": "optimal",
+          "requested_vehicle_days": 2,
+          "completed_vehicle_days": 2,
+          "completed_ids": [
+            "3",
+            "5"
+          ],
+          "failure_reasons": [],
+          "full_gap": 0.0,
+          "service_gap": 0.0,
+          "solve_seconds": 0.01392169999962789
+        },
+        {
+          "date": "2021-09-21",
+          "release_min": 45,
+          "status": "optimal",
+          "requested_vehicle_days": 2,
+          "completed_vehicle_days": 2,
+          "completed_ids": [
+            "3",
+            "5"
+          ],
+          "failure_reasons": [],
+          "full_gap": 0.0,
+          "service_gap": 0.0,
+          "solve_seconds": 0.018351200000324752
+        },
+        {
+          "date": "2021-09-22",
+          "release_min": 0,
+          "status": "optimal",
+          "requested_vehicle_days": 3,
+          "completed_vehicle_days": 3,
+          "completed_ids": [
+            "3",
+            "4",
+            "5"
+          ],
+          "failure_reasons": [],
+          "full_gap": 0.0,
+          "service_gap": 0.0,
+          "solve_seconds": 0.017903500000102213
+        },
+        {
+          "date": "2021-09-22",
+          "release_min": 45,
+          "status": "optimal",
+          "requested_vehicle_days": 3,
+          "completed_vehicle_days": 3,
+          "completed_ids": [
+            "3",
+            "4",
+            "5"
+          ],
+          "failure_reasons": [],
+          "full_gap": 0.0,
+          "service_gap": 0.0,
+          "solve_seconds": 0.016821299999719486
+        },
+        {
+          "date": "2021-09-23",
+          "release_min": 0,
+          "status": "optimal",
+          "requested_vehicle_days": 3,
+          "completed_vehicle_days": 3,
+          "completed_ids": [
+            "3",
+            "4",
+            "5"
+          ],
+          "failure_reasons": [],
+          "full_gap": 0.0,
+          "service_gap": 0.0,
+          "solve_seconds": 0.019810700000562065
+        },
+        {
+          "date": "2021-09-23",
+          "release_min": 45,
+          "status": "optimal",
+          "requested_vehicle_days": 3,
+          "completed_vehicle_days": 3,
+          "completed_ids": [
+            "3",
+            "4",
+            "5"
+          ],
+          "failure_reasons": [],
+          "full_gap": 0.0,
+          "service_gap": 0.0,
+          "solve_seconds": 0.01755609999963781
+        }
+      ]
+    }
+  },
+  "audited_gap_veto": {
+    "vehicle_id": "3",
+    "date": "2021-09-17",
+    "arrival_track_id": "4423",
+    "next_track_id": "4425",
+    "removed_site": "WAREHOUSE",
+    "selection_retained": true,
+    "investment": 0,
+    "hardware": {
+      "PORT": {
+        "interfaces": 1,
+        "power_kw": 100
+      },
+      "WAREHOUSE": {
+        "interfaces": 1,
+        "power_kw": 75
+      }
+    },
+    "checks": [
+      {
+        "release_min": 0,
+        "build": "selected",
+        "completed": 2,
+        "requested": 2,
+        "gap": 0.0,
+        "audit": true
+      },
+      {
+        "release_min": 0,
+        "build": "maximal",
+        "completed": 2,
+        "requested": 2,
+        "gap": 0.0,
+        "audit": true
+      },
+      {
+        "release_min": 45,
+        "build": "selected",
+        "completed": 2,
+        "requested": 2,
+        "gap": 0.0,
+        "audit": true
+      },
+      {
+        "release_min": 45,
+        "build": "maximal",
+        "completed": 2,
+        "requested": 2,
+        "gap": 0.0,
+        "audit": true
+      }
+    ]
+  },
+  "wall_seconds": 1.3331289000007018
+}
