@@ -1,6 +1,8 @@
 # 港区与仓库的重卡充电设施规划
 [English](#electric-truck-charging-at-a-port-and-warehouse)
 
+**一套设施覆盖多种工况。** 三车合成算例中，单独覆盖两种指定任务分别需投资 40、50；共同覆盖需 70，选港区 3 个接口／100 kW、仓库 2 个／75 kW。覆盖全部 40 个已测工况需 75，选港区 3 个／150 kW、仓库 1 个／75 kW。投资为合成单位。在仓库根目录运行 PowerShell 命令 `$env:PYTHONPATH='src'; python -m um_charging.shared_investment`。[服务范围表、失败下界和逐车排程](results/shared_investment_20261112/)
+
 三辆电动重卡从港区出发，到仓库装卸后返港。仓库有一个充电接口。如果两辆车要等 45 分钟才能插枪，应该在港区加一个接口，还是在仓库加？给定运输任务和期末电量，模型同时选择两站的接口数、接入扩容档位和逐车充电功率，以最小化同一周期的设施投资与购电费用。
 
 在四小时合成算例中，港区和仓库的初始接入容量分别为 100 和 75 kW，每车最多以 50 kW 充电。车辆在仓库停车 60 分钟。下表只改变前两辆车的插枪等候，第三辆保留完整窗口。每 15 分钟可以轮换接口，假设换枪不耗时，规划者事先知道本次等候时间。
@@ -53,6 +55,8 @@ python -m um_charging.day_ahead
 同一物理接口换车时，港二仓二在 20.00 和 20.64 kWh/单程下最多分别容忍 3 分 20 秒和约 2 分 26.28 秒。保留 15 分钟分配边界，按实际间隔扣时。沿用上面的 PowerShell 环境，运行 `python -m um_charging.changeover_study`。[临界排程与恢复投资](results/changeover_20261112/metrics.json)
 
 ## Electric truck charging at a port and warehouse
+
+A single build serving two specified synthetic duties costs 70 units, versus 40 and 50 when each is planned separately. All 40 tested conditions need 75 units, with three port connectors at 150 kW and one warehouse connector at 75 kW. In PowerShell run `$env:PYTHONPATH='src'; python -m um_charging.shared_investment`. [Service ranges and schedules](results/shared_investment_20261112/)
 
 Three electric trucks travel from a port to a warehouse, unload and return. If two trucks can plug in only during the last 15 minutes of their warehouse stop, where should an operator add a connector? Given a fixed transport service and terminal battery charge, the mixed-integer model selects connectors, grid connection upgrades and individual charging schedules to minimize investment and electricity cost over the same period.
 
