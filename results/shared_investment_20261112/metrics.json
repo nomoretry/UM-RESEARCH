@@ -1,0 +1,1067 @@
+{
+  "units": "synthetic investment per cycle; power in kW",
+  "menu_size": 54,
+  "primary_service_cells": 40,
+  "threshold_anchors": [
+    2.4479791682258796,
+    4.96898958411294,
+    4.97898958411294
+  ],
+  "table": [
+    {
+      "max_leg_kwh": 20.0,
+      "max_release_min": 0,
+      "max_turnaround_min": 0,
+      "grid": "primary",
+      "services": 1,
+      "investment": 20,
+      "optimal_builds": [
+        "P2-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.0,
+      "max_release_min": 0,
+      "max_turnaround_min": 2,
+      "grid": "primary",
+      "services": 2,
+      "investment": 20,
+      "optimal_builds": [
+        "P2-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.0,
+      "max_release_min": 0,
+      "max_turnaround_min": 5,
+      "grid": "primary",
+      "services": 3,
+      "investment": 40,
+      "optimal_builds": [
+        "P3-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.0,
+      "max_release_min": 0,
+      "max_turnaround_min": 10,
+      "grid": "primary",
+      "services": 4,
+      "investment": 40,
+      "optimal_builds": [
+        "P3-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.0,
+      "max_release_min": 15,
+      "max_turnaround_min": 0,
+      "grid": "primary",
+      "services": 2,
+      "investment": 20,
+      "optimal_builds": [
+        "P2-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.0,
+      "max_release_min": 15,
+      "max_turnaround_min": 2,
+      "grid": "primary",
+      "services": 4,
+      "investment": 20,
+      "optimal_builds": [
+        "P2-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.0,
+      "max_release_min": 15,
+      "max_turnaround_min": 5,
+      "grid": "primary",
+      "services": 6,
+      "investment": 40,
+      "optimal_builds": [
+        "P3-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.0,
+      "max_release_min": 15,
+      "max_turnaround_min": 10,
+      "grid": "primary",
+      "services": 8,
+      "investment": 40,
+      "optimal_builds": [
+        "P3-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.0,
+      "max_release_min": 30,
+      "max_turnaround_min": 0,
+      "grid": "primary",
+      "services": 3,
+      "investment": 20,
+      "optimal_builds": [
+        "P2-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.0,
+      "max_release_min": 30,
+      "max_turnaround_min": 2,
+      "grid": "primary",
+      "services": 6,
+      "investment": 20,
+      "optimal_builds": [
+        "P2-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.0,
+      "max_release_min": 30,
+      "max_turnaround_min": 5,
+      "grid": "primary",
+      "services": 9,
+      "investment": 40,
+      "optimal_builds": [
+        "P3-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.0,
+      "max_release_min": 30,
+      "max_turnaround_min": 10,
+      "grid": "primary",
+      "services": 12,
+      "investment": 40,
+      "optimal_builds": [
+        "P3-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.0,
+      "max_release_min": 45,
+      "max_turnaround_min": 0,
+      "grid": "primary",
+      "services": 4,
+      "investment": 40,
+      "optimal_builds": [
+        "P3-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.0,
+      "max_release_min": 45,
+      "max_turnaround_min": 2,
+      "grid": "primary",
+      "services": 8,
+      "investment": 40,
+      "optimal_builds": [
+        "P3-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.0,
+      "max_release_min": 45,
+      "max_turnaround_min": 5,
+      "grid": "primary",
+      "services": 12,
+      "investment": 40,
+      "optimal_builds": [
+        "P3-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.0,
+      "max_release_min": 45,
+      "max_turnaround_min": 10,
+      "grid": "primary",
+      "services": 16,
+      "investment": 40,
+      "optimal_builds": [
+        "P3-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.0,
+      "max_release_min": 60,
+      "max_turnaround_min": 0,
+      "grid": "primary",
+      "services": 5,
+      "investment": 75,
+      "optimal_builds": [
+        "P3-150_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.0,
+      "max_release_min": 60,
+      "max_turnaround_min": 2,
+      "grid": "primary",
+      "services": 10,
+      "investment": 75,
+      "optimal_builds": [
+        "P3-150_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.0,
+      "max_release_min": 60,
+      "max_turnaround_min": 5,
+      "grid": "primary",
+      "services": 15,
+      "investment": 75,
+      "optimal_builds": [
+        "P3-150_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.0,
+      "max_release_min": 60,
+      "max_turnaround_min": 10,
+      "grid": "primary",
+      "services": 20,
+      "investment": 75,
+      "optimal_builds": [
+        "P3-150_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.636628905957647,
+      "max_release_min": 0,
+      "max_turnaround_min": 0,
+      "grid": "primary",
+      "services": 2,
+      "investment": 20,
+      "optimal_builds": [
+        "P2-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.636628905957647,
+      "max_release_min": 0,
+      "max_turnaround_min": 2,
+      "grid": "primary",
+      "services": 4,
+      "investment": 20,
+      "optimal_builds": [
+        "P2-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.636628905957647,
+      "max_release_min": 0,
+      "max_turnaround_min": 5,
+      "grid": "primary",
+      "services": 6,
+      "investment": 40,
+      "optimal_builds": [
+        "P3-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.636628905957647,
+      "max_release_min": 0,
+      "max_turnaround_min": 10,
+      "grid": "primary",
+      "services": 8,
+      "investment": 40,
+      "optimal_builds": [
+        "P3-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.636628905957647,
+      "max_release_min": 15,
+      "max_turnaround_min": 0,
+      "grid": "primary",
+      "services": 4,
+      "investment": 20,
+      "optimal_builds": [
+        "P2-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.636628905957647,
+      "max_release_min": 15,
+      "max_turnaround_min": 2,
+      "grid": "primary",
+      "services": 8,
+      "investment": 20,
+      "optimal_builds": [
+        "P2-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.636628905957647,
+      "max_release_min": 15,
+      "max_turnaround_min": 5,
+      "grid": "primary",
+      "services": 12,
+      "investment": 40,
+      "optimal_builds": [
+        "P3-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.636628905957647,
+      "max_release_min": 15,
+      "max_turnaround_min": 10,
+      "grid": "primary",
+      "services": 16,
+      "investment": 40,
+      "optimal_builds": [
+        "P3-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.636628905957647,
+      "max_release_min": 30,
+      "max_turnaround_min": 0,
+      "grid": "primary",
+      "services": 6,
+      "investment": 20,
+      "optimal_builds": [
+        "P2-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.636628905957647,
+      "max_release_min": 30,
+      "max_turnaround_min": 2,
+      "grid": "primary",
+      "services": 12,
+      "investment": 20,
+      "optimal_builds": [
+        "P2-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.636628905957647,
+      "max_release_min": 30,
+      "max_turnaround_min": 5,
+      "grid": "primary",
+      "services": 18,
+      "investment": 40,
+      "optimal_builds": [
+        "P3-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.636628905957647,
+      "max_release_min": 30,
+      "max_turnaround_min": 10,
+      "grid": "primary",
+      "services": 24,
+      "investment": 40,
+      "optimal_builds": [
+        "P3-100_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.636628905957647,
+      "max_release_min": 45,
+      "max_turnaround_min": 0,
+      "grid": "primary",
+      "services": 8,
+      "investment": 50,
+      "optimal_builds": [
+        "P2-100_W2-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.636628905957647,
+      "max_release_min": 45,
+      "max_turnaround_min": 2,
+      "grid": "primary",
+      "services": 16,
+      "investment": 50,
+      "optimal_builds": [
+        "P2-100_W2-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.636628905957647,
+      "max_release_min": 45,
+      "max_turnaround_min": 2.4479791682258796,
+      "grid": "prior_threshold_anchor",
+      "services": 17,
+      "investment": 60,
+      "optimal_builds": [
+        "P2-100_W2-100"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.636628905957647,
+      "max_release_min": 45,
+      "max_turnaround_min": 4.96898958411294,
+      "grid": "prior_threshold_anchor",
+      "services": 18,
+      "investment": 60,
+      "optimal_builds": [
+        "P2-100_W2-100"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.636628905957647,
+      "max_release_min": 45,
+      "max_turnaround_min": 4.97898958411294,
+      "grid": "prior_threshold_anchor",
+      "services": 19,
+      "investment": 70,
+      "optimal_builds": [
+        "P3-100_W2-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.636628905957647,
+      "max_release_min": 45,
+      "max_turnaround_min": 5,
+      "grid": "primary",
+      "services": 27,
+      "investment": 70,
+      "optimal_builds": [
+        "P3-100_W2-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.636628905957647,
+      "max_release_min": 45,
+      "max_turnaround_min": 10,
+      "grid": "primary",
+      "services": 35,
+      "investment": 70,
+      "optimal_builds": [
+        "P3-100_W2-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.636628905957647,
+      "max_release_min": 60,
+      "max_turnaround_min": 0,
+      "grid": "primary",
+      "services": 10,
+      "investment": 75,
+      "optimal_builds": [
+        "P3-150_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.636628905957647,
+      "max_release_min": 60,
+      "max_turnaround_min": 2,
+      "grid": "primary",
+      "services": 20,
+      "investment": 75,
+      "optimal_builds": [
+        "P3-150_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.636628905957647,
+      "max_release_min": 60,
+      "max_turnaround_min": 5,
+      "grid": "primary",
+      "services": 33,
+      "investment": 75,
+      "optimal_builds": [
+        "P3-150_W1-75"
+      ]
+    },
+    {
+      "max_leg_kwh": 20.636628905957647,
+      "max_release_min": 60,
+      "max_turnaround_min": 10,
+      "grid": "primary",
+      "services": 43,
+      "investment": 75,
+      "optimal_builds": [
+        "P3-150_W1-75"
+      ]
+    }
+  ],
+  "nonrectangular_shared_plan": {
+    "services": [
+      [
+        20.0,
+        45,
+        10
+      ],
+      [
+        20.636628905957647,
+        45,
+        2
+      ]
+    ],
+    "individual_minima": [
+      40,
+      50
+    ],
+    "shared_investment": 70,
+    "optimal_builds": [
+      "P3-100_W2-75"
+    ]
+  },
+  "coverage": [
+    {
+      "build": "P2-100_W1-75",
+      "cost": 20,
+      "feasible_primary_cells": 12,
+      "feasible_cells_with_anchors": 12,
+      "maximal_feasible_services": [
+        [
+          20.636628905957647,
+          30,
+          2
+        ]
+      ]
+    },
+    {
+      "build": "P3-100_W1-75",
+      "cost": 40,
+      "feasible_primary_cells": 28,
+      "feasible_cells_with_anchors": 28,
+      "maximal_feasible_services": [
+        [
+          20.0,
+          45,
+          10
+        ],
+        [
+          20.636628905957647,
+          30,
+          10
+        ]
+      ]
+    },
+    {
+      "build": "P2-100_W2-75",
+      "cost": 50,
+      "feasible_primary_cells": 26,
+      "feasible_cells_with_anchors": 26,
+      "maximal_feasible_services": [
+        [
+          20.0,
+          30,
+          10
+        ],
+        [
+          20.636628905957647,
+          0,
+          10
+        ],
+        [
+          20.636628905957647,
+          30,
+          5
+        ],
+        [
+          20.636628905957647,
+          45,
+          2
+        ]
+      ]
+    },
+    {
+      "build": "P2-100_W2-100",
+      "cost": 60,
+      "feasible_primary_cells": 27,
+      "feasible_cells_with_anchors": 29,
+      "maximal_feasible_services": [
+        [
+          20.0,
+          30,
+          10
+        ],
+        [
+          20.0,
+          45,
+          5
+        ],
+        [
+          20.636628905957647,
+          0,
+          10
+        ],
+        [
+          20.636628905957647,
+          30,
+          5
+        ],
+        [
+          20.636628905957647,
+          45,
+          4.96898958411294
+        ]
+      ]
+    },
+    {
+      "build": "P3-100_W2-75",
+      "cost": 70,
+      "feasible_primary_cells": 32,
+      "feasible_cells_with_anchors": 35,
+      "maximal_feasible_services": [
+        [
+          20.636628905957647,
+          45,
+          10
+        ]
+      ]
+    },
+    {
+      "build": "P3-150_W1-75",
+      "cost": 75,
+      "feasible_primary_cells": 40,
+      "feasible_cells_with_anchors": 43,
+      "maximal_feasible_services": [
+        [
+          20.636628905957647,
+          60,
+          10
+        ]
+      ]
+    }
+  ],
+  "certificates": {
+    "warehouse_upgrade": {
+      "service": [
+        20.636628905957647,
+        45,
+        2.4479791682258796
+      ],
+      "investment": 60,
+      "witnesses": {
+        "P2-100_W2-100": [
+          {
+            "site": "WAREHOUSE",
+            "connector": 1,
+            "slot": 5,
+            "vehicle": "V3",
+            "segments": [
+              [
+                75,
+                90,
+                41.59663194704321
+              ]
+            ]
+          },
+          {
+            "site": "WAREHOUSE",
+            "connector": 2,
+            "slot": 6,
+            "vehicle": "V3",
+            "segments": [
+              [
+                90,
+                105,
+                50.0
+              ]
+            ]
+          },
+          {
+            "site": "WAREHOUSE",
+            "connector": 1,
+            "slot": 7,
+            "vehicle": "V2",
+            "segments": [
+              [
+                105,
+                120,
+                41.59663194704321
+              ]
+            ]
+          },
+          {
+            "site": "WAREHOUSE",
+            "connector": 2,
+            "slot": 7,
+            "vehicle": "V1",
+            "segments": [
+              [
+                107.44797916822588,
+                120,
+                49.70908569767393
+              ]
+            ]
+          },
+          {
+            "site": "PORT",
+            "connector": 1,
+            "slot": 12,
+            "vehicle": "V2",
+            "segments": [
+              [
+                180,
+                195,
+                50.0
+              ]
+            ]
+          },
+          {
+            "site": "PORT",
+            "connector": 2,
+            "slot": 12,
+            "vehicle": "V3",
+            "segments": [
+              [
+                180,
+                195,
+                49.99999999999993
+              ]
+            ]
+          },
+          {
+            "site": "PORT",
+            "connector": 1,
+            "slot": 13,
+            "vehicle": "V1",
+            "segments": [
+              [
+                197.44797916822588,
+                210,
+                50.00000000000001
+              ]
+            ]
+          },
+          {
+            "site": "PORT",
+            "connector": 2,
+            "slot": 13,
+            "vehicle": "V2",
+            "segments": [
+              [
+                197.44797916822588,
+                210,
+                50.00000000000001
+              ]
+            ]
+          },
+          {
+            "site": "PORT",
+            "connector": 1,
+            "slot": 14,
+            "vehicle": "V1",
+            "segments": [
+              [
+                210,
+                225,
+                50.0
+              ]
+            ]
+          },
+          {
+            "site": "PORT",
+            "connector": 2,
+            "slot": 14,
+            "vehicle": "V2",
+            "segments": [
+              [
+                210,
+                225,
+                49.99999999999993
+              ]
+            ]
+          },
+          {
+            "site": "PORT",
+            "connector": 1,
+            "slot": 15,
+            "vehicle": "V1",
+            "segments": [
+              [
+                225,
+                240,
+                50.0
+              ]
+            ]
+          },
+          {
+            "site": "PORT",
+            "connector": 2,
+            "slot": 15,
+            "vehicle": "V3",
+            "segments": [
+              [
+                227.44797916822588,
+                240,
+                50.00000000000001
+              ]
+            ]
+          }
+        ]
+      },
+      "cheaper_builds_infeasible_at_corner": [
+        "P1-100_W1-75",
+        "P1-100_W1-100",
+        "P2-100_W1-75",
+        "P1-100_W2-75",
+        "P2-100_W1-100",
+        "P1-150_W1-75",
+        "P1-100_W2-100",
+        "P3-100_W1-75",
+        "P1-150_W1-100",
+        "P2-100_W2-75",
+        "P3-100_W1-100",
+        "P2-150_W1-75"
+      ]
+    },
+    "port_capacity": {
+      "service": [
+        20.636628905957647,
+        60,
+        10
+      ],
+      "investment": 75,
+      "witnesses": {
+        "P3-150_W1-75": [
+          {
+            "site": "PORT",
+            "connector": 1,
+            "slot": 12,
+            "vehicle": "V1",
+            "segments": [
+              [
+                180.0,
+                190.0,
+                50.0
+              ],
+              [
+                190.0,
+                195.0,
+                50.0
+              ]
+            ]
+          },
+          {
+            "site": "PORT",
+            "connector": 2,
+            "slot": 12,
+            "vehicle": "V3",
+            "segments": [
+              [
+                180.0,
+                190.0,
+                41.71835069314512
+              ],
+              [
+                190.0,
+                195.0,
+                41.71835069314512
+              ]
+            ]
+          },
+          {
+            "site": "PORT",
+            "connector": 3,
+            "slot": 12,
+            "vehicle": "V2",
+            "segments": [
+              [
+                180.0,
+                190.0,
+                50.0
+              ],
+              [
+                190.0,
+                195.0,
+                50.0
+              ]
+            ]
+          },
+          {
+            "site": "PORT",
+            "connector": 1,
+            "slot": 13,
+            "vehicle": "V1",
+            "segments": [
+              [
+                195.0,
+                205.0,
+                33.436701386290224
+              ],
+              [
+                205.0,
+                210.0,
+                33.436701386290224
+              ]
+            ]
+          },
+          {
+            "site": "PORT",
+            "connector": 2,
+            "slot": 13,
+            "vehicle": "V3",
+            "segments": [
+              [
+                195.0,
+                205.0,
+                50.0
+              ],
+              [
+                205.0,
+                210.0,
+                50.0
+              ]
+            ]
+          },
+          {
+            "site": "PORT",
+            "connector": 3,
+            "slot": 13,
+            "vehicle": "V2",
+            "segments": [
+              [
+                195.0,
+                205.0,
+                33.436701386290224
+              ],
+              [
+                205.0,
+                210.0,
+                33.436701386290224
+              ]
+            ]
+          },
+          {
+            "site": "PORT",
+            "connector": 1,
+            "slot": 14,
+            "vehicle": "V1",
+            "segments": [
+              [
+                210.0,
+                220.0,
+                50.0
+              ],
+              [
+                220.0,
+                225.0,
+                50.0
+              ]
+            ]
+          },
+          {
+            "site": "PORT",
+            "connector": 3,
+            "slot": 14,
+            "vehicle": "V2",
+            "segments": [
+              [
+                210.0,
+                220.0,
+                50.0
+              ],
+              [
+                220.0,
+                225.0,
+                50.0
+              ]
+            ]
+          },
+          {
+            "site": "PORT",
+            "connector": 1,
+            "slot": 15,
+            "vehicle": "V1",
+            "segments": [
+              [
+                225.0,
+                235.0,
+                50.0
+              ],
+              [
+                235.0,
+                240.0,
+                50.0
+              ]
+            ]
+          },
+          {
+            "site": "PORT",
+            "connector": 3,
+            "slot": 15,
+            "vehicle": "V2",
+            "segments": [
+              [
+                225.0,
+                235.0,
+                50.0
+              ],
+              [
+                235.0,
+                240.0,
+                50.0
+              ]
+            ]
+          },
+          {
+            "site": "WAREHOUSE",
+            "connector": 1,
+            "slot": 5,
+            "vehicle": "V3",
+            "segments": [
+              [
+                75.0,
+                85.0,
+                41.718350693145126
+              ],
+              [
+                85.0,
+                90.0,
+                41.718350693145084
+              ]
+            ]
+          },
+          {
+            "site": "WAREHOUSE",
+            "connector": 1,
+            "slot": 7,
+            "vehicle": "V3",
+            "segments": [
+              [
+                105.0,
+                115.0,
+                49.99999999999998
+              ],
+              [
+                115.0,
+                120.0,
+                50.0
+              ]
+            ]
+          }
+        ]
+      },
+      "cheaper_builds_infeasible_at_corner": [
+        "P1-100_W1-75",
+        "P1-100_W1-100",
+        "P2-100_W1-75",
+        "P1-100_W2-75",
+        "P2-100_W1-100",
+        "P1-150_W1-75",
+        "P1-100_W2-100",
+        "P3-100_W1-75",
+        "P1-150_W1-100",
+        "P2-100_W2-75",
+        "P3-100_W1-100",
+        "P2-150_W1-75",
+        "P1-100_W3-75",
+        "P2-100_W2-100",
+        "P1-150_W2-75",
+        "P1-175_W1-75",
+        "P2-150_W1-100",
+        "P1-100_W3-100",
+        "P3-100_W2-75"
+      ]
+    }
+  },
+  "input_sha256": {
+    "configs/eligibility_stress.json": "c20181ea6af26376ef1a95693aa4ac49061c5ac18ccfbe39b4988a19c96f3c3a",
+    "studies/truck-energy/metrics.json": "5627fbf830ee0a2d11f459eaa0f2c576a43a8b67d8a1f7f372738c1903a12f83",
+    "configs/port_warehouse_investment.json": "0d0f0011c245cf19f0b38aa42a5d949acef56bd58a093f307e877f292352245b",
+    "results/known_delay_investment_20261111/metrics.json": "6185c27f3149508aefb7487c564caf395496b10ebc3a4bf7e457bcb6ffb28b7a",
+    "results/changeover_20261112/metrics.json": "2da59198f818c51bd07ed31bda44aef7c315fc1d38dcd56b498e08315c32f94a"
+  }
+}
