@@ -276,7 +276,10 @@ def immediate(case, hardware, hourly_prices=None):
     """Reserve by first eligibility then ID, use maximal power, ignore future prices.
 
     The aggregate purchase budget is set by the announced service energy and
-    cyclic SOC; a truck stops buying once its grid energy budget is exhausted.
+    cyclic SOC. If the remaining budget or headroom binds within one event
+    interval, its energy is spread uniformly over that interval. Reported
+    peaks are maxima of those constant event powers. The rule neither predicts
+    prices nor optimizes peaks.
     """
     t0 = perf_counter()
     required = {v:sum(e for _,_,e,_ in t["trips"])/EFFICIENCY for v,t in case["trucks"].items()}
