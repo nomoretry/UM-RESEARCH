@@ -1,0 +1,1090 @@
+{
+  "assumptions": {
+    "release_delay_minutes_V1_V2": 45,
+    "slot_minutes": 15,
+    "changeover_sensitivity_minutes": [
+      0,
+      2,
+      5,
+      10
+    ],
+    "cost_unit": "synthetic cycle investment",
+    "first_connection_minutes": 0,
+    "within_slot_reassignment": false
+  },
+  "source_commit": "ef7b33b559b453e0de5404c019278e634954308c",
+  "inputs_sha256": {
+    "configs/port_warehouse_investment.json": "0d0f0011c245cf19f0b38aa42a5d949acef56bd58a093f307e877f292352245b",
+    "configs/eligibility_stress.json": "c20181ea6af26376ef1a95693aa4ac49061c5ac18ccfbe39b4988a19c96f3c3a",
+    "studies/truck-energy/metrics.json": "5627fbf830ee0a2d11f459eaa0f2c576a43a8b67d8a1f7f372738c1903a12f83",
+    "studies/day-ahead/january_2025_facilities.csv": "c1117b5ac7b889cf8379975c75bc931f33dec5b1692bcf0e4e94b3e41e5ff97a"
+  },
+  "baseline_and_sensitivity": [
+    {
+      "leg_kwh": 20.0,
+      "hardware": {
+        "PORT": {
+          "interfaces": 3,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "investment": 40,
+      "original_model_zero_status": "optimal",
+      "critical_minutes": 16.666666666666664,
+      "runs": [
+        {
+          "delay_minutes": 0,
+          "status": "optimal",
+          "objective": 0.0,
+          "dual_bound": 0.0,
+          "mip_gap": 0.0,
+          "schedule_replay_passed": true
+        },
+        {
+          "delay_minutes": 2,
+          "status": "optimal",
+          "objective": 0.0,
+          "dual_bound": 0.0,
+          "mip_gap": 0.0,
+          "schedule_replay_passed": true
+        },
+        {
+          "delay_minutes": 5,
+          "status": "optimal",
+          "objective": 0.0,
+          "dual_bound": 0.0,
+          "mip_gap": 0.0,
+          "schedule_replay_passed": true
+        },
+        {
+          "delay_minutes": 10,
+          "status": "optimal",
+          "objective": 0.0,
+          "dual_bound": 0.0,
+          "mip_gap": 0.0,
+          "schedule_replay_passed": true
+        },
+        {
+          "delay_minutes": 16.666666666666664,
+          "status": "optimal",
+          "objective": 0.0,
+          "dual_bound": 0.0,
+          "mip_gap": 0.0,
+          "schedule_replay_passed": true
+        },
+        {
+          "delay_minutes": 16.676666666666666,
+          "status": "infeasible",
+          "objective": null,
+          "dual_bound": null,
+          "mip_gap": null,
+          "schedule_replay_passed": null
+        }
+      ],
+      "critical_schedule": [
+        {
+          "site": "PORT",
+          "connector": 1,
+          "slot": 12,
+          "vehicle": "V2",
+          "segments": [
+            [
+              180.0,
+              181.66666666666666,
+              50.0
+            ],
+            [
+              181.66666666666666,
+              195.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "PORT",
+          "connector": 2,
+          "slot": 12,
+          "vehicle": "V3",
+          "segments": [
+            [
+              180.0,
+              181.66666666666666,
+              50.0
+            ],
+            [
+              181.66666666666666,
+              195.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "PORT",
+          "connector": 1,
+          "slot": 13,
+          "vehicle": "V2",
+          "segments": [
+            [
+              195.0,
+              196.66666666666666,
+              50.0
+            ],
+            [
+              196.66666666666666,
+              210.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "PORT",
+          "connector": 3,
+          "slot": 13,
+          "vehicle": "V1",
+          "segments": [
+            [
+              195.0,
+              196.66666666666666,
+              50.0
+            ],
+            [
+              196.66666666666666,
+              210.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "PORT",
+          "connector": 1,
+          "slot": 14,
+          "vehicle": "V2",
+          "segments": [
+            [
+              210.0,
+              211.66666666666666,
+              50.0
+            ],
+            [
+              211.66666666666666,
+              225.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "PORT",
+          "connector": 3,
+          "slot": 14,
+          "vehicle": "V1",
+          "segments": [
+            [
+              210.0,
+              211.66666666666666,
+              50.0
+            ],
+            [
+              211.66666666666666,
+              225.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "PORT",
+          "connector": 1,
+          "slot": 15,
+          "vehicle": "V2",
+          "segments": [
+            [
+              225.0,
+              226.66666666666666,
+              27.777777777777793
+            ],
+            [
+              226.66666666666666,
+              240.0,
+              27.777777777777793
+            ]
+          ]
+        },
+        {
+          "site": "PORT",
+          "connector": 2,
+          "slot": 15,
+          "vehicle": "V3",
+          "segments": [
+            [
+              225.0,
+              226.66666666666666,
+              38.888888888888914
+            ],
+            [
+              226.66666666666666,
+              240.0,
+              38.888888888888886
+            ]
+          ]
+        },
+        {
+          "site": "PORT",
+          "connector": 3,
+          "slot": 15,
+          "vehicle": "V1",
+          "segments": [
+            [
+              225.0,
+              226.66666666666666,
+              33.333333333333314
+            ],
+            [
+              226.66666666666666,
+              240.0,
+              33.333333333333314
+            ]
+          ]
+        },
+        {
+          "site": "WAREHOUSE",
+          "connector": 1,
+          "slot": 4,
+          "vehicle": "V3",
+          "segments": [
+            [
+              60.0,
+              61.666666666666664,
+              38.888888888888886
+            ],
+            [
+              61.666666666666664,
+              75.0,
+              38.888888888888886
+            ]
+          ]
+        },
+        {
+          "site": "WAREHOUSE",
+          "connector": 1,
+          "slot": 5,
+          "vehicle": "V3",
+          "segments": [
+            [
+              75.0,
+              76.66666666666666,
+              50.00000000000003
+            ],
+            [
+              76.66666666666666,
+              90.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "WAREHOUSE",
+          "connector": 1,
+          "slot": 7,
+          "vehicle": "V1",
+          "segments": [
+            [
+              106.66666666666666,
+              120.0,
+              50.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "leg_kwh": 20.0,
+      "hardware": {
+        "PORT": {
+          "interfaces": 2,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 2,
+          "power_kw": 75
+        }
+      },
+      "investment": 50,
+      "original_model_zero_status": "optimal",
+      "critical_minutes": 3.3333333333333357,
+      "runs": [
+        {
+          "delay_minutes": 0,
+          "status": "optimal",
+          "objective": 0.0,
+          "dual_bound": 0.0,
+          "mip_gap": 0.0,
+          "schedule_replay_passed": true
+        },
+        {
+          "delay_minutes": 2,
+          "status": "optimal",
+          "objective": 0.0,
+          "dual_bound": 0.0,
+          "mip_gap": 0.0,
+          "schedule_replay_passed": true
+        },
+        {
+          "delay_minutes": 3.3333333333333357,
+          "status": "optimal",
+          "objective": 0.0,
+          "dual_bound": 0.0,
+          "mip_gap": 0.0,
+          "schedule_replay_passed": true
+        },
+        {
+          "delay_minutes": 3.3433333333333355,
+          "status": "infeasible",
+          "objective": null,
+          "dual_bound": null,
+          "mip_gap": null,
+          "schedule_replay_passed": null
+        },
+        {
+          "delay_minutes": 5,
+          "status": "infeasible",
+          "objective": null,
+          "dual_bound": null,
+          "mip_gap": null,
+          "schedule_replay_passed": null
+        },
+        {
+          "delay_minutes": 10,
+          "status": "infeasible",
+          "objective": null,
+          "dual_bound": null,
+          "mip_gap": null,
+          "schedule_replay_passed": null
+        }
+      ],
+      "critical_schedule": [
+        {
+          "site": "PORT",
+          "connector": 1,
+          "slot": 12,
+          "vehicle": "V2",
+          "segments": [
+            [
+              180.0,
+              183.33333333333334,
+              50.00000000000001
+            ],
+            [
+              183.33333333333334,
+              195.0,
+              50.00000000000001
+            ]
+          ]
+        },
+        {
+          "site": "PORT",
+          "connector": 2,
+          "slot": 12,
+          "vehicle": "V3",
+          "segments": [
+            [
+              180.0,
+              183.33333333333334,
+              50.0
+            ],
+            [
+              183.33333333333334,
+              195.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "PORT",
+          "connector": 1,
+          "slot": 13,
+          "vehicle": "V2",
+          "segments": [
+            [
+              195.0,
+              198.33333333333334,
+              50.0
+            ],
+            [
+              198.33333333333334,
+              210.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "PORT",
+          "connector": 2,
+          "slot": 13,
+          "vehicle": "V1",
+          "segments": [
+            [
+              198.33333333333334,
+              210.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "PORT",
+          "connector": 1,
+          "slot": 14,
+          "vehicle": "V2",
+          "segments": [
+            [
+              210.0,
+              213.33333333333334,
+              50.0
+            ],
+            [
+              213.33333333333334,
+              225.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "PORT",
+          "connector": 2,
+          "slot": 14,
+          "vehicle": "V1",
+          "segments": [
+            [
+              210.0,
+              213.33333333333334,
+              50.0
+            ],
+            [
+              213.33333333333334,
+              225.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "PORT",
+          "connector": 1,
+          "slot": 15,
+          "vehicle": "V3",
+          "segments": [
+            [
+              228.33333333333334,
+              240.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "PORT",
+          "connector": 2,
+          "slot": 15,
+          "vehicle": "V1",
+          "segments": [
+            [
+              225.0,
+              228.33333333333334,
+              50.0
+            ],
+            [
+              228.33333333333334,
+              240.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "WAREHOUSE",
+          "connector": 1,
+          "slot": 4,
+          "vehicle": "V3",
+          "segments": [
+            [
+              60.0,
+              63.333333333333336,
+              50.0
+            ],
+            [
+              63.333333333333336,
+              75.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "WAREHOUSE",
+          "connector": 1,
+          "slot": 5,
+          "vehicle": "V3",
+          "segments": [
+            [
+              75.0,
+              78.33333333333334,
+              38.88888888888889
+            ],
+            [
+              78.33333333333334,
+              90.0,
+              38.88888888888889
+            ]
+          ]
+        },
+        {
+          "site": "WAREHOUSE",
+          "connector": 1,
+          "slot": 7,
+          "vehicle": "V2",
+          "segments": [
+            [
+              105.0,
+              108.33333333333334,
+              27.777777777777807
+            ],
+            [
+              108.33333333333334,
+              120.0,
+              27.77777777777777
+            ]
+          ]
+        },
+        {
+          "site": "WAREHOUSE",
+          "connector": 2,
+          "slot": 7,
+          "vehicle": "V1",
+          "segments": [
+            [
+              105.0,
+              108.33333333333334,
+              38.88888888888892
+            ],
+            [
+              108.33333333333334,
+              120.0,
+              38.88888888888893
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "leg_kwh": 20.636628905957647,
+      "hardware": {
+        "PORT": {
+          "interfaces": 3,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "investment": 40,
+      "original_model_zero_status": "infeasible",
+      "critical_minutes": null,
+      "runs": [
+        {
+          "delay_minutes": 0,
+          "status": "infeasible",
+          "objective": null,
+          "dual_bound": null,
+          "mip_gap": null,
+          "schedule_replay_passed": null
+        },
+        {
+          "delay_minutes": 2,
+          "status": "infeasible",
+          "objective": null,
+          "dual_bound": null,
+          "mip_gap": null,
+          "schedule_replay_passed": null
+        },
+        {
+          "delay_minutes": 5,
+          "status": "infeasible",
+          "objective": null,
+          "dual_bound": null,
+          "mip_gap": null,
+          "schedule_replay_passed": null
+        },
+        {
+          "delay_minutes": 10,
+          "status": "infeasible",
+          "objective": null,
+          "dual_bound": null,
+          "mip_gap": null,
+          "schedule_replay_passed": null
+        }
+      ],
+      "critical_schedule": null
+    },
+    {
+      "leg_kwh": 20.636628905957647,
+      "hardware": {
+        "PORT": {
+          "interfaces": 2,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 2,
+          "power_kw": 75
+        }
+      },
+      "investment": 50,
+      "original_model_zero_status": "optimal",
+      "critical_minutes": 2.43797916822588,
+      "runs": [
+        {
+          "delay_minutes": 0,
+          "status": "optimal",
+          "objective": 0.0,
+          "dual_bound": 0.0,
+          "mip_gap": 0.0,
+          "schedule_replay_passed": true
+        },
+        {
+          "delay_minutes": 2,
+          "status": "optimal",
+          "objective": 0.0,
+          "dual_bound": 0.0,
+          "mip_gap": 0.0,
+          "schedule_replay_passed": true
+        },
+        {
+          "delay_minutes": 2.43797916822588,
+          "status": "optimal",
+          "objective": 0.0,
+          "dual_bound": 0.0,
+          "mip_gap": 0.0,
+          "schedule_replay_passed": true
+        },
+        {
+          "delay_minutes": 2.4479791682258796,
+          "status": "infeasible",
+          "objective": null,
+          "dual_bound": null,
+          "mip_gap": null,
+          "schedule_replay_passed": null
+        },
+        {
+          "delay_minutes": 5,
+          "status": "infeasible",
+          "objective": null,
+          "dual_bound": null,
+          "mip_gap": null,
+          "schedule_replay_passed": null
+        },
+        {
+          "delay_minutes": 10,
+          "status": "infeasible",
+          "objective": null,
+          "dual_bound": null,
+          "mip_gap": null,
+          "schedule_replay_passed": null
+        }
+      ],
+      "critical_schedule": [
+        {
+          "site": "PORT",
+          "connector": 1,
+          "slot": 12,
+          "vehicle": "V3",
+          "segments": [
+            [
+              180.0,
+              182.43797916822587,
+              50.0
+            ],
+            [
+              182.43797916822587,
+              195.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "PORT",
+          "connector": 2,
+          "slot": 12,
+          "vehicle": "V1",
+          "segments": [
+            [
+              180.0,
+              182.43797916822587,
+              50.0
+            ],
+            [
+              182.43797916822587,
+              195.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "PORT",
+          "connector": 1,
+          "slot": 13,
+          "vehicle": "V2",
+          "segments": [
+            [
+              197.43797916822587,
+              210.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "PORT",
+          "connector": 2,
+          "slot": 13,
+          "vehicle": "V1",
+          "segments": [
+            [
+              195.0,
+              197.43797916822587,
+              50.00000000000005
+            ],
+            [
+              197.43797916822587,
+              210.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "PORT",
+          "connector": 1,
+          "slot": 14,
+          "vehicle": "V2",
+          "segments": [
+            [
+              210.0,
+              212.43797916822587,
+              50.0
+            ],
+            [
+              212.43797916822587,
+              225.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "PORT",
+          "connector": 2,
+          "slot": 14,
+          "vehicle": "V1",
+          "segments": [
+            [
+              210.0,
+              212.43797916822587,
+              50.0
+            ],
+            [
+              212.43797916822587,
+              225.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "PORT",
+          "connector": 1,
+          "slot": 15,
+          "vehicle": "V2",
+          "segments": [
+            [
+              225.0,
+              227.43797916822587,
+              50.0
+            ],
+            [
+              227.43797916822587,
+              240.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "PORT",
+          "connector": 2,
+          "slot": 15,
+          "vehicle": "V3",
+          "segments": [
+            [
+              227.43797916822587,
+              240.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "WAREHOUSE",
+          "connector": 1,
+          "slot": 4,
+          "vehicle": "V3",
+          "segments": [
+            [
+              60.0,
+              62.43797916822588,
+              41.56329861370985
+            ],
+            [
+              62.43797916822588,
+              75.0,
+              41.56329861370985
+            ]
+          ]
+        },
+        {
+          "site": "WAREHOUSE",
+          "connector": 1,
+          "slot": 5,
+          "vehicle": "V3",
+          "segments": [
+            [
+              75.0,
+              77.43797916822588,
+              50.0
+            ],
+            [
+              77.43797916822588,
+              90.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "site": "WAREHOUSE",
+          "connector": 1,
+          "slot": 7,
+          "vehicle": "V1",
+          "segments": [
+            [
+              105.0,
+              107.43797916822588,
+              33.43670138629024
+            ],
+            [
+              107.43797916822588,
+              120.0,
+              33.436701386290224
+            ]
+          ]
+        },
+        {
+          "site": "WAREHOUSE",
+          "connector": 2,
+          "slot": 7,
+          "vehicle": "V2",
+          "segments": [
+            [
+              105.0,
+              107.43797916822588,
+              41.56329861370984
+            ],
+            [
+              107.43797916822588,
+              120.0,
+              41.56329861370984
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "high_energy_recovery": [
+    {
+      "delay_minutes": 2.4479791682258796,
+      "menu_size": 54,
+      "tested_builds": 14,
+      "untested_strictly_costlier": 40,
+      "from_initial_1_1": [
+        {
+          "hardware": {
+            "PORT": {
+              "interfaces": 2,
+              "power_kw": 100
+            },
+            "WAREHOUSE": {
+              "interfaces": 2,
+              "power_kw": 100
+            }
+          },
+          "total_investment": 60
+        }
+      ],
+      "retain_installed_2_2": [
+        {
+          "hardware": {
+            "PORT": {
+              "interfaces": 2,
+              "power_kw": 100
+            },
+            "WAREHOUSE": {
+              "interfaces": 2,
+              "power_kw": 100
+            }
+          },
+          "total_investment": 60,
+          "additional_investment": 10
+        }
+      ]
+    },
+    {
+      "delay_minutes": 4.96898958411294,
+      "menu_size": 54,
+      "tested_builds": 14,
+      "untested_strictly_costlier": 40,
+      "from_initial_1_1": [
+        {
+          "hardware": {
+            "PORT": {
+              "interfaces": 2,
+              "power_kw": 100
+            },
+            "WAREHOUSE": {
+              "interfaces": 2,
+              "power_kw": 100
+            }
+          },
+          "total_investment": 60
+        }
+      ],
+      "retain_installed_2_2": [
+        {
+          "hardware": {
+            "PORT": {
+              "interfaces": 2,
+              "power_kw": 100
+            },
+            "WAREHOUSE": {
+              "interfaces": 2,
+              "power_kw": 100
+            }
+          },
+          "total_investment": 60,
+          "additional_investment": 10
+        }
+      ]
+    },
+    {
+      "delay_minutes": 4.97898958411294,
+      "menu_size": 54,
+      "tested_builds": 19,
+      "untested_strictly_costlier": 35,
+      "from_initial_1_1": [
+        {
+          "hardware": {
+            "PORT": {
+              "interfaces": 3,
+              "power_kw": 100
+            },
+            "WAREHOUSE": {
+              "interfaces": 2,
+              "power_kw": 75
+            }
+          },
+          "total_investment": 70
+        }
+      ],
+      "retain_installed_2_2": [
+        {
+          "hardware": {
+            "PORT": {
+              "interfaces": 3,
+              "power_kw": 100
+            },
+            "WAREHOUSE": {
+              "interfaces": 2,
+              "power_kw": 75
+            }
+          },
+          "total_investment": 70,
+          "additional_investment": 20
+        }
+      ]
+    },
+    {
+      "delay_minutes": 5,
+      "menu_size": 54,
+      "tested_builds": 19,
+      "untested_strictly_costlier": 35,
+      "from_initial_1_1": [
+        {
+          "hardware": {
+            "PORT": {
+              "interfaces": 3,
+              "power_kw": 100
+            },
+            "WAREHOUSE": {
+              "interfaces": 2,
+              "power_kw": 75
+            }
+          },
+          "total_investment": 70
+        }
+      ],
+      "retain_installed_2_2": [
+        {
+          "hardware": {
+            "PORT": {
+              "interfaces": 3,
+              "power_kw": 100
+            },
+            "WAREHOUSE": {
+              "interfaces": 2,
+              "power_kw": 75
+            }
+          },
+          "total_investment": 70,
+          "additional_investment": 20
+        }
+      ]
+    },
+    {
+      "delay_minutes": 10,
+      "menu_size": 54,
+      "tested_builds": 19,
+      "untested_strictly_costlier": 35,
+      "from_initial_1_1": [
+        {
+          "hardware": {
+            "PORT": {
+              "interfaces": 3,
+              "power_kw": 100
+            },
+            "WAREHOUSE": {
+              "interfaces": 2,
+              "power_kw": 75
+            }
+          },
+          "total_investment": 70
+        }
+      ],
+      "retain_installed_2_2": [
+        {
+          "hardware": {
+            "PORT": {
+              "interfaces": 3,
+              "power_kw": 100
+            },
+            "WAREHOUSE": {
+              "interfaces": 2,
+              "power_kw": 75
+            }
+          },
+          "total_investment": 70,
+          "additional_investment": 20
+        }
+      ]
+    }
+  ],
+  "distinct_changeover_solves": 102
+}
