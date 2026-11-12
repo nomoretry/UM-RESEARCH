@@ -32,6 +32,35 @@ Of the export's 42,701 trips, 6,888 belong to carrier 1 and 1,904 to vehicles 1�
 
 Total simulated battery energy is 3,254.041040 kWh. Missing-energy selection and a single carrier limit generalization. All retained trips model the published *recordings* of that vehicle on that day. The source does not certify complete freight service or measure charging access between recordings.
 
+## Six later operating weeks for the second port connector
+
+[operating_weeks.json](operating_weeks.json) contains the first six complete Monday–Sunday periods after the original holdout ended on 23 September 2021. The intervening partial week is outside the comparison. Selection used calendar dates and the original vehicle-day quality rules before facility dispatch or pricing. Each date with complete trips enters the service experiment, including dates with only one eligible vehicle. A date with missing or unusable duties stays in the calendar denominator. Its financial return is unknown. Operators evaluating these weeks can reproduce the supplied subset with [prepare_weeks.py](prepare_weeks.py).
+
+| Berlin week starting | Complete vehicle-days | Quality exclusions | Vehicle-dates with no trip records | Trips used |
+|---|---:|---:|---:|---:|
+| 27 Sep 2021 | 12 | 8 | 15 | 62 |
+| 4 Oct | 13 | 10 | 12 | 59 |
+| 11 Oct | 12 | 11 | 12 | 50 |
+| 18 Oct | 14 | 6 | 15 | 73 |
+| 25 Oct | 16 | 9 | 10 | 80 |
+| 1 Nov | 6 | 12 | 17 | 31 |
+| Total | 73 | 56 | 81 | 355 |
+
+Thirty of the 42 dates contain at least one complete vehicle-day. Four contain records but only excluded vehicle-days. Eight contain no trip records from any of the five cohort vehicles. The 56 quality exclusions comprise 51 missing original simulated energy, four vehicle-dates touched by cross-midnight trips and one 25-hour clock-change date. All 355 transport track IDs are distinct from the 101 original design/holdout trips. This tests subsequent service in the same carrier. All five cohort vehicles appear, including IDs 1 and 2, which contributed no complete duty to the nine original dates.
+
+The chronology yields 194 port-mapped, 172 warehouse-mapped and 62 unmapped stop intervals. Two source discontinuities span at least 1 km between adjacent tracks assigned to a charging site. Vehicle 5's 11.795 km gap between tracks 8843 and 8849 is clipped on both 12 and 13 October. Vehicle 2's 15.075 km gap between 2995 and 2997 affects 29 October. All three clipped intervals map to PORT. Their endpoints establish time bounds; occupancy, location throughout the interval, plug-in and power delivery remain unknown.
+
+Source and redistribution terms are the same as for the nine-date input below. After obtaining the pinned source CSV, run the following in PowerShell from the repository root, using an unused output filename in the local cache.
+
+```powershell
+python studies/fleet-service/prepare_weeks.py $src --output (Join-Path $cache 'um-operating-weeks.json')
+(Get-FileHash (Join-Path $cache 'um-operating-weeks.json') -Algorithm SHA256).Hash
+$env:UM_TUM_TRACKS = $src
+python -m pytest -q -p no:cacheprovider studies/fleet-service/test_prepare_weeks.py
+```
+
+The UTF-8 JSON SHA-256 is `901b0dcf25f3af092c3400bd4982498d9a0b026e56495d365f5c78be6abd2c07`. The source audit independently checks the classification of all 210 vehicle-date slots, every retained trip and every adjacent stop bound.
+
 ## Source, attribution and reproduction
 
 The sole trip input is the published TUMFTM export at commit `2763d5aa04365958b54ec014c8b4cf47ea1a75fd`, SHA-256 `d92ab77cafe21c1aad3e9be8de1e26b453846a677f91b07ee0ac5f652ec8c50e`. Anna Paper, Georg Balke, Philip Rosborough, Marcel Brödel, Niclas Klein, Tom Winkler and Markus Lienkamp provide the upstream analysis. Copyright © 2025–2026 Anna Paper and contributors. Their repository cites the underlying DT-CARGO v2 release by Georg Balke, Lennart Adenaw and Anna Paper. The local older DT-CARGO copy and flex-depot Fleet 3 add zero independent cohorts. [Pinned project and citation](https://github.com/TUMFTM/truck_fleet_electrification/tree/2763d5aa04365958b54ec014c8b4cf47ea1a75fd) · [DT-CARGO v2](https://doi.org/10.5281/zenodo.16411298) · [DT-CARGO field definitions](https://github.com/TUMFTM/dt-cargo#trackscsv)
