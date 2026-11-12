@@ -1,0 +1,2254 @@
+{
+  "holdout": [
+    {
+      "date": "2021-09-21",
+      "price_delivery": "2025-01-07",
+      "release_min": 0,
+      "required_vehicle_days": 2,
+      "designs": {
+        "typical": {
+          "price_dispatch": 1,
+          "immediate": 0,
+          "paired_eur_difference": 2.518341599372219
+        },
+        "shared": {
+          "price_dispatch": 1,
+          "immediate": 0,
+          "paired_eur_difference": 2.518341599372219
+        },
+        "port_only": {
+          "price_dispatch": 1,
+          "immediate": 0,
+          "paired_eur_difference": 2.518341599372219
+        }
+      }
+    },
+    {
+      "date": "2021-09-21",
+      "price_delivery": "2025-01-07",
+      "release_min": 45,
+      "required_vehicle_days": 2,
+      "designs": {
+        "typical": {
+          "price_dispatch": 3,
+          "immediate": 2,
+          "paired_eur_difference": 2.7752182929499956
+        },
+        "shared": {
+          "price_dispatch": 3,
+          "immediate": 2,
+          "paired_eur_difference": 2.7752182929499956
+        },
+        "port_only": {
+          "price_dispatch": 3,
+          "immediate": 2,
+          "paired_eur_difference": 2.7752182929499956
+        }
+      }
+    },
+    {
+      "date": "2021-09-22",
+      "price_delivery": "2025-01-08",
+      "release_min": 0,
+      "required_vehicle_days": 3,
+      "designs": {
+        "typical": {
+          "price_dispatch": 5,
+          "immediate": 4,
+          "paired_eur_difference": 2.1184599798388604
+        },
+        "shared": {
+          "price_dispatch": 5,
+          "immediate": 4,
+          "paired_eur_difference": 2.1184599798388604
+        },
+        "port_only": {
+          "price_dispatch": 5,
+          "immediate": 4,
+          "paired_eur_difference": 2.1184599798388604
+        }
+      }
+    },
+    {
+      "date": "2021-09-22",
+      "price_delivery": "2025-01-08",
+      "release_min": 45,
+      "required_vehicle_days": 3,
+      "designs": {
+        "typical": {
+          "price_dispatch": 7,
+          "immediate": 6,
+          "paired_eur_difference": 1.5940668487001233
+        },
+        "shared": {
+          "price_dispatch": 7,
+          "immediate": 6,
+          "paired_eur_difference": 1.5940668487001233
+        },
+        "port_only": {
+          "price_dispatch": 7,
+          "immediate": 6,
+          "paired_eur_difference": 1.5940668487001233
+        }
+      }
+    },
+    {
+      "date": "2021-09-23",
+      "price_delivery": "2025-01-09",
+      "release_min": 0,
+      "required_vehicle_days": 3,
+      "designs": {
+        "typical": {
+          "price_dispatch": 9,
+          "immediate": 8,
+          "paired_eur_difference": 8.016606226589168
+        },
+        "shared": {
+          "price_dispatch": 9,
+          "immediate": 8,
+          "paired_eur_difference": 8.016606226589168
+        },
+        "port_only": {
+          "price_dispatch": 9,
+          "immediate": 8,
+          "paired_eur_difference": 8.016606226589168
+        }
+      }
+    },
+    {
+      "date": "2021-09-23",
+      "price_delivery": "2025-01-09",
+      "release_min": 45,
+      "required_vehicle_days": 3,
+      "designs": {
+        "typical": {
+          "price_dispatch": 11,
+          "immediate": 10,
+          "paired_eur_difference": 6.643881565690172
+        },
+        "shared": {
+          "price_dispatch": 11,
+          "immediate": 10,
+          "paired_eur_difference": 6.643881565690172
+        },
+        "port_only": {
+          "price_dispatch": 11,
+          "immediate": 10,
+          "paired_eur_difference": 6.643881565690172
+        }
+      }
+    }
+  ],
+  "common_service": [
+    {
+      "date": "2021-09-21",
+      "release_min": 0,
+      "ids": [
+        "3",
+        "5"
+      ],
+      "full_fleet": true,
+      "designs": {
+        "typical": {
+          "price_dispatch": 1,
+          "immediate": 0,
+          "paired_eur_difference": 2.518341599372219
+        },
+        "shared": {
+          "price_dispatch": 1,
+          "immediate": 0,
+          "paired_eur_difference": 2.518341599372219
+        },
+        "port_only": {
+          "price_dispatch": 1,
+          "immediate": 0,
+          "paired_eur_difference": 2.518341599372219
+        }
+      }
+    },
+    {
+      "date": "2021-09-21",
+      "release_min": 45,
+      "ids": [
+        "3",
+        "5"
+      ],
+      "full_fleet": true,
+      "designs": {
+        "typical": {
+          "price_dispatch": 3,
+          "immediate": 2,
+          "paired_eur_difference": 2.7752182929499956
+        },
+        "shared": {
+          "price_dispatch": 3,
+          "immediate": 2,
+          "paired_eur_difference": 2.7752182929499956
+        },
+        "port_only": {
+          "price_dispatch": 3,
+          "immediate": 2,
+          "paired_eur_difference": 2.7752182929499956
+        }
+      }
+    },
+    {
+      "date": "2021-09-22",
+      "release_min": 0,
+      "ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "full_fleet": true,
+      "designs": {
+        "typical": {
+          "price_dispatch": 5,
+          "immediate": 4,
+          "paired_eur_difference": 2.1184599798388604
+        },
+        "shared": {
+          "price_dispatch": 5,
+          "immediate": 4,
+          "paired_eur_difference": 2.1184599798388604
+        },
+        "port_only": {
+          "price_dispatch": 5,
+          "immediate": 4,
+          "paired_eur_difference": 2.1184599798388604
+        }
+      }
+    },
+    {
+      "date": "2021-09-22",
+      "release_min": 45,
+      "ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "full_fleet": true,
+      "designs": {
+        "typical": {
+          "price_dispatch": 7,
+          "immediate": 6,
+          "paired_eur_difference": 1.5940668487001233
+        },
+        "shared": {
+          "price_dispatch": 7,
+          "immediate": 6,
+          "paired_eur_difference": 1.5940668487001233
+        },
+        "port_only": {
+          "price_dispatch": 7,
+          "immediate": 6,
+          "paired_eur_difference": 1.5940668487001233
+        }
+      }
+    },
+    {
+      "date": "2021-09-23",
+      "release_min": 0,
+      "ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "full_fleet": true,
+      "designs": {
+        "typical": {
+          "price_dispatch": 9,
+          "immediate": 8,
+          "paired_eur_difference": 8.016606226589168
+        },
+        "shared": {
+          "price_dispatch": 9,
+          "immediate": 8,
+          "paired_eur_difference": 8.016606226589168
+        },
+        "port_only": {
+          "price_dispatch": 9,
+          "immediate": 8,
+          "paired_eur_difference": 8.016606226589168
+        }
+      }
+    },
+    {
+      "date": "2021-09-23",
+      "release_min": 45,
+      "ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "full_fleet": true,
+      "designs": {
+        "typical": {
+          "price_dispatch": 11,
+          "immediate": 10,
+          "paired_eur_difference": 6.643881565690172
+        },
+        "shared": {
+          "price_dispatch": 11,
+          "immediate": 10,
+          "paired_eur_difference": 6.643881565690172
+        },
+        "port_only": {
+          "price_dispatch": 11,
+          "immediate": 10,
+          "paired_eur_difference": 6.643881565690172
+        }
+      }
+    }
+  ],
+  "one_factor": [
+    {
+      "date": "2021-09-21",
+      "base_release_min": 0,
+      "variant": "shared_build",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 0,
+      "same_service_bill_reduction_eur": 0.0,
+      "release_min": 0,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 2,
+      "same_task_ids": [
+        "3",
+        "5"
+      ],
+      "same_task_price_dispatch": 1
+    },
+    {
+      "date": "2021-09-21",
+      "base_release_min": 0,
+      "variant": "PORT_interfaces",
+      "hardware": {
+        "PORT": {
+          "interfaces": 2,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 20,
+      "same_service_bill_reduction_eur": 0.8248103478333348,
+      "release_min": 0,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 2,
+      "same_task_ids": [
+        "3",
+        "5"
+      ],
+      "same_task_price_dispatch": 12
+    },
+    {
+      "date": "2021-09-21",
+      "base_release_min": 0,
+      "variant": "PORT_power_kw",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 150
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 35,
+      "same_service_bill_reduction_eur": 0.0,
+      "release_min": 0,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 2,
+      "same_task_ids": [
+        "3",
+        "5"
+      ],
+      "same_task_price_dispatch": 1
+    },
+    {
+      "date": "2021-09-21",
+      "base_release_min": 0,
+      "variant": "WAREHOUSE_interfaces",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 2,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 30,
+      "same_service_bill_reduction_eur": 0.0,
+      "release_min": 0,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 2,
+      "same_task_ids": [
+        "3",
+        "5"
+      ],
+      "same_task_price_dispatch": 1
+    },
+    {
+      "date": "2021-09-21",
+      "base_release_min": 0,
+      "variant": "WAREHOUSE_power_kw",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 100
+        }
+      },
+      "additional_investment": 10,
+      "same_service_bill_reduction_eur": 0.0,
+      "release_min": 0,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 2,
+      "same_task_ids": [
+        "3",
+        "5"
+      ],
+      "same_task_price_dispatch": 1
+    },
+    {
+      "date": "2021-09-21",
+      "base_release_min": 45,
+      "variant": "shared_build",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 0,
+      "same_service_bill_reduction_eur": 0.0,
+      "release_min": 45,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 2,
+      "same_task_ids": [
+        "3",
+        "5"
+      ],
+      "same_task_price_dispatch": 3
+    },
+    {
+      "date": "2021-09-21",
+      "base_release_min": 45,
+      "variant": "PORT_interfaces",
+      "hardware": {
+        "PORT": {
+          "interfaces": 2,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 20,
+      "same_service_bill_reduction_eur": 0.8248103478333348,
+      "release_min": 45,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 2,
+      "same_task_ids": [
+        "3",
+        "5"
+      ],
+      "same_task_price_dispatch": 13
+    },
+    {
+      "date": "2021-09-21",
+      "base_release_min": 45,
+      "variant": "PORT_power_kw",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 150
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 35,
+      "same_service_bill_reduction_eur": 0.0,
+      "release_min": 45,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 2,
+      "same_task_ids": [
+        "3",
+        "5"
+      ],
+      "same_task_price_dispatch": 3
+    },
+    {
+      "date": "2021-09-21",
+      "base_release_min": 45,
+      "variant": "WAREHOUSE_interfaces",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 2,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 30,
+      "same_service_bill_reduction_eur": 0.0,
+      "release_min": 45,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 2,
+      "same_task_ids": [
+        "3",
+        "5"
+      ],
+      "same_task_price_dispatch": 3
+    },
+    {
+      "date": "2021-09-21",
+      "base_release_min": 45,
+      "variant": "WAREHOUSE_power_kw",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 100
+        }
+      },
+      "additional_investment": 10,
+      "same_service_bill_reduction_eur": 0.0,
+      "release_min": 45,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 2,
+      "same_task_ids": [
+        "3",
+        "5"
+      ],
+      "same_task_price_dispatch": 3
+    },
+    {
+      "date": "2021-09-21",
+      "base_release_min": 45,
+      "variant": "warehouse_release_0",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 0,
+      "same_service_bill_reduction_eur": 0.20492383736111108,
+      "release_min": 0,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 2,
+      "same_task_ids": [
+        "3",
+        "5"
+      ],
+      "same_task_price_dispatch": 1
+    },
+    {
+      "date": "2021-09-22",
+      "base_release_min": 0,
+      "variant": "shared_build",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 0,
+      "same_service_bill_reduction_eur": 0.0,
+      "release_min": 0,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 3,
+      "same_task_ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "same_task_price_dispatch": 5
+    },
+    {
+      "date": "2021-09-22",
+      "base_release_min": 0,
+      "variant": "PORT_interfaces",
+      "hardware": {
+        "PORT": {
+          "interfaces": 2,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 20,
+      "same_service_bill_reduction_eur": 4.099910364861135,
+      "release_min": 0,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 3,
+      "same_task_ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "same_task_price_dispatch": 14
+    },
+    {
+      "date": "2021-09-22",
+      "base_release_min": 0,
+      "variant": "PORT_power_kw",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 150
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 35,
+      "same_service_bill_reduction_eur": 2.1316282072803006e-14,
+      "release_min": 0,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 3,
+      "same_task_ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "same_task_price_dispatch": 15
+    },
+    {
+      "date": "2021-09-22",
+      "base_release_min": 0,
+      "variant": "WAREHOUSE_interfaces",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 2,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 30,
+      "same_service_bill_reduction_eur": 2.6290081223123707e-13,
+      "release_min": 0,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 3,
+      "same_task_ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "same_task_price_dispatch": 16
+    },
+    {
+      "date": "2021-09-22",
+      "base_release_min": 0,
+      "variant": "WAREHOUSE_power_kw",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 100
+        }
+      },
+      "additional_investment": 10,
+      "same_service_bill_reduction_eur": 2.1316282072803006e-14,
+      "release_min": 0,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 3,
+      "same_task_ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "same_task_price_dispatch": 17
+    },
+    {
+      "date": "2021-09-22",
+      "base_release_min": 45,
+      "variant": "shared_build",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 0,
+      "same_service_bill_reduction_eur": 0.0,
+      "release_min": 45,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 3,
+      "same_task_ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "same_task_price_dispatch": 7
+    },
+    {
+      "date": "2021-09-22",
+      "base_release_min": 45,
+      "variant": "PORT_interfaces",
+      "hardware": {
+        "PORT": {
+          "interfaces": 2,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 20,
+      "same_service_bill_reduction_eur": 4.257270043610976,
+      "release_min": 45,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 3,
+      "same_task_ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "same_task_price_dispatch": 18
+    },
+    {
+      "date": "2021-09-22",
+      "base_release_min": 45,
+      "variant": "PORT_power_kw",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 150
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 35,
+      "same_service_bill_reduction_eur": -7.815970093361102e-14,
+      "release_min": 45,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 3,
+      "same_task_ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "same_task_price_dispatch": 19
+    },
+    {
+      "date": "2021-09-22",
+      "base_release_min": 45,
+      "variant": "WAREHOUSE_interfaces",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 2,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 30,
+      "same_service_bill_reduction_eur": 3.410605131648481e-13,
+      "release_min": 45,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 3,
+      "same_task_ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "same_task_price_dispatch": 20
+    },
+    {
+      "date": "2021-09-22",
+      "base_release_min": 45,
+      "variant": "WAREHOUSE_power_kw",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 100
+        }
+      },
+      "additional_investment": 10,
+      "same_service_bill_reduction_eur": -4.973799150320701e-14,
+      "release_min": 45,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 3,
+      "same_task_ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "same_task_price_dispatch": 21
+    },
+    {
+      "date": "2021-09-22",
+      "base_release_min": 45,
+      "variant": "warehouse_release_0",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 0,
+      "same_service_bill_reduction_eur": 0.1573596787498417,
+      "release_min": 0,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 3,
+      "same_task_ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "same_task_price_dispatch": 5
+    },
+    {
+      "date": "2021-09-23",
+      "base_release_min": 0,
+      "variant": "shared_build",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 0,
+      "same_service_bill_reduction_eur": 0.0,
+      "release_min": 0,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 3,
+      "same_task_ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "same_task_price_dispatch": 9
+    },
+    {
+      "date": "2021-09-23",
+      "base_release_min": 0,
+      "variant": "PORT_interfaces",
+      "hardware": {
+        "PORT": {
+          "interfaces": 2,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 20,
+      "same_service_bill_reduction_eur": 1.6707199316663903,
+      "release_min": 0,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 3,
+      "same_task_ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "same_task_price_dispatch": 22
+    },
+    {
+      "date": "2021-09-23",
+      "base_release_min": 0,
+      "variant": "PORT_power_kw",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 150
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 35,
+      "same_service_bill_reduction_eur": -9.237055564881302e-14,
+      "release_min": 0,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 3,
+      "same_task_ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "same_task_price_dispatch": 23
+    },
+    {
+      "date": "2021-09-23",
+      "base_release_min": 0,
+      "variant": "WAREHOUSE_interfaces",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 2,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 30,
+      "same_service_bill_reduction_eur": 6.679101716144942e-13,
+      "release_min": 0,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 3,
+      "same_task_ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "same_task_price_dispatch": 24
+    },
+    {
+      "date": "2021-09-23",
+      "base_release_min": 0,
+      "variant": "WAREHOUSE_power_kw",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 100
+        }
+      },
+      "additional_investment": 10,
+      "same_service_bill_reduction_eur": -2.0605739337042905e-13,
+      "release_min": 0,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 3,
+      "same_task_ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "same_task_price_dispatch": 25
+    },
+    {
+      "date": "2021-09-23",
+      "base_release_min": 45,
+      "variant": "shared_build",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 0,
+      "same_service_bill_reduction_eur": 0.0,
+      "release_min": 45,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 3,
+      "same_task_ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "same_task_price_dispatch": 11
+    },
+    {
+      "date": "2021-09-23",
+      "base_release_min": 45,
+      "variant": "PORT_interfaces",
+      "hardware": {
+        "PORT": {
+          "interfaces": 2,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 20,
+      "same_service_bill_reduction_eur": 1.7199800327764834,
+      "release_min": 45,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 3,
+      "same_task_ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "same_task_price_dispatch": 26
+    },
+    {
+      "date": "2021-09-23",
+      "base_release_min": 45,
+      "variant": "PORT_power_kw",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 150
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 35,
+      "same_service_bill_reduction_eur": -1.2292389328649733e-12,
+      "release_min": 45,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 3,
+      "same_task_ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "same_task_price_dispatch": 27
+    },
+    {
+      "date": "2021-09-23",
+      "base_release_min": 45,
+      "variant": "WAREHOUSE_interfaces",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 2,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 30,
+      "same_service_bill_reduction_eur": 0.0,
+      "release_min": 45,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 3,
+      "same_task_ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "same_task_price_dispatch": 11
+    },
+    {
+      "date": "2021-09-23",
+      "base_release_min": 45,
+      "variant": "WAREHOUSE_power_kw",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 100
+        }
+      },
+      "additional_investment": 10,
+      "same_service_bill_reduction_eur": 0.0,
+      "release_min": 45,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 3,
+      "same_task_ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "same_task_price_dispatch": 11
+    },
+    {
+      "date": "2021-09-23",
+      "base_release_min": 45,
+      "variant": "warehouse_release_0",
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "additional_investment": 0,
+      "same_service_bill_reduction_eur": 0.04926010111010015,
+      "release_min": 0,
+      "full_status": "optimal",
+      "full_vehicle_days_possible": 3,
+      "same_task_ids": [
+        "3",
+        "4",
+        "5"
+      ],
+      "same_task_price_dispatch": 9
+    }
+  ],
+  "inputs": {
+    "duties_sha256": "634576e39fbcb031522a065a7f05e1c333e434800d81ae54e419a70b06d17e80",
+    "prices_sha256": "da56ef03a8ef252be0f494c9ad4e86805498228811ec407e1d6bdf0a1ce78166",
+    "shared_selection_sha256": "1bb08daa4886abf39f1354fca320fe74e8e4721b32eff556568ea22561a6d9af"
+  },
+  "typical_design_date": "2021-09-15",
+  "designs": {
+    "typical": {
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "investment": 0,
+      "ties": [
+        {
+          "PORT": {
+            "interfaces": 1,
+            "power_kw": 100
+          },
+          "WAREHOUSE": {
+            "interfaces": 1,
+            "power_kw": 75
+          }
+        }
+      ],
+      "covered_vehicle_day_scenarios": 2,
+      "requested_vehicle_day_scenarios": 2,
+      "full_coverage_possible": true,
+      "max_reported_gap": 0.0
+    },
+    "shared": {
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "investment": 0,
+      "ties": [
+        {
+          "PORT": {
+            "interfaces": 1,
+            "power_kw": 100
+          },
+          "WAREHOUSE": {
+            "interfaces": 1,
+            "power_kw": 75
+          }
+        }
+      ],
+      "covered_vehicle_day_scenarios": 22,
+      "requested_vehicle_day_scenarios": 26,
+      "full_coverage_possible": false,
+      "max_reported_gap": 0.0
+    },
+    "port_only": {
+      "hardware": {
+        "PORT": {
+          "interfaces": 1,
+          "power_kw": 100
+        },
+        "WAREHOUSE": {
+          "interfaces": 1,
+          "power_kw": 75
+        }
+      },
+      "investment": 0,
+      "ties": [
+        {
+          "PORT": {
+            "interfaces": 1,
+            "power_kw": 100
+          },
+          "WAREHOUSE": {
+            "interfaces": 1,
+            "power_kw": 75
+          }
+        }
+      ],
+      "covered_vehicle_day_scenarios": 22,
+      "requested_vehicle_day_scenarios": 26,
+      "full_coverage_possible": false,
+      "max_reported_gap": 0.0
+    }
+  },
+  "totals": {
+    "typical": {
+      "0": {
+        "observed_dates": 3,
+        "fleet_dates_feasible": 3,
+        "required_vehicle_days": 8,
+        "max_complete_vehicle_days": 8,
+        "feasible_dates": [
+          "2021-09-21",
+          "2021-09-22",
+          "2021-09-23"
+        ],
+        "price_eur_on_feasible_dates": 88.15480632997198,
+        "max_site_peaks_kw_on_feasible_dates": {
+          "PORT": 50.000000000007205,
+          "WAREHOUSE": 50.000000000000014
+        },
+        "paired_full_fleet_dates": [
+          "2021-09-21",
+          "2021-09-22",
+          "2021-09-23"
+        ],
+        "immediate_eur_on_paired_dates": 100.80821413577222,
+        "immediate_max_site_peaks_kw_on_paired_dates": {
+          "PORT": 50.0,
+          "WAREHOUSE": 50.0
+        },
+        "immediate_minus_price_eur_on_paired_dates": 12.653407805800247
+      },
+      "45": {
+        "observed_dates": 3,
+        "fleet_dates_feasible": 3,
+        "required_vehicle_days": 8,
+        "max_complete_vehicle_days": 8,
+        "feasible_dates": [
+          "2021-09-21",
+          "2021-09-22",
+          "2021-09-23"
+        ],
+        "price_eur_on_feasible_dates": 88.56634994719302,
+        "max_site_peaks_kw_on_feasible_dates": {
+          "PORT": 50.00000000000027,
+          "WAREHOUSE": 50.00000000000001
+        },
+        "paired_full_fleet_dates": [
+          "2021-09-21",
+          "2021-09-22",
+          "2021-09-23"
+        ],
+        "immediate_eur_on_paired_dates": 99.57951665453331,
+        "immediate_max_site_peaks_kw_on_paired_dates": {
+          "PORT": 50.0,
+          "WAREHOUSE": 50.0
+        },
+        "immediate_minus_price_eur_on_paired_dates": 11.013166707340291
+      }
+    },
+    "shared": {
+      "0": {
+        "observed_dates": 3,
+        "fleet_dates_feasible": 3,
+        "required_vehicle_days": 8,
+        "max_complete_vehicle_days": 8,
+        "feasible_dates": [
+          "2021-09-21",
+          "2021-09-22",
+          "2021-09-23"
+        ],
+        "price_eur_on_feasible_dates": 88.15480632997198,
+        "max_site_peaks_kw_on_feasible_dates": {
+          "PORT": 50.000000000007205,
+          "WAREHOUSE": 50.000000000000014
+        },
+        "paired_full_fleet_dates": [
+          "2021-09-21",
+          "2021-09-22",
+          "2021-09-23"
+        ],
+        "immediate_eur_on_paired_dates": 100.80821413577222,
+        "immediate_max_site_peaks_kw_on_paired_dates": {
+          "PORT": 50.0,
+          "WAREHOUSE": 50.0
+        },
+        "immediate_minus_price_eur_on_paired_dates": 12.653407805800247
+      },
+      "45": {
+        "observed_dates": 3,
+        "fleet_dates_feasible": 3,
+        "required_vehicle_days": 8,
+        "max_complete_vehicle_days": 8,
+        "feasible_dates": [
+          "2021-09-21",
+          "2021-09-22",
+          "2021-09-23"
+        ],
+        "price_eur_on_feasible_dates": 88.56634994719302,
+        "max_site_peaks_kw_on_feasible_dates": {
+          "PORT": 50.00000000000027,
+          "WAREHOUSE": 50.00000000000001
+        },
+        "paired_full_fleet_dates": [
+          "2021-09-21",
+          "2021-09-22",
+          "2021-09-23"
+        ],
+        "immediate_eur_on_paired_dates": 99.57951665453331,
+        "immediate_max_site_peaks_kw_on_paired_dates": {
+          "PORT": 50.0,
+          "WAREHOUSE": 50.0
+        },
+        "immediate_minus_price_eur_on_paired_dates": 11.013166707340291
+      }
+    },
+    "port_only": {
+      "0": {
+        "observed_dates": 3,
+        "fleet_dates_feasible": 3,
+        "required_vehicle_days": 8,
+        "max_complete_vehicle_days": 8,
+        "feasible_dates": [
+          "2021-09-21",
+          "2021-09-22",
+          "2021-09-23"
+        ],
+        "price_eur_on_feasible_dates": 88.15480632997198,
+        "max_site_peaks_kw_on_feasible_dates": {
+          "PORT": 50.000000000007205,
+          "WAREHOUSE": 50.000000000000014
+        },
+        "paired_full_fleet_dates": [
+          "2021-09-21",
+          "2021-09-22",
+          "2021-09-23"
+        ],
+        "immediate_eur_on_paired_dates": 100.80821413577222,
+        "immediate_max_site_peaks_kw_on_paired_dates": {
+          "PORT": 50.0,
+          "WAREHOUSE": 50.0
+        },
+        "immediate_minus_price_eur_on_paired_dates": 12.653407805800247
+      },
+      "45": {
+        "observed_dates": 3,
+        "fleet_dates_feasible": 3,
+        "required_vehicle_days": 8,
+        "max_complete_vehicle_days": 8,
+        "feasible_dates": [
+          "2021-09-21",
+          "2021-09-22",
+          "2021-09-23"
+        ],
+        "price_eur_on_feasible_dates": 88.56634994719302,
+        "max_site_peaks_kw_on_feasible_dates": {
+          "PORT": 50.00000000000027,
+          "WAREHOUSE": 50.00000000000001
+        },
+        "paired_full_fleet_dates": [
+          "2021-09-21",
+          "2021-09-22",
+          "2021-09-23"
+        ],
+        "immediate_eur_on_paired_dates": 99.57951665453331,
+        "immediate_max_site_peaks_kw_on_paired_dates": {
+          "PORT": 50.0,
+          "WAREHOUSE": 50.0
+        },
+        "immediate_minus_price_eur_on_paired_dates": 11.013166707340291
+      }
+    }
+  },
+  "resource_comparison": [
+    {
+      "release_min": 0,
+      "variant": "PORT_interfaces",
+      "observed_dates_with_paired_tasks": [
+        "2021-09-21",
+        "2021-09-22",
+        "2021-09-23"
+      ],
+      "vehicle_days": 8,
+      "investment_increment": 20,
+      "bill_reduction_eur": 6.59544064436086
+    },
+    {
+      "release_min": 0,
+      "variant": "PORT_power_kw",
+      "observed_dates_with_paired_tasks": [
+        "2021-09-21",
+        "2021-09-22",
+        "2021-09-23"
+      ],
+      "vehicle_days": 8,
+      "investment_increment": 35,
+      "bill_reduction_eur": -7.105427357601002e-14
+    },
+    {
+      "release_min": 0,
+      "variant": "WAREHOUSE_interfaces",
+      "observed_dates_with_paired_tasks": [
+        "2021-09-21",
+        "2021-09-22",
+        "2021-09-23"
+      ],
+      "vehicle_days": 8,
+      "investment_increment": 30,
+      "bill_reduction_eur": 9.308109838457312e-13
+    },
+    {
+      "release_min": 0,
+      "variant": "WAREHOUSE_power_kw",
+      "observed_dates_with_paired_tasks": [
+        "2021-09-21",
+        "2021-09-22",
+        "2021-09-23"
+      ],
+      "vehicle_days": 8,
+      "investment_increment": 10,
+      "bill_reduction_eur": -1.8474111129762605e-13
+    },
+    {
+      "release_min": 0,
+      "variant": "shared_build",
+      "observed_dates_with_paired_tasks": [
+        "2021-09-21",
+        "2021-09-22",
+        "2021-09-23"
+      ],
+      "vehicle_days": 8,
+      "investment_increment": 0,
+      "bill_reduction_eur": 0.0
+    },
+    {
+      "release_min": 45,
+      "variant": "PORT_interfaces",
+      "observed_dates_with_paired_tasks": [
+        "2021-09-21",
+        "2021-09-22",
+        "2021-09-23"
+      ],
+      "vehicle_days": 8,
+      "investment_increment": 20,
+      "bill_reduction_eur": 6.8020604242207945
+    },
+    {
+      "release_min": 45,
+      "variant": "PORT_power_kw",
+      "observed_dates_with_paired_tasks": [
+        "2021-09-21",
+        "2021-09-22",
+        "2021-09-23"
+      ],
+      "vehicle_days": 8,
+      "investment_increment": 35,
+      "bill_reduction_eur": -1.3073986337985843e-12
+    },
+    {
+      "release_min": 45,
+      "variant": "WAREHOUSE_interfaces",
+      "observed_dates_with_paired_tasks": [
+        "2021-09-21",
+        "2021-09-22",
+        "2021-09-23"
+      ],
+      "vehicle_days": 8,
+      "investment_increment": 30,
+      "bill_reduction_eur": 3.410605131648481e-13
+    },
+    {
+      "release_min": 45,
+      "variant": "WAREHOUSE_power_kw",
+      "observed_dates_with_paired_tasks": [
+        "2021-09-21",
+        "2021-09-22",
+        "2021-09-23"
+      ],
+      "vehicle_days": 8,
+      "investment_increment": 10,
+      "bill_reduction_eur": -4.973799150320701e-14
+    },
+    {
+      "release_min": 45,
+      "variant": "shared_build",
+      "observed_dates_with_paired_tasks": [
+        "2021-09-21",
+        "2021-09-22",
+        "2021-09-23"
+      ],
+      "vehicle_days": 8,
+      "investment_increment": 0,
+      "bill_reduction_eur": 0.0
+    },
+    {
+      "release_min": 45,
+      "variant": "warehouse_release_0",
+      "observed_dates_with_paired_tasks": [
+        "2021-09-21",
+        "2021-09-22",
+        "2021-09-23"
+      ],
+      "vehicle_days": 8,
+      "investment_increment": 0,
+      "bill_reduction_eur": 0.4115436172210529
+    }
+  ],
+  "dispatch_outcomes": [
+    {
+      "cheap_hour_cutoff_eur_mwh": 19.07,
+      "cheap_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cheap_kwh": 263.90468055555556,
+      "cheap_window_upper_kwh": 405.4380511111111,
+      "completed_trips": 13,
+      "completed_vehicle_days": 2,
+      "grid_kwh": 405.43805111111106,
+      "mip_gap": null,
+      "objective_bound_eur": null,
+      "purchase_eur": 11.860800499927777,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 50.0
+      },
+      "status": "dispatched"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 19.07,
+      "cheap_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cheap_kwh": 287.6646833333333,
+      "cheap_window_upper_kwh": 405.4380511111111,
+      "completed_trips": 13,
+      "completed_vehicle_days": 2,
+      "grid_kwh": 405.4380511111111,
+      "mip_gap": 0.0,
+      "objective_bound_eur": 9.342458900555556,
+      "purchase_eur": 9.342458900555558,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 50.0
+      },
+      "status": "optimal"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 19.07,
+      "cheap_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cheap_kwh": 263.90468055555556,
+      "cheap_window_upper_kwh": 405.4380511111111,
+      "completed_trips": 13,
+      "completed_vehicle_days": 2,
+      "grid_kwh": 405.43805111111106,
+      "mip_gap": null,
+      "objective_bound_eur": null,
+      "purchase_eur": 12.322601030866664,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 0.0
+      },
+      "status": "dispatched"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 19.07,
+      "cheap_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cheap_kwh": 287.6646833333333,
+      "cheap_window_upper_kwh": 405.4380511111111,
+      "completed_trips": 13,
+      "completed_vehicle_days": 2,
+      "grid_kwh": 405.4380511111111,
+      "mip_gap": 0.0,
+      "objective_bound_eur": 9.547382737916667,
+      "purchase_eur": 9.547382737916669,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 0.0
+      },
+      "status": "optimal"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 72.07,
+      "cheap_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cheap_kwh": 289.9758922222222,
+      "cheap_window_upper_kwh": 446.47127333333333,
+      "completed_trips": 16,
+      "completed_vehicle_days": 3,
+      "grid_kwh": 446.47127333333333,
+      "mip_gap": null,
+      "objective_bound_eur": null,
+      "purchase_eur": 34.985154315033334,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 50.0
+      },
+      "status": "dispatched"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 72.07,
+      "cheap_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cheap_kwh": 300.00000000000074,
+      "cheap_window_upper_kwh": 446.47127333333333,
+      "completed_trips": 16,
+      "completed_vehicle_days": 3,
+      "grid_kwh": 446.4712733333338,
+      "mip_gap": 0.0,
+      "objective_bound_eur": 32.86669433519439,
+      "purchase_eur": 32.866694335194474,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 50.00000000000296,
+        "WAREHOUSE": 50.000000000000014
+      },
+      "status": "optimal"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 72.07,
+      "cheap_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cheap_kwh": 289.9758922222222,
+      "cheap_window_upper_kwh": 446.47127333333333,
+      "completed_trips": 16,
+      "completed_vehicle_days": 3,
+      "grid_kwh": 446.47127333333333,
+      "mip_gap": null,
+      "objective_bound_eur": null,
+      "purchase_eur": 34.61812086264444,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 0.0
+      },
+      "status": "dispatched"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 72.07,
+      "cheap_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cheap_kwh": 299.99999999999716,
+      "cheap_window_upper_kwh": 446.47127333333333,
+      "completed_trips": 16,
+      "completed_vehicle_days": 3,
+      "grid_kwh": 446.4712733333313,
+      "mip_gap": 0.0,
+      "objective_bound_eur": 33.02405401394429,
+      "purchase_eur": 33.024054013944315,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 50.00000000000027,
+        "WAREHOUSE": 50.00000000000001
+      },
+      "status": "optimal"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 101.1,
+      "cheap_hours": [
+        1,
+        2,
+        3,
+        4,
+        22,
+        23
+      ],
+      "cheap_kwh": 191.57923,
+      "cheap_window_upper_kwh": 462.20373777777775,
+      "completed_trips": 16,
+      "completed_vehicle_days": 3,
+      "grid_kwh": 462.20373777777775,
+      "mip_gap": null,
+      "objective_bound_eur": null,
+      "purchase_eur": 53.96225932081111,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 50.0
+      },
+      "status": "dispatched"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 101.1,
+      "cheap_hours": [
+        1,
+        2,
+        3,
+        4,
+        22,
+        23
+      ],
+      "cheap_kwh": 299.99999999999653,
+      "cheap_window_upper_kwh": 462.20373777777775,
+      "completed_trips": 16,
+      "completed_vehicle_days": 3,
+      "grid_kwh": 462.2037377777749,
+      "mip_gap": 0.0,
+      "objective_bound_eur": 45.945653094222074,
+      "purchase_eur": 45.94565309422194,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 50.000000000007205,
+        "WAREHOUSE": 50.00000000000001
+      },
+      "status": "optimal"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 101.1,
+      "cheap_hours": [
+        1,
+        2,
+        3,
+        4,
+        22,
+        23
+      ],
+      "cheap_kwh": 191.57923,
+      "cheap_window_upper_kwh": 462.20373777777775,
+      "completed_trips": 16,
+      "completed_vehicle_days": 3,
+      "grid_kwh": 462.2037377777777,
+      "mip_gap": null,
+      "objective_bound_eur": null,
+      "purchase_eur": 52.63879476102221,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 50.0
+      },
+      "status": "dispatched"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 101.1,
+      "cheap_hours": [
+        1,
+        2,
+        3,
+        4,
+        22,
+        23
+      ],
+      "cheap_kwh": 300.0,
+      "cheap_window_upper_kwh": 462.20373777777775,
+      "completed_trips": 16,
+      "completed_vehicle_days": 3,
+      "grid_kwh": 462.20373777776666,
+      "mip_gap": 0.0,
+      "objective_bound_eur": 45.99491319533219,
+      "purchase_eur": 45.99491319533204,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 0.0
+      },
+      "status": "optimal"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 19.07,
+      "cheap_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cheap_kwh": 287.6646833333333,
+      "cheap_window_upper_kwh": 405.4380511111111,
+      "completed_trips": 13,
+      "completed_vehicle_days": 2,
+      "grid_kwh": 405.4380511111111,
+      "mip_gap": 0.0,
+      "objective_bound_eur": 8.517648552722223,
+      "purchase_eur": 8.517648552722223,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 100.0,
+        "WAREHOUSE": 50.0
+      },
+      "status": "optimal"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 19.07,
+      "cheap_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cheap_kwh": 287.6646833333333,
+      "cheap_window_upper_kwh": 405.4380511111111,
+      "completed_trips": 13,
+      "completed_vehicle_days": 2,
+      "grid_kwh": 405.4380511111111,
+      "mip_gap": 0.0,
+      "objective_bound_eur": 8.722572390083334,
+      "purchase_eur": 8.722572390083334,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 100.0,
+        "WAREHOUSE": 0.0
+      },
+      "status": "optimal"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 72.07,
+      "cheap_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cheap_kwh": 446.4712733333334,
+      "cheap_window_upper_kwh": 446.47127333333333,
+      "completed_trips": 16,
+      "completed_vehicle_days": 3,
+      "grid_kwh": 446.4712733333334,
+      "mip_gap": 0.0,
+      "objective_bound_eur": 28.766783970333336,
+      "purchase_eur": 28.76678397033334,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 100.0,
+        "WAREHOUSE": 0.0
+      },
+      "status": "optimal"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 72.07,
+      "cheap_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cheap_kwh": 300.0,
+      "cheap_window_upper_kwh": 446.47127333333333,
+      "completed_trips": 16,
+      "completed_vehicle_days": 3,
+      "grid_kwh": 446.47127333333333,
+      "mip_gap": 0.0,
+      "objective_bound_eur": 32.866694335194445,
+      "purchase_eur": 32.86669433519445,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 50.000000000000014
+      },
+      "status": "optimal"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 72.07,
+      "cheap_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cheap_kwh": 300.0,
+      "cheap_window_upper_kwh": 446.47127333333333,
+      "completed_trips": 16,
+      "completed_vehicle_days": 3,
+      "grid_kwh": 446.4712733333308,
+      "mip_gap": 0.0,
+      "objective_bound_eur": 32.86669433519421,
+      "purchase_eur": 32.86669433519421,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 50.000000000000014,
+        "WAREHOUSE": 75.0
+      },
+      "status": "optimal"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 72.07,
+      "cheap_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cheap_kwh": 300.00000000000045,
+      "cheap_window_upper_kwh": 446.47127333333333,
+      "completed_trips": 16,
+      "completed_vehicle_days": 3,
+      "grid_kwh": 446.47127333333356,
+      "mip_gap": 0.0,
+      "objective_bound_eur": 32.866694335194445,
+      "purchase_eur": 32.86669433519445,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 50.00000000000085,
+        "WAREHOUSE": 50.000000000000014
+      },
+      "status": "optimal"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 72.07,
+      "cheap_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cheap_kwh": 446.4712733333334,
+      "cheap_window_upper_kwh": 446.47127333333333,
+      "completed_trips": 16,
+      "completed_vehicle_days": 3,
+      "grid_kwh": 446.4712733333334,
+      "mip_gap": 0.0,
+      "objective_bound_eur": 28.76678397033334,
+      "purchase_eur": 28.76678397033334,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 100.00000000000001,
+        "WAREHOUSE": 0.0
+      },
+      "status": "optimal"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 72.07,
+      "cheap_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cheap_kwh": 299.9999999999994,
+      "cheap_window_upper_kwh": 446.47127333333333,
+      "completed_trips": 16,
+      "completed_vehicle_days": 3,
+      "grid_kwh": 446.47127333333253,
+      "mip_gap": 0.0,
+      "objective_bound_eur": 33.024054013944415,
+      "purchase_eur": 33.024054013944394,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 50.000000000000014,
+        "WAREHOUSE": 50.000000000000014
+      },
+      "status": "optimal"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 72.07,
+      "cheap_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cheap_kwh": 300.00000000001165,
+      "cheap_window_upper_kwh": 446.47127333333333,
+      "completed_trips": 16,
+      "completed_vehicle_days": 3,
+      "grid_kwh": 446.47127333333344,
+      "mip_gap": 0.0,
+      "objective_bound_eur": 33.02405401394325,
+      "purchase_eur": 33.024054013943974,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 50.00000000005097,
+        "WAREHOUSE": 50.00000000000001
+      },
+      "status": "optimal"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 72.07,
+      "cheap_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cheap_kwh": 300.0,
+      "cheap_window_upper_kwh": 446.47127333333333,
+      "completed_trips": 16,
+      "completed_vehicle_days": 3,
+      "grid_kwh": 446.47127333333253,
+      "mip_gap": 0.0,
+      "objective_bound_eur": 33.0240540139444,
+      "purchase_eur": 33.024054013944365,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 50.00000000000011,
+        "WAREHOUSE": 50.00000000000001
+      },
+      "status": "optimal"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 101.1,
+      "cheap_hours": [
+        1,
+        2,
+        3,
+        4,
+        22,
+        23
+      ],
+      "cheap_kwh": 462.2037377777777,
+      "cheap_window_upper_kwh": 462.20373777777775,
+      "completed_trips": 16,
+      "completed_vehicle_days": 3,
+      "grid_kwh": 462.2037377777777,
+      "mip_gap": 0.0,
+      "objective_bound_eur": 44.27493316255555,
+      "purchase_eur": 44.27493316255555,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 100.0,
+        "WAREHOUSE": 0.0
+      },
+      "status": "optimal"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 101.1,
+      "cheap_hours": [
+        1,
+        2,
+        3,
+        4,
+        22,
+        23
+      ],
+      "cheap_kwh": 299.99999999999847,
+      "cheap_window_upper_kwh": 462.20373777777775,
+      "completed_trips": 16,
+      "completed_vehicle_days": 3,
+      "grid_kwh": 462.203737777776,
+      "mip_gap": 0.0,
+      "objective_bound_eur": 45.94565309422211,
+      "purchase_eur": 45.94565309422203,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 50.0,
+        "WAREHOUSE": 50.00000000000001
+      },
+      "status": "optimal"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 101.1,
+      "cheap_hours": [
+        1,
+        2,
+        3,
+        4,
+        22,
+        23
+      ],
+      "cheap_kwh": 300.00000000000006,
+      "cheap_window_upper_kwh": 462.20373777777775,
+      "completed_trips": 16,
+      "completed_vehicle_days": 3,
+      "grid_kwh": 462.2037377777687,
+      "mip_gap": 0.0,
+      "objective_bound_eur": 45.94565309422145,
+      "purchase_eur": 45.94565309422127,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 50.000000000000156,
+        "WAREHOUSE": 50.00000000000001
+      },
+      "status": "optimal"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 101.1,
+      "cheap_hours": [
+        1,
+        2,
+        3,
+        4,
+        22,
+        23
+      ],
+      "cheap_kwh": 299.99999999999983,
+      "cheap_window_upper_kwh": 462.20373777777775,
+      "completed_trips": 16,
+      "completed_vehicle_days": 3,
+      "grid_kwh": 462.20373777777706,
+      "mip_gap": 0.0,
+      "objective_bound_eur": 45.94565309422217,
+      "purchase_eur": 45.945653094222145,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 50.0000000000006,
+        "WAREHOUSE": 50.00000000000001
+      },
+      "status": "optimal"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 101.1,
+      "cheap_hours": [
+        1,
+        2,
+        3,
+        4,
+        22,
+        23
+      ],
+      "cheap_kwh": 462.20373777777775,
+      "cheap_window_upper_kwh": 462.20373777777775,
+      "completed_trips": 16,
+      "completed_vehicle_days": 3,
+      "grid_kwh": 462.20373777777775,
+      "mip_gap": 0.0,
+      "objective_bound_eur": 44.274933162555556,
+      "purchase_eur": 44.274933162555556,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 100.00000000000001,
+        "WAREHOUSE": 0.0
+      },
+      "status": "optimal"
+    },
+    {
+      "cheap_hour_cutoff_eur_mwh": 101.1,
+      "cheap_hours": [
+        1,
+        2,
+        3,
+        4,
+        22,
+        23
+      ],
+      "cheap_kwh": 299.9999999999996,
+      "cheap_window_upper_kwh": 462.20373777777775,
+      "completed_trips": 16,
+      "completed_vehicle_days": 3,
+      "grid_kwh": 462.20373777777723,
+      "mip_gap": 0.0,
+      "objective_bound_eur": 45.99491319533329,
+      "purchase_eur": 45.99491319533327,
+      "service_complete": true,
+      "site_peaks_kw": {
+        "PORT": 50.00000000000071,
+        "WAREHOUSE": 0.0
+      },
+      "status": "optimal"
+    }
+  ]
+}

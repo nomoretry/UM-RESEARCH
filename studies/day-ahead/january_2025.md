@@ -1,5 +1,24 @@
 # 重卡仓库补能与日前购电 · January 2025
 
+## Frozen German fleet designs on three later dates
+
+The design day nearest median fleet driving energy was 15 September 2021. The typical-day design used immediate release. The shared and port-additions-only designs used all six training dates at both 0 and 45 minutes of warehouse release. All three chose one connector per site, 100/75 kW PORT/WAREHOUSE and zero new investment. The port-only design kept its existing warehouse connector. The shared and port-only menus both reached 11/13 complete design truck-days per release. The subsequent dates 21–23 September contain eight truck-days and 45 trips. Both dispatch policies served them all with individual terminal energy equal to the initial 150 kWh. [Trips, design and holdout](../fleet-service/DATA.md)
+
+| Warehouse release | Charge-on-arrival bill (€)* | Price-optimized bill (€) | Further saving with second port connector (€) | Max returned PORT / WAREHOUSE kW, base build |
+|---|---:|---:|---:|---:|
+| 0 min | 100.80821 | 88.15481 | 6.59544 | 50 / 50 |
+| 45 min | 99.57952 | 88.56635 | 6.80206 | 50 / 50 |
+
+*Immediate charging gives priority to an existing reservation, then earliest release and vehicle ID. It supplies available rated power until the battery fills or the vehicle's energy budget for the day's known trips has been purchased. It can redistribute power at those instants; the connector reservation lasts the quarter. Both policies pay the same hourly price for grid kWh. The maximum reported for each site is over three dates; individual dates and dispatch rows may have different peaks. Cost-optimal dispatch had zero reported gap. Each held-out truck-day is counted once per release assumption.
+
+On 22 September with a 45-minute delay the original price-optimal build delivers 300 of 446.471 kWh in the six cheapest hours; one port connector at 50 kW can deliver at most 300 kWh in six hours there. With a second port connector and the same 100 kW connection, the returned optimum delivers all 446.471 kWh in these hours and costs €28.7668 instead of €33.0241. A second warehouse connector alone, or a higher connection rating at either site alone, leaves the optimized three-day bill unchanged to €0.000001. Moving warehouse release from 45 to 0 minutes saves €0.41154 on the base build. The synthetic investment increment for the port connector is 20; monetary payback requires a comparable equipment cost and operating horizon.
+
+The price replay maps each trip date's local weekday and hour to the historical Berlin delivery week 6–12 January 2025. The three holdout dates use 7–9 January DE-LU wholesale prices. The scheduler knows the delivery curve and announced duties. Six lowest-priced hours include ties at the cutoff. The per-outcome window upper bound gives each vehicle all its eligible cheap minutes at 50 kW, capped at its cyclic grid requirement; it ignores competition and battery chronology. `holdout` links each design and policy to a zero-based row of `dispatch_outcomes`. `resource_comparison` gives same-task euros and synthetic increments separately. No retail tariff, demand charge or site-specific price is included. [168 prices with timestamps](fleet_week_prices.csv) · [Bundesnetzagentur / SMARD attribution, terms and source hashes](january_2025_source.json) · [Verified outcomes](fleet_market.json)
+
+From the repository root in the existing SciPy environment, run `$env:PYTHONPATH='src'; python -m um_charging.fleet_market` in PowerShell. Optional `--output` stores raw per-condition schedules in a new directory of the offline Git. To audit the price extract, run `python studies/day-ahead/extract_fleet_week.py <weekly-SMARD-JSON>`; it checks the original weekly SHA-256, 168 timestamps, 28 previously published overlapping prices and the rebuilt CSV bytes.
+
+## Four-hour synthetic service across January
+
 同一组港区—仓库运输任务在 2025 年 1 月的 31 条德国/卢森堡日前电价曲线上分别结算。每次从当地 08:00 开始，12:00 结束。港区 3 个接口、150 kW，仓库 1 个接口、75 kW。车辆、插枪资格和行驶耗能沿用合成算例。以下金额是 31 个四小时循环的批发购电费用。
 
 | 策略 / Dispatch | 31 次购电费用 / EUR | 港区峰值 / kW |

@@ -1,11 +1,13 @@
 # 港区与仓库的重卡充电设施规划
 [English](#electric-truck-charging-at-a-port-and-warehouse)
 
-**同一套设备能否服务后续日期？** 德国一支车队的三辆车提供了 101 趟行程。各站一个接口、港区 100 kW／仓库 75 kW，已达到菜单能覆盖的上限：两档仓库放行下，设计集各完成 11/13 个车日，后续三天各完成 8/8。两个设计车日受车载电量限制。站点映射和插枪资格为 UM 假设。运行 `$env:PYTHONPATH='src'; python -m um_charging.fleet_design`。[来源与筛选](studies/fleet-service/DATA.md) · [冻结设施的留出结果](studies/fleet-service/selected.json)
+三辆电动重卡从港区出发，到仓库装卸后返港。仓库有一个充电接口。如果两辆车要等 45 分钟才能插枪，应该在港区加一个接口，还是在仓库加？给定运输任务和期末电量，模型同时选择两站的接口数、接入扩容档位和逐车充电功率，以最小化同一周期的设施投资与购电费用。
 
 **一套设施覆盖多种工况。** 三车合成算例中，单独覆盖两种指定任务分别需投资 40、50；共同覆盖需 70，选港区 3 个接口／100 kW、仓库 2 个／75 kW。覆盖全部 40 个已测工况需 75，选港区 3 个／150 kW、仓库 1 个／75 kW。投资为合成单位。在仓库根目录运行 PowerShell 命令 `$env:PYTHONPATH='src'; python -m um_charging.shared_investment`。[服务范围表、失败下界和逐车排程](results/shared_investment_20261112/)
 
-三辆电动重卡从港区出发，到仓库装卸后返港。仓库有一个充电接口。如果两辆车要等 45 分钟才能插枪，应该在港区加一个接口，还是在仓库加？给定运输任务和期末电量，模型同时选择两站的接口数、接入扩容档位和逐车充电功率，以最小化同一周期的设施投资与购电费用。
+**同一套设备能否服务后续日期？** 德国一支车队的三辆车提供了 101 趟行程。各站一个接口、港区 100 kW／仓库 75 kW，已达到菜单能覆盖的上限：两档仓库放行下，设计集各完成 11/13 个车日，后续三天各完成 8/8。两个设计车日受车载电量限制。站点映射和插枪资格为 UM 假设。运行 `$env:PYTHONPATH='src'; python -m um_charging.fleet_design`。[来源与筛选](studies/fleet-service/DATA.md) · [冻结设施的留出结果](studies/fleet-service/selected.json)
+
+**电价会改变加建接口的理由。** 45 分钟放行时，三种冻结设计都完成 8/8 个留出车日，到站即充共 €99.58，日前优化 €88.57。在原有 100 kW 接入下多加一个港区接口，三天还能少付 €6.80；单独提高接入容量的电费收益为零。用 PowerShell 复算 `$env:PYTHONPATH='src'; python -m um_charging.fleet_market`。[逐日账单、负荷和增建对照](studies/day-ahead/fleet_market.json)
 
 在四小时合成算例中，港区和仓库的初始接入容量分别为 100 和 75 kW，每车最多以 50 kW 充电。车辆在仓库停车 60 分钟。下表只改变前两辆车的插枪等候，第三辆保留完整窗口。每 15 分钟可以轮换接口，假设换枪不耗时，规划者事先知道本次等候时间。
 
@@ -58,11 +60,13 @@ python -m um_charging.day_ahead
 
 ## Electric truck charging at a port and warehouse
 
-On three later dates for the same German fleet, one connector at each site (100/75 kW) served 8/8 truck-days at both 0 and 45 minutes of warehouse release delay. Even the largest build served only 11/13 design truck-days per delay. Trip timestamps are recorded, trip energy is simulated, and site mapping and plug access are UM assumptions. Run `$env:PYTHONPATH='src'; python -m um_charging.fleet_design`. [Source and sampling](studies/fleet-service/DATA.md) · [Design and holdout results](studies/fleet-service/selected.json)
+Three electric trucks travel from a port to a warehouse, unload and return. If two trucks can plug in only during the last 15 minutes of their warehouse stop, where should an operator add a connector? Given a fixed transport service and terminal battery charge, the mixed-integer model selects connectors, grid connection upgrades and individual charging schedules to minimize investment and electricity cost over the same period.
 
 A single build serving two specified synthetic duties costs 70 units, versus 40 and 50 when each is planned separately. All 40 tested conditions need 75 units, with three port connectors at 150 kW and one warehouse connector at 75 kW. In PowerShell run `$env:PYTHONPATH='src'; python -m um_charging.shared_investment`. [Service ranges and schedules](results/shared_investment_20261112/)
 
-Three electric trucks travel from a port to a warehouse, unload and return. If two trucks can plug in only during the last 15 minutes of their warehouse stop, where should an operator add a connector? Given a fixed transport service and terminal battery charge, the mixed-integer model selects connectors, grid connection upgrades and individual charging schedules to minimize investment and electricity cost over the same period.
+On three later dates for the same German fleet, one connector at each site (100/75 kW) served 8/8 truck-days at both 0 and 45 minutes of warehouse release delay. Even the largest build served only 11/13 design truck-days per delay. Trip timestamps are recorded, trip energy is simulated, and site mapping and plug access are UM assumptions. Run `$env:PYTHONPATH='src'; python -m um_charging.fleet_design`. [Source and sampling](studies/fleet-service/DATA.md) · [Design and holdout results](studies/fleet-service/selected.json)
+
+At a 45-minute warehouse release delay, all three frozen designs completed 8/8 held-out truck-days. Immediate charging cost €99.58 across the three dates and price-optimized dispatch €88.57. A second port connector saved a further €6.80 at the existing connection rating. Increasing grid capacity alone yielded no bill reduction. Run `$env:PYTHONPATH='src'; python -m um_charging.fleet_market`. [Daily bills, peaks and facility comparisons](studies/day-ahead/fleet_market.json)
 
 The four-hour synthetic case starts with 100 kW at the port and 75 kW at the warehouse. Each truck can draw up to 50 kW. All three spend one hour at the warehouse. Two face a known plug-in delay; the third can connect throughout. Connectors can be reassigned at 15-minute boundaries with zero changeover time.
 

@@ -3,3 +3,5 @@ legacy/** -text
 
 # Pinned price snapshots use the same bytes on Windows and Linux.
 studies/day-ahead/january_2025_prices.csv text eol=lf
+studies/day-ahead/fleet_week_prices.csv text eol=lf
+studies/day-ahead/fleet_market.json text eol=lf

@@ -276,10 +276,9 @@ def immediate(case, hardware, hourly_prices=None):
     """Reserve by first eligibility then ID, use maximal power, ignore future prices.
 
     The aggregate purchase budget is set by the announced service energy and
-    cyclic SOC. If the remaining budget or headroom binds within one event
-    interval, its energy is spread uniformly over that interval. Reported
-    peaks are maxima of those constant event powers. The rule neither predicts
-    prices nor optimizes peaks.
+    cyclic SOC. Stop at the instant a truck becomes full or exhausts that
+    budget. Redistribute freed grid power, retaining every connector's truck
+    reservation until the quarter ends. Prices only enter the settlement.
     """
     t0 = perf_counter()
     required = {v:sum(e for _,_,e,_ in t["trips"])/EFFICIENCY for v,t in case["trucks"].items()}
@@ -290,21 +289,43 @@ def immediate(case, hardware, hourly_prices=None):
     for a,b,available in _events(case):
         for v in level:
             level[v] += arrivals[v].get(a,0.)
-        duration = (b-a)/60
         q = int(a//15)
-        for s,vs in available.items():
-            used = reservations[s,q]; free = hardware[s]["power_kw"]
-            def priority(v):
-                release = next(left for left,right,site in case["trucks"][v]["windows"] if site==s and left<=a<b<=right)
-                return (v not in used,release,v)
-            for v in sorted(vs,key=priority):
-                if v not in used and len(used)>=hardware[s]["interfaces"]:
-                    continue
-                grid = min(required[v], (CAPACITY_KWH-level[v])/EFFICIENCY, min(TRUCK_KW,free)*duration)
-                if grid > 1e-9:
-                    kw = grid/duration; used.add(v); free-=kw
-                    rows.append({"vehicle_id":v,"site":s,"reservation_slot":q,"start_min":a,"end_min":b,"power_kw":kw})
-                    level[v] += grid*EFFICIENCY; required[v]-=grid
+        for site, vehicles in available.items():
+            reserved = reservations[site, q]
+            interfaces = hardware[site]["interfaces"]
+            releases = {
+                v: next(left for left, right, station in case["trucks"][v]["windows"]
+                        if station == site and left <= a < b <= right)
+                for v in vehicles
+            }
+            now = a
+            while vehicles and now < b:
+                power_left = hardware[site]["power_kw"]
+                powers = {}
+                next_event = b
+                for v in sorted(vehicles, key=lambda v: (v not in reserved, releases[v], v)):
+                    if power_left <= 0:
+                        break
+                    if v not in reserved and len(reserved) >= interfaces:
+                        continue
+                    headroom = (CAPACITY_KWH - level[v]) / EFFICIENCY
+                    grid_kwh = min(required[v], headroom)
+                    if grid_kwh <= 1e-9:
+                        continue
+                    kw = min(TRUCK_KW, power_left)
+                    powers[v] = kw
+                    power_left -= kw
+                    reserved.add(v)
+                    next_event = min(next_event, now + 60 * grid_kwh / kw)
+                if not powers:
+                    break
+                for v, kw in powers.items():
+                    energy = kw * (next_event - now) / 60
+                    rows.append({"vehicle_id": v, "site": site, "reservation_slot": q,
+                                 "start_min": now, "end_min": next_event, "power_kw": kw})
+                    required[v] -= energy
+                    level[v] += EFFICIENCY * energy
+                now = next_event
     checked = audit(case,hardware,rows,hourly_prices)
     return {"status":"dispatched" if checked["passed"] else "incomplete","schedule":rows,"audit":checked,
             "selected_ids":checked["completed_ids"],"completed_count":checked["vehicles_completed"],
