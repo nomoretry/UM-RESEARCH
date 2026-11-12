@@ -5,6 +5,7 @@ from datetime import datetime, timedelta, timezone
 import hashlib
 import io
 import json
+import math
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -12,16 +13,27 @@ FIRST = datetime(2025, 1, 6, tzinfo=timezone(timedelta(hours=1)))
 PRICE_FILE = HERE / "fleet_week_prices.csv"
 
 
+def hourly_points(raw, expected_sha256, first_ms, count):
+    """Validate a pinned SMARD series against continuous UTC delivery hours."""
+    if hashlib.sha256(raw).hexdigest() != expected_sha256:
+        raise ValueError("Wrong SMARD weekly source bytes")
+    points = json.loads(raw)["series"]
+    if len(points) != count:
+        raise ValueError("Missing or extra hourly delivery intervals")
+    for i, (stamp, rate) in enumerate(points):
+        if type(stamp) is not int or stamp != first_ms + i * 3_600_000:
+            raise ValueError("Missing, duplicate or unordered UTC interval")
+        if type(rate) not in (int, float) or not math.isfinite(rate):
+            raise ValueError("Missing or non-finite market price")
+    return points
+
+
 def csv_from_source(raw):
     meta = json.loads((HERE / "january_2025_source.json").read_text(encoding="utf-8"))
     start_ms = int(FIRST.timestamp()) * 1000
     source, = [s for s in meta["sources"] if s["url"].endswith(f"_{start_ms}.json")]
-    if hashlib.sha256(raw).hexdigest() != source["sha256"]:
-        raise ValueError("Wrong SMARD weekly source bytes")
-    points = json.loads(raw)["series"]
+    points = hourly_points(raw, source["sha256"], start_ms, 168)
     timestamps = [FIRST + timedelta(hours=i) for i in range(168)]
-    if [int(t.timestamp()) * 1000 for t in timestamps] != [t for t, _ in points]:
-        raise ValueError("Expected a complete 168-hour Berlin delivery week")
     with (HERE / "january_2025_prices.csv").open(encoding="utf-8", newline="") as source_file:
         subset = {row["start_berlin"]: float(row["eur_per_mwh"]) for row in csv.DictReader(source_file)}
     output = io.StringIO()

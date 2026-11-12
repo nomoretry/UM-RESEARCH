@@ -1,5 +1,7 @@
 # 重卡仓库补能与日前购电 · January 2025
 
+The January weekday replay below remains a separate price scenario. The [second port connector case](second_port.md) pairs the same service with contemporaneous 2021 prices and extends the comparison through six later operating weeks.
+
 ## Frozen German fleet designs on three later dates
 
 The design day nearest median fleet driving energy was 15 September 2021. The typical-day design used immediate release. The shared and port-additions-only designs used all six training dates at both 0 and 45 minutes of warehouse release. All three chose one connector per site, 100/75 kW PORT/WAREHOUSE and zero new investment. The port-only design kept its existing warehouse connector. The shared and port-only menus both reached 11/13 complete design truck-days per release. The subsequent dates 21–23 September contain eight truck-days and 45 trips. Both dispatch policies served them all with individual terminal energy equal to the initial 150 kWh. [Trips, design and holdout](../fleet-service/DATA.md)

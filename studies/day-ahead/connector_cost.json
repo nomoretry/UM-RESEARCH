@@ -1,0 +1,31 @@
+{
+  "study": "Second port charging interface, existing 100 kW modeled grid connection",
+  "service_comparison": "Same completed truck duties, battery boundaries, release rule, prices and price-optimal dispatch. The marginal saving is the one-interface bill minus the two-interface bill.",
+  "repeat_scenario": {
+    "observed_weeks": 6,
+    "weeks_per_year": 52,
+    "assumption": "Each registered calendar week has equal weight. Benefits recur in constant purchasing power for the equipment life; end-of-year cashflows and zero residual value. Results scale the common comparable service only. Service differences and unobserved work have no assigned monetary value."
+  },
+  "whole_charger_reference": {
+    "year": 2025,
+    "equipment_eur": 20882,
+    "installation_share_of_equipment": 0.30,
+    "maintenance_share_of_equipment_per_year": 0.01,
+    "equipment_life_years": 10,
+    "discount_rate": 0.05,
+    "meaning": "An additional independent 50 kW DC charging station. Installation includes planning, installation and commissioning. UM applies the study maintenance fraction to the hardware price. Load management, upstream reinforcement and contractual power charges are separate. The paper's equipment budget is treated as 2025 euros for this illustration; VAT basis and site procurement price are unverified.",
+    "source": "Frank, Oebel and Gnann, Optimizing Charging Infrastructure for Truck Depots, EVS38 (2025), sections 2.2 and 2.2.2, Table 2, reference 24 (Alpitronic HYC50).",
+    "url": "https://publica-rest.fraunhofer.de/server/api/core/bitstreams/794e2305-1b7f-4c8d-bf53-c1728befda2d/content#page=6"
+  },
+  "power_sharing": {
+    "modeled_requirement": "Two simultaneously usable interfaces with up to 50 kW per vehicle and up to 100 kW combined port grid draw. Existing 100 kW grid access is a UM assumption.",
+    "site_quote_needed": "Additional dispenser, rectifier or cabinet capacity, civil works and commissioning depend on installed equipment. The study's full charger price measures a distinct procurement alternative. A two-cable 50 kW HYC50 shares 2 x 25 kW when charging simultaneously.",
+    "url": "https://www.alpitronic.it/en/hypercharger/"
+  },
+  "price_level": {
+    "index": "German annual all-items consumer price index, 2020 = 100. General purchasing-power sensitivity only; individual market settlements remain in delivery-year euros.",
+    "cpi": {"2021": 103.1, "2025": 121.9},
+    "source": "Statistisches Bundesamt (Destatis), GENESIS table 61111-0001",
+    "url": "https://genesis.destatis.de/datenbank/online/table/61111-0001/"
+  }
+}
