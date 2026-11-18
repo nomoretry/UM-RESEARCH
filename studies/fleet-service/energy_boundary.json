@@ -1,0 +1,9594 @@
+{
+ "source": {
+  "commit": "ccefd412f2e8278c1a77bed30f42171433f52b8f",
+  "dirty": false
+ },
+ "inputs_sha256": {
+  "studies/fleet-service/operating_weeks.json": "901b0dcf25f3af092c3400bd4982498d9a0b026e56495d365f5c78be6abd2c07",
+  "studies/day-ahead/second_port.json": "da886446b7a0f7cf7e6a7e90b9c3dd39278cde4fedc1bf37dfea7c9fe6d60272",
+  "studies/day-ahead/native_2021_prices.csv": "8afde0563af37e3433158b04a7cad1fb394a609714279c68c9b1fa9ec1ee31bf",
+  "studies/fleet-service/service_gap.json": "c0041db4a1adb43a483ff8afb676225de7ec744ee87a947a21496bcd494a0c7d"
+ },
+ "module_sha256": "42ee04ca0e4d7cdaf2e9668d42902ae6ef2ae7ad9de46d7d6cd3c9792ee2fc9e",
+ "python": "3.12.14",
+ "numpy": "2.5.3",
+ "scipy": "1.18.1",
+ "hardware": {
+  "one": {
+   "PORT": {
+    "interfaces": 1,
+    "power_kw": 100
+   },
+   "WAREHOUSE": {
+    "interfaces": 1,
+    "power_kw": 75
+   }
+  },
+  "two": {
+   "PORT": {
+    "interfaces": 2,
+    "power_kw": 100
+   },
+   "WAREHOUSE": {
+    "interfaces": 1,
+    "power_kw": 75
+   }
+  }
+ },
+ "specs": {
+  "S300": {
+   "capacity_kwh": 300.0,
+   "reserve_kwh": 30.0,
+   "boundary_kwh": 150.0,
+   "truck_kw": 50.0,
+   "efficiency": 0.9
+  },
+  "S900a": {
+   "capacity_kwh": 900,
+   "reserve_kwh": 30,
+   "boundary_kwh": 150,
+   "truck_kw": 50.0,
+   "efficiency": 0.9
+  },
+  "S900b": {
+   "capacity_kwh": 900,
+   "reserve_kwh": 30,
+   "boundary_kwh": 450,
+   "truck_kw": 50.0,
+   "efficiency": 0.9
+  },
+  "S900c": {
+   "capacity_kwh": 900,
+   "reserve_kwh": 90,
+   "boundary_kwh": 450,
+   "truck_kw": 50.0,
+   "efficiency": 0.9
+  }
+ },
+ "chains": [
+  [
+   [
+    "2021-10-07",
+    "1"
+   ]
+  ],
+  [
+   [
+    "2021-10-09",
+    "1"
+   ]
+  ],
+  [
+   [
+    "2021-10-11",
+    "1"
+   ],
+   [
+    "2021-10-12",
+    "1"
+   ]
+  ],
+  [
+   [
+    "2021-10-15",
+    "1"
+   ]
+  ],
+  [
+   [
+    "2021-10-18",
+    "1"
+   ],
+   [
+    "2021-10-19",
+    "1"
+   ],
+   [
+    "2021-10-20",
+    "1"
+   ],
+   [
+    "2021-10-21",
+    "1"
+   ],
+   [
+    "2021-10-22",
+    "1"
+   ]
+  ],
+  [
+   [
+    "2021-10-26",
+    "1"
+   ]
+  ],
+  [
+   [
+    "2021-10-28",
+    "1"
+   ]
+  ],
+  [
+   [
+    "2021-10-27",
+    "2"
+   ]
+  ],
+  [
+   [
+    "2021-10-29",
+    "2"
+   ]
+  ],
+  [
+   [
+    "2021-11-05",
+    "2"
+   ]
+  ],
+  [
+   [
+    "2021-09-27",
+    "3"
+   ],
+   [
+    "2021-09-28",
+    "3"
+   ],
+   [
+    "2021-09-29",
+    "3"
+   ],
+   [
+    "2021-09-30",
+    "3"
+   ],
+   [
+    "2021-10-01",
+    "3"
+   ]
+  ],
+  [
+   [
+    "2021-10-04",
+    "3"
+   ]
+  ],
+  [
+   [
+    "2021-10-06",
+    "3"
+   ],
+   [
+    "2021-10-07",
+    "3"
+   ]
+  ],
+  [
+   [
+    "2021-10-11",
+    "3"
+   ]
+  ],
+  [
+   [
+    "2021-10-13",
+    "3"
+   ]
+  ],
+  [
+   [
+    "2021-10-15",
+    "3"
+   ]
+  ],
+  [
+   [
+    "2021-10-18",
+    "3"
+   ]
+  ],
+  [
+   [
+    "2021-10-20",
+    "3"
+   ],
+   [
+    "2021-10-21",
+    "3"
+   ],
+   [
+    "2021-10-22",
+    "3"
+   ]
+  ],
+  [
+   [
+    "2021-10-25",
+    "3"
+   ],
+   [
+    "2021-10-26",
+    "3"
+   ],
+   [
+    "2021-10-27",
+    "3"
+   ],
+   [
+    "2021-10-28",
+    "3"
+   ],
+   [
+    "2021-10-29",
+    "3"
+   ]
+  ],
+  [
+   [
+    "2021-11-02",
+    "3"
+   ],
+   [
+    "2021-11-03",
+    "3"
+   ]
+  ],
+  [
+   [
+    "2021-09-29",
+    "4"
+   ]
+  ],
+  [
+   [
+    "2021-10-01",
+    "4"
+   ]
+  ],
+  [
+   [
+    "2021-10-04",
+    "4"
+   ],
+   [
+    "2021-10-05",
+    "4"
+   ],
+   [
+    "2021-10-06",
+    "4"
+   ]
+  ],
+  [
+   [
+    "2021-10-08",
+    "4"
+   ]
+  ],
+  [
+   [
+    "2021-10-14",
+    "4"
+   ]
+  ],
+  [
+   [
+    "2021-10-25",
+    "4"
+   ]
+  ],
+  [
+   [
+    "2021-10-29",
+    "4"
+   ]
+  ],
+  [
+   [
+    "2021-11-04",
+    "4"
+   ]
+  ],
+  [
+   [
+    "2021-09-27",
+    "5"
+   ],
+   [
+    "2021-09-28",
+    "5"
+   ],
+   [
+    "2021-09-29",
+    "5"
+   ],
+   [
+    "2021-09-30",
+    "5"
+   ],
+   [
+    "2021-10-01",
+    "5"
+   ]
+  ],
+  [
+   [
+    "2021-10-04",
+    "5"
+   ],
+   [
+    "2021-10-05",
+    "5"
+   ],
+   [
+    "2021-10-06",
+    "5"
+   ],
+   [
+    "2021-10-07",
+    "5"
+   ]
+  ],
+  [
+   [
+    "2021-10-11",
+    "5"
+   ],
+   [
+    "2021-10-12",
+    "5"
+   ],
+   [
+    "2021-10-13",
+    "5"
+   ],
+   [
+    "2021-10-14",
+    "5"
+   ],
+   [
+    "2021-10-15",
+    "5"
+   ]
+  ],
+  [
+   [
+    "2021-10-18",
+    "5"
+   ],
+   [
+    "2021-10-19",
+    "5"
+   ],
+   [
+    "2021-10-20",
+    "5"
+   ],
+   [
+    "2021-10-21",
+    "5"
+   ],
+   [
+    "2021-10-22",
+    "5"
+   ]
+  ],
+  [
+   [
+    "2021-10-25",
+    "5"
+   ],
+   [
+    "2021-10-26",
+    "5"
+   ],
+   [
+    "2021-10-27",
+    "5"
+   ],
+   [
+    "2021-10-28",
+    "5"
+   ],
+   [
+    "2021-10-29",
+    "5"
+   ]
+  ],
+  [
+   [
+    "2021-11-04",
+    "5"
+   ],
+   [
+    "2021-11-05",
+    "5"
+   ]
+  ]
+ ],
+ "links": [
+  {
+   "vehicle_id": "1",
+   "left": "2021-10-11",
+   "right": "2021-10-12",
+   "site": "WAREHOUSE",
+   "arrival_track_id": "194",
+   "next_track_id": "195"
+  },
+  {
+   "vehicle_id": "1",
+   "left": "2021-10-18",
+   "right": "2021-10-19",
+   "site": "WAREHOUSE",
+   "arrival_track_id": "272",
+   "next_track_id": "280"
+  },
+  {
+   "vehicle_id": "1",
+   "left": "2021-10-19",
+   "right": "2021-10-20",
+   "site": null,
+   "arrival_track_id": "285",
+   "next_track_id": "286"
+  },
+  {
+   "vehicle_id": "1",
+   "left": "2021-10-20",
+   "right": "2021-10-21",
+   "site": null,
+   "arrival_track_id": "295",
+   "next_track_id": "303"
+  },
+  {
+   "vehicle_id": "1",
+   "left": "2021-10-21",
+   "right": "2021-10-22",
+   "site": null,
+   "arrival_track_id": "313",
+   "next_track_id": "317"
+  },
+  {
+   "vehicle_id": "3",
+   "left": "2021-09-27",
+   "right": "2021-09-28",
+   "site": "PORT",
+   "arrival_track_id": "4484",
+   "next_track_id": "4487"
+  },
+  {
+   "vehicle_id": "3",
+   "left": "2021-09-28",
+   "right": "2021-09-29",
+   "site": "PORT",
+   "arrival_track_id": "4491",
+   "next_track_id": "4493"
+  },
+  {
+   "vehicle_id": "3",
+   "left": "2021-09-29",
+   "right": "2021-09-30",
+   "site": "PORT",
+   "arrival_track_id": "4500",
+   "next_track_id": "4502"
+  },
+  {
+   "vehicle_id": "3",
+   "left": "2021-09-30",
+   "right": "2021-10-01",
+   "site": "WAREHOUSE",
+   "arrival_track_id": "4508",
+   "next_track_id": "4509"
+  },
+  {
+   "vehicle_id": "3",
+   "left": "2021-10-06",
+   "right": "2021-10-07",
+   "site": "PORT",
+   "arrival_track_id": "4538",
+   "next_track_id": "4542"
+  },
+  {
+   "vehicle_id": "3",
+   "left": "2021-10-20",
+   "right": "2021-10-21",
+   "site": "PORT",
+   "arrival_track_id": "4629",
+   "next_track_id": "4631"
+  },
+  {
+   "vehicle_id": "3",
+   "left": "2021-10-21",
+   "right": "2021-10-22",
+   "site": "PORT",
+   "arrival_track_id": "4636",
+   "next_track_id": "4645"
+  },
+  {
+   "vehicle_id": "3",
+   "left": "2021-10-25",
+   "right": "2021-10-26",
+   "site": "PORT",
+   "arrival_track_id": "4665",
+   "next_track_id": "4668"
+  },
+  {
+   "vehicle_id": "3",
+   "left": "2021-10-26",
+   "right": "2021-10-27",
+   "site": "PORT",
+   "arrival_track_id": "4674",
+   "next_track_id": "4675"
+  },
+  {
+   "vehicle_id": "3",
+   "left": "2021-10-27",
+   "right": "2021-10-28",
+   "site": "PORT",
+   "arrival_track_id": "4680",
+   "next_track_id": "4681"
+  },
+  {
+   "vehicle_id": "3",
+   "left": "2021-10-28",
+   "right": "2021-10-29",
+   "site": "PORT",
+   "arrival_track_id": "4687",
+   "next_track_id": "4690"
+  },
+  {
+   "vehicle_id": "3",
+   "left": "2021-11-02",
+   "right": "2021-11-03",
+   "site": "PORT",
+   "arrival_track_id": "4711",
+   "next_track_id": "4715"
+  },
+  {
+   "vehicle_id": "4",
+   "left": "2021-10-04",
+   "right": "2021-10-05",
+   "site": "PORT",
+   "arrival_track_id": "6214",
+   "next_track_id": "6216"
+  },
+  {
+   "vehicle_id": "4",
+   "left": "2021-10-05",
+   "right": "2021-10-06",
+   "site": "PORT",
+   "arrival_track_id": "6225",
+   "next_track_id": "6236"
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-09-27",
+   "right": "2021-09-28",
+   "site": "PORT",
+   "arrival_track_id": "8663",
+   "next_track_id": "8664"
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-09-28",
+   "right": "2021-09-29",
+   "site": "PORT",
+   "arrival_track_id": "8672",
+   "next_track_id": "8675"
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-09-29",
+   "right": "2021-09-30",
+   "site": "PORT",
+   "arrival_track_id": "8683",
+   "next_track_id": "8685"
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-09-30",
+   "right": "2021-10-01",
+   "site": "PORT",
+   "arrival_track_id": "8697",
+   "next_track_id": "8699"
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-10-04",
+   "right": "2021-10-05",
+   "site": "PORT",
+   "arrival_track_id": "8711",
+   "next_track_id": "8742"
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-10-05",
+   "right": "2021-10-06",
+   "site": "PORT",
+   "arrival_track_id": "8749",
+   "next_track_id": "8753"
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-10-06",
+   "right": "2021-10-07",
+   "site": "PORT",
+   "arrival_track_id": "8762",
+   "next_track_id": "8768"
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-10-11",
+   "right": "2021-10-12",
+   "site": "PORT",
+   "arrival_track_id": "8824",
+   "next_track_id": "8836"
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-10-12",
+   "right": "2021-10-13",
+   "site": "PORT",
+   "arrival_track_id": "8843",
+   "next_track_id": "8849"
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-10-13",
+   "right": "2021-10-14",
+   "site": "PORT",
+   "arrival_track_id": "8854",
+   "next_track_id": "8867"
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-10-14",
+   "right": "2021-10-15",
+   "site": "PORT",
+   "arrival_track_id": "8875",
+   "next_track_id": "8882"
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-10-18",
+   "right": "2021-10-19",
+   "site": "PORT",
+   "arrival_track_id": "8922",
+   "next_track_id": "8930"
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-10-19",
+   "right": "2021-10-20",
+   "site": "PORT",
+   "arrival_track_id": "8939",
+   "next_track_id": "8947"
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-10-20",
+   "right": "2021-10-21",
+   "site": "PORT",
+   "arrival_track_id": "8959",
+   "next_track_id": "8963"
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-10-21",
+   "right": "2021-10-22",
+   "site": "PORT",
+   "arrival_track_id": "8970",
+   "next_track_id": "8977"
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-10-25",
+   "right": "2021-10-26",
+   "site": "PORT",
+   "arrival_track_id": "9018",
+   "next_track_id": "9027"
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-10-26",
+   "right": "2021-10-27",
+   "site": "PORT",
+   "arrival_track_id": "9037",
+   "next_track_id": "9047"
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-10-27",
+   "right": "2021-10-28",
+   "site": "PORT",
+   "arrival_track_id": "9059",
+   "next_track_id": "9073"
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-10-28",
+   "right": "2021-10-29",
+   "site": "PORT",
+   "arrival_track_id": "9084",
+   "next_track_id": "9097"
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-11-04",
+   "right": "2021-11-05",
+   "site": "PORT",
+   "arrival_track_id": "9313",
+   "next_track_id": "9335"
+  }
+ ],
+ "breaks": [
+  {
+   "vehicle_id": "1",
+   "left": "2021-10-07",
+   "right": "2021-10-09",
+   "intervening_dates": [
+    [
+     "2021-10-08",
+     "missing_or_nonfinite_original_simulated_energy"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "1",
+   "left": "2021-10-09",
+   "right": "2021-10-11",
+   "intervening_dates": [
+    [
+     "2021-10-10",
+     "no trip records"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "1",
+   "left": "2021-10-12",
+   "right": "2021-10-15",
+   "intervening_dates": [
+    [
+     "2021-10-13",
+     "trip_crosses_local_midnight"
+    ],
+    [
+     "2021-10-14",
+     "trip_crosses_local_midnight"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "1",
+   "left": "2021-10-15",
+   "right": "2021-10-18",
+   "intervening_dates": [
+    [
+     "2021-10-16",
+     "no trip records"
+    ],
+    [
+     "2021-10-17",
+     "no trip records"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "1",
+   "left": "2021-10-22",
+   "right": "2021-10-26",
+   "intervening_dates": [
+    [
+     "2021-10-23",
+     "no trip records"
+    ],
+    [
+     "2021-10-24",
+     "no trip records"
+    ],
+    [
+     "2021-10-25",
+     "missing_or_nonfinite_original_simulated_energy"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "1",
+   "left": "2021-10-26",
+   "right": "2021-10-28",
+   "intervening_dates": [
+    [
+     "2021-10-27",
+     "missing_or_nonfinite_original_simulated_energy"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "2",
+   "left": "2021-10-27",
+   "right": "2021-10-29",
+   "intervening_dates": [
+    [
+     "2021-10-28",
+     "no trip records"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "2",
+   "left": "2021-10-29",
+   "right": "2021-11-05",
+   "intervening_dates": [
+    [
+     "2021-10-30",
+     "no trip records"
+    ],
+    [
+     "2021-10-31",
+     "no trip records"
+    ],
+    [
+     "2021-11-01",
+     "no trip records"
+    ],
+    [
+     "2021-11-02",
+     "missing_or_nonfinite_original_simulated_energy"
+    ],
+    [
+     "2021-11-03",
+     "missing_or_nonfinite_original_simulated_energy"
+    ],
+    [
+     "2021-11-04",
+     "missing_or_nonfinite_original_simulated_energy"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "3",
+   "left": "2021-10-01",
+   "right": "2021-10-04",
+   "intervening_dates": [
+    [
+     "2021-10-02",
+     "no trip records"
+    ],
+    [
+     "2021-10-03",
+     "no trip records"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "3",
+   "left": "2021-10-04",
+   "right": "2021-10-06",
+   "intervening_dates": [
+    [
+     "2021-10-05",
+     "missing_or_nonfinite_original_simulated_energy"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "3",
+   "left": "2021-10-07",
+   "right": "2021-10-11",
+   "intervening_dates": [
+    [
+     "2021-10-08",
+     "no trip records"
+    ],
+    [
+     "2021-10-09",
+     "no trip records"
+    ],
+    [
+     "2021-10-10",
+     "no trip records"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "3",
+   "left": "2021-10-11",
+   "right": "2021-10-13",
+   "intervening_dates": [
+    [
+     "2021-10-12",
+     "missing_or_nonfinite_original_simulated_energy"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "3",
+   "left": "2021-10-13",
+   "right": "2021-10-15",
+   "intervening_dates": [
+    [
+     "2021-10-14",
+     "missing_or_nonfinite_original_simulated_energy"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "3",
+   "left": "2021-10-15",
+   "right": "2021-10-18",
+   "intervening_dates": [
+    [
+     "2021-10-16",
+     "no trip records"
+    ],
+    [
+     "2021-10-17",
+     "no trip records"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "3",
+   "left": "2021-10-18",
+   "right": "2021-10-20",
+   "intervening_dates": [
+    [
+     "2021-10-19",
+     "missing_or_nonfinite_original_simulated_energy"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "3",
+   "left": "2021-10-22",
+   "right": "2021-10-25",
+   "intervening_dates": [
+    [
+     "2021-10-23",
+     "no trip records"
+    ],
+    [
+     "2021-10-24",
+     "no trip records"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "3",
+   "left": "2021-10-29",
+   "right": "2021-11-02",
+   "intervening_dates": [
+    [
+     "2021-10-30",
+     "no trip records"
+    ],
+    [
+     "2021-10-31",
+     "no trip records"
+    ],
+    [
+     "2021-11-01",
+     "no trip records"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "4",
+   "left": "2021-09-29",
+   "right": "2021-10-01",
+   "intervening_dates": [
+    [
+     "2021-09-30",
+     "missing_or_nonfinite_original_simulated_energy"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "4",
+   "left": "2021-10-01",
+   "right": "2021-10-04",
+   "intervening_dates": [
+    [
+     "2021-10-02",
+     "no trip records"
+    ],
+    [
+     "2021-10-03",
+     "no trip records"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "4",
+   "left": "2021-10-06",
+   "right": "2021-10-08",
+   "intervening_dates": [
+    [
+     "2021-10-07",
+     "missing_or_nonfinite_original_simulated_energy"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "4",
+   "left": "2021-10-08",
+   "right": "2021-10-14",
+   "intervening_dates": [
+    [
+     "2021-10-09",
+     "no trip records"
+    ],
+    [
+     "2021-10-10",
+     "no trip records"
+    ],
+    [
+     "2021-10-11",
+     "missing_or_nonfinite_original_simulated_energy"
+    ],
+    [
+     "2021-10-12",
+     "no trip records"
+    ],
+    [
+     "2021-10-13",
+     "no trip records"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "4",
+   "left": "2021-10-14",
+   "right": "2021-10-25",
+   "intervening_dates": [
+    [
+     "2021-10-15",
+     "no trip records"
+    ],
+    [
+     "2021-10-16",
+     "no trip records"
+    ],
+    [
+     "2021-10-17",
+     "no trip records"
+    ],
+    [
+     "2021-10-18",
+     "no trip records"
+    ],
+    [
+     "2021-10-19",
+     "no trip records"
+    ],
+    [
+     "2021-10-20",
+     "no trip records"
+    ],
+    [
+     "2021-10-21",
+     "no trip records"
+    ],
+    [
+     "2021-10-22",
+     "no trip records"
+    ],
+    [
+     "2021-10-23",
+     "no trip records"
+    ],
+    [
+     "2021-10-24",
+     "no trip records"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "4",
+   "left": "2021-10-25",
+   "right": "2021-10-29",
+   "intervening_dates": [
+    [
+     "2021-10-26",
+     "missing_or_nonfinite_original_simulated_energy"
+    ],
+    [
+     "2021-10-27",
+     "trip_crosses_local_midnight"
+    ],
+    [
+     "2021-10-28",
+     "trip_crosses_local_midnight"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "4",
+   "left": "2021-10-29",
+   "right": "2021-11-04",
+   "intervening_dates": [
+    [
+     "2021-10-30",
+     "no trip records"
+    ],
+    [
+     "2021-10-31",
+     "no trip records"
+    ],
+    [
+     "2021-11-01",
+     "no trip records"
+    ],
+    [
+     "2021-11-02",
+     "missing_or_nonfinite_original_simulated_energy"
+    ],
+    [
+     "2021-11-03",
+     "missing_or_nonfinite_original_simulated_energy"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-10-01",
+   "right": "2021-10-04",
+   "intervening_dates": [
+    [
+     "2021-10-02",
+     "no trip records"
+    ],
+    [
+     "2021-10-03",
+     "no trip records"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-10-07",
+   "right": "2021-10-11",
+   "intervening_dates": [
+    [
+     "2021-10-08",
+     "missing_or_nonfinite_original_simulated_energy"
+    ],
+    [
+     "2021-10-09",
+     "no trip records"
+    ],
+    [
+     "2021-10-10",
+     "no trip records"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-10-15",
+   "right": "2021-10-18",
+   "intervening_dates": [
+    [
+     "2021-10-16",
+     "no trip records"
+    ],
+    [
+     "2021-10-17",
+     "no trip records"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-10-22",
+   "right": "2021-10-25",
+   "intervening_dates": [
+    [
+     "2021-10-23",
+     "no trip records"
+    ],
+    [
+     "2021-10-24",
+     "no trip records"
+    ]
+   ]
+  },
+  {
+   "vehicle_id": "5",
+   "left": "2021-10-29",
+   "right": "2021-11-04",
+   "intervening_dates": [
+    [
+     "2021-10-30",
+     "no trip records"
+    ],
+    [
+     "2021-10-31",
+     "clock_change_day"
+    ],
+    [
+     "2021-11-01",
+     "no trip records"
+    ],
+    [
+     "2021-11-02",
+     "no trip records"
+    ],
+    [
+     "2021-11-03",
+     "no trip records"
+    ]
+   ]
+  }
+ ],
+ "components": [
+  [
+   "2021-09-27"
+  ],
+  [
+   "2021-10-04"
+  ],
+  [
+   "2021-10-11"
+  ],
+  [
+   "2021-10-18"
+  ],
+  [
+   "2021-10-25"
+  ],
+  [
+   "2021-11-01"
+  ]
+ ],
+ "price_information": "DE-LU, Europe/Berlin, native EUR/MWh, historical perfect foresight over the solve period; carry_over knows prices of every day of the chain. Bills in EUR over supplied dates.",
+ "assumptions": "Warehouse release 45 min from arrival. Unserved duties split carry_over at E0. C repeats independent representative days. Night grid kWh include clipped overnight stops at sample edges.",
+ "checks": {
+  "matched_days": [
+   {
+    "date": "2021-09-27",
+    "facility": "one",
+    "count": 2,
+    "expected_eur": 23.048927972011107,
+    "actual_eur": 23.048927972011118,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.3127103000006173,
+     "objective": 109.79767753852221,
+     "dual_bound": 109.79767753852221
+    }
+   },
+   {
+    "date": "2021-09-28",
+    "facility": "one",
+    "count": 1,
+    "expected_eur": 12.464613131844446,
+    "actual_eur": 12.464613131844446,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.3127103000006173,
+     "objective": 109.79767753852221,
+     "dual_bound": 109.79767753852221
+    }
+   },
+   {
+    "date": "2021-09-29",
+    "facility": "one",
+    "count": 3,
+    "expected_eur": 51.72877690341111,
+    "actual_eur": 51.72877690341108,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.3127103000006173,
+     "objective": 109.79767753852221,
+     "dual_bound": 109.79767753852221
+    }
+   },
+   {
+    "date": "2021-09-30",
+    "facility": "one",
+    "count": 1,
+    "expected_eur": 7.534832867833336,
+    "actual_eur": 7.534832867833332,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.3127103000006173,
+     "objective": 109.79767753852221,
+     "dual_bound": 109.79767753852221
+    }
+   },
+   {
+    "date": "2021-10-01",
+    "facility": "one",
+    "count": 2,
+    "expected_eur": 15.020526663422222,
+    "actual_eur": 15.020526663422219,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.3127103000006173,
+     "objective": 109.79767753852221,
+     "dual_bound": 109.79767753852221
+    }
+   },
+   {
+    "date": "2021-10-04",
+    "facility": "one",
+    "count": 2,
+    "expected_eur": 12.939488447699999,
+    "actual_eur": 12.939488447700002,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.534196200009319,
+     "objective": 174.15884020447777,
+     "dual_bound": 174.15884020447777
+    }
+   },
+   {
+    "date": "2021-10-05",
+    "facility": "one",
+    "count": 2,
+    "expected_eur": 33.175841481488895,
+    "actual_eur": 33.175841481488895,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.534196200009319,
+     "objective": 174.15884020447777,
+     "dual_bound": 174.15884020447777
+    }
+   },
+   {
+    "date": "2021-10-06",
+    "facility": "one",
+    "count": 3,
+    "expected_eur": 35.78544071058333,
+    "actual_eur": 35.78544071058332,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.534196200009319,
+     "objective": 174.15884020447777,
+     "dual_bound": 174.15884020447777
+    }
+   },
+   {
+    "date": "2021-10-07",
+    "facility": "one",
+    "count": 2,
+    "expected_eur": 83.51549459170556,
+    "actual_eur": 83.51549459170576,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.534196200009319,
+     "objective": 174.15884020447777,
+     "dual_bound": 174.15884020447777
+    }
+   },
+   {
+    "date": "2021-10-08",
+    "facility": "one",
+    "count": 0,
+    "expected_eur": null,
+    "actual_eur": 0.0,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.534196200009319,
+     "objective": 174.15884020447777,
+     "dual_bound": 174.15884020447777
+    }
+   },
+   {
+    "date": "2021-10-09",
+    "facility": "one",
+    "count": 1,
+    "expected_eur": 8.742574973,
+    "actual_eur": 8.742574972999998,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.534196200009319,
+     "objective": 174.15884020447777,
+     "dual_bound": 174.15884020447777
+    }
+   },
+   {
+    "date": "2021-10-11",
+    "facility": "one",
+    "count": 2,
+    "expected_eur": 25.81037663,
+    "actual_eur": 25.810376629999986,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.06678419999661855,
+     "objective": 88.05364510001111,
+     "dual_bound": 88.05364510001111
+    }
+   },
+   {
+    "date": "2021-10-12",
+    "facility": "one",
+    "count": 1,
+    "expected_eur": 7.273261200000001,
+    "actual_eur": 7.2732611999999985,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.06678419999661855,
+     "objective": 88.05364510001111,
+     "dual_bound": 88.05364510001111
+    }
+   },
+   {
+    "date": "2021-10-13",
+    "facility": "one",
+    "count": 2,
+    "expected_eur": 24.03587541816667,
+    "actual_eur": 24.03587541816666,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.06678419999661855,
+     "objective": 88.05364510001111,
+     "dual_bound": 88.05364510001111
+    }
+   },
+   {
+    "date": "2021-10-14",
+    "facility": "one",
+    "count": 2,
+    "expected_eur": 23.377797785911113,
+    "actual_eur": 23.377797785911113,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.06678419999661855,
+     "objective": 88.05364510001111,
+     "dual_bound": 88.05364510001111
+    }
+   },
+   {
+    "date": "2021-10-15",
+    "facility": "one",
+    "count": 2,
+    "expected_eur": 7.556334065933333,
+    "actual_eur": 7.556334065933334,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.06678419999661855,
+     "objective": 88.05364510001111,
+     "dual_bound": 88.05364510001111
+    }
+   },
+   {
+    "date": "2021-10-18",
+    "facility": "one",
+    "count": 1,
+    "expected_eur": 12.213879472611108,
+    "actual_eur": 12.213879472611106,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.04737780000141356,
+     "objective": 41.52908775678333,
+     "dual_bound": 41.52908775678333
+    }
+   },
+   {
+    "date": "2021-10-19",
+    "facility": "one",
+    "count": 1,
+    "expected_eur": 7.037623853288889,
+    "actual_eur": 7.037623853288892,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.04737780000141356,
+     "objective": 41.52908775678333,
+     "dual_bound": 41.52908775678333
+    }
+   },
+   {
+    "date": "2021-10-20",
+    "facility": "one",
+    "count": 2,
+    "expected_eur": 0.8527137159333329,
+    "actual_eur": 0.8527137159333333,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.04737780000141356,
+     "objective": 41.52908775678333,
+     "dual_bound": 41.52908775678333
+    }
+   },
+   {
+    "date": "2021-10-21",
+    "facility": "one",
+    "count": 2,
+    "expected_eur": 10.490986515083332,
+    "actual_eur": 10.490986515083348,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.04737780000141356,
+     "objective": 41.52908775678333,
+     "dual_bound": 41.52908775678333
+    }
+   },
+   {
+    "date": "2021-10-22",
+    "facility": "one",
+    "count": 3,
+    "expected_eur": 10.933884199866668,
+    "actual_eur": 10.933884199866664,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.04737780000141356,
+     "objective": 41.52908775678333,
+     "dual_bound": 41.52908775678333
+    }
+   },
+   {
+    "date": "2021-10-25",
+    "facility": "one",
+    "count": 2,
+    "expected_eur": 14.456872246800003,
+    "actual_eur": 14.4568722468,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 9.286500799993519,
+     "objective": 142.39156691874445,
+     "dual_bound": 142.39156691874445
+    }
+   },
+   {
+    "date": "2021-10-26",
+    "facility": "one",
+    "count": 2,
+    "expected_eur": 26.104882462577777,
+    "actual_eur": 26.104882462577784,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 9.286500799993519,
+     "objective": 142.39156691874445,
+     "dual_bound": 142.39156691874445
+    }
+   },
+   {
+    "date": "2021-10-27",
+    "facility": "one",
+    "count": 3,
+    "expected_eur": 27.833738896944006,
+    "actual_eur": 27.833738896944457,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 9.286500799993519,
+     "objective": 142.39156691874445,
+     "dual_bound": 142.39156691874445
+    }
+   },
+   {
+    "date": "2021-10-28",
+    "facility": "one",
+    "count": 2,
+    "expected_eur": 33.55116227406666,
+    "actual_eur": 33.55116227406666,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 9.286500799993519,
+     "objective": 142.39156691874445,
+     "dual_bound": 142.39156691874445
+    }
+   },
+   {
+    "date": "2021-10-29",
+    "facility": "one",
+    "count": 3,
+    "expected_eur": 40.44491103835576,
+    "actual_eur": 40.44491103835557,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 9.286500799993519,
+     "objective": 142.39156691874445,
+     "dual_bound": 142.39156691874445
+    }
+   },
+   {
+    "date": "2021-11-02",
+    "facility": "one",
+    "count": 0,
+    "expected_eur": null,
+    "actual_eur": 0.0,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.04164929999387823,
+     "objective": 66.5078661083889,
+     "dual_bound": 66.5078661083889
+    }
+   },
+   {
+    "date": "2021-11-03",
+    "facility": "one",
+    "count": 1,
+    "expected_eur": 21.023194823333338,
+    "actual_eur": 21.023194823333334,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.04164929999387823,
+     "objective": 66.5078661083889,
+     "dual_bound": 66.5078661083889
+    }
+   },
+   {
+    "date": "2021-11-04",
+    "facility": "one",
+    "count": 2,
+    "expected_eur": 22.279776740355555,
+    "actual_eur": 22.279776740355658,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.04164929999387823,
+     "objective": 66.5078661083889,
+     "dual_bound": 66.5078661083889
+    }
+   },
+   {
+    "date": "2021-11-05",
+    "facility": "one",
+    "count": 2,
+    "expected_eur": 23.2048945447,
+    "actual_eur": 23.204894544699997,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.04164929999387823,
+     "objective": 66.5078661083889,
+     "dual_bound": 66.5078661083889
+    }
+   },
+   {
+    "date": "2021-09-27",
+    "facility": "two",
+    "count": 2,
+    "expected_eur": 22.28896718103333,
+    "actual_eur": 22.288967181033343,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.10105340000882279,
+     "objective": 104.56647114805413,
+     "dual_bound": 104.56647114805413
+    }
+   },
+   {
+    "date": "2021-09-28",
+    "facility": "two",
+    "count": 1,
+    "expected_eur": 12.464613131844446,
+    "actual_eur": 12.464613131844446,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.10105340000882279,
+     "objective": 104.56647114805413,
+     "dual_bound": 104.56647114805413
+    }
+   },
+   {
+    "date": "2021-09-29",
+    "facility": "two",
+    "count": 3,
+    "expected_eur": 47.642391858922224,
+    "actual_eur": 47.64239185891901,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.10105340000882279,
+     "objective": 104.56647114805413,
+     "dual_bound": 104.56647114805413
+    }
+   },
+   {
+    "date": "2021-09-30",
+    "facility": "two",
+    "count": 1,
+    "expected_eur": 7.534832867833336,
+    "actual_eur": 7.534832867833332,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.10105340000882279,
+     "objective": 104.56647114805413,
+     "dual_bound": 104.56647114805413
+    }
+   },
+   {
+    "date": "2021-10-01",
+    "facility": "two",
+    "count": 2,
+    "expected_eur": 14.635666108422221,
+    "actual_eur": 14.63566610842222,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.10105340000882279,
+     "objective": 104.56647114805413,
+     "dual_bound": 104.56647114805413
+    }
+   },
+   {
+    "date": "2021-10-04",
+    "facility": "two",
+    "count": 2,
+    "expected_eur": 12.648505061466667,
+    "actual_eur": 12.64850506146667,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.04539120000845287,
+     "objective": 166.0975687527111,
+     "dual_bound": 166.0975687527111
+    }
+   },
+   {
+    "date": "2021-10-05",
+    "facility": "two",
+    "count": 2,
+    "expected_eur": 30.94290112137778,
+    "actual_eur": 30.94290112137776,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.04539120000845287,
+     "objective": 166.0975687527111,
+     "dual_bound": 166.0975687527111
+    }
+   },
+   {
+    "date": "2021-10-06",
+    "facility": "two",
+    "count": 3,
+    "expected_eur": 31.577940183650004,
+    "actual_eur": 31.577940183649996,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.04539120000845287,
+     "objective": 166.0975687527111,
+     "dual_bound": 166.0975687527111
+    }
+   },
+   {
+    "date": "2021-10-07",
+    "facility": "two",
+    "count": 2,
+    "expected_eur": 82.18564741321666,
+    "actual_eur": 82.18564741321687,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.04539120000845287,
+     "objective": 166.0975687527111,
+     "dual_bound": 166.0975687527111
+    }
+   },
+   {
+    "date": "2021-10-08",
+    "facility": "two",
+    "count": 0,
+    "expected_eur": null,
+    "actual_eur": 0.0,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.04539120000845287,
+     "objective": 166.0975687527111,
+     "dual_bound": 166.0975687527111
+    }
+   },
+   {
+    "date": "2021-10-09",
+    "facility": "two",
+    "count": 1,
+    "expected_eur": 8.742574973,
+    "actual_eur": 8.742574972999998,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.04539120000845287,
+     "objective": 166.0975687527111,
+     "dual_bound": 166.0975687527111
+    }
+   },
+   {
+    "date": "2021-10-11",
+    "facility": "two",
+    "count": 2,
+    "expected_eur": 25.016047495555554,
+    "actual_eur": 25.01604749555554,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": null,
+     "seconds": 0.011806399998022243,
+     "objective": 85.23383697551111,
+     "dual_bound": null
+    }
+   },
+   {
+    "date": "2021-10-12",
+    "facility": "two",
+    "count": 1,
+    "expected_eur": 7.273261200000001,
+    "actual_eur": 7.2732611999999985,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": null,
+     "seconds": 0.011806399998022243,
+     "objective": 85.23383697551111,
+     "dual_bound": null
+    }
+   },
+   {
+    "date": "2021-10-13",
+    "facility": "two",
+    "count": 2,
+    "expected_eur": 22.863626696844445,
+    "actual_eur": 22.863626696844435,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": null,
+     "seconds": 0.011806399998022243,
+     "objective": 85.23383697551111,
+     "dual_bound": null
+    }
+   },
+   {
+    "date": "2021-10-14",
+    "facility": "two",
+    "count": 2,
+    "expected_eur": 22.72832619957778,
+    "actual_eur": 22.72832619957778,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": null,
+     "seconds": 0.011806399998022243,
+     "objective": 85.23383697551111,
+     "dual_bound": null
+    }
+   },
+   {
+    "date": "2021-10-15",
+    "facility": "two",
+    "count": 2,
+    "expected_eur": 7.352575383533335,
+    "actual_eur": 7.352575383533335,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": null,
+     "seconds": 0.011806399998022243,
+     "objective": 85.23383697551111,
+     "dual_bound": null
+    }
+   },
+   {
+    "date": "2021-10-18",
+    "facility": "two",
+    "count": 1,
+    "expected_eur": 12.213879472611108,
+    "actual_eur": 12.213879472611106,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.01975960000709165,
+     "objective": 36.93766708792222,
+     "dual_bound": 36.93766708792222
+    }
+   },
+   {
+    "date": "2021-10-19",
+    "facility": "two",
+    "count": 1,
+    "expected_eur": 7.037623853288889,
+    "actual_eur": 7.037623853288892,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.01975960000709165,
+     "objective": 36.93766708792222,
+     "dual_bound": 36.93766708792222
+    }
+   },
+   {
+    "date": "2021-10-20",
+    "facility": "two",
+    "count": 2,
+    "expected_eur": 0.12713578604444434,
+    "actual_eur": 0.12713578604444445,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.01975960000709165,
+     "objective": 36.93766708792222,
+     "dual_bound": 36.93766708792222
+    }
+   },
+   {
+    "date": "2021-10-21",
+    "facility": "two",
+    "count": 2,
+    "expected_eur": 9.642016991777776,
+    "actual_eur": 9.642016991777755,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.01975960000709165,
+     "objective": 36.93766708792222,
+     "dual_bound": 36.93766708792222
+    }
+   },
+   {
+    "date": "2021-10-22",
+    "facility": "two",
+    "count": 3,
+    "expected_eur": 7.917010984200002,
+    "actual_eur": 7.917010984199989,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.01975960000709165,
+     "objective": 36.93766708792222,
+     "dual_bound": 36.93766708792222
+    }
+   },
+   {
+    "date": "2021-10-25",
+    "facility": "two",
+    "count": 2,
+    "expected_eur": 14.307127207844447,
+    "actual_eur": 14.307127207844449,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.15907979999610689,
+     "objective": 132.64816583453333,
+     "dual_bound": 132.64816583453336
+    }
+   },
+   {
+    "date": "2021-10-26",
+    "facility": "two",
+    "count": 2,
+    "expected_eur": 24.20662826168889,
+    "actual_eur": 24.206628261688884,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.15907979999610689,
+     "objective": 132.64816583453333,
+     "dual_bound": 132.64816583453336
+    }
+   },
+   {
+    "date": "2021-10-27",
+    "facility": "two",
+    "count": 3,
+    "expected_eur": 24.944002594887493,
+    "actual_eur": 24.944002594888893,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.15907979999610689,
+     "objective": 132.64816583453333,
+     "dual_bound": 132.64816583453336
+    }
+   },
+   {
+    "date": "2021-10-28",
+    "facility": "two",
+    "count": 2,
+    "expected_eur": 31.82804446186666,
+    "actual_eur": 31.82804446186667,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.15907979999610689,
+     "objective": 132.64816583453333,
+     "dual_bound": 132.64816583453336
+    }
+   },
+   {
+    "date": "2021-10-29",
+    "facility": "two",
+    "count": 3,
+    "expected_eur": 37.362363308243886,
+    "actual_eur": 37.362363308244404,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.15907979999610689,
+     "objective": 132.64816583453333,
+     "dual_bound": 132.64816583453336
+    }
+   },
+   {
+    "date": "2021-11-02",
+    "facility": "two",
+    "count": 0,
+    "expected_eur": null,
+    "actual_eur": 0.0,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.013986200006911531,
+     "objective": 64.66771078640001,
+     "dual_bound": 64.66771078640001
+    }
+   },
+   {
+    "date": "2021-11-03",
+    "facility": "two",
+    "count": 1,
+    "expected_eur": 21.023194823333338,
+    "actual_eur": 21.023194823333334,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.013986200006911531,
+     "objective": 64.66771078640001,
+     "dual_bound": 64.66771078640001
+    }
+   },
+   {
+    "date": "2021-11-04",
+    "facility": "two",
+    "count": 2,
+    "expected_eur": 20.439621418366666,
+    "actual_eur": 20.439621418366663,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.013986200006911531,
+     "objective": 64.66771078640001,
+     "dual_bound": 64.66771078640001
+    }
+   },
+   {
+    "date": "2021-11-05",
+    "facility": "two",
+    "count": 2,
+    "expected_eur": 23.2048945447,
+    "actual_eur": 23.204894544699997,
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.013986200006911531,
+     "objective": 64.66771078640001,
+     "dual_bound": 64.66771078640001
+    }
+   }
+  ],
+  "daily_service": true,
+  "matched_cost": true,
+  "scaled_900": true,
+  "physical_dominance": true,
+  "common_cost_dominance": true,
+  "all_audited": true,
+  "optimal": true
+ },
+ "rules": {
+  "daily_fixed": "A: every day starts and ends at E0",
+  "carry_over": "B: energy carries across linked midnights; chain start and end at E0; an unserved day splits the chain",
+  "daily_cyclic_free": "C: each day starts and ends at the same free level; days are not linked"
+ },
+ "pilots": {
+  "P1": {
+   "daily_fixed": {
+    "daily": [
+     {
+      "date": "2021-09-27",
+      "vehicle_id": "5",
+      "served": true,
+      "x": 150.0,
+      "y": 150.0,
+      "night_before_kwh": 50.0,
+      "night_after_kwh": 95.52454555555556,
+      "bill": 14.50297429214445,
+      "legacy_status": "optimal",
+      "legacy_eur": 14.502974292144444,
+      "delta_eur": 7.105427357601002e-15,
+      "bill_bit_equal": false,
+      "legacy_peak_kw": {
+       "PORT": 50.0,
+       "WAREHOUSE": 0.0
+      },
+      "schedule_exact_equal": false
+     },
+     {
+      "date": "2021-09-28",
+      "vehicle_id": "5",
+      "served": true,
+      "x": 150.0,
+      "y": 150.0,
+      "night_before_kwh": 0.0,
+      "night_after_kwh": 126.44021555555555,
+      "bill": 12.464613131844446,
+      "legacy_status": "optimal",
+      "legacy_eur": 12.464613131844448,
+      "delta_eur": -1.7763568394002505e-15,
+      "bill_bit_equal": false,
+      "legacy_peak_kw": {
+       "PORT": 50.0,
+       "WAREHOUSE": 0.0
+      },
+      "schedule_exact_equal": false
+     },
+     {
+      "date": "2021-09-29",
+      "vehicle_id": "5",
+      "served": true,
+      "x": 150.0,
+      "y": 150.0,
+      "night_before_kwh": 100.0,
+      "night_after_kwh": 129.89947555555554,
+      "bill": 20.37991499422222,
+      "legacy_status": "optimal",
+      "legacy_eur": 20.379914994222226,
+      "delta_eur": -7.105427357601002e-15,
+      "bill_bit_equal": false,
+      "legacy_peak_kw": {
+       "PORT": 50.0,
+       "WAREHOUSE": 0.0
+      },
+      "schedule_exact_equal": false
+     }
+    ],
+    "purchase_eur": 47.347502418211114,
+    "site_peak_kw": {
+     "PORT": 50.0,
+     "WAREHOUSE": 0.0
+    },
+    "segments": [
+     {
+      "keys": [
+       [
+        "2021-09-27",
+        "5"
+       ]
+      ],
+      "start": 150.0,
+      "end": 150.0,
+      "residual_kwh": 0.0
+     },
+     {
+      "keys": [
+       [
+        "2021-09-28",
+        "5"
+       ]
+      ],
+      "start": 150.0,
+      "end": 150.0,
+      "residual_kwh": 0.0
+     },
+     {
+      "keys": [
+       [
+        "2021-09-29",
+        "5"
+       ]
+      ],
+      "start": 150.0,
+      "end": 150.0,
+      "residual_kwh": 0.0
+     }
+    ],
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": null,
+     "seconds": 0.006425299987313338,
+     "objective": 47.34750241821111,
+     "dual_bound": null
+    },
+    "physical_stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.020105499992496334,
+     "objective": -3.0,
+     "dual_bound": -3.0
+    },
+    "daily_dispatch_sum": {
+     "joint_hex": "0x1.7ac7af590bfb3p+5",
+     "legacy_hex": "0x1.7ac7af590bfb4p+5",
+     "delta_eur": -7.105427357601002e-15,
+     "bit_equal": false
+    }
+   },
+   "carry_over": {
+    "daily": [
+     {
+      "date": "2021-09-27",
+      "vehicle_id": "5",
+      "served": true,
+      "x": 150.0,
+      "y": 109.027909,
+      "night_before_kwh": 50.0,
+      "night_after_kwh": 50.0,
+      "bill": 9.849
+     },
+     {
+      "date": "2021-09-28",
+      "vehicle_id": "5",
+      "served": true,
+      "x": 109.027909,
+      "y": 130.231715,
+      "night_before_kwh": 0.0,
+      "night_after_kwh": 150.0,
+      "bill": 14.818000000000003
+     },
+     {
+      "date": "2021-09-29",
+      "vehicle_id": "5",
+      "served": true,
+      "x": 130.231715,
+      "y": 150.0,
+      "night_before_kwh": 101.86423666666664,
+      "night_after_kwh": 150.0,
+      "bill": 22.483054163233327
+     }
+    ],
+    "purchase_eur": 47.15005416323333,
+    "site_peak_kw": {
+     "PORT": 50.0,
+     "WAREHOUSE": 0.0
+    },
+    "segments": [
+     {
+      "keys": [
+       [
+        "2021-09-27",
+        "5"
+       ],
+       [
+        "2021-09-28",
+        "5"
+       ],
+       [
+        "2021-09-29",
+        "5"
+       ]
+      ],
+      "start": 150.0,
+      "end": 150.0,
+      "residual_kwh": 0.0
+     }
+    ],
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": null,
+     "seconds": 0.007213499993667938,
+     "objective": 47.15005416323333,
+     "dual_bound": null
+    },
+    "physical_stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.02104969999345485,
+     "objective": -3.0,
+     "dual_bound": -3.0
+    }
+   },
+   "daily_cyclic_free": {
+    "daily": [
+     {
+      "date": "2021-09-27",
+      "vehicle_id": "5",
+      "served": true,
+      "x": 214.027909,
+      "y": 214.027909,
+      "night_before_kwh": 50.0,
+      "night_after_kwh": 95.52454555555556,
+      "bill": 14.50297429214445
+     },
+     {
+      "date": "2021-09-28",
+      "vehicle_id": "5",
+      "served": true,
+      "x": 186.20380599999996,
+      "y": 186.20380599999996,
+      "night_before_kwh": 0.0,
+      "night_after_kwh": 126.44021555555554,
+      "bill": 12.464613131844445
+     },
+     {
+      "date": "2021-09-29",
+      "vehicle_id": "5",
+      "served": true,
+      "x": 183.09047199999998,
+      "y": 183.09047199999998,
+      "night_before_kwh": 100.0,
+      "night_after_kwh": 129.89947555555554,
+      "bill": 20.37991499422222
+     }
+    ],
+    "purchase_eur": 47.347502418211114,
+    "site_peak_kw": {
+     "PORT": 50.0,
+     "WAREHOUSE": 0.0
+    },
+    "segments": [
+     {
+      "keys": [
+       [
+        "2021-09-27",
+        "5"
+       ]
+      ],
+      "start": 214.027909,
+      "end": 214.027909,
+      "residual_kwh": 0.0
+     },
+     {
+      "keys": [
+       [
+        "2021-09-28",
+        "5"
+       ]
+      ],
+      "start": 186.20380599999996,
+      "end": 186.20380599999996,
+      "residual_kwh": 1.4210854715202004e-14
+     },
+     {
+      "keys": [
+       [
+        "2021-09-29",
+        "5"
+       ]
+      ],
+      "start": 183.09047199999998,
+      "end": 183.09047199999998,
+      "residual_kwh": 0.0
+     }
+    ],
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": null,
+     "seconds": 0.005784499997389503,
+     "objective": 47.34750241821111,
+     "dual_bound": null
+    },
+    "physical_stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.010790400003315881,
+     "objective": -3.0,
+     "dual_bound": -3.0
+    }
+   }
+  },
+  "P2": {
+   "daily_fixed": {
+    "daily": [
+     {
+      "date": "2021-10-20",
+      "vehicle_id": "3",
+      "served": true,
+      "x": 150.0,
+      "y": 150.0,
+      "night_before_kwh": 0.0,
+      "night_after_kwh": 119.75705888888888,
+      "bill": 0.09339908262222223,
+      "legacy_status": "optimal",
+      "legacy_eur": 0.09339908262222207,
+      "delta_eur": 1.5265566588595902e-16,
+      "bill_bit_equal": false,
+      "legacy_peak_kw": {
+       "PORT": 50.0,
+       "WAREHOUSE": 0.0
+      },
+      "schedule_exact_equal": false
+     },
+     {
+      "date": "2021-10-21",
+      "vehicle_id": "3",
+      "served": true,
+      "x": 150.0,
+      "y": 150.0,
+      "night_before_kwh": 97.52049277777772,
+      "night_after_kwh": 166.66666666666669,
+      "bill": 7.503711888599993,
+      "legacy_status": "optimal",
+      "legacy_eur": 7.5037118886,
+      "delta_eur": -7.105427357601002e-15,
+      "bill_bit_equal": false,
+      "legacy_peak_kw": {
+       "PORT": 50.0,
+       "WAREHOUSE": 50.0
+      },
+      "schedule_exact_equal": false
+     },
+     {
+      "date": "2021-10-22",
+      "vehicle_id": "3",
+      "served": true,
+      "x": 150.0,
+      "y": 150.0,
+      "night_before_kwh": 33.040033333333334,
+      "night_after_kwh": 0.0,
+      "bill": 0.767189574,
+      "legacy_status": "optimal",
+      "legacy_eur": 0.767189574,
+      "delta_eur": 0.0,
+      "bill_bit_equal": true,
+      "legacy_peak_kw": {
+       "PORT": 50.0,
+       "WAREHOUSE": 0.0
+      },
+      "schedule_exact_equal": false
+     }
+    ],
+    "purchase_eur": 8.364300545222216,
+    "site_peak_kw": {
+     "PORT": 50.0,
+     "WAREHOUSE": 50.0
+    },
+    "segments": [
+     {
+      "keys": [
+       [
+        "2021-10-20",
+        "3"
+       ]
+      ],
+      "start": 150.0,
+      "end": 150.0,
+      "residual_kwh": 0.0
+     },
+     {
+      "keys": [
+       [
+        "2021-10-21",
+        "3"
+       ]
+      ],
+      "start": 150.0,
+      "end": 150.0,
+      "residual_kwh": 1.7053025658242404e-13
+     },
+     {
+      "keys": [
+       [
+        "2021-10-22",
+        "3"
+       ]
+      ],
+      "start": 150.0,
+      "end": 150.0,
+      "residual_kwh": 0.0
+     }
+    ],
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": null,
+     "seconds": 0.0063094000070123,
+     "objective": 8.36430054522222,
+     "dual_bound": null
+    },
+    "physical_stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.025793199994950555,
+     "objective": -3.0,
+     "dual_bound": -3.0
+    },
+    "daily_dispatch_sum": {
+     "joint_hex": "0x1.0ba8599df49edp+3",
+     "legacy_hex": "0x1.0ba8599df49f0p+3",
+     "delta_eur": -5.329070518200751e-15,
+     "bit_equal": false
+    }
+   },
+   "carry_over": {
+    "daily": [
+     {
+      "date": "2021-10-20",
+      "vehicle_id": "3",
+      "served": true,
+      "x": 150.0,
+      "y": 192.218647,
+      "night_before_kwh": 0.0,
+      "night_after_kwh": 166.66666666666669,
+      "bill": 0.3121666666666667
+     },
+     {
+      "date": "2021-10-21",
+      "vehicle_id": "3",
+      "served": true,
+      "x": 192.218647,
+      "y": 89.73603,
+      "night_before_kwh": 30.560526111111038,
+      "night_after_kwh": 119.75705888888888,
+      "bill": 3.429596544322216
+     },
+     {
+      "date": "2021-10-22",
+      "vehicle_id": "3",
+      "served": true,
+      "x": 89.73603,
+      "y": 150.0,
+      "night_before_kwh": 100.0,
+      "night_after_kwh": 0.0,
+      "bill": 2.384
+     }
+    ],
+    "purchase_eur": 6.125763210988882,
+    "site_peak_kw": {
+     "PORT": 50.0,
+     "WAREHOUSE": 50.0
+    },
+    "segments": [
+     {
+      "keys": [
+       [
+        "2021-10-20",
+        "3"
+       ],
+       [
+        "2021-10-21",
+        "3"
+       ],
+       [
+        "2021-10-22",
+        "3"
+       ]
+      ],
+      "start": 150.0,
+      "end": 150.0,
+      "residual_kwh": 1.1368683772161603e-13
+     }
+    ],
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": null,
+     "seconds": 0.004868799995165318,
+     "objective": 6.125763210988889,
+     "dual_bound": null
+    },
+    "physical_stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.017508400007500313,
+     "objective": -3.0,
+     "dual_bound": -3.0
+    }
+   },
+   "daily_cyclic_free": {
+    "daily": [
+     {
+      "date": "2021-10-20",
+      "vehicle_id": "3",
+      "served": true,
+      "x": 30.0,
+      "y": 30.0,
+      "night_before_kwh": 0.0,
+      "night_after_kwh": 119.75705888888888,
+      "bill": 0.09339908262222223
+     },
+     {
+      "date": "2021-10-21",
+      "vehicle_id": "3",
+      "served": true,
+      "x": 117.72723150000007,
+      "y": 117.72723150000007,
+      "night_before_kwh": 61.661861111111115,
+      "night_after_kwh": 202.52529833333324,
+      "bill": 6.822726175716662
+     },
+     {
+      "date": "2021-10-22",
+      "vehicle_id": "3",
+      "served": true,
+      "x": 300.0,
+      "y": 300.0,
+      "night_before_kwh": 33.04003333333336,
+      "night_after_kwh": 0.0,
+      "bill": 0.7671895740000007
+     }
+    ],
+    "purchase_eur": 7.683314832338885,
+    "site_peak_kw": {
+     "PORT": 50.0,
+     "WAREHOUSE": 50.0
+    },
+    "segments": [
+     {
+      "keys": [
+       [
+        "2021-10-20",
+        "3"
+       ]
+      ],
+      "start": 30.0,
+      "end": 30.0,
+      "residual_kwh": 0.0
+     },
+     {
+      "keys": [
+       [
+        "2021-10-21",
+        "3"
+       ]
+      ],
+      "start": 117.72723150000007,
+      "end": 117.72723150000007,
+      "residual_kwh": 2.2737367544323206e-13
+     },
+     {
+      "keys": [
+       [
+        "2021-10-22",
+        "3"
+       ]
+      ],
+      "start": 300.0,
+      "end": 300.0,
+      "residual_kwh": -2.842170943040401e-14
+     }
+    ],
+    "stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": null,
+     "seconds": 0.005650400009471923,
+     "objective": 7.683314832338888,
+     "dual_bound": null
+    },
+    "physical_stats": {
+     "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+     "status_code": 0,
+     "gap": 0.0,
+     "seconds": 0.014332799997646362,
+     "objective": -3.0,
+     "dual_bound": -3.0
+    }
+   }
+  }
+ },
+ "full": [
+  {
+   "spec": "S300",
+   "facility": "one",
+   "rule": "daily_fixed",
+   "completed": 54,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [],
+   "removed_vs_daily_fixed": [],
+   "common_count": 54,
+   "common_eur": 622.438683626928,
+   "delta_eur_vs_daily_fixed": 0.0,
+   "night_kwh": 6656.877212777778,
+   "site_peak_kw": {
+    "PORT": 50.0000000000021,
+    "WAREHOUSE": 50.000000000000014
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 27,
+    "min": 150.0,
+    "median": 150.0,
+    "max": 150.0
+   },
+   "week_common_eur": [
+    109.7976775385222,
+    174.15884020447797,
+    88.0536451000111,
+    41.52908775678334,
+    142.39156691874447,
+    66.50786610838898
+   ],
+   "solver_seconds": 10.54639580003277,
+   "max_reported_gap": 0.0
+  },
+  {
+   "spec": "S300",
+   "facility": "one",
+   "rule": "carry_over",
+   "completed": 54,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [],
+   "removed_vs_daily_fixed": [],
+   "common_count": 54,
+   "common_eur": 568.8546757269721,
+   "delta_eur_vs_daily_fixed": -53.58400789995584,
+   "night_kwh": 6579.851427777825,
+   "site_peak_kw": {
+    "PORT": 50.00000000009142,
+    "WAREHOUSE": 50.00000000000003
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 27,
+    "min": 29.999999999999986,
+    "median": 122.348695,
+    "max": 300.0
+   },
+   "week_common_eur": [
+    103.7312491100889,
+    152.92912394828323,
+    77.46972138030003,
+    32.75016082302778,
+    137.23215422003895,
+    64.74226624523332
+   ],
+   "solver_seconds": 4.627431299973978,
+   "max_reported_gap": 0.0
+  },
+  {
+   "spec": "S300",
+   "facility": "one",
+   "rule": "daily_cyclic_free",
+   "completed": 54,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [],
+   "removed_vs_daily_fixed": [],
+   "common_count": 54,
+   "common_eur": 619.3718933276671,
+   "delta_eur_vs_daily_fixed": -3.0667902992608873,
+   "night_kwh": 6652.1491461110645,
+   "site_peak_kw": {
+    "PORT": 50.00000000002241,
+    "WAREHOUSE": 50.0
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 27,
+    "min": 29.999999999999993,
+    "median": 41.53526099999999,
+    "max": 153.75
+   },
+   "week_common_eur": [
+    109.79767753852224,
+    171.74850471861606,
+    88.0536451000111,
+    40.872632943394436,
+    142.39156691873444,
+    66.5078661083889
+   ],
+   "solver_seconds": 12.805753200009349,
+   "max_reported_gap": 0.0
+  },
+  {
+   "spec": "S300",
+   "facility": "two",
+   "rule": "daily_fixed",
+   "completed": 54,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [],
+   "removed_vs_daily_fixed": [],
+   "common_count": 54,
+   "common_eur": 590.1514205851302,
+   "delta_eur_vs_daily_fixed": 0.0,
+   "night_kwh": 6713.044676666635,
+   "site_peak_kw": {
+    "PORT": 100.00000000004758,
+    "WAREHOUSE": 50.000000000000014
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 27,
+    "min": 150.0,
+    "median": 150.0,
+    "max": 150.0
+   },
+   "week_common_eur": [
+    104.56647114805234,
+    166.09756875271128,
+    85.2338369755111,
+    36.937667087922186,
+    132.6481658345333,
+    64.6677107864
+   ],
+   "solver_seconds": 0.5310276999953203,
+   "max_reported_gap": 0.0
+  },
+  {
+   "spec": "S300",
+   "facility": "two",
+   "rule": "carry_over",
+   "completed": 54,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [],
+   "removed_vs_daily_fixed": [],
+   "common_count": 54,
+   "common_eur": 530.6740009423645,
+   "delta_eur_vs_daily_fixed": -59.47741964276567,
+   "night_kwh": 6681.423472222223,
+   "site_peak_kw": {
+    "PORT": 100.00000000022143,
+    "WAREHOUSE": 50.000000000000014
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 27,
+    "min": 29.999999999999986,
+    "median": 119.55894049999995,
+    "max": 300.0
+   },
+   "week_common_eur": [
+    100.02943133752223,
+    141.37907391724232,
+    76.87527812670001,
+    23.71662858578887,
+    124.18478815787779,
+    64.48880081723331
+   ],
+   "solver_seconds": 1.147448700008681,
+   "max_reported_gap": 0.0
+  },
+  {
+   "spec": "S300",
+   "facility": "two",
+   "rule": "daily_cyclic_free",
+   "completed": 54,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [],
+   "removed_vs_daily_fixed": [],
+   "common_count": 54,
+   "common_eur": 580.6386466618911,
+   "delta_eur_vs_daily_fixed": -9.512773923239116,
+   "night_kwh": 6715.503148888511,
+   "site_peak_kw": {
+    "PORT": 100.0000000007055,
+    "WAREHOUSE": 50.0
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 27,
+    "min": 29.999999999999996,
+    "median": 75.0,
+    "max": 300.0
+   },
+   "week_common_eur": [
+    104.56647114805315,
+    157.74663635634442,
+    85.2338369755111,
+    36.25668137503885,
+    132.16731002054357,
+    64.6677107864
+   ],
+   "solver_seconds": 0.5229991000087466,
+   "max_reported_gap": 0.0
+  },
+  {
+   "spec": "S900a",
+   "facility": "one",
+   "rule": "daily_fixed",
+   "completed": 58,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "4"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "1"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "1"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "4"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-02",
+     "3"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [],
+   "removed_vs_daily_fixed": [],
+   "common_count": 57,
+   "common_eur": 819.2379987423998,
+   "delta_eur_vs_daily_fixed": 0.0,
+   "night_kwh": 8477.544182777776,
+   "site_peak_kw": {
+    "PORT": 50.00000000000042,
+    "WAREHOUSE": 50.00000000000001
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 28,
+    "min": 150.0,
+    "median": 150.0,
+    "max": 150.0
+   },
+   "week_common_eur": [
+    109.79767753852222,
+    211.33295326476096,
+    137.33260423334443,
+    40.87263294339441,
+    149.36986513883338,
+    170.5322656235444
+   ],
+   "solver_seconds": 19.348241599975154,
+   "max_reported_gap": 0.0
+  },
+  {
+   "spec": "S900a",
+   "facility": "one",
+   "rule": "carry_over",
+   "completed": 64,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "3"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "3"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "3"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "4"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "1"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "1"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "1"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "4"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-02",
+     "3"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [
+    [
+     "2021-09-28",
+     "3"
+    ],
+    [
+     "2021-09-30",
+     "3"
+    ],
+    [
+     "2021-10-01",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "1"
+    ],
+    [
+     "2021-10-19",
+     "1"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ]
+   ],
+   "removed_vs_daily_fixed": [],
+   "common_count": 57,
+   "common_eur": 747.1443399809949,
+   "delta_eur_vs_daily_fixed": -72.09365876140478,
+   "night_kwh": 11158.000864444444,
+   "site_peak_kw": {
+    "PORT": 50.00000000296795,
+    "WAREHOUSE": 50.00000000000012
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 35,
+    "min": 29.999999999999986,
+    "median": 177.69343099999935,
+    "max": 486.40940699999993
+   },
+   "week_common_eur": [
+    103.7312491100889,
+    176.55081113920622,
+    125.93672171788889,
+    32.75016082302769,
+    144.42016152630558,
+    163.75523566447774
+   ],
+   "solver_seconds": 44.60309820003749,
+   "max_reported_gap": 0.0
+  },
+  {
+   "spec": "S900a",
+   "facility": "one",
+   "rule": "daily_cyclic_free",
+   "completed": 63,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "3"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "3"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "4"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-08",
+     "4"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "1"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "3"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "3"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "4"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-02",
+     "3"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [
+    [
+     "2021-09-28",
+     "3"
+    ],
+    [
+     "2021-10-01",
+     "3"
+    ],
+    [
+     "2021-10-08",
+     "4"
+    ],
+    [
+     "2021-10-18",
+     "3"
+    ],
+    [
+     "2021-10-25",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ]
+   ],
+   "removed_vs_daily_fixed": [
+    [
+     "2021-10-18",
+     "1"
+    ]
+   ],
+   "common_count": 57,
+   "common_eur": 818.455591969442,
+   "delta_eur_vs_daily_fixed": -0.7824067729577138,
+   "night_kwh": 10939.457749444453,
+   "site_peak_kw": {
+    "PORT": 50.00000000001172,
+    "WAREHOUSE": 50.00000000000003
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 32,
+    "min": 29.999999999999996,
+    "median": 93.21362599999976,
+    "max": 855.0000000000002
+   },
+   "week_common_eur": [
+    109.79767753852224,
+    211.33295326475763,
+    137.33260423334556,
+    40.872632943394436,
+    149.2625689377,
+    169.8571550517222
+   ],
+   "solver_seconds": 34.54708999999275,
+   "max_reported_gap": 0.0
+  },
+  {
+   "spec": "S900a",
+   "facility": "two",
+   "rule": "daily_fixed",
+   "completed": 59,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "4"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "1"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "1"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "4"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-02",
+     "3"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [],
+   "removed_vs_daily_fixed": [],
+   "common_count": 59,
+   "common_eur": 877.4335878514945,
+   "delta_eur_vs_daily_fixed": 0.0,
+   "night_kwh": 8799.793847777775,
+   "site_peak_kw": {
+    "PORT": 100.00000000000271,
+    "WAREHOUSE": 50.00000000000001
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 29,
+    "min": 150.0,
+    "median": 150.0,
+    "max": 150.0
+   },
+   "week_common_eur": [
+    104.56647114805557,
+    182.17622467179996,
+    134.51279610884444,
+    123.34251405125556,
+    164.1434715699835,
+    168.69211030155554
+   ],
+   "solver_seconds": 0.9354216999490745,
+   "max_reported_gap": 0.0
+  },
+  {
+   "spec": "S900a",
+   "facility": "two",
+   "rule": "carry_over",
+   "completed": 64,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "3"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "3"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "3"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "4"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "1"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "1"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "1"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "4"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-02",
+     "3"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [
+    [
+     "2021-09-28",
+     "3"
+    ],
+    [
+     "2021-09-30",
+     "3"
+    ],
+    [
+     "2021-10-01",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "1"
+    ],
+    [
+     "2021-10-19",
+     "1"
+    ]
+   ],
+   "removed_vs_daily_fixed": [],
+   "common_count": 59,
+   "common_eur": 780.8117091826887,
+   "delta_eur_vs_daily_fixed": -96.62187866880583,
+   "night_kwh": 11481.911141666662,
+   "site_peak_kw": {
+    "PORT": 100.00000000000543,
+    "WAREHOUSE": 50.000000000000014
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 35,
+    "min": 29.999999999999986,
+    "median": 174.74029900000002,
+    "max": 525.4478995
+   },
+   "week_common_eur": [
+    100.02943133752223,
+    127.45843383751108,
+    124.96181109868887,
+    108.60720446452778,
+    156.25305820796103,
+    163.50177023647774
+   ],
+   "solver_seconds": 2.4440953999583144,
+   "max_reported_gap": 0.0
+  },
+  {
+   "spec": "S900a",
+   "facility": "two",
+   "rule": "daily_cyclic_free",
+   "completed": 64,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "3"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "3"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "4"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-08",
+     "4"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "1"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "1"
+    ],
+    [
+     "2021-10-18",
+     "3"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "3"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "4"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-02",
+     "3"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [
+    [
+     "2021-09-28",
+     "3"
+    ],
+    [
+     "2021-10-01",
+     "3"
+    ],
+    [
+     "2021-10-08",
+     "4"
+    ],
+    [
+     "2021-10-18",
+     "3"
+    ],
+    [
+     "2021-10-25",
+     "3"
+    ]
+   ],
+   "removed_vs_daily_fixed": [],
+   "common_count": 59,
+   "common_eur": 876.23263594162,
+   "delta_eur_vs_daily_fixed": -1.2009519098746466,
+   "night_kwh": 11602.117778888885,
+   "site_peak_kw": {
+    "PORT": 100.00000000000033,
+    "WAREHOUSE": 50.00000000000001
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 32,
+    "min": 30.0,
+    "median": 75.0,
+    "max": 900.0
+   },
+   "week_common_eur": [
+    104.56647114805315,
+    182.1762246718001,
+    134.51279610884444,
+    123.34251405125556,
+    163.61763023193336,
+    168.0169997297333
+   ],
+   "solver_seconds": 1.841648100031307,
+   "max_reported_gap": 9.360730627151984e-16
+  },
+  {
+   "spec": "S900b",
+   "facility": "one",
+   "rule": "daily_fixed",
+   "completed": 63,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "3"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "3"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "4"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-08",
+     "4"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "1"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "3"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "3"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "4"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-02",
+     "3"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [],
+   "removed_vs_daily_fixed": [],
+   "common_count": 62,
+   "common_eur": 1203.7553338196167,
+   "delta_eur_vs_daily_fixed": 0.0,
+   "night_kwh": 10928.600805,
+   "site_peak_kw": {
+    "PORT": 50.000000000001144,
+    "WAREHOUSE": 50.00000000000012
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 32,
+    "min": 450.0,
+    "median": 450.0,
+    "max": 450.0
+   },
+   "week_common_eur": [
+    242.4052863816167,
+    330.84562391883884,
+    137.33260423334445,
+    40.87263294339446,
+    282.4420312907,
+    169.85715505172217
+   ],
+   "solver_seconds": 14.150391899995157,
+   "max_reported_gap": 0.0
+  },
+  {
+   "spec": "S900b",
+   "facility": "one",
+   "rule": "carry_over",
+   "completed": 65,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "3"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "3"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "3"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "4"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-08",
+     "4"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "1"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "1"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "3"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "4"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-02",
+     "3"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [
+    [
+     "2021-09-30",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "1"
+    ],
+    [
+     "2021-10-18",
+     "1"
+    ]
+   ],
+   "removed_vs_daily_fixed": [
+    [
+     "2021-10-18",
+     "3"
+    ]
+   ],
+   "common_count": 62,
+   "common_eur": 1051.1688521253386,
+   "delta_eur_vs_daily_fixed": -152.58648169427804,
+   "night_kwh": 11700.741255555547,
+   "site_peak_kw": {
+    "PORT": 50.00000000000065,
+    "WAREHOUSE": 50.00000000000012
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 35,
+    "min": 105.5928674999999,
+    "median": 375.60936549999997,
+    "max": 773.763641
+   },
+   "week_common_eur": [
+    203.47163719855547,
+    296.0634817932886,
+    117.85056778433332,
+    28.923340073388886,
+    251.33832024370565,
+    153.52150503206667
+   ],
+   "solver_seconds": 24.75452179995773,
+   "max_reported_gap": 0.0
+  },
+  {
+   "spec": "S900b",
+   "facility": "one",
+   "rule": "daily_cyclic_free",
+   "completed": 63,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "3"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "3"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "4"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-08",
+     "4"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "1"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "3"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "3"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "4"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-02",
+     "3"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [],
+   "removed_vs_daily_fixed": [],
+   "common_count": 62,
+   "common_eur": 1203.755333819618,
+   "delta_eur_vs_daily_fixed": 1.1723955140041653e-12,
+   "night_kwh": 10939.457749444453,
+   "site_peak_kw": {
+    "PORT": 50.00000000001172,
+    "WAREHOUSE": 50.00000000000003
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 32,
+    "min": 29.999999999999996,
+    "median": 93.21362599999976,
+    "max": 855.0000000000002
+   },
+   "week_common_eur": [
+    242.40528638161663,
+    330.84562391883895,
+    137.33260423334556,
+    40.872632943394436,
+    282.4420312907,
+    169.8571550517222
+   ],
+   "solver_seconds": 18.624120099964784,
+   "max_reported_gap": 0.0
+  },
+  {
+   "spec": "S900b",
+   "facility": "two",
+   "rule": "daily_fixed",
+   "completed": 64,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "3"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "3"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "4"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-08",
+     "4"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "1"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "1"
+    ],
+    [
+     "2021-10-18",
+     "3"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "3"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "4"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-02",
+     "3"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [],
+   "removed_vs_daily_fixed": [],
+   "common_count": 64,
+   "common_eur": 1318.7915591453157,
+   "delta_eur_vs_daily_fixed": 0.0,
+   "night_kwh": 11602.117778888794,
+   "site_peak_kw": {
+    "PORT": 100.00000000016922,
+    "WAREHOUSE": 50.00000000000001
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 32,
+    "min": 450.0,
+    "median": 450.0,
+    "max": 450.0
+   },
+   "week_common_eur": [
+    231.21556490158895,
+    301.68889532587764,
+    134.51279610884444,
+    232.21509019811094,
+    251.14221288116042,
+    168.01699972973327
+   ],
+   "solver_seconds": 1.1617720999929588,
+   "max_reported_gap": 0.0
+  },
+  {
+   "spec": "S900b",
+   "facility": "two",
+   "rule": "carry_over",
+   "completed": 66,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "3"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "3"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "3"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "4"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-08",
+     "4"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "1"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "1"
+    ],
+    [
+     "2021-10-18",
+     "3"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "3"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "4"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-02",
+     "3"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [
+    [
+     "2021-09-30",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "1"
+    ]
+   ],
+   "removed_vs_daily_fixed": [],
+   "common_count": 64,
+   "common_eur": 1130.2246503540377,
+   "delta_eur_vs_daily_fixed": -188.56690879127785,
+   "night_kwh": 12655.177322777763,
+   "site_peak_kw": {
+    "PORT": 100.000000000009,
+    "WAREHOUSE": 50.00000000000003
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 35,
+    "min": 32.07218699999934,
+    "median": 364.54489,
+    "max": 685.6046875
+   },
+   "week_common_eur": [
+    194.02615307808327,
+    246.9711044915884,
+    117.34285914226665,
+    206.05726549140542,
+    212.55922854662742,
+    153.26803960406664
+   ],
+   "solver_seconds": 2.0598618999501923,
+   "max_reported_gap": 0.0
+  },
+  {
+   "spec": "S900b",
+   "facility": "two",
+   "rule": "daily_cyclic_free",
+   "completed": 64,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "3"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "3"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "4"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-08",
+     "4"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "1"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "1"
+    ],
+    [
+     "2021-10-18",
+     "3"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "3"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "4"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-02",
+     "3"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [],
+   "removed_vs_daily_fixed": [],
+   "common_count": 64,
+   "common_eur": 1318.791559145322,
+   "delta_eur_vs_daily_fixed": 6.480149750132114e-12,
+   "night_kwh": 11602.117778888885,
+   "site_peak_kw": {
+    "PORT": 100.00000000000033,
+    "WAREHOUSE": 50.00000000000001
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 32,
+    "min": 30.0,
+    "median": 75.0,
+    "max": 900.0
+   },
+   "week_common_eur": [
+    231.21556490158892,
+    301.68889532587787,
+    134.51279610884444,
+    232.21509019811091,
+    251.1422128811667,
+    168.0169997297333
+   ],
+   "solver_seconds": 1.3123761999740964,
+   "max_reported_gap": 0.0
+  },
+  {
+   "spec": "S900c",
+   "facility": "one",
+   "rule": "daily_fixed",
+   "completed": 62,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "3"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "3"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "4"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "1"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "1"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "3"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "4"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-02",
+     "3"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [],
+   "removed_vs_daily_fixed": [],
+   "common_count": 61,
+   "common_eur": 1084.2426631655385,
+   "delta_eur_vs_daily_fixed": 0.0,
+   "night_kwh": 10134.518133333331,
+   "site_peak_kw": {
+    "PORT": 50.000000000003496,
+    "WAREHOUSE": 50.00000000000012
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 32,
+    "min": 450.0,
+    "median": 450.0,
+    "max": 450.0
+   },
+   "week_common_eur": [
+    242.40528638161663,
+    211.33295326476087,
+    137.33260423334445,
+    40.87263294339446,
+    282.4420312907,
+    169.85715505172217
+   ],
+   "solver_seconds": 10.87902840001334,
+   "max_reported_gap": 0.0
+  },
+  {
+   "spec": "S900c",
+   "facility": "one",
+   "rule": "carry_over",
+   "completed": 64,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "3"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "3"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "3"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "4"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "1"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "1"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "3"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "4"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-02",
+     "3"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [
+    [
+     "2021-09-30",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "1"
+    ]
+   ],
+   "removed_vs_daily_fixed": [],
+   "common_count": 61,
+   "common_eur": 932.0199167758717,
+   "delta_eur_vs_daily_fixed": -152.22274638966698,
+   "night_kwh": 11083.083492221556,
+   "site_peak_kw": {
+    "PORT": 50.00000000147655,
+    "WAREHOUSE": 50.00000000000012
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 35,
+    "min": 123.75,
+    "median": 375.60936549999997,
+    "max": 751.2636410000016
+   },
+   "week_common_eur": [
+    203.69613923519444,
+    176.5508111390828,
+    117.98980105243334,
+    28.92334007338887,
+    251.3383202437055,
+    153.52150503206667
+   ],
+   "solver_seconds": 133.94220669998322,
+   "max_reported_gap": 0.0
+  },
+  {
+   "spec": "S900c",
+   "facility": "one",
+   "rule": "daily_cyclic_free",
+   "completed": 63,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "3"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "3"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "4"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-08",
+     "4"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "1"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "3"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "3"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "4"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-02",
+     "3"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [
+    [
+     "2021-10-08",
+     "4"
+    ],
+    [
+     "2021-10-18",
+     "3"
+    ]
+   ],
+   "removed_vs_daily_fixed": [
+    [
+     "2021-10-18",
+     "1"
+    ]
+   ],
+   "common_count": 61,
+   "common_eur": 1084.242663165522,
+   "delta_eur_vs_daily_fixed": -1.660538373471354e-11,
+   "night_kwh": 10928.021894444424,
+   "site_peak_kw": {
+    "PORT": 50.00000000000065,
+    "WAREHOUSE": 50.00000000000012
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 32,
+    "min": 89.99999999999997,
+    "median": 149.07390549999997,
+    "max": 498.52897499999995
+   },
+   "week_common_eur": [
+    242.40528638161663,
+    211.3329532647461,
+    137.33260423334264,
+    40.87263294339442,
+    282.4420312907,
+    169.8571550517222
+   ],
+   "solver_seconds": 26.472023200025433,
+   "max_reported_gap": 0.0
+  },
+  {
+   "spec": "S900c",
+   "facility": "two",
+   "rule": "daily_fixed",
+   "completed": 63,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "3"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "3"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "4"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "1"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "1"
+    ],
+    [
+     "2021-10-18",
+     "3"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "3"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "4"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-02",
+     "3"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [],
+   "removed_vs_daily_fixed": [],
+   "common_count": 63,
+   "common_eur": 1199.2788884912381,
+   "delta_eur_vs_daily_fixed": 0.0,
+   "night_kwh": 10976.7854238888,
+   "site_peak_kw": {
+    "PORT": 100.00000000016922,
+    "WAREHOUSE": 50.00000000000001
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 32,
+    "min": 450.0,
+    "median": 450.0,
+    "max": 450.0
+   },
+   "week_common_eur": [
+    231.21556490158892,
+    182.17622467180013,
+    134.51279610884444,
+    232.21509019811094,
+    251.14221288116042,
+    168.01699972973327
+   ],
+   "solver_seconds": 1.039627999998629,
+   "max_reported_gap": 0.0
+  },
+  {
+   "spec": "S900c",
+   "facility": "two",
+   "rule": "carry_over",
+   "completed": 65,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "3"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "3"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "3"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "4"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "1"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "1"
+    ],
+    [
+     "2021-10-18",
+     "3"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "3"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "4"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-02",
+     "3"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [
+    [
+     "2021-09-30",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "1"
+    ]
+   ],
+   "removed_vs_daily_fixed": [],
+   "common_count": 63,
+   "common_eur": 1011.7332769712166,
+   "delta_eur_vs_daily_fixed": -187.54561152002145,
+   "night_kwh": 12062.309703888872,
+   "site_peak_kw": {
+    "PORT": 100.00000000003448,
+    "WAREHOUSE": 50.00000000000003
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 35,
+    "min": 90.00000000000003,
+    "median": 377.2377569999922,
+    "max": 685.6046875
+   },
+   "week_common_eur": [
+    194.23581447217217,
+    127.45843383750571,
+    117.55686495069999,
+    206.05726549140542,
+    213.15685861536673,
+    153.26803960406664
+   ],
+   "solver_seconds": 2.0775852000224404,
+   "max_reported_gap": 0.0
+  },
+  {
+   "spec": "S900c",
+   "facility": "two",
+   "rule": "daily_cyclic_free",
+   "completed": 64,
+   "selected": [
+    [
+     "2021-09-27",
+     "3"
+    ],
+    [
+     "2021-09-27",
+     "5"
+    ],
+    [
+     "2021-09-28",
+     "3"
+    ],
+    [
+     "2021-09-28",
+     "5"
+    ],
+    [
+     "2021-09-29",
+     "3"
+    ],
+    [
+     "2021-09-29",
+     "4"
+    ],
+    [
+     "2021-09-29",
+     "5"
+    ],
+    [
+     "2021-09-30",
+     "5"
+    ],
+    [
+     "2021-10-01",
+     "3"
+    ],
+    [
+     "2021-10-01",
+     "4"
+    ],
+    [
+     "2021-10-01",
+     "5"
+    ],
+    [
+     "2021-10-04",
+     "3"
+    ],
+    [
+     "2021-10-04",
+     "4"
+    ],
+    [
+     "2021-10-04",
+     "5"
+    ],
+    [
+     "2021-10-05",
+     "4"
+    ],
+    [
+     "2021-10-05",
+     "5"
+    ],
+    [
+     "2021-10-06",
+     "3"
+    ],
+    [
+     "2021-10-06",
+     "4"
+    ],
+    [
+     "2021-10-06",
+     "5"
+    ],
+    [
+     "2021-10-07",
+     "3"
+    ],
+    [
+     "2021-10-07",
+     "5"
+    ],
+    [
+     "2021-10-08",
+     "4"
+    ],
+    [
+     "2021-10-09",
+     "1"
+    ],
+    [
+     "2021-10-11",
+     "3"
+    ],
+    [
+     "2021-10-11",
+     "5"
+    ],
+    [
+     "2021-10-12",
+     "1"
+    ],
+    [
+     "2021-10-12",
+     "5"
+    ],
+    [
+     "2021-10-13",
+     "3"
+    ],
+    [
+     "2021-10-13",
+     "5"
+    ],
+    [
+     "2021-10-14",
+     "4"
+    ],
+    [
+     "2021-10-14",
+     "5"
+    ],
+    [
+     "2021-10-15",
+     "3"
+    ],
+    [
+     "2021-10-15",
+     "5"
+    ],
+    [
+     "2021-10-18",
+     "1"
+    ],
+    [
+     "2021-10-18",
+     "3"
+    ],
+    [
+     "2021-10-18",
+     "5"
+    ],
+    [
+     "2021-10-19",
+     "5"
+    ],
+    [
+     "2021-10-20",
+     "3"
+    ],
+    [
+     "2021-10-20",
+     "5"
+    ],
+    [
+     "2021-10-21",
+     "3"
+    ],
+    [
+     "2021-10-21",
+     "5"
+    ],
+    [
+     "2021-10-22",
+     "1"
+    ],
+    [
+     "2021-10-22",
+     "3"
+    ],
+    [
+     "2021-10-22",
+     "5"
+    ],
+    [
+     "2021-10-25",
+     "3"
+    ],
+    [
+     "2021-10-25",
+     "4"
+    ],
+    [
+     "2021-10-25",
+     "5"
+    ],
+    [
+     "2021-10-26",
+     "3"
+    ],
+    [
+     "2021-10-26",
+     "5"
+    ],
+    [
+     "2021-10-27",
+     "2"
+    ],
+    [
+     "2021-10-27",
+     "3"
+    ],
+    [
+     "2021-10-27",
+     "5"
+    ],
+    [
+     "2021-10-28",
+     "3"
+    ],
+    [
+     "2021-10-28",
+     "5"
+    ],
+    [
+     "2021-10-29",
+     "2"
+    ],
+    [
+     "2021-10-29",
+     "3"
+    ],
+    [
+     "2021-10-29",
+     "4"
+    ],
+    [
+     "2021-10-29",
+     "5"
+    ],
+    [
+     "2021-11-02",
+     "3"
+    ],
+    [
+     "2021-11-03",
+     "3"
+    ],
+    [
+     "2021-11-04",
+     "4"
+    ],
+    [
+     "2021-11-04",
+     "5"
+    ],
+    [
+     "2021-11-05",
+     "2"
+    ],
+    [
+     "2021-11-05",
+     "5"
+    ]
+   ],
+   "added_vs_daily_fixed": [
+    [
+     "2021-10-08",
+     "4"
+    ]
+   ],
+   "removed_vs_daily_fixed": [],
+   "common_count": 63,
+   "common_eur": 1199.2788884912436,
+   "delta_eur_vs_daily_fixed": 5.5422333389287814e-12,
+   "night_kwh": 11602.117778888885,
+   "site_peak_kw": {
+    "PORT": 100.00000000004749,
+    "WAREHOUSE": 50.00000000000001
+   },
+   "chain_internal_midnight_kwh": {
+    "count": 32,
+    "min": 90.0,
+    "median": 135.0,
+    "max": 900.0
+   },
+   "week_common_eur": [
+    231.21556490158892,
+    182.17622467179996,
+    134.51279610884444,
+    232.21509019811091,
+    251.14221288116613,
+    168.0169997297333
+   ],
+   "solver_seconds": 1.3040335999830859,
+   "max_reported_gap": 0.0
+  }
+ ]
+}
