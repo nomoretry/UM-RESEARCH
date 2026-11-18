@@ -1,0 +1,59 @@
+{
+  "description": "Two separately metered fleet charging sites using Netze BW's 2024 medium-voltage annual demand tariff as a scenario in the DE-LU day-ahead market.",
+  "checked_on": "2026-11-18",
+  "price_year": 2024,
+  "full_load_hours_boundary": 2500,
+  "tariffs": {
+    "frank": {
+      "source": "Frank, Oebel & Gnann (2025), Optimizing Charging Infrastructure for Truck Depots, EVS38, section 2.2.4, Table 4, PDF p. 6, reference [31].",
+      "url": "https://publica-rest.fraunhofer.de/server/api/core/bitstreams/794e2305-1b7f-4c8d-bf53-c1728befda2d/content#page=6",
+      "pdf_sha256": "6e1e23a992741c568d96a016fc0594c968f37a98710b3c9684dcd1ebfd8b2e39",
+      "status": "Verified against Table 4. Its energy rates are rounded to whole cents per kWh. The authors place exactly 2500 hours in the low band and do not specify a voltage level in the table.",
+      "low_includes_boundary": true,
+      "bands": {
+        "low": {"capacity_eur_per_kw_year": 22.79, "energy_eur_per_kwh": 0.09},
+        "high": {"capacity_eur_per_kw_year": 208.38, "energy_eur_per_kwh": 0.01}
+      }
+    },
+    "official": {
+      "source": "Netze BW GmbH, Endgültige Preise für die Nutzung des Stromverteilnetzes, effective 1 January 2024, version 1.0 dated 22 December 2023, Preisblatt 1, printed p. 2/13, PDF p. 3/14 including cover.",
+      "url": "https://assets.cdn.netze-bw.de/xytfb1vrn7of/6Wb8sYU8x0Fw6benikLxGo/66537b6b8070d5503b1165d2aad21b02/netzentgelte-strom-2024.pdf#page=3",
+      "pdf_sha256": "e1bb931103751889fde56e4b2880dfdf7f22b4babd5307ce61ad9945a3a324b7",
+      "status": "Verified in the Mittelspannungsnetz (medium-voltage network) row for withdrawals with registered load-profile metering and annual capacity billing. The original gives 8.76 and 1.33 euro cents per kWh. Exactly 2500 hours is in its high band.",
+      "low_includes_boundary": false,
+      "bands": {
+        "low": {"capacity_eur_per_kw_year": 22.79, "energy_eur_per_kwh": 0.0876},
+        "high": {"capacity_eur_per_kw_year": 208.38, "energy_eur_per_kwh": 0.0133}
+      }
+    }
+  },
+  "metering": {
+    "sites": ["PORT", "WAREHOUSE"],
+    "demand_interval_minutes": 15,
+    "timezone": "Europe/Berlin",
+    "assumptions": "Each site has its own coincident-within-site meter for fleet charging alone. Use the largest complete aligned clock-quarter mean (quarter kWh divided by 0.25 h), including zero draw during unoccupied minutes. Repeat the six-week meter traces. The annual maximum equals the sample maximum. Divide annual meter kWh by this maximum to select the band separately for each site. At an idle meter both charges are zero and full-load hours are reported as zero by convention.",
+    "scope": "The sites' actual tariffs, medium-voltage contracts, metering arrangements and non-fleet loads are unknown. Use energy and demand at the modeled meter. The scenario excludes taxes, surcharges, concession fees, metering fees and transformer-loss adjustments for different withdrawal and metering voltages."
+  },
+  "annualization": {
+    "sample_weeks": 6,
+    "weeks_per_year": 52,
+    "reference": "studies/day-ahead/connector_cost.json, repeat_scenario. Every observed week has equal weight."
+  },
+  "price_level": {
+    "source": "Statistisches Bundesamt (Destatis), GENESIS 61111-0001, national annual all-items consumer price index, 2020 = 100.",
+    "url": "https://genesis.destatis.de/datenbank/online/statistic/61111/table/61111-0001/chart/line",
+    "cpi": {"2021": 103.1, "2024": 119.3, "2025": 121.9},
+    "status": "All three annual indices checked directly in the Destatis table. Convert annualized 2021 wholesale energy and 2024 network charges separately to 2025 purchasing power before adding."
+  },
+  "capacity_sensitivities_eur_per_kw_year": {
+    "capacity_0": 0,
+    "capacity_22_79": 22.79,
+    "capacity_208_38": 208.38
+  },
+  "sensitivity_definition": "The three fixed-rate cases replace only the capacity rate at both meters. The energy rate follows each meter's actual Frank full-load-hours band. N0 disables both network charges. The frank and official bills apply both rates for each meter's actual band.",
+  "power_sharing_evidence": {
+    "source": "Alpitronic HYC50 product specifications. Rated charging capability: one vehicle at 50 kW, or two simultaneously at 25 kW each.",
+    "url": "https://www.alpitronic.it/en/hypercharger/hyc-50/",
+    "status": "Verified on the manufacturer product page. No incremental installed price for retrofitting a cable was established."
+  }
+}
