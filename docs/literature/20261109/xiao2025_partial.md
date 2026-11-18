@@ -1,5 +1,7 @@
 # Xiao 2025 有限证据卡：等待全文
 
+> **2026-11-18 更新**：已取得正式刊版全文（用户资料，32 页），按指定章节精读，见 [第一轮对照精读卡 P3](../20261118/CARDS.md)。本卡以下内容保留 11 月 9 日只读到预览时的判断，不再更新。
+
 > Source coverage: Partial paper（出版社预览及官方勘误）
 > Extraction confidence: High for available text；正文缺失
 > Locator mode: structure-grounded
