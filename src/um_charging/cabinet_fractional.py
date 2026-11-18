@@ -103,6 +103,8 @@ def _adaptive_price(local, relaxed, ceiling, tolerance, capped):
         rounds.append(dict(active_groups=len(enabled),status=r.message,status_code=r.status,
                            objective=r.fun,dual_bound=getattr(r,"mip_dual_bound",None),
                            gap=getattr(r,"mip_gap",None),real=real))
+        if "native_attempts" in r:
+            rounds[-1]["native_attempts"]=r.native_attempts
         if not real:
             return result()
     raise ArithmeticError("Unresolved weekly reservation groups")

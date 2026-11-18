@@ -481,7 +481,10 @@ def run(output=None, pilot_only=False):
             optimal_at(name,rate)
         solving=perf_counter()
         if deadline is None:
-            optimal_at("one",rate)
+            # Use the solver's original feasible objective as the numerical
+            # cutoff. Its independent meter replay is checked separately.
+            raw=solve(p,"one",eb.DEFAULT_SPEC,eb.B,keys,objective_upper=witness["objective_upper"]+1e-7,
+                      incumbent=feasible_e1[-1]["witness"],absolute_gap=.001,**weights)
         else:
             from .cabinet_partial import decision_e1_bound
             deadline=solving+MAX_COMBINATION_SECONDS-seed_seconds
@@ -496,10 +499,10 @@ def run(output=None, pilot_only=False):
                 # this and the last audited feasible seed, even when rejected.
                 raw={**feasible_e1[-1]["witness"],"stats":dict(status="45-minute limit",
                     objective=witness["objective_upper"],dual_bound=solver_lower(pool["stats"]))}
-            r=evidence.record(f"annual-P2-one-{rate:.15g}",p,"one",eb.DEFAULT_SPEC,eb.B,keys,raw,**weights)
-            solutions["one",rate]=r
-            dispatch["one","P2",rate]=dict(**reduced(r["audit"],r["schedule"],r["stats"]),bounded=True,
-                                           witness={k:r[k] for k in ("states","schedule")})
+        r=evidence.record(f"annual-P2-one-{rate:.15g}",p,"one",eb.DEFAULT_SPEC,eb.B,keys,raw,**weights)
+        solutions["one",rate]=r
+        dispatch["one","P2",rate]=dict(**reduced(r["audit"],r["schedule"],r["stats"]),bounded=deadline is not None,
+                                       witness={k:r[k] for k in ("states","schedule")})
         dispatch["one","P2",rate]["wall_seconds"]=seed_seconds+perf_counter()-solving
         if deadline is not None:
             decision_record(solver_lower(r["stats"]),r["stats"]["objective"],

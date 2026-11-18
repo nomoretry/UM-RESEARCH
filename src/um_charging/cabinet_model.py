@@ -476,24 +476,42 @@ def _bounded_mip(model, upper_cost, absolute_gap, start=None, *, time_limit=None
         lp.col_lower_,lp.col_upper_=lower,upper
         lp.row_lower_,lp.row_upper_=left,right
         lp.integrality_=[h.HighsVarType(int(flag)) for flag in integers]
-        solver=h._Highs()
-        solver.setOptionValue("output_flag",False)
-        for key,value in options.items():
-            if solver.setOptionValue(key,value)==h.HighsStatus.kError:
-                raise ArithmeticError(("warm-start HiGHS option",key,value))
-        if solver.passModel(lp)==h.HighsStatus.kError:
-            raise ArithmeticError("Failed to load warm-start MILP")
+        def loaded_solver(settings):
+            solver=h._Highs()
+            solver.setOptionValue("output_flag",False)
+            for key,value in settings.items():
+                if solver.setOptionValue(key,value)==h.HighsStatus.kError:
+                    raise ArithmeticError(("HiGHS option",key,value))
+            if solver.passModel(lp)==h.HighsStatus.kError:
+                raise ArithmeticError("Failed to load weekly pricing MILP")
+            return solver
+        solver=loaded_solver(options)
         ids=np.flatnonzero(integers).astype(np.int32)
         if solver.setSolution(len(ids),ids,np.asarray(start,dtype=float)[ids])==h.HighsStatus.kError:
             raise ArithmeticError("Failed to submit known feasible reservation counts")
-        solver.run()
+        run=solver.run()
         status=solver.getModelStatus()
+        attempts=[]
+        if status==h.HighsModelStatus.kSolveError:
+            attempts.append(dict(start="warm",native_run_code=int(run),native_model_code=int(status),
+                                 native_message=solver.modelStatusToString(status)))
+            # The same tightened matrix and optimality tolerances apply. Rebuild
+            # from scratch to discard the unusable search and presolve state.
+            solver=loaded_solver({**options,"presolve":"off"})
+            run=solver.run()
+            status=solver.getModelStatus()
+            attempts.append(dict(start="cold",presolve="off",native_run_code=int(run),
+                                 native_model_code=int(status),native_message=solver.modelStatusToString(status)))
         if status!=h.HighsModelStatus.kOptimal:
-            raise ArithmeticError(("warm-start MILP",solver.modelStatusToString(status)))
+            raise ArithmeticError(("weekly pricing MILP",solver.modelStatusToString(status),attempts))
         info=solver.getInfo()
-        return OptimizeResult(status=0,message=solver.modelStatusToString(status),
+        result=OptimizeResult(status=0,message=solver.modelStatusToString(status),
                               fun=info.objective_function_value,x=np.asarray(solver.getSolution().col_value),
                               mip_dual_bound=info.mip_dual_bound,mip_gap=info.mip_gap)
+        if attempts:
+            attempts[-1].update(objective=result.fun,dual_bound=result.mip_dual_bound,gap=result.mip_gap)
+            result.native_attempts=attempts
+        return result
     with warnings.catch_warnings():
         warnings.filterwarnings("ignore",message="Unrecognized options detected.*",category=RuntimeWarning)
         return milp(model.cost,integrality=integers,bounds=Bounds(lower,upper),

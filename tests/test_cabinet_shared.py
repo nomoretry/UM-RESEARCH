@@ -61,3 +61,47 @@ def test_actual_peak_rejects_relaxed_share_assignment():
         assert result.status == 0 and -result.fun == pytest.approx(expected)
         group = ("day", "PORT", 2, [part], "two_shared_rule", peak, variables, modes)
         assert (cabinet_model._reconstruct(group, result.x, DEFAULT_SPEC) is not None) == exact_meter
+
+
+def test_capped_weekly_support_cold_recovers_native_solve_error(monkeypatch):
+    from scipy.optimize._highspy import _core as highs
+    from um_charging.cabinet_fractional import _adaptive_price
+
+    class FailedWarmStart(highs._Highs):
+        def setSolution(self, *args):
+            self.has_start=True
+            return super().setSolution(*args)
+
+        def run(self):
+            if getattr(self,"has_start",False):
+                return highs.HighsStatus.kError
+            return super().run()
+
+        def getModelStatus(self):
+            if getattr(self,"has_start",False):
+                return highs.HighsModelStatus.kSolveError
+            return super().getModelStatus()
+
+    # The relaxed quarter serves both trucks. Integer ownership only admits
+    # the artificial option, whose cost is exactly the tested cutoff.
+    m=Matrix()
+    owners=[m.var(0,1,integer=True) for _ in range(2)]
+    energy=[m.var(.35,1.) for _ in owners]
+    m.add([(o,1.) for o in owners],high=1.)
+    for x,o in zip(energy,owners):
+        m.add([(x,1.),(o,-1.)],high=0.)
+    m.reservations=[(1,1.,[(o,[x]) for x,o in zip(energy,owners)])]
+    discrete=m.integer.copy()
+    m.integer=[False]*len(discrete)
+    relaxed=m.solve()
+    m.integer=discrete
+    monkeypatch.setattr(highs,"_Highs",FailedWarmStart)
+    result, bound, real=_adaptive_price(m,relaxed,1.,1e-7,True)
+    assert not real and bound==pytest.approx(1.)
+    warm,cold=result.reservation_rounds[-1]["native_attempts"]
+    assert (warm["start"],warm["native_model_code"])==("warm",int(highs.HighsModelStatus.kSolveError))
+    assert warm["native_message"]=="Solve error"
+    assert (cold["start"],cold["native_model_code"])==("cold",int(highs.HighsModelStatus.kOptimal))
+    assert cold["objective"]==pytest.approx(1.)
+    assert cold["dual_bound"]==pytest.approx(1.)
+    assert cold["gap"]==pytest.approx(0.)
