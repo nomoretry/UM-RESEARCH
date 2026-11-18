@@ -1,13 +1,15 @@
 """Value the second port connector on the registered, identical fleet service."""
 import argparse
 from collections import defaultdict
-from concurrent.futures import ProcessPoolExecutor
 from dataclasses import asdict
 import json
 import math
+import multiprocessing
 from pathlib import Path
 import platform
 import subprocess
+from time import perf_counter
+import traceback
 
 import numpy as np
 import scipy
@@ -15,7 +17,7 @@ import scipy
 from . import energy_boundary as eb
 from .__main__ import checked_output, digest, write_json
 from .cabinet_audit import audit_cabinets, audit_settlement, close, replay, schedule_on_clock
-from .cabinet_model import EQUIPMENT, prove_lower, relaxation, solve
+from .cabinet_model import EQUIPMENT, relaxation, solve
 from .cabinet_partial import partial_e1_bound
 from .cabinet_shared import shared_peak_witness
 from .cabinet_incumbent import build_incumbent, e1_peak_witness, high_band_interval, low_band_interval, polish_e1
@@ -26,6 +28,79 @@ from .connector_cost import COST_INPUT, break_even
 
 BASELINE = eb.WEEKS.with_name("energy_boundary.json")
 PILOT_DAY = "2021-10-26"
+BOUNDED_RATE = 80.
+MAX_COMBINATION_SECONDS = 45 * 60
+# Extra witnesses only tighten a continuous-price certificate. The registered
+# equipment bills have already been solved and do not depend on these trials.
+AUXILIARY_WITNESS_SECONDS = 30.
+
+
+def decision_record(lower, upper, seconds, *, bounded=False):
+    """Record an annual dispatch objective and its proved global lower bound."""
+    if not all(math.isfinite(v) for v in (lower, upper, seconds)) or seconds < 0 or lower > upper + 1e-8:
+        raise ValueError(("Invalid dispatch bounds or elapsed time", lower, upper, seconds))
+    gap = max(0., upper - lower)
+    if bounded and (gap > 1. + 1e-8 or seconds > MAX_COMBINATION_SECONDS):
+        raise ValueError(("Decision precision or wall-clock limit exceeded", lower, upper, seconds))
+    return dict(status="bounded" if bounded else "optimal", objective_lower_eur_2025=min(lower, upper),
+                objective_upper_eur_2025=upper, absolute_gap_eur_2025=gap,
+                relative_gap=gap / max(abs(upper), 1e-10), wall_seconds=seconds)
+
+
+def classify_decision_bounds(lower, upper, cost):
+    """Stop if the full-invoice savings interval cannot decide sign or investment."""
+    if not all(math.isfinite(v) for v in (lower, upper, cost)) or lower > upper:
+        raise ValueError(("Invalid operating-value interval", lower, upper, cost))
+    if lower <= 0 <= upper or lower <= cost <= upper:
+        raise ValueError(("Inconclusive operating or investment decision", lower, upper, cost))
+    return dict(sign="positive" if lower > 0 else "negative", cost_comparison="below" if upper < cost else "above")
+
+
+def invoice_line(row):
+    def fmt(value, bounds):
+        return f"{value:.2f}" if value is not None else f"[{bounds[0]:.6f}, {bounds[1]:.6f}]"
+    total=fmt(row["annual_total_eur_2025"],row["annual_total_interval_eur_2025"])
+    gain=fmt(row["annual_operating_value_eur_2025"],row["annual_operating_value_interval_eur_2025"])
+    return (f"{row['scenario']} {row['policy']} {row['equipment']} {row['status']} served={row['completed']}/73 "
+            f"replayed_six_week_EUR={row['six_week_energy_eur_2021']:.6f} annual_total_EUR2025={total} "
+            f"value_EUR2025={gain} objective_gap={row['absolute_gap_eur_2025']:.6f} seconds={row['wall_seconds']:.2f}")
+
+
+def _budget_worker(connection, function, args, kwargs):
+    try:
+        connection.send((True, function(*args, **kwargs)))
+    except Exception:
+        connection.send((False, traceback.format_exc()))
+    finally:
+        connection.close()
+
+
+def budget_call(deadline, function, *args, **kwargs):
+    """Use one interruptible worker for a registered high-rate solver call."""
+    if deadline is None:
+        return function(*args, **kwargs)
+    if perf_counter() >= deadline:
+        raise TimeoutError("High-rate combination reached its 45-minute wall-clock limit")
+    ctx = multiprocessing.get_context("spawn")
+    read, write = ctx.Pipe(duplex=False)
+    worker = ctx.Process(target=_budget_worker, args=(write, function, args, kwargs))
+    worker.start()
+    write.close()
+    try:
+        if not read.poll(max(0., deadline-perf_counter())):
+            raise TimeoutError("High-rate combination reached its 45-minute wall-clock limit")
+        success, result = read.recv()
+        if not success:
+            raise RuntimeError(result)
+        if perf_counter()>deadline:
+            raise TimeoutError("High-rate combination reached its 45-minute wall-clock limit")
+        return result
+    finally:
+        read.close()
+        worker.join(timeout=0)
+        if worker.is_alive():
+            worker.terminate()
+        worker.join()
 
 
 def hardware_table(net):
@@ -173,6 +248,7 @@ def reduced(audit, schedule, stats):
 
 
 def weekly_dispatch(periods, name, rule, keys, evidence, one_bills=None, *, whole=None):
+    started = perf_counter()
     audits = []
     witness = dict(schedule=[],states=[])
     for i,p in enumerate(periods):
@@ -184,7 +260,7 @@ def weekly_dispatch(periods, name, rule, keys, evidence, one_bills=None, *, whol
         if whole is not None:
             witness["schedule"].extend(schedule_on_clock(whole,p,r["schedule"]))
             witness["states"].extend(r["states"])
-    return dict(purchase_eur=math.fsum(a["purchase_eur"] for a in audits),
+    return dict(wall_seconds=perf_counter()-started, purchase_eur=math.fsum(a["purchase_eur"] for a in audits),
                 weekly_eur=[a["purchase_eur"] for a in audits],witness=witness,
                 lower_objective=math.fsum(a["lower_objective"] for a in audits),
                 site_grid_kwh={s:math.fsum(a["site_grid_kwh"][s] for a in audits) for s in eb.SITES},
@@ -255,6 +331,7 @@ def expensive_band_check(p, keys, net, evidence, rows):
 
 
 def run(output=None, pilot_only=False):
+    started = perf_counter()
     net = load_network()
     days = eb.read_json(eb.WEEKS)["days"]
     native = eb.csv_rows(eb.NATIVE)
@@ -323,6 +400,10 @@ def run(output=None, pilot_only=False):
         key=name,"P2",rate
         if key in dispatch:
             return dispatch[key]
+        tick = perf_counter()
+        auxiliary=rate not in rates.values()
+        deadline=(tick+AUXILIARY_WITNESS_SECONDS if auxiliary else
+                  tick+MAX_COMBINATION_SECONDS if rate>=BOUNDED_RATE else None)
         weights=dict(energy_weight=electricity,peak_weights=dict.fromkeys(eb.SITES,rate*money))
         label=f"annual-P2-{name}-{rate:.15g}"
         for larger in chain[:chain.index(name)]:
@@ -342,33 +423,43 @@ def run(output=None, pilot_only=False):
                 return electricity*a["purchase_eur"]+rate*money*sum(a["site_peak_kw"].values())
             best=min(available,key=objective)
             upper=objective(best)
-            options={"absolute_gap":.001} if name in ("one","two_shared_rule") else {}
+            options={"absolute_gap":.001} if rate < BOUNDED_RATE and name in ("one","two_shared_rule") else {}
             if name=="one":
                 options["incumbent"]=best["witness"]
             if name=="two_shared_rule" and ("two_shared_pool",rate) in solutions:
                 caps=solutions["two_shared_pool",rate]["audit"]["site_peak_kw"]
-                shared=shared_peak_witness(p,periods,eb.DEFAULT_SPEC,eb.B,keys,caps,electricity,weights["peak_weights"])
+                shared=budget_call(deadline,shared_peak_witness,p,periods,eb.DEFAULT_SPEC,eb.B,keys,
+                                   caps,electricity,weights["peak_weights"])
                 key_label=f"feasible-E3-{rate:.15g}"
                 evidence.statistics[key_label]=shared["weeks"]
                 if output:
                     write_json(output/(key_label+".json"),shared)
                 if shared["feasible"]:
                     upper=min(upper,shared["objective_upper"])
-            r=evidence.solve(label,p,name,eb.DEFAULT_SPEC,eb.B,keys,objective_upper=upper+1e-7,**options,**weights)
+            try:
+                raw=budget_call(deadline,solve,p,name,eb.DEFAULT_SPEC,eb.B,keys,
+                                objective_upper=upper+1e-7,**options,**weights)
+            except TimeoutError:
+                if not auxiliary:
+                    raise
+                relaxed=relaxation(p,name,eb.DEFAULT_SPEC,eb.B,keys,**weights)
+                raw={**best["witness"],"stats":dict(status="Auxiliary feasible dispatch and LP lower bound",
+                     objective=upper,dual_bound=solver_lower(relaxed["stats"]),relaxation=relaxed["stats"])}
+            r=evidence.record(label,p,name,eb.DEFAULT_SPEC,eb.B,keys,raw,**weights)
         solutions[name,rate]=r
         dispatch[key]=reduced(r["audit"],r["schedule"],r["stats"])
+        dispatch[key]["wall_seconds"]=perf_counter()-tick
         dispatch[key]["witness"]={k:r[k] for k in ("states","schedule")}
         return dispatch[key]
     for name in EQUIPMENT:
         dispatch[name,"P2",0]=dispatch[name,"P1",0]
-    annual_rates=sorted(set(rates.values())-{0})
-    seeds={}
-    for rate in annual_rates:
-        witness=build_incumbent(p,periods,eb.DEFAULT_SPEC,eb.B,keys,energy_weight=electricity,
-                                peak_weights=dict.fromkeys(eb.SITES,rate*money))
+    def solve_rate(rate):
+        tick=perf_counter()
+        deadline=tick+MAX_COMBINATION_SECONDS if rate>=BOUNDED_RATE else None
+        weights=dict(energy_weight=electricity,peak_weights=dict.fromkeys(eb.SITES,rate*money))
+        witness=budget_call(deadline,build_incumbent,p,periods,eb.DEFAULT_SPEC,eb.B,keys,**weights)
         feasible_e1.append(dict(purchase_eur=witness["purchase_eur"],site_peak_kw=witness["site_peak_kw"],
             witness={k:witness["polished"][k] for k in ("states","schedule")}))
-        seeds[rate]=(witness["objective_upper"],feasible_e1[-1]["witness"])
         label=f"feasible-E1-{rate}"
         evidence.statistics[label]=dict(relaxation=witness["relaxed"]["stats"],
                                         weeks=[w["stats"] for w in witness["weeks"]],
@@ -383,38 +474,47 @@ def run(output=None, pilot_only=False):
             checks["uniform_low_band_interval"] = low_band_interval(
                 p,keys,eb.DEFAULT_SPEC,eb.B,net,rate,witness)
         elif rate == max(rates.values()):
-            checks["uniform_high_band_intervals"] = high_band_interval(
+            checks["uniform_high_band_intervals"] = budget_call(deadline,high_band_interval,
                 p,keys,eb.DEFAULT_SPEC,eb.B,net,low_rate,rate,witness,checks["uniform_low_band_interval"])
-    if output:
-        # Different fee rates are independent experiments. Each worker still
-        # owns one complete six-week model with one shared peak per meter.
-        with ProcessPoolExecutor(max_workers=len(annual_rates)) as workers:
-            pending={}
-            for rate in annual_rates:
-                weights=dict(energy_weight=electricity,peak_weights=dict.fromkeys(eb.SITES,rate*money))
-                upper,seed=seeds[rate]
-                pending[rate]=workers.submit(solve,p,"one",eb.DEFAULT_SPEC,eb.B,keys,
-                    objective_upper=upper+1e-7,incumbent=seed,absolute_gap=.001,**weights)
-            for rate in annual_rates:
-                for name in chain[:-1]:
-                    optimal_at(name,rate)
-            for rate,job in pending.items():
-                r=evidence.record(f"annual-P2-one-{rate:.15g}",p,"one",eb.DEFAULT_SPEC,eb.B,keys,job.result(),
-                    energy_weight=electricity,peak_weights=dict.fromkeys(eb.SITES,rate*money))
-                solutions["one",rate]=r
-                dispatch["one","P2",rate]=dict(**reduced(r["audit"],r["schedule"],r["stats"]),
-                                               witness={k:r[k] for k in ("states","schedule")})
-    else:
-        for rate in annual_rates:
-            for name in chain:
-                optimal_at(name,rate)
+        seed_seconds=perf_counter()-tick
+        for name in chain[:-1]:
+            optimal_at(name,rate)
+        solving=perf_counter()
+        if deadline is None:
+            optimal_at("one",rate)
+        else:
+            from .cabinet_partial import decision_e1_bound
+            deadline=solving+MAX_COMBINATION_SECONDS-seed_seconds
+            pool=solutions["two_shared_pool",rate]
+            upgrade_upper=max(solutions[name,rate]["stats"]["objective"] for name in chain[:-1])
+            try:
+                raw=budget_call(deadline,decision_e1_bound,p,eb.DEFAULT_SPEC,eb.B,keys,pool,
+                                incumbent=feasible_e1[-1]["witness"],upgrade_upper=upgrade_upper,
+                                nominal_rate=rate,wall_seconds=max(0.,deadline-perf_counter()),**weights)
+            except TimeoutError:
+                # The larger build's lower bound still holds for E1. Preserve
+                # this and the last audited feasible seed, even when rejected.
+                raw={**feasible_e1[-1]["witness"],"stats":dict(status="45-minute limit",
+                    objective=witness["objective_upper"],dual_bound=solver_lower(pool["stats"]))}
+            r=evidence.record(f"annual-P2-one-{rate:.15g}",p,"one",eb.DEFAULT_SPEC,eb.B,keys,raw,**weights)
+            solutions["one",rate]=r
+            dispatch["one","P2",rate]=dict(**reduced(r["audit"],r["schedule"],r["stats"]),bounded=True,
+                                           witness={k:r[k] for k in ("states","schedule")})
+        dispatch["one","P2",rate]["wall_seconds"]=seed_seconds+perf_counter()-solving
+        if deadline is not None:
+            decision_record(solver_lower(r["stats"]),r["stats"]["objective"],
+                            dispatch["one","P2",rate]["wall_seconds"],bounded=True)
     rows = []
     benchmark = checks[eb.B]["benchmark"]
     crf = benchmark["capital_recovery_factor"]
+    high_supports={}
     for policy in ("P1","P2"):
         for scenario in ("N0","frank","official",*rates):
             rate = rates.get(scenario,0 if scenario=="N0" else low_rate)
+            if policy=="P2" and ("one",policy,rate) not in dispatch:
+                solve_rate(rate)
             options = {}
+            totals = {}
             for name in EQUIPMENT:
                 a = dispatch[name,policy,rate if policy=="P2" else 0]
                 args = (net,a["purchase_eur"],a["site_grid_kwh"],a["site_peak_kw"],scenario)
@@ -433,7 +533,42 @@ def run(output=None, pilot_only=False):
                            reservation_denominator_complete_date_quarters=len(p.cases)*96,
                            second_port_reservation_share=a["second_port_reserved_quarters"]/(len(p.cases)*96),**bill,
                            annual_operating_value_eur_2025=value)
-                row["dispatch_optimality_gap_eur_2025"] = max(0.,(obj if policy=="P2" else electricity*a["purchase_eur"])-raw_bound)
+                upper=obj if policy=="P2" else electricity*a["purchase_eur"]
+                bounded=bool(a.get("bounded",False))
+                extra_time=0.
+                if policy=="P2" and rate>=BOUNDED_RATE:
+                    check=next(v for v in checks["uniform_high_band_intervals"]["checks"] if v["rate"]==rate)
+                    if not check["high_port_proved"] or checks["uniform_high_band_intervals"]["warehouse_hours_upper"]>=net["full_load_hours_boundary"]:
+                        raise ValueError(("Uncertified high-rate meter bands",name,rate))
+                    # Both endogenously selected energy rates must be included.
+                    # A dispatch that minimizes the fixed-rate objective lies
+                    # in the sublevel set of its replayed feasible upper bound.
+                    tick=perf_counter()
+                    deadline=tick+MAX_COMBINATION_SECONDS-a["wall_seconds"]
+                    rel=budget_call(deadline,relaxation,p,name,eb.DEFAULT_SPEC,eb.B,keys,
+                          energy_weight=electricity,peak_weights=dict.fromkeys(eb.SITES,rate*money),
+                          objective_upper=upper+1e-6,_warehouse_energy_upper=True)
+                    extra_time=perf_counter()-tick
+                    if a["wall_seconds"]+extra_time>MAX_COMBINATION_SECONDS:
+                        raise TimeoutError(("High-rate combination exceeded wall budget",name,rate))
+                    high_supports[name]=rel["warehouse_energy_support"]
+                    repeat=net["annualization"]["weeks_per_year"]/net["annualization"]["sample_weeks"]
+                    wh=repeat*high_supports[name]["six_week_kwh_upper"]
+                    bands=net["tariffs"]["frank"]["bands"]
+                    high=bands["high"]["energy_eur_per_kwh"]
+                    low=bands["low"]["energy_eur_per_kwh"]
+                    floor=checks["uniform_low_band_interval"]["annual_grid_kwh"]*money*high
+                    totals[name]=[raw_bound+floor,upper+floor+wh*money*(low-high)]
+                elif policy=="P1":
+                    # P1 is the invoice of its published, fixed energy-only schedule.
+                    totals[name]=[total,total]
+                else:
+                    totals[name]=[total-max(0.,upper-raw_bound),total]
+                row.update(decision_record(raw_bound,upper,a["wall_seconds"]+extra_time,bounded=bounded))
+                row["dispatch_optimality_gap_eur_2025"]=row["absolute_gap_eur_2025"]
+                row["annual_total_interval_eur_2025"]=totals[name]
+                row["annual_operating_value_interval_eur_2025"]=([0.,0.] if name=="one" else
+                      [totals["one"][0]-totals[name][1],totals["one"][1]-totals[name][0]])
                 if name=="two_independent":
                     row["after_equipment_cost_eur_2025"]=value-benchmark["annual_cost_2025_eur"]
                 if name.startswith("two_shared"):
@@ -441,12 +576,38 @@ def run(output=None, pilot_only=False):
                     row["zero_maintenance_capex_eur_2025"]=max(0.,value)/crf
                 if policy=="P2":
                     before=next(b for b in rows if (b["equipment"],b["policy"],b["scenario"])==(name,"P1",scenario))
-                    if total>before["annual_total_eur_2025"]+1e-6:
+                    if max(total,totals[name][1])>before["annual_total_eur_2025"]+1e-6:
                         raise ValueError(("P2 invoice exceeds P1",row,before))
+                value_bounded=(policy=="P2" and rate>=BOUNDED_RATE and name!="one" and
+                               (bounded or dispatch["one","P2",rate].get("bounded",False)))
+                row["value_status"]="bounded" if value_bounded else "optimal"
+                if bounded:
+                    row["replayed_annual_total_eur_2025"]=row["annual_total_eur_2025"]
+                    row["annual_total_eur_2025"]=None
+                if value_bounded:
+                    lo,hi=row["annual_operating_value_interval_eur_2025"]
+                    try:
+                        row["decision_check"]=classify_decision_bounds(lo,hi,benchmark["annual_cost_2025_eur"])
+                    except ValueError as exc:
+                        raise ValueError((policy,name,rate,str(exc))) from exc
+                    row["replayed_annual_operating_value_eur_2025"]=value
+                    row["annual_operating_value_eur_2025"]=None
+                    if name=="two_independent":
+                        row["after_equipment_cost_interval_eur_2025"]=[x-benchmark["annual_cost_2025_eur"] for x in (lo,hi)]
+                        row["after_equipment_cost_eur_2025"]=None
+                    else:
+                        row["affordable_annual_charge_interval_eur_2025"]=[max(0.,x) for x in (lo,hi)]
+                        row["zero_maintenance_capex_interval_eur_2025"]=[max(0.,x)/crf for x in (lo,hi)]
+                        row["affordable_annual_charge_eur_2025"]=row["zero_maintenance_capex_eur_2025"]=None
                 rows.append(row)
+                print(invoice_line(row),flush=True)
+    checks["registered_high_rate_warehouse_energy_supports"]=high_supports
     zero_bills = {r["equipment"]:r for r in rows if r["policy"]=="P1" and r["scenario"]=="capacity_0"}
     critical = {"P1":{n:fixed_dispatch_zero(net,zero_bills["one"],bill) for n,bill in zero_bills.items() if n!="one"}}
     checks["contract_global_total"]=expensive_band_check(p,keys,net,evidence,rows)
+    curve_start=perf_counter()
+    def may_refine():
+        return perf_counter()-curve_start<MAX_COMBINATION_SECONDS
     def profile(audit):
         return dict(energy=electricity*audit["purchase_eur"],peak=math.fsum(audit["site_peak_kw"].values()))
 
@@ -469,13 +630,17 @@ def run(output=None, pilot_only=False):
                     key=at_rate)
             upper=at_rate(old)
             witness=old["witness"]
-            trial=shared_peak_witness(p,periods,eb.DEFAULT_SPEC,eb.B,keys,pool["site_peak_kw"],
-                                      electricity,weights["peak_weights"])
+            try:
+                trial=budget_call(perf_counter()+AUXILIARY_WITNESS_SECONDS,shared_peak_witness,p,periods,
+                                  eb.DEFAULT_SPEC,eb.B,keys,pool["site_peak_kw"],electricity,weights["peak_weights"])
+            except TimeoutError:
+                trial=dict(feasible=False,weeks=[],stop="optional shared witness wall-clock budget")
             if trial["feasible"] and trial["objective_upper"]<upper:
                 upper=trial["objective_upper"]
                 witness={k:trial[k] for k in ("schedule","states")}
             raw=dict(**witness,stats=dict(status="Feasible shared dispatch and flexible-pool lower bound",
-                objective=upper,dual_bound=pool["lower_objective"],weeks=trial["weeks"]))
+                objective=upper,dual_bound=pool["lower_objective"],weeks=trial["weeks"],
+                witness_stop=trial.get("stop")))
         else:
             raw={**larger,"optimality_from_superset":"two_shared_pool"}
         record=evidence.record(f"critical-shared-bound-{rate:.15g}",p,"two_shared_rule",eb.DEFAULT_SPEC,
@@ -492,7 +657,8 @@ def run(output=None, pilot_only=False):
             def cost(a):
                 return electricity*a["purchase_eur"]+money*rate*sum(a["site_peak_kw"].values())
             seed=min(feasible_e1+[d for (eq,_,_),d in dispatch.items() if eq=="one"],key=cost)
-            improved=polish_e1(p,eb.DEFAULT_SPEC,eb.B,keys,seed["witness"],electricity,weights)
+            deadline=perf_counter()+MAX_COMBINATION_SECONDS if rate>=BOUNDED_RATE else None
+            improved=budget_call(deadline,polish_e1,p,eb.DEFAULT_SPEC,eb.B,keys,seed["witness"],electricity,weights)
             upper=improved["stats"]["objective"]
             upgrade=cost(critical_shared(rate))
             # The auxiliary target certifies separation. It never replaces
@@ -502,20 +668,24 @@ def run(output=None, pilot_only=False):
             if "minimum_peak_lower" in low_power_profile:
                 extrapolated=[x["lower"]+(rate-r)*money*low_power_profile["minimum_peak_lower"]
                               for (eq,r),x in meter_points.items() if eq=="one" and r<=rate]
-            lower=max(extrapolated,default=float("-inf"))
+            prior=sorted((r,x["lower"]) for (eq,r),x in meter_points.items() if eq=="one")
+            chord=[x+(y-x)*(rate-a)/(b-a) for a,x in prior for b,y in prior if a<rate<b]
+            lower=max([solver_lower(solutions["two_shared_pool",rate]["stats"]),*extrapolated,*chord])
             certificate={}
             if lower<desired:
-                certificate=partial_e1_bound(p,eb.DEFAULT_SPEC,eb.B,keys,solutions["two_shared_pool",rate],
-                    energy_weight=electricity,peak_weights=weights,upgrade_upper=upgrade,e1_upper=upper)
+                try:
+                    certificate=budget_call(perf_counter()+AUXILIARY_WITNESS_SECONDS,partial_e1_bound,p,eb.DEFAULT_SPEC,
+                        eb.B,keys,solutions["two_shared_pool",rate],energy_weight=electricity,peak_weights=weights,
+                        upgrade_upper=upgrade,e1_upper=upper)
+                except TimeoutError:
+                    certificate=dict(lower_bound=lower,stop="optional separation wall-clock budget")
                 lower=max(lower,certificate["lower_bound"])
             if lower>upper+1e-6:
                 raise ArithmeticError(("auxiliary lower exceeds replayed E1 bill",rate,lower,upper))
-            if lower>upgrade+1e-5 or lower>=desired:
-                raw={**improved,"stats":dict(status="Auxiliary peak and selected-hour lower certificates",
-                     objective=upper,dual_bound=min(upper,lower),gap=max(0.,upper-lower)/max(1.,abs(upper)))}
-            else:
-                raw=prove_lower(p,eb.DEFAULT_SPEC,eb.B,keys,energy_weight=electricity,peak_weights=weights,
-                                incumbent=improved,minimum_value=desired)
+            separated=lower>upgrade+1e-5 or lower>=desired
+            raw={**improved,"stats":dict(status=("Auxiliary peak and selected-hour lower certificates" if separated
+                 else "Auxiliary separation not certified"), objective=upper,dual_bound=min(upper,lower),
+                 gap=max(0.,upper-lower)/max(1.,abs(upper)))}
             raw["stats"]["selected_hour_certificate"]=certificate
             if extrapolated:
                 raw["stats"]["minimum_peak_extrapolated_lower"]=max(extrapolated)
@@ -557,7 +727,7 @@ def run(output=None, pilot_only=False):
                              peak_bounds=caps)
         return dict(**profile(cheap["audit"]),lower=solver_lower(r["stats"]))
 
-    critical["P2"]=certify_p2(rate_point,min_peak,money,tuple(rates.values()))
+    critical["P2"]=certify_p2(rate_point,min_peak,money,tuple(rates.values()),may_refine=may_refine)
     if low_power_profile:
         terminal=terminal_volume_band(p,keys,net,max(rates.values()),low_power_profile,
                                       checks["uniform_low_band_interval"])
@@ -593,7 +763,7 @@ def run(output=None, pilot_only=False):
                               checks["uniform_high_band_intervals"],net,warehouse_max)[name]
     def refine(name,row):
         a,b=row["from_rate"],row["to_rate"]
-        if row["status"]!="unresolved_across_meter_bands" or b is None or b-a<=.01:
+        if row["status"]!="unresolved_across_meter_bands" or b is None or b-a<=.01 or not may_refine():
             return [row]
         resolved={"strictly_positive","no_zero_in_either_band_assignment","zero_to_tolerance"}
         if any(recertify(name,r,r)[0]["status"] not in resolved for r in (a,b)):
@@ -615,6 +785,9 @@ def run(output=None, pilot_only=False):
             e1_energy_capacity_primal_minus_lower_eur_2025=bill_value(base)-base["volume"]-base["lower"],
             volumetric_difference_eur_2025=base["volume"]-profile_at_rate["volume"]))
     checks["p2_warehouse_energy_supports"]=list(volume_checks.values())
+    critical["P2"]["auxiliary_refinement"]=dict(seconds=perf_counter()-curve_start,
+        refinement_time_budget_seconds=MAX_COMBINATION_SECONDS,optional_witness_seconds=AUXILIARY_WITNESS_SECONDS,
+        scope="Only continuous-price zero searches use this budget. Unresolved intervals retain the last certified bounds.")
     def verify_statuses(node):
         if isinstance(node,dict):
             if "status_code" in node and node["status_code"]!=0:
@@ -632,6 +805,12 @@ def run(output=None, pilot_only=False):
     checks.update(same_selected_54=True,all_physical_dispatches_replayed=True,all_recorded_backend_status_codes_zero=True,
                   energy_order_E2_E4_E3_E1=True,P2_total_at_most_P1=True,annual_settlements_replayed=True)
     summary.update(checks=checks, main=rows, critical_capacity_price=critical,
+                   run_wall_seconds=perf_counter()-started,
+                   precision_policy=dict(high_rate_threshold_eur_2024_per_kw_year=BOUNDED_RATE,
+                       max_high_rate_wall_seconds=MAX_COMBINATION_SECONDS,max_bounded_objective_gap_eur_2025=1.,
+                       objective="P1 annual wholesale electricity; P2 annual wholesale plus both metered capacity charges.",
+                       billing="A bounded comparison has no scalar optimum. The replayed feasible schedule and separate bill intervals are retained.",
+                       timing="Elapsed dispatch calculation and replay for each hardware/rate. Reused P1/P2-zero and contract rows reference the same dispatch; do not sum invoice rows."),
                    solver_statistics=selected_statistics(evidence.statistics),
                    large_batteries=large,
                    portfolio_objective="P2 minimizes annual wholesale energy and capacity charges in 2025 EUR. "
@@ -738,17 +917,20 @@ def main():
         if source_state()["dirty"]:
             raise ValueError("Formal cabinet run requires a clean source commit")
         output.mkdir(parents=True)
-    result=run(output,args.pilot)
+    try:
+        result=run(output,args.pilot)
+    except (ValueError,TimeoutError) as exc:
+        if output:
+            write_json(output/"stopped.json",dict(status="stopped",reason=str(exc)))
+        raise
     lines=[]
     for name,r in result["pilot"]["metrics"].items():
         lines.append(f"pilot {PILOT_DAY} {name} EUR={r['day_eur']:.6f} port_kW={r['peak_kw']['PORT']:.3f}")
-    for r in result.get("main",[]):
-        if r["scenario"] in ("N0","frank","official","capacity_208_38"):
-            lines.append(f"{r['scenario']} {r['policy']} {r['equipment']} served={r['completed']}/73 "
-                         f"six_week_EUR={r['six_week_energy_eur_2021']:.6f} "
-                         f"annual_total_EUR2025={r['annual_total_eur_2025']:.2f} value={r['annual_operating_value_eur_2025']:.2f}")
+    if "run_wall_seconds" in result:
+        lines.append(f"full study wall seconds={result['run_wall_seconds']:.2f}")
     for line in lines:
         print(line,flush=True)
+    lines.extend(invoice_line(r) for r in result.get("main",[]))
     if output:
         write_json(output/"summary.json",result)
         (output/"cli.txt").write_text("\n".join(lines)+"\n",encoding="utf-8")

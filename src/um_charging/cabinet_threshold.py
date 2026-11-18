@@ -25,7 +25,7 @@ def gain_interval(equipment,a,b,point,factor):
                 uniform_objective_gain_upper_eur_2025=upper)
 
 
-def certify_p2(rate_point, min_peak, network_factor, seed_rates=(0., 22.79, 208.38)):
+def certify_p2(rate_point, min_peak, network_factor, seed_rates=(0., 22.79, 208.38), *, may_refine=lambda: True):
     """Bound reoptimized wholesale-plus-capacity costs at 2024 EUR/kW/year.
 
     Each callback returns feasible annual wholesale 'energy' (2025 EUR) and
@@ -110,6 +110,11 @@ def certify_p2(rate_point, min_peak, network_factor, seed_rates=(0., 22.79, 208.
             records.append(dict(from_rate=a, to_rate=b, status="unresolved_within_rate_tolerance",
                                 endpoint_bounds_2025_eur=gaps))
             return
+        if not may_refine():
+            records.append(dict(from_rate=a,to_rate=b,status="unresolved_at_solver_precision",
+                                endpoint_bounds_2025_eur=gaps,lower_bound_2025_eur=max(0.,min(margins)),
+                                stop="auxiliary curve time budget"))
+            return
         choices = (x, crossing(left, right, a, b))
         split = next((s for s in choices if s is not None and 1e-7 < (s-a)/(b-a) < 1.-1e-7), (a+b)/2)
         finite(equipment, a, split, records)
@@ -148,6 +153,14 @@ def certify_p2(rate_point, min_peak, network_factor, seed_rates=(0., 22.79, 208.
                     (gap(equipment, high)[0] <= money_tol or base["peak"] <= base_floor))):
                 break
             step = max(high, (1.-low)/slope) if slope > 0 and low < 0 else high
+            if not may_refine():
+                if slope>0:
+                    beginning=high+max(0.,(2*money_tol-low)/slope)
+                    return dict(from_rate=beginning,to_rate=None,status="strictly_positive",
+                                lower_bound_at_start_2025_eur=low+(beginning-high)*slope,lower_slope_2025=slope,
+                                baseline_min_peak_lower_kw=base_floor,feasible_upgrade=ray,
+                                support_start=high)
+                break
             high += step
             prices.append(high)
             upgrade = point(equipment, high)
@@ -173,9 +186,13 @@ def certify_p2(rate_point, min_peak, network_factor, seed_rates=(0., 22.79, 208.
             tail = infinite(equipment, prices)
             for a, b in zip(prices, prices[1:]):
                 finite(equipment, a, b, records)
+            if tail["from_rate"]>prices[-1]:
+                records.append(dict(from_rate=prices[-1],to_rate=tail["from_rate"],
+                                    status="unresolved_at_solver_precision",lower_bound_2025_eur=0.,
+                                    stop="auxiliary curve time budget"))
             records.append(tail)
         for record in records:
-            if record["to_rate"] is not None:
+            if record["to_rate"] is not None and "stop" not in record:
                 record["uniform_objective_gain_upper_eur_2025"]=zero_plateau(
                     equipment,record["from_rate"],record["to_rate"])
         output[equipment] = records

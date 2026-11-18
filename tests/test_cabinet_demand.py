@@ -11,6 +11,65 @@ from um_charging.cabinet_threshold import certify_p2
 from um_charging.connector_cost import break_even
 
 
+def test_decision_record_keeps_home_case_optimal_and_euro_ceiling_inclusive():
+    from um_charging.cabinet_demand import decision_record
+    exact = decision_record(101., 101., 4.5)
+    assert exact["status"] == "optimal"
+    assert exact["objective_lower_eur_2025"] == exact["objective_upper_eur_2025"] == 101.
+    assert exact["absolute_gap_eur_2025"] == exact["relative_gap"] == 0.
+    assert exact["wall_seconds"] == 4.5
+    bounded = decision_record(100., 101., 6., bounded=True)
+    assert bounded["status"] == "bounded"
+    assert bounded["objective_lower_eur_2025"] == 100.
+    assert bounded["objective_upper_eur_2025"] == 101.
+    assert bounded["absolute_gap_eur_2025"] == 1.
+    assert bounded["relative_gap"] == pytest.approx(1./101.)
+    assert bounded["wall_seconds"] == 6.
+    with pytest.raises(ValueError):
+        decision_record(100., 101.01, 6., bounded=True)
+    with pytest.raises(ValueError):
+        decision_record(100., 100.5, 45*60+.01, bounded=True)
+
+
+def test_high_rate_timeout_stops_its_worker(monkeypatch):
+    from multiprocessing import get_context
+    from time import perf_counter, sleep
+    from um_charging.cabinet_demand import budget_call
+    ctx = get_context("spawn")
+    make_process = ctx.Process
+    started = []
+
+    def capture(*args, **kwargs):
+        worker = make_process(*args, **kwargs)
+        started.append(worker)
+        return worker
+
+    monkeypatch.setattr(ctx, "Process", capture)
+    with pytest.raises(TimeoutError):
+        budget_call(perf_counter()+.5, sleep, 30.)
+    worker, = started
+    assert worker.pid and not worker.is_alive()
+    assert worker.exitcode is not None and worker.exitcode != 0
+
+
+@pytest.mark.parametrize(("lo", "hi", "sign", "cost_side"), [
+    (-5., -2., "negative", "below"), (.01, 3724.42, "positive", "below"),
+    (3724.44, 4000., "positive", "above")])
+def test_bill_value_interval_proves_sign_and_equipment_cost(lo, hi, sign, cost_side):
+    from um_charging.cabinet_demand import classify_decision_bounds
+    assert classify_decision_bounds(lo, hi, 3724.43) == {"sign": sign, "cost_comparison": cost_side}
+
+
+@pytest.mark.parametrize(("lo", "hi"), [(-.01, .01), (-.01, 0.), (0., .01),
+                                        (3724.42, 3724.44), (3724.43, 3724.44),
+                                        (3724.42, 3724.43), (4., 2.),
+                                        (float("nan"), 40.), (40., float("inf"))])
+def test_bill_value_interval_rejects_ambiguous_or_invalid_decision(lo, hi):
+    from um_charging.cabinet_demand import classify_decision_bounds
+    with pytest.raises(ValueError):
+        classify_decision_bounds(lo, hi, 3724.43)
+
+
 def toy_period(grid_kwh, start=480, end=495, day=4):
     origin = datetime(2021, 1, day, tzinfo=timezone.utc)
 
@@ -317,6 +376,27 @@ def test_threshold_positive_certificate_uses_dual_lower():
         assert all(r["status"]=="strictly_positive" for r in regions)
         assert regions[0]["lower_bound_2025_eur"] == pytest.approx(0.999)
         assert regions[-1]["lower_bound_at_start_2025_eur"] == pytest.approx(0.999)
+
+
+def test_ended_refinement_preserves_unresolved_rates_before_proved_tail():
+    def profiles(name):
+        return [(10.,3.)] if name=="one" else [(10.,3.),(9.,4.),(50.,2.)]
+
+    def point(name,rate):
+        assert rate in (0.,.5)
+        energy,peak=min(profiles(name),key=lambda x:x[0]+rate*x[1])
+        return dict(energy=energy,peak=peak)
+
+    def minimum(name):
+        energy,peak=min(profiles(name),key=lambda x:x[1])
+        return dict(energy=energy,peak=peak)
+
+    result=certify_p2(point,minimum,1.,(0.,.5),may_refine=lambda:False)
+    for pieces in result["intervals"].values():
+        assert pieces[-2]["from_rate"]==.5
+        assert pieces[-2]["status"]=="unresolved_at_solver_precision"
+        assert pieces[-2]["to_rate"]==pieces[-1]["from_rate"]>40.
+        assert pieces[-1]["status"]=="strictly_positive" and pieces[-1]["to_rate"] is None
 
 
 def test_capacity_savings_certificate_accounts_for_both_banded_volume_charges():

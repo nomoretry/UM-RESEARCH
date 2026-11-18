@@ -132,3 +132,74 @@ def partial_e1_bound(p, spec, rule, fixed, pool, *, energy_weight, peak_weights,
     if lower > e1_upper+1e-6:
         raise ArithmeticError(("partial E1 lower exceeds replayed upper", lower, e1_upper))
     return dict(lower_bound=lower, continuous=continuous["stats"], ranked_hours=ranked, trials=trials)
+
+
+def decision_e1_bound(p, spec, rule, fixed, pool, *, incumbent, energy_weight, peak_weights,
+                      upgrade_upper, nominal_rate, wall_seconds=45*60):
+    """Bound a high-rate annual E1 objective, with an independently replayed upper bound.
+
+    Selected port hours provide a global lower bound. Improving reservations in one
+    week changes only the feasible upper bound. Continuous reoptimization on the
+    whole period restores the two common meters and every inter-day SOC link.
+    The caller enforces the combination wall clock and checks invoice decisions.
+    """
+    from .cabinet_audit import replay, schedule_on_clock
+    from .cabinet_incumbent import polish_e1
+    from .energy_boundary import Period, components
+
+    if nominal_rate<80 or not 0<wall_seconds<=45*60:
+        raise ValueError(("High-rate decision bounds require the registered rate and time limits",
+                          nominal_rate,wall_seconds))
+    start=perf_counter()
+    deadline=start+wall_seconds
+    fixed=set(fixed)
+    weights=dict(energy_weight=energy_weight,peak_weights=peak_weights)
+    replay(p,"two_shared_pool",spec,rule,pool,fixed=fixed,**weights)
+    best={k:incumbent[k] for k in ("states","schedule")}
+    audit=replay(p,"one",spec,rule,best,fixed=fixed,check_objective=False,**weights)
+    upper=energy_weight*audit["purchase_eur"]+fsum(peak_weights[s]*audit["site_peak_kw"][s] for s in SITES)
+    initial_upper=upper
+    proof=partial_e1_bound(p,spec,rule,fixed,pool,upgrade_upper=upgrade_upper,e1_upper=upper,**weights)
+    lower=proof["lower_bound"]
+    weekly=[]
+    caps=None
+    for days in components(p.days,p.links):
+        if (upper-lower<=1. and lower>upgrade_upper+1e-6) or perf_counter()>=deadline:
+            break
+        if caps is None:
+            proxy=cm.relaxation(p,"one",spec,rule,fixed,**weights)
+            caps={s:max(proxy["peak_kw"][s],audit["site_peak_kw"][s]) for s in SITES}
+        local=Period(days,p.prices)
+        # The original witness is feasible under these fixed meter ceilings. Its
+        # price in this component is a valid ceiling for the weekly price search.
+        budget=fsum(audit["daily_eur"].get(d,0.) for d in local.offset)
+        entry=dict(start=days[0]["date"],peak_caps_kw=caps,price_ceiling_eur_2021=budget)
+        weekly.append(entry)
+        try:
+            result=cm.solve(local,"one",spec,rule,local.keys&fixed,peak_bounds=caps,
+                            force_exact=True,objective_upper=budget+1e-6,absolute_gap=.002,
+                            _weekly_deadline=min(deadline,perf_counter()+60.))
+        except TimeoutError as exc:
+            entry["stop_reason"]=str(exc)
+            break
+        replay(local,"one",spec,rule,result,fixed=local.keys&fixed)
+        schedule=[row for row in best["schedule"] if row["date"] not in local.offset]
+        schedule.extend(schedule_on_clock(p,local,result["schedule"]))
+        improved=polish_e1(p,spec,rule,fixed,dict(schedule=schedule),energy_weight,peak_weights)
+        value=improved["stats"]["objective"]
+        entry.update(weekly_price_solver=result["stats"],whole_period_polish=improved["stats"],
+                     replayed_upper_eur_2025=value)
+        if value<upper:
+            upper=value
+            best={k:improved[k] for k in ("states","schedule")}
+    if lower>upper+1e-6:
+        raise ArithmeticError(("Decision lower exceeds replayed upper bound",lower,upper))
+    gap=max(0.,upper-lower)
+    stats=dict(status="bounded",objective=upper,dual_bound=min(upper,lower),
+               gap=gap/max(abs(upper),1e-10),absolute_gap_eur_2025=gap,seconds=perf_counter()-start,
+               initial_replayed_upper_eur_2025=initial_upper,
+               uniform_objective_decision_certified=gap<=1. and lower>upgrade_upper+1e-6,
+               nominal_capacity_price=nominal_rate,selected_hour_certificate=proof,weekly_improvements=weekly)
+    result=dict(**best,stats=stats)
+    result["audit"]=replay(p,"one",spec,rule,result,fixed=fixed,**weights)
+    return result

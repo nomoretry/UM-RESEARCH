@@ -25,6 +25,8 @@ def save(figure, folder, name):
 
 def study_comparison(summary, folder):
     rows = {(r["equipment"], r["policy"]): r for r in summary["main"] if r["scenario"] == "frank"}
+    if any(row["status"] != "optimal" or row["value_status"] != "optimal" for row in rows.values()):
+        raise ValueError("The Frank comparison requires optimal dispatch and value for each plotted point.")
     policies = ("P1", "P2")
     fig, axes = plt.subplots(1, 2, figsize=(11.2, 5.1), sharey=True)
     fig.subplots_adjust(left=.23, right=.97, top=.77, bottom=.19, wspace=.22)

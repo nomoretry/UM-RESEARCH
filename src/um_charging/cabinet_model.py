@@ -427,7 +427,7 @@ def _optimal_face(model, solution, groups):
     return allowed,required
 
 
-def _bounded_mip(model, upper_cost, absolute_gap, start=None):
+def _bounded_mip(model, upper_cost, absolute_gap, start=None, *, time_limit=None):
     """Apply valid reduced-cost and row-slack bounds using a feasible cost ceiling."""
     a = coo_matrix((model.data,(model.row,model.col)),shape=(len(model.lb),len(model.cost))).tocsr()
     lower,upper = np.array(model.lower,dtype=float),np.array(model.upper,dtype=float)
@@ -458,6 +458,8 @@ def _bounded_mip(model, upper_cost, absolute_gap, start=None):
         lower[integers] = np.ceil(lower[integers]-1e-7)
         upper[integers] = np.floor(upper[integers]+1e-7)
     options = {"mip_rel_gap":0., "mip_feasibility_tolerance":1e-9,"primal_feasibility_tolerance":1e-9}
+    if time_limit is not None:
+        options["time_limit"] = time_limit
     if absolute_gap is not None:
         options["mip_abs_gap"] = absolute_gap
     if start is not None:
@@ -501,7 +503,7 @@ def _bounded_mip(model, upper_cost, absolute_gap, start=None):
 def solve(p, equipment, spec, rule, fixed=None, *, energy_weight=1., peak_weights=None,
           site_energy_weights=None, peak_bounds=None, objective_upper=None, total_peak_limit=None,
           force_exact=False, absolute_gap=None, incumbent=None, lower_target=None, _guide=None, _relax_only=False,
-          _screened=False, _warehouse_energy_upper=False):
+          _screened=False, _warehouse_energy_upper=False, _weekly_deadline=None):
     """Maximize served days, or minimize a weighted bill on the supplied identical service.
 
     Start with the aggregate linear relaxation, enforce exact discrete modes wherever
@@ -727,7 +729,10 @@ def solve(p, equipment, spec, rule, fixed=None, *, energy_weight=1., peak_weight
             model.add(terms + [(slack, -big)], high=_guide[1])
             model.cost = [0.]*len(model.cost)
             model.cost[slack] = 1.
-        res = (_bounded_mip(model,objective_upper,absolute_gap) if not _guide and not _relax_only
+        remaining=None if _weekly_deadline is None else _weekly_deadline-perf_counter()
+        if remaining is not None and remaining<=0:
+            raise TimeoutError("Weekly reservation improvement reached its time limit")
+        res = (_bounded_mip(model,objective_upper,absolute_gap,time_limit=remaining) if not _guide and not _relax_only
                and (objective_upper is not None or absolute_gap is not None) and any(model.integer)
                else model.solve())
         stat = dict(status=res.message, status_code=res.status, objective=res.fun,
@@ -735,6 +740,8 @@ def solve(p, equipment, spec, rule, fixed=None, *, energy_weight=1., peak_weight
                     seconds=perf_counter()-t0, exact_groups=len(exact),
                     integer_variables=sum(model.integer), variables=len(model.cost))
         steps.append(stat)
+        if res.status==1 and _weekly_deadline is not None:
+            raise TimeoutError(res.message)
         if res.status != 0:
             raise ValueError(f"Cabinet model {equipment} {rule}: {stat}")
         if _relax_only:
