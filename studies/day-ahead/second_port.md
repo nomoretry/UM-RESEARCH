@@ -13,7 +13,7 @@
 | 2021 同期 | 146.80 | 115.58 | 31.22 | 134.92 | 104.97 | 29.95 | **10.62** |
 | 2025 回放 | 99.58 | 88.57 | 11.01 | 89.61 | 81.76 | 7.84 | **6.80** |
 
-**后六周检验。** 使用同一承运人、同一原始五车池，按时间预先选后续六个完整自然周，包括单车日期。与原设计及留出集没有重复行程。42 天中 30 天有可建模任务，4 天只有未通过质量筛选的记录，8 天无记录；共 73 个完整车日、355 趟。每一天先检查全车队，不能全做时分别证明最多能完成的整车日数，再用单接口可完成的最大集合进行同任务结算；同数量时按车辆 ID 选择，选择过程与电价无关。两套设施各有 12/30 个日期完成全部任务，均最多完成 54/73 个车日。可结算的是 28 天、54 个相同车日、281 趟；其余服务仍在结果中，未给未完成任务设定货币价值。
+**后六周检验。** 使用同一承运人、同一原始五车池，按时间预先选后续六个完整自然周，包括单车日期。与原设计及留出集没有重复行程。42 天中 30 天有可建模任务，4 天只有未通过质量筛选的记录，8 天无记录；共 73 个完整车日、355 趟。每一天先检查全车队，不能全做时分别证明最多能完成的整车日数，再用单接口可完成的最大集合进行同任务结算；同数量时按车辆 ID 选择，选择过程与电价无关。两套设施各有 12/30 个日期完成全部任务，均最多完成 54/73 个车日。可结算的是 28 天、54 个相同车日、281 趟；其余服务仍在结果中，未给未完成任务设定货币价值。逐车日检查表明，其余 19 个车日中 18 个即使单车功率无限也完成不了，受限于 300 kWh 电池或当天没有充电窗口，菜单内的任何设施都不能增加完成量。[服务缺口归因](../fleet-service/service_gap.md)
 
 | 周一 | 完成车日 / 可建模车日 | 同期硬件收益（2021 €） | 1 月回放硬件收益（2025 €） |
 |---|---:|---:|---:|
@@ -55,7 +55,7 @@ The trial adds one simultaneous 50 kW port outlet. The port grid limit stays at 
 
 For the same eight truck-days on 21–23 September, the two builds both completed 45 trips. Contemporaneous DE/LU prices put the optimized bills at €115.58 and €104.97. On January 2025 weekday-matched prices those bills were €88.57 and €81.76. Immediate versus optimized dispatch and one versus two connectors are separate comparisons in the first table above.
 
-The next six non-overlapping calendar weeks contained 73 eligible truck-days. Twelve of 30 modeled dates were feasible for the entire fleet under either build. Both builds served at most 54 truck-days. On the same 54 truck-days (281 trips), two connectors saved €32.29 under contemporaneous prices and €21.58 on the January replay. One-connector immediate charging failed on 29 September, so its scheduling comparison covers 27 dates. The optimized hardware comparison retains all 28 dates with common service. Records, simulated energy, assumed access, missing observations and service failures remain separately identifiable in the inputs and results.
+The next six non-overlapping calendar weeks contained 73 eligible truck-days. Twelve of 30 modeled dates were feasible for the entire fleet under either build. Both builds served at most 54 truck-days. On the same 54 truck-days (281 trips), two connectors saved €32.29 under contemporaneous prices and €21.58 on the January replay. One-connector immediate charging failed on 29 September, so its scheduling comparison covers 27 dates. The optimized hardware comparison retains all 28 dates with common service. Records, simulated energy, assumed access, missing observations and service failures remain separately identifiable in the inputs and results. Eighteen of the 19 unserved truck-days remain infeasible even with unlimited truck charging power. They are limited by the 300 kWh battery or by having no charging stop, so no menu facility increases service. [Service-gap attribution](../fleet-service/service_gap.md)
 
 Repeating the six-week mix across 52 weeks supports €279.82/year in 2021 euros or €330.85 in 2025 purchasing power. Even with zero extra maintenance that supports €2,554.72 installed capital at 5% over ten years. A published standalone 50 kW unit costs €3,724.43/year under the specified assumptions. An outlet added to an existing cabinet requires its own quote and confirmation of simultaneous 2 × 50 kW delivery. Retail contract exposure, demand charges and the value of unmet service are unknown.
 

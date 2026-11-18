@@ -1,0 +1,5345 @@
+{
+  "source": {
+    "commit": "2064bea400758a931030128e90eb10de4985f999",
+    "dirty": false
+  },
+  "inputs_sha256": {
+    "studies/fleet-service/operating_weeks.json": "901b0dcf25f3af092c3400bd4982498d9a0b026e56495d365f5c78be6abd2c07",
+    "studies/day-ahead/second_port.json": "da886446b7a0f7cf7e6a7e90b9c3dd39278cde4fedc1bf37dfea7c9fe6d60272",
+    "configs/port_warehouse_investment.json": "7547b9c3e589a38e8a24994bd8723f017fc3336640e409aba8677307ee0276c4"
+  },
+  "default_spec": {
+    "capacity_kwh": 300.0,
+    "reserve_kwh": 30.0,
+    "boundary_kwh": 150.0,
+    "truck_kw": 50.0,
+    "efficiency": 0.9
+  },
+  "capacity_rule": "reserve=0.1*C, boundary=0.5*C; efficiency=0.9, search through 5000 kWh",
+  "thresholds": "Brackets [lower, upper]; null means unreachable within the search domain. Power search has no finite cap.",
+  "investment_unit": "synthetic cycle-equivalent incremental capital allocation",
+  "fleet_scope": "Minimum synthetic period investment evaluated against daily service maxima on the six later weeks (warehouse release 45 min); retrospective.",
+  "reference_hardware": {
+    "one": {
+      "PORT": {
+        "interfaces": 1,
+        "power_kw": 100
+      },
+      "WAREHOUSE": {
+        "interfaces": 1,
+        "power_kw": 75
+      }
+    },
+    "two": {
+      "PORT": {
+        "interfaces": 2,
+        "power_kw": 100
+      },
+      "WAREHOUSE": {
+        "interfaces": 1,
+        "power_kw": 75
+      }
+    }
+  },
+  "releases": {
+    "45": {
+      "counts": {
+        "served_at_baseline": 54,
+        "truck_power_recoverable": 1,
+        "release_recoverable": 0,
+        "battery_recoverable": 9,
+        "battery_and_power_recoverable": 8,
+        "no_um_charging_window": 1,
+        "unrecoverable_other": 0
+      },
+      "rows": [
+        {
+          "date": "2021-09-27",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            3.6625404357910156,
+            3.662541389465332
+          ],
+          "min_capacity_kwh_50": [
+            40.97883850336075,
+            40.97883924841881
+          ],
+          "min_capacity_kwh_inf": [
+            40.97883850336075,
+            40.97883924841881
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 36.880955,
+          "day_kwh": 71.432936,
+          "window_minutes": {
+            "PORT": 1110.13285,
+            "WAREHOUSE": 190.11071666666658
+          }
+        },
+        {
+          "date": "2021-09-27",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            7.592443466186523,
+            7.59244441986084
+          ],
+          "min_capacity_kwh_50": [
+            74.22967404127121,
+            74.22967478632927
+          ],
+          "min_capacity_kwh_inf": [
+            74.22967404127121,
+            74.22967478632927
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 39.073599,
+          "day_kwh": 130.972091,
+          "window_minutes": {
+            "PORT": 1104.8481833333333,
+            "WAREHOUSE": 45.1731166666666
+          }
+        },
+        {
+          "date": "2021-09-28",
+          "vehicle_id": "3",
+          "category": "battery_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": [
+            694.6732521057129,
+            694.673252850771
+          ],
+          "min_capacity_kwh_inf": [
+            342.959600687027,
+            342.95960143208504
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "4487",
+            "trip_end_min": 488.10523333333333,
+            "low_kwh": 30.0,
+            "high_kwh": 28.10629
+          },
+          "max_leg_kwh": 271.89371,
+          "day_kwh": 580.557351,
+          "window_minutes": {
+            "PORT": 807.2142,
+            "WAREHOUSE": 117.72365000000002
+          }
+        },
+        {
+          "date": "2021-09-28",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            6.9531049728393555,
+            6.953105926513672
+          ],
+          "min_capacity_kwh_50": [
+            70.49178332090378,
+            70.49178406596184
+          ],
+          "min_capacity_kwh_inf": [
+            47.835708409547806,
+            47.835709154605865
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 27.609881,
+          "day_kwh": 113.796194,
+          "window_minutes": {
+            "PORT": 1069.2303666666667,
+            "WAREHOUSE": 21.85226666666665
+          }
+        },
+        {
+          "date": "2021-09-29",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            10.950326919555664,
+            10.95032787322998
+          ],
+          "min_capacity_kwh_50": [
+            105.30817285180092,
+            105.30817359685898
+          ],
+          "min_capacity_kwh_inf": [
+            77.53139957785606,
+            77.53140032291412
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 39.21648,
+          "day_kwh": 176.221681,
+          "window_minutes": {
+            "PORT": 1072.8548333333333,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-09-29",
+          "vehicle_id": "4",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            5.237513542175293,
+            5.237514495849609
+          ],
+          "min_capacity_kwh_50": [
+            99.26732331514359,
+            99.26732406020164
+          ],
+          "min_capacity_kwh_inf": [
+            99.26732331514359,
+            99.26732406020164
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 40.923368,
+          "day_kwh": 94.29412,
+          "window_minutes": {
+            "PORT": 1172.6225833333333,
+            "WAREHOUSE": 27.617483333333325
+          }
+        },
+        {
+          "date": "2021-09-29",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            15.352972030639648,
+            15.352972984313965
+          ],
+          "min_capacity_kwh_50": [
+            204.26348745822906,
+            204.26348820328712
+          ],
+          "min_capacity_kwh_inf": [
+            204.26348745822906,
+            204.26348820328712
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 59.698316,
+          "day_kwh": 206.909528,
+          "window_minutes": {
+            "PORT": 1007.1167166666667,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-09-30",
+          "vehicle_id": "3",
+          "category": "battery_and_power_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": null,
+          "min_capacity_kwh_inf": [
+            671.0526250302792,
+            671.0526257753372
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "4502",
+            "trip_end_min": 517.9748666666667,
+            "low_kwh": 30.0,
+            "high_kwh": -59.08308699999998
+          },
+          "max_leg_kwh": 359.083087,
+          "day_kwh": 603.947363,
+          "window_minutes": {
+            "PORT": 272.8929166666667,
+            "WAREHOUSE": 361.4838500000001
+          }
+        },
+        {
+          "date": "2021-09-30",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            7.21630859375,
+            7.216309547424316
+          ],
+          "min_capacity_kwh_50": [
+            86.72496378421783,
+            86.7249645292759
+          ],
+          "min_capacity_kwh_inf": [
+            47.03206047415733,
+            47.03206121921539
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 35.698984,
+          "day_kwh": 112.110085,
+          "window_minutes": {
+            "PORT": 1019.6768999999999,
+            "WAREHOUSE": 16.033450000000016
+          }
+        },
+        {
+          "date": "2021-10-01",
+          "vehicle_id": "3",
+          "category": "truck_power_recoverable",
+          "min_truck_kw": [
+            92.1932601928711,
+            92.19326114654541
+          ],
+          "min_capacity_kwh_50": [
+            389.54977840185165,
+            389.5497791469097
+          ],
+          "min_capacity_kwh_inf": [
+            273.8999165594578,
+            273.89991730451584
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "4517",
+            "trip_end_min": 742.91625,
+            "low_kwh": 30.0,
+            "high_kwh": 20.04957849999996
+          },
+          "max_leg_kwh": 246.509925,
+          "day_kwh": 405.950049,
+          "window_minutes": {
+            "PORT": 664.7866166666666,
+            "WAREHOUSE": 275.6659166666667
+          }
+        },
+        {
+          "date": "2021-10-01",
+          "vehicle_id": "4",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            2.861466407775879,
+            2.8614673614501953
+          ],
+          "min_capacity_kwh_50": [
+            47.12856039404869,
+            47.12856113910675
+          ],
+          "min_capacity_kwh_inf": [
+            47.12856039404869,
+            47.12856113910675
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 29.166669,
+          "day_kwh": 56.244996,
+          "window_minutes": {
+            "PORT": 1310.4002666666668,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-01",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            13.31474781036377,
+            13.314748764038086
+          ],
+          "min_capacity_kwh_50": [
+            191.93624928593636,
+            191.93625003099442
+          ],
+          "min_capacity_kwh_inf": [
+            162.30746284127235,
+            162.3074635863304
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 61.646221,
+          "day_kwh": 195.351228,
+          "window_minutes": {
+            "PORT": 977.6108,
+            "WAREHOUSE": 13.632349999999974
+          }
+        },
+        {
+          "date": "2021-10-04",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            5.380363464355469,
+            5.380364418029785
+          ],
+          "min_capacity_kwh_50": [
+            78.77936437726021,
+            78.77936512231827
+          ],
+          "min_capacity_kwh_inf": [
+            70.02638950943947,
+            70.02639025449753
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 24.964788,
+          "day_kwh": 92.772378,
+          "window_minutes": {
+            "PORT": 1149.51805,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-04",
+          "vehicle_id": "4",
+          "category": "battery_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": [
+            315.8347472548485,
+            315.83474799990654
+          ],
+          "min_capacity_kwh_inf": [
+            315.8347472548485,
+            315.83474799990654
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "6214",
+            "trip_end_min": 779.8115333333334,
+            "low_kwh": 30.0,
+            "high_kwh": 15.74872700000003
+          },
+          "max_leg_kwh": 275.327413,
+          "day_kwh": 284.25127299999997,
+          "window_minutes": {
+            "PORT": 1166.6202166666667,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-04",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            4.143074035644531,
+            4.143074989318848
+          ],
+          "min_capacity_kwh_50": [
+            84.66720283031464,
+            84.6672035753727
+          ],
+          "min_capacity_kwh_inf": [
+            84.66720283031464,
+            84.6672035753727
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 39.020702,
+          "day_kwh": 76.200483,
+          "window_minutes": {
+            "PORT": 1226.1504666666667,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-05",
+          "vehicle_id": "4",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            10.172712326049805,
+            10.172713279724121
+          ],
+          "min_capacity_kwh_50": [
+            122.07224816083908,
+            122.07224890589714
+          ],
+          "min_capacity_kwh_inf": [
+            83.1244982779026,
+            83.12449902296066
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 38.744155,
+          "day_kwh": 161.393136,
+          "window_minutes": {
+            "PORT": 1057.6866833333333,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-05",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            8.267956733703613,
+            8.26795768737793
+          ],
+          "min_capacity_kwh_50": [
+            122.57455885410309,
+            122.57455959916115
+          ],
+          "min_capacity_kwh_inf": [
+            86.1130528151989,
+            86.11305356025696
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 35.67486,
+          "day_kwh": 126.427252,
+          "window_minutes": {
+            "PORT": 1012.8371333333332,
+            "WAREHOUSE": 6.57835
+          }
+        },
+        {
+          "date": "2021-10-06",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            12.121561050415039,
+            12.121562004089355
+          ],
+          "min_capacity_kwh_50": [
+            219.55195888876915,
+            219.5519596338272
+          ],
+          "min_capacity_kwh_inf": [
+            219.55195888876915,
+            219.5519596338272
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 69.702075,
+          "day_kwh": 197.59676299999998,
+          "window_minutes": {
+            "PORT": 1086.75085,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-06",
+          "vehicle_id": "4",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            2.7474050521850586,
+            2.747406005859375
+          ],
+          "min_capacity_kwh_50": [
+            36.63853108882904,
+            36.6385318338871
+          ],
+          "min_capacity_kwh_inf": [
+            31.482283025979996,
+            31.482283771038055
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 28.334055,
+          "day_kwh": 50.987757,
+          "window_minutes": {
+            "PORT": 1202.4478000000001,
+            "WAREHOUSE": 34.78613333333328
+          }
+        },
+        {
+          "date": "2021-10-06",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            5.653358459472656,
+            5.653359413146973
+          ],
+          "min_capacity_kwh_50": [
+            45.18062770366669,
+            45.18062844872475
+          ],
+          "min_capacity_kwh_inf": [
+            37.86291182041168,
+            37.86291256546974
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 25.627866,
+          "day_kwh": 94.909165,
+          "window_minutes": {
+            "PORT": 1073.8229666666666,
+            "WAREHOUSE": 45.3838833333333
+          }
+        },
+        {
+          "date": "2021-10-07",
+          "vehicle_id": "1",
+          "category": "battery_and_power_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": null,
+          "min_capacity_kwh_inf": [
+            1443.946921825409,
+            1443.946922570467
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "123",
+            "trip_end_min": 1086.4733,
+            "low_kwh": 30.0,
+            "high_kwh": -128.12288
+          },
+          "max_leg_kwh": 399.312088,
+          "day_kwh": 721.973461,
+          "window_minutes": {
+            "PORT": 739.8683,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-07",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            3.510181427001953,
+            3.5101823806762695
+          ],
+          "min_capacity_kwh_50": [
+            70.61613500118256,
+            70.61613574624062
+          ],
+          "min_capacity_kwh_inf": [
+            70.61613500118256,
+            70.61613574624062
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 26.076324,
+          "day_kwh": 63.554522,
+          "window_minutes": {
+            "PORT": 1207.0507333333335,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-07",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            18.03801918029785,
+            18.038020133972168
+          ],
+          "min_capacity_kwh_50": [
+            227.35907435417175,
+            227.3590750992298
+          ],
+          "min_capacity_kwh_inf": [
+            136.7084950208664,
+            136.70849576592445
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 57.758312,
+          "day_kwh": 228.854476,
+          "window_minutes": {
+            "PORT": 878.4045000000001,
+            "WAREHOUSE": 6.845700000000079
+          }
+        },
+        {
+          "date": "2021-10-08",
+          "vehicle_id": "4",
+          "category": "battery_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": [
+            912.963579595089,
+            912.963580340147
+          ],
+          "min_capacity_kwh_inf": [
+            306.97932839393616,
+            306.9793291389942
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "6265",
+            "trip_end_min": 443.29468333333335,
+            "low_kwh": 30.0,
+            "high_kwh": 23.718604000000028
+          },
+          "max_leg_kwh": 276.281396,
+          "day_kwh": 583.751757,
+          "window_minutes": {
+            "PORT": 855.1206833333333,
+            "WAREHOUSE": 50.67676666666665
+          }
+        },
+        {
+          "date": "2021-10-09",
+          "vehicle_id": "1",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            8.675644874572754,
+            8.67564582824707
+          ],
+          "min_capacity_kwh_50": [
+            273.4757773578167,
+            273.47577810287476
+          ],
+          "min_capacity_kwh_inf": [
+            273.4757773578167,
+            273.47577810287476
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 109.390311,
+          "day_kwh": 109.390311,
+          "window_minutes": {
+            "PORT": 840.5931,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-11",
+          "vehicle_id": "1",
+          "category": "battery_and_power_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": null,
+          "min_capacity_kwh_inf": [
+            639.9273507297039,
+            639.927351474762
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "194",
+            "trip_end_min": 1324.7697,
+            "low_kwh": 30.0,
+            "high_kwh": -275.934616
+          },
+          "max_leg_kwh": 345.172748,
+          "day_kwh": 643.6898640000001,
+          "window_minutes": {
+            "PORT": 591.2751000000001,
+            "WAREHOUSE": 184.20019999999988
+          }
+        },
+        {
+          "date": "2021-10-11",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            7.720607757568359,
+            7.720608711242676
+          ],
+          "min_capacity_kwh_50": [
+            94.59459409117699,
+            94.59459483623505
+          ],
+          "min_capacity_kwh_inf": [
+            43.15369725227356,
+            43.15369799733162
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 34.495979,
+          "day_kwh": 130.416585,
+          "window_minutes": {
+            "PORT": 1096.0793666666668,
+            "WAREHOUSE": 30.054583333333426
+          }
+        },
+        {
+          "date": "2021-10-11",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            4.715539932250977,
+            4.715540885925293
+          ],
+          "min_capacity_kwh_50": [
+            57.95807987451553,
+            57.95808061957359
+          ],
+          "min_capacity_kwh_inf": [
+            52.02560871839523,
+            52.02560946345329
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 26.248821,
+          "day_kwh": 85.45511,
+          "window_minutes": {
+            "PORT": 1163.744,
+            "WAREHOUSE": 44.39044999999993
+          }
+        },
+        {
+          "date": "2021-10-12",
+          "vehicle_id": "1",
+          "category": "battery_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": [
+            585.0821375846863,
+            585.0821383297443
+          ],
+          "min_capacity_kwh_inf": [
+            585.0821375846863,
+            585.0821383297443
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "203",
+            "trip_end_min": 1266.19705,
+            "low_kwh": 30.0,
+            "high_kwh": 7.458931000000007
+          },
+          "max_leg_kwh": 292.541069,
+          "day_kwh": 401.35254,
+          "window_minutes": {
+            "PORT": 0,
+            "WAREHOUSE": 868.2253833333333
+          }
+        },
+        {
+          "date": "2021-10-12",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            4.290578842163086,
+            4.290579795837402
+          ],
+          "min_capacity_kwh_50": [
+            36.63750737905502,
+            36.63750812411308
+          ],
+          "min_capacity_kwh_inf": [
+            36.63750737905502,
+            36.63750812411308
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 23.348776,
+          "day_kwh": 74.782612,
+          "window_minutes": {
+            "PORT": 1077.8921,
+            "WAREHOUSE": 84.07391666666672
+          }
+        },
+        {
+          "date": "2021-10-13",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            3.4424943923950195,
+            3.442495346069336
+          ],
+          "min_capacity_kwh_50": [
+            70.38679048418999,
+            70.38679122924805
+          ],
+          "min_capacity_kwh_inf": [
+            70.38679048418999,
+            70.38679122924805
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 23.954448,
+          "day_kwh": 63.348112,
+          "window_minutes": {
+            "PORT": 1226.7867166666667,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-13",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            6.448677062988281,
+            6.448678016662598
+          ],
+          "min_capacity_kwh_50": [
+            81.31539449095726,
+            81.31539523601532
+          ],
+          "min_capacity_kwh_inf": [
+            41.45701304078102,
+            41.45701378583908
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 27.257024,
+          "day_kwh": 102.86869300000001,
+          "window_minutes": {
+            "PORT": 1055.10715,
+            "WAREHOUSE": 8.353199999999902
+          }
+        },
+        {
+          "date": "2021-10-14",
+          "vehicle_id": "4",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            0.6143579483032227,
+            0.6143589019775391
+          ],
+          "min_capacity_kwh_50": [
+            7.797926664352417,
+            7.797927409410477
+          ],
+          "min_capacity_kwh_inf": [
+            7.797926664352417,
+            7.797927409410477
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 7.018134,
+          "day_kwh": 12.487169999999999,
+          "window_minutes": {
+            "PORT": 1298.5925666666667,
+            "WAREHOUSE": 56.44414999999992
+          }
+        },
+        {
+          "date": "2021-10-14",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            12.449170112609863,
+            12.44917106628418
+          ],
+          "min_capacity_kwh_50": [
+            189.73574489355087,
+            189.73574563860893
+          ],
+          "min_capacity_kwh_inf": [
+            189.73574489355087,
+            189.73574563860893
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 57.432511,
+          "day_kwh": 192.088994,
+          "window_minutes": {
+            "PORT": 1028.6575500000001,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-15",
+          "vehicle_id": "1",
+          "category": "battery_and_power_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": null,
+          "min_capacity_kwh_inf": [
+            896.3465444743633,
+            896.3465452194214
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "226",
+            "trip_end_min": 827.4973166666666,
+            "low_kwh": 30.0,
+            "high_kwh": -80.838764
+          },
+          "max_leg_kwh": 230.838764,
+          "day_kwh": 358.538618,
+          "window_minutes": {
+            "PORT": 378.3286833333334,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-15",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            1.1904010772705078,
+            1.1904020309448242
+          ],
+          "min_capacity_kwh_50": [
+            13.942327350378036,
+            13.942328095436096
+          ],
+          "min_capacity_kwh_inf": [
+            13.942327350378036,
+            13.942328095436096
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 12.548095,
+          "day_kwh": 24.256985999999998,
+          "window_minutes": {
+            "PORT": 1313.1992500000001,
+            "WAREHOUSE": 45.276950000000056
+          }
+        },
+        {
+          "date": "2021-10-15",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            6.308520317077637,
+            6.308521270751953
+          ],
+          "min_capacity_kwh_50": [
+            52.87777930498123,
+            52.87778005003929
+          ],
+          "min_capacity_kwh_inf": [
+            52.87777930498123,
+            52.87778005003929
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 27.916091,
+          "day_kwh": 107.78498,
+          "window_minutes": {
+            "PORT": 1048.9788,
+            "WAREHOUSE": 90.06236666666666
+          }
+        },
+        {
+          "date": "2021-10-18",
+          "vehicle_id": "1",
+          "category": "battery_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": [
+            798.1344245374203,
+            798.1344252824783
+          ],
+          "min_capacity_kwh_inf": [
+            498.3367770910263,
+            498.33677783608437
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "270",
+            "trip_end_min": 1251.2136833333334,
+            "low_kwh": 30.0,
+            "high_kwh": -130.82553700000003
+          },
+          "max_leg_kwh": 248.605633,
+          "day_kwh": 507.134519,
+          "window_minutes": {
+            "PORT": 589.5135666666666,
+            "WAREHOUSE": 193.54105000000004
+          }
+        },
+        {
+          "date": "2021-10-18",
+          "vehicle_id": "3",
+          "category": "battery_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": [
+            748.350416123867,
+            748.3504168689251
+          ],
+          "min_capacity_kwh_inf": [
+            445.02759650349617,
+            445.02759724855423
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "4605",
+            "trip_end_min": 792.0453666666667,
+            "low_kwh": 30.0,
+            "high_kwh": -132.70092299999996
+          },
+          "max_leg_kwh": 165.386222,
+          "day_kwh": 563.802804,
+          "window_minutes": {
+            "PORT": 843.0464666666667,
+            "WAREHOUSE": 20.074400000000026
+          }
+        },
+        {
+          "date": "2021-10-18",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            5.901580810546875,
+            5.901581764221191
+          ],
+          "min_capacity_kwh_50": [
+            79.50493842363358,
+            79.50493916869164
+          ],
+          "min_capacity_kwh_inf": [
+            79.50493842363358,
+            79.50493916869164
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 38.792507,
+          "day_kwh": 100.093061,
+          "window_minutes": {
+            "PORT": 1130.6919333333335,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-19",
+          "vehicle_id": "1",
+          "category": "battery_and_power_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": null,
+          "min_capacity_kwh_inf": [
+            993.1926399469376,
+            993.1926406919956
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "285",
+            "trip_end_min": 1175.20905,
+            "low_kwh": 30.0,
+            "high_kwh": -196.59632
+          },
+          "max_leg_kwh": 283.142051,
+          "day_kwh": 496.59632,
+          "window_minutes": {
+            "PORT": 0,
+            "WAREHOUSE": 568.34075
+          }
+        },
+        {
+          "date": "2021-10-19",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            6.2000017166137695,
+            6.200002670288086
+          ],
+          "min_capacity_kwh_50": [
+            98.39571714401245,
+            98.39571788907051
+          ],
+          "min_capacity_kwh_inf": [
+            98.39571714401245,
+            98.39571788907051
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 34.790041,
+          "day_kwh": 99.946933,
+          "window_minutes": {
+            "PORT": 1074.69775,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-20",
+          "vehicle_id": "1",
+          "category": "battery_and_power_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": null,
+          "min_capacity_kwh_inf": [
+            303.2379999756813,
+            303.23800072073936
+          ],
+          "first_failure": {
+            "cause": "single_truck_terminal_energy",
+            "low_kwh": 30.0,
+            "high_kwh": 54.46604600000005
+          },
+          "max_leg_kwh": 92.923177,
+          "day_kwh": 220.472804,
+          "window_minutes": {
+            "PORT": 153.2427,
+            "WAREHOUSE": 13.34243333333336
+          }
+        },
+        {
+          "date": "2021-10-20",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            6.56147575378418,
+            6.561476707458496
+          ],
+          "min_capacity_kwh_50": [
+            76.6284205019474,
+            76.62842124700546
+          ],
+          "min_capacity_kwh_inf": [
+            76.6284205019474,
+            76.62842124700546
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 35.803691,
+          "day_kwh": 107.781353,
+          "window_minutes": {
+            "PORT": 1063.5452166666664,
+            "WAREHOUSE": 31.547366666666562
+          }
+        },
+        {
+          "date": "2021-10-20",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            5.419870376586914,
+            5.4198713302612305
+          ],
+          "min_capacity_kwh_50": [
+            70.91621533036232,
+            70.91621607542038
+          ],
+          "min_capacity_kwh_inf": [
+            70.91621533036232,
+            70.91621607542038
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 38.180564,
+          "day_kwh": 94.74830899999999,
+          "window_minutes": {
+            "PORT": 1103.1944166666667,
+            "WAREHOUSE": 62.2491500000001
+          }
+        },
+        {
+          "date": "2021-10-21",
+          "vehicle_id": "1",
+          "category": "no_um_charging_window",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": null,
+          "min_capacity_kwh_inf": null,
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "308",
+            "trip_end_min": 843.8307333333333,
+            "low_kwh": 30.0,
+            "high_kwh": -15.711782999999997
+          },
+          "max_leg_kwh": 253.562563,
+          "day_kwh": 571.718069,
+          "window_minutes": {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-21",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            17.978549003601074,
+            17.97854995727539
+          ],
+          "min_capacity_kwh_50": [
+            264.18715938925743,
+            264.1871601343155
+          ],
+          "min_capacity_kwh_inf": [
+            171.63016200065613,
+            171.6301627457142
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 88.63016,
+          "day_kwh": 243.097306,
+          "window_minutes": {
+            "PORT": 1003.3489833333333,
+            "WAREHOUSE": 7.105150000000094
+          }
+        },
+        {
+          "date": "2021-10-21",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            6.028802871704102,
+            6.028803825378418
+          ],
+          "min_capacity_kwh_50": [
+            72.78807982802391,
+            72.78808057308197
+          ],
+          "min_capacity_kwh_inf": [
+            50.00189766287804,
+            50.001898407936096
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 39.945053,
+          "day_kwh": 102.017638,
+          "window_minutes": {
+            "PORT": 1096.3715,
+            "WAREHOUSE": 31.742283333333376
+          }
+        },
+        {
+          "date": "2021-10-22",
+          "vehicle_id": "1",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            9.408010482788086,
+            9.408011436462402
+          ],
+          "min_capacity_kwh_50": [
+            95.21597102284431,
+            95.21597176790237
+          ],
+          "min_capacity_kwh_inf": [
+            90.27745425701141,
+            90.27745500206947
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 37.821038,
+          "day_kwh": 101.661626,
+          "window_minutes": {
+            "PORT": 635.6235166666667,
+            "WAREHOUSE": 84.76698333333331
+          }
+        },
+        {
+          "date": "2021-10-22",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            1.4879074096679688,
+            1.4879083633422852
+          ],
+          "min_capacity_kwh_50": [
+            25.037699937820435,
+            25.037700682878494
+          ],
+          "min_capacity_kwh_inf": [
+            19.481458514928818,
+            19.481459259986877
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 17.533313,
+          "day_kwh": 29.73603,
+          "window_minutes": {
+            "PORT": 1322.7394333333332,
+            "WAREHOUSE": 9.602800000000002
+          }
+        },
+        {
+          "date": "2021-10-22",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            7.618436813354492,
+            7.618437767028809
+          ],
+          "min_capacity_kwh_50": [
+            101.1996254324913,
+            101.19962617754936
+          ],
+          "min_capacity_kwh_inf": [
+            101.1996254324913,
+            101.19962617754936
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 38.914262,
+          "day_kwh": 122.07076,
+          "window_minutes": {
+            "PORT": 985.4142333333333,
+            "WAREHOUSE": 82.79053333333331
+          }
+        },
+        {
+          "date": "2021-10-25",
+          "vehicle_id": "3",
+          "category": "battery_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": [
+            703.1696610152721,
+            703.1696617603302
+          ],
+          "min_capacity_kwh_inf": [
+            420.55822163820267,
+            420.5582223832607
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "4665",
+            "trip_end_min": 883.05725,
+            "low_kwh": 30.0,
+            "high_kwh": -232.90188950000004
+          },
+          "max_leg_kwh": 275.280131,
+          "day_kwh": 541.168552,
+          "window_minutes": {
+            "PORT": 892.4547833333334,
+            "WAREHOUSE": 11.022216666666623
+          }
+        },
+        {
+          "date": "2021-10-25",
+          "vehicle_id": "4",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            1.9477577209472656,
+            1.947758674621582
+          ],
+          "min_capacity_kwh_50": [
+            12.61763721704483,
+            12.61763796210289
+          ],
+          "min_capacity_kwh_inf": [
+            12.61763721704483,
+            12.61763796210289
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 6.894971,
+          "day_kwh": 34.396432000000004,
+          "window_minutes": {
+            "PORT": 1089.9600666666665,
+            "WAREHOUSE": 87.3399833333333
+          }
+        },
+        {
+          "date": "2021-10-25",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            7.3506574630737305,
+            7.350658416748047
+          ],
+          "min_capacity_kwh_50": [
+            80.3431436419487,
+            80.34314438700676
+          ],
+          "min_capacity_kwh_inf": [
+            63.308361917734146,
+            63.308362662792206
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 37.25891,
+          "day_kwh": 120.868414,
+          "window_minutes": {
+            "PORT": 1046.7631333333334,
+            "WAREHOUSE": 49.45085000000006
+          }
+        },
+        {
+          "date": "2021-10-26",
+          "vehicle_id": "1",
+          "category": "battery_and_power_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": null,
+          "min_capacity_kwh_inf": [
+            665.0805614888668,
+            665.0805622339249
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "405",
+            "trip_end_min": 1197.9593333333332,
+            "low_kwh": 30.0,
+            "high_kwh": -110.53709850000001
+          },
+          "max_leg_kwh": 332.540281,
+          "day_kwh": 395.343186,
+          "window_minutes": {
+            "PORT": 179.74145,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-26",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            6.569097518920898,
+            6.569098472595215
+          ],
+          "min_capacity_kwh_50": [
+            105.23555278778076,
+            105.23555353283882
+          ],
+          "min_capacity_kwh_inf": [
+            105.23555278778076,
+            105.23555353283882
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 40.471155,
+          "day_kwh": 109.04249300000001,
+          "window_minutes": {
+            "PORT": 1106.6206499999998,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-26",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            5.968982696533203,
+            5.9689836502075195
+          ],
+          "min_capacity_kwh_50": [
+            71.75983637571335,
+            71.75983712077141
+          ],
+          "min_capacity_kwh_inf": [
+            43.03847625851631,
+            43.03847700357437
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 38.734629,
+          "day_kwh": 104.321379,
+          "window_minutes": {
+            "PORT": 1134.5468833333334,
+            "WAREHOUSE": 30.602666666666664
+          }
+        },
+        {
+          "date": "2021-10-27",
+          "vehicle_id": "2",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            3.7186403274536133,
+            3.7186412811279297
+          ],
+          "min_capacity_kwh_50": [
+            57.35454931855202,
+            57.35455006361008
+          ],
+          "min_capacity_kwh_inf": [
+            57.35454931855202,
+            57.35455006361008
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 36.370534,
+          "day_kwh": 72.411023,
+          "window_minutes": {
+            "PORT": 1298.1630666666667,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-27",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            7.687014579772949,
+            7.687015533447266
+          ],
+          "min_capacity_kwh_50": [
+            83.53220298886299,
+            83.53220373392105
+          ],
+          "min_capacity_kwh_inf": [
+            83.53220298886299,
+            83.53220373392105
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 49.708484,
+          "day_kwh": 124.887467,
+          "window_minutes": {
+            "PORT": 975.7224833333332,
+            "WAREHOUSE": 107.38085000000001
+          }
+        },
+        {
+          "date": "2021-10-27",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            6.765948295593262,
+            6.765949249267578
+          ],
+          "min_capacity_kwh_50": [
+            50.7449708878994,
+            50.74497163295746
+          ],
+          "min_capacity_kwh_inf": [
+            50.7449708878994,
+            50.74497163295746
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 23.308755,
+          "day_kwh": 101.535261,
+          "window_minutes": {
+            "PORT": 938.8042499999999,
+            "WAREHOUSE": 61.64924999999994
+          }
+        },
+        {
+          "date": "2021-10-28",
+          "vehicle_id": "1",
+          "category": "battery_and_power_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": null,
+          "min_capacity_kwh_inf": [
+            1151.211304962635,
+            1151.211305707693
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "421",
+            "trip_end_min": 1134.3131833333334,
+            "low_kwh": 30.0,
+            "high_kwh": -249.309314
+          },
+          "max_leg_kwh": 306.891592,
+          "day_kwh": 460.48452199999997,
+          "window_minutes": {
+            "PORT": 0,
+            "WAREHOUSE": 164.1171833333333
+          }
+        },
+        {
+          "date": "2021-10-28",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            10.00814151763916,
+            10.008142471313477
+          ],
+          "min_capacity_kwh_50": [
+            150.030667334795,
+            150.03066807985306
+          ],
+          "min_capacity_kwh_inf": [
+            63.32961767911911,
+            63.32961842417717
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 31.070061,
+          "day_kwh": 151.012926,
+          "window_minutes": {
+            "PORT": 984.62005,
+            "WAREHOUSE": 21.313766666666766
+          }
+        },
+        {
+          "date": "2021-10-28",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            7.959256172180176,
+            7.959257125854492
+          ],
+          "min_capacity_kwh_50": [
+            100.41193515062332,
+            100.41193589568138
+          ],
+          "min_capacity_kwh_inf": [
+            67.76895374059677,
+            67.76895448565483
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 38.828317,
+          "day_kwh": 126.831057,
+          "window_minutes": {
+            "PORT": 1028.8871666666666,
+            "WAREHOUSE": 33.44866666666678
+          }
+        },
+        {
+          "date": "2021-10-29",
+          "vehicle_id": "2",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            4.035296440124512,
+            4.035297393798828
+          ],
+          "min_capacity_kwh_50": [
+            40.86294397711754,
+            40.8629447221756
+          ],
+          "min_capacity_kwh_inf": [
+            40.86294397711754,
+            40.8629447221756
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 36.77665,
+          "day_kwh": 77.137993,
+          "window_minutes": {
+            "PORT": 1217.8140833333332,
+            "WAREHOUSE": 56.573683333333406
+          }
+        },
+        {
+          "date": "2021-10-29",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            23.94763946533203,
+            23.947640419006348
+          ],
+          "min_capacity_kwh_50": [
+            277.5042563676834,
+            277.50425711274147
+          ],
+          "min_capacity_kwh_inf": [
+            220.50804197788239,
+            220.50804272294044
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 75.140686,
+          "day_kwh": 258.964056,
+          "window_minutes": {
+            "PORT": 938.3606,
+            "WAREHOUSE": 12.280300000000011
+          }
+        },
+        {
+          "date": "2021-10-29",
+          "vehicle_id": "4",
+          "category": "battery_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": [
+            349.3994206190109,
+            349.399421364069
+          ],
+          "min_capacity_kwh_inf": [
+            327.50402987003326,
+            327.5040306150913
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "6470",
+            "trip_end_min": 625.111,
+            "low_kwh": 30.0,
+            "high_kwh": 5.2463730000000055
+          },
+          "max_leg_kwh": 155.080684,
+          "day_kwh": 326.840604,
+          "window_minutes": {
+            "PORT": 977.5938666666666,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-29",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            6.958800315856934,
+            6.95880126953125
+          ],
+          "min_capacity_kwh_50": [
+            88.18726539611816,
+            88.18726614117622
+          ],
+          "min_capacity_kwh_inf": [
+            63.35820108652115,
+            63.35820183157921
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 36.000911,
+          "day_kwh": 113.61409900000001,
+          "window_minutes": {
+            "PORT": 1071.7509833333334,
+            "WAREHOUSE": 16.694216666666648
+          }
+        },
+        {
+          "date": "2021-11-02",
+          "vehicle_id": "3",
+          "category": "battery_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": [
+            623.4098806977272,
+            623.4098814427853
+          ],
+          "min_capacity_kwh_inf": [
+            623.4098806977272,
+            623.4098814427853
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "4709",
+            "trip_end_min": 837.69475,
+            "low_kwh": 30.0,
+            "high_kwh": 15.11522699999998
+          },
+          "max_leg_kwh": 168.517957,
+          "day_kwh": 561.068893,
+          "window_minutes": {
+            "PORT": 953.3793166666668,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-11-03",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            8.216148376464844,
+            8.21614933013916
+          ],
+          "min_capacity_kwh_50": [
+            120.44208198785782,
+            120.44208273291588
+          ],
+          "min_capacity_kwh_inf": [
+            47.73015156388283,
+            47.73015230894089
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 42.957137,
+          "day_kwh": 141.703924,
+          "window_minutes": {
+            "PORT": 1147.6911,
+            "WAREHOUSE": 2.1089000000000624
+          }
+        },
+        {
+          "date": "2021-11-04",
+          "vehicle_id": "4",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            6.744250297546387,
+            6.744251251220703
+          ],
+          "min_capacity_kwh_50": [
+            87.57111877202988,
+            87.57111951708794
+          ],
+          "min_capacity_kwh_inf": [
+            64.93556722998619,
+            64.93556797504425
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 19.614198,
+          "day_kwh": 105.220957,
+          "window_minutes": {
+            "PORT": 1004.8959333333333,
+            "WAREHOUSE": 35.209266666666736
+          }
+        },
+        {
+          "date": "2021-11-04",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            2.7521724700927734,
+            2.75217342376709
+          ],
+          "min_capacity_kwh_50": [
+            35.910965502262115,
+            35.910966247320175
+          ],
+          "min_capacity_kwh_inf": [
+            35.910965502262115,
+            35.910966247320175
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 32.319869,
+          "day_kwh": 54.970214999999996,
+          "window_minutes": {
+            "PORT": 1288.7133,
+            "WAREHOUSE": 42.845816666666565
+          }
+        },
+        {
+          "date": "2021-11-05",
+          "vehicle_id": "2",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            5.558263778686523,
+            5.55826473236084
+          ],
+          "min_capacity_kwh_50": [
+            51.737385988235474,
+            51.73738673329353
+          ],
+          "min_capacity_kwh_inf": [
+            51.737385988235474,
+            51.73738673329353
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 30.326473,
+          "day_kwh": 90.443982,
+          "window_minutes": {
+            "PORT": 1084.7988833333334,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-11-05",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            7.587979316711426,
+            7.587980270385742
+          ],
+          "min_capacity_kwh_50": [
+            63.267816603183746,
+            63.267817348241806
+          ],
+          "min_capacity_kwh_inf": [
+            63.267816603183746,
+            63.267817348241806
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 35.1798,
+          "day_kwh": 121.924221,
+          "window_minutes": {
+            "PORT": 486.3837166666667,
+            "WAREHOUSE": 584.8212166666666
+          }
+        }
+      ]
+    },
+    "0": {
+      "counts": {
+        "served_at_baseline": 55,
+        "truck_power_recoverable": 1,
+        "release_recoverable": 0,
+        "battery_recoverable": 10,
+        "battery_and_power_recoverable": 7,
+        "no_um_charging_window": 0,
+        "unrecoverable_other": 0
+      },
+      "rows": [
+        {
+          "date": "2021-09-27",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            3.540024757385254,
+            3.5400257110595703
+          ],
+          "min_capacity_kwh_50": [
+            40.97883850336075,
+            40.97883924841881
+          ],
+          "min_capacity_kwh_inf": [
+            40.97883850336075,
+            40.97883924841881
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 36.880955,
+          "day_kwh": 71.432936,
+          "window_minutes": {
+            "PORT": 1110.13285,
+            "WAREHOUSE": 235.11071666666658
+          }
+        },
+        {
+          "date": "2021-09-27",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            6.9911956787109375,
+            6.991196632385254
+          ],
+          "min_capacity_kwh_50": [
+            55.13116046786308,
+            55.13116121292114
+          ],
+          "min_capacity_kwh_inf": [
+            43.41510981321335,
+            43.41511055827141
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 39.073599,
+          "day_kwh": 130.972091,
+          "window_minutes": {
+            "PORT": 1104.8481833333333,
+            "WAREHOUSE": 144.0757999999999
+          }
+        },
+        {
+          "date": "2021-09-28",
+          "vehicle_id": "3",
+          "category": "battery_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": [
+            582.8514084219933,
+            582.8514091670513
+          ],
+          "min_capacity_kwh_inf": [
+            302.10412219166756,
+            302.1041229367256
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "4487",
+            "trip_end_min": 488.10523333333333,
+            "low_kwh": 30.0,
+            "high_kwh": 28.10629
+          },
+          "max_leg_kwh": 271.89371,
+          "day_kwh": 580.557351,
+          "window_minutes": {
+            "PORT": 807.2142,
+            "WAREHOUSE": 177.3619666666666
+          }
+        },
+        {
+          "date": "2021-09-28",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            6.349298477172852,
+            6.349299430847168
+          ],
+          "min_capacity_kwh_50": [
+            30.677644908428192,
+            30.677645653486252
+          ],
+          "min_capacity_kwh_inf": [
+            30.677644908428192,
+            30.677645653486252
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 27.609881,
+          "day_kwh": 113.796194,
+          "window_minutes": {
+            "PORT": 1069.2303666666667,
+            "WAREHOUSE": 125.61220000000014
+          }
+        },
+        {
+          "date": "2021-09-29",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            10.144200325012207,
+            10.144201278686523
+          ],
+          "min_capacity_kwh_50": [
+            62.81267777085304,
+            62.8126785159111
+          ],
+          "min_capacity_kwh_inf": [
+            43.57386603951454,
+            43.5738667845726
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 39.21648,
+          "day_kwh": 176.221681,
+          "window_minutes": {
+            "PORT": 1072.8548333333333,
+            "WAREHOUSE": 85.25636666666662
+          }
+        },
+        {
+          "date": "2021-09-29",
+          "vehicle_id": "4",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            4.860431671142578,
+            4.8604326248168945
+          ],
+          "min_capacity_kwh_50": [
+            59.16985049843788,
+            59.16985124349594
+          ],
+          "min_capacity_kwh_inf": [
+            45.47040835022926,
+            45.47040909528732
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 40.923368,
+          "day_kwh": 94.29412,
+          "window_minutes": {
+            "PORT": 1172.6225833333333,
+            "WAREHOUSE": 120.73445000000004
+          }
+        },
+        {
+          "date": "2021-09-29",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            12.86052417755127,
+            12.860525131225586
+          ],
+          "min_capacity_kwh_50": [
+            147.41748347878456,
+            147.41748422384262
+          ],
+          "min_capacity_kwh_inf": [
+            115.11013880372047,
+            115.11013954877853
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 59.698316,
+          "day_kwh": 206.909528,
+          "window_minutes": {
+            "PORT": 1007.1167166666667,
+            "WAREHOUSE": 73.13935000000004
+          }
+        },
+        {
+          "date": "2021-09-30",
+          "vehicle_id": "3",
+          "category": "battery_and_power_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": null,
+          "min_capacity_kwh_inf": [
+            671.0526250302792,
+            671.0526257753372
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "4502",
+            "trip_end_min": 517.9748666666667,
+            "low_kwh": 30.0,
+            "high_kwh": -59.08308699999998
+          },
+          "max_leg_kwh": 359.083087,
+          "day_kwh": 603.947363,
+          "window_minutes": {
+            "PORT": 272.8929166666667,
+            "WAREHOUSE": 406.4838500000001
+          }
+        },
+        {
+          "date": "2021-09-30",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            6.384791374206543,
+            6.384792327880859
+          ],
+          "min_capacity_kwh_50": [
+            39.665537327528,
+            39.66553807258606
+          ],
+          "min_capacity_kwh_inf": [
+            39.665537327528,
+            39.66553807258606
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 35.698984,
+          "day_kwh": 112.110085,
+          "window_minutes": {
+            "PORT": 1019.6768999999999,
+            "WAREHOUSE": 150.91806666666662
+          }
+        },
+        {
+          "date": "2021-10-01",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            43.32150650024414,
+            43.32150745391846
+          ],
+          "min_capacity_kwh_50": [
+            276.7130956053734,
+            276.71309635043144
+          ],
+          "min_capacity_kwh_inf": [
+            273.8999165594578,
+            273.89991730451584
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 246.509925,
+          "day_kwh": 405.950049,
+          "window_minutes": {
+            "PORT": 664.7866166666666,
+            "WAREHOUSE": 386.5689166666667
+          }
+        },
+        {
+          "date": "2021-10-01",
+          "vehicle_id": "4",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            2.8169260025024414,
+            2.816926956176758
+          ],
+          "min_capacity_kwh_50": [
+            32.40740969777107,
+            32.40741044282913
+          ],
+          "min_capacity_kwh_inf": [
+            32.40740969777107,
+            32.40741044282913
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 29.166669,
+          "day_kwh": 56.244996,
+          "window_minutes": {
+            "PORT": 1310.4002666666668,
+            "WAREHOUSE": 20.719550000000027
+          }
+        },
+        {
+          "date": "2021-10-01",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            12.108609199523926,
+            12.108610153198242
+          ],
+          "min_capacity_kwh_50": [
+            153.80686596035957,
+            153.80686670541763
+          ],
+          "min_capacity_kwh_inf": [
+            116.51448383927345,
+            116.51448458433151
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 61.646221,
+          "day_kwh": 195.351228,
+          "window_minutes": {
+            "PORT": 977.6108,
+            "WAREHOUSE": 97.93921666666671
+          }
+        },
+        {
+          "date": "2021-10-04",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            5.078644752502441,
+            5.078645706176758
+          ],
+          "min_capacity_kwh_50": [
+            42.287736386060715,
+            42.287737131118774
+          ],
+          "min_capacity_kwh_inf": [
+            42.287736386060715,
+            42.287737131118774
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 24.964788,
+          "day_kwh": 92.772378,
+          "window_minutes": {
+            "PORT": 1149.51805,
+            "WAREHOUSE": 68.29191666666657
+          }
+        },
+        {
+          "date": "2021-10-04",
+          "vehicle_id": "4",
+          "category": "battery_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": [
+            305.9193477034569,
+            305.91934844851494
+          ],
+          "min_capacity_kwh_inf": [
+            305.9193477034569,
+            305.91934844851494
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "6214",
+            "trip_end_min": 779.8115333333334,
+            "low_kwh": 30.0,
+            "high_kwh": 24.67258700000002
+          },
+          "max_leg_kwh": 275.327413,
+          "day_kwh": 284.25127299999997,
+          "window_minutes": {
+            "PORT": 1166.6202166666667,
+            "WAREHOUSE": 38.57068333333336
+          }
+        },
+        {
+          "date": "2021-10-04",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            3.968414306640625,
+            3.9684152603149414
+          ],
+          "min_capacity_kwh_50": [
+            47.281038016080856,
+            47.281038761138916
+          ],
+          "min_capacity_kwh_inf": [
+            43.356335163116455,
+            43.356335908174515
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 39.020702,
+          "day_kwh": 76.200483,
+          "window_minutes": {
+            "PORT": 1226.1504666666667,
+            "WAREHOUSE": 53.965833333333364
+          }
+        },
+        {
+          "date": "2021-10-05",
+          "vehicle_id": "4",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            9.207476615905762,
+            9.207477569580078
+          ],
+          "min_capacity_kwh_50": [
+            69.95417177677155,
+            69.9541725218296
+          ],
+          "min_capacity_kwh_inf": [
+            43.0490605533123,
+            43.04906129837036
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 38.744155,
+          "day_kwh": 161.393136,
+          "window_minutes": {
+            "PORT": 1057.6866833333333,
+            "WAREHOUSE": 110.87903333333338
+          }
+        },
+        {
+          "date": "2021-10-05",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            7.239017486572266,
+            7.239018440246582
+          ],
+          "min_capacity_kwh_50": [
+            59.78946387767792,
+            59.78946462273598
+          ],
+          "min_capacity_kwh_inf": [
+            39.63873311877251,
+            39.638733863830566
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 35.67486,
+          "day_kwh": 126.427252,
+          "window_minutes": {
+            "PORT": 1012.8371333333332,
+            "WAREHOUSE": 151.47594999999995
+          }
+        },
+        {
+          "date": "2021-10-06",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            11.341095924377441,
+            11.341096878051758
+          ],
+          "min_capacity_kwh_50": [
+            157.22913891077042,
+            157.22913965582848
+          ],
+          "min_capacity_kwh_inf": [
+            77.44674980640411,
+            77.44675055146217
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 69.702075,
+          "day_kwh": 197.59676299999998,
+          "window_minutes": {
+            "PORT": 1086.75085,
+            "WAREHOUSE": 74.78738333333331
+          }
+        },
+        {
+          "date": "2021-10-06",
+          "vehicle_id": "4",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            2.561102867126465,
+            2.5611038208007812
+          ],
+          "min_capacity_kwh_50": [
+            31.482283025979996,
+            31.482283771038055
+          ],
+          "min_capacity_kwh_inf": [
+            31.482283025979996,
+            31.482283771038055
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 28.334055,
+          "day_kwh": 50.987757,
+          "window_minutes": {
+            "PORT": 1202.4478000000001,
+            "WAREHOUSE": 124.78613333333328
+          }
+        },
+        {
+          "date": "2021-10-06",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            5.143782615661621,
+            5.1437835693359375
+          ],
+          "min_capacity_kwh_50": [
+            28.475406020879745,
+            28.475406765937805
+          ],
+          "min_capacity_kwh_inf": [
+            28.475406020879745,
+            28.475406765937805
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 25.627866,
+          "day_kwh": 94.909165,
+          "window_minutes": {
+            "PORT": 1073.8229666666666,
+            "WAREHOUSE": 156.25944999999996
+          }
+        },
+        {
+          "date": "2021-10-07",
+          "vehicle_id": "1",
+          "category": "battery_and_power_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": null,
+          "min_capacity_kwh_inf": [
+            1386.3253377377987,
+            1386.3253384828568
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "123",
+            "trip_end_min": 1086.4733,
+            "low_kwh": 30.0,
+            "high_kwh": -104.39051749999999
+          },
+          "max_leg_kwh": 399.312088,
+          "day_kwh": 721.973461,
+          "window_minutes": {
+            "PORT": 739.8683,
+            "WAREHOUSE": 31.64314999999999
+          }
+        },
+        {
+          "date": "2021-10-07",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            3.399751663208008,
+            3.399752616882324
+          ],
+          "min_capacity_kwh_50": [
+            41.64244160056114,
+            41.6424423456192
+          ],
+          "min_capacity_kwh_inf": [
+            41.64244160056114,
+            41.6424423456192
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 26.076324,
+          "day_kwh": 63.554522,
+          "window_minutes": {
+            "PORT": 1207.0507333333335,
+            "WAREHOUSE": 39.20730000000003
+          }
+        },
+        {
+          "date": "2021-10-07",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            14.317678451538086,
+            14.317679405212402
+          ],
+          "min_capacity_kwh_50": [
+            108.96467566490173,
+            108.9646764099598
+          ],
+          "min_capacity_kwh_inf": [
+            108.73244777321815,
+            108.73244851827621
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 57.758312,
+          "day_kwh": 228.854476,
+          "window_minutes": {
+            "PORT": 878.4045000000001,
+            "WAREHOUSE": 187.1987166666667
+          }
+        },
+        {
+          "date": "2021-10-08",
+          "vehicle_id": "4",
+          "category": "battery_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": [
+            744.213579595089,
+            744.213580340147
+          ],
+          "min_capacity_kwh_inf": [
+            306.97932839393616,
+            306.9793291389942
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "6265",
+            "trip_end_min": 443.29468333333335,
+            "low_kwh": 30.0,
+            "high_kwh": 23.718604000000028
+          },
+          "max_leg_kwh": 276.281396,
+          "day_kwh": 583.751757,
+          "window_minutes": {
+            "PORT": 855.1206833333333,
+            "WAREHOUSE": 140.67676666666665
+          }
+        },
+        {
+          "date": "2021-10-09",
+          "vehicle_id": "1",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            8.675644874572754,
+            8.67564582824707
+          ],
+          "min_capacity_kwh_50": [
+            273.4757773578167,
+            273.47577810287476
+          ],
+          "min_capacity_kwh_inf": [
+            273.4757773578167,
+            273.47577810287476
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 109.390311,
+          "day_kwh": 109.390311,
+          "window_minutes": {
+            "PORT": 840.5931,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-11",
+          "vehicle_id": "1",
+          "category": "battery_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": [
+            979.0237814188004,
+            979.0237821638584
+          ],
+          "min_capacity_kwh_inf": [
+            639.9273507297039,
+            639.927351474762
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "194",
+            "trip_end_min": 1324.7697,
+            "low_kwh": 30.0,
+            "high_kwh": -275.934616
+          },
+          "max_leg_kwh": 345.172748,
+          "day_kwh": 643.6898640000001,
+          "window_minutes": {
+            "PORT": 591.2751000000001,
+            "WAREHOUSE": 274.2001999999999
+          }
+        },
+        {
+          "date": "2021-10-11",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            7.1346540451049805,
+            7.134654998779297
+          ],
+          "min_capacity_kwh_50": [
+            56.59920647740364,
+            56.5992072224617
+          ],
+          "min_capacity_kwh_inf": [
+            38.32886517047882,
+            38.32886591553688
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 34.495979,
+          "day_kwh": 130.416585,
+          "window_minutes": {
+            "PORT": 1096.0793666666668,
+            "WAREHOUSE": 122.54151666666678
+          }
+        },
+        {
+          "date": "2021-10-11",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            4.354360580444336,
+            4.354361534118652
+          ],
+          "min_capacity_kwh_50": [
+            43.51663663983345,
+            43.51663738489151
+          ],
+          "min_capacity_kwh_inf": [
+            29.16535660624504,
+            29.1653573513031
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 26.248821,
+          "day_kwh": 85.45511,
+          "window_minutes": {
+            "PORT": 1163.744,
+            "WAREHOUSE": 144.60121666666663
+          }
+        },
+        {
+          "date": "2021-10-12",
+          "vehicle_id": "1",
+          "category": "battery_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": [
+            585.0821375846863,
+            585.0821383297443
+          ],
+          "min_capacity_kwh_inf": [
+            585.0821375846863,
+            585.0821383297443
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "203",
+            "trip_end_min": 1266.19705,
+            "low_kwh": 30.0,
+            "high_kwh": 7.458931000000007
+          },
+          "max_leg_kwh": 292.541069,
+          "day_kwh": 401.35254,
+          "window_minutes": {
+            "PORT": 0,
+            "WAREHOUSE": 923.5227
+          }
+        },
+        {
+          "date": "2021-10-12",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            4.053409576416016,
+            4.053410530090332
+          ],
+          "min_capacity_kwh_50": [
+            25.943084061145782,
+            25.943084806203842
+          ],
+          "min_capacity_kwh_inf": [
+            25.943084061145782,
+            25.943084806203842
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 23.348776,
+          "day_kwh": 74.782612,
+          "window_minutes": {
+            "PORT": 1077.8921,
+            "WAREHOUSE": 152.0618833333334
+          }
+        },
+        {
+          "date": "2021-10-13",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            3.4424943923950195,
+            3.442495346069336
+          ],
+          "min_capacity_kwh_50": [
+            70.38679048418999,
+            70.38679122924805
+          ],
+          "min_capacity_kwh_inf": [
+            70.38679048418999,
+            70.38679122924805
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 23.954448,
+          "day_kwh": 63.348112,
+          "window_minutes": {
+            "PORT": 1226.7867166666667,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-13",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            5.764069557189941,
+            5.764070510864258
+          ],
+          "min_capacity_kwh_50": [
+            30.285581946372986,
+            30.285582691431046
+          ],
+          "min_capacity_kwh_inf": [
+            30.285581946372986,
+            30.285582691431046
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 27.257024,
+          "day_kwh": 102.86869300000001,
+          "window_minutes": {
+            "PORT": 1055.10715,
+            "WAREHOUSE": 134.6619333333332
+          }
+        },
+        {
+          "date": "2021-10-14",
+          "vehicle_id": "4",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            0.5946111679077148,
+            0.5946121215820312
+          ],
+          "min_capacity_kwh_50": [
+            7.797926664352417,
+            7.797927409410477
+          ],
+          "min_capacity_kwh_inf": [
+            7.797926664352417,
+            7.797927409410477
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 7.018134,
+          "day_kwh": 12.487169999999999,
+          "window_minutes": {
+            "PORT": 1298.5925666666667,
+            "WAREHOUSE": 101.44414999999992
+          }
+        },
+        {
+          "date": "2021-10-14",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            11.778115272521973,
+            11.778116226196289
+          ],
+          "min_capacity_kwh_50": [
+            155.6115135550499,
+            155.61151430010796
+          ],
+          "min_capacity_kwh_inf": [
+            106.7500039935112,
+            106.75000473856926
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 57.432511,
+          "day_kwh": 192.088994,
+          "window_minutes": {
+            "PORT": 1028.6575500000001,
+            "WAREHOUSE": 58.60748333333322
+          }
+        },
+        {
+          "date": "2021-10-15",
+          "vehicle_id": "1",
+          "category": "battery_and_power_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": null,
+          "min_capacity_kwh_inf": [
+            896.3465444743633,
+            896.3465452194214
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "226",
+            "trip_end_min": 827.4973166666666,
+            "low_kwh": 30.0,
+            "high_kwh": -80.838764
+          },
+          "max_leg_kwh": 230.838764,
+          "day_kwh": 358.538618,
+          "window_minutes": {
+            "PORT": 378.3286833333334,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-15",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            1.1522331237792969,
+            1.1522340774536133
+          ],
+          "min_capacity_kwh_50": [
+            13.942327350378036,
+            13.942328095436096
+          ],
+          "min_capacity_kwh_inf": [
+            13.942327350378036,
+            13.942328095436096
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 12.548095,
+          "day_kwh": 24.256985999999998,
+          "window_minutes": {
+            "PORT": 1313.1992500000001,
+            "WAREHOUSE": 90.27695000000006
+          }
+        },
+        {
+          "date": "2021-10-15",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            5.756804466247559,
+            5.756805419921875
+          ],
+          "min_capacity_kwh_50": [
+            31.017878651618958,
+            31.017879396677017
+          ],
+          "min_capacity_kwh_inf": [
+            31.017878651618958,
+            31.017879396677017
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 27.916091,
+          "day_kwh": 107.78498,
+          "window_minutes": {
+            "PORT": 1048.9788,
+            "WAREHOUSE": 199.22483333333327
+          }
+        },
+        {
+          "date": "2021-10-18",
+          "vehicle_id": "1",
+          "category": "battery_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": [
+            667.7547998726368,
+            667.7548006176949
+          ],
+          "min_capacity_kwh_inf": [
+            478.6950409412384,
+            478.69504168629646
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "270",
+            "trip_end_min": 1251.2136833333334,
+            "low_kwh": 30.0,
+            "high_kwh": -130.82553700000003
+          },
+          "max_leg_kwh": 248.605633,
+          "day_kwh": 507.134519,
+          "window_minutes": {
+            "PORT": 589.5135666666666,
+            "WAREHOUSE": 335.86973333333333
+          }
+        },
+        {
+          "date": "2021-10-18",
+          "vehicle_id": "3",
+          "category": "battery_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": [
+            663.975416123867,
+            663.9754168689251
+          ],
+          "min_capacity_kwh_inf": [
+            445.02759650349617,
+            445.02759724855423
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "4605",
+            "trip_end_min": 792.0453666666667,
+            "low_kwh": 30.0,
+            "high_kwh": -98.95092299999996
+          },
+          "max_leg_kwh": 165.386222,
+          "day_kwh": 563.802804,
+          "window_minutes": {
+            "PORT": 843.0464666666667,
+            "WAREHOUSE": 65.07440000000003
+          }
+        },
+        {
+          "date": "2021-10-18",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            5.539257049560547,
+            5.539258003234863
+          ],
+          "min_capacity_kwh_50": [
+            43.1027851998806,
+            43.10278594493866
+          ],
+          "min_capacity_kwh_inf": [
+            43.1027851998806,
+            43.10278594493866
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 38.792507,
+          "day_kwh": 100.093061,
+          "window_minutes": {
+            "PORT": 1130.6919333333335,
+            "WAREHOUSE": 73.95878333333349
+          }
+        },
+        {
+          "date": "2021-10-19",
+          "vehicle_id": "1",
+          "category": "battery_and_power_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": null,
+          "min_capacity_kwh_inf": [
+            993.1926399469376,
+            993.1926406919956
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "285",
+            "trip_end_min": 1175.20905,
+            "low_kwh": 30.0,
+            "high_kwh": -196.59632
+          },
+          "max_leg_kwh": 283.142051,
+          "day_kwh": 496.59632,
+          "window_minutes": {
+            "PORT": 0,
+            "WAREHOUSE": 568.34075
+          }
+        },
+        {
+          "date": "2021-10-19",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            5.583559989929199,
+            5.583560943603516
+          ],
+          "min_capacity_kwh_50": [
+            45.347294211387634,
+            45.347294956445694
+          ],
+          "min_capacity_kwh_inf": [
+            45.347294211387634,
+            45.347294956445694
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 34.790041,
+          "day_kwh": 99.946933,
+          "window_minutes": {
+            "PORT": 1074.69775,
+            "WAREHOUSE": 118.64998333333335
+          }
+        },
+        {
+          "date": "2021-10-20",
+          "vehicle_id": "1",
+          "category": "truck_power_recoverable",
+          "min_truck_kw": [
+            64.39563083648682,
+            64.39563179016113
+          ],
+          "min_capacity_kwh_50": null,
+          "min_capacity_kwh_inf": [
+            185.84635332226753,
+            185.8463540673256
+          ],
+          "first_failure": {
+            "cause": "single_truck_terminal_energy",
+            "low_kwh": 30.0,
+            "high_kwh": 100.71334600000002
+          },
+          "max_leg_kwh": 92.923177,
+          "day_kwh": 220.472804,
+          "window_minutes": {
+            "PORT": 153.2427,
+            "WAREHOUSE": 75.00549999999998
+          }
+        },
+        {
+          "date": "2021-10-20",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            5.966824531555176,
+            5.966825485229492
+          ],
+          "min_capacity_kwh_50": [
+            67.70433411002159,
+            67.70433485507965
+          ],
+          "min_capacity_kwh_inf": [
+            67.70433411002159,
+            67.70433485507965
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 35.803691,
+          "day_kwh": 107.781353,
+          "window_minutes": {
+            "PORT": 1063.5452166666664,
+            "WAREHOUSE": 140.68383333333327
+          }
+        },
+        {
+          "date": "2021-10-20",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            5.058759689331055,
+            5.058760643005371
+          ],
+          "min_capacity_kwh_50": [
+            42.42284819483757,
+            42.42284893989563
+          ],
+          "min_capacity_kwh_inf": [
+            42.42284819483757,
+            42.42284893989563
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 38.180564,
+          "day_kwh": 94.74830899999999,
+          "window_minutes": {
+            "PORT": 1103.1944166666667,
+            "WAREHOUSE": 145.44235000000015
+          }
+        },
+        {
+          "date": "2021-10-21",
+          "vehicle_id": "1",
+          "category": "battery_and_power_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": null,
+          "min_capacity_kwh_inf": [
+            954.0788538753986,
+            954.0788546204567
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "308",
+            "trip_end_min": 843.8307333333333,
+            "low_kwh": 30.0,
+            "high_kwh": -7.784370499999994
+          },
+          "max_leg_kwh": 253.562563,
+          "day_kwh": 571.718069,
+          "window_minutes": {
+            "PORT": 0,
+            "WAREHOUSE": 10.569883333333337
+          }
+        },
+        {
+          "date": "2021-10-21",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            14.38748836517334,
+            14.387489318847656
+          ],
+          "min_capacity_kwh_50": [
+            167.54126995801926,
+            167.54127070307732
+          ],
+          "min_capacity_kwh_inf": [
+            98.47795516252518,
+            98.47795590758324
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 88.63016,
+          "day_kwh": 243.097306,
+          "window_minutes": {
+            "PORT": 1003.3489833333333,
+            "WAREHOUSE": 123.08021666666673
+          }
+        },
+        {
+          "date": "2021-10-21",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            5.365757942199707,
+            5.365758895874023
+          ],
+          "min_capacity_kwh_50": [
+            44.38339173793793,
+            44.38339248299599
+          ],
+          "min_capacity_kwh_inf": [
+            44.38339173793793,
+            44.38339248299599
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 39.945053,
+          "day_kwh": 102.017638,
+          "window_minutes": {
+            "PORT": 1096.3715,
+            "WAREHOUSE": 171.14281666666682
+          }
+        },
+        {
+          "date": "2021-10-22",
+          "vehicle_id": "1",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            8.411901473999023,
+            8.41190242767334
+          ],
+          "min_capacity_kwh_50": [
+            90.27745425701141,
+            90.27745500206947
+          ],
+          "min_capacity_kwh_inf": [
+            90.27745425701141,
+            90.27745500206947
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 37.821038,
+          "day_kwh": 101.661626,
+          "window_minutes": {
+            "PORT": 635.6235166666667,
+            "WAREHOUSE": 170.07321666666667
+          }
+        },
+        {
+          "date": "2021-10-22",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            1.4392948150634766,
+            1.439295768737793
+          ],
+          "min_capacity_kwh_50": [
+            19.481458514928818,
+            19.481459259986877
+          ],
+          "min_capacity_kwh_inf": [
+            19.481458514928818,
+            19.481459259986877
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 17.533313,
+          "day_kwh": 29.73603,
+          "window_minutes": {
+            "PORT": 1322.7394333333332,
+            "WAREHOUSE": 54.6028
+          }
+        },
+        {
+          "date": "2021-10-22",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            6.972235679626465,
+            6.972236633300781
+          ],
+          "min_capacity_kwh_50": [
+            62.91501596570015,
+            62.91501671075821
+          ],
+          "min_capacity_kwh_inf": [
+            43.238068372011185,
+            43.238069117069244
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 38.914262,
+          "day_kwh": 122.07076,
+          "window_minutes": {
+            "PORT": 985.4142333333333,
+            "WAREHOUSE": 181.79384999999985
+          }
+        },
+        {
+          "date": "2021-10-25",
+          "vehicle_id": "3",
+          "category": "battery_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": [
+            618.7946610152721,
+            618.7946617603302
+          ],
+          "min_capacity_kwh_inf": [
+            420.55822163820267,
+            420.5582223832607
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "4665",
+            "trip_end_min": 883.05725,
+            "low_kwh": 30.0,
+            "high_kwh": -199.15188950000004
+          },
+          "max_leg_kwh": 275.280131,
+          "day_kwh": 541.168552,
+          "window_minutes": {
+            "PORT": 892.4547833333334,
+            "WAREHOUSE": 56.02221666666662
+          }
+        },
+        {
+          "date": "2021-10-25",
+          "vehicle_id": "4",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            1.7870512008666992,
+            1.7870521545410156
+          ],
+          "min_capacity_kwh_50": [
+            7.661078870296478,
+            7.661079615354538
+          ],
+          "min_capacity_kwh_inf": [
+            7.661078870296478,
+            7.661079615354538
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 6.894971,
+          "day_kwh": 34.396432000000004,
+          "window_minutes": {
+            "PORT": 1089.9600666666665,
+            "WAREHOUSE": 193.21216666666658
+          }
+        },
+        {
+          "date": "2021-10-25",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            6.7334794998168945,
+            6.733480453491211
+          ],
+          "min_capacity_kwh_50": [
+            44.10649538040161,
+            44.10649612545967
+          ],
+          "min_capacity_kwh_inf": [
+            41.39878824353218,
+            41.39878898859024
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 37.25891,
+          "day_kwh": 120.868414,
+          "window_minutes": {
+            "PORT": 1046.7631333333334,
+            "WAREHOUSE": 149.92776666666668
+          }
+        },
+        {
+          "date": "2021-10-26",
+          "vehicle_id": "1",
+          "category": "battery_and_power_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": null,
+          "min_capacity_kwh_inf": [
+            665.0805614888668,
+            665.0805622339249
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "405",
+            "trip_end_min": 1197.9593333333332,
+            "low_kwh": 30.0,
+            "high_kwh": -110.53709850000001
+          },
+          "max_leg_kwh": 332.540281,
+          "day_kwh": 395.343186,
+          "window_minutes": {
+            "PORT": 179.74145,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-26",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            6.056788444519043,
+            6.056789398193359
+          ],
+          "min_capacity_kwh_50": [
+            64.68656659126282,
+            64.68656733632088
+          ],
+          "min_capacity_kwh_inf": [
+            47.717565298080444,
+            47.717566043138504
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 40.471155,
+          "day_kwh": 109.04249300000001,
+          "window_minutes": {
+            "PORT": 1106.6206499999998,
+            "WAREHOUSE": 93.60278333333338
+          }
+        },
+        {
+          "date": "2021-10-26",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            5.540979385375977,
+            5.540980339050293
+          ],
+          "min_capacity_kwh_50": [
+            43.03847625851631,
+            43.03847700357437
+          ],
+          "min_capacity_kwh_inf": [
+            43.03847625851631,
+            43.03847700357437
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 38.734629,
+          "day_kwh": 104.321379,
+          "window_minutes": {
+            "PORT": 1134.5468833333334,
+            "WAREHOUSE": 120.60266666666666
+          }
+        },
+        {
+          "date": "2021-10-27",
+          "vehicle_id": "2",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            3.672030448913574,
+            3.6720314025878906
+          ],
+          "min_capacity_kwh_50": [
+            43.6231330037117,
+            43.62313374876976
+          ],
+          "min_capacity_kwh_inf": [
+            40.411704033613205,
+            40.411704778671265
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 36.370534,
+          "day_kwh": 72.411023,
+          "window_minutes": {
+            "PORT": 1298.1630666666667,
+            "WAREHOUSE": 16.477700000000027
+          }
+        },
+        {
+          "date": "2021-10-27",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            7.2248735427856445,
+            7.224874496459961
+          ],
+          "min_capacity_kwh_50": [
+            63.29807788133621,
+            63.29807862639427
+          ],
+          "min_capacity_kwh_inf": [
+            55.231648683547974,
+            55.23164942860603
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 49.708484,
+          "day_kwh": 124.887467,
+          "window_minutes": {
+            "PORT": 975.7224833333332,
+            "WAREHOUSE": 176.66180000000008
+          }
+        },
+        {
+          "date": "2021-10-27",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            5.9659271240234375,
+            5.965928077697754
+          ],
+          "min_capacity_kwh_50": [
+            25.898616015911102,
+            25.898616760969162
+          ],
+          "min_capacity_kwh_inf": [
+            25.898616015911102,
+            25.898616760969162
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 23.308755,
+          "day_kwh": 101.535261,
+          "window_minutes": {
+            "PORT": 938.8042499999999,
+            "WAREHOUSE": 195.80856666666676
+          }
+        },
+        {
+          "date": "2021-10-28",
+          "vehicle_id": "1",
+          "category": "battery_and_power_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": null,
+          "min_capacity_kwh_inf": [
+            1151.211304962635,
+            1151.211305707693
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "421",
+            "trip_end_min": 1134.3131833333334,
+            "low_kwh": 30.0,
+            "high_kwh": -249.309314
+          },
+          "max_leg_kwh": 306.891592,
+          "day_kwh": 460.48452199999997,
+          "window_minutes": {
+            "PORT": 0,
+            "WAREHOUSE": 209.1171833333333
+          }
+        },
+        {
+          "date": "2021-10-28",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            8.595318794250488,
+            8.595319747924805
+          ],
+          "min_capacity_kwh_50": [
+            45.74724659323692,
+            45.74724733829498
+          ],
+          "min_capacity_kwh_inf": [
+            45.74724659323692,
+            45.74724733829498
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 31.070061,
+          "day_kwh": 151.012926,
+          "window_minutes": {
+            "PORT": 984.62005,
+            "WAREHOUSE": 186.6602666666667
+          }
+        },
+        {
+          "date": "2021-10-28",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            7.101228713989258,
+            7.101229667663574
+          ],
+          "min_capacity_kwh_50": [
+            47.95081540942192,
+            47.95081615447998
+          ],
+          "min_capacity_kwh_inf": [
+            43.14257428050041,
+            43.14257502555847
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 38.828317,
+          "day_kwh": 126.831057,
+          "window_minutes": {
+            "PORT": 1028.8871666666666,
+            "WAREHOUSE": 161.80871666666678
+          }
+        },
+        {
+          "date": "2021-10-29",
+          "vehicle_id": "2",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            3.8509511947631836,
+            3.8509521484375
+          ],
+          "min_capacity_kwh_50": [
+            40.86294397711754,
+            40.8629447221756
+          ],
+          "min_capacity_kwh_inf": [
+            40.86294397711754,
+            40.8629447221756
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 36.77665,
+          "day_kwh": 77.137993,
+          "window_minutes": {
+            "PORT": 1217.8140833333332,
+            "WAREHOUSE": 117.57855000000018
+          }
+        },
+        {
+          "date": "2021-10-29",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            21.452258110046387,
+            21.452259063720703
+          ],
+          "min_capacity_kwh_50": [
+            240.0042563676834,
+            240.00425711274147
+          ],
+          "min_capacity_kwh_inf": [
+            220.50804197788239,
+            220.50804272294044
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 75.140686,
+          "day_kwh": 258.964056,
+          "window_minutes": {
+            "PORT": 938.3606,
+            "WAREHOUSE": 57.28030000000001
+          }
+        },
+        {
+          "date": "2021-10-29",
+          "vehicle_id": "4",
+          "category": "battery_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": [
+            349.3994206190109,
+            349.399421364069
+          ],
+          "min_capacity_kwh_inf": [
+            327.50402987003326,
+            327.5040306150913
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "6470",
+            "trip_end_min": 625.111,
+            "low_kwh": 30.0,
+            "high_kwh": 5.2463730000000055
+          },
+          "max_leg_kwh": 155.080684,
+          "day_kwh": 326.840604,
+          "window_minutes": {
+            "PORT": 977.5938666666666,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-10-29",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            6.366607666015625,
+            6.366608619689941
+          ],
+          "min_capacity_kwh_50": [
+            42.736878991127014,
+            42.736879736185074
+          ],
+          "min_capacity_kwh_inf": [
+            40.00101163983345,
+            40.00101238489151
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 36.000911,
+          "day_kwh": 113.61409900000001,
+          "window_minutes": {
+            "PORT": 1071.7509833333334,
+            "WAREHOUSE": 117.93643333333335
+          }
+        },
+        {
+          "date": "2021-11-02",
+          "vehicle_id": "3",
+          "category": "battery_recoverable",
+          "min_truck_kw": null,
+          "min_capacity_kwh_50": [
+            623.4098806977272,
+            623.4098814427853
+          ],
+          "min_capacity_kwh_inf": [
+            623.4098806977272,
+            623.4098814427853
+          ],
+          "first_failure": {
+            "cause": "single_truck_leg_boundary",
+            "track_id": "4709",
+            "trip_end_min": 837.69475,
+            "low_kwh": 30.0,
+            "high_kwh": 15.11522699999998
+          },
+          "max_leg_kwh": 168.517957,
+          "day_kwh": 561.068893,
+          "window_minutes": {
+            "PORT": 953.3793166666668,
+            "WAREHOUSE": 0
+          }
+        },
+        {
+          "date": "2021-11-03",
+          "vehicle_id": "3",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            7.619719505310059,
+            7.619720458984375
+          ],
+          "min_capacity_kwh_50": [
+            47.73015156388283,
+            47.73015230894089
+          ],
+          "min_capacity_kwh_inf": [
+            47.73015156388283,
+            47.73015230894089
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 42.957137,
+          "day_kwh": 141.703924,
+          "window_minutes": {
+            "PORT": 1147.6911,
+            "WAREHOUSE": 92.10890000000006
+          }
+        },
+        {
+          "date": "2021-11-04",
+          "vehicle_id": "4",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            5.641116142272949,
+            5.641117095947266
+          ],
+          "min_capacity_kwh_50": [
+            30.53925707936287,
+            30.53925782442093
+          ],
+          "min_capacity_kwh_inf": [
+            21.793553233146667,
+            21.793553978204727
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 19.614198,
+          "day_kwh": 105.220957,
+          "window_minutes": {
+            "PORT": 1004.8959333333333,
+            "WAREHOUSE": 238.60436666666675
+          }
+        },
+        {
+          "date": "2021-11-04",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            2.662203788757324,
+            2.6622047424316406
+          ],
+          "min_capacity_kwh_50": [
+            35.910965502262115,
+            35.910966247320175
+          ],
+          "min_capacity_kwh_inf": [
+            35.910965502262115,
+            35.910966247320175
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 32.319869,
+          "day_kwh": 54.970214999999996,
+          "window_minutes": {
+            "PORT": 1288.7133,
+            "WAREHOUSE": 87.84581666666656
+          }
+        },
+        {
+          "date": "2021-11-05",
+          "vehicle_id": "2",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            5.188004493713379,
+            5.188005447387695
+          ],
+          "min_capacity_kwh_50": [
+            39.07067999243736,
+            39.07068073749542
+          ],
+          "min_capacity_kwh_inf": [
+            36.09596490859985,
+            36.09596565365791
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 30.326473,
+          "day_kwh": 90.443982,
+          "window_minutes": {
+            "PORT": 1084.7988833333334,
+            "WAREHOUSE": 77.42025000000012
+          }
+        },
+        {
+          "date": "2021-11-05",
+          "vehicle_id": "5",
+          "category": "served_at_baseline",
+          "min_truck_kw": [
+            6.788906097412109,
+            6.788907051086426
+          ],
+          "min_capacity_kwh_50": [
+            39.0886664390564,
+            39.088667184114456
+          ],
+          "min_capacity_kwh_inf": [
+            39.0886664390564,
+            39.088667184114456
+          ],
+          "first_failure": null,
+          "max_leg_kwh": 35.1798,
+          "day_kwh": 121.924221,
+          "window_minutes": {
+            "PORT": 486.3837166666667,
+            "WAREHOUSE": 710.9049833333333
+          }
+        }
+      ]
+    }
+  },
+  "fleet": [
+    {
+      "capacity_kwh": 300,
+      "goals": {
+        "2021-10-29": 3,
+        "2021-09-29": 3,
+        "2021-10-01": 2,
+        "2021-10-04": 2,
+        "2021-10-06": 3,
+        "2021-10-07": 2,
+        "2021-10-11": 2,
+        "2021-10-15": 2,
+        "2021-10-18": 1,
+        "2021-10-20": 2,
+        "2021-10-21": 2,
+        "2021-10-22": 3,
+        "2021-10-25": 2,
+        "2021-10-26": 2,
+        "2021-10-27": 3,
+        "2021-10-28": 2,
+        "2021-09-27": 2,
+        "2021-09-28": 1,
+        "2021-09-30": 1,
+        "2021-10-05": 2,
+        "2021-10-12": 1,
+        "2021-10-13": 2,
+        "2021-10-14": 2,
+        "2021-10-19": 1,
+        "2021-11-04": 2,
+        "2021-11-05": 2,
+        "2021-10-08": 0,
+        "2021-10-09": 1,
+        "2021-11-02": 0,
+        "2021-11-03": 1
+      },
+      "goal_total": 54,
+      "one": 54,
+      "two": 54,
+      "investment": 0,
+      "ties": [
+        {
+          "PORT": {
+            "interfaces": 1,
+            "power_kw": 100
+          },
+          "WAREHOUSE": {
+            "interfaces": 1,
+            "power_kw": 75
+          }
+        }
+      ],
+      "largest": {
+        "PORT": {
+          "interfaces": 3,
+          "power_kw": 175
+        },
+        "WAREHOUSE": {
+          "interfaces": 3,
+          "power_kw": 100
+        }
+      },
+      "remaining": [
+        {
+          "date": "2021-10-29",
+          "vehicle_id": "4",
+          "failure_reasons": [
+            {
+              "vehicle_id": "4",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "6470",
+              "trip_end_min": 625.111,
+              "reachable_raw_upper_kwh": 5.2463730000000055,
+              "required_min_kwh": 30.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-01",
+          "vehicle_id": "3",
+          "failure_reasons": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4517",
+              "trip_end_min": 742.91625,
+              "reachable_raw_upper_kwh": 20.04957849999996,
+              "required_min_kwh": 30.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-04",
+          "vehicle_id": "4",
+          "failure_reasons": [
+            {
+              "vehicle_id": "4",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "6214",
+              "trip_end_min": 779.8115333333334,
+              "reachable_raw_upper_kwh": 15.74872700000003,
+              "required_min_kwh": 30.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-07",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "123",
+              "trip_end_min": 1086.4733,
+              "reachable_raw_upper_kwh": -128.12288,
+              "required_min_kwh": 30.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-11",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "194",
+              "trip_end_min": 1324.7697,
+              "reachable_raw_upper_kwh": -275.934616,
+              "required_min_kwh": 30.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-15",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "226",
+              "trip_end_min": 827.4973166666666,
+              "reachable_raw_upper_kwh": -80.838764,
+              "required_min_kwh": 30.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-18",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "270",
+              "trip_end_min": 1251.2136833333334,
+              "reachable_raw_upper_kwh": -130.82553700000003,
+              "required_min_kwh": 30.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-18",
+          "vehicle_id": "3",
+          "failure_reasons": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4605",
+              "trip_end_min": 792.0453666666667,
+              "reachable_raw_upper_kwh": -132.70092299999996,
+              "required_min_kwh": 30.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-20",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_terminal_energy",
+              "reachable_terminal_interval_kwh": [
+                30.0,
+                54.46604600000005
+              ],
+              "required_terminal_kwh": 150.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-21",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "308",
+              "trip_end_min": 843.8307333333333,
+              "reachable_raw_upper_kwh": -15.711782999999997,
+              "required_min_kwh": 30.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-25",
+          "vehicle_id": "3",
+          "failure_reasons": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4665",
+              "trip_end_min": 883.05725,
+              "reachable_raw_upper_kwh": -232.90188950000004,
+              "required_min_kwh": 30.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-26",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "405",
+              "trip_end_min": 1197.9593333333332,
+              "reachable_raw_upper_kwh": -110.53709850000001,
+              "required_min_kwh": 30.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-28",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "421",
+              "trip_end_min": 1134.3131833333334,
+              "reachable_raw_upper_kwh": -249.309314,
+              "required_min_kwh": 30.0
+            }
+          ]
+        },
+        {
+          "date": "2021-09-28",
+          "vehicle_id": "3",
+          "failure_reasons": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4487",
+              "trip_end_min": 488.10523333333333,
+              "reachable_raw_upper_kwh": 28.10629,
+              "required_min_kwh": 30.0
+            }
+          ]
+        },
+        {
+          "date": "2021-09-30",
+          "vehicle_id": "3",
+          "failure_reasons": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4502",
+              "trip_end_min": 517.9748666666667,
+              "reachable_raw_upper_kwh": -59.08308699999998,
+              "required_min_kwh": 30.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-12",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "203",
+              "trip_end_min": 1266.19705,
+              "reachable_raw_upper_kwh": 7.458931000000007,
+              "required_min_kwh": 30.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-19",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "285",
+              "trip_end_min": 1175.20905,
+              "reachable_raw_upper_kwh": -196.59632,
+              "required_min_kwh": 30.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-08",
+          "vehicle_id": "4",
+          "failure_reasons": [
+            {
+              "vehicle_id": "4",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "6265",
+              "trip_end_min": 443.29468333333335,
+              "reachable_raw_upper_kwh": 23.718604000000028,
+              "required_min_kwh": 30.0
+            }
+          ]
+        },
+        {
+          "date": "2021-11-02",
+          "vehicle_id": "3",
+          "failure_reasons": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4709",
+              "trip_end_min": 837.69475,
+              "reachable_raw_upper_kwh": 15.11522699999998,
+              "required_min_kwh": 30.0
+            }
+          ]
+        }
+      ],
+      "daily_reference_service": {
+        "one": {
+          "2021-10-29": 3,
+          "2021-09-29": 3,
+          "2021-10-01": 2,
+          "2021-10-04": 2,
+          "2021-10-06": 3,
+          "2021-10-07": 2,
+          "2021-10-11": 2,
+          "2021-10-15": 2,
+          "2021-10-18": 1,
+          "2021-10-20": 2,
+          "2021-10-21": 2,
+          "2021-10-22": 3,
+          "2021-10-25": 2,
+          "2021-10-26": 2,
+          "2021-10-27": 3,
+          "2021-10-28": 2,
+          "2021-09-27": 2,
+          "2021-09-28": 1,
+          "2021-09-30": 1,
+          "2021-10-05": 2,
+          "2021-10-12": 1,
+          "2021-10-13": 2,
+          "2021-10-14": 2,
+          "2021-10-19": 1,
+          "2021-11-04": 2,
+          "2021-11-05": 2,
+          "2021-10-08": 0,
+          "2021-10-09": 1,
+          "2021-11-02": 0,
+          "2021-11-03": 1
+        },
+        "two": {
+          "2021-10-29": 3,
+          "2021-09-29": 3,
+          "2021-10-01": 2,
+          "2021-10-04": 2,
+          "2021-10-06": 3,
+          "2021-10-07": 2,
+          "2021-10-11": 2,
+          "2021-10-15": 2,
+          "2021-10-18": 1,
+          "2021-10-20": 2,
+          "2021-10-21": 2,
+          "2021-10-22": 3,
+          "2021-10-25": 2,
+          "2021-10-26": 2,
+          "2021-10-27": 3,
+          "2021-10-28": 2,
+          "2021-09-27": 2,
+          "2021-09-28": 1,
+          "2021-09-30": 1,
+          "2021-10-05": 2,
+          "2021-10-12": 1,
+          "2021-10-13": 2,
+          "2021-10-14": 2,
+          "2021-10-19": 1,
+          "2021-11-04": 2,
+          "2021-11-05": 2,
+          "2021-10-08": 0,
+          "2021-10-09": 1,
+          "2021-11-02": 0,
+          "2021-11-03": 1
+        }
+      },
+      "solves": {
+        "calls": 104,
+        "seconds": 1.0244779999775346,
+        "max_reported_gap": 0.0
+      }
+    },
+    {
+      "capacity_kwh": 450,
+      "goals": {
+        "2021-10-29": 4,
+        "2021-09-29": 3,
+        "2021-10-01": 3,
+        "2021-10-04": 3,
+        "2021-10-06": 3,
+        "2021-10-07": 2,
+        "2021-10-11": 2,
+        "2021-10-15": 2,
+        "2021-10-18": 1,
+        "2021-10-20": 2,
+        "2021-10-21": 2,
+        "2021-10-22": 3,
+        "2021-10-25": 2,
+        "2021-10-26": 2,
+        "2021-10-27": 3,
+        "2021-10-28": 2,
+        "2021-09-27": 2,
+        "2021-09-28": 1,
+        "2021-09-30": 1,
+        "2021-10-05": 2,
+        "2021-10-12": 1,
+        "2021-10-13": 2,
+        "2021-10-14": 2,
+        "2021-10-19": 1,
+        "2021-11-04": 2,
+        "2021-11-05": 2,
+        "2021-10-08": 0,
+        "2021-10-09": 1,
+        "2021-11-02": 0,
+        "2021-11-03": 1
+      },
+      "goal_total": 57,
+      "one": 57,
+      "two": 57,
+      "investment": 0,
+      "ties": [
+        {
+          "PORT": {
+            "interfaces": 1,
+            "power_kw": 100
+          },
+          "WAREHOUSE": {
+            "interfaces": 1,
+            "power_kw": 75
+          }
+        }
+      ],
+      "largest": {
+        "PORT": {
+          "interfaces": 3,
+          "power_kw": 175
+        },
+        "WAREHOUSE": {
+          "interfaces": 3,
+          "power_kw": 100
+        }
+      },
+      "remaining": [
+        {
+          "date": "2021-10-07",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "123",
+              "trip_end_min": 1086.4733,
+              "reachable_raw_upper_kwh": 21.87711999999999,
+              "required_min_kwh": 45.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-11",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "194",
+              "trip_end_min": 1324.7697,
+              "reachable_raw_upper_kwh": -125.934616,
+              "required_min_kwh": 45.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-15",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "226",
+              "trip_end_min": 827.4973166666666,
+              "reachable_raw_upper_kwh": -5.838763999999998,
+              "required_min_kwh": 45.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-18",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "270",
+              "trip_end_min": 1251.2136833333334,
+              "reachable_raw_upper_kwh": 19.174462999999946,
+              "required_min_kwh": 45.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-18",
+          "vehicle_id": "3",
+          "failure_reasons": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4605",
+              "trip_end_min": 792.0453666666667,
+              "reachable_raw_upper_kwh": 17.29907700000004,
+              "required_min_kwh": 45.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-20",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_terminal_energy",
+              "reachable_terminal_interval_kwh": [
+                45.0,
+                129.46604600000006
+              ],
+              "required_terminal_kwh": 225.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-21",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "312",
+              "trip_end_min": 1137.1516,
+              "reachable_raw_upper_kwh": -194.27434599999998,
+              "required_min_kwh": 45.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-25",
+          "vehicle_id": "3",
+          "failure_reasons": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4665",
+              "trip_end_min": 883.05725,
+              "reachable_raw_upper_kwh": -82.90188950000007,
+              "required_min_kwh": 45.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-26",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "405",
+              "trip_end_min": 1197.9593333333332,
+              "reachable_raw_upper_kwh": -35.53709850000001,
+              "required_min_kwh": 45.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-28",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "421",
+              "trip_end_min": 1134.3131833333334,
+              "reachable_raw_upper_kwh": -174.309314,
+              "required_min_kwh": 45.0
+            }
+          ]
+        },
+        {
+          "date": "2021-09-28",
+          "vehicle_id": "3",
+          "failure_reasons": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4491",
+              "trip_end_min": 918.6462166666666,
+              "reachable_raw_upper_kwh": -52.86930099999999,
+              "required_min_kwh": 45.0
+            }
+          ]
+        },
+        {
+          "date": "2021-09-30",
+          "vehicle_id": "3",
+          "failure_reasons": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4507",
+              "trip_end_min": 848.42205,
+              "reachable_raw_upper_kwh": 20.99203250000003,
+              "required_min_kwh": 45.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-12",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_terminal_energy",
+              "reachable_terminal_interval_kwh": [
+                45.0,
+                157.458931
+              ],
+              "required_terminal_kwh": 225.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-19",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "285",
+              "trip_end_min": 1175.20905,
+              "reachable_raw_upper_kwh": -46.59631999999999,
+              "required_min_kwh": 45.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-08",
+          "vehicle_id": "4",
+          "failure_reasons": [
+            {
+              "vehicle_id": "4",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "6269",
+              "trip_end_min": 825.6243166666667,
+              "reachable_raw_upper_kwh": -140.18543199999993,
+              "required_min_kwh": 45.0
+            }
+          ]
+        },
+        {
+          "date": "2021-11-02",
+          "vehicle_id": "3",
+          "failure_reasons": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4710",
+              "trip_end_min": 969.4866166666667,
+              "reachable_raw_upper_kwh": -3.4027300000000196,
+              "required_min_kwh": 45.0
+            }
+          ]
+        }
+      ],
+      "daily_reference_service": {
+        "one": {
+          "2021-10-29": 4,
+          "2021-09-29": 3,
+          "2021-10-01": 3,
+          "2021-10-04": 3,
+          "2021-10-06": 3,
+          "2021-10-07": 2,
+          "2021-10-11": 2,
+          "2021-10-15": 2,
+          "2021-10-18": 1,
+          "2021-10-20": 2,
+          "2021-10-21": 2,
+          "2021-10-22": 3,
+          "2021-10-25": 2,
+          "2021-10-26": 2,
+          "2021-10-27": 3,
+          "2021-10-28": 2,
+          "2021-09-27": 2,
+          "2021-09-28": 1,
+          "2021-09-30": 1,
+          "2021-10-05": 2,
+          "2021-10-12": 1,
+          "2021-10-13": 2,
+          "2021-10-14": 2,
+          "2021-10-19": 1,
+          "2021-11-04": 2,
+          "2021-11-05": 2,
+          "2021-10-08": 0,
+          "2021-10-09": 1,
+          "2021-11-02": 0,
+          "2021-11-03": 1
+        },
+        "two": {
+          "2021-10-29": 4,
+          "2021-09-29": 3,
+          "2021-10-01": 3,
+          "2021-10-04": 3,
+          "2021-10-06": 3,
+          "2021-10-07": 2,
+          "2021-10-11": 2,
+          "2021-10-15": 2,
+          "2021-10-18": 1,
+          "2021-10-20": 2,
+          "2021-10-21": 2,
+          "2021-10-22": 3,
+          "2021-10-25": 2,
+          "2021-10-26": 2,
+          "2021-10-27": 3,
+          "2021-10-28": 2,
+          "2021-09-27": 2,
+          "2021-09-28": 1,
+          "2021-09-30": 1,
+          "2021-10-05": 2,
+          "2021-10-12": 1,
+          "2021-10-13": 2,
+          "2021-10-14": 2,
+          "2021-10-19": 1,
+          "2021-11-04": 2,
+          "2021-11-05": 2,
+          "2021-10-08": 0,
+          "2021-10-09": 1,
+          "2021-11-02": 0,
+          "2021-11-03": 1
+        }
+      },
+      "solves": {
+        "calls": 101,
+        "seconds": 0.8570183999981964,
+        "max_reported_gap": 0.0
+      }
+    },
+    {
+      "capacity_kwh": 600,
+      "goals": {
+        "2021-10-29": 4,
+        "2021-09-29": 3,
+        "2021-10-01": 3,
+        "2021-10-04": 3,
+        "2021-10-06": 3,
+        "2021-10-07": 2,
+        "2021-10-11": 2,
+        "2021-10-15": 2,
+        "2021-10-18": 1,
+        "2021-10-20": 2,
+        "2021-10-21": 2,
+        "2021-10-22": 3,
+        "2021-10-25": 2,
+        "2021-10-26": 2,
+        "2021-10-27": 3,
+        "2021-10-28": 2,
+        "2021-09-27": 2,
+        "2021-09-28": 1,
+        "2021-09-30": 1,
+        "2021-10-05": 2,
+        "2021-10-12": 2,
+        "2021-10-13": 2,
+        "2021-10-14": 2,
+        "2021-10-19": 1,
+        "2021-11-04": 2,
+        "2021-11-05": 2,
+        "2021-10-08": 0,
+        "2021-10-09": 1,
+        "2021-11-02": 0,
+        "2021-11-03": 1
+      },
+      "goal_total": 58,
+      "one": 58,
+      "two": 58,
+      "investment": 0,
+      "ties": [
+        {
+          "PORT": {
+            "interfaces": 1,
+            "power_kw": 100
+          },
+          "WAREHOUSE": {
+            "interfaces": 1,
+            "power_kw": 75
+          }
+        }
+      ],
+      "largest": {
+        "PORT": {
+          "interfaces": 3,
+          "power_kw": 175
+        },
+        "WAREHOUSE": {
+          "interfaces": 3,
+          "power_kw": 100
+        }
+      },
+      "remaining": [
+        {
+          "date": "2021-10-07",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "124",
+              "trip_end_min": 1382.7504,
+              "reachable_raw_upper_kwh": -121.97346099999999,
+              "required_min_kwh": 60.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-11",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "194",
+              "trip_end_min": 1324.7697,
+              "reachable_raw_upper_kwh": 24.065383999999995,
+              "required_min_kwh": 60.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-15",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "227",
+              "trip_end_min": 949.1725333333334,
+              "reachable_raw_upper_kwh": -18.675173,
+              "required_min_kwh": 60.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-18",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_terminal_energy",
+              "reachable_terminal_interval_kwh": [
+                60.0,
+                200.9327875
+              ],
+              "required_terminal_kwh": 300.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-18",
+          "vehicle_id": "3",
+          "failure_reasons": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4606",
+              "trip_end_min": 929.4959833333334,
+              "reachable_raw_upper_kwh": 0.6598334999999764,
+              "required_min_kwh": 60.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-20",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_terminal_energy",
+              "reachable_terminal_interval_kwh": [
+                79.52719599999999,
+                204.46604599999995
+              ],
+              "required_terminal_kwh": 300.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-21",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "312",
+              "trip_end_min": 1137.1516,
+              "reachable_raw_upper_kwh": -119.27434600000004,
+              "required_min_kwh": 60.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-25",
+          "vehicle_id": "3",
+          "failure_reasons": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4665",
+              "trip_end_min": 883.05725,
+              "reachable_raw_upper_kwh": 18.732135500000027,
+              "required_min_kwh": 60.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-26",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "405",
+              "trip_end_min": 1197.9593333333332,
+              "reachable_raw_upper_kwh": 39.46290149999999,
+              "required_min_kwh": 60.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-28",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "421",
+              "trip_end_min": 1134.3131833333334,
+              "reachable_raw_upper_kwh": -99.309314,
+              "required_min_kwh": 60.0
+            }
+          ]
+        },
+        {
+          "date": "2021-09-28",
+          "vehicle_id": "3",
+          "failure_reasons": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4491",
+              "trip_end_min": 918.6462166666666,
+              "reachable_raw_upper_kwh": 22.13069900000005,
+              "required_min_kwh": 60.0
+            }
+          ]
+        },
+        {
+          "date": "2021-09-30",
+          "vehicle_id": "3",
+          "failure_reasons": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4508",
+              "trip_end_min": 1033.51615,
+              "reachable_raw_upper_kwh": -99.27767549999999,
+              "required_min_kwh": 60.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-19",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_terminal_energy",
+              "reachable_terminal_interval_kwh": [
+                60.0,
+                103.40368000000007
+              ],
+              "required_terminal_kwh": 300.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-08",
+          "vehicle_id": "4",
+          "failure_reasons": [
+            {
+              "vehicle_id": "4",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "6269",
+              "trip_end_min": 825.6243166666667,
+              "reachable_raw_upper_kwh": -65.18543199999993,
+              "required_min_kwh": 60.0
+            }
+          ]
+        },
+        {
+          "date": "2021-11-02",
+          "vehicle_id": "3",
+          "failure_reasons": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4711",
+              "trip_end_min": 1081.9153833333332,
+              "reachable_raw_upper_kwh": 38.93110700000001,
+              "required_min_kwh": 60.0
+            }
+          ]
+        }
+      ],
+      "daily_reference_service": {
+        "one": {
+          "2021-10-29": 4,
+          "2021-09-29": 3,
+          "2021-10-01": 3,
+          "2021-10-04": 3,
+          "2021-10-06": 3,
+          "2021-10-07": 2,
+          "2021-10-11": 2,
+          "2021-10-15": 2,
+          "2021-10-18": 1,
+          "2021-10-20": 2,
+          "2021-10-21": 2,
+          "2021-10-22": 3,
+          "2021-10-25": 2,
+          "2021-10-26": 2,
+          "2021-10-27": 3,
+          "2021-10-28": 2,
+          "2021-09-27": 2,
+          "2021-09-28": 1,
+          "2021-09-30": 1,
+          "2021-10-05": 2,
+          "2021-10-12": 2,
+          "2021-10-13": 2,
+          "2021-10-14": 2,
+          "2021-10-19": 1,
+          "2021-11-04": 2,
+          "2021-11-05": 2,
+          "2021-10-08": 0,
+          "2021-10-09": 1,
+          "2021-11-02": 0,
+          "2021-11-03": 1
+        },
+        "two": {
+          "2021-10-29": 4,
+          "2021-09-29": 3,
+          "2021-10-01": 3,
+          "2021-10-04": 3,
+          "2021-10-06": 3,
+          "2021-10-07": 2,
+          "2021-10-11": 2,
+          "2021-10-15": 2,
+          "2021-10-18": 1,
+          "2021-10-20": 2,
+          "2021-10-21": 2,
+          "2021-10-22": 3,
+          "2021-10-25": 2,
+          "2021-10-26": 2,
+          "2021-10-27": 3,
+          "2021-10-28": 2,
+          "2021-09-27": 2,
+          "2021-09-28": 1,
+          "2021-09-30": 1,
+          "2021-10-05": 2,
+          "2021-10-12": 2,
+          "2021-10-13": 2,
+          "2021-10-14": 2,
+          "2021-10-19": 1,
+          "2021-11-04": 2,
+          "2021-11-05": 2,
+          "2021-10-08": 0,
+          "2021-10-09": 1,
+          "2021-11-02": 0,
+          "2021-11-03": 1
+        }
+      },
+      "solves": {
+        "calls": 100,
+        "seconds": 0.7640193998959148,
+        "max_reported_gap": 0.0
+      }
+    },
+    {
+      "capacity_kwh": 750,
+      "goals": {
+        "2021-10-29": 4,
+        "2021-09-29": 3,
+        "2021-10-01": 3,
+        "2021-10-04": 3,
+        "2021-10-06": 3,
+        "2021-10-07": 2,
+        "2021-10-11": 2,
+        "2021-10-15": 2,
+        "2021-10-18": 2,
+        "2021-10-20": 2,
+        "2021-10-21": 2,
+        "2021-10-22": 3,
+        "2021-10-25": 3,
+        "2021-10-26": 2,
+        "2021-10-27": 3,
+        "2021-10-28": 2,
+        "2021-09-27": 2,
+        "2021-09-28": 2,
+        "2021-09-30": 1,
+        "2021-10-05": 2,
+        "2021-10-12": 2,
+        "2021-10-13": 2,
+        "2021-10-14": 2,
+        "2021-10-19": 1,
+        "2021-11-04": 2,
+        "2021-11-05": 2,
+        "2021-10-08": 0,
+        "2021-10-09": 1,
+        "2021-11-02": 1,
+        "2021-11-03": 1
+      },
+      "goal_total": 62,
+      "one": 62,
+      "two": 62,
+      "investment": 0,
+      "ties": [
+        {
+          "PORT": {
+            "interfaces": 1,
+            "power_kw": 100
+          },
+          "WAREHOUSE": {
+            "interfaces": 1,
+            "power_kw": 75
+          }
+        }
+      ],
+      "largest": {
+        "PORT": {
+          "interfaces": 3,
+          "power_kw": 175
+        },
+        "WAREHOUSE": {
+          "interfaces": 3,
+          "power_kw": 100
+        }
+      },
+      "remaining": [
+        {
+          "date": "2021-10-07",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "124",
+              "trip_end_min": 1382.7504,
+              "reachable_raw_upper_kwh": 28.026539000000014,
+              "required_min_kwh": 75.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-11",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_terminal_energy",
+              "reachable_terminal_interval_kwh": [
+                75.0,
+                226.7381089999999
+              ],
+              "required_terminal_kwh": 375.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-15",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "227",
+              "trip_end_min": 949.1725333333334,
+              "reachable_raw_upper_kwh": 56.324827,
+              "required_min_kwh": 75.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-18",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_terminal_energy",
+              "reachable_terminal_interval_kwh": [
+                75.0,
+                350.93278749999996
+              ],
+              "required_terminal_kwh": 375.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-20",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_terminal_energy",
+              "reachable_terminal_interval_kwh": [
+                154.52719599999995,
+                279.46604599999995
+              ],
+              "required_terminal_kwh": 375.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-21",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "312",
+              "trip_end_min": 1137.1516,
+              "reachable_raw_upper_kwh": -44.27434600000004,
+              "required_min_kwh": 75.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-26",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_terminal_energy",
+              "reachable_terminal_interval_kwh": [
+                75.0,
+                114.46290149999999
+              ],
+              "required_terminal_kwh": 375.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-28",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "421",
+              "trip_end_min": 1134.3131833333334,
+              "reachable_raw_upper_kwh": -24.30931400000003,
+              "required_min_kwh": 75.0
+            }
+          ]
+        },
+        {
+          "date": "2021-09-30",
+          "vehicle_id": "3",
+          "failure_reasons": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4508",
+              "trip_end_min": 1033.51615,
+              "reachable_raw_upper_kwh": -24.277675499999987,
+              "required_min_kwh": 75.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-19",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_terminal_energy",
+              "reachable_terminal_interval_kwh": [
+                75.0,
+                253.40368000000007
+              ],
+              "required_terminal_kwh": 375.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-08",
+          "vehicle_id": "4",
+          "failure_reasons": [
+            {
+              "vehicle_id": "4",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "6269",
+              "trip_end_min": 825.6243166666667,
+              "reachable_raw_upper_kwh": 9.814568000000065,
+              "required_min_kwh": 75.0
+            }
+          ]
+        }
+      ],
+      "daily_reference_service": {
+        "one": {
+          "2021-10-29": 4,
+          "2021-09-29": 3,
+          "2021-10-01": 3,
+          "2021-10-04": 3,
+          "2021-10-06": 3,
+          "2021-10-07": 2,
+          "2021-10-11": 2,
+          "2021-10-15": 2,
+          "2021-10-18": 2,
+          "2021-10-20": 2,
+          "2021-10-21": 2,
+          "2021-10-22": 3,
+          "2021-10-25": 3,
+          "2021-10-26": 2,
+          "2021-10-27": 3,
+          "2021-10-28": 2,
+          "2021-09-27": 2,
+          "2021-09-28": 2,
+          "2021-09-30": 1,
+          "2021-10-05": 2,
+          "2021-10-12": 2,
+          "2021-10-13": 2,
+          "2021-10-14": 2,
+          "2021-10-19": 1,
+          "2021-11-04": 2,
+          "2021-11-05": 2,
+          "2021-10-08": 0,
+          "2021-10-09": 1,
+          "2021-11-02": 1,
+          "2021-11-03": 1
+        },
+        "two": {
+          "2021-10-29": 4,
+          "2021-09-29": 3,
+          "2021-10-01": 3,
+          "2021-10-04": 3,
+          "2021-10-06": 3,
+          "2021-10-07": 2,
+          "2021-10-11": 2,
+          "2021-10-15": 2,
+          "2021-10-18": 2,
+          "2021-10-20": 2,
+          "2021-10-21": 2,
+          "2021-10-22": 3,
+          "2021-10-25": 3,
+          "2021-10-26": 2,
+          "2021-10-27": 3,
+          "2021-10-28": 2,
+          "2021-09-27": 2,
+          "2021-09-28": 2,
+          "2021-09-30": 1,
+          "2021-10-05": 2,
+          "2021-10-12": 2,
+          "2021-10-13": 2,
+          "2021-10-14": 2,
+          "2021-10-19": 1,
+          "2021-11-04": 2,
+          "2021-11-05": 2,
+          "2021-10-08": 0,
+          "2021-10-09": 1,
+          "2021-11-02": 1,
+          "2021-11-03": 1
+        }
+      },
+      "solves": {
+        "calls": 99,
+        "seconds": 0.679965599993011,
+        "max_reported_gap": 0.0
+      }
+    },
+    {
+      "capacity_kwh": 900,
+      "goals": {
+        "2021-10-29": 4,
+        "2021-09-29": 3,
+        "2021-10-01": 3,
+        "2021-10-04": 3,
+        "2021-10-06": 3,
+        "2021-10-07": 2,
+        "2021-10-11": 2,
+        "2021-10-15": 2,
+        "2021-10-18": 3,
+        "2021-10-20": 2,
+        "2021-10-21": 2,
+        "2021-10-22": 3,
+        "2021-10-25": 3,
+        "2021-10-26": 2,
+        "2021-10-27": 3,
+        "2021-10-28": 2,
+        "2021-09-27": 2,
+        "2021-09-28": 2,
+        "2021-09-30": 1,
+        "2021-10-05": 2,
+        "2021-10-12": 2,
+        "2021-10-13": 2,
+        "2021-10-14": 2,
+        "2021-10-19": 1,
+        "2021-11-04": 2,
+        "2021-11-05": 2,
+        "2021-10-08": 0,
+        "2021-10-09": 1,
+        "2021-11-02": 1,
+        "2021-11-03": 1
+      },
+      "goal_total": 63,
+      "one": 62,
+      "two": 63,
+      "investment": 20,
+      "ties": [
+        {
+          "PORT": {
+            "interfaces": 2,
+            "power_kw": 100
+          },
+          "WAREHOUSE": {
+            "interfaces": 1,
+            "power_kw": 75
+          }
+        }
+      ],
+      "largest": {
+        "PORT": {
+          "interfaces": 3,
+          "power_kw": 175
+        },
+        "WAREHOUSE": {
+          "interfaces": 3,
+          "power_kw": 100
+        }
+      },
+      "remaining": [
+        {
+          "date": "2021-10-07",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_terminal_energy",
+              "reachable_terminal_interval_kwh": [
+                90.0,
+                178.026539
+              ],
+              "required_terminal_kwh": 450.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-11",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_terminal_energy",
+              "reachable_terminal_interval_kwh": [
+                90.0,
+                376.7381089999999
+              ],
+              "required_terminal_kwh": 450.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-15",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_terminal_energy",
+              "reachable_terminal_interval_kwh": [
+                91.461382,
+                375.20789450000007
+              ],
+              "required_terminal_kwh": 450.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-20",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_terminal_energy",
+              "reachable_terminal_interval_kwh": [
+                229.52719599999995,
+                354.46604599999995
+              ],
+              "required_terminal_kwh": 450.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-21",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "312",
+              "trip_end_min": 1137.1516,
+              "reachable_raw_upper_kwh": 30.725653999999963,
+              "required_min_kwh": 90.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-26",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_terminal_energy",
+              "reachable_terminal_interval_kwh": [
+                90.0,
+                189.4629015
+              ],
+              "required_terminal_kwh": 450.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-28",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "421",
+              "trip_end_min": 1134.3131833333334,
+              "reachable_raw_upper_kwh": 50.69068599999997,
+              "required_min_kwh": 90.0
+            }
+          ]
+        },
+        {
+          "date": "2021-09-30",
+          "vehicle_id": "3",
+          "failure_reasons": [
+            {
+              "vehicle_id": "3",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "4508",
+              "trip_end_min": 1033.51615,
+              "reachable_raw_upper_kwh": 50.72232450000001,
+              "required_min_kwh": 90.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-19",
+          "vehicle_id": "1",
+          "failure_reasons": [
+            {
+              "vehicle_id": "1",
+              "cause": "single_truck_terminal_energy",
+              "reachable_terminal_interval_kwh": [
+                90.0,
+                379.65924250000006
+              ],
+              "required_terminal_kwh": 450.0
+            }
+          ]
+        },
+        {
+          "date": "2021-10-08",
+          "vehicle_id": "4",
+          "failure_reasons": [
+            {
+              "vehicle_id": "4",
+              "cause": "single_truck_leg_boundary",
+              "track_id": "6269",
+              "trip_end_min": 825.6243166666667,
+              "reachable_raw_upper_kwh": 84.81456800000007,
+              "required_min_kwh": 90.0
+            }
+          ]
+        }
+      ],
+      "daily_reference_service": {
+        "one": {
+          "2021-10-29": 4,
+          "2021-09-29": 3,
+          "2021-10-01": 3,
+          "2021-10-04": 3,
+          "2021-10-06": 3,
+          "2021-10-07": 2,
+          "2021-10-11": 2,
+          "2021-10-15": 2,
+          "2021-10-18": 2,
+          "2021-10-20": 2,
+          "2021-10-21": 2,
+          "2021-10-22": 3,
+          "2021-10-25": 3,
+          "2021-10-26": 2,
+          "2021-10-27": 3,
+          "2021-10-28": 2,
+          "2021-09-27": 2,
+          "2021-09-28": 2,
+          "2021-09-30": 1,
+          "2021-10-05": 2,
+          "2021-10-12": 2,
+          "2021-10-13": 2,
+          "2021-10-14": 2,
+          "2021-10-19": 1,
+          "2021-11-04": 2,
+          "2021-11-05": 2,
+          "2021-10-08": 0,
+          "2021-10-09": 1,
+          "2021-11-02": 1,
+          "2021-11-03": 1
+        },
+        "two": {
+          "2021-10-29": 4,
+          "2021-09-29": 3,
+          "2021-10-01": 3,
+          "2021-10-04": 3,
+          "2021-10-06": 3,
+          "2021-10-07": 2,
+          "2021-10-11": 2,
+          "2021-10-15": 2,
+          "2021-10-18": 3,
+          "2021-10-20": 2,
+          "2021-10-21": 2,
+          "2021-10-22": 3,
+          "2021-10-25": 3,
+          "2021-10-26": 2,
+          "2021-10-27": 3,
+          "2021-10-28": 2,
+          "2021-09-27": 2,
+          "2021-09-28": 2,
+          "2021-09-30": 1,
+          "2021-10-05": 2,
+          "2021-10-12": 2,
+          "2021-10-13": 2,
+          "2021-10-14": 2,
+          "2021-10-19": 1,
+          "2021-11-04": 2,
+          "2021-11-05": 2,
+          "2021-10-08": 0,
+          "2021-10-09": 1,
+          "2021-11-02": 1,
+          "2021-11-03": 1
+        }
+      },
+      "solves": {
+        "calls": 109,
+        "seconds": 0.8578977001307067,
+        "max_reported_gap": 0.0
+      }
+    }
+  ],
+  "checks": {
+    "scope": true,
+    "category_totals": true,
+    "baseline": true,
+    "release_monotone": true,
+    "capacity_monotone": true,
+    "bracket_width": true
+  },
+  "max_bracket_width": 9.5367431640625e-07,
+  "solves": {
+    "calls": 1102,
+    "seconds": 6.1636835996905575,
+    "max_reported_gap": 0.0,
+    "counts": {
+      "baseline.optimal": 109,
+      "power_above.optimal": 111,
+      "power_below.infeasible": 111,
+      "capacity_above.optimal": 129,
+      "capacity_below.infeasible": 129,
+      "fleet.infeasible": 70,
+      "fleet.optimal": 443
+    }
+  },
+  "python": "3.12.14",
+  "numpy_version": "2.5.3",
+  "scipy_version": "1.18.1",
+  "solver": "scipy.optimize.milp / HiGHS, mip_rel_gap=0, 60 s limit"
+}
