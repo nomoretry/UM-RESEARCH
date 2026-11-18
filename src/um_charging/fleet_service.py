@@ -14,6 +14,7 @@ The fleet battery size, reserve and cyclic SOC are scenario inputs. Only the
 truck charge rate, efficiency, sites and investment menu reuse the UM case.
 """
 from collections import defaultdict
+from dataclasses import dataclass
 from datetime import datetime, timedelta
 import math
 from time import perf_counter
@@ -35,6 +36,18 @@ EFFICIENCY = .9
 TRUCK_KW = 50.
 EPS = 1e-6
 SITES = ("PORT", "WAREHOUSE")
+
+
+@dataclass(frozen=True)
+class VehicleSpec:
+    capacity_kwh: float = CAPACITY_KWH
+    reserve_kwh: float = RESERVE_KWH
+    boundary_kwh: float = BOUNDARY_KWH
+    truck_kw: float = TRUCK_KW
+    efficiency: float = EFFICIENCY
+
+
+DEFAULT_SPEC = VehicleSpec()
 
 
 def menu():
@@ -111,7 +124,7 @@ def _events(case):
         yield a,b,available
 
 
-def audit(case, hardware, schedule, hourly_prices=None):
+def audit(case, hardware, schedule, hourly_prices=None, *, spec=DEFAULT_SPEC):
     """Replay positive powers against physical intervals, reservations, trips and daily SOC."""
     prices = [0.] * 24 if hourly_prices is None else hourly_prices
     site_energy = dict.fromkeys(SITES, 0.)
@@ -125,7 +138,7 @@ def audit(case, hardware, schedule, hourly_prices=None):
         v,s,a,b,p = (r[k] for k in ("vehicle_id","site","start_min","end_min","power_kw"))
         q = r["reservation_slot"]
         if not (v in case["trucks"] and s in hardware and all(math.isfinite(x) for x in (a,b,p))
-                and 15*q <= a < b <= 15*(q+1) and 0 < p <= TRUCK_KW+EPS):
+                and 15*q <= a < b <= 15*(q+1) and 0 < p <= spec.truck_kw+EPS):
             raise ValueError("Invalid dispatch row")
         if not any(site == s and left <= a and b <= right for left,right,site in case["trucks"][v]["windows"]):
             raise ValueError("Dispatch outside released dwell")
@@ -152,16 +165,16 @@ def audit(case, hardware, schedule, hourly_prices=None):
         if any(x[1] > y[0] for x,y in zip(power,power[1:])):
             raise ValueError("Two simultaneous connections on a vehicle")
         # Driving is checked on leg boundaries; longitudinal within-leg SOC is unavailable.
-        events = [(b,EFFICIENCY*kwh) for _,b,kwh in power]
+        events = [(b,spec.efficiency*kwh) for _,b,kwh in power]
         events.extend((b,-e) for _,b,e,_ in truck["trips"])
-        level = BOUNDARY_KWH
+        level = spec.boundary_kwh
         good = True
         for t,delta in sorted(events):
             level += delta
-            if level < RESERVE_KWH-EPS or level > CAPACITY_KWH+EPS:
+            if level < spec.reserve_kwh-EPS or level > spec.capacity_kwh+EPS:
                 good = False
         terminals[v] = level
-        if good and abs(level-BOUNDARY_KWH) <= EPS:
+        if good and abs(level-spec.boundary_kwh) <= EPS:
             passed_ids.append(v)
             trips_completed += len(truck["trips"])
         else:
@@ -171,7 +184,7 @@ def audit(case, hardware, schedule, hourly_prices=None):
             "completed_ids": passed_ids, "vehicles_completed": len(passed_ids), "trips_completed": trips_completed}
 
 
-def _solve(case, hardware, prices, partial):
+def _solve(case, hardware, prices, partial, *, spec=DEFAULT_SPEC):
     t0 = perf_counter()
     if prices is not None and (len(prices)!=24 or not all(math.isfinite(r) for r in prices)):
         raise ValueError("Provide 24 finite local delivery-hour prices")
@@ -209,7 +222,7 @@ def _solve(case, hardware, prices, partial):
         for s,vehicles in available.items():
             if not vehicles or not hardware[s]["interfaces"] or not hardware[s]["power_kw"]:
                 continue
-            max_grid = min(TRUCK_KW, hardware[s]["power_kw"])*duration
+            max_grid = min(spec.truck_kw, hardware[s]["power_kw"])*duration
             terms = []
             for v in vehicles:
                 i = variable(max_grid, 0. if prices is None else prices[int(a//60)]/1000)
@@ -224,18 +237,18 @@ def _solve(case, hardware, prices, partial):
         # The battery increases monotonically in a parking spell and changes by
         # the signed simulated net demand of each trip. Leg endpoints suffice.
         def balance(time,draw,low,high):
-            terms = [(i,EFFICIENCY) for end,i in by_v[v] if end<=time]
+            terms = [(i,spec.efficiency) for end,i in by_v[v] if end<=time]
             if partial:
                 terms.append((service[v],-draw))
             else:
                 low += draw; high += draw
-            constraint(terms,low-BOUNDARY_KWH,high-BOUNDARY_KWH)
+            constraint(terms,low-spec.boundary_kwh,high-spec.boundary_kwh)
         draw = 0.
         for a,b,e,_ in t["trips"]:
-            balance(a,draw,RESERVE_KWH,CAPACITY_KWH)
+            balance(a,draw,spec.reserve_kwh,spec.capacity_kwh)
             draw += e
-            balance(b,draw,RESERVE_KWH,CAPACITY_KWH)
-        balance(1440,draw,BOUNDARY_KWH,BOUNDARY_KWH)
+            balance(b,draw,spec.reserve_kwh,spec.capacity_kwh)
+        balance(1440,draw,spec.boundary_kwh,spec.boundary_kwh)
     if not obj:
         variable(0)
     matrix = coo_matrix((values,(ri,ci)),shape=(len(lb),len(obj))).tocsr()
@@ -251,7 +264,7 @@ def _solve(case, hardware, prices, partial):
     ids = sorted(v for v in trucks if not partial or res.x[service[v]]>.5)
     rows = [{"vehicle_id":v,"site":s,"reservation_slot":int(a//15),"start_min":a,"end_min":b,
              "power_kw":float(res.x[i])*60/(b-a)} for v,s,a,b,i in decisions if res.x[i]>1e-9]
-    checked = audit(subset_case(case,ids),hardware,rows,prices)
+    checked = audit(subset_case(case,ids),hardware,rows,prices,spec=spec)
     if not checked["passed"]:
         raise ValueError(f"Independent fleet audit failed: {checked['errors']}")
     proof = -len(ids) if partial else (checked["purchase_eur"] or 0.)
@@ -264,15 +277,15 @@ def _solve(case, hardware, prices, partial):
     return raw
 
 
-def dispatch(case, hardware, hourly_prices=None):
-    return _solve(case,hardware,hourly_prices,False)
+def dispatch(case, hardware, hourly_prices=None, *, spec=DEFAULT_SPEC):
+    return _solve(case,hardware,hourly_prices,False,spec=spec)
 
 
-def max_service(case, hardware):
-    return _solve(case,hardware,None,True)
+def max_service(case, hardware, *, spec=DEFAULT_SPEC):
+    return _solve(case,hardware,None,True,spec=spec)
 
 
-def immediate(case, hardware, hourly_prices=None):
+def immediate(case, hardware, hourly_prices=None, *, spec=DEFAULT_SPEC):
     """Reserve by first eligibility then ID, use maximal power, ignore future prices.
 
     The aggregate purchase budget is set by the announced service energy and
@@ -281,8 +294,8 @@ def immediate(case, hardware, hourly_prices=None):
     reservation until the quarter ends. Prices only enter the settlement.
     """
     t0 = perf_counter()
-    required = {v:sum(e for _,_,e,_ in t["trips"])/EFFICIENCY for v,t in case["trucks"].items()}
-    level = {v:BOUNDARY_KWH for v in required}
+    required = {v:sum(e for _,_,e,_ in t["trips"])/spec.efficiency for v,t in case["trucks"].items()}
+    level = {v:spec.boundary_kwh for v in required}
     arrivals = {v:{b:-e for _,b,e,_ in t["trips"]} for v,t in case["trucks"].items()}
     reservations = defaultdict(set)
     rows = []
@@ -308,11 +321,13 @@ def immediate(case, hardware, hourly_prices=None):
                         break
                     if v not in reserved and len(reserved) >= interfaces:
                         continue
-                    headroom = (CAPACITY_KWH - level[v]) / EFFICIENCY
+                    headroom = (spec.capacity_kwh - level[v]) / spec.efficiency
                     grid_kwh = min(required[v], headroom)
                     if grid_kwh <= 1e-9:
                         continue
-                    kw = min(TRUCK_KW, power_left)
+                    kw = min(spec.truck_kw, power_left)
+                    if kw == 0:
+                        continue
                     powers[v] = kw
                     power_left -= kw
                     reserved.add(v)
@@ -324,9 +339,9 @@ def immediate(case, hardware, hourly_prices=None):
                     rows.append({"vehicle_id": v, "site": site, "reservation_slot": q,
                                  "start_min": now, "end_min": next_event, "power_kw": kw})
                     required[v] -= energy
-                    level[v] += EFFICIENCY * energy
+                    level[v] += spec.efficiency * energy
                 now = next_event
-    checked = audit(case,hardware,rows,hourly_prices)
+    checked = audit(case,hardware,rows,hourly_prices,spec=spec)
     return {"status":"dispatched" if checked["passed"] else "incomplete","schedule":rows,"audit":checked,
             "selected_ids":checked["completed_ids"],"completed_count":checked["vehicles_completed"],
             "objective":None,"dual_bound":None,"mip_gap":None,"seconds":perf_counter()-t0}

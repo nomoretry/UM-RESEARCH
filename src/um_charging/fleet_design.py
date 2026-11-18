@@ -16,7 +16,7 @@ from .__main__ import checked_output
 from .changeover_study import hardware_key
 from .day_ahead import ROOT
 from .fleet_service import (
-    BOUNDARY_KWH, CAPACITY_KWH, EFFICIENCY, RESERVE_KWH, TRUCK_KW, build_case,
+    BOUNDARY_KWH, CAPACITY_KWH, EFFICIENCY, RESERVE_KWH, TRUCK_KW, DEFAULT_SPEC, build_case,
     dispatch, max_service, menu,
 )
 
@@ -100,30 +100,30 @@ def select_build(days, releases, port_additions_only=False, evidence=None):
     return result
 
 
-def failure_reasons(case,hardware):
+def failure_reasons(case,hardware, *, spec=DEFAULT_SPEC):
     """Translate a failed joint dispatch into single-truck reachability or contention evidence."""
     failures=[]
     for v,t in case["trucks"].items():
         # Single-truck reachable SOC is a closed interval: a stop extends its
         # upper endpoint, and the subsequent signed leg shifts both endpoints.
         events=[(a,0,b,s) for a,b,s in t["windows"]]+[(a,1,b,e) for a,b,e,_ in t["trips"]]
-        low=high=BOUNDARY_KWH
+        low=high=spec.boundary_kwh
         for a,is_trip,b,quantity in sorted(events):
             if not is_trip:
                 site=hardware[quantity]
                 if site["interfaces"]:
-                    high=min(CAPACITY_KWH,high+(b-a)/60*min(TRUCK_KW,site["power_kw"])*EFFICIENCY)
+                    high=min(spec.capacity_kwh,high+(b-a)/60*min(spec.truck_kw,site["power_kw"])*spec.efficiency)
             else:
-                low=max(RESERVE_KWH, low-quantity); high=min(CAPACITY_KWH,high-quantity)
+                low=max(spec.reserve_kwh, low-quantity); high=min(spec.capacity_kwh,high-quantity)
                 if low>high+1e-6:
                     trip_id=next(track for start,end,_,track in t["trips"] if (start,end)==(a,b))
                     failures.append({"vehicle_id":v,"cause":"single_truck_leg_boundary","track_id":trip_id,"trip_end_min":b,
                                      "reachable_raw_upper_kwh":high,"required_min_kwh":low})
                     break
         else:
-            if not (low-1e-6<=BOUNDARY_KWH<=high+1e-6):
+            if not (low-1e-6<=spec.boundary_kwh<=high+1e-6):
                 failures.append({"vehicle_id":v,"cause":"single_truck_terminal_energy",
-                                 "reachable_terminal_interval_kwh":[low,high],"required_terminal_kwh":BOUNDARY_KWH})
+                                 "reachable_terminal_interval_kwh":[low,high],"required_terminal_kwh":spec.boundary_kwh})
     return failures or [{"cause":"shared_connectors_or_site_power",
                          "evidence":"Every truck is individually reachable under its windows; the complete joint schedule is infeasible."}]
 
