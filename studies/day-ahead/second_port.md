@@ -31,6 +31,15 @@
 
 Frank、Oebel 与 Gnann 的德国车队研究给出一台独立 50 kW DC 充电机 €20,882，规划安装调试加 30%，合计 €27,146.60。采用 10 年、5% 折现，按设备价计 1% 年维护费，年成本 €3,724.43。两种价格下，样本购电收益都不能负担这一整机。若复用既有柜，必须核实整流容量、并充能力、土建和授权费用；同柜两枪如果只能共享 50 kW，适用的是另一套物理约束。同期零新增维护假设下最高一次性已安装投资为 **€2,554.72**（2025 购买力）。有年度增量开支时，先从 €330.85 中扣除，再除以资本回收系数 0.129505。 [成本参数、CPI 与原始来源](connector_cost.json)
 
+**设备与成本对应（2026-11-18 核对）。** 两接口情景与成本基准对应的是同一种设备：再装一个独立的 50 kW 充电点。已有设施是沉没成本。共享柜和扩容柜两类方案尚未建模，也没有报价。
+
+| 方案 | 港区接口数 | 每单元/柜总功率 | 单口功率 | 两车同时充电时的分配 | 站点接入 | 成本依据 | 与本研究结论的关系 |
+|---|---:|---|---|---|---|---|---|
+| 一接口（已有） | 1 | 50 kW | 50 kW | 不适用 | 100 kW（UM 情景假设） | 已有，沉没成本 | 基准 |
+| 两接口（本研究模型） | 2 | 两个独立单元，各 50 kW | 50 kW | 互不分摊，只受站点 100 kW 限制 | 100 kW | 新增 1 个 50 kW DC 充电点 €20,882（Frank 等 2025，表 2，p. 6，引 Alpitronic HYC50 价格）＋30% 规划安装调试，10 年、5%，年维护 1%（同文 §2.2.2，p. 5） | 物理情景与成本基准一致；“购电收益不能负担整机”的结论适用 |
+| 既有柜加第二根枪 | 2 | 50 kW | 单独充电时 50 kW | 两车同时充电时按 2×25 kW 分摊（厂商说明，见 connector_cost.json） | 100 kW | 无报价 | 物理约束不同，本研究的账单差额不适用，需另行建模 |
+| 扩容柜或新 100 kW 柜加第二根枪 | 2 | ≥100 kW | 50 kW | 可同时各 50 kW | 100 kW | 无报价 | 物理情景与本研究相同，可承受的投资上限为同期 €2,554.72（零新增维护，2025 购买力）或年费 €330.85；实际报价待核对 |
+
 ### 复算
 
 从研究分支根目录、使用已装好 [依赖](../../requirements-milp.txt) 的 Python 3.12 环境运行：
@@ -57,6 +66,6 @@ For the same eight truck-days on 21–23 September, the two builds both complete
 
 The next six non-overlapping calendar weeks contained 73 eligible truck-days. Twelve of 30 modeled dates were feasible for the entire fleet under either build. Both builds served at most 54 truck-days. On the same 54 truck-days (281 trips), two connectors saved €32.29 under contemporaneous prices and €21.58 on the January replay. One-connector immediate charging failed on 29 September, so its scheduling comparison covers 27 dates. The optimized hardware comparison retains all 28 dates with common service. Records, simulated energy, assumed access, missing observations and service failures remain separately identifiable in the inputs and results. Eighteen of the 19 unserved truck-days remain infeasible even with unlimited truck charging power. They are limited by the 300 kWh battery or by having no charging stop, so no menu facility increases service. [Service-gap attribution](../fleet-service/service_gap.md)
 
-Repeating the six-week mix across 52 weeks supports €279.82/year in 2021 euros or €330.85 in 2025 purchasing power. Even with zero extra maintenance that supports €2,554.72 installed capital at 5% over ten years. A published standalone 50 kW unit costs €3,724.43/year under the specified assumptions. An outlet added to an existing cabinet requires its own quote and confirmation of simultaneous 2 × 50 kW delivery. Retail contract exposure, demand charges and the value of unmet service are unknown.
+Repeating the six-week mix across 52 weeks supports €279.82/year in 2021 euros or €330.85 in 2025 purchasing power. Even with zero extra maintenance that supports €2,554.72 installed capital at 5% over ten years. A published standalone 50 kW unit costs €3,724.43/year under the specified assumptions. An outlet added to an existing cabinet requires its own quote and confirmation of simultaneous 2 × 50 kW delivery. Retail contract exposure, demand charges and the value of unmet service are unknown. **Equipment versus cost (checked 18 Nov 2026).** The modeled two-connector build and the cost benchmark describe the same equipment: one additional, independent 50 kW DC charging point (Frank et al. 2025, Table 2 on p. 6, citing the Alpitronic HYC50 price; installation, life, maintenance and interest on p. 5). A second cable on the existing 50 kW cabinet would share 2 × 25 kW during simultaneous charging. That is a different physical build, so the bill differences above do not apply to it. A larger cabinet that can still deliver 2 × 50 kW matches the modeled physics; for it, the €2,554.72 installed-capital ceiling or €330.85/year applies until a site quote is obtained.
 
 Run the two PowerShell commands above from the repository root. Quick replay prints `10.61522` and `6.80206`; `--full` includes weekly differences and the cost ceilings. TUMFTM supplies the source trip and BETOS energy data; the mapping and release rules are UM scenarios. **Bundesnetzagentur | SMARD.de** supplies the historical wholesale series. [Fleet inputs and provenance](../fleet-service/DATA.md) · [Native DE/LU delivery intervals](native_2021_prices.csv) · [Cost basis](connector_cost.json) · [Results by date, week and price scenario](second_port.json)
