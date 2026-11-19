@@ -2,7 +2,7 @@
 
 本项目对Ye 2024问题和投资框架的改编；不是论文原式或案例数值复现。固定车辆、任务顺序、路线、位置、耗能及初末电量。全部成本为同一四小时合成周期的等效费用，未校准真实设备成本或年化参数。
 
-源码提交：`43e34cac0d9ad4268dc54e9aa98fcea25e977320`，运行时干净。正式配置：[port_warehouse_investment.json](../../configs/port_warehouse_investment.json)；时间轴、成本和解析证明见[实例设计](../../conversations/0001_records/artifacts/INVESTMENT_DESIGN_20261110.md)。原[三车配置](../../configs/minimal_three_trucks.json)字节未变。
+源码提交：`43e34cac0d9ad4268dc54e9aa98fcea25e977320`，运行时干净。正式配置：[port_warehouse_investment.json](../../configs/port_warehouse_investment.json)；完整运行证据见离线记录库 `runs/20261110_investment_suite_evidence/`。原[三车配置](../../configs/minimal_three_trucks.json)字节未变。
 
 ## 结果
 

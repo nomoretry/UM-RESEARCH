@@ -49,6 +49,6 @@ python -m um_charging --config configs/minimal_three_trucks.json --suite --outpu
 python -m pytest -q -p no:cacheprovider tests
 ```
 
-Python 3.12 环境依赖见 [requirements-milp.txt](../../requirements-milp.txt)。调用方必须按 [STORAGE](../workflow/STORAGE.md) 捕获 stdout/stderr/退出码；求解器版本在本地 stdout 的 HiGHS banner 中。CLI 保存精确配置、原始解、独立验证、输入/源码 hash、source commit、环境与终止状态；精选结果须从实际 run 提取。
+Python 3.12 环境依赖见 [requirements-milp.txt](../../requirements-milp.txt)。调用方必须捕获 stdout、stderr 和退出码，并保存在离线记录库 `runs/` 下的对应目录；求解器版本在本地 stdout 的 HiGHS banner 中。CLI 保存精确配置、原始解、独立验证、输入/源码 hash、source commit、环境与终止状态；精选结果须从实际 run 提取。
 
 下一步：保留这组固定设施回归实例，加入接口整数投资与离散扩容，并通过少量设施组合穷举验证投资最优值。真实数据应用另需完整时间轴、可信可充电窗口和成本来源。

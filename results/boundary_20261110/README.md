@@ -119,7 +119,7 @@ $output = Join-Path $records.records_root "conversations\0001_records\runs\bound
 & $python -X utf8 -B -m pytest -q -p no:cacheprovider tests/test_fixed_facility.py tests/test_cli_paths.py tests/test_investment_input.py tests/test_investment.py tests/test_timegrid_model.py tests/test_timegrid.py tests/test_boundary.py tests/test_boundary_validation.py
 ```
 
-预期222测试通过；实验退出码0，`$output/completion.json`为`passed=true`、100情景/3150组合/310性质比较。结果在`boundary_summary.json`、`scope_comparisons.json`、`properties.json`；各情景目录保存原始输入、解、独立检查和枚举。运行后按既有[记录流程](../../docs/workflow/CONVERSATIONS.md)登记源码/输入及命令，详细证据只进外部无remote Git。
+预期222测试通过；实验退出码0，`$output/completion.json`为`passed=true`、100情景/3150组合/310性质比较。结果在`boundary_summary.json`、`scope_comparisons.json`、`properties.json`；各情景目录保存原始输入、解、独立检查和枚举。运行后把源码、输入、命令和详细证据登记在无远端的离线记录库 `runs/20261110_boundary_suite_evidence/`。
 
 绘图环境与求解环境分开；使用Matplotlib3.11.2、NumPy2.5.4，执行`python scripts/plot_boundary.py --result-dir results/boundary_20261110`重绘图。图中数值来自本轮实际结果，PNG已目视检查；SVG由同一绘图对象导出。完整源码/配置/环境/运行编号及日志hash见[reproduction](reproduction.json)，精选验证见[validation](validation.json)。
 
@@ -127,6 +127,6 @@ $output = Join-Path $records.records_root "conversations\0001_records\runs\bound
 
 本轮加强了确定性设施规划的适用边界、任务/资格审计、瓶颈机制解释和可复现证据链；[能力清单](../../docs/research/CAPABILITIES.md)明确已验证和未实现部分。长期研究、记录、同步与协作规则已合并到现有AGENTS和工作流，未改全局配置。
 
-Claude Code2.1.274在独立worktree接受限定UM文件、工具禁用的实际调用，返回`Not logged in`、exit1、模型输入/输出token均0，**没有完成Claude审查**。已保存[可转交任务书](../../conversations/0001_records/artifacts/CLAUDE_BOUNDARY_REVIEW_20261110.md)，未为登录改变配置。Codex内部独立工作树模块提交与只读审查已完成，不能标为Claude贡献。
+Claude Code2.1.274在独立worktree接受限定UM文件、工具禁用的实际调用，返回`Not logged in`、exit1、模型输入/输出token均0，**没有完成Claude审查**。可转交任务书见离线记录库 `runs/20261110_boundary_claude_review/prompt.txt`，未为登录改变配置。Codex内部独立工作树模块提交与只读审查已完成，不能标为Claude贡献。
 
 下一项只设计、尚未执行：固定H=100下两套设施快照A=(港2/仓1接口，100/75kW，规划投资20)和B=(港3/仓1接口，100/75kW，投资40)。两套硬件分别冻结，均继续采用槽边界零耗时换枪政策，在相同名义任务中仅将V1/V2仓库可插枪起点改为60+δ，δ=0/15/30/45/60分钟，V3保持[60,120)。到离站、任务与电量不变；这是装卸占用/资格延迟，不能叫车辆实际晚到。只重求运营，不重新选择设施，并记录冻结硬件哈希。其后才根据证据决定是否需要共享事前投资、按信息更新运营的情景模型。

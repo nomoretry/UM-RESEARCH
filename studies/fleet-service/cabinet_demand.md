@@ -152,7 +152,7 @@ See the offline record for schedules, per-combination results and proofs.
 
 ### Offline record
 
-以离线库为根 / Relative to UM-local-records → `conversations/0001_records/runs/20261119_cabinet_demand_retry1/summary.json` · [仅供本机 / Local file](<C:/Users/27788/UM-local-records/conversations/0001_records/runs/20261119_cabinet_demand_retry1/summary.json>)
+离线记录库 / Offline records `runs/20261119_cabinet_demand_retry1/summary.json`
 
 [results]: cabinet_demand.json
 [data]: DATA.md

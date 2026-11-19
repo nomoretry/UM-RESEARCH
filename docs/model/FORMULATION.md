@@ -6,7 +6,7 @@
 
 现已进一步完成15分钟[功率×窗口边界实验](../../results/boundary_20261110/README.md)。C01–C08及原模型代码未改，本轮新增受控情景生成、B01–B04任务/输入审计和跨情景性质检查，属于确定性敏感性分析。
 
-原 [最小实例](MINIMAL_INSTANCE.md) 保留为固定设施回归。新增 [港区—仓库闭合实例](../../conversations/0001_records/artifacts/INVESTMENT_DESIGN_20261110.md) 同样为四小时合成周期，采用周期等效合成投资加本周期电费，权重严格为1；不将四小时外推全年。精确输入和费用语义见 [INVESTMENT_INPUT](INVESTMENT_INPUT.md)。
+原 [最小实例](MINIMAL_INSTANCE.md) 保留为固定设施回归。新增 港区—仓库闭合实例（离线记录库 `runs/20261110_investment_suite/`） 同样为四小时合成周期，采用周期等效合成投资加本周期电费，权重严格为1；不将四小时外推全年。精确输入和费用语义见 [INVESTMENT_INPUT](INVESTMENT_INPUT.md)。
 
 ## 业务边界
 
