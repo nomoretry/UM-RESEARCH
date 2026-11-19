@@ -135,3 +135,28 @@ def test_time_limit_is_unresolved_even_if_small_monetary_gap():
     assert stats["status"] == "unresolved"
     assert stats["objective_upper"] == 2.
     assert stats["objective_lower"] == 1.995
+
+
+@pytest.mark.parametrize("residual, accepted", [(1e-9, True), (1.01e-9, False)])
+def test_energy_roundoff_does_not_book_the_plug(monkeypatch, residual, accepted):
+    a = truck("a", [trip(0, 15, 11.25, "a0")], [stop(15, 30, "a0", "a1")])
+    b = truck("b", [trip(0, 15, 0., "b0")], [stop(15, 30, "b0", "b1")])
+    p = period(day(0, a, b))
+    _, _, decisions = fc._dispatch_matrix(p, ONE, SPEC, 10, p.keys, eb.B, set())
+    idle_energy, = [row[-1] for row in decisions if row[1] == "b"]
+    actual_milp = fc.milp
+
+    def add_residual(*args, **kwargs):
+        native = actual_milp(*args, **kwargs)
+        assert native.x[idle_energy] == 0
+        native.x[idle_energy] = residual
+        return native
+
+    monkeypatch.setattr(fc, "milp", add_residual)
+    if accepted:
+        result = fc.solve(p, ONE, SPEC, 10, p.keys)
+        assert result["audit"]["passed"]
+        assert {row["vehicle_id"] for row in result["schedule"]} == {"a"}
+    else:
+        with pytest.raises(ValueError, match="two trucks on one plug"):
+            fc.solve(p, ONE, SPEC, 10, p.keys)

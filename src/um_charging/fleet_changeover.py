@@ -34,6 +34,7 @@ STUDY_SECONDS = 90 * 60.
 ABSOLUTE_COST_GAP = .01
 RELATIVE_COST_GAP = 1e-6
 MAX_UNRESOLVED = 3
+ENERGY_ROUNDOFF_KWH = 1e-9
 PILOT_DATES = ("2021-09-21", "2021-09-22", "2021-09-23")
 TRIAL_WEEK = "2021-10-18"
 
@@ -249,7 +250,7 @@ def solve(period, hardware, spec, delay, fixed=None, *, rule=eb.B, deadline=math
     if native.x is not None:
         for day, truck, site, plug, quarter, left, right, col in decisions:
             energy = native.x[col]
-            if energy > 1e-10:
+            if energy > ENERGY_ROUNDOFF_KWH:
                 result["schedule"].append(dict(date=day, vehicle_id=truck, site=site, plug=plug,
                     reservation_slot=quarter, start_min=period.offset[day] + left,
                     end_min=period.offset[day] + right, power_kw=float(energy * 60 / (right - left))))
