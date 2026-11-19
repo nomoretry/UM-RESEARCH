@@ -20,7 +20,9 @@ import sys
 import tarfile
 import zipfile
 
-DATASET_PATH = "reserach/truck optimaztion/Germany_Truck_Grid_Dataset_v1"
+DATASET_PATH = "data/germany-truck-grid-v1"
+# Commits before 2026-11-19 store the same snapshot under its original folder.
+LEGACY_DATASET_PATH = "reserach/truck optimaztion/Germany_Truck_Grid_Dataset_v1"
 ZIP_PATH = "raw/simbench/1-MV-urban--0-sw.zip"
 ZIP_PREFIX = "1-MV-urban--0-sw/"
 
@@ -35,6 +37,16 @@ def save_json(path: Path, value: object) -> None:
 
 def git(repo: Path, *args: str) -> bytes:
     return subprocess.check_output(["git", "-C", str(repo), *args])
+
+
+def snapshot_path(repo: Path, commit: str) -> str:
+    """Return the dataset folder as named in the given source commit."""
+    for path in (DATASET_PATH, LEGACY_DATASET_PATH):
+        found = subprocess.run(["git", "-C", str(repo), "cat-file", "-e", f"{commit}:{path}"],
+                               capture_output=True)
+        if found.returncode == 0:
+            return path
+    raise ValueError("Dataset snapshot not found in source commit")
 
 
 def csv_rows(path: Path, delimiter: str = ",") -> list[dict[str, str]]:
@@ -118,6 +130,7 @@ def main() -> int:
     commit = git(repo, "rev-parse", args.source_commit + "^{commit}").decode().strip()
     if commit != args.source_commit:
         raise ValueError("Use the full immutable source commit SHA")
+    source_path = snapshot_path(repo, commit)
     output.mkdir()
     dataset = output / "dataset"
     dataset.mkdir()
@@ -125,7 +138,7 @@ def main() -> int:
     (output / "runner_source.py").write_bytes(Path(__file__).read_bytes())
     manifest = dict(
         run_id=output.name, started_utc=datetime.now(timezone.utc).isoformat(),
-        dataset_source_commit=commit, dataset_source_path=DATASET_PATH,
+        dataset_source_commit=commit, dataset_source_path=source_path,
         runner_source_commit=git(repo, "rev-parse", "HEAD").decode().strip(),
         checkout_status_porcelain=git(repo, "status", "--porcelain=v1").decode("utf-8"),
         runner_sha256=sha256(Path(__file__).read_bytes()),
@@ -134,15 +147,15 @@ def main() -> int:
     )
     save_json(output / "manifest.json", manifest)
     try:
-        archive = git(repo, "archive", commit, DATASET_PATH)
+        archive = git(repo, "archive", commit, source_path)
         manifest["git_archive_sha256"] = sha256(archive)
         with tarfile.open(fileobj=io.BytesIO(archive)) as stream:
             for member in stream.getmembers():
                 if not member.isfile():
                     continue
-                if not member.name.startswith(DATASET_PATH + "/"):
+                if not member.name.startswith(source_path + "/"):
                     raise ValueError("Unexpected archive path")
-                relative = member.name[len(DATASET_PATH) + 1:]
+                relative = member.name[len(source_path) + 1:]
                 target = dataset / relative
                 if not target.resolve().is_relative_to(dataset.resolve()):
                     raise ValueError("Archive path escapes snapshot")

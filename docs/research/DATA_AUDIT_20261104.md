@@ -9,6 +9,7 @@
 - 完整数据目录：`reserach/truck optimaztion/Germany_Truck_Grid_Dataset_v1/`，58 个 tracked 文件。
 - 较短目录：`reserach/Germany_Truck_Grid_Dataset_v1/`，11 个 tracked 文件。
 - 11 个共同文件的 Git blob 字节完全一致。较短目录没有 tracked `raw/` 或 `processed/`；两个版本均保留，不把短目录当作完整数据交付。
+- 2026-11-19 整理：完整目录改名为 `data/germany-truck-grid-v1/`，内容不变；较短目录是其子集，已删除。早于该日的提交仍按上述原路径保存，`scripts/verify_dataset_snapshot.py` 会按所给提交自动选用对应路径。
 
 ## 本轮实际运行
 

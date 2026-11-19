@@ -8,8 +8,7 @@ import math
 from pathlib import Path
 
 
-DATASET = (Path(__file__).resolve().parents[1] / "reserach" / "truck optimaztion"
-           / "Germany_Truck_Grid_Dataset_v1")
+DATASET = Path(__file__).resolve().parents[1] / "data" / "germany-truck-grid-v1"
 # First stop in the existing fleet-1 pilot week (source keys, not line numbers).
 VEHICLE_ID, TRACK_ID = "1", "168"
 FLEET = "raw/dt_cargo/fleet.csv"

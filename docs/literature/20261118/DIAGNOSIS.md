@@ -4,7 +4,7 @@
 
 ## 1. 当前研究进展
 
-**分支状态**：本地 `research/d-drive-research-20261118` 比 `origin/research/port-warehouse-20261111` 多 2 个提交（`2064bea`、`3c835e5`，服务缺口研究），均未推送；`origin/main` 比本地落后 29 个提交；`origin/research/reader-entry-20261112` 有 1 个本地没有的提交（`0dfea96`，只改首页导读）。
+**分支状态**：本地 `research/fleet-charging-costs`（2026-11-19 前名为 research/d-drive-research-20261118） 比 `origin/research/port-warehouse-20261111` 多 2 个提交（`2064bea`、`3c835e5`，服务缺口研究），均未推送；`origin/main` 比本地落后 29 个提交；`origin/research/reader-entry-20261112` 有 1 个本地没有的提交（`0dfea96`，只改首页导读）。
 
 | 状态 | 内容 | 依据 |
 |---|---|---|

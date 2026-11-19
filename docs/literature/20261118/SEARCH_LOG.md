@@ -8,7 +8,7 @@
 |---|---|---|---|
 | OpenAlex API（经 citation-management 技能 `search_openalex.py`；技能库见 Kassis 等 2026） | 2026-11-18 09:35 | 8 组检索式，年份 2021–2026，按相关性各取前 25 条 | 离线 `sources/q*.json`、`queries.tsv` |
 | 通用网页检索 | 2026-11-18 | 6 组，补充跨日 SOC、接枪/准备时间、电池与设施、未完成服务价值、两条书目核实 | 本文件下表 |
-| 用户已有 PDF | 2026-11-18 | 研究仓库 `reserach/`、`文献学习/` 与父目录未提交资料中的 40 个 PDF，抽取首页识别 | 离线 `extracts/index.json` |
+| 用户已有 PDF | 2026-11-18 | 研究仓库 `reserach/`、`文献学习/` 与父目录未提交资料中的 40 个 PDF，抽取首页识别 | 离线 `extracts/index.json`；这 18 个仓库内 PDF 已于 2026-11-19 移出仓库，新旧文件名对照见离线库 `literature/papers/INDEX.md` |
 | 已有项目笔记 | 2026-11-09 | Ye 2024、Wang/Moura 2025、Xiao 2025（当时仅预览） | `docs/literature/20261109/` |
 | 开放全文下载 | 2026-11-18 | arXiv:2510.13100、UC Davis 报告 UCD-ITS-RR-23-63；IJPR 2024 出版社返回 HTTP 403 | 离线 `pdfs/` |
 

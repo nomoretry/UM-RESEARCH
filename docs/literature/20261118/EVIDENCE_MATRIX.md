@@ -1,6 +1,6 @@
 # 文献—项目证据矩阵（2026-11-18）
 
-UM 侧的行号均指提交 `3c835e5`（分支 `research/d-drive-research-20261118`）。.py 文件未写目录时位于 `src/um_charging/`。UM 事实由 Codex 通过官方插件只读核对（任务 `task-mwlxo9io-wxqqye`，结果存于离线记录 `runs/20261118_literature_review/codex_fact_check_result.md`），其中三处由 Claude 再次抽查原文件。文献侧的页码见 [CARDS.md](CARDS.md)。
+UM 侧的行号均指提交 `3c835e5`（分支 `research/fleet-charging-costs`（2026-11-19 前名为 research/d-drive-research-20261118））。.py 文件未写目录时位于 `src/um_charging/`。UM 事实由 Codex 通过官方插件只读核对（任务 `task-mwlxo9io-wxqqye`，结果存于离线记录 `runs/20261118_literature_review/codex_fact_check_result.md`），其中三处由 Claude 再次抽查原文件。文献侧的页码见 [CARDS.md](CARDS.md)。
 
 ## A. 逐项对照
 
