@@ -4,6 +4,8 @@
 
 ## 中文
 
+在相同 54 个车日上，独立柜和共享柜的需量费、年运行价值及共享柜投资上限见[共享柜与需量电费研究](../fleet-service/cabinet_demand.md)。
+
 为了单独量出接口的价值，港区从一台 50 kW 接口改为两台可同时各供 50 kW 的接口，港区接入始终是 100 kW，仓库保持一台接口、75 kW 接入。车辆最多取 50 kW，效率 90%，电池容量 300 kWh、储备 30 kWh，每个车日从 150 kWh 开始并回到 150 kWh。仓库按到站后 45 分钟放行，港区到站即可插枪。每 15 分钟预约接口，按实际可用分钟供电，槽边界换车耗时假定为零。六周内按日重新排程，车辆初末电量按日闭合。
 
 **原三日先只换价格。** 2021-09-21 至 23 的 8 个车日、45 趟任务在四种安排中全部完成。同期价格按实际交割小时匹配；旧回放在 2025-01-06 起的交付周选相同当地星期、钟点，即 1 月 7–9 日。日前策略知道当日价格和已公布任务。两种调度支付相同的逐时批发价。表中金额为对应交付年的欧元。
@@ -59,6 +61,8 @@ python -m um_charging.connector_value --full
 - **设施。** 100/75 kW 是 UM 案例接入条件；资产成本单独取自文献，并未引入配电网潮流、当地接入报价或承运人零售电价。[设施菜单](../../configs/port_warehouse_investment.json)
 
 ## English
+
+For the same 54 truck-days, the [cabinet and demand-charge study](../fleet-service/cabinet_demand.md) reports separately metered peak charges, annual operating value and the affordable shared-cabinet retrofit cost.
 
 The trial adds one simultaneous 50 kW port outlet. The port grid limit stays at 100 kW, and the warehouse keeps one outlet and a 75 kW connection. Each truck returns to its initial 150 kWh every day, with a 300 kWh battery and 30 kWh reserve. Warehouse eligibility starts 45 minutes after arrival. Reservations last 15 minutes with zero exchange time and exact eligible minutes inside each slot.
 

@@ -1,0 +1,5 @@
+{
+  "matplotlib": "3.10.8",
+  "numpy": "2.3.5",
+  "scope": "Separate plotting environment. Input: curated cabinet_demand.json only."
+}
