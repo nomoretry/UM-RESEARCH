@@ -50,7 +50,7 @@ def _physical_quarters(period, active):
     return quarters
 
 
-def _dispatch_matrix(period, hardware, spec, delay, fixed, rule, required):
+def _dispatch_matrix(period, hardware, spec, delay, fixed, rule, required, peak_limits=None):
     physical = fixed is None
     active = period.keys if physical else set(fixed)
     if not required <= active <= period.keys or rule not in (eb.A, eb.B):
@@ -67,8 +67,9 @@ def _dispatch_matrix(period, hardware, spec, delay, fixed, rule, required):
         for site in SITES:
             plugs = hardware[site]["interfaces"]
             limit = hardware[site]["power_kw"]
+            peak = limit if peak_limits is None else peak_limits[site]
             trucks = sorted({v for _, _, _, available in intervals for v in available[site]})
-            if not trucks or not plugs or not limit:
+            if not trucks or not plugs or not peak:
                 continue
             rate = min(spec.truck_kw, limit)
             site_dispatch = []
@@ -108,6 +109,8 @@ def _dispatch_matrix(period, hardware, spec, delay, fixed, rule, required):
                                     if r[5] <= left and right <= r[6]]
                     if simultaneous:
                         model.add(simultaneous, high=limit)
+            if peak < limit and site_dispatch:
+                model.add([(row[-1], 1.) for row in site_dispatch], high=peak / 4)
             dispatch.extend(site_dispatch)
         for assignments in by_truck.values():
             if len(assignments) > 1:
@@ -214,7 +217,8 @@ def _solve_stats(native, physical, active_count, seconds, relative_target, absol
     return result
 
 
-def solve(period, hardware, spec, delay, fixed=None, *, rule=eb.B, deadline=math.inf, required=()):
+def solve(period, hardware, spec, delay, fixed=None, *, rule=eb.B, deadline=math.inf, required=(),
+          peak_limits=None):
     """Maximize whole truck-days, or minimize energy for an exactly fixed service set."""
     started = perf_counter()
     if not math.isfinite(delay) or not 0 <= delay <= 15:
@@ -224,10 +228,13 @@ def solve(period, hardware, spec, delay, fixed=None, *, rule=eb.B, deadline=math
         or not math.isfinite(site["power_kw"]) or site["power_kw"] < 0 for site in hardware.values()
     ):
         raise ValueError("Invalid fixed hardware")
+    if peak_limits is not None and (set(peak_limits) != set(SITES) or any(
+            not 0 <= peak_limits[site] <= hardware[site]["power_kw"] for site in SITES)):
+        raise ValueError("Invalid quarter peak limits")
     physical = fixed is None
     if not physical:
         fixed = set(fixed)
-    model, levels, decisions = _dispatch_matrix(period, hardware, spec, delay, fixed, rule, set(required))
+    model, levels, decisions = _dispatch_matrix(period, hardware, spec, delay, fixed, rule, set(required), peak_limits)
     matrix = coo_matrix((model.data, (model.row, model.col)),
                         shape=(len(model.lb), len(model.cost))).tocsr()
     # Use zero monetary tolerance for the registered baseline regression. Positive

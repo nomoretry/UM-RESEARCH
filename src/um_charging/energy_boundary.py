@@ -156,7 +156,7 @@ class Matrix:
                                  "primal_feasibility_tolerance":1e-9})
 
 
-def blocks(case, site, hardware, spec):
+def blocks(case, site, hardware, spec, *, unpooled=()):
     """Pool identical whole quarters within one hour. Integer reservation counts
     unpack by round robin when every connector can simultaneously supply truck_kw.
     A quarter with an internal event always retains its exact subintervals.
@@ -166,13 +166,24 @@ def blocks(case, site, hardware, spec):
         spans[int(a//15)].append((a,b,tuple(sorted(available[site]))))
     def signature(item):
         q, parts = item
-        if len(parts)==1 and hardware["power_kw"] >= hardware["interfaces"]*spec.truck_kw:
+        if q not in unpooled and len(parts)==1 and hardware["power_kw"] >= hardware["interfaces"]*spec.truck_kw:
             return q//4, parts[0][2]
         return (q,)
     for _, group in groupby(spans.items(), signature):
         group = list(group)
         parts = group[0][1]
         yield len(group), parts
+
+
+def reservation_slots(count, reservations, solution):
+    """Assign interchangeable whole quarters to reserved trucks in round-robin order."""
+    cursor = 0
+    slots = {}
+    for truck, column in reservations.items():
+        number = round(solution[column])
+        slots[truck] = [(cursor + j) % count for j in range(number)]
+        cursor += number
+    return slots
 
 
 def solve(p, hw, spec, rule, fixed=None):
@@ -261,12 +272,7 @@ def solve(p, hw, spec, rule, fixed=None):
         raise ValueError(f"{rule} fixed={fixed} {stats}")
     rows = []
     for d,site,count,reservations,decisions in pieces:
-        cursor = 0
-        slots = {}
-        for v,i in reservations.items():
-            number = round(res.x[i])
-            slots[v] = [(cursor+j)%count for j in range(number)]
-            cursor += number
+        slots = reservation_slots(count, reservations, res.x)
         for a,b,v,i in decisions:
             energy = res.x[i]
             if energy <= 1e-10:
