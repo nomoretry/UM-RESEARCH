@@ -124,3 +124,13 @@
 |---|---|---|---|---|---|---|---|
 | Q1 | Ye, Yu, Wei 2024, TR-D 134:104320, p. 6, 式 (1)；表 2（p. 6） | κ：表 2 记为 “Battery charging cycle efficiency”；p_it：充电功率（kW）；r_it^stp：时段内停车时间比例 | 式 (1) 为 e_it′ = e_it + (1−√κ)·p_it·r_it^stp·Δt − x_i·Δe_it^con；正文称 “(1−√κ)·p_it” 为 charging-related energy loss，并引用 Foggo and Yu (2017)。arXiv v1 写法相同 | （a）排版或记号问题，意在 √κ·p_it 为入电能量；（b）κ 在所引文献中表示损失相关量；（c）正文措辞与作者实现不一致而实现本身无误 | 不影响 UM 现有模型：UM 用自有效率 η = 0.9。只在严格复现 Ye 的数值时相关 | 核对 Foggo and Yu (2017) 的 κ 定义；询问作者或取得实现代码；用论文报告的负荷与电量作数值反推 | 未解决 |
 | Q2 | Ding 等 2025, arXiv:2510.13100 v2 PDF p. 10, 式 (15)；解释见 p. 11 | pp_{i,d,t}：车辆 i 在第 d 天第 t 个 30 分钟时段的有效停车比例 | 式 (15) 为 5/30 ≤ pp ≤ 1；p. 11 文字称其限制每个时间窗的充电时长“大于 5 分钟且小于 30 分钟” | 该式约束的是时段内可用时长比例，不是每次实际充电的最短时长；HTML 版式号不同（作者编号随版本变化） | 本轮初稿曾误读为“最短充电时长”，已改正；不影响 UM 现有模型 | 若借用该约束，按 PDF v2 原式实现并注明版本 | 已澄清表述 |
+
+## S2 车队换车时间补查（2026-11-19）
+
+| 来源 | 阅读程度与页码 | 对 UM 的含义 |
+|---|---|---|
+| Wang、Zheng、Hamdan 与 Jouini，IJPR 63(10)，3538–3563，2024-11-09 在线 | 定向核对期刊排版正文 §3.1（第 3543–3544 页）与 §7.2、表 7（第 3557–3558 页）。出版 PDF 与 Bangor 接收稿本次请求均返回 403，页码据期刊正文的网页副本。 | 准备时间含前一辆公交驶回停车位和下一辆开到充电位。固定准备时间对照用 12 分钟，依据该案例优化排程的平均值。包含较长挪车时，10–15 分钟与其量级相近。它没有给出这批重卡的人工拔插实测。[期刊文章](https://doi.org/10.1080/00207543.2024.2424973) · [机构库记录](https://research.bangor.ac.uk/en/publications/charging-scheduling-optimisation-of-battery-electric-buses-with-c/) |
+| Link、Frank、Speth、Gnann 与 Plötz，SSRN 预印本，2026 | 已读作者摘要和 32 页书目记录。全文缺口，SSRN 文件返回 403，Fraunhofer 条目为 `metadata.only` 且附件数为 0。正文页码无法核实。 | 摘要明确区分真实车队运营数据、场站负荷与模拟充电。摘要无逐枪更换分钟数，无法用它在 2 与 5 分钟之间择档。[SSRN 摘要](https://ssrn.com/abstract=7543981) · [机构库访问状态](https://publica-rest.fraunhofer.de/server/api/core/items/feebdcf6-ff78-4bdd-8c53-7fd183d674e4/accessStatus) |
+| ABB，《Plug-in mines》，ABB Review 2/2023，第 140–145 页 | 定向核对厂商原文第 145 页图 05。 | 自动化矿卡接驳示例中，接合及安全检查约 18 秒，断开约 7 秒。进出工位和挪车没有完整计时，数字仅反映设备动作。2 分钟是本研究中较短的正换车假设，仍需道路重卡场站时间记录来检验。[厂商原文](https://library.e.abb.com/public/320194e2ac7647d78ac9f2d16da5d519/140-145%20m2357_EN.pdf?x-sign=auPHzlKZZY34TWrQU51cPc7IUeNV23I%2FiKNK2Qp8NUCU5p6MnMUC1m6esslnxzXz) |
+
+主情景保持 0、2、5 分钟。10、15 分钟按已登记规则作为压力情景，外部材料只用于解释量级。
