@@ -26,6 +26,7 @@ GAP = WEEKS.with_name("service_gap.json")
 A, B, C = "daily_fixed", "carry_over", "daily_cyclic_free"
 SPECS = dict(S300=DEFAULT_SPEC, S900a=VehicleSpec(900, 30, 150),
              S900b=VehicleSpec(900, 30, 450), S900c=VehicleSpec(900, 90, 450))
+UNRESERVED_ENERGY_TOLERANCE_KWH = 1e-8
 
 
 def calendar(days):
@@ -279,7 +280,7 @@ def solve(p, hw, spec, rule, fixed=None):
                 continue
             assigned = slots.get(v,range(count))
             if not assigned:
-                if energy > 1e-8:
+                if energy > UNRESERVED_ENERGY_TOLERANCE_KWH:
                     raise ValueError(("positive energy without reservation",d,v,energy))
                 continue
             power = energy*60/((b-a)*len(assigned))

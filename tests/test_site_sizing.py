@@ -5,7 +5,7 @@ import pytest
 
 from um_charging import energy_boundary as eb
 from um_charging import fleet_changeover as fc
-from um_charging.site_sizing import Design, best_dispatch, meter_replay, solve
+from um_charging.site_sizing import Design, _expand_grouped, best_dispatch, meter_replay, solve
 
 
 def two_sites(energy_kwh=13.5, port_minutes=15):
@@ -79,3 +79,13 @@ def test_min_over_eligible_runtime_peaks_uses_the_whole_invoice():
     b = row((40, 10), 7, 2)
     outside = row((40, 50), 2, 1)
     assert best_dispatch([a, b, outside], design, "official") is b
+
+
+def test_grouped_replay_uses_the_original_unreserved_energy_tolerance():
+    p = two_sites()
+    date = p.days[0]["date"]
+    reservations = {"a": 0}
+    blocks = [(date, "PORT", 2, reservations, [("a", 120., 135., 1)])]
+    assert list(_expand_grouped(p, blocks, [0, 2e-9])) == []
+    with pytest.raises(ValueError, match="positive energy without a reservation"):
+        list(_expand_grouped(p, blocks, [0, 2e-8]))

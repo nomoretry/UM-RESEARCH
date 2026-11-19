@@ -219,7 +219,9 @@ def _expand_grouped(period, dispatch, solution):
                 continue
             assigned = slots.get(truck, range(count))
             if not assigned:
-                raise ValueError(("positive energy without a reservation", day, site, truck))
+                if energy > eb.UNRESERVED_ENERGY_TOLERANCE_KWH:
+                    raise ValueError(("positive energy without a reservation", day, site, truck, energy))
+                continue
             for q in assigned:
                 start, end = left + 15 * q, right + 15 * q
                 yield (day, truck, site, (period.offset[day] + int(start)) // 15,

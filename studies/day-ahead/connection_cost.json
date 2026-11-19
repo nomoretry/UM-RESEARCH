@@ -1,0 +1,75 @@
+{
+  "checked_on": "2026-11-20",
+  "connection": {
+    "operator": "Netze BW GmbH",
+    "region": "Netze BW distribution area, Germany, applied as a tariff scenario to both modeled sites",
+    "effective_from": "2026-01-01",
+    "voltage_level": "Mittelspannungsnetz",
+    "unit": "EUR per kW of contracted grid connection capacity, one-time",
+    "eur_per_kw_net": 172.74,
+    "eur_per_kw_gross": 205.56,
+    "vat_rate": 0.19,
+    "url": "https://assets.cdn.netze-bw.de/xytfb1vrn7of/3WkwLb2wCAE2YcQuG0YU4m/cff72cf6af73c9b225d0268390f45ebf/preisuebersicht-baukostenzuschuss-bkz-strom.pdf",
+    "publication_index": "https://www.netze-bw.de/unternehmen/veroeffentlichungen",
+    "discount_rate": 0.05,
+    "economic_life_years": 20,
+    "assumption": "20-year scenario for a connection right that outlasts one charger and covers two 10-year charger lives. Ordinary capital recovery, no residual value. Use the net medium-voltage network rate. Charge all contracted kW for a new site and only increments over 100/75 kW at an existing site. Service line, transformer, civil works and non-fleet loads are outside this capacity component.",
+    "source_level": "Official distribution system operator tariff"
+  },
+  "price_level": {
+    "destination": "2025 annual-average purchasing power",
+    "index_2026_oct": 126.5,
+    "basis": "German all-items consumer price index, 2020=100. Use October 2026 as the latest reported 2026 index on the check date. Apply the existing 2025 index 121.9 from network_charges.json. This is a general price-level adjustment.",
+    "url": "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/11/PD26_392_611.html"
+  },
+  "charger_equipment_prices": {
+    "20": {
+      "supplier": "WallboxCenter (Essen, Germany)",
+      "source_level": "Online shop equipment listing, advertised promotional price",
+      "model": "EM2GO Ultra Compact 20 kW DC wallbox, retailer item WB-5001-1, manufacturer SKU EMUC0204G1BC, EAN 4024559264382",
+      "dc_output_kw": 20,
+      "datasheet_ac_input_kva": 21,
+      "equipment_eur_net": 4445.378151260505,
+      "equipment_eur_gross": 5290,
+      "vat_rate_shown": 0.19,
+      "price_basis": "Advertised equipment price viewed 2026-11-20, inclusive of 19% VAT and before shipping. The €5,490 crossed-out price is the shop comparison price. Use the €5,290 published offer and divide by 1.19 for net equipment cost.",
+      "url": "https://wallboxcenter.de/shop/wallbox/dc-wallboxen/dc-wallbox-20kw-em2go-ultra-compact-inkl-5m-ccs-ladekabel-rfid-lanwlansim/",
+      "datasheet_url": "https://wallboxcenter.de/wp-content/uploads/2026/02/DC-Wallbox-20kw-Ultra-Compact_Datenblatt.pdf",
+      "identification": "The retailer's product name, maximum DC charge rating, model number and EAN agree with the linked EM2GO datasheet. This replaces the manufacturer storefront with inconsistent power labels."
+    },
+    "30": {
+      "supplier": "J&S Energy B.V. (Netherlands), German-language price list",
+      "model": "30-kW-Gleichstrom-Standladestation mit CCS2",
+      "dc_output_kw": 30,
+      "equipment_eur_net": 6295,
+      "equipment_eur_gross": 7616.95,
+      "price_basis": "Published net equipment list price in EUR, accessed 2026-11-20, standard base unit",
+      "url": "https://jsenergystorage.de/PRODUKTE/30-kW-Gleichstrom-Ladestation-CCS2/",
+      "source_level": "Online shop equipment listing"
+    },
+    "40": {
+      "supplier": "J&S Energy B.V. (Netherlands), German-language price list",
+      "model": "40-kW-Gleichstrom-Standladestation mit CCS2",
+      "dc_output_kw": 40,
+      "equipment_eur_net": 7295,
+      "equipment_eur_gross": 8826.95,
+      "price_basis": "Published net equipment list price in EUR, accessed 2026-11-20, standard base unit",
+      "url": "https://jsenergystorage.de/PRODUKTE/40-kW-Gleichstrom-Ladestation-CCS2/",
+      "source_level": "Online shop equipment listing"
+    }
+  },
+  "charger_annualization": {
+    "reference": "studies/day-ahead/connector_cost.json",
+    "method": "Use the Frank 2025 50 kW benchmark as registered. Apply the same financial life, discount, installation and maintenance multipliers to the supplier equipment list prices as a consistent scenario. The model limits grid-side draw and continues to use grid-to-battery efficiency 0.9. Supplier ratings are DC output and establish a price class only. Confirm AC input, charging compatibility, installation, warranty and procurement terms for a real site.",
+    "unpriced_grid_ratings_kw": [
+      10,
+      15,
+      25,
+      35,
+      45
+    ],
+    "missing_evidence": "No screened equipment prices were retained for the interpolated ratings. Use annual break-even ceilings. Site-specific installed quotations and the VAT basis of the Frank 50 kW benchmark are unverified.",
+    "benchmark_source_level": "Published conference-paper equipment benchmark",
+    "comparability": "The 20 kW CCS2 wallbox and the 30/40 kW supplier units are different equipment classes from the 50 kW Alpitronic HYC50. All rows share the same financial parameters for comparability. List prices do not establish equal uptime, warranty, electrical compatibility or installed costs."
+  }
+}

@@ -134,3 +134,13 @@
 | ABB，《Plug-in mines》，ABB Review 2/2023，第 140–145 页 | 定向核对厂商原文第 145 页图 05。 | 自动化矿卡接驳示例中，接合及安全检查约 18 秒，断开约 7 秒。进出工位和挪车没有完整计时，数字仅反映设备动作。2 分钟是本研究中较短的正换车假设，仍需道路重卡场站时间记录来检验。[厂商原文](https://library.e.abb.com/public/320194e2ac7647d78ac9f2d16da5d519/140-145%20m2357_EN.pdf?x-sign=auPHzlKZZY34TWrQU51cPc7IUeNV23I%2FiKNK2Qp8NUCU5p6MnMUC1m6esslnxzXz) |
 
 主情景保持 0、2、5 分钟。10、15 分钟按已登记规则作为压力情景，外部材料只用于解释量级。
+
+## S3 两站充电功率的费用来源（2026-11-20）
+
+| 输入 | 来源等级与核对结果 | 用法 |
+|---|---|---|
+| 接入建设费 | 运营商官方价目。Netze BW 2026-01-01 生效，中压电网 `Mittelspannungsnetz` 行每 kW €172.74 未税、€205.56 含税。 | 新建按全部 kW，既有按超过已付容量的 kW，5% 折现和 20 年寿命。需求和电量网费取同运营商 2024 年中压价目。[运营商价目](https://assets.cdn.netze-bw.de/xytfb1vrn7of/3WkwLb2wCAE2YcQuG0YU4m/cff72cf6af73c9b225d0268390f45ebf/preisuebersicht-baukostenzuschuss-bkz-strom.pdf) |
+| 50 kW | 会议论文设备基准。Frank、Oebel 和 Gnann（2025）表 2 为 €20,882，引用 24 指向 Alpitronic HYC50。表内其余卡车直流设备为 80 和 150 kW。 | 设备价加 30% 安装与每年 1% 维护，10 年寿命、5% 折现。税基在现有材料中未核实。[Frank 表 2](https://publica-rest.fraunhofer.de/server/api/core/bitstreams/794e2305-1b7f-4c8d-bf53-c1728befda2d/content#page=6) |
+| 20 kW | 网店商品标价。WallboxCenter 的商品页与厂商数据表均列型号 EMUC0204G1BC、EAN 4024559264382 和 20 kW DC。核对当日公开价格为 €5,290 含 19% VAT，运费另计。 | 除以 1.19 得未税设备价。壁挂、CCS2、厂商资料列输入 21 kVA。该档与 HYC50 的使用强度、输入和计量要求须分别核实。[商品页](https://wallboxcenter.de/shop/wallbox/dc-wallboxen/dc-wallbox-20kw-em2go-ultra-compact-inkl-5m-ccs-ladekabel-rfid-lanwlansim/) · [厂商数据表](https://wallboxcenter.de/wp-content/uploads/2026/02/DC-Wallbox-20kw-Ultra-Compact_Datenblatt.pdf) |
+| 30 和 40 kW | 网店商品标价。J&S Energy B.V. 德语商品页的 CCS2 立式基础设备各为 €6,295、€7,295 未税。 | 两档与 50 kW 同用财务及安装维护比例。实际安装与售后报价留空。[30 kW](https://jsenergystorage.de/PRODUKTE/30-kW-Gleichstrom-Ladestation-CCS2/) · [40 kW](https://jsenergystorage.de/PRODUKTE/40-kW-Gleichstrom-Ladestation-CCS2/) |
+| CPI | 官方统计。德国综合 CPI 以 2020=100，2026 年 10 月为 126.5，沿用 2025 年全年 121.9。 | 把 2026 年建设费和商品价换算为 2025 年购买力。2021 年批发价及 2024 年网费分别沿用已有对应索引。[Destatis](https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/11/PD26_392_611.html) |
