@@ -11,12 +11,16 @@ def load_network():
     return json.loads(NETWORK_INPUT.read_text(encoding="utf-8"))
 
 
+def annual_repeats(config):
+    repeat = config["annualization"]
+    return repeat["weeks_per_year"] / repeat["sample_weeks"]
+
+
 def annual_factors(config):
     """Multipliers for six-week 2021 electricity and annual 2024 grid fees."""
     cpi = config["price_level"]["cpi"]
-    repeat = config["annualization"]
     return (
-        repeat["weeks_per_year"] / repeat["sample_weeks"] * cpi["2025"] / cpi["2021"],
+        annual_repeats(config) * cpi["2025"] / cpi["2021"],
         cpi["2025"] / cpi["2024"],
     )
 
@@ -29,6 +33,16 @@ def select_band(config, full_load_hours, basis="frank"):
     if full_load_hours < boundary or (low_at_boundary and full_load_hours == boundary):
         return "low"
     return "high"
+
+
+def network_rates(config, scenario, band):
+    """Return capacity and energy rates for a tariff, in its original price level."""
+    if scenario == "N0":
+        return 0., 0.
+    basis = "official" if scenario == "official" else "frank"
+    rates = config["tariffs"][basis]["bands"][band]
+    sensitivities = config["capacity_sensitivities_eur_per_kw_year"]
+    return sensitivities.get(scenario, rates["capacity_eur_per_kw_year"]), rates["energy_eur_per_kwh"]
 
 
 def settle(config, purchase_eur_2021, six_week_kwh_by_site, peak_kw_by_site, scenario):
@@ -53,11 +67,7 @@ def settle(config, purchase_eur_2021, six_week_kwh_by_site, peak_kw_by_site, sce
         annual_kwh = kwh * repeat["weeks_per_year"] / repeat["sample_weeks"]
         hours = annual_kwh / peak if peak else 0.0
         band = select_band(config, hours, basis)
-        rates = config["tariffs"][basis]["bands"][band]
-        capacity_rate = sensitivities.get(scenario, rates["capacity_eur_per_kw_year"])
-        energy_rate = rates["energy_eur_per_kwh"]
-        if scenario == "N0":
-            capacity_rate = energy_rate = 0.0
+        capacity_rate, energy_rate = network_rates(config, scenario, band)
         sites[site] = dict(
             six_week_kwh=kwh, annual_kwh=annual_kwh, peak_kw=peak,
             full_load_hours=hours, band=band,

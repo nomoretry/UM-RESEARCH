@@ -599,14 +599,23 @@ def _load_costs(path, network):
     return dict(annual_bkz_eur_2025_per_kw=connection, annual_charger_eur_2025_by_kw=equipment)
 
 
+def annual_capital_costs(design, materials):
+    """Return known equipment, unquoted ratings, and both connection charges."""
+    equipment = materials["annual_charger_eur_2025_by_kw"]
+    ratings = design.chargers()
+    missing = sorted(p for p in ratings if p not in equipment)
+    known = math.fsum(equipment.get(p, 0.) for p in ratings)
+    capacity = dict(new=sum(design.caps),
+                    existing=sum(max(0, k - old) for k, old in zip(design.caps, EXISTING_KW, strict=True)))
+    connection = {basis: k * materials["annual_bkz_eur_2025_per_kw"] for basis, k in capacity.items()}
+    return known, missing, connection
+
+
 def annual_tables(rows, materials, scenarios):
     """Compute both capacity bases and price ceilings for unquoted ratings."""
     values = {}
     for design, options in rows.items():
-        missing = sorted(p for p in design.chargers() if p not in materials["annual_charger_eur_2025_by_kw"])
-        known = math.fsum(materials["annual_charger_eur_2025_by_kw"].get(p, 0.) for p in design.chargers())
-        connections = dict(new=sum(design.caps),
-                           existing=sum(max(0, k - old) for k, old in zip(design.caps, EXISTING_KW, strict=True)))
+        known, missing, connection = annual_capital_costs(design, materials)
         for scenario in scenarios:
             best = best_dispatch([r for r in options if r["status"] in ENERGY_ACCEPTED], design, scenario)
             if best is None:
@@ -621,8 +630,7 @@ def annual_tables(rows, materials, scenarios):
                 energy_eur=bill["annual_energy_eur_2025"],
                 network_energy_eur=bill["annual_network_energy_eur_2025"],
                 demand_eur=bill["annual_capacity_eur_2025"],
-                connection_eur={basis: k * materials["annual_bkz_eur_2025_per_kw"]
-                                for basis, k in connections.items()},
+                connection_eur=dict(connection),
                 solve_ids=[w["solve"] for w in best["weeks"]])
     winners = {}
     for scenario in scenarios:
