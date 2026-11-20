@@ -329,11 +329,13 @@ def _reconstruct_points(evidence, registered_points):
     return tuple(annual_points)
 
 
-def load_evidence(archive_directory, pilot_parent_directory):
+def load_evidence(archive_directory, pilot_parent_directory, *, publication_path=None):
     """Read archived proofs and reconstruct the published annual sample without solving."""
     archive = Path(archive_directory)
     pilot_run = Path(pilot_parent_directory)
-    publication = ss.eb.read_json(ss.eb.WEEKS.with_name("site_sizing.json"))
+    if publication_path is None:
+        publication_path = ss.eb.WEEKS.with_name("site_sizing.json")
+    publication = ss.eb.read_json(Path(publication_path))
     inventory, summary, audit, hashes = _read_inputs(archive, pilot_run, publication)
     periods = {period.days[0]["week_start"]: period for period in ss.fc._periods("full")}
     cases = {design.label: design for design in ss.design_grid(ss.FINE_KW)}

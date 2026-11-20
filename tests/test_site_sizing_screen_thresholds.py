@@ -1,8 +1,11 @@
+import pytest
+
 from um_charging.site_sizing import Design
-from um_charging.site_sizing_screen_thresholds import quote_threshold_ranges
+from um_charging.site_sizing_screen_thresholds import quote_threshold_ranges, select_quote_witnesses
 
 
-def test_screened_rival_sets_reversal_floor_and_hyc50_ceiling():
+@pytest.fixture
+def published_case():
     incumbent = Design(1, 20, 0)
     alternative = Design(1, 30, 0)
     hyc50 = Design(1, 50, 0)
@@ -21,6 +24,11 @@ def test_screened_rival_sets_reversal_floor_and_hyc50_ceiling():
                                           "net_equipment_eur_2026": 1100, "hyc50_annual_eur_per_unit_2025": 180},
         }],
     }
+    return publication, incumbent, alternative, hyc50, key
+
+
+def test_screened_rival_sets_reversal_floor_and_hyc50_ceiling(published_case):
+    publication, incumbent, alternative, hyc50, key = published_case
     screened = [
         (incumbent, (15, 0), {key: 501}),  # Same equipment count cannot change the reversal.
         (alternative, (25, 0), {key: 530}),
@@ -41,3 +49,49 @@ def test_screened_rival_sets_reversal_floor_and_hyc50_ceiling():
     assert row["price_reversal"]["annual_eur_per_unit_2025_bounds"] == [160, 160]
     assert row["hyc50_annual_break_even"]["status"] == "unchanged"
     assert row["hyc50_annual_break_even"]["annual_eur_per_unit_2025_bounds"] == [180, 180]
+
+
+def test_quote_witnesses_include_non_extremal_points_and_sort_by_lower_bill(published_case):
+    publication, incumbent, alternative, hyc50, _ = published_case
+
+    def point(design, caps, cost):
+        return dict(design=design.label, caps_kw=caps, status="excluded_by_annual_lower_bound",
+                    annual_comparison=[dict(scenario="N0", connection_basis="new", lower_eur=cost,
+                                            no_relaxed_load_split=cost is None)])
+
+    screening = {"points": [
+        point(hyc50, (45, 0), 580),
+        point(incumbent, (15, 0), 510),
+        point(hyc50, (15, 0), None),
+        point(alternative, (25, 0), 520),
+        point(hyc50, (25, 0), 550),
+    ]}
+    result = select_quote_witnesses(publication, screening, limit=2)
+    assert result["eligible_count"] == 3
+    assert [(item["design"], item["caps_kw"]) for item in result["selected"]] == [
+        (alternative.label, (25, 0)), (hyc50.label, (25, 0)),
+    ]
+    assert [item["caps_kw"] for item in result["unselected"]] == [(45, 0)]
+    assert {item["metric"] for item in result["unselected"][0]["affected_thresholds"]} == {
+        "incumbent_quote_vs_hyc50", "hyc50_annual_break_even",
+    }
+
+
+def test_quote_settlement_and_timeout_update_the_threshold_envelope(published_case):
+    publication, _, alternative, hyc50, key = published_case
+    row, = quote_threshold_ranges(
+        publication, [(hyc50, (15, 0), {key: 525})],
+        evaluated_points=[(alternative, (25, 0), {key: 550})],
+        interval_points=[(hyc50, (25, 0), {key: 520}, {key: 545})],
+        verify_published=False,
+    )
+    assert row["price_reversal"]["annual_eur_per_unit_2025_bounds"] == [120, 145]
+    assert row["incumbent_quote_vs_hyc50"]["annual_eur_per_unit_2025_bounds"] == [120, 145]
+    assert row["hyc50_annual_break_even"]["annual_eur_per_unit_2025_bounds"] == [255, 280]
+
+    row, = quote_threshold_ranges(
+        publication, [(hyc50, (15, 0), {key: 560})],
+        evaluated_points=[(hyc50, (25, 0), {key: 550})], verify_published=False,
+    )
+    assert row["hyc50_annual_break_even"]["status"] == "unchanged"
+    assert row["hyc50_annual_break_even"]["annual_eur_per_unit_2025_bounds"] == [250, 250]

@@ -158,7 +158,7 @@ def screen(evidence, bounds):
     }
 
 
-def run(coarse_archive, pilot_archive, output):
+def run(coarse_archive, pilot_archive, output, *, publication_path=None):
     """Read archives, backtest, and screen. The optimizer is disabled throughout."""
     with ExitStack() as guards:
         for module in (sizing, sizing.fc, optimize):
@@ -166,7 +166,7 @@ def run(coarse_archive, pilot_archive, output):
                 if hasattr(module, name):
                     guards.enter_context(patch.object(module, name, _solver_forbidden))
         guards.enter_context(patch.object(sizing.Evidence, "call", _solver_forbidden))
-        evidence = load_evidence(coarse_archive, pilot_archive)
+        evidence = load_evidence(coarse_archive, pilot_archive, publication_path=publication_path)
         provenance = verify_solver_source(evidence.pilot_summary["source"])
         bounds = AnnualBillBounds(tuple(evidence.periods.values()), evidence.reference,
                                   evidence.network, evidence.materials)
@@ -188,12 +188,15 @@ def main():
     parser = ArgumentParser(description=__doc__)
     parser.add_argument("--coarse-archive", type=Path, required=True)
     parser.add_argument("--pilot-archive", type=Path, required=True)
+    parser.add_argument("--published-baseline", type=Path,
+                        help="Archived publication used to register the original coarse and fine points")
     parser.add_argument("--output", type=Path, required=True,
                         help="New directory inside the local offline records repository")
     args = parser.parse_args()
     output = checked_output(args.output, ROOT)
     output.mkdir()
-    _, result = run(args.coarse_archive, args.pilot_archive, output)
+    _, result = run(args.coarse_archive, args.pilot_archive, output,
+                    publication_path=args.published_baseline)
     print("Priced points", result["counts"])
     print("Remaining weekly groups", result["wall_time"]["unique_weekly_groups"])
     print("Estimated wall hours", result["wall_time"]["estimated_wall_seconds"] / 3600)
