@@ -1,6 +1,8 @@
 import pytest
+from types import SimpleNamespace
 
 from um_charging.site_sizing import Design
+from um_charging.site_sizing_known_peak_quotes import recompute_quote_thresholds
 from um_charging.site_sizing_screen_thresholds import quote_threshold_ranges, select_quote_witnesses
 
 
@@ -95,3 +97,40 @@ def test_quote_settlement_and_timeout_update_the_threshold_envelope(published_ca
     )
     assert row["hyc50_annual_break_even"]["status"] == "unchanged"
     assert row["hyc50_annual_break_even"]["annual_eur_per_unit_2025_bounds"] == [250, 250]
+
+
+def test_known_peak_quotes_keep_timeout_witness_and_apply_rank_intervals(published_case):
+    publication, incumbent, alternative, hyc50, _ = published_case
+    bills = lambda value: {"N0": {"new": value}}
+    # The screened HYC50 witness has an accepted timeout. Its audited bill can
+    # improve the attainable endpoint, but its actual threshold is an interval.
+    # The uncertified rank point has a useful lower bill and no schedule for
+    # all six weeks. It can affect the ordinary crossover.
+    witness = dict(design=hyc50.label, caps_kw=[25, 0], kind="threshold", status="settled")
+    rank = dict(design=alternative.label, caps_kw=[15, 0], kind="ranking", status="unresolved")
+    screened = dict(design=hyc50.label, caps_kw=[25, 0], status="excluded_by_annual_lower_bound",
+                    annual_comparison=[dict(scenario="N0", connection_basis="new", lower_eur=510,
+                                            no_relaxed_load_split=False)])
+    settled = SimpleNamespace(design=alternative, caps=(30, 0), totals=bills(550))
+    absorbed = SimpleNamespace(week="first", proof="local/one", proof_sha256="hash", status="bounded")
+    queried = []
+
+    def bill_lower(design, caps, accepted, *, quotes):
+        assert accepted == (absorbed,) and quotes
+        queried.append((design, caps))
+        return {"total_eur": bills(530 if design == hyc50 else 520)}
+
+    archive = SimpleNamespace(
+        evidence=SimpleNamespace(publication=publication, cases={d.label: d for d in (incumbent, alternative, hyc50)}),
+        ranked_settlements=[settled], summary={"points": [witness, rank]}, screening={"points": [screened]},
+        accepted=lambda row: (absorbed,), upper=lambda row: bills(545) if row is witness else None,
+        bill_lower=bill_lower,
+    )
+    result = recompute_quote_thresholds(archive)
+    row, = result["quote_thresholds"]
+    assert queried == [(hyc50, (25, 0)), (alternative, (15, 0))]
+    assert row["price_reversal"]["annual_eur_per_unit_2025_bounds"] == [120, 145]
+    assert row["incumbent_quote_vs_hyc50"]["annual_eur_per_unit_2025_bounds"] == [130, 145]
+    assert row["hyc50_annual_break_even"]["annual_eur_per_unit_2025_bounds"] == [255, 270]
+    assert row["price_reversal"]["screened_bound_witness"]["design"] == alternative.label
+    assert result["counts"]["hyc50_annual_break_even"] == {"exact": 0, "interval": 1}

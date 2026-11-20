@@ -3,7 +3,7 @@
 from argparse import ArgumentParser
 import ast
 from collections import Counter
-from contextlib import ExitStack
+from contextlib import ExitStack, contextmanager
 import math
 from pathlib import Path
 from statistics import mean
@@ -66,6 +66,18 @@ def verify_solver_source(pilot_source):
 
 def _solver_forbidden(*args, **kwargs):
     raise RuntimeError("Site-sizing screening must not call the solver")
+
+
+@contextmanager
+def without_solver():
+    """Keep archived replay and tariff arithmetic independent of optimization."""
+    with ExitStack() as guards:
+        for module in (sizing, sizing.fc, sizing.eb, optimize):
+            for name in ("solve", "milp", "linprog"):
+                if hasattr(module, name):
+                    guards.enter_context(patch.object(module, name, _solver_forbidden))
+        guards.enter_context(patch.object(sizing.Evidence, "call", _solver_forbidden))
+        yield
 
 
 def _weekly_jobs(missing):
@@ -160,12 +172,7 @@ def screen(evidence, bounds):
 
 def run(coarse_archive, pilot_archive, output, *, publication_path=None):
     """Read archives, backtest, and screen. The optimizer is disabled throughout."""
-    with ExitStack() as guards:
-        for module in (sizing, sizing.fc, optimize):
-            for name in ("solve", "milp"):
-                if hasattr(module, name):
-                    guards.enter_context(patch.object(module, name, _solver_forbidden))
-        guards.enter_context(patch.object(sizing.Evidence, "call", _solver_forbidden))
+    with without_solver():
         evidence = load_evidence(coarse_archive, pilot_archive, publication_path=publication_path)
         provenance = verify_solver_source(evidence.pilot_summary["source"])
         bounds = AnnualBillBounds(tuple(evidence.periods.values()), evidence.reference,
