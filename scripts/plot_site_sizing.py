@@ -92,22 +92,35 @@ def make_figure(data):
             ax.axvline(single_end - .5, color="#849497", linewidth=1.1)
     fig.suptitle("Where to install charging power for the same truck service",
                  x=.062, y=.963, ha="left", fontsize=19, weight="bold", color=BORDER)
+    completion = data.get("fine_screen_completion")
     coverage = ""
     if data.get("coarse_grid_evaluated"):
         checkpoints = data["observed_cost_checkpoints"]
         total = checkpoints["coarse_replayed"] + checkpoints["coarse_certified_infeasible"]
-        coverage = f"   ·   Coarse operating points {total}/{total} assessed"
-        if not data["whole_grid_evaluated"]:
-            coverage += ", refinement partial"
+        if completion is None:
+            coverage = f"   ·   Coarse operating points {total}/{total} assessed"
+            if not data["whole_grid_evaluated"]:
+                coverage += ", refinement partial"
+        else:
+            priced = completion["priced_fine_points"]
+            classified = priced - completion["priced_fine_counts"]["unresolved"]
+            unpriced = completion["unpriced_fine_points"]
+            open_unpriced = completion["unpriced_without_prior_decision"]
+            fig.text(.062, .850, f"{total}/{total} coarse operating points assessed"
+                     f"   ·   {classified:,}/{priced:,} priced fine points classified"
+                     f"   ·   {open_unpriced}/{unpriced} unpriced fine points still open",
+                     fontsize=10, color="#40545a")
     fig.text(.062, .89, f"Matched set {reference}/{data['sample_truck_days']} truck-days"
              "   ·   300 kWh batteries, zero-changeover cost scan"
              "   ·   Netze BW official 2024 medium-voltage tariff" + coverage,
              fontsize=10, color="#40545a")
     handles = [Patch(facecolor=UNSAMPLED, label="Outside evaluated grid"),
-               Patch(facecolor=INELIGIBLE, label="Service gap or unresolved"),
+               Patch(facecolor=INELIGIBLE,
+                     label="Service gap or no settled bill" if completion else "Service gap or unresolved"),
                Patch(facecolor=NEEDS_PRICE, label="Equipment quote required"),
                Patch(facecolor="white", edgecolor=BORDER,
-                     label="Same 54 days / lowest evaluated priced cost")]
+                     label=f"Same {reference} days / lowest priced bill" if completion
+                     else f"Same {reference} days / lowest evaluated priced cost")]
     fig.legend(handles=handles, loc="lower left", bbox_to_anchor=(.058, .088),
                ncol=4, frameon=False, fontsize=9)
     color_ax = fig.add_axes((.536, .174, .411, .018))

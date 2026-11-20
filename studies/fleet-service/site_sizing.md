@@ -6,7 +6,22 @@
 
 **20 kW 港区单站在本轮网格上保留同一组 54/73 个车日。** 港区降到 15 kW、仓库保持 0 时，少完成 2021-10-29 的 3 号车日。把仓库配到网格中的 10 kW 即恢复该车日，增加港区功率也能恢复。港区 10 kW 即使配仓库 50 kW 也最多完成 50 个。仓库单站最高只完成 6 个。因此，保留该组运输服务可只在港区建一台充电机。在有价且已回放的账单中，最省的配置均集中在港区，官方中压网费下新建取 20 kW，既有取 40 kW。[逐车日集合与放宽上限证据](site_sizing.json)
 
-**执行边界。** 完成 50 个硬件设计的最大服务核验，其中 42 个保留同一集合。粗网格 435 个运行点全部判定，345 个有六周回放账单，90 个无法保留服务。加密网格仍有部分点未算，已判定的加密点中 9 个有完整账单，141 个通过求解或单调性判定不可行。以下排名以有价且完成核验的运行点为范围。[账单、覆盖和证据清单](site_sizing.json)
+**有价加密网格已补完，12 个计费口径的最低方案均保持原值。** 50 个硬件设计中有 42 个保留同一组车日。435 个粗网格运行点中，345 个有六周回放账单，90 个无法保留服务。每个有价加密点均已结算、判定不可行，或由年费下界证明不可能是最低。183 个缺价加密点中有 77 个尚无判定，缺价设备另报门槛。[账单、覆盖和证据清单](site_sizing.json)
+
+| 有价加密点的判定 | 点数 |
+|---|---:|
+| 六周回放结算 | 120 |
+| 求解证明不可行 | 13 |
+| 由更宽松设施的不可行证明推出不可行 | 175 |
+| 放松两站电量分配后仍送不进所需电量 | 24 |
+| 放松网费后的年费下界排除 | 729 |
+| 超时后的年费区间排除 | 38 |
+| 已知峰值年费下界排除 | 3 |
+| **合计** | **1,102** |
+
+初筛将固定总电量在两站间自由分配，用可充电刻钟数约束峰值。最后 3 点和可能改变设备价位的点进一步使用已接受周的实测值。六周年账单取每站六个周峰值的最大值，因此已接受周的刻钟峰值给出年峰值下限。这些周按原排程固定分站电量，其余周放开分配。计算在电量端点和 2,500 满负荷小时分档两侧调用原计费规则。没有已接受周时沿用初筛下界。24 个容量不足点单列为不可行。在这些点，即使放开分站电量，仍无法送足维持运输服务所需的 58,387.79 kWh/年。两个下界均沿用相同的购电证明、年化和设备成本。[下界实现](../../src/um_charging/site_sizing_bounds.py) · [逐周回溯与判定](../../src/um_charging/site_sizing_known_peak_audit.py)
+
+345 个粗网格结算点和 120 个有价加密结算点各留出一周，轮换六次。每次用其他记录的购电下界或最低小时价格估计留出周，固定其余五周的回放排程。33,480 次年费比较中，实际年费减下界的最小值为 €0.00001025，违反 0 次。硬件 `p1-20-w20` 限峰 15/20 kW、`p1-30-w0` 和 `p1-40-w0` 均限峰 15/0 kW 时，其下界在最接近最低方案的口径下仍高 €1,444.17、€488.87、€647.24/年。后两点缺少 10 月 25 日周的可行排程，年费仅有下界。三点均可据此排除，研究复算调用求解器 0 次。[精选结果](site_sizing.json)
 
 ### 保留同一组车日的设计
 
@@ -80,9 +95,16 @@
 
 ### 设备报价改变选择的价位
 
-官方网费下，新建的 20 kW 机未税设备价由 €4,445.38（2026 年标价口径）升到约 **€5,748**，其余价格固定时，已核验的 30 kW 港区单站与它打平。既有接入口径，40 kW 机由 €7,295 升到约 **€7,418**，已核验的 20 kW 港区单站与它打平。若比较港区单站 HYC50，其年化整机成本须降到新建约 €937、既有约 €1,316 才分别打平。各价位包含对应电费、接入费用与保持服务的运行点。小型壁挂设备和 HYC50 的设备类别差异使这些临界价比标价本身更能说明采购条件。[报价与年化输入](../day-ahead/connection_cost.json) · [各网费的翻转价位](site_sizing.json)
+官方网费下，其他价格固定，新建 20 kW 机的 2026 年未税设备价从 €4,445.38 升到 **€5,748.39** 时，30 kW 港区单站打平。既有 40 kW 机从 €7,295 升到 **€7,418.25** 时，20 kW 港区单站打平。若单独比较港区 HYC50，可分别改变原最低方案的设备报价或 HYC50 的年化整机成本。表内每格按新建／既有排列。三列各有 12 个精确门槛，金额显示到分。两处 HYC50 见证运行点的六周年费仍有宽度，但其下界均不足以改变打平价。[报价与年化输入](../day-ahead/connection_cost.json) · [门槛与证据](site_sizing.json)
 
-以下是官方网费下，尚缺标价的设备合计最多可承担的年费用（2025 年 €/年）。等于表中值时打平，低于时才节约。两个缺价档的行使用两台合计。门槛按已核验的运行点计算。[各网费和设备的门槛](site_sizing.json)
+| 网费 | 原机对任一替代的翻转价（€2026 未税） | 原机对 HYC50 的打平价（€2026 未税） | HYC50 保本年费（€2025/年） |
+|---|---:|---:|---:|
+| 无网费 | 8,521.84 / 9,299.00 | 20,728.66 / 19,951.50 | 1,415.58 / 1,549.15 |
+| Frank 表 4 | 6,995.07 / 6,217.91 | 22,643.61 / 20,312.13 | 596.69 / 997.41 |
+| Netze BW 官方 | 5,748.39 / 7,418.25 | 20,665.00 / 21,306.39 | 936.76 / 1,316.29 |
+| 固定需量 0、22.79、208.38（到分相同） | 6,995.07 / 6,217.91 | 23,867.28 / 21,535.80 | 386.38 / 787.09 |
+
+以下是官方网费下，尚缺标价的设备合计最多可承担的年费用（2025 年 €/年）。等于表中值时打平，低于时才节约。两个缺价档的行使用两台合计。183 个缺价加密点仍有部分未算，缺价设备门槛沿用已发布值，只覆盖已结算的运行点。[各网费和设备的门槛](site_sizing.json)
 
 | 港/仓 kW | 缺价额定 kW | 对最低有价新建 | 对最低有价既有 | 对原基准新建 | 对原基准既有 |
 |---|---|---:|---:|---:|---:|
@@ -105,7 +127,7 @@
 
 零换车扫描复用原跨日模型的整刻钟分组，只在同一原生价小时内合并可用车辆相同、每路均可同时供电、且没有跨站预约冲突的完整刻钟。内部事件用原子时段。五分钟复核继续逐枪模拟，按壁钟预约时相邻异车扣除空档。审计从展开排程独立重放物理插枪、停靠、分钟级站点和车辆功率、SOC、跨日电量、原生小时购电与两站刻钟计量，再用另一套算式核对年度网费。[零换车模型](../../src/um_charging/site_sizing.py) · [正换车模型](../../src/um_charging/fleet_changeover.py)
 
-每次求解上限 300 秒。最大服务为整数最优证明。一般购电调度采用相对 gap ≤ 1e-6 或每周购电绝对 gap ≤ €0.01。超时如有通过回放的可行上界且周购电 gap ≤ €0.05，保留该购电区间。四项年成本按可行排程回放结算。年购电区间的换算系数是 52/6 × 121.9/103.1，故每个 €0.05 上限相当于约 €0.512（2025 年购买力）。区间只约束购电目标，需量和电量网费按回放排程的实测峰值与电量计算。超过三组未判定或达到 90 分钟正式预算时停止。
+每次求解上限 300 秒。最大服务为整数最优证明。一般购电调度采用相对 gap ≤ 1e-6 或每周购电绝对 gap ≤ €0.01。超时如有通过回放的可行上界且周购电 gap ≤ €0.05，保留该购电区间。四项年成本按可行排程回放结算。年购电区间的换算系数是 52/6 × 121.9/103.1，故每个 €0.05 上限相当于约 €0.512（2025 年购买力）。区间只约束购电目标，需量和电量网费按回放排程的实测峰值与电量计算。原粗网格扫描的停止门槛为超过三组未判定或墙钟达到 90 分钟。
 
 ### 回归、需量对照与 5 分钟换车
 
@@ -131,7 +153,14 @@ $testDir = Join-Path ([IO.Path]::GetTempPath()) ('um-site-sizing-' + [guid]::New
 .\.venv\Scripts\python.exe -m um_charging.site_sizing
 ```
 
-已有离线记录的环境可从根目录运行结算复核。输出应列出粗网格 345 个可比账单、90 个不可保留服务的点和 0 个缺口。官方网费最低有价年费为新建 €13,854.18 和既有 €13,565.86。
+拥有离线记录的环境可从仓库根目录重现已知峰值判定和全部价位。程序从本机记录配置读取档案，将逐周检验、三个点的各口径年费区间和价位门槛写入一个新的临时目录。预期输出为 33,480 次年费检验、3 点排除、12 个网费与接入组合。
+
+```powershell
+$env:PYTHONPATH = 'src'
+.\.venv\Scripts\python.exe -m um_charging.site_sizing_known_peak
+```
+
+粗网格的独立结算复核命令如下。输出应列出 345 个可比账单、90 个不可保留服务的点和 0 个缺口。官方网费最低年费为新建 €13,854.18 和既有 €13,565.86。
 
 ```powershell
 $env:PYTHONPATH = (Join-Path (Get-Location).Path 'src')
@@ -149,7 +178,22 @@ $reviewFile = Join-Path ([IO.Path]::GetTempPath()) ('um-site-sizing-review-' + [
 
 **The same 54 of 73 truck-days can be served with one 20 kW port charger and no warehouse charger.** At 15 kW at the port, the port-only build serves 53 days and drops vehicle 3 on 29 October 2021. A 10 kW warehouse charger restores that day on this grid. A 10 kW port and a 50 kW warehouse together serve at most 50 days. The largest warehouse-only build serves six. [Service sets and capacity interventions](site_sizing.json)
 
-The six-week scan proved service for 50 builds. Forty-two retain the registered set. All 435 coarse operating points have been assessed, with 345 six-week replay bills and 90 infeasible points. Some refined operations are still unevaluated. Among those assessed, nine have complete bills and 141 were proved infeasible, including monotone deductions. The cost table reports the lowest priced options among assessed operations. [Coverage and evidence](site_sizing.json)
+**The priced refinement is complete. All twelve lowest-cost decisions and bills are unchanged.** Of the 50 builds, 42 retain the same service. All 435 coarse operating points have been assessed, with 345 six-week bills and 90 infeasible points. Every priced refined point has a settled bill, an infeasibility finding or an annual bill lower bound above the minimum. Of 183 unpriced refined points, 77 still lack a decision. [Coverage and evidence](site_sizing.json)
+
+| Outcome on the priced refinement | Points |
+|---|---:|
+| Settled from six replayed schedules | 120 |
+| Proved infeasible by the solver | 13 |
+| Infeasible by comparison with a less restricted build | 175 |
+| Insufficient energy delivery even with relaxed allocation | 24 |
+| Excluded by the relaxed annual bill lower bound | 729 |
+| Excluded by the annual bill interval after a timeout | 38 |
+| Excluded by the annual bill lower bound with known peaks | 3 |
+| **Total** | **1,102** |
+
+Initial screening allowed the fixed energy to move between meters and bounded the peaks by the available charging quarters. For the last three points and the equipment thresholds, the annual peak at each meter is at least the highest quarter-hour peak in its accepted weeks. Keep the metered volumes of those weeks and allocate the remaining energy freely. The calculation uses the settlement function at the allocation endpoints and on either side of the 2,500-hour tariff boundary. A point with no accepted week retains its original bound. The 24 capacity failures cannot deliver the required 58,387.79 kWh/year even with relaxed meter allocation. Both methods use the same wholesale proofs, capital costs and annualization. [Network bounds](../../src/um_charging/site_sizing_bounds.py) · [Holdout and classification](../../src/um_charging/site_sizing_known_peak_audit.py)
+
+Leaving out each week at 345 coarse and 120 priced refined settlements gave 33,480 annual comparisons and zero violations. The smallest actual bill less its bound was €0.00001025. Each holdout used an independent wholesale bound or the lowest hourly price and kept the other five audited schedules. The closest annual margins above a winning bill were €1,444.17 for `p1-20-w20` at 15/20 kW, €488.87 for `p1-30-w0` at 15/0 kW and €647.24 for `p1-40-w0` at 15/0 kW. The latter two have no feasible archived schedule for the week of 25 October, so only their lower bills are available. The archive calculation used zero solver calls. [Results and reproduction command](#复算与正式记录)
 
 ### Annual costs
 
@@ -170,7 +214,16 @@ The official Netze BW tariff gives 20/0 kW for new connections and 40/0 kW for e
 | Fixed demand 208.38 | New | 20/0 | 764.03 | 267.14 | 4,258.43 | 8,367.71 | **13,657.30** | −8,732.11 |
 | Fixed demand 208.38 | Existing | 20/0 | 764.03 | 0.00 | 4,258.43 | 8,367.71 | **13,390.16** | −6,661.76 |
 
-The 20 kW option at the new site reaches the high-utilization tariff band with the official tariff. Its demand charge increases while the network charge per kWh decreases. The 40 kW option for existing connections keeps its low-utilization band. With the official tariff, the observed alternative to a 20 kW new build ties when the 20 kW unit reaches about €5,748 net on the 2026 equipment-price basis. The 20 kW build ties the 40 kW existing-site design at a 40 kW unit price of about €7,418 net. For the matched 15/10 kW two-site build, the maximum combined annual equipment cost is €232.47 for new capacity and €278.07 for existing capacity at the assessed cap. Further equipment ceilings are available for the unpriced 25, 35 and 45 kW ratings. [Crossovers and missing-price ceilings](site_sizing.json)
+The 20 kW new-site option reaches the high-utilization band under the official tariff. Its demand charge rises and the network charge per kWh falls. The existing-site 40 kW option remains in the low-utilization band. Under that tariff, the 30 kW port build ties the 20 kW new-site build at a net 20 kW equipment price of €5,748.39. The 20 kW build ties the existing-site 40 kW build at a net 40 kW equipment price of €7,418.25. [Crossovers](site_sizing.json)
+
+Each cell below gives new / existing connections. All 36 thresholds are exact within the priced grid and billing policy, shown to cents. Both HYC50 comparison points retain annual bill intervals, whose lower ends cannot move the crossover. For unpriced equipment, published ceilings cover previously settled points only. At the assessed 15/10 kW two-site build, the combined equipment ceiling is €232.47/year for new capacity and €278.07/year for existing capacity under the official tariff. The 183 unpriced refined points have partial coverage. [All equipment ceilings](site_sizing.json)
+
+| Network case | Incumbent vs any alternative (€2026 net) | Incumbent vs HYC50 (€2026 net) | HYC50 break-even annual cost (€2025/year) |
+|---|---:|---:|---:|
+| No network charge | 8,521.84 / 9,299.00 | 20,728.66 / 19,951.50 | 1,415.58 / 1,549.15 |
+| Frank Table 4 | 6,995.07 / 6,217.91 | 22,643.61 / 20,312.13 | 596.69 / 997.41 |
+| Netze BW official | 5,748.39 / 7,418.25 | 20,665.00 / 21,306.39 | 936.76 / 1,316.29 |
+| Fixed demand 0, 22.79, 208.38 (equal to cents) | 6,995.07 / 6,217.91 | 23,867.28 / 21,535.80 | 386.38 / 787.09 |
 
 ### Final coarse operating point
 
@@ -197,7 +250,7 @@ Frank et al. Table 2 supplies the 50 kW Alpitronic HYC50 benchmark. The 20 kW Wa
 
 The coarse site grid uses 0, 20, 30, 40 and 50 kW. Refinement adds 5 kW steps around service crossings and priced minima, including 10 and 15 kW where needed. For dual port plugs on a 100 kW connection, operating caps also include 60, 70, 80, 90 and 100 kW. Given a physical maximum, the service solve maximizes overlap with the registered set. The JSON lists missing and added duties and reports what a one-site capacity relaxation restores in each certified witness. For a single charger, its power and the site connection are varied together. [Results](site_sizing.json)
 
-At zero changeover time, interchangeable whole quarters within one native-price hour can be pooled. The model retains atomic intervals for internal events, shared-feed contention and cross-site reservations. Five-minute verification uses named plugs. Independent replay reconstructs physical availability, minute-level limits, SOC across linked days, hourly purchases and the quarter-hour meter maxima, and separately recalculates both annual invoices. The 300-second solve budget uses integer service certificates and a relative wholesale gap of 1e-6 or a weekly absolute gap of €0.01. A timed-out dispatch with an audited upper bound and a weekly gap at most €0.05 may be reported as a wholesale interval. The feasible replay determines the billed peaks and volume charges. The run stops after more than three unresolved groups or 90 minutes. [Zero-delay model](../../src/um_charging/site_sizing.py) · [Named plugs](../../src/um_charging/fleet_changeover.py)
+At zero changeover time, interchangeable whole quarters within one native-price hour can be pooled. The model retains atomic intervals for internal events, shared-feed contention and cross-site reservations. Five-minute verification uses named plugs. Independent replay reconstructs physical availability, minute-level limits, SOC across linked days, hourly purchases and the quarter-hour meter maxima, and separately recalculates both annual invoices. The 300-second solve budget uses integer service certificates and a relative wholesale gap of 1e-6 or a weekly absolute gap of €0.01. A timed-out dispatch with an audited upper bound and a weekly gap at most €0.05 may be reported as a wholesale interval. The feasible replay determines the billed peaks and volume charges. The original coarse scan had a stop rule of more than three unresolved groups or 90 minutes. [Zero-delay model](../../src/um_charging/site_sizing.py) · [Named plugs](../../src/um_charging/fleet_changeover.py)
 
 ### Verification
 

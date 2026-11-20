@@ -1,6 +1,6 @@
 {
-  "status": "stopped",
-  "stop_reason": "Grouped replay raised positive energy without a reservation; formal deadline reached before a rerun.",
+  "status": "priced_refinement_complete",
+  "stop_reason": null,
   "source": {
     "commit": "0b6f616bb8033e6f19c4d48e21d85a0c46699674",
     "dirty": false
@@ -370,14 +370,40 @@
       "delta_5_offline_directory": "changeover_40",
       "price_reversal": {
         "port_rating_kw": 40,
+        "status": "exact",
         "alternative": "p1-30-w0",
+        "annual_eur_per_unit_2025_bounds": [
+          1464.651791637278,
+          1464.651791637278
+        ],
+        "net_equipment_eur_2026_bounds": [
+          8521.844616085324,
+          8521.844616085324
+        ],
         "annual_eur_per_unit_2025": 1464.651791637278,
         "net_equipment_eur_2026": 8521.844616085324
       },
       "port_only_hyc50_comparison": {
+        "status": "exact",
+        "annual_eur_per_unit_2025_bounds": [
+          3562.639756368051,
+          3562.639756368051
+        ],
+        "net_equipment_eur_2026_bounds": [
+          20728.655507202868,
+          20728.655507202868
+        ],
+        "hyc50_annual_eur_per_unit_2025_bounds": [
+          1415.5828064673988,
+          1415.5828064673988
+        ],
+        "annual_total_eur_bounds": [
+          10251.277858449128,
+          10251.277858449128
+        ],
         "annual_eur_per_unit_2025": 3562.639756368051,
         "net_equipment_eur_2026": 20728.655507202868,
-        "hyc50_annual_eur_per_unit_2025": 1415.5828064673979,
+        "hyc50_annual_eur_per_unit_2025": 1415.5828064673988,
         "annual_total_eur": 10251.277858449128
       }
     },
@@ -433,11 +459,37 @@
       "delta_5_offline_directory": "changeover_40",
       "price_reversal": {
         "port_rating_kw": 40,
+        "status": "exact",
         "alternative": "p1-30-w0",
+        "annual_eur_per_unit_2025_bounds": [
+          1598.2224351099978,
+          1598.2224351099978
+        ],
+        "net_equipment_eur_2026_bounds": [
+          9299.00426279741,
+          9299.00426279741
+        ],
         "annual_eur_per_unit_2025": 1598.2224351099978,
         "net_equipment_eur_2026": 9299.00426279741
       },
       "port_only_hyc50_comparison": {
+        "status": "exact",
+        "annual_eur_per_unit_2025_bounds": [
+          3429.0691128953304,
+          3429.0691128953304
+        ],
+        "net_equipment_eur_2026_bounds": [
+          19951.495860490777,
+          19951.495860490777
+        ],
+        "hyc50_annual_eur_per_unit_2025_bounds": [
+          1549.1534499401187,
+          1549.1534499401187
+        ],
+        "annual_total_eur_bounds": [
+          9583.424641085527,
+          9583.424641085527
+        ],
         "annual_eur_per_unit_2025": 3429.0691128953304,
         "net_equipment_eur_2026": 19951.495860490777,
         "hyc50_annual_eur_per_unit_2025": 1549.1534499401187,
@@ -496,14 +548,40 @@
       "delta_5_offline_directory": "changeover_20",
       "price_reversal": {
         "port_rating_kw": 20,
+        "status": "exact",
         "alternative": "p1-30-w0",
+        "annual_eur_per_unit_2025_bounds": [
+          1202.2451290637478,
+          1202.2451290637478
+        ],
+        "net_equipment_eur_2026_bounds": [
+          6995.072985145381,
+          6995.072985145381
+        ],
         "annual_eur_per_unit_2025": 1202.2451290637478,
         "net_equipment_eur_2026": 6995.072985145381
       },
       "port_only_hyc50_comparison": {
+        "status": "exact",
+        "annual_eur_per_unit_2025_bounds": [
+          3891.762970072285,
+          3891.762970072285
+        ],
+        "net_equipment_eur_2026_bounds": [
+          22643.606830615252,
+          22643.606830615252
+        ],
+        "hyc50_annual_eur_per_unit_2025_bounds": [
+          596.6942973050645,
+          596.6942973050645
+        ],
+        "annual_total_eur_bounds": [
+          16785.037093620438,
+          16785.037093620438
+        ],
         "annual_eur_per_unit_2025": 3891.762970072285,
         "net_equipment_eur_2026": 22643.606830615252,
-        "hyc50_annual_eur_per_unit_2025": 596.6942973050654,
+        "hyc50_annual_eur_per_unit_2025": 596.6942973050645,
         "annual_total_eur": 16785.037093620438
       }
     },
@@ -559,14 +637,40 @@
       "delta_5_offline_directory": "changeover_20",
       "price_reversal": {
         "port_rating_kw": 20,
+        "status": "exact",
         "alternative": "p1-30-w0",
+        "annual_eur_per_unit_2025_bounds": [
+          1068.6744855910297,
+          1068.6744855910297
+        ],
+        "net_equipment_eur_2026_bounds": [
+          6217.913338433306,
+          6217.913338433306
+        ],
         "annual_eur_per_unit_2025": 1068.6744855910297,
         "net_equipment_eur_2026": 6217.913338433306
       },
       "port_only_hyc50_comparison": {
+        "status": "exact",
+        "annual_eur_per_unit_2025_bounds": [
+          3491.0510396541254,
+          3491.0510396541254
+        ],
+        "net_equipment_eur_2026_bounds": [
+          20312.127890478994,
+          20312.127890478994
+        ],
+        "hyc50_annual_eur_per_unit_2025_bounds": [
+          997.406227723226,
+          997.406227723226
+        ],
+        "annual_total_eur_bounds": [
+          16117.183876256837,
+          16117.183876256837
+        ],
         "annual_eur_per_unit_2025": 3491.0510396541254,
         "net_equipment_eur_2026": 20312.127890478994,
-        "hyc50_annual_eur_per_unit_2025": 997.4062277232251,
+        "hyc50_annual_eur_per_unit_2025": 997.406227723226,
         "annual_total_eur": 16117.183876256837
       }
     },
@@ -622,14 +726,40 @@
       "delta_5_offline_directory": "changeover_20",
       "price_reversal": {
         "port_rating_kw": 20,
+        "status": "exact",
         "alternative": "p1-30-w0",
+        "annual_eur_per_unit_2025_bounds": [
+          987.9777963919902,
+          987.9777963919902
+        ],
+        "net_equipment_eur_2026_bounds": [
+          5748.392425467358,
+          5748.392425467358
+        ],
         "annual_eur_per_unit_2025": 987.9777963919902,
         "net_equipment_eur_2026": 5748.392425467358
       },
       "port_only_hyc50_comparison": {
+        "status": "exact",
+        "annual_eur_per_unit_2025_bounds": [
+          3551.6993738621554,
+          3551.6993738621554
+        ],
+        "net_equipment_eur_2026_bounds": [
+          20665.00062329933,
+          20665.00062329933
+        ],
+        "hyc50_annual_eur_per_unit_2025_bounds": [
+          936.7578935151942,
+          936.7578935151942
+        ],
+        "annual_total_eur_bounds": [
+          16641.852421531963,
+          16641.852421531963
+        ],
         "annual_eur_per_unit_2025": 3551.6993738621554,
         "net_equipment_eur_2026": 20665.00062329933,
-        "hyc50_annual_eur_per_unit_2025": 936.7578935151951,
+        "hyc50_annual_eur_per_unit_2025": 936.7578935151942,
         "annual_total_eur": 16641.852421531963
       }
     },
@@ -685,14 +815,40 @@
       "delta_5_offline_directory": "changeover_40",
       "price_reversal": {
         "port_rating_kw": 40,
+        "status": "exact",
         "alternative": "p1-20-w0",
+        "annual_eur_per_unit_2025_bounds": [
+          1274.9768484408762,
+          1274.9768484408762
+        ],
+        "net_equipment_eur_2026_bounds": [
+          7418.2509819440265,
+          7418.2509819440265
+        ],
         "annual_eur_per_unit_2025": 1274.9768484408762,
         "net_equipment_eur_2026": 7418.2509819440265
       },
       "port_only_hyc50_comparison": {
+        "status": "exact",
+        "annual_eur_per_unit_2025_bounds": [
+          3661.935919264786,
+          3661.935919264786
+        ],
+        "net_equipment_eur_2026_bounds": [
+          21306.394513846593,
+          21306.394513846593
+        ],
+        "hyc50_annual_eur_per_unit_2025_bounds": [
+          1316.2866435706637,
+          1316.2866435706637
+        ],
+        "annual_total_eur_bounds": [
+          15973.999204168362,
+          15973.999204168362
+        ],
         "annual_eur_per_unit_2025": 3661.935919264786,
         "net_equipment_eur_2026": 21306.394513846593,
-        "hyc50_annual_eur_per_unit_2025": 1316.2866435706628,
+        "hyc50_annual_eur_per_unit_2025": 1316.2866435706637,
         "annual_total_eur": 15973.999204168362
       }
     },
@@ -748,14 +904,40 @@
       "delta_5_offline_directory": "changeover_20",
       "price_reversal": {
         "port_rating_kw": 20,
+        "status": "exact",
         "alternative": "p1-30-w0",
+        "annual_eur_per_unit_2025_bounds": [
+          1202.2451290320228,
+          1202.2451290320228
+        ],
+        "net_equipment_eur_2026_bounds": [
+          6995.072984960794,
+          6995.072984960794
+        ],
         "annual_eur_per_unit_2025": 1202.2451290320228,
         "net_equipment_eur_2026": 6995.072984960794
       },
       "port_only_hyc50_comparison": {
+        "status": "exact",
+        "annual_eur_per_unit_2025_bounds": [
+          4102.076120845325,
+          4102.076120845325
+        ],
+        "net_equipment_eur_2026_bounds": [
+          23867.280608806366,
+          23867.280608806366
+        ],
+        "hyc50_annual_eur_per_unit_2025_bounds": [
+          386.38114653202683,
+          386.38114653202683
+        ],
+        "annual_total_eur_bounds": [
+          12736.922415390944,
+          12736.922415390944
+        ],
         "annual_eur_per_unit_2025": 4102.076120845325,
         "net_equipment_eur_2026": 23867.280608806366,
-        "hyc50_annual_eur_per_unit_2025": 386.3811465320259,
+        "hyc50_annual_eur_per_unit_2025": 386.38114653202683,
         "annual_total_eur": 12736.922415390944
       }
     },
@@ -811,14 +993,40 @@
       "delta_5_offline_directory": "changeover_20",
       "price_reversal": {
         "port_rating_kw": 20,
+        "status": "exact",
         "alternative": "p1-30-w0",
+        "annual_eur_per_unit_2025_bounds": [
+          1068.6744855593029,
+          1068.6744855593029
+        ],
+        "net_equipment_eur_2026_bounds": [
+          6217.913338248709,
+          6217.913338248709
+        ],
         "annual_eur_per_unit_2025": 1068.6744855593029,
         "net_equipment_eur_2026": 6217.913338248709
       },
       "port_only_hyc50_comparison": {
+        "status": "exact",
+        "annual_eur_per_unit_2025_bounds": [
+          3701.3641904271667,
+          3701.3641904271667
+        ],
+        "net_equipment_eur_2026_bounds": [
+          21535.801668670116,
+          21535.801668670116
+        ],
+        "hyc50_annual_eur_per_unit_2025_bounds": [
+          787.0930769501829,
+          787.0930769501829
+        ],
+        "annual_total_eur_bounds": [
+          12069.069198027344,
+          12069.069198027344
+        ],
         "annual_eur_per_unit_2025": 3701.3641904271667,
         "net_equipment_eur_2026": 21535.801668670116,
-        "hyc50_annual_eur_per_unit_2025": 787.0930769501838,
+        "hyc50_annual_eur_per_unit_2025": 787.0930769501829,
         "annual_total_eur": 12069.069198027344
       }
     },
@@ -874,15 +1082,41 @@
       "delta_5_offline_directory": "changeover_20",
       "price_reversal": {
         "port_rating_kw": 20,
+        "status": "exact",
         "alternative": "p1-30-w0",
+        "annual_eur_per_unit_2025_bounds": [
+          1202.2451290354916,
+          1202.2451290354916
+        ],
+        "net_equipment_eur_2026_bounds": [
+          6995.072984980977,
+          6995.072984980977
+        ],
         "annual_eur_per_unit_2025": 1202.2451290354916,
         "net_equipment_eur_2026": 6995.072984980977
       },
       "port_only_hyc50_comparison": {
-        "annual_eur_per_unit_2025": 4102.076120877507,
-        "net_equipment_eur_2026": 23867.28060899361,
-        "hyc50_annual_eur_per_unit_2025": 386.38114649984436,
-        "annual_total_eur": 13202.656028164116
+        "status": "exact",
+        "annual_eur_per_unit_2025_bounds": [
+          4102.076120877505,
+          4102.076120877505
+        ],
+        "net_equipment_eur_2026_bounds": [
+          23867.2806089936,
+          23867.2806089936
+        ],
+        "hyc50_annual_eur_per_unit_2025_bounds": [
+          386.3811464998471,
+          386.3811464998471
+        ],
+        "annual_total_eur_bounds": [
+          13202.656028164114,
+          13202.656028164114
+        ],
+        "annual_eur_per_unit_2025": 4102.076120877505,
+        "net_equipment_eur_2026": 23867.2806089936,
+        "hyc50_annual_eur_per_unit_2025": 386.3811464998471,
+        "annual_total_eur": 13202.656028164114
       }
     },
     {
@@ -937,15 +1171,41 @@
       "delta_5_offline_directory": "changeover_20",
       "price_reversal": {
         "port_rating_kw": 20,
+        "status": "exact",
         "alternative": "p1-30-w0",
+        "annual_eur_per_unit_2025_bounds": [
+          1068.6744855627735,
+          1068.6744855627735
+        ],
+        "net_equipment_eur_2026_bounds": [
+          6217.9133382689015,
+          6217.9133382689015
+        ],
         "annual_eur_per_unit_2025": 1068.6744855627735,
         "net_equipment_eur_2026": 6217.9133382689015
       },
       "port_only_hyc50_comparison": {
-        "annual_eur_per_unit_2025": 3701.3641904593464,
-        "net_equipment_eur_2026": 21535.801668857348,
-        "hyc50_annual_eur_per_unit_2025": 787.093076918004,
-        "annual_total_eur": 12534.802810800515
+        "status": "exact",
+        "annual_eur_per_unit_2025_bounds": [
+          3701.3641904593446,
+          3701.3641904593446
+        ],
+        "net_equipment_eur_2026_bounds": [
+          21535.801668857337,
+          21535.801668857337
+        ],
+        "hyc50_annual_eur_per_unit_2025_bounds": [
+          787.093076918005,
+          787.093076918005
+        ],
+        "annual_total_eur_bounds": [
+          12534.802810800513,
+          12534.802810800513
+        ],
+        "annual_eur_per_unit_2025": 3701.3641904593446,
+        "net_equipment_eur_2026": 21535.801668857337,
+        "hyc50_annual_eur_per_unit_2025": 787.093076918005,
+        "annual_total_eur": 12534.802810800513
       }
     },
     {
@@ -1000,14 +1260,40 @@
       "delta_5_offline_directory": "changeover_20",
       "price_reversal": {
         "port_rating_kw": 20,
+        "status": "exact",
         "alternative": "p1-30-w0",
+        "annual_eur_per_unit_2025_bounds": [
+          1202.2451290637478,
+          1202.2451290637478
+        ],
+        "net_equipment_eur_2026_bounds": [
+          6995.072985145381,
+          6995.072985145381
+        ],
         "annual_eur_per_unit_2025": 1202.2451290637478,
         "net_equipment_eur_2026": 6995.072985145381
       },
       "port_only_hyc50_comparison": {
+        "status": "exact",
+        "annual_eur_per_unit_2025_bounds": [
+          4102.076121139565,
+          4102.076121139565
+        ],
+        "net_equipment_eur_2026_bounds": [
+          23867.28061051835,
+          23867.28061051835
+        ],
+        "hyc50_annual_eur_per_unit_2025_bounds": [
+          386.3811462377853,
+          386.3811462377853
+        ],
+        "annual_total_eur_bounds": [
+          16995.350244687717,
+          16995.350244687717
+        ],
         "annual_eur_per_unit_2025": 4102.076121139565,
         "net_equipment_eur_2026": 23867.28061051835,
-        "hyc50_annual_eur_per_unit_2025": 386.3811462377862,
+        "hyc50_annual_eur_per_unit_2025": 386.3811462377853,
         "annual_total_eur": 16995.350244687717
       }
     },
@@ -1063,14 +1349,40 @@
       "delta_5_offline_directory": "changeover_20",
       "price_reversal": {
         "port_rating_kw": 20,
+        "status": "exact",
         "alternative": "p1-30-w0",
+        "annual_eur_per_unit_2025_bounds": [
+          1068.6744855910297,
+          1068.6744855910297
+        ],
+        "net_equipment_eur_2026_bounds": [
+          6217.913338433306,
+          6217.913338433306
+        ],
         "annual_eur_per_unit_2025": 1068.6744855910297,
         "net_equipment_eur_2026": 6217.913338433306
       },
       "port_only_hyc50_comparison": {
+        "status": "exact",
+        "annual_eur_per_unit_2025_bounds": [
+          3701.3641907214046,
+          3701.3641907214046
+        ],
+        "net_equipment_eur_2026_bounds": [
+          21535.801670382094,
+          21535.801670382094
+        ],
+        "hyc50_annual_eur_per_unit_2025_bounds": [
+          787.0930766559468,
+          787.0930766559468
+        ],
+        "annual_total_eur_bounds": [
+          16327.497027324116,
+          16327.497027324116
+        ],
         "annual_eur_per_unit_2025": 3701.3641907214046,
         "net_equipment_eur_2026": 21535.801670382094,
-        "hyc50_annual_eur_per_unit_2025": 787.0930766559459,
+        "hyc50_annual_eur_per_unit_2025": 787.0930766559468,
         "annual_total_eur": 16327.497027324116
       }
     }
@@ -2139,5 +2451,668 @@
     "maximum_unresolved_groups": 3,
     "cost_comparison_basis": "Equipment thresholds compare bills under fixed service and the evaluated dispatch policy.",
     "equipment_cost_from_net_2026_to_annual_2025": 0.17187027663854476
+  },
+  "original_scan": {
+    "status": "stopped",
+    "stop_reason": "Grouped replay raised positive energy without a reservation; formal deadline reached before a rerun.",
+    "source": {
+      "commit": "0b6f616bb8033e6f19c4d48e21d85a0c46699674",
+      "dirty": false
+    },
+    "wall_seconds": 5395.478488445282,
+    "solver_calls": 1171,
+    "scope": "Top-level solver statistics, execution and observed_cost_checkpoints describe the original scan plus its archived coarse checkpoint. Current priced refinement is recorded under fine_screen_completion."
+  },
+  "fine_screen_completion": {
+    "status": "complete",
+    "source": {
+      "commit": "cb6351253e5a095438a9609266aafcb96764d204",
+      "dirty": false
+    },
+    "solver_calls": 0,
+    "scope": "Each priced refined operating point has a settled bill, an infeasibility proof or a lower bill above all twelve minima.",
+    "priced_fine_points": 1102,
+    "priced_fine_counts": {
+      "infeasible_solve": 13,
+      "infeasible_monotonicity": 175,
+      "excluded_by_annual_lower_bound": 729,
+      "relaxed_infeasible": 24,
+      "excluded_by_interval": 38,
+      "unresolved": 0,
+      "settled": 120,
+      "excluded_by_known_peak_lower_bound": 3
+    },
+    "unpriced_fine_points": 183,
+    "initially_pending_unpriced": 122,
+    "additional_unpriced_infeasible_in_pilot": 45,
+    "additional_unpriced_infeasible_in_pilot_by_proof": {
+      "infeasible_monotonicity": 44,
+      "infeasible_solve": 1
+    },
+    "unpriced_without_prior_decision": 77,
+    "unpriced_threshold_scope": "Original published settlements only; this completion adds no dispatch or screening for unpriced designs.",
+    "cost_rows_scope": "Lowest observed replayed invoice by hardware and scenario. Lower-bound exclusions certify the global priced minima; individual cost cells need not be globally tight for their hardware.",
+    "lower_bounds": {
+      "screening": "Relax annual meter allocation and use availability hours to lower-bound meter peaks.",
+      "final": "Fix audited accepted weeks' meter quantities and quarter-hour peaks; vary remaining energy split and peaks within their attainable envelopes. Use the original relaxation when no weeks are accepted.",
+      "wholesale": "Reuse finite weekly duals for dominating hardware and caps. Holdout checks exclude both the target scope and the held schedule's source scope."
+    },
+    "relaxed_capacity_summary": {
+      "count": 24,
+      "required_annual_grid_kwh": 58387.78841999999,
+      "available_annual_quarter_hours": {
+        "PORT": 5002.833333333333,
+        "WAREHOUSE": 411.66666666666663
+      }
+    },
+    "known_peak_exclusions": [
+      {
+        "design": "p1-20-w20",
+        "caps_kw": [
+          15,
+          20
+        ],
+        "minimum_margin_eur_2025": 1444.1685128244317
+      },
+      {
+        "design": "p1-30-w0",
+        "caps_kw": [
+          15,
+          0
+        ],
+        "minimum_margin_eur_2025": 488.86700001913596
+      },
+      {
+        "design": "p1-40-w0",
+        "caps_kw": [
+          15,
+          0
+        ],
+        "minimum_margin_eur_2025": 647.2391331817271
+      }
+    ],
+    "holdout_validation": {
+      "status": "passed",
+      "coarse_points": 345,
+      "priced_fine_points": 120,
+      "held_out_weeks": 2790,
+      "checks": 33480,
+      "network_checks": 16740,
+      "min_margin_eur_2025": 1.0246956662740558e-05,
+      "min_network_margin_eur_2025": 0.0,
+      "min_improvement_over_relaxed_eur_2025": 0.0,
+      "fallback_week_uses": 6
+    },
+    "formal_supplement": {
+      "source": {
+        "commit": "50137153df321018b3b68d354481d8ff2293496a",
+        "dirty": false
+      },
+      "wall_seconds": 4886.602044,
+      "solver_calls": 813,
+      "raw_weekly_statuses": {
+        "certified": 745,
+        "bounded": 20,
+        "unresolved": 47,
+        "infeasible": 1
+      },
+      "audited_feasible_schedules": 810,
+      "rank_unresolved_before_known_peaks": 3
+    },
+    "quote_threshold_counts": {
+      "price_reversal": {
+        "exact": 12,
+        "interval": 0
+      },
+      "incumbent_quote_vs_hyc50": {
+        "exact": 12,
+        "interval": 0
+      },
+      "hyc50_annual_break_even": {
+        "exact": 12,
+        "interval": 0
+      }
+    },
+    "quote_thresholds": [
+      {
+        "scenario": "N0",
+        "connection_basis": "new",
+        "design": "p1-40-w0",
+        "port_rating_kw": 40,
+        "price_reversal": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 1464.651791637278,
+          "annual_eur_per_unit_2025_bounds": [
+            1464.651791637278,
+            1464.651791637278
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 8521.844616085324,
+          "net_equipment_eur_2026_bounds": [
+            8521.844616085324,
+            8521.844616085324
+          ],
+          "evaluated_alternative": "p1-30-w0"
+        },
+        "incumbent_quote_vs_hyc50": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 3562.639756368051,
+          "annual_eur_per_unit_2025_bounds": [
+            3562.639756368051,
+            3562.639756368051
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 20728.655507202868,
+          "net_equipment_eur_2026_bounds": [
+            20728.655507202868,
+            20728.655507202868
+          ]
+        },
+        "hyc50_annual_break_even": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 1415.5828064673988,
+          "annual_eur_per_unit_2025_bounds": [
+            1415.5828064673988,
+            1415.5828064673988
+          ],
+          "screened_bound_witness": null
+        }
+      },
+      {
+        "scenario": "N0",
+        "connection_basis": "existing",
+        "design": "p1-40-w0",
+        "port_rating_kw": 40,
+        "price_reversal": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 1598.2224351099978,
+          "annual_eur_per_unit_2025_bounds": [
+            1598.2224351099978,
+            1598.2224351099978
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 9299.00426279741,
+          "net_equipment_eur_2026_bounds": [
+            9299.00426279741,
+            9299.00426279741
+          ],
+          "evaluated_alternative": "p1-30-w0"
+        },
+        "incumbent_quote_vs_hyc50": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 3429.0691128953304,
+          "annual_eur_per_unit_2025_bounds": [
+            3429.0691128953304,
+            3429.0691128953304
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 19951.495860490777,
+          "net_equipment_eur_2026_bounds": [
+            19951.495860490777,
+            19951.495860490777
+          ]
+        },
+        "hyc50_annual_break_even": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 1549.1534499401187,
+          "annual_eur_per_unit_2025_bounds": [
+            1549.1534499401187,
+            1549.1534499401187
+          ],
+          "screened_bound_witness": null
+        }
+      },
+      {
+        "scenario": "frank",
+        "connection_basis": "new",
+        "design": "p1-20-w0",
+        "port_rating_kw": 20,
+        "price_reversal": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 1202.2451290637478,
+          "annual_eur_per_unit_2025_bounds": [
+            1202.2451290637478,
+            1202.2451290637478
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 6995.072985145381,
+          "net_equipment_eur_2026_bounds": [
+            6995.072985145381,
+            6995.072985145381
+          ],
+          "evaluated_alternative": "p1-30-w0"
+        },
+        "incumbent_quote_vs_hyc50": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 3891.762970072285,
+          "annual_eur_per_unit_2025_bounds": [
+            3891.762970072285,
+            3891.762970072285
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 22643.606830615252,
+          "net_equipment_eur_2026_bounds": [
+            22643.606830615252,
+            22643.606830615252
+          ]
+        },
+        "hyc50_annual_break_even": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 596.6942973050645,
+          "annual_eur_per_unit_2025_bounds": [
+            596.6942973050645,
+            596.6942973050645
+          ],
+          "screened_bound_witness": null
+        }
+      },
+      {
+        "scenario": "frank",
+        "connection_basis": "existing",
+        "design": "p1-20-w0",
+        "port_rating_kw": 20,
+        "price_reversal": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 1068.6744855910297,
+          "annual_eur_per_unit_2025_bounds": [
+            1068.6744855910297,
+            1068.6744855910297
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 6217.913338433306,
+          "net_equipment_eur_2026_bounds": [
+            6217.913338433306,
+            6217.913338433306
+          ],
+          "evaluated_alternative": "p1-30-w0"
+        },
+        "incumbent_quote_vs_hyc50": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 3491.0510396541254,
+          "annual_eur_per_unit_2025_bounds": [
+            3491.0510396541254,
+            3491.0510396541254
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 20312.127890478994,
+          "net_equipment_eur_2026_bounds": [
+            20312.127890478994,
+            20312.127890478994
+          ]
+        },
+        "hyc50_annual_break_even": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 997.406227723226,
+          "annual_eur_per_unit_2025_bounds": [
+            997.406227723226,
+            997.406227723226
+          ],
+          "screened_bound_witness": null
+        }
+      },
+      {
+        "scenario": "official",
+        "connection_basis": "new",
+        "design": "p1-20-w0",
+        "port_rating_kw": 20,
+        "price_reversal": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 987.9777963919902,
+          "annual_eur_per_unit_2025_bounds": [
+            987.9777963919902,
+            987.9777963919902
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 5748.392425467358,
+          "net_equipment_eur_2026_bounds": [
+            5748.392425467358,
+            5748.392425467358
+          ],
+          "evaluated_alternative": "p1-30-w0"
+        },
+        "incumbent_quote_vs_hyc50": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 3551.6993738621554,
+          "annual_eur_per_unit_2025_bounds": [
+            3551.6993738621554,
+            3551.6993738621554
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 20665.00062329933,
+          "net_equipment_eur_2026_bounds": [
+            20665.00062329933,
+            20665.00062329933
+          ]
+        },
+        "hyc50_annual_break_even": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 936.7578935151942,
+          "annual_eur_per_unit_2025_bounds": [
+            936.7578935151942,
+            936.7578935151942
+          ],
+          "screened_bound_witness": null
+        }
+      },
+      {
+        "scenario": "official",
+        "connection_basis": "existing",
+        "design": "p1-40-w0",
+        "port_rating_kw": 40,
+        "price_reversal": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 1274.9768484408762,
+          "annual_eur_per_unit_2025_bounds": [
+            1274.9768484408762,
+            1274.9768484408762
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 7418.2509819440265,
+          "net_equipment_eur_2026_bounds": [
+            7418.2509819440265,
+            7418.2509819440265
+          ],
+          "evaluated_alternative": "p1-20-w0"
+        },
+        "incumbent_quote_vs_hyc50": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 3661.935919264786,
+          "annual_eur_per_unit_2025_bounds": [
+            3661.935919264786,
+            3661.935919264786
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 21306.394513846593,
+          "net_equipment_eur_2026_bounds": [
+            21306.394513846593,
+            21306.394513846593
+          ]
+        },
+        "hyc50_annual_break_even": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 1316.2866435706637,
+          "annual_eur_per_unit_2025_bounds": [
+            1316.2866435706637,
+            1316.2866435706637
+          ],
+          "screened_bound_witness": null
+        }
+      },
+      {
+        "scenario": "capacity_0",
+        "connection_basis": "new",
+        "design": "p1-20-w0",
+        "port_rating_kw": 20,
+        "price_reversal": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 1202.2451290320228,
+          "annual_eur_per_unit_2025_bounds": [
+            1202.2451290320228,
+            1202.2451290320228
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 6995.072984960794,
+          "net_equipment_eur_2026_bounds": [
+            6995.072984960794,
+            6995.072984960794
+          ],
+          "evaluated_alternative": "p1-30-w0"
+        },
+        "incumbent_quote_vs_hyc50": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 4102.076120845325,
+          "annual_eur_per_unit_2025_bounds": [
+            4102.076120845325,
+            4102.076120845325
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 23867.280608806366,
+          "net_equipment_eur_2026_bounds": [
+            23867.280608806366,
+            23867.280608806366
+          ]
+        },
+        "hyc50_annual_break_even": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 386.38114653202683,
+          "annual_eur_per_unit_2025_bounds": [
+            386.38114653202683,
+            386.38114653202683
+          ],
+          "screened_bound_witness": null
+        }
+      },
+      {
+        "scenario": "capacity_0",
+        "connection_basis": "existing",
+        "design": "p1-20-w0",
+        "port_rating_kw": 20,
+        "price_reversal": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 1068.6744855593029,
+          "annual_eur_per_unit_2025_bounds": [
+            1068.6744855593029,
+            1068.6744855593029
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 6217.913338248709,
+          "net_equipment_eur_2026_bounds": [
+            6217.913338248709,
+            6217.913338248709
+          ],
+          "evaluated_alternative": "p1-30-w0"
+        },
+        "incumbent_quote_vs_hyc50": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 3701.3641904271667,
+          "annual_eur_per_unit_2025_bounds": [
+            3701.3641904271667,
+            3701.3641904271667
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 21535.801668670116,
+          "net_equipment_eur_2026_bounds": [
+            21535.801668670116,
+            21535.801668670116
+          ]
+        },
+        "hyc50_annual_break_even": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 787.0930769501829,
+          "annual_eur_per_unit_2025_bounds": [
+            787.0930769501829,
+            787.0930769501829
+          ],
+          "screened_bound_witness": null
+        }
+      },
+      {
+        "scenario": "capacity_22_79",
+        "connection_basis": "new",
+        "design": "p1-20-w0",
+        "port_rating_kw": 20,
+        "price_reversal": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 1202.2451290354916,
+          "annual_eur_per_unit_2025_bounds": [
+            1202.2451290354916,
+            1202.2451290354916
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 6995.072984980977,
+          "net_equipment_eur_2026_bounds": [
+            6995.072984980977,
+            6995.072984980977
+          ],
+          "evaluated_alternative": "p1-30-w0"
+        },
+        "incumbent_quote_vs_hyc50": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 4102.076120877505,
+          "annual_eur_per_unit_2025_bounds": [
+            4102.076120877505,
+            4102.076120877505
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 23867.2806089936,
+          "net_equipment_eur_2026_bounds": [
+            23867.2806089936,
+            23867.2806089936
+          ]
+        },
+        "hyc50_annual_break_even": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 386.3811464998471,
+          "annual_eur_per_unit_2025_bounds": [
+            386.3811464998471,
+            386.3811464998471
+          ],
+          "screened_bound_witness": null
+        }
+      },
+      {
+        "scenario": "capacity_22_79",
+        "connection_basis": "existing",
+        "design": "p1-20-w0",
+        "port_rating_kw": 20,
+        "price_reversal": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 1068.6744855627735,
+          "annual_eur_per_unit_2025_bounds": [
+            1068.6744855627735,
+            1068.6744855627735
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 6217.9133382689015,
+          "net_equipment_eur_2026_bounds": [
+            6217.9133382689015,
+            6217.9133382689015
+          ],
+          "evaluated_alternative": "p1-30-w0"
+        },
+        "incumbent_quote_vs_hyc50": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 3701.3641904593446,
+          "annual_eur_per_unit_2025_bounds": [
+            3701.3641904593446,
+            3701.3641904593446
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 21535.801668857337,
+          "net_equipment_eur_2026_bounds": [
+            21535.801668857337,
+            21535.801668857337
+          ]
+        },
+        "hyc50_annual_break_even": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 787.093076918005,
+          "annual_eur_per_unit_2025_bounds": [
+            787.093076918005,
+            787.093076918005
+          ],
+          "screened_bound_witness": null
+        }
+      },
+      {
+        "scenario": "capacity_208_38",
+        "connection_basis": "new",
+        "design": "p1-20-w0",
+        "port_rating_kw": 20,
+        "price_reversal": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 1202.2451290637478,
+          "annual_eur_per_unit_2025_bounds": [
+            1202.2451290637478,
+            1202.2451290637478
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 6995.072985145381,
+          "net_equipment_eur_2026_bounds": [
+            6995.072985145381,
+            6995.072985145381
+          ],
+          "evaluated_alternative": "p1-30-w0"
+        },
+        "incumbent_quote_vs_hyc50": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 4102.076121139565,
+          "annual_eur_per_unit_2025_bounds": [
+            4102.076121139565,
+            4102.076121139565
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 23867.28061051835,
+          "net_equipment_eur_2026_bounds": [
+            23867.28061051835,
+            23867.28061051835
+          ]
+        },
+        "hyc50_annual_break_even": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 386.3811462377853,
+          "annual_eur_per_unit_2025_bounds": [
+            386.3811462377853,
+            386.3811462377853
+          ],
+          "screened_bound_witness": null
+        }
+      },
+      {
+        "scenario": "capacity_208_38",
+        "connection_basis": "existing",
+        "design": "p1-20-w0",
+        "port_rating_kw": 20,
+        "price_reversal": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 1068.6744855910297,
+          "annual_eur_per_unit_2025_bounds": [
+            1068.6744855910297,
+            1068.6744855910297
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 6217.913338433306,
+          "net_equipment_eur_2026_bounds": [
+            6217.913338433306,
+            6217.913338433306
+          ],
+          "evaluated_alternative": "p1-30-w0"
+        },
+        "incumbent_quote_vs_hyc50": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 3701.3641907214046,
+          "annual_eur_per_unit_2025_bounds": [
+            3701.3641907214046,
+            3701.3641907214046
+          ],
+          "screened_bound_witness": null,
+          "evaluated_net_equipment_eur_2026": 21535.801670382094,
+          "net_equipment_eur_2026_bounds": [
+            21535.801670382094,
+            21535.801670382094
+          ]
+        },
+        "hyc50_annual_break_even": {
+          "status": "exact",
+          "evaluated_annual_eur_per_unit_2025": 787.0930766559468,
+          "annual_eur_per_unit_2025_bounds": [
+            787.0930766559468,
+            787.0930766559468
+          ],
+          "screened_bound_witness": null
+        }
+      }
+    ],
+    "evidence": {
+      "directory": "conversations/0001_records/runs/20261121_site_sizing_known_peak",
+      "manifest_sha256": "bb7dd83936a2401a601bc8447308f061a5d40ff155f911ea1db4db387d178bbc",
+      "audit_sha256": {
+        "backtest.json": "686efff9eec6c95f06cf5bf9fb951690f3ee25ed5fba68af85dd1be0eabe1152",
+        "classification.json": "42fffacfd82248a9c1e2f7a13cdc69e1e98f61b1b879d5318327108e06f151f5",
+        "thresholds.json": "9359e6eb13583138fe83ed1a2e33e04e83973a013c13473164eb1c0da99f6dd2",
+        "settled_cost_rows.json": "fc05fc649210aff7436c89e35bfe33510cc718747cfa329e279fb1ac2af637f7"
+      },
+      "pilot_coverage_sha256": "13a6ef920f00a6ea10c92e7b6a5ce079052ff4383293c3196653c2c12af1826d"
+    }
   }
 }
