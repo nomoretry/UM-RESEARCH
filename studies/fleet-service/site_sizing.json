@@ -1282,18 +1282,313 @@
     "fine_certified_infeasible": 141,
     "fine_replayed": 9,
     "coarse_certified_infeasible": 90,
-    "coarse_replayed": 344
+    "coarse_replayed": 345
   },
-  "missing_coarse_options": [
-    [
-      "p1-40-w20",
-      [
-        20,
-        20
-      ]
-    ]
-  ],
+  "missing_coarse_options": [],
+  "coarse_grid_evaluated": true,
   "whole_grid_evaluated": false,
+  "coarse_completion": {
+    "status": "complete",
+    "design": "p1-40-w20",
+    "caps_kw": [
+      20,
+      20
+    ],
+    "delay_min": 0,
+    "source": {
+      "commit": "956cdaa88083c55de76f0d854be5c41e93295dcb",
+      "dirty": false
+    },
+    "wall_seconds": 25.456725300005928,
+    "new_solver_calls": 2,
+    "retained_week_solve_count": 4,
+    "audited_weeks": 6,
+    "audited_tariff_settlements": 6,
+    "annual_currency_basis": "EUR 2025 per year",
+    "dispatch_status": "bounded",
+    "purchase_eur_2021_bounds": [
+      744.9034734611489,
+      744.9435544196314
+    ],
+    "site_grid_kwh": {
+      "PORT": 6417.7870355517025,
+      "WAREHOUSE": 319.2654744443485
+    },
+    "site_quarter_peak_kw": {
+      "PORT": 20.000000000067978,
+      "WAREHOUSE": 20.0
+    },
+    "weeks": [
+      {
+        "week": "2021-09-27",
+        "reused": true,
+        "proof": "formal_matrix/01028",
+        "proof_sha256": "ca5a8838cfd3718e8c76d28a631dbfc7fee549ebdcb7cdee783258c7d32cadaa",
+        "certified_source_commit": "0b6f616bb8033e6f19c4d48e21d85a0c46699674",
+        "n_truck_days": 9,
+        "status": "certified",
+        "solve_seconds": 0.15130409999983385,
+        "bounds_eur_2021": [
+          126.45683075642225,
+          126.46415779686666
+        ],
+        "gap_eur_2021": 0.007327040444408794,
+        "audited": true
+      },
+      {
+        "week": "2021-10-04",
+        "reused": false,
+        "proof": "coarse_completion/00001",
+        "proof_sha256": "42254ccf33054f81ec9c5dbd2afc2bbd46d672c84d663ca3229db15da978bc9e",
+        "certified_source_commit": "956cdaa88083c55de76f0d854be5c41e93295dcb",
+        "n_truck_days": 10,
+        "status": "certified",
+        "solve_seconds": 24.7883434999967,
+        "bounds_eur_2021": [
+          208.29219165130834,
+          208.30203157603486
+        ],
+        "gap_eur_2021": 0.009839924726520621,
+        "audited": true
+      },
+      {
+        "week": "2021-10-11",
+        "reused": true,
+        "proof": "formal_matrix/01055",
+        "proof_sha256": "76acc1a20f239127904d492d2fa090f591a5c6eaf90d5a932e44f3c08babf9c3",
+        "certified_source_commit": "0b6f616bb8033e6f19c4d48e21d85a0c46699674",
+        "n_truck_days": 9,
+        "status": "certified",
+        "solve_seconds": 0.4637964999983524,
+        "bounds_eur_2021": [
+          91.55623202568691,
+          91.55624071158847
+        ],
+        "gap_eur_2021": 8.685901562444087e-06,
+        "audited": true
+      },
+      {
+        "week": "2021-10-18",
+        "reused": true,
+        "proof": "formal_matrix/01087",
+        "proof_sha256": "732e0d21bd8f41898621f69e470f596eaddfb3f09303e04cdd54646bb0c12b39",
+        "certified_source_commit": "0b6f616bb8033e6f19c4d48e21d85a0c46699674",
+        "n_truck_days": 9,
+        "status": "certified",
+        "solve_seconds": 0.5081030000001192,
+        "bounds_eur_2021": [
+          58.8081999203,
+          58.81038849363333
+        ],
+        "gap_eur_2021": 0.0021885733333348867,
+        "audited": true
+      },
+      {
+        "week": "2021-10-25",
+        "reused": true,
+        "proof": "formal_matrix/01168",
+        "proof_sha256": "d492b6db2ef92ce5f5929960a3a1fcb988c4f88a455d7e868f3052e0d1fb5da5",
+        "certified_source_commit": "0b6f616bb8033e6f19c4d48e21d85a0c46699674",
+        "n_truck_days": 12,
+        "status": "bounded",
+        "solve_seconds": 300.0662556999996,
+        "bounds_eur_2021": [
+          186.58325760595358,
+          186.5964368266275
+        ],
+        "gap_eur_2021": 0.01317922067391919,
+        "audited": true
+      },
+      {
+        "week": "2021-11-01",
+        "reused": false,
+        "proof": "coarse_completion/00002",
+        "proof_sha256": "895fc651873acee7185edde6336b6005d2d520598608b06e63e1be789260adb4",
+        "certified_source_commit": "956cdaa88083c55de76f0d854be5c41e93295dcb",
+        "n_truck_days": 5,
+        "status": "certified",
+        "solve_seconds": 0.030893600000126753,
+        "bounds_eur_2021": [
+          73.20676150147777,
+          73.21429901527777
+        ],
+        "gap_eur_2021": 0.007537513800002671,
+        "audited": true
+      }
+    ],
+    "annual_comparison": [
+      {
+        "scenario": "N0",
+        "connection_basis": "new",
+        "components_eur": {
+          "chargers": 2017.82204069827,
+          "connection": 801.423860836321,
+          "demand": 0.0,
+          "energy": 7633.443586736436
+        },
+        "annual_total_eur": 10452.689488271028,
+        "previous_best_design": "p1-40-w0",
+        "previous_best_eur": 7942.431770159261,
+        "delta_vs_previous_best_eur": 2510.2577181117667
+      },
+      {
+        "scenario": "N0",
+        "connection_basis": "existing",
+        "components_eur": {
+          "chargers": 2017.82204069827,
+          "connection": 0.0,
+          "demand": 0.0,
+          "energy": 7633.443586736436
+        },
+        "annual_total_eur": 9651.265627434706,
+        "previous_best_design": "p1-40-w0",
+        "previous_best_eur": 7408.14919626838,
+        "delta_vs_previous_best_eur": 2243.116431166326
+      },
+      {
+        "scenario": "frank",
+        "connection_basis": "new",
+        "components_eur": {
+          "chargers": 2017.82204069827,
+          "connection": 801.423860836321,
+          "demand": 4724.161441757978,
+          "energy": 8456.228000897176
+        },
+        "annual_total_eur": 15999.635344189745,
+        "previous_best_design": "p1-20-w0",
+        "previous_best_eur": 13657.302496168239,
+        "delta_vs_previous_best_eur": 2342.332848021506
+      },
+      {
+        "scenario": "frank",
+        "connection_basis": "existing",
+        "components_eur": {
+          "chargers": 2017.82204069827,
+          "connection": 0.0,
+          "demand": 4724.161441757978,
+          "energy": 8456.228000897176
+        },
+        "annual_total_eur": 15198.211483353423,
+        "previous_best_design": "p1-20-w0",
+        "previous_best_eur": 13390.161209222797,
+        "delta_vs_previous_best_eur": 1808.0502741306263
+      },
+      {
+        "scenario": "official",
+        "connection_basis": "new",
+        "components_eur": {
+          "chargers": 2017.82204069827,
+          "connection": 801.423860836321,
+          "demand": 4724.161441757978,
+          "energy": 8636.991485036004
+        },
+        "annual_total_eur": 16180.398828328573,
+        "previous_best_design": "p1-20-w0",
+        "previous_best_eur": 13854.181420289893,
+        "delta_vs_previous_best_eur": 2326.2174080386794
+      },
+      {
+        "scenario": "official",
+        "connection_basis": "existing",
+        "components_eur": {
+          "chargers": 2017.82204069827,
+          "connection": 0.0,
+          "demand": 4724.161441757978,
+          "energy": 8636.991485036004
+        },
+        "annual_total_eur": 15378.974967492251,
+        "previous_best_design": "p1-40-w0",
+        "previous_best_eur": 13565.85695298176,
+        "delta_vs_previous_best_eur": 1813.1180145104918
+      },
+      {
+        "scenario": "capacity_0",
+        "connection_basis": "new",
+        "components_eur": {
+          "chargers": 2017.82204069827,
+          "connection": 801.423860836321,
+          "demand": 0.0,
+          "energy": 8456.228000897176
+        },
+        "annual_total_eur": 11275.473902431766,
+        "previous_best_design": "p1-20-w0",
+        "previous_best_eur": 9398.874667165705,
+        "delta_vs_previous_best_eur": 1876.5992352660614
+      },
+      {
+        "scenario": "capacity_0",
+        "connection_basis": "existing",
+        "components_eur": {
+          "chargers": 2017.82204069827,
+          "connection": 0.0,
+          "demand": 0.0,
+          "energy": 8456.228000897176
+        },
+        "annual_total_eur": 10474.050041595445,
+        "previous_best_design": "p1-20-w0",
+        "previous_best_eur": 9131.733380220263,
+        "delta_vs_previous_best_eur": 1342.3166613751819
+      },
+      {
+        "scenario": "capacity_22_79",
+        "connection_basis": "new",
+        "components_eur": {
+          "chargers": 2017.82204069827,
+          "connection": 801.423860836321,
+          "demand": 931.4672254835612,
+          "energy": 8456.228000897176
+        },
+        "annual_total_eur": 12206.941127915328,
+        "previous_best_design": "p1-20-w0",
+        "previous_best_eur": 9864.608279906695,
+        "delta_vs_previous_best_eur": 2342.332848008633
+      },
+      {
+        "scenario": "capacity_22_79",
+        "connection_basis": "existing",
+        "components_eur": {
+          "chargers": 2017.82204069827,
+          "connection": 0.0,
+          "demand": 931.4672254835612,
+          "energy": 8456.228000897176
+        },
+        "annual_total_eur": 11405.517267079007,
+        "previous_best_design": "p1-20-w0",
+        "previous_best_eur": 9597.466992961254,
+        "delta_vs_previous_best_eur": 1808.0502741177534
+      },
+      {
+        "scenario": "capacity_208_38",
+        "connection_basis": "new",
+        "components_eur": {
+          "chargers": 2017.82204069827,
+          "connection": 801.423860836321,
+          "demand": 8516.855658019504,
+          "energy": 8456.228000897176
+        },
+        "annual_total_eur": 19792.32956045127,
+        "previous_best_design": "p1-20-w0",
+        "previous_best_eur": 13657.302496168239,
+        "delta_vs_previous_best_eur": 6135.027064283033
+      },
+      {
+        "scenario": "capacity_208_38",
+        "connection_basis": "existing",
+        "components_eur": {
+          "chargers": 2017.82204069827,
+          "connection": 0.0,
+          "demand": 8516.855658019504,
+          "energy": 8456.228000897176
+        },
+        "annual_total_eur": 18990.90569961495,
+        "previous_best_design": "p1-20-w0",
+        "previous_best_eur": 13390.161209222797,
+        "delta_vs_previous_best_eur": 5600.744490392151
+      }
+    ],
+    "monotone_energy_checks_with_completed_coarse_grid": 26934,
+    "winner_changes": []
+  },
   "service": [
     {"design":"p0-0-w0","port_plugs":0,"port_kw":0,"warehouse_kw":0,"completed":0,"completion_bounds":[0,0],"same_service":false,"lost_vs_reference":[["2021-09-27","3"],["2021-09-27","5"],["2021-09-28","5"],["2021-09-29","3"],["2021-09-29","4"],["2021-09-29","5"],["2021-09-30","5"],["2021-10-01","4"],["2021-10-01","5"],["2021-10-04","3"],["2021-10-04","5"],["2021-10-05","4"],["2021-10-05","5"],["2021-10-06","3"],["2021-10-06","4"],["2021-10-06","5"],["2021-10-07","3"],["2021-10-07","5"],["2021-10-09","1"],["2021-10-11","3"],["2021-10-11","5"],["2021-10-12","5"],["2021-10-13","3"],["2021-10-13","5"],["2021-10-14","4"],["2021-10-14","5"],["2021-10-15","3"],["2021-10-15","5"],["2021-10-18","5"],["2021-10-19","5"],["2021-10-20","3"],["2021-10-20","5"],["2021-10-21","3"],["2021-10-21","5"],["2021-10-22","1"],["2021-10-22","3"],["2021-10-22","5"],["2021-10-25","4"],["2021-10-25","5"],["2021-10-26","3"],["2021-10-26","5"],["2021-10-27","2"],["2021-10-27","3"],["2021-10-27","5"],["2021-10-28","3"],["2021-10-28","5"],["2021-10-29","2"],["2021-10-29","3"],["2021-10-29","5"],["2021-11-03","3"],["2021-11-04","4"],["2021-11-04","5"],["2021-11-05","2"],["2021-11-05","5"]],"added_vs_reference":[],"one_site_release":{"port_design":"p1-50-w0","warehouse_design":"p0-0-w50","restored_in":{"PORT+WAREHOUSE":[["2021-09-27","3"],["2021-10-14","4"],["2021-10-15","3"],["2021-10-25","4"],["2021-11-04","5"],["2021-11-05","5"]],"PORT":[["2021-09-27","5"],["2021-09-28","5"],["2021-09-29","3"],["2021-09-29","4"],["2021-09-29","5"],["2021-09-30","5"],["2021-10-01","4"],["2021-10-01","5"],["2021-10-04","3"],["2021-10-04","5"],["2021-10-05","4"],["2021-10-05","5"],["2021-10-06","3"],["2021-10-06","4"],["2021-10-06","5"],["2021-10-07","3"],["2021-10-07","5"],["2021-10-09","1"],["2021-10-11","3"],["2021-10-11","5"],["2021-10-12","5"],["2021-10-13","3"],["2021-10-13","5"],["2021-10-14","5"],["2021-10-15","5"],["2021-10-18","5"],["2021-10-19","5"],["2021-10-20","3"],["2021-10-20","5"],["2021-10-21","3"],["2021-10-21","5"],["2021-10-22","1"],["2021-10-22","3"],["2021-10-22","5"],["2021-10-25","5"],["2021-10-26","3"],["2021-10-26","5"],["2021-10-27","2"],["2021-10-27","3"],["2021-10-27","5"],["2021-10-28","3"],["2021-10-28","5"],["2021-10-29","2"],["2021-10-29","3"],["2021-10-29","5"],["2021-11-03","3"],["2021-11-04","4"],["2021-11-05","2"]]},"port_limit":"no_port_charger","warehouse_limit":"no_warehouse_charger"}},
     {"design":"p0-0-w20","port_plugs":0,"port_kw":0,"warehouse_kw":20,"completed":2,"completion_bounds":[2,2],"same_service":false,"lost_vs_reference":[["2021-09-27","3"],["2021-09-27","5"],["2021-09-28","5"],["2021-09-29","3"],["2021-09-29","4"],["2021-09-29","5"],["2021-09-30","5"],["2021-10-01","4"],["2021-10-01","5"],["2021-10-04","3"],["2021-10-04","5"],["2021-10-05","4"],["2021-10-05","5"],["2021-10-06","3"],["2021-10-06","4"],["2021-10-06","5"],["2021-10-07","3"],["2021-10-07","5"],["2021-10-09","1"],["2021-10-11","3"],["2021-10-11","5"],["2021-10-12","5"],["2021-10-13","3"],["2021-10-13","5"],["2021-10-14","5"],["2021-10-15","3"],["2021-10-15","5"],["2021-10-18","5"],["2021-10-19","5"],["2021-10-20","3"],["2021-10-20","5"],["2021-10-21","3"],["2021-10-21","5"],["2021-10-22","1"],["2021-10-22","3"],["2021-10-22","5"],["2021-10-25","4"],["2021-10-25","5"],["2021-10-26","3"],["2021-10-26","5"],["2021-10-27","2"],["2021-10-27","3"],["2021-10-27","5"],["2021-10-28","3"],["2021-10-28","5"],["2021-10-29","2"],["2021-10-29","3"],["2021-10-29","5"],["2021-11-03","3"],["2021-11-04","4"],["2021-11-04","5"],["2021-11-05","2"]],"added_vs_reference":[],"one_site_release":{"port_design":"p1-50-w20","warehouse_design":"p0-0-w50","restored_in":{"PORT+WAREHOUSE":[["2021-09-27","3"],["2021-10-15","3"],["2021-10-25","4"],["2021-11-04","5"]],"PORT":[["2021-09-27","5"],["2021-09-28","5"],["2021-09-29","3"],["2021-09-29","4"],["2021-09-29","5"],["2021-09-30","5"],["2021-10-01","4"],["2021-10-01","5"],["2021-10-04","3"],["2021-10-04","5"],["2021-10-05","4"],["2021-10-05","5"],["2021-10-06","3"],["2021-10-06","4"],["2021-10-06","5"],["2021-10-07","3"],["2021-10-07","5"],["2021-10-09","1"],["2021-10-11","3"],["2021-10-11","5"],["2021-10-12","5"],["2021-10-13","3"],["2021-10-13","5"],["2021-10-14","5"],["2021-10-15","5"],["2021-10-18","5"],["2021-10-19","5"],["2021-10-20","3"],["2021-10-20","5"],["2021-10-21","3"],["2021-10-21","5"],["2021-10-22","1"],["2021-10-22","3"],["2021-10-22","5"],["2021-10-25","5"],["2021-10-26","3"],["2021-10-26","5"],["2021-10-27","2"],["2021-10-27","3"],["2021-10-27","5"],["2021-10-28","3"],["2021-10-28","5"],["2021-10-29","2"],["2021-10-29","3"],["2021-10-29","5"],["2021-11-03","3"],["2021-11-04","4"],["2021-11-05","2"]]},"port_limit":"no_port_charger","warehouse_limit":"connection_and_charger_kw"}},
@@ -1795,7 +2090,13 @@
       "target_25_0_25/summary.json": "8affbdbbc3fd991f390b8dec741b267639e3940ee592b369a1a331780f3bf4f3",
       "target_35_0_35/summary.json": "47234b6b1dc0140a0af928f20482320f4494e81eec7607f81e24620ad081078e",
       "target_40_0_35/summary.json": "d969b3dbc0d616fc81cdb1acd287ca4c7136c1b977e8e1745910e55ef905950e",
-      "target_45_0_45/summary.json": "64ec9440db610591da582a451247339bed86928d8ac651c3bcd19749e94b2aef"
+      "target_45_0_45/summary.json": "64ec9440db610591da582a451247339bed86928d8ac651c3bcd19749e94b2aef",
+      "complete_single_coarse_point.py": "dd62305e1c6370ce59fabc946651dfb16cb09c65867c6e2d80b541ff6fd6025b",
+      "coarse_completion.log": "db9167c7b3988d08e734f8ff92f6c6e0361f6ef99b1b99db2929bae30256b934",
+      "coarse_completion/solves.jsonl": "9d7cd02804618961c82a96485e17244f004b5d5d7266be65330f8652f62c47b0",
+      "coarse_completion/summary.json": "0e12c5bd6c5e93831b5e492ff055e312c13e41f47d5b13430b07a3a5030ab64c",
+      "tabulate_coarse_completion.py": "0a416a373c40c46b903eb976b3c7e89f0b9e3aa828538fcccba500d4b57e7178",
+      "coarse_completion/verified_grid.json": "f1241de5dee8bf2a938e5df421c66777b4f87304b70f47a194fd0b6323647755"
     }
   },
   "model_policy": {

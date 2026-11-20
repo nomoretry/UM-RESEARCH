@@ -6,7 +6,7 @@
 
 **20 kW 港区单站在本轮网格上保留同一组 54/73 个车日。** 港区降到 15 kW、仓库保持 0 时，少完成 2021-10-29 的 3 号车日。把仓库配到网格中的 10 kW 即恢复该车日，增加港区功率也能恢复。港区 10 kW 即使配仓库 50 kW 也最多完成 50 个。仓库单站最高只完成 6 个。因此，保留该组运输服务可只在港区建一台充电机。在有价且已回放的账单中，最省的配置均集中在港区，官方中压网费下新建取 20 kW，既有取 40 kW。[逐车日集合与放宽上限证据](site_sizing.json)
 
-**执行边界。** 完成 50 个硬件设计的最大服务核验，其中 42 个保留同一集合。435 个粗网格运行点中，344 个有六周回放账单，90 个已判定无法保留服务，余下一个为港区 40 kW／仓库 20 kW 硬件下的 20/20 kW 运行峰值。另有 9 个加密运行点取得完整账单，141 个通过求解或单调性判定不可行。正式扫描在展开分组排程时拒绝了 2021-10-04 周港区 5 号车的无预约正电量记录。可行见证按已保存排程另行汇总，未扫完的加密运行点保留为缺口。以下排名以有价且完成核验的运行点为范围。[账单、覆盖和证据清单](site_sizing.json)
+**执行边界。** 完成 50 个硬件设计的最大服务核验，其中 42 个保留同一集合。粗网格 435 个运行点全部判定，345 个有六周回放账单，90 个无法保留服务。加密网格仍有部分点未算，已判定的加密点中 9 个有完整账单，141 个通过求解或单调性判定不可行。以下排名以有价且完成核验的运行点为范围。[账单、覆盖和证据清单](site_sizing.json)
 
 ### 保留同一组车日的设计
 
@@ -65,6 +65,19 @@
 
 10 套双港区机方案的有价粗网格账单均较贵。按同一网费和接入口径比较，最小的双机差额仍为 €5,493.83/年。[双机账单](site_sizing.json)
 
+### 补算的粗网格点
+
+港区 40 kW／仓库 20 kW 硬件下，两站的运行峰值都限 20 kW。六周独立回放保留原来的 54 个车日。2021-10-25 周的超时购电区间为 €186.583258 至 €186.596437（2021 年币值），宽 €0.013179，低于每周 €0.05 门槛。按通过回放的排程结算年费，单位为 2025 年 €/年。差额由补算点年费减去各情景原最低有价方案的年费。[周证据和年账单](site_sizing.json)
+
+| 网费 | 新建年费 | 较原最低 | 既有年费 | 较原最低 |
+|---|---:|---:|---:|---:|
+| 无网费 | 10,452.69 | +2,510.26 | 9,651.27 | +2,243.12 |
+| Frank 表 4 | 15,999.64 | +2,342.33 | 15,198.21 | +1,808.05 |
+| Netze BW 官方 | 16,180.40 | +2,326.22 | 15,378.97 | +1,813.12 |
+| 固定需量 0 | 11,275.47 | +1,876.60 | 10,474.05 | +1,342.32 |
+| 固定需量 22.79 | 12,206.94 | +2,342.33 | 11,405.52 | +1,808.05 |
+| 固定需量 208.38 | 19,792.33 | +6,135.03 | 18,990.91 | +5,600.74 |
+
 ### 设备报价改变选择的价位
 
 官方网费下，新建的 20 kW 机未税设备价由 €4,445.38（2026 年标价口径）升到约 **€5,748**，其余价格固定时，已核验的 30 kW 港区单站与它打平。既有接入口径，40 kW 机由 €7,295 升到约 **€7,418**，已核验的 20 kW 港区单站与它打平。若比较港区单站 HYC50，其年化整机成本须降到新建约 €937、既有约 €1,316 才分别打平。各价位包含对应电费、接入费用与保持服务的运行点。小型壁挂设备和 HYC50 的设备类别差异使这些临界价比标价本身更能说明采购条件。[报价与年化输入](../day-ahead/connection_cost.json) · [各网费的翻转价位](site_sizing.json)
@@ -118,22 +131,25 @@ $testDir = Join-Path ([IO.Path]::GetTempPath()) ('um-site-sizing-' + [guid]::New
 .\.venv\Scripts\python.exe -m um_charging.site_sizing
 ```
 
-已有离线记录的环境可从根目录运行结算复核。输出应列出粗网格 344 个可比账单、90 个不可保留服务的点及 1 个缺点。官方网费的两行结果应为 €13,854.18/年与 €13,565.86/年。
+已有离线记录的环境可从根目录运行结算复核。输出应列出粗网格 345 个可比账单、90 个不可保留服务的点和 0 个缺口。官方网费最低有价年费为新建 €13,854.18 和既有 €13,565.86。
 
 ```powershell
+$env:PYTHONPATH = (Join-Path (Get-Location).Path 'src')
 $records = (Get-Content -LiteralPath '.um-records.local.json' -Raw -Encoding UTF8 | ConvertFrom-Json).records_root
 $runArchive = Join-Path $records 'conversations\0001_records\runs\20261120_site_sizing'
 $reviewFile = Join-Path ([IO.Path]::GetTempPath()) ('um-site-sizing-review-' + [guid]::NewGuid().ToString('N') + '.json')
-.\.venv\Scripts\python.exe (Join-Path $runArchive 'tabulate_publication.py') --output $reviewFile
+.\.venv\Scripts\python.exe (Join-Path $runArchive 'tabulate_coarse_completion.py') --output $reviewFile
 ```
 
-完整扫描入口在基准运行点评估 €568.854676 和 €530.674001，正式运行同样从仓库根目录调用此源码。正式模型提交 `0b6f616bb8033e6f19c4d48e21d85a0c46699674`，启动时工作树干净。由首次开启到最后求解日志累计 5,395.48 秒。先后并行分派峰值组合与周子问题，保留原始与恢复调度的记录。末轮账簿 1171 条，合并去重后 1255 个周组，其中 1221 个具有独立回放。保留 23 条超时购电区间，最大周宽 €0.029912，按 €0.05 判定的未判定组为 0。排程还原异常及加密覆盖缺口另计。汇总验证 762 组服务与 26726 组购电单调性比较，并独立核对 2118 份逐费率年账单。原始日志、求解、回放和实验启动器见离线库 `runs/20261120_site_sizing`。正式数据使用原源码，之后的排程还原代码补用了旧模型已有的无预约微量电量处理，并增加了单元回归。[可复核账单、来源哈希和日志定位](site_sizing.json)
+完整扫描入口在基准运行点评估 €568.854676 和 €530.674001。原正式扫描以干净提交 `0b6f616bb8033e6f19c4d48e21d85a0c46699674` 启动，至最后求解日志用时 5,395.48 秒。扫描按峰值组合和周分派求解。2021-10-04 周的分组排程在还原时因港区 5 号车有无预约正电量而中断。末轮账簿 1,171 条，合并去重后共 1,255 个周组，其中 1,221 个具有独立回放。原扫描汇总保留 23 条超时购电区间，最大周宽 €0.029912，超出 €0.05 门槛的周组为 0。汇总验证 762 组服务与 26,726 组购电单调性比较，并独立核对 2,118 份逐费率年账单。原始日志、求解、回放和实验启动器见离线库 `runs/20261120_site_sizing`。[原扫描记录](site_sizing.json)
+
+粗网格补算从干净提交 `956cdaa88083c55de76f0d854be5c41e93295dcb` 启动，纳入分组回放的微量电量容差修复。仅重求 2021-10-04 和 2021-11-01，两周按原购电证明门槛通过，分别用时 24.788 秒和 0.031 秒。其余四周沿用同一模型、同一输入的离线解。两次求解沿用 300 秒单次上限，补算及审计墙钟 25.457 秒，六周排程逐份独立回放，完成六种网费结算复核，未判定周为 0。并入补算点后，共 26,934 组购电单调性比较通过。[补算来源哈希、周区间和日志定位](site_sizing.json)
 
 ## English
 
 **The same 54 of 73 truck-days can be served with one 20 kW port charger and no warehouse charger.** At 15 kW at the port, the port-only build serves 53 days and drops vehicle 3 on 29 October 2021. A 10 kW warehouse charger restores that day on this grid. A 10 kW port and a 50 kW warehouse together serve at most 50 days. The largest warehouse-only build serves six. [Service sets and capacity interventions](site_sizing.json)
 
-The six-week scan proved service for 50 builds. Forty-two retain the registered set. Of 435 coarse operating points, 344 have a six-week replay and 90 are infeasible. The remaining point is the 20/20 kW operating cap on a 40/20 kW build. The run interrupted during schedule reconstruction on a positive energy entry with no plug reservation. Nine refined operations have complete bills and 141 were proved infeasible, including monotone deductions. The cost table reports the lowest priced options among assessed operations. [Coverage and evidence](site_sizing.json)
+The six-week scan proved service for 50 builds. Forty-two retain the registered set. All 435 coarse operating points have been assessed, with 345 six-week replay bills and 90 infeasible points. Some refined operations are still unevaluated. Among those assessed, nine have complete bills and 141 were proved infeasible, including monotone deductions. The cost table reports the lowest priced options among assessed operations. [Coverage and evidence](site_sizing.json)
 
 ### Annual costs
 
@@ -156,6 +172,19 @@ The official Netze BW tariff gives 20/0 kW for new connections and 40/0 kW for e
 
 The 20 kW option at the new site reaches the high-utilization tariff band with the official tariff. Its demand charge increases while the network charge per kWh decreases. The 40 kW option for existing connections keeps its low-utilization band. With the official tariff, the observed alternative to a 20 kW new build ties when the 20 kW unit reaches about €5,748 net on the 2026 equipment-price basis. The 20 kW build ties the 40 kW existing-site design at a 40 kW unit price of about €7,418 net. For the matched 15/10 kW two-site build, the maximum combined annual equipment cost is €232.47 for new capacity and €278.07 for existing capacity at the assessed cap. Further equipment ceilings are available for the unpriced 25, 35 and 45 kW ratings. [Crossovers and missing-price ceilings](site_sizing.json)
 
+### Final coarse operating point
+
+The 40 kW port and 20 kW warehouse build uses 20 kW operating caps at both sites. Independent replay retains the same 54 truck-days. The 25 October 2021 solve timed out with a wholesale cost interval of €186.583258 to €186.596437 in 2021 euros. Its €0.013179 width is below the €0.05 weekly limit. The feasible replays determine the bills below, in annual euros at 2025 purchasing power. Each difference is relative to the previous lowest priced option for that case. [Weekly evidence and annual bills](site_sizing.json)
+
+| Network case | New annual bill | Difference | Existing annual bill | Difference |
+|---|---:|---:|---:|---:|
+| No network charge | 10,452.69 | +2,510.26 | 9,651.27 | +2,243.12 |
+| Frank Table 4 | 15,999.64 | +2,342.33 | 15,198.21 | +1,808.05 |
+| Netze BW official | 16,180.40 | +2,326.22 | 15,378.97 | +1,813.12 |
+| Fixed demand 0 | 11,275.47 | +1,876.60 | 10,474.05 | +1,342.32 |
+| Fixed demand 22.79 | 12,206.94 | +2,342.33 | 11,405.52 | +1,808.05 |
+| Fixed demand 208.38 | 19,792.33 | +6,135.03 | 18,990.91 | +5,600.74 |
+
 ### Assumptions and settlement
 
 The six fleet weeks cover 30 dates from 27 September to 5 November 2021 and use S300 (300 kWh battery, 30 kWh reserve, 150 kWh at both ends of each continuous spell, 50 kW grid draw per truck, and 90% grid-to-battery efficiency). Boundary B carries state of charge across linked, completed days. Travel timestamps bound dwell, while the site mapping, 45-minute warehouse release and eligible charge windows follow the UM scenario. The optimizer knows the full week's tasks and the contemporaneous native hourly DE-LU day-ahead prices in Europe/Berlin (EUR/MWh). [Fleet data](DATA.md) · [Energy boundary](energy_boundary.md) · [Market input](../day-ahead/fleet_market.json)
@@ -174,4 +203,6 @@ At zero changeover time, interchangeable whole quarters within one native-price 
 
 The single- and two-port-plug references reproduce €568.854676 and €530.674001 for the same 54 days. The week of 18 October gives identical duty sets across the two formulations in 34 rated-build comparisons, with maximum wholesale difference €8.17e-13. The retry of the 20/20 kW operating point on 50/50 kW hardware met the weekly tolerance in 12.218 seconds. For the earlier continuous-peak study, the comparable Frank and official bill differences are €0.005–0.006/year, within the weekly wholesale tolerances. The high fixed-rate comparison is within its grid rounding allowance. The lower fixed-rate bills reflect interval meter utilization bands on a different scheduling policy.
 
-In the physical five-minute replay, both 20/0 and 40/0 kW retain the exact same 54 truck-days. Wholesale purchases increase from €758.377583 to €760.381986 and from €600.600166 to €602.346357 over the sample, respectively. The annual increases are €20.54 and €17.89. The formal source was clean at commit `0b6f616bb8033e6f19c4d48e21d85a0c46699674`. The time from initial start to the final solver log was 5,395.48 seconds. The published JSON includes the 23 retained timeout intervals, approved unresolved-group count, source hashes and evidence paths. [Reproduction from the repository root](#复算与正式记录) · [Data and validation](site_sizing.json)
+In the physical five-minute replay, both 20/0 and 40/0 kW retain the exact same 54 truck-days. Wholesale purchases increase from €758.377583 to €760.381986 and from €600.600166 to €602.346357 over the sample, respectively. The annual increases are €20.54 and €17.89. The original formal scan started from clean commit `0b6f616bb8033e6f19c4d48e21d85a0c46699674`. Its final solver log was 5,395.48 seconds after the start. Schedule reconstruction raised an error on a positive energy entry without a port reservation for vehicle 5 in the week of 4 October 2021. The JSON records the original scan's 23 retained timeout intervals. [Original scan records](site_sizing.json)
+
+The final coarse point used clean commit `956cdaa88083c55de76f0d854be5c41e93295dcb`, which includes the numerical tolerance fix for grouped schedule replay. The solves for 4 October and 1 November met the original wholesale gap tolerances in 24.788 and 0.031 seconds, respectively, under the 300-second per-solve limit. The other four weeks used archived results from the same model and inputs. The supplement took 25.457 seconds of wall time including independent replay of all six weeks and a settlement check for each of the six tariffs. All six weeks met the acceptance rules. With the added point, 26,934 wholesale cost monotonicity comparisons passed. [Reproduction from the repository root](#复算与正式记录) · [Supplement hashes, bounds and evidence paths](site_sizing.json)

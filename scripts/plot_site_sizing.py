@@ -92,9 +92,16 @@ def make_figure(data):
             ax.axvline(single_end - .5, color="#849497", linewidth=1.1)
     fig.suptitle("Where to install charging power for the same truck service",
                  x=.062, y=.963, ha="left", fontsize=19, weight="bold", color=BORDER)
+    coverage = ""
+    if data.get("coarse_grid_evaluated"):
+        checkpoints = data["observed_cost_checkpoints"]
+        total = checkpoints["coarse_replayed"] + checkpoints["coarse_certified_infeasible"]
+        coverage = f"   ·   Coarse operating points {total}/{total} assessed"
+        if not data["whole_grid_evaluated"]:
+            coverage += ", refinement partial"
     fig.text(.062, .89, f"Matched set {reference}/{data['sample_truck_days']} truck-days"
              "   ·   300 kWh batteries, zero-changeover cost scan"
-             "   ·   Netze BW official 2024 medium-voltage tariff",
+             "   ·   Netze BW official 2024 medium-voltage tariff" + coverage,
              fontsize=10, color="#40545a")
     handles = [Patch(facecolor=UNSAMPLED, label="Outside evaluated grid"),
                Patch(facecolor=INELIGIBLE, label="Service gap or unresolved"),

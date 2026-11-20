@@ -8,6 +8,3 @@ studies/day-ahead/fleet_market.json text eol=lf
 
 # Keep the verified capital snapshot byte-identical to the formal-run input.
 studies/day-ahead/connection_cost.json -text
-
-# Keep the verified capital snapshot byte-identical to the formal-run input.
-studies/day-ahead/connection_cost.json -text
