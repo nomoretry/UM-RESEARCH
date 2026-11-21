@@ -14,12 +14,12 @@ FEASIBLE = {"feasible": "可行 / feasible", "infeasible": "不可行 / infeasib
             "unresolved": "未定 / open"}
 CLASS = {
     "infeasible_unlimited_power": "充电功率不限仍不可行 / infeasible with unlimited charging power",
-    "truck_power_limit": "单车充电功率限制 / truck charging-power limit",
+    "truck_power_limit": "剩余窗口在单车 50 kW 下补能不足 / insufficient charging time at 50 kW",
     "joint_fleet_constraints_or_equal_service_tie": "车队联合约束或同数择优 / shared constraints or service tie",
     "single_truck_infeasible_at_facility": "该设施即使只服务该车也不可行 / infeasible even with exclusive access",
 }
 REASON = {"trip_exceeds_usable_battery": "单趟超可用电量 / trip exceeds usable battery",
-          "no_charging_window": "无可充窗口 / no charging window",
+          "no_charging_window": "该连续段无可充窗口 / no eligible window in that segment",
           "trip_soc_boundary": "行程处 SOC 越界 / trip SOC limit",
           "terminal_soc_unreachable": "段末 SOC 无法恢复 / terminal SOC unreachable"}
 
@@ -197,7 +197,7 @@ def _reproduction(summary):
             "From the repository root, the two Python commands reproduce the solves in a fresh directory "
             "and independently replay the existing formal archive.", "",
             "```powershell", "$env:PYTHONPATH = 'src'",
-            r"$archive = 'C:\Users\27788\UM-local-records\conversations\0001_records\runs\20261121_holdout_weeks'",
+            r"$archive = Join-Path $env:USERPROFILE 'UM-local-records\conversations\0001_records\runs\20261121_holdout_weeks'",
             "$fresh = Join-Path $archive ('reproduction-' + [guid]::NewGuid().ToString('N'))",
             r".\.venv\Scripts\python.exe -m um_charging.holdout --output $fresh",
             r".\.venv\Scripts\python.exe -m um_charging.holdout --verify (Join-Path $archive 'formal')", "```", ""]

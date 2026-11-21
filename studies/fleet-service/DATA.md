@@ -133,7 +133,7 @@ This modified database excerpt, including the derived stops and split, is made a
 The committed duties can be used directly. To regenerate and audit them, run from the research repository root in PowerShell, with the project's Python environment active and an existing local cache directory. The commands below write the comparison file to the cache.
 
 ```powershell
-$cache = 'D:\UM_Project\tmp'
+$cache = [System.IO.Path]::GetTempPath()
 $src = Join-Path $cache 'tracks_with_energy.csv'
 if (!(Test-Path -LiteralPath $src)) {
     Invoke-WebRequest 'https://raw.githubusercontent.com/TUMFTM/truck_fleet_electrification/2763d5aa04365958b54ec014c8b4cf47ea1a75fd/output/csvs/tracks_with_energy.csv' -OutFile $src

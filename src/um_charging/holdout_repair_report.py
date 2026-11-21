@@ -63,7 +63,8 @@ def _fixed_section(block, billing):
                   "下表另列给两套 M8 设施补上仓库机后的比较。"
                   " [修复方案的同服务年费 / Bills after repair](#repair-bills)", "",
                   "B is the only one of the three with a bill for the full register. Its first place alone "
-                  "provides no basis for a new build recommendation.", "", after.strip()])
+                  "provides no basis for a new build recommendation. The next table compares both M8 facilities "
+                  "after a warehouse charger is added. [Bills after repair](#repair-bills)", "", after.strip()])
     return "\n".join(lines)
 
 
@@ -120,9 +121,11 @@ def _repair_section(costs):
         weeks = ", ".join(f'{week[5:]} {WEEK_SERVICE[status]}' for week, status in sorted(rated["week_service_status"].items()))
         lines.append(_row(d, weeks))
     lines.extend(["", "✓ 已证明可服务 / proved feasible · × 已证明不可行 / infeasible · ? 未判定 / open.", "",
-                  "这些账单衡量 M8 单站方案加上最低有价修复的费用。留出期未重新选择设施，更便宜的其他设计仍有可能。", "",
-                  "These bills price the smallest quoted repairs to the M8 facilities. The holdout did not "
-                  "repeat facility selection, so other designs could cost less."])
+                  "两套修复根据留出期的服务缺口确定。这些账单衡量补齐服务的费用。要做样本外验证，"
+                  "需将修复设施预先固定后再用另一段数据检验。留出期未重新选择设施，更便宜的其他设计仍有可能。", "",
+                  "The holdout service shortfall guided the choice of these repairs. Their bills measure the cost "
+                  "of restoring service. Out-of-sample validation would require fixing the repairs before testing "
+                  "another period. The holdout did not repeat facility selection, so other designs could cost less."])
     return "\n".join(lines)
 
 
