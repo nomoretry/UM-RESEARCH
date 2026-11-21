@@ -124,6 +124,93 @@ Get-FileHash -LiteralPath $rebuilt
 .\.venv\Scripts\python.exe -m pytest -q -p no:cacheprovider studies/fleet-service/test_prepare.py studies/fleet-service/test_prepare_weeks.py studies/day-ahead/test_native_2021_prices.py
 ```
 
+## Seven calendar weeks for the second holdout
+
+[Second holdout duties](second_holdout_weeks.json) cover every complete Berlin Monday–Sunday week after the first holdout ended on 19 December 2021. The endpoint is the last arrival in the fixed cohort (carrier 1, vehicles 1–5), on 9 February 2022. The seven full weeks run from 20 December to 6 February inclusive. The partial week starting on 7 February contains three complete vehicle-days and lies outside the sample. Selection uses calendar coverage and the original whole-vehicle-day quality rules, independently of prices, charging facilities or service feasibility.
+
+All 49 calendar dates and 245 vehicle-date slots remain in the denominator. There are 27 dates with at least one complete duty, seven with excluded records only, and 15 with no recorded trips. In the week of 27 December, three vehicle-days contain excluded records and the other 32 have no trips. This week contributes one of the seven weeks for the preregistered 52/7 annualization.
+
+| Week starting | Complete vehicle-days | Missing or nonfinite energy | No trip record | Trips | PORT stops | WAREHOUSE stops | Unmapped stops |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 2021-12-20 | 8 | 9 | 18 | 35 | 25 | 15 | 3 |
+| 2021-12-27 | 0 | 3 | 32 | 0 | 0 | 0 | 0 |
+| 2022-01-03 | 6 | 7 | 22 | 17 | 10 | 8 | 5 |
+| 2022-01-10 | 14 | 7 | 14 | 51 | 32 | 22 | 11 |
+| 2022-01-17 | 10 | 16 | 9 | 35 | 19 | 18 | 8 |
+| 2022-01-24 | 9 | 12 | 14 | 35 | 19 | 20 | 5 |
+| 2022-01-31 | 10 | 13 | 12 | 46 | 26 | 24 | 6 |
+| **Total** | **57** | **67** | **121** | **219** | **131** | **107** | **38** |
+
+Missing or nonfinite original simulated energy accounts for all 67 quality exclusions. No vehicle-day was excluded by another quality rule. All 219 retained trip IDs are distinct and have zero intersection with the 101 original, 355 M8 and 282 first-holdout trips. Stop counts are date-clipped intervals between adjacent recorded trips on complete vehicle-days.
+
+Thirty mapped intervals have a source track gap of at least 1 km. They represent 27 track pairs, with 29 intervals on vehicle 5 and one on vehicle 4. Eight additional unmapped intervals meet the distance threshold. The source supplies a distance for every included interval. Each row below groups the date slices of one track pair. The distance is the recorded end-to-next-start separation, and the parking interval bounds a possible stay. Unrecorded travel energy between tracks is outside the task data.
+
+<details>
+<summary>Second holdout track pairs at least 1 km apart</summary>
+
+| Affected Berlin dates | Vehicle | Mapping | Arrival → next track | Gap (km) |
+|---|---:|---|---|---:|
+| 2021-12-21 | 1 | Unmapped | 1387 → 1393 | 51.028 |
+| 2021-12-21 | 5 | WAREHOUSE | 9975 → 9977 | 5.047 |
+| 2021-12-21 | 5 | WAREHOUSE | 9977 → 9979 | 5.025 |
+| 2021-12-21 | 5 | WAREHOUSE | 9979 → 9981 | 11.094 |
+| 2021-12-22, 2022-01-10 | 5 | PORT | 9995 → 10077 | 13.825 |
+| 2022-01-10, 2022-01-11 | 5 | PORT | 10078 → 10084 | 3.115 |
+| 2022-01-11 | 5 | PORT | 10084 → 10086 | 5.775 |
+| 2022-01-11 | 5 | WAREHOUSE | 10086 → 10087 | 10.262 |
+| 2022-01-12 | 5 | Unmapped | 10096 → 10098 | 2.175 |
+| 2022-01-12 | 5 | Unmapped | 10098 → 10101 | 7.763 |
+| 2022-01-12, 2022-01-13 | 5 | PORT | 10101 → 10109 | 2.554 |
+| 2022-01-14 | 1 | Unmapped | 1809 → 1810 | 37.974 |
+| 2022-01-14 | 5 | WAREHOUSE | 10115 → 10116 | 2.051 |
+| 2022-01-19 | 1 | Unmapped | 1944 → 1946 | 47.493 |
+| 2022-01-19 | 5 | Unmapped | 10160 → 10161 | 11.260 |
+| 2022-01-20 | 4 | WAREHOUSE | 8062 → 8063 | 82.227 |
+| 2022-01-24 | 5 | WAREHOUSE | 10178 → 10180 | 4.629 |
+| 2022-01-24 | 5 | Unmapped | 10180 → 10182 | 1.195 |
+| 2022-01-24 | 5 | PORT | 10182 → 10191 | 2.356 |
+| 2022-01-26 | 5 | PORT | 10191 → 10196 | 3.611 |
+| 2022-01-26 | 5 | WAREHOUSE | 10196 → 10197 | 28.106 |
+| 2022-01-29 | 5 | WAREHOUSE | 10223 → 10224 | 10.628 |
+| 2022-01-29 | 5 | WAREHOUSE | 10224 → 10225 | 2.907 |
+| 2022-01-29 | 5 | PORT | 10225 → 10226 | 5.907 |
+| 2022-01-29 | 5 | WAREHOUSE | 10226 → 10227 | 6.364 |
+| 2022-01-29 | 5 | WAREHOUSE | 10228 → 10229 | 4.582 |
+| 2022-01-29 | 5 | PORT | 10229 → 10236 | 9.402 |
+| 2022-02-01 | 5 | PORT | 10241 → 10249 | 10.857 |
+| 2022-02-01 | 5 | WAREHOUSE | 10250 → 10251 | 1.381 |
+| 2022-02-01 | 5 | WAREHOUSE | 10251 → 10252 | 3.865 |
+| 2022-02-01 | 5 | Unmapped | 10252 → 10255 | 6.499 |
+| 2022-02-01 | 5 | PORT | 10255 → 10262 | 1.329 |
+| 2022-02-03 | 5 | PORT | 10267 → 10270 | 2.160 |
+| 2022-02-03 | 5 | WAREHOUSE | 10271 → 10273 | 21.389 |
+| 2022-02-03 | 5 | WAREHOUSE | 10273 → 10274 | 12.646 |
+
+</details>
+
+The published UTF-8 duty file hashes to `532e45b1ab51d7940a29bbbf0ec9513bb7ed2a7c2b98e221b8aba81b7da40935` (SHA-256). The source tests reconstruct the trip sequence, signed original energy, stop bounds, mappings and gap distances from the pinned CSV. They also regenerate all three earlier duty files and check their published SHA-256 digests and complete bytes. Run from the repository root with the archived CSV available.
+
+```powershell
+$records = (Get-Content -Raw -Encoding utf8 .um-records.local.json | ConvertFrom-Json).records_root
+$runs = Join-Path $records 'conversations\0001_records\runs'
+$env:UM_TUM_TRACKS = Join-Path $runs '20261112_fleet_inputs\tracks_with_energy.csv'
+$rebuilt = Join-Path $env:TEMP ('um-second-holdout-' + [guid]::NewGuid().ToString('N') + '.json')
+.\.venv\Scripts\python.exe studies/fleet-service/prepare_weeks.py $env:UM_TUM_TRACKS --after holdout_weeks.json --output $rebuilt
+Get-FileHash -LiteralPath $rebuilt -Algorithm SHA256
+.\.venv\Scripts\python.exe -m pytest -q -p no:cacheprovider studies/fleet-service/test_prepare.py studies/fleet-service/test_prepare_weeks.py
+```
+
+The second holdout covers 1,176 consecutive native DE-LU day-ahead delivery hours, from 00:00 CET on 20 December 2021 until 00:00 CET on 7 February 2022 (end exclusive). All seven weeks have 168 prices, including the week with no complete duties. The hourly mean, minimum and maximum are €173.46, −€1.05 and €620.00/MWh. The UTF-8 price CSV has SHA-256 `bb6ce2edd4482c4c36f0e58a70b3ceef2db71ea264e8e2e7438b23d5035bd704`. The source manifest lists the official SMARD 4169 weekly URLs and raw hashes. [Hourly prices](../day-ahead/native_2022_second_holdout_prices.csv) · [SMARD source records](../day-ahead/native_2022_second_holdout_source.json)
+
+Using the same `$runs` as above, verify the recorded prices against the seven raw weeks and run the source tests.
+
+```powershell
+$env:UM_SMARD_HOLDOUT = Join-Path $runs '20261121_holdout_weeks\smard'
+$env:UM_SMARD_SECOND_HOLDOUT = Join-Path $runs '20261122_m10_inputs\smard'
+.\.venv\Scripts\python.exe studies/day-ahead/extract_native_2021.py $env:UM_SMARD_SECOND_HOLDOUT --second-holdout
+.\.venv\Scripts\python.exe -m pytest -q -p no:cacheprovider studies/day-ahead/test_native_2021_prices.py
+```
+
 ## Source, attribution and reproduction
 
 The sole trip input is the published TUMFTM export at commit `2763d5aa04365958b54ec014c8b4cf47ea1a75fd`, SHA-256 `d92ab77cafe21c1aad3e9be8de1e26b453846a677f91b07ee0ac5f652ec8c50e`. Anna Paper, Georg Balke, Philip Rosborough, Marcel Brödel, Niclas Klein, Tom Winkler and Markus Lienkamp provide the upstream analysis. Copyright © 2025–2026 Anna Paper and contributors. Their repository cites the underlying DT-CARGO v2 release by Georg Balke, Lennart Adenaw and Anna Paper. The local older DT-CARGO copy and flex-depot Fleet 3 add zero independent cohorts. [Pinned project and citation](https://github.com/TUMFTM/truck_fleet_electrification/tree/2763d5aa04365958b54ec014c8b4cf47ea1a75fd) · [DT-CARGO v2](https://doi.org/10.5281/zenodo.16411298) · [DT-CARGO field definitions](https://github.com/TUMFTM/dt-cargo#trackscsv)

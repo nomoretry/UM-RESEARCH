@@ -1,4 +1,4 @@
-"""Extract six full calendar weeks after the original duties or the M8 operating weeks."""
+"""Extract the registered chronological samples of complete Berlin calendar weeks."""
 import argparse
 from collections import Counter
 import csv
@@ -12,6 +12,8 @@ from prepare import HERE, classify, day_bounds, duty, read_cohort
 WEEKS = 6
 BASELINE = HERE / "duties.json"
 OPERATING = HERE / "operating_weeks.json"
+HOLDOUT = HERE / "holdout_weeks.json"
+ANCHORS = (BASELINE.name, OPERATING.name, HOLDOUT.name)
 STATUSES = ("complete_tasks", "observed_excluded_only", "no_recorded_tasks")
 
 
@@ -34,25 +36,34 @@ def summary(days):
 
 
 def collect_weeks(path, *, after=BASELINE.name):
-    if after not in (BASELINE.name, OPERATING.name):
+    if after not in ANCHORS:
         raise ValueError(f"Unknown calendar anchor: {after}")
     baseline = json.loads(BASELINE.read_text(encoding="utf-8"))
     previous_days = baseline["days"]
-    holdout = after == OPERATING.name
-    if holdout:
-        operating = json.loads(OPERATING.read_text(encoding="utf-8"))
-        if (operating["source"] != baseline["source"]
-                or operating["cohort"]["cohort_vehicle_ids"] != baseline["coverage"]["cohort_vehicle_ids"]):
-            raise ValueError("The operating weeks must use the original source and cohort")
-        previous_days = previous_days + operating["days"]
+    holdout = after != BASELINE.name
+    second_holdout = after == HOLDOUT.name
+    for name in ANCHORS[1:ANCHORS.index(after) + 1]:
+        previous = json.loads((HERE / name).read_text(encoding="utf-8"))
+        if (previous["source"] != baseline["source"]
+                or previous["cohort"]["cohort_vehicle_ids"] != baseline["coverage"]["cohort_vehicle_ids"]):
+            raise ValueError(f"{name} must use the original source and cohort")
+        previous_days = previous_days + previous["days"]
     last = max(date.fromisoformat(d["date"]) for d in previous_days)
     first_monday = last + timedelta(days=7-last.weekday())
     cohort, source_coverage = read_cohort(path)
     if baseline["coverage"]["cohort_vehicle_ids"] != source_coverage["cohort_vehicle_ids"]:
         raise ValueError("The cohort differs from the original design/holdout")
     quality = {v: classify(rows) for v, rows in cohort.items()}
+    week_count = WEEKS
+    if second_holdout:
+        # A week is complete only if the fixed cohort's observation horizon reaches
+        # its next Monday. Count elapsed calendar weeks, including weeks without trips.
+        last_arrival = max(trip.end for trips in cohort.values() for trip in trips)
+        week_count = (last_arrival.date() - first_monday).days // 7
+        if week_count < 1:
+            raise ValueError("No complete week remains after the first holdout")
     days, weeks = [], []
-    for week in range(WEEKS):
+    for week in range(week_count):
         monday = first_monday + timedelta(weeks=week)
         week_days = []
         for offset in range(7):
@@ -70,7 +81,8 @@ def collect_weeks(path, *, after=BASELINE.name):
             status = "complete_tasks" if vehicles else ("observed_excluded_only" if omitted else "no_recorded_tasks")
             week_days.append({
                 "date": day.isoformat(), "start": left.isoformat(), "end": right.isoformat(),
-                "split": "holdout", "week_start": monday.isoformat(), "availability": status,
+                "split": "second_holdout" if second_holdout else "holdout",
+                "week_start": monday.isoformat(), "availability": status,
                 "vehicles": vehicles, "other_observed_vehicle_days_excluded": omitted,
                 "unobserved_vehicle_ids": unobserved,
             })
@@ -110,6 +122,8 @@ def collect_weeks(path, *, after=BASELINE.name):
     stop_counts = Counter()
     for week in weeks:
         counts = weekly_mapping[week["week_start"]]
+        if second_holdout:
+            counts.update({"PORT": 0, "WAREHOUSE": 0, "unmapped": 0})
         stop_counts.update(counts)
         if holdout:
             week["intervals_by_mapping"] = dict(sorted(counts.items()))
@@ -134,13 +148,20 @@ def collect_weeks(path, *, after=BASELINE.name):
         result["operating_weeks_sha256"] = hashlib.sha256(OPERATING.read_bytes()).hexdigest()
         result["parking_bounds"]["unmapped_intervals_missing_gap_distance"] = missing_distance["unmapped"]
         result["parking_bounds"]["unmapped_intervals_at_least_1km"] = unmapped_spatial_gaps
+    if second_holdout:
+        result["period_rule"] = (
+            "All complete Berlin Monday–Sunday weeks after the first six-week holdout through the "
+            "last recorded arrival of the original carrier and vehicle cohort. Keep weeks and dates "
+            "without complete tasks in the denominator. Apply the original vehicle-day quality rules."
+        )
+        result["holdout_weeks_sha256"] = hashlib.sha256(HOLDOUT.read_bytes()).hexdigest()
     return result
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("tracks", type=Path)
-    parser.add_argument("--after", choices=(BASELINE.name, OPERATING.name), default=BASELINE.name,
+    parser.add_argument("--after", choices=ANCHORS, default=BASELINE.name,
                         help="Start at the first full week after this committed sample")
     parser.add_argument("--output", type=Path, help="Write a new UTF-8 JSON file; default prints the input")
     args = parser.parse_args()

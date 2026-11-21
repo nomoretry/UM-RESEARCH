@@ -1,4 +1,4 @@
-"""Rebuild native DE-LU delivery hours for the planning or holdout sample."""
+"""Rebuild native DE-LU delivery hours for the planning sample or either holdout."""
 import argparse
 import csv
 from datetime import date, datetime, time, timedelta
@@ -17,6 +17,8 @@ SOURCE = HERE / "native_2021_source.json"
 PRICES = HERE / "native_2021_prices.csv"
 HOLDOUT_SOURCE = HERE / "native_2021_holdout_source.json"
 HOLDOUT_PRICES = HERE / "native_2021_holdout_prices.csv"
+SECOND_HOLDOUT_SOURCE = HERE / "native_2022_second_holdout_source.json"
+SECOND_HOLDOUT_PRICES = HERE / "native_2022_second_holdout_prices.csv"
 
 
 def selected_dates(meta):
@@ -76,11 +78,15 @@ def fetch_missing(meta, directory):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("raw_dir", type=Path, help="External directory holding the source weeks")
-    parser.add_argument("--holdout", action="store_true", help="Verify the six later, fixed-facility test weeks")
+    sample = parser.add_mutually_exclusive_group()
+    sample.add_argument("--holdout", dest="sample", action="store_const", const=(HOLDOUT_SOURCE, HOLDOUT_PRICES),
+                        help="Verify the first six holdout weeks")
+    sample.add_argument("--second-holdout", dest="sample", action="store_const",
+                        const=(SECOND_HOLDOUT_SOURCE, SECOND_HOLDOUT_PRICES), help="Verify the seven second holdout weeks")
     parser.add_argument("--fetch", action="store_true", help="Download missing files from the pinned official URLs")
     parser.add_argument("--output", type=Path, help="Save rebuilt CSV to a new file")
     args = parser.parse_args()
-    source, prices = (HOLDOUT_SOURCE, HOLDOUT_PRICES) if args.holdout else (SOURCE, PRICES)
+    source, prices = args.sample or (SOURCE, PRICES)
     metadata = json.loads(source.read_text(encoding="utf-8"))
     if args.fetch:
         fetch_missing(metadata, args.raw_dir)

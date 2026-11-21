@@ -26,14 +26,18 @@ def read_duties(name):
     ("operating_weeks.json", date(2021, 9, 27), (30, 4, 8), 355, [12, 13, 12, 14, 16, 6], ["duties.json"]),
     ("holdout_weeks.json", date(2021, 11, 8), (28, 10, 4), 282, [9, 16, 13, 8, 8, 9],
      ["duties.json", "operating_weeks.json"]),
+    ("second_holdout_weeks.json", date(2021, 12, 20), (27, 7, 15), 219, [8, 0, 6, 14, 10, 9, 10],
+     ["duties.json", "operating_weeks.json", "holdout_weeks.json"]),
 ])
 def test_calendar_partition_and_disjoint_trips(filename, first, statuses, trip_count, weekly_complete, previous_files):
     result = read_duties(filename)
-    assert [d["date"] for d in result["days"]] == [str(first + timedelta(days=i)) for i in range(42)]
-    assert [w["week_start"] for w in result["weeks"]] == [str(first + timedelta(weeks=i)) for i in range(6)]
+    weeks = len(weekly_complete)
+    assert [d["date"] for d in result["days"]] == [str(first + timedelta(days=i)) for i in range(7 * weeks)]
+    assert [w["week_start"] for w in result["weeks"]] == [str(first + timedelta(weeks=i)) for i in range(weeks)]
     assert result["coverage"]["date_status_counts"] == {
         "complete_tasks": statuses[0], "observed_excluded_only": statuses[1], "no_recorded_tasks": statuses[2]}
-    assert all(day["split"] == "holdout" for day in result["days"])
+    split = "second_holdout" if filename == "second_holdout_weeks.json" else "holdout"
+    assert all(day["split"] == split for day in result["days"])
     ids = set()
     for week in result["weeks"]:
         days = [d for d in result["days"] if d["week_start"] == week["week_start"]]
@@ -42,11 +46,11 @@ def test_calendar_partition_and_disjoint_trips(filename, first, statuses, trip_c
         assert week["complete_vehicle_days"] == sum(len(d["vehicles"]) for d in days)
         assert week["quality_excluded_vehicle_days"] == sum(len(d["other_observed_vehicle_days_excluded"]) for d in days)
         assert week["unobserved_vehicle_date_slots"] == sum(len(d["unobserved_vehicle_ids"]) for d in days)
-        if filename == "holdout_weeks.json":
+        if filename != "operating_weeks.json":
             trucks = [truck for day in days for truck in day["vehicles"]]
             mapped = Counter(stop["site"] for truck in trucks for stop in truck["stops"])
             mapped["unmapped"] = sum(len(truck["unmapped_gaps"]) for truck in trucks)
-            assert week["intervals_by_mapping"] == mapped
+            assert Counter(week["intervals_by_mapping"]) == mapped
             assert week["counts_by_exclusion"] == Counter(
                 reason for day in days for reason in day["other_observed_vehicle_days_excluded"].values())
         for d in days:
@@ -68,7 +72,7 @@ def test_calendar_partition_and_disjoint_trips(filename, first, statuses, trip_c
 
 
 @pytest.mark.skipif("UM_TUM_TRACKS" not in os.environ, reason="set UM_TUM_TRACKS to the pinned source CSV")
-@pytest.mark.parametrize("filename", ["operating_weeks.json", "holdout_weeks.json"])
+@pytest.mark.parametrize("filename", ["operating_weeks.json", "holdout_weeks.json", "second_holdout_weeks.json"])
 def test_every_vehicle_day_trip_and_adjacent_window_against_source(filename):
     data = read_duties(filename)
     rows = defaultdict(list)
@@ -79,6 +83,13 @@ def test_every_vehicle_day_trip_and_adjacent_window_against_source(filename):
                 rows[row["vehicle_id"]].append((start, end, row))
     for trips in rows.values():
         trips.sort(key=lambda t: (t[0], int(t[2]["track_id"])))
+    if filename == "second_holdout_weeks.json":
+        previous_end = date.fromisoformat(read_duties("holdout_weeks.json")["weeks"][-1]["week_end"])
+        first = date.fromisoformat(data["weeks"][0]["week_start"])
+        next_monday = date.fromisoformat(data["weeks"][-1]["week_end"]) + timedelta(days=1)
+        last_arrival = max(b for trips in rows.values() for _, b, _ in trips).date()
+        assert first == previous_end + timedelta(days=1) and first.weekday() == 0
+        assert next_monday.weekday() == 0 and next_monday <= last_arrival < next_monday + timedelta(weeks=1)
     far = defaultdict(list)
     for day in data["days"]:
         left, right = [datetime.fromisoformat(day[k]).astimezone(BERLIN) for k in ("start","end")]
@@ -120,7 +131,7 @@ def test_every_vehicle_day_trip_and_adjacent_window_against_source(filename):
                     far["mapped" if site else "unmapped"].append(
                         (day["date"],v,site,prev["track_id"],nxt["track_id"],float(prev["track_gap"])))
             assert not intervals
-    for mapping in (("mapped", "unmapped") if filename == "holdout_weeks.json" else ("mapped",)):
+    for mapping in (("mapped",) if filename == "operating_weeks.json" else ("mapped", "unmapped")):
         expected = [(r["date"],r["vehicle_id"],r["site"],r["arrival_track_id"],r["next_track_id"],r["track_gap_m"])
                     for r in data["parking_bounds"][f"{mapping}_intervals_at_least_1km"]]
         assert sorted(far[mapping]) == sorted(expected)
@@ -128,13 +139,17 @@ def test_every_vehicle_day_trip_and_adjacent_window_against_source(filename):
 
 @pytest.mark.skipif("UM_TUM_TRACKS" not in os.environ, reason="set UM_TUM_TRACKS to the pinned source CSV")
 @pytest.mark.parametrize(("args", "filename", "expected_hash"), [
+    ([], "duties.json", "634576e39fbcb031522a065a7f05e1c333e434800d81ae54e419a70b06d17e80"),
     ([], "operating_weeks.json", "901b0dcf25f3af092c3400bd4982498d9a0b026e56495d365f5c78be6abd2c07"),
     (["--after", "operating_weeks.json"], "holdout_weeks.json",
      "6c4c4483961f957604b564ee7b1b423895d016526535e807d384be60cde69413"),
+    (["--after", "holdout_weeks.json"], "second_holdout_weeks.json",
+     "532e45b1ab51d7940a29bbbf0ec9513bb7ed2a7c2b98e221b8aba81b7da40935"),
 ])
 def test_script_reproduces_exact_published_bytes(args, filename, expected_hash, tmp_path):
     rebuilt = tmp_path / filename
-    subprocess.run([sys.executable, HERE / "prepare_weeks.py", os.environ["UM_TUM_TRACKS"],
+    script = "prepare.py" if filename == "duties.json" else "prepare_weeks.py"
+    subprocess.run([sys.executable, HERE / script, os.environ["UM_TUM_TRACKS"],
                     *args, "--output", rebuilt], check=True)
     result = rebuilt.read_bytes()
     assert hashlib.sha256(result).hexdigest() == expected_hash
