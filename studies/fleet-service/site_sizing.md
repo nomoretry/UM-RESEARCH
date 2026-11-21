@@ -6,6 +6,8 @@
 
 **20 kW 港区单站在本轮网格上保留同一组 54/73 个车日。** 港区降到 15 kW、仓库保持 0 时，少完成 2021-10-29 的 3 号车日。把仓库配到网格中的 10 kW 即恢复该车日，增加港区功率也能恢复。港区 10 kW 即使配仓库 50 kW 也最多完成 50 个。仓库单站最高只完成 6 个。因此，保留该组运输服务可只在港区建一台充电机。在有价且已回放的账单中，最省的配置均集中在港区，官方中压网费下新建取 20 kW，既有取 40 kW。[逐车日集合与放宽上限证据](site_sizing.json)
 
+上述选型针对 M8 规划期，随后六周仅检验三套事先固定的设施，基准从 63 个完整车日中登记 52 个，港区 20 kW 和 40 kW 单站各完成其中 51 个，均遗漏 11 月 26 日的 1 号车。[固定设施留出检验](holdout_test.md)
+
 **有价加密网格已补完，12 个计费口径的最低方案均保持原值。** 50 个硬件设计中有 42 个保留同一组车日。435 个粗网格运行点中，345 个有六周回放账单，90 个无法保留服务。每个有价加密点均已结算、判定不可行，或由年费下界证明不可能是最低。183 个缺价加密点中有 77 个尚无判定，缺价设备另报门槛。[账单、覆盖和证据清单](site_sizing.json)
 
 | 有价加密点的判定 | 点数 |
@@ -177,6 +179,8 @@ $reviewFile = Join-Path ([IO.Path]::GetTempPath()) ('um-site-sizing-review-' + [
 ## English
 
 **The same 54 of 73 truck-days can be served with one 20 kW port charger and no warehouse charger.** At 15 kW at the port, the port-only build serves 53 days and drops vehicle 3 on 29 October 2021. A 10 kW warehouse charger restores that day on this grid. A 10 kW port and a 50 kW warehouse together serve at most 50 days. The largest warehouse-only build serves six. [Service sets and capacity interventions](site_sizing.json)
+
+The six weeks following the M8 planning period tested only three prespecified facilities, with the baseline registering 52 of 63 complete truck-days and the 20 kW and 40 kW port-only facilities each serving 51 of those 52, both missing vehicle 1 on 26 November. [Fixed-facility holdout](holdout_test.md)
 
 **The priced refinement is complete. All twelve lowest-cost decisions and bills are unchanged.** Of the 50 builds, 42 retain the same service. All 435 coarse operating points have been assessed, with 345 six-week bills and 90 infeasible points. Every priced refined point has a settled bill, an infeasibility finding or an annual bill lower bound above the minimum. Of 183 unpriced refined points, 77 still lack a decision. [Coverage and evidence](site_sizing.json)
 

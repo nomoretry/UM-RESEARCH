@@ -1,0 +1,3156 @@
+{
+  "source_commit": "bd75ba0cf9e421d53184fe4a1ad23468b14c5ea1",
+  "inputs_sha256": {
+    "holdout_weeks.json": "6c4c4483961f957604b564ee7b1b423895d016526535e807d384be60cde69413",
+    "native_2021_holdout_prices.csv": "28e3f8a242625ddd59338ec340e756d49c07d0d7ca8b6bbfb627906ee0c908dc"
+  },
+  "cost_inputs_sha256": {
+    "connection_cost.json": "ce610b73b9509c0ca13bcec3a4ded0158a7de57d52524f45998b6ff811b2c4ba",
+    "network_charges.json": "5a73ac215a2c062099192ed7914622fe3f7f30ce829002208952351b851e159a",
+    "connector_cost.json": "d4668980d6cd65b0c2407f41b08eb5a11fe1ab9ae34bd46092a21ba9ae2d7e12",
+    "site_sizing.json": "9bba3f3925be06cae844c94a184cf3277c4c4474b3c0b5a19501f778c50d5848"
+  },
+  "billing": {
+    "cases": [
+      {
+        "scenario": "N0",
+        "connection_basis": "new",
+        "m8_winner": "p1-40-w0",
+        "bills": {
+          "p1-20-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              20,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              20,
+              0
+            ]
+          },
+          "p1-40-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              40,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              40,
+              0
+            ]
+          },
+          "p1-50-w50": {
+            "status": "certified",
+            "caps_kw": [
+              50,
+              50
+            ],
+            "components_eur": {
+              "chargers": 7448.85778951453,
+              "connection": 2337.486260772603,
+              "wholesale": 9851.371126223912,
+              "network_energy": 0.0,
+              "demand": 0.0
+            },
+            "annual_total_eur": 19637.715176511047,
+            "annual_total_eur_bounds": [
+              19637.40336063249,
+              19637.715176511047
+            ],
+            "purchase_eur_2021_bounds": [
+              961.3594512178386,
+              961.3898811576499
+            ],
+            "peaks_kw": [
+              50.00000000000032,
+              50.0
+            ],
+            "bands": [
+              "low",
+              "low"
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              50,
+              50
+            ]
+          }
+        },
+        "winner": "p1-50-w50",
+        "recommendation_status": "changed",
+        "replay_order": [
+          "p1-50-w50"
+        ],
+        "rank_bounds": {
+          "p1-50-w50": [
+            1,
+            1
+          ]
+        }
+      },
+      {
+        "scenario": "N0",
+        "connection_basis": "existing",
+        "m8_winner": "p1-40-w0",
+        "bills": {
+          "p1-20-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              20,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              20,
+              0
+            ]
+          },
+          "p1-40-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              40,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              40,
+              0
+            ]
+          },
+          "p1-50-w50": {
+            "status": "certified",
+            "caps_kw": [
+              50,
+              50
+            ],
+            "components_eur": {
+              "chargers": 7448.85778951453,
+              "connection": 0.0,
+              "wholesale": 9851.371126223912,
+              "network_energy": 0.0,
+              "demand": 0.0
+            },
+            "annual_total_eur": 17300.228915738444,
+            "annual_total_eur_bounds": [
+              17299.917099859886,
+              17300.228915738444
+            ],
+            "purchase_eur_2021_bounds": [
+              961.3594512178386,
+              961.3898811576499
+            ],
+            "peaks_kw": [
+              50.00000000000032,
+              50.0
+            ],
+            "bands": [
+              "low",
+              "low"
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              50,
+              50
+            ]
+          }
+        },
+        "winner": "p1-50-w50",
+        "recommendation_status": "changed",
+        "replay_order": [
+          "p1-50-w50"
+        ],
+        "rank_bounds": {
+          "p1-50-w50": [
+            1,
+            1
+          ]
+        }
+      },
+      {
+        "scenario": "frank",
+        "connection_basis": "new",
+        "m8_winner": "p1-20-w0",
+        "bills": {
+          "p1-20-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              20,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              20,
+              0
+            ]
+          },
+          "p1-40-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              40,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              40,
+              0
+            ]
+          },
+          "p1-50-w50": {
+            "status": "certified",
+            "caps_kw": [
+              50,
+              50
+            ],
+            "components_eur": {
+              "chargers": 7448.85778951453,
+              "connection": 2337.486260772603,
+              "wholesale": 9851.371126223912,
+              "network_energy": 5456.587357116233,
+              "demand": 2328.668063704953
+            },
+            "annual_total_eur": 27422.97059733223,
+            "annual_total_eur_bounds": [
+              27422.658781453672,
+              27422.97059733223
+            ],
+            "purchase_eur_2021_bounds": [
+              961.3594512178386,
+              961.3898811576499
+            ],
+            "peaks_kw": [
+              50.00000000000032,
+              50.0
+            ],
+            "bands": [
+              "low",
+              "low"
+            ],
+            "policy": "rated_fallback",
+            "frozen_caps_kw": [
+              50,
+              0
+            ]
+          }
+        },
+        "winner": "p1-50-w50",
+        "recommendation_status": "changed",
+        "replay_order": [
+          "p1-50-w50"
+        ],
+        "rank_bounds": {
+          "p1-50-w50": [
+            1,
+            1
+          ]
+        }
+      },
+      {
+        "scenario": "frank",
+        "connection_basis": "existing",
+        "m8_winner": "p1-20-w0",
+        "bills": {
+          "p1-20-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              20,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              20,
+              0
+            ]
+          },
+          "p1-40-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              40,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              40,
+              0
+            ]
+          },
+          "p1-50-w50": {
+            "status": "certified",
+            "caps_kw": [
+              50,
+              50
+            ],
+            "components_eur": {
+              "chargers": 7448.85778951453,
+              "connection": 0.0,
+              "wholesale": 9851.371126223912,
+              "network_energy": 5456.587357116233,
+              "demand": 2328.668063704953
+            },
+            "annual_total_eur": 25085.484336559628,
+            "annual_total_eur_bounds": [
+              25085.17252068107,
+              25085.484336559628
+            ],
+            "purchase_eur_2021_bounds": [
+              961.3594512178386,
+              961.3898811576499
+            ],
+            "peaks_kw": [
+              50.00000000000032,
+              50.0
+            ],
+            "bands": [
+              "low",
+              "low"
+            ],
+            "policy": "rated_fallback",
+            "frozen_caps_kw": [
+              50,
+              0
+            ]
+          }
+        },
+        "winner": "p1-50-w50",
+        "recommendation_status": "changed",
+        "replay_order": [
+          "p1-50-w50"
+        ],
+        "rank_bounds": {
+          "p1-50-w50": [
+            1,
+            1
+          ]
+        }
+      },
+      {
+        "scenario": "official",
+        "connection_basis": "new",
+        "m8_winner": "p1-20-w0",
+        "bills": {
+          "p1-20-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              20,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              20,
+              0
+            ]
+          },
+          "p1-40-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              40,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              40,
+              0
+            ]
+          },
+          "p1-50-w50": {
+            "status": "certified",
+            "caps_kw": [
+              50,
+              50
+            ],
+            "components_eur": {
+              "chargers": 7448.85778951453,
+              "connection": 2337.486260772603,
+              "wholesale": 9851.371126223912,
+              "network_energy": 5311.078360926467,
+              "demand": 2328.668063704953
+            },
+            "annual_total_eur": 27277.461601142466,
+            "annual_total_eur_bounds": [
+              27277.149785263908,
+              27277.461601142466
+            ],
+            "purchase_eur_2021_bounds": [
+              961.3594512178386,
+              961.3898811576499
+            ],
+            "peaks_kw": [
+              50.00000000000032,
+              50.0
+            ],
+            "bands": [
+              "low",
+              "low"
+            ],
+            "policy": "rated_fallback",
+            "frozen_caps_kw": [
+              50,
+              0
+            ]
+          }
+        },
+        "winner": "p1-50-w50",
+        "recommendation_status": "changed",
+        "replay_order": [
+          "p1-50-w50"
+        ],
+        "rank_bounds": {
+          "p1-50-w50": [
+            1,
+            1
+          ]
+        }
+      },
+      {
+        "scenario": "official",
+        "connection_basis": "existing",
+        "m8_winner": "p1-40-w0",
+        "bills": {
+          "p1-20-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              20,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              20,
+              0
+            ]
+          },
+          "p1-40-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              40,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              40,
+              0
+            ]
+          },
+          "p1-50-w50": {
+            "status": "certified",
+            "caps_kw": [
+              50,
+              50
+            ],
+            "components_eur": {
+              "chargers": 7448.85778951453,
+              "connection": 0.0,
+              "wholesale": 9851.371126223912,
+              "network_energy": 5311.078360926467,
+              "demand": 2328.668063704953
+            },
+            "annual_total_eur": 24939.975340369863,
+            "annual_total_eur_bounds": [
+              24939.663524491305,
+              24939.975340369863
+            ],
+            "purchase_eur_2021_bounds": [
+              961.3594512178386,
+              961.3898811576499
+            ],
+            "peaks_kw": [
+              50.00000000000032,
+              50.0
+            ],
+            "bands": [
+              "low",
+              "low"
+            ],
+            "policy": "rated_fallback",
+            "frozen_caps_kw": [
+              50,
+              0
+            ]
+          }
+        },
+        "winner": "p1-50-w50",
+        "recommendation_status": "changed",
+        "replay_order": [
+          "p1-50-w50"
+        ],
+        "rank_bounds": {
+          "p1-50-w50": [
+            1,
+            1
+          ]
+        }
+      },
+      {
+        "scenario": "capacity_0",
+        "connection_basis": "new",
+        "m8_winner": "p1-20-w0",
+        "bills": {
+          "p1-20-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              20,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              20,
+              0
+            ]
+          },
+          "p1-40-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              40,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              40,
+              0
+            ]
+          },
+          "p1-50-w50": {
+            "status": "certified",
+            "caps_kw": [
+              50,
+              50
+            ],
+            "components_eur": {
+              "chargers": 7448.85778951453,
+              "connection": 2337.486260772603,
+              "wholesale": 9851.371126223912,
+              "network_energy": 5456.587357116233,
+              "demand": 0.0
+            },
+            "annual_total_eur": 25094.302533627277,
+            "annual_total_eur_bounds": [
+              25093.99071774872,
+              25094.302533627277
+            ],
+            "purchase_eur_2021_bounds": [
+              961.3594512178386,
+              961.3898811576499
+            ],
+            "peaks_kw": [
+              50.00000000000032,
+              50.0
+            ],
+            "bands": [
+              "low",
+              "low"
+            ],
+            "policy": "rated_fallback",
+            "frozen_caps_kw": [
+              20,
+              0
+            ]
+          }
+        },
+        "winner": "p1-50-w50",
+        "recommendation_status": "changed",
+        "replay_order": [
+          "p1-50-w50"
+        ],
+        "rank_bounds": {
+          "p1-50-w50": [
+            1,
+            1
+          ]
+        }
+      },
+      {
+        "scenario": "capacity_0",
+        "connection_basis": "existing",
+        "m8_winner": "p1-20-w0",
+        "bills": {
+          "p1-20-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              20,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              20,
+              0
+            ]
+          },
+          "p1-40-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              40,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              40,
+              0
+            ]
+          },
+          "p1-50-w50": {
+            "status": "certified",
+            "caps_kw": [
+              50,
+              50
+            ],
+            "components_eur": {
+              "chargers": 7448.85778951453,
+              "connection": 0.0,
+              "wholesale": 9851.371126223912,
+              "network_energy": 5456.587357116233,
+              "demand": 0.0
+            },
+            "annual_total_eur": 22756.816272854674,
+            "annual_total_eur_bounds": [
+              22756.504456976116,
+              22756.816272854674
+            ],
+            "purchase_eur_2021_bounds": [
+              961.3594512178386,
+              961.3898811576499
+            ],
+            "peaks_kw": [
+              50.00000000000032,
+              50.0
+            ],
+            "bands": [
+              "low",
+              "low"
+            ],
+            "policy": "rated_fallback",
+            "frozen_caps_kw": [
+              20,
+              0
+            ]
+          }
+        },
+        "winner": "p1-50-w50",
+        "recommendation_status": "changed",
+        "replay_order": [
+          "p1-50-w50"
+        ],
+        "rank_bounds": {
+          "p1-50-w50": [
+            1,
+            1
+          ]
+        }
+      },
+      {
+        "scenario": "capacity_22_79",
+        "connection_basis": "new",
+        "m8_winner": "p1-20-w0",
+        "bills": {
+          "p1-20-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              20,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              20,
+              0
+            ]
+          },
+          "p1-40-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              40,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              40,
+              0
+            ]
+          },
+          "p1-50-w50": {
+            "status": "certified",
+            "caps_kw": [
+              50,
+              50
+            ],
+            "components_eur": {
+              "chargers": 7448.85778951453,
+              "connection": 2337.486260772603,
+              "wholesale": 9851.371126223912,
+              "network_energy": 5456.587357116233,
+              "demand": 2328.668063704953
+            },
+            "annual_total_eur": 27422.97059733223,
+            "annual_total_eur_bounds": [
+              27422.658781453672,
+              27422.97059733223
+            ],
+            "purchase_eur_2021_bounds": [
+              961.3594512178386,
+              961.3898811576499
+            ],
+            "peaks_kw": [
+              50.00000000000032,
+              50.0
+            ],
+            "bands": [
+              "low",
+              "low"
+            ],
+            "policy": "rated_fallback",
+            "frozen_caps_kw": [
+              20,
+              0
+            ]
+          }
+        },
+        "winner": "p1-50-w50",
+        "recommendation_status": "changed",
+        "replay_order": [
+          "p1-50-w50"
+        ],
+        "rank_bounds": {
+          "p1-50-w50": [
+            1,
+            1
+          ]
+        }
+      },
+      {
+        "scenario": "capacity_22_79",
+        "connection_basis": "existing",
+        "m8_winner": "p1-20-w0",
+        "bills": {
+          "p1-20-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              20,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              20,
+              0
+            ]
+          },
+          "p1-40-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              40,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              40,
+              0
+            ]
+          },
+          "p1-50-w50": {
+            "status": "certified",
+            "caps_kw": [
+              50,
+              50
+            ],
+            "components_eur": {
+              "chargers": 7448.85778951453,
+              "connection": 0.0,
+              "wholesale": 9851.371126223912,
+              "network_energy": 5456.587357116233,
+              "demand": 2328.668063704953
+            },
+            "annual_total_eur": 25085.484336559628,
+            "annual_total_eur_bounds": [
+              25085.17252068107,
+              25085.484336559628
+            ],
+            "purchase_eur_2021_bounds": [
+              961.3594512178386,
+              961.3898811576499
+            ],
+            "peaks_kw": [
+              50.00000000000032,
+              50.0
+            ],
+            "bands": [
+              "low",
+              "low"
+            ],
+            "policy": "rated_fallback",
+            "frozen_caps_kw": [
+              20,
+              0
+            ]
+          }
+        },
+        "winner": "p1-50-w50",
+        "recommendation_status": "changed",
+        "replay_order": [
+          "p1-50-w50"
+        ],
+        "rank_bounds": {
+          "p1-50-w50": [
+            1,
+            1
+          ]
+        }
+      },
+      {
+        "scenario": "capacity_208_38",
+        "connection_basis": "new",
+        "m8_winner": "p1-20-w0",
+        "bills": {
+          "p1-20-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              20,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              20,
+              0
+            ]
+          },
+          "p1-40-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              40,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              40,
+              0
+            ]
+          },
+          "p1-50-w50": {
+            "status": "certified",
+            "caps_kw": [
+              50,
+              50
+            ],
+            "components_eur": {
+              "chargers": 7448.85778951453,
+              "connection": 2337.486260772603,
+              "wholesale": 9851.371126223912,
+              "network_energy": 5456.587357116233,
+              "demand": 21292.13914501264
+            },
+            "annual_total_eur": 46386.441678639916,
+            "annual_total_eur_bounds": [
+              46386.12986276136,
+              46386.441678639916
+            ],
+            "purchase_eur_2021_bounds": [
+              961.3594512178386,
+              961.3898811576499
+            ],
+            "peaks_kw": [
+              50.00000000000032,
+              50.0
+            ],
+            "bands": [
+              "low",
+              "low"
+            ],
+            "policy": "rated_fallback",
+            "frozen_caps_kw": [
+              20,
+              0
+            ]
+          }
+        },
+        "winner": "p1-50-w50",
+        "recommendation_status": "changed",
+        "replay_order": [
+          "p1-50-w50"
+        ],
+        "rank_bounds": {
+          "p1-50-w50": [
+            1,
+            1
+          ]
+        }
+      },
+      {
+        "scenario": "capacity_208_38",
+        "connection_basis": "existing",
+        "m8_winner": "p1-20-w0",
+        "bills": {
+          "p1-20-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              20,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              20,
+              0
+            ]
+          },
+          "p1-40-w0": {
+            "status": "service_gap",
+            "caps_kw": [
+              40,
+              0
+            ],
+            "policy": "frozen",
+            "frozen_caps_kw": [
+              40,
+              0
+            ]
+          },
+          "p1-50-w50": {
+            "status": "certified",
+            "caps_kw": [
+              50,
+              50
+            ],
+            "components_eur": {
+              "chargers": 7448.85778951453,
+              "connection": 0.0,
+              "wholesale": 9851.371126223912,
+              "network_energy": 5456.587357116233,
+              "demand": 21292.13914501264
+            },
+            "annual_total_eur": 44048.95541786731,
+            "annual_total_eur_bounds": [
+              44048.643601988755,
+              44048.95541786731
+            ],
+            "purchase_eur_2021_bounds": [
+              961.3594512178386,
+              961.3898811576499
+            ],
+            "peaks_kw": [
+              50.00000000000032,
+              50.0
+            ],
+            "bands": [
+              "low",
+              "low"
+            ],
+            "policy": "rated_fallback",
+            "frozen_caps_kw": [
+              20,
+              0
+            ]
+          }
+        },
+        "winner": "p1-50-w50",
+        "recommendation_status": "changed",
+        "replay_order": [
+          "p1-50-w50"
+        ],
+        "rank_bounds": {
+          "p1-50-w50": [
+            1,
+            1
+          ]
+        }
+      }
+    ],
+    "rated_baseline_service_verified": true,
+    "operating_points": [
+      {
+        "design": "p1-20-w0",
+        "status": "service_gap",
+        "caps_kw": [
+          20,
+          0
+        ]
+      },
+      {
+        "design": "p1-40-w0",
+        "status": "service_gap",
+        "caps_kw": [
+          40,
+          0
+        ]
+      },
+      {
+        "design": "p1-50-w50",
+        "caps_kw": [
+          20,
+          0
+        ],
+        "week_status": {
+          "2021-11-08": "certified",
+          "2021-11-15": "certified",
+          "2021-11-22": "infeasible",
+          "2021-11-29": "certified",
+          "2021-12-06": "certified",
+          "2021-12-13": "bounded"
+        },
+        "status": "infeasible"
+      },
+      {
+        "design": "p1-50-w50",
+        "caps_kw": [
+          50,
+          0
+        ],
+        "week_status": {
+          "2021-11-08": "certified",
+          "2021-11-15": "certified",
+          "2021-11-22": "infeasible",
+          "2021-11-29": "certified",
+          "2021-12-06": "certified",
+          "2021-12-13": "certified"
+        },
+        "status": "infeasible"
+      },
+      {
+        "design": "p1-50-w50",
+        "caps_kw": [
+          50,
+          50
+        ],
+        "week_status": {
+          "2021-11-08": "certified",
+          "2021-11-15": "certified",
+          "2021-11-22": "certified",
+          "2021-11-29": "certified",
+          "2021-12-06": "certified",
+          "2021-12-13": "certified"
+        },
+        "status": "certified",
+        "purchase_eur_2021_bounds": [
+          961.3594512178386,
+          961.3898811576499
+        ],
+        "site_grid_kwh": {
+          "PORT": 6630.566201111111,
+          "WAREHOUSE": 215.8492266666667
+        },
+        "site_quarter_peak_kw": {
+          "PORT": 50.00000000000032,
+          "WAREHOUSE": 50.0
+        }
+      }
+    ]
+  },
+  "repairs": {
+    "extra_designs": [
+      "p1-45-w0",
+      "p1-20-w10",
+      "p1-50-w0",
+      "p1-40-w10",
+      "p1-20-w15",
+      "p1-40-w15"
+    ],
+    "limit": 6,
+    "starts": {
+      "p1-20-w0": {
+        "missing_weeks": [
+          "2021-11-22"
+        ],
+        "fixed_R_status": "infeasible",
+        "policy_omission_with_feasible_R": [],
+        "directions": {
+          "PORT": {
+            "minimum_added_kw": null,
+            "minimum_possible_added_kw": null,
+            "verified_added_kw": null,
+            "ways_at_verified_kw": [],
+            "daily_policy": {
+              "minimum_added_kw": null,
+              "minimum_possible_added_kw": 5,
+              "verified_added_kw": null,
+              "ways_at_verified_kw": []
+            },
+            "joint": {
+              "minimum_added_kw": null,
+              "minimum_possible_added_kw": null,
+              "verified_added_kw": null,
+              "ways_at_verified_kw": []
+            }
+          },
+          "WAREHOUSE": {
+            "minimum_added_kw": 15,
+            "minimum_possible_added_kw": 15,
+            "verified_added_kw": 15,
+            "ways_at_verified_kw": [
+              "p1-20-w15"
+            ],
+            "daily_policy": {
+              "minimum_added_kw": null,
+              "minimum_possible_added_kw": 10,
+              "verified_added_kw": 15,
+              "ways_at_verified_kw": [
+                "p1-20-w15"
+              ]
+            },
+            "joint": {
+              "minimum_added_kw": 15,
+              "minimum_possible_added_kw": 15,
+              "verified_added_kw": 15,
+              "ways_at_verified_kw": [
+                "p1-20-w15"
+              ]
+            }
+          }
+        },
+        "options": [
+          {
+            "design": "p1-25-w0",
+            "direction": "PORT",
+            "added_kw": 5,
+            "fixed_R_status": "infeasible",
+            "daily_policy_status": "unchecked",
+            "daily_policy_weeks": {},
+            "weeks": {
+              "2021-11-08": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-11-15": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-11-22": {
+                "status": "infeasible",
+                "source": "monotonic:p1-40-w0"
+              },
+              "2021-11-29": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-12-06": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-12-13": {
+                "status": "unresolved",
+                "source": "not_checked"
+              }
+            }
+          },
+          {
+            "design": "p1-30-w0",
+            "direction": "PORT",
+            "added_kw": 10,
+            "fixed_R_status": "infeasible",
+            "daily_policy_status": "unchecked",
+            "daily_policy_weeks": {},
+            "weeks": {
+              "2021-11-08": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-11-15": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-11-22": {
+                "status": "infeasible",
+                "source": "monotonic:p1-40-w0"
+              },
+              "2021-11-29": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-12-06": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-12-13": {
+                "status": "unresolved",
+                "source": "not_checked"
+              }
+            }
+          },
+          {
+            "design": "p1-20-w10",
+            "direction": "WAREHOUSE",
+            "added_kw": 10,
+            "fixed_R_status": "infeasible",
+            "daily_policy_status": "unchecked",
+            "daily_policy_weeks": {},
+            "weeks": {
+              "2021-11-08": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-11-15": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-11-22": {
+                "status": "infeasible",
+                "source": "direct_check"
+              },
+              "2021-11-29": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-12-06": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-12-13": {
+                "status": "unresolved",
+                "source": "not_checked"
+              }
+            }
+          },
+          {
+            "design": "p1-35-w0",
+            "direction": "PORT",
+            "added_kw": 15,
+            "fixed_R_status": "infeasible",
+            "daily_policy_status": "unchecked",
+            "daily_policy_weeks": {},
+            "weeks": {
+              "2021-11-08": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-11-15": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-11-22": {
+                "status": "infeasible",
+                "source": "monotonic:p1-40-w0"
+              },
+              "2021-11-29": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-12-06": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-12-13": {
+                "status": "unresolved",
+                "source": "not_checked"
+              }
+            }
+          },
+          {
+            "design": "p1-20-w15",
+            "direction": "WAREHOUSE",
+            "added_kw": 15,
+            "fixed_R_status": "feasible",
+            "daily_policy_status": "retained",
+            "daily_policy_weeks": {
+              "2021-11-08": "feasible",
+              "2021-11-15": "feasible",
+              "2021-11-22": "feasible",
+              "2021-11-29": "feasible",
+              "2021-12-06": "feasible",
+              "2021-12-13": "feasible"
+            },
+            "weeks": {
+              "2021-11-08": {
+                "status": "feasible",
+                "source": "direct_check"
+              },
+              "2021-11-15": {
+                "status": "feasible",
+                "source": "direct_check"
+              },
+              "2021-11-22": {
+                "status": "feasible",
+                "source": "direct_check"
+              },
+              "2021-11-29": {
+                "status": "feasible",
+                "source": "direct_check"
+              },
+              "2021-12-06": {
+                "status": "feasible",
+                "source": "direct_check"
+              },
+              "2021-12-13": {
+                "status": "feasible",
+                "source": "direct_check"
+              }
+            }
+          },
+          {
+            "design": "p1-40-w0",
+            "direction": "PORT",
+            "added_kw": 20,
+            "fixed_R_status": "infeasible",
+            "daily_policy_status": "omitted",
+            "daily_policy_weeks": {
+              "2021-11-08": "feasible",
+              "2021-11-15": "feasible",
+              "2021-11-22": "infeasible",
+              "2021-11-29": "feasible",
+              "2021-12-06": "feasible",
+              "2021-12-13": "feasible"
+            },
+            "weeks": {
+              "2021-11-08": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-11-15": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-11-22": {
+                "status": "infeasible",
+                "source": "initial_check"
+              },
+              "2021-11-29": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-12-06": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-12-13": {
+                "status": "unresolved",
+                "source": "not_checked"
+              }
+            }
+          },
+          {
+            "design": "p1-20-w20",
+            "direction": "WAREHOUSE",
+            "added_kw": 20,
+            "fixed_R_status": "feasible",
+            "daily_policy_status": "unchecked",
+            "daily_policy_weeks": {},
+            "weeks": {
+              "2021-11-08": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-15": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-22": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-29": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-06": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-13": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              }
+            }
+          },
+          {
+            "design": "p1-45-w0",
+            "direction": "PORT",
+            "added_kw": 25,
+            "fixed_R_status": "infeasible",
+            "daily_policy_status": "unchecked",
+            "daily_policy_weeks": {},
+            "weeks": {
+              "2021-11-08": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-11-15": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-11-22": {
+                "status": "infeasible",
+                "source": "direct_check"
+              },
+              "2021-11-29": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-12-06": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-12-13": {
+                "status": "unresolved",
+                "source": "not_checked"
+              }
+            }
+          },
+          {
+            "design": "p1-20-w25",
+            "direction": "WAREHOUSE",
+            "added_kw": 25,
+            "fixed_R_status": "feasible",
+            "daily_policy_status": "unchecked",
+            "daily_policy_weeks": {},
+            "weeks": {
+              "2021-11-08": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-15": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-22": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-29": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-06": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-13": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              }
+            }
+          },
+          {
+            "design": "p1-50-w0",
+            "direction": "PORT",
+            "added_kw": 30,
+            "fixed_R_status": "infeasible",
+            "daily_policy_status": "unchecked",
+            "daily_policy_weeks": {},
+            "weeks": {
+              "2021-11-08": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-11-15": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-11-22": {
+                "status": "infeasible",
+                "source": "direct_check"
+              },
+              "2021-11-29": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-12-06": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-12-13": {
+                "status": "unresolved",
+                "source": "not_checked"
+              }
+            }
+          },
+          {
+            "design": "p1-20-w30",
+            "direction": "WAREHOUSE",
+            "added_kw": 30,
+            "fixed_R_status": "feasible",
+            "daily_policy_status": "unchecked",
+            "daily_policy_weeks": {},
+            "weeks": {
+              "2021-11-08": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-15": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-22": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-29": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-06": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-13": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              }
+            }
+          },
+          {
+            "design": "p1-20-w35",
+            "direction": "WAREHOUSE",
+            "added_kw": 35,
+            "fixed_R_status": "feasible",
+            "daily_policy_status": "unchecked",
+            "daily_policy_weeks": {},
+            "weeks": {
+              "2021-11-08": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-15": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-22": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-29": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-06": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-13": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              }
+            }
+          },
+          {
+            "design": "p1-20-w40",
+            "direction": "WAREHOUSE",
+            "added_kw": 40,
+            "fixed_R_status": "feasible",
+            "daily_policy_status": "unchecked",
+            "daily_policy_weeks": {},
+            "weeks": {
+              "2021-11-08": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-15": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-22": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-29": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-06": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-13": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              }
+            }
+          },
+          {
+            "design": "p1-20-w45",
+            "direction": "WAREHOUSE",
+            "added_kw": 45,
+            "fixed_R_status": "feasible",
+            "daily_policy_status": "unchecked",
+            "daily_policy_weeks": {},
+            "weeks": {
+              "2021-11-08": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-15": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-22": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-29": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-06": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-13": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              }
+            }
+          },
+          {
+            "design": "p1-20-w50",
+            "direction": "WAREHOUSE",
+            "added_kw": 50,
+            "fixed_R_status": "feasible",
+            "daily_policy_status": "unchecked",
+            "daily_policy_weeks": {},
+            "weeks": {
+              "2021-11-08": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-15": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-22": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-29": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-06": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-13": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              }
+            }
+          }
+        ],
+        "minimum_added_kw": 15,
+        "minimum_possible_added_kw": 15,
+        "verified_added_kw": 15,
+        "ways_at_verified_kw": [
+          "p1-20-w15"
+        ],
+        "daily_policy": {
+          "minimum_added_kw": null,
+          "minimum_possible_added_kw": 5,
+          "verified_added_kw": 15,
+          "ways_at_verified_kw": [
+            "p1-20-w15"
+          ]
+        },
+        "joint": {
+          "minimum_added_kw": 15,
+          "minimum_possible_added_kw": 15,
+          "verified_added_kw": 15,
+          "ways_at_verified_kw": [
+            "p1-20-w15"
+          ]
+        }
+      },
+      "p1-40-w0": {
+        "missing_weeks": [
+          "2021-11-22"
+        ],
+        "fixed_R_status": "infeasible",
+        "policy_omission_with_feasible_R": [],
+        "directions": {
+          "PORT": {
+            "minimum_added_kw": null,
+            "minimum_possible_added_kw": null,
+            "verified_added_kw": null,
+            "ways_at_verified_kw": [],
+            "daily_policy": {
+              "minimum_added_kw": null,
+              "minimum_possible_added_kw": 5,
+              "verified_added_kw": null,
+              "ways_at_verified_kw": []
+            },
+            "joint": {
+              "minimum_added_kw": null,
+              "minimum_possible_added_kw": null,
+              "verified_added_kw": null,
+              "ways_at_verified_kw": []
+            }
+          },
+          "WAREHOUSE": {
+            "minimum_added_kw": 15,
+            "minimum_possible_added_kw": 15,
+            "verified_added_kw": 15,
+            "ways_at_verified_kw": [
+              "p1-40-w15"
+            ],
+            "daily_policy": {
+              "minimum_added_kw": null,
+              "minimum_possible_added_kw": 10,
+              "verified_added_kw": 15,
+              "ways_at_verified_kw": [
+                "p1-40-w15"
+              ]
+            },
+            "joint": {
+              "minimum_added_kw": 15,
+              "minimum_possible_added_kw": 15,
+              "verified_added_kw": 15,
+              "ways_at_verified_kw": [
+                "p1-40-w15"
+              ]
+            }
+          }
+        },
+        "options": [
+          {
+            "design": "p1-45-w0",
+            "direction": "PORT",
+            "added_kw": 5,
+            "fixed_R_status": "infeasible",
+            "daily_policy_status": "unchecked",
+            "daily_policy_weeks": {},
+            "weeks": {
+              "2021-11-08": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-11-15": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-11-22": {
+                "status": "infeasible",
+                "source": "direct_check"
+              },
+              "2021-11-29": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-12-06": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-12-13": {
+                "status": "unresolved",
+                "source": "not_checked"
+              }
+            }
+          },
+          {
+            "design": "p1-50-w0",
+            "direction": "PORT",
+            "added_kw": 10,
+            "fixed_R_status": "infeasible",
+            "daily_policy_status": "unchecked",
+            "daily_policy_weeks": {},
+            "weeks": {
+              "2021-11-08": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-11-15": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-11-22": {
+                "status": "infeasible",
+                "source": "direct_check"
+              },
+              "2021-11-29": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-12-06": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-12-13": {
+                "status": "unresolved",
+                "source": "not_checked"
+              }
+            }
+          },
+          {
+            "design": "p1-40-w10",
+            "direction": "WAREHOUSE",
+            "added_kw": 10,
+            "fixed_R_status": "infeasible",
+            "daily_policy_status": "unchecked",
+            "daily_policy_weeks": {},
+            "weeks": {
+              "2021-11-08": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-11-15": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-11-22": {
+                "status": "infeasible",
+                "source": "direct_check"
+              },
+              "2021-11-29": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-12-06": {
+                "status": "unresolved",
+                "source": "not_checked"
+              },
+              "2021-12-13": {
+                "status": "unresolved",
+                "source": "not_checked"
+              }
+            }
+          },
+          {
+            "design": "p1-40-w15",
+            "direction": "WAREHOUSE",
+            "added_kw": 15,
+            "fixed_R_status": "feasible",
+            "daily_policy_status": "retained",
+            "daily_policy_weeks": {
+              "2021-11-08": "feasible",
+              "2021-11-15": "feasible",
+              "2021-11-22": "feasible",
+              "2021-11-29": "feasible",
+              "2021-12-06": "feasible",
+              "2021-12-13": "feasible"
+            },
+            "weeks": {
+              "2021-11-08": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-15": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-22": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-29": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-06": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-13": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              }
+            }
+          },
+          {
+            "design": "p1-40-w20",
+            "direction": "WAREHOUSE",
+            "added_kw": 20,
+            "fixed_R_status": "feasible",
+            "daily_policy_status": "unchecked",
+            "daily_policy_weeks": {},
+            "weeks": {
+              "2021-11-08": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-15": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-22": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-29": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-06": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-13": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              }
+            }
+          },
+          {
+            "design": "p1-40-w25",
+            "direction": "WAREHOUSE",
+            "added_kw": 25,
+            "fixed_R_status": "feasible",
+            "daily_policy_status": "unchecked",
+            "daily_policy_weeks": {},
+            "weeks": {
+              "2021-11-08": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-15": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-22": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-29": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-06": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-13": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              }
+            }
+          },
+          {
+            "design": "p1-40-w30",
+            "direction": "WAREHOUSE",
+            "added_kw": 30,
+            "fixed_R_status": "feasible",
+            "daily_policy_status": "unchecked",
+            "daily_policy_weeks": {},
+            "weeks": {
+              "2021-11-08": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-15": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-22": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-29": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-06": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-13": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              }
+            }
+          },
+          {
+            "design": "p1-40-w35",
+            "direction": "WAREHOUSE",
+            "added_kw": 35,
+            "fixed_R_status": "feasible",
+            "daily_policy_status": "unchecked",
+            "daily_policy_weeks": {},
+            "weeks": {
+              "2021-11-08": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-15": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-22": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-29": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-06": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-13": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              }
+            }
+          },
+          {
+            "design": "p1-40-w40",
+            "direction": "WAREHOUSE",
+            "added_kw": 40,
+            "fixed_R_status": "feasible",
+            "daily_policy_status": "unchecked",
+            "daily_policy_weeks": {},
+            "weeks": {
+              "2021-11-08": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-15": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-22": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-29": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-06": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-13": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              }
+            }
+          },
+          {
+            "design": "p1-40-w45",
+            "direction": "WAREHOUSE",
+            "added_kw": 45,
+            "fixed_R_status": "feasible",
+            "daily_policy_status": "unchecked",
+            "daily_policy_weeks": {},
+            "weeks": {
+              "2021-11-08": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-15": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-22": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-29": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-06": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-13": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              }
+            }
+          },
+          {
+            "design": "p1-40-w50",
+            "direction": "WAREHOUSE",
+            "added_kw": 50,
+            "fixed_R_status": "feasible",
+            "daily_policy_status": "unchecked",
+            "daily_policy_weeks": {},
+            "weeks": {
+              "2021-11-08": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-15": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-22": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-11-29": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-06": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              },
+              "2021-12-13": {
+                "status": "feasible",
+                "source": "monotonic:p1-20-w15"
+              }
+            }
+          }
+        ],
+        "minimum_added_kw": 15,
+        "minimum_possible_added_kw": 15,
+        "verified_added_kw": 15,
+        "ways_at_verified_kw": [
+          "p1-40-w15"
+        ],
+        "daily_policy": {
+          "minimum_added_kw": null,
+          "minimum_possible_added_kw": 5,
+          "verified_added_kw": 15,
+          "ways_at_verified_kw": [
+            "p1-40-w15"
+          ]
+        },
+        "joint": {
+          "minimum_added_kw": 15,
+          "minimum_possible_added_kw": 15,
+          "verified_added_kw": 15,
+          "ways_at_verified_kw": [
+            "p1-40-w15"
+          ]
+        }
+      }
+    }
+  },
+  "main": {
+    "daily": [
+      {
+        "date": "2021-11-08",
+        "eligible": [
+          "1",
+          "5"
+        ],
+        "registered": [
+          "5"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "5"
+          ],
+          "p1-20-w0": [
+            "5"
+          ],
+          "p1-40-w0": [
+            "5"
+          ]
+        }
+      },
+      {
+        "date": "2021-11-09",
+        "eligible": [],
+        "registered": [],
+        "facilities": {
+          "p1-50-w50": [],
+          "p1-20-w0": [],
+          "p1-40-w0": []
+        }
+      },
+      {
+        "date": "2021-11-10",
+        "eligible": [
+          "3",
+          "4",
+          "5"
+        ],
+        "registered": [
+          "3",
+          "4",
+          "5"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "3",
+            "4",
+            "5"
+          ],
+          "p1-20-w0": [
+            "3",
+            "4",
+            "5"
+          ],
+          "p1-40-w0": [
+            "3",
+            "4",
+            "5"
+          ]
+        }
+      },
+      {
+        "date": "2021-11-11",
+        "eligible": [
+          "3",
+          "5"
+        ],
+        "registered": [
+          "3",
+          "5"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "3",
+            "5"
+          ],
+          "p1-20-w0": [
+            "3",
+            "5"
+          ],
+          "p1-40-w0": [
+            "3",
+            "5"
+          ]
+        }
+      },
+      {
+        "date": "2021-11-12",
+        "eligible": [
+          "3",
+          "5"
+        ],
+        "registered": [
+          "5"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "5"
+          ],
+          "p1-20-w0": [
+            "5"
+          ],
+          "p1-40-w0": [
+            "5"
+          ]
+        }
+      },
+      {
+        "date": "2021-11-13",
+        "eligible": [],
+        "registered": [],
+        "facilities": {
+          "p1-50-w50": [],
+          "p1-20-w0": [],
+          "p1-40-w0": []
+        }
+      },
+      {
+        "date": "2021-11-14",
+        "eligible": [],
+        "registered": [],
+        "facilities": {
+          "p1-50-w50": [],
+          "p1-20-w0": [],
+          "p1-40-w0": []
+        }
+      },
+      {
+        "date": "2021-11-15",
+        "eligible": [
+          "1",
+          "3",
+          "4",
+          "5"
+        ],
+        "registered": [
+          "3",
+          "5"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "3",
+            "5"
+          ],
+          "p1-20-w0": [
+            "3",
+            "5"
+          ],
+          "p1-40-w0": [
+            "3",
+            "5"
+          ]
+        }
+      },
+      {
+        "date": "2021-11-16",
+        "eligible": [
+          "3",
+          "4",
+          "5"
+        ],
+        "registered": [
+          "3",
+          "4",
+          "5"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "3",
+            "4",
+            "5"
+          ],
+          "p1-20-w0": [
+            "3",
+            "4",
+            "5"
+          ],
+          "p1-40-w0": [
+            "3",
+            "4",
+            "5"
+          ]
+        }
+      },
+      {
+        "date": "2021-11-17",
+        "eligible": [
+          "1",
+          "3",
+          "4",
+          "5"
+        ],
+        "registered": [
+          "3",
+          "4",
+          "5"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "3",
+            "4",
+            "5"
+          ],
+          "p1-20-w0": [
+            "3",
+            "4",
+            "5"
+          ],
+          "p1-40-w0": [
+            "3",
+            "4",
+            "5"
+          ]
+        }
+      },
+      {
+        "date": "2021-11-18",
+        "eligible": [
+          "4",
+          "5"
+        ],
+        "registered": [
+          "4",
+          "5"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "4",
+            "5"
+          ],
+          "p1-20-w0": [
+            "4",
+            "5"
+          ],
+          "p1-40-w0": [
+            "4",
+            "5"
+          ]
+        }
+      },
+      {
+        "date": "2021-11-19",
+        "eligible": [
+          "1",
+          "4",
+          "5"
+        ],
+        "registered": [
+          "1",
+          "4",
+          "5"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "1",
+            "4",
+            "5"
+          ],
+          "p1-20-w0": [
+            "1",
+            "4",
+            "5"
+          ],
+          "p1-40-w0": [
+            "1",
+            "4",
+            "5"
+          ]
+        }
+      },
+      {
+        "date": "2021-11-20",
+        "eligible": [],
+        "registered": [],
+        "facilities": {
+          "p1-50-w50": [],
+          "p1-20-w0": [],
+          "p1-40-w0": []
+        }
+      },
+      {
+        "date": "2021-11-21",
+        "eligible": [],
+        "registered": [],
+        "facilities": {
+          "p1-50-w50": [],
+          "p1-20-w0": [],
+          "p1-40-w0": []
+        }
+      },
+      {
+        "date": "2021-11-22",
+        "eligible": [
+          "1",
+          "3",
+          "5"
+        ],
+        "registered": [
+          "3",
+          "5"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "3",
+            "5"
+          ],
+          "p1-20-w0": [
+            "3",
+            "5"
+          ],
+          "p1-40-w0": [
+            "3",
+            "5"
+          ]
+        }
+      },
+      {
+        "date": "2021-11-23",
+        "eligible": [
+          "1",
+          "3"
+        ],
+        "registered": [
+          "3"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "3"
+          ],
+          "p1-20-w0": [
+            "3"
+          ],
+          "p1-40-w0": [
+            "3"
+          ]
+        }
+      },
+      {
+        "date": "2021-11-24",
+        "eligible": [
+          "1",
+          "3",
+          "4"
+        ],
+        "registered": [],
+        "facilities": {
+          "p1-50-w50": [],
+          "p1-20-w0": [],
+          "p1-40-w0": []
+        }
+      },
+      {
+        "date": "2021-11-25",
+        "eligible": [
+          "1",
+          "3",
+          "4"
+        ],
+        "registered": [
+          "3",
+          "4"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "3",
+            "4"
+          ],
+          "p1-20-w0": [
+            "3",
+            "4"
+          ],
+          "p1-40-w0": [
+            "3",
+            "4"
+          ]
+        }
+      },
+      {
+        "date": "2021-11-26",
+        "eligible": [
+          "1",
+          "3"
+        ],
+        "registered": [
+          "1",
+          "3"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "1",
+            "3"
+          ],
+          "p1-20-w0": [
+            "3"
+          ],
+          "p1-40-w0": [
+            "3"
+          ]
+        }
+      },
+      {
+        "date": "2021-11-27",
+        "eligible": [],
+        "registered": [],
+        "facilities": {
+          "p1-50-w50": [],
+          "p1-20-w0": [],
+          "p1-40-w0": []
+        }
+      },
+      {
+        "date": "2021-11-28",
+        "eligible": [],
+        "registered": [],
+        "facilities": {
+          "p1-50-w50": [],
+          "p1-20-w0": [],
+          "p1-40-w0": []
+        }
+      },
+      {
+        "date": "2021-11-29",
+        "eligible": [
+          "1",
+          "4"
+        ],
+        "registered": [
+          "1",
+          "4"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "1",
+            "4"
+          ],
+          "p1-20-w0": [
+            "1",
+            "4"
+          ],
+          "p1-40-w0": [
+            "1",
+            "4"
+          ]
+        }
+      },
+      {
+        "date": "2021-11-30",
+        "eligible": [
+          "3"
+        ],
+        "registered": [
+          "3"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "3"
+          ],
+          "p1-20-w0": [
+            "3"
+          ],
+          "p1-40-w0": [
+            "3"
+          ]
+        }
+      },
+      {
+        "date": "2021-12-01",
+        "eligible": [
+          "3",
+          "4"
+        ],
+        "registered": [
+          "3",
+          "4"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "3",
+            "4"
+          ],
+          "p1-20-w0": [
+            "3",
+            "4"
+          ],
+          "p1-40-w0": [
+            "3",
+            "4"
+          ]
+        }
+      },
+      {
+        "date": "2021-12-02",
+        "eligible": [
+          "3"
+        ],
+        "registered": [
+          "3"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "3"
+          ],
+          "p1-20-w0": [
+            "3"
+          ],
+          "p1-40-w0": [
+            "3"
+          ]
+        }
+      },
+      {
+        "date": "2021-12-03",
+        "eligible": [
+          "2",
+          "3"
+        ],
+        "registered": [
+          "2",
+          "3"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "2",
+            "3"
+          ],
+          "p1-20-w0": [
+            "2",
+            "3"
+          ],
+          "p1-40-w0": [
+            "2",
+            "3"
+          ]
+        }
+      },
+      {
+        "date": "2021-12-04",
+        "eligible": [],
+        "registered": [],
+        "facilities": {
+          "p1-50-w50": [],
+          "p1-20-w0": [],
+          "p1-40-w0": []
+        }
+      },
+      {
+        "date": "2021-12-05",
+        "eligible": [],
+        "registered": [],
+        "facilities": {
+          "p1-50-w50": [],
+          "p1-20-w0": [],
+          "p1-40-w0": []
+        }
+      },
+      {
+        "date": "2021-12-06",
+        "eligible": [
+          "3",
+          "4"
+        ],
+        "registered": [
+          "3",
+          "4"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "3",
+            "4"
+          ],
+          "p1-20-w0": [
+            "3",
+            "4"
+          ],
+          "p1-40-w0": [
+            "3",
+            "4"
+          ]
+        }
+      },
+      {
+        "date": "2021-12-07",
+        "eligible": [
+          "5"
+        ],
+        "registered": [
+          "5"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "5"
+          ],
+          "p1-20-w0": [
+            "5"
+          ],
+          "p1-40-w0": [
+            "5"
+          ]
+        }
+      },
+      {
+        "date": "2021-12-08",
+        "eligible": [
+          "2",
+          "3",
+          "5"
+        ],
+        "registered": [
+          "2",
+          "3",
+          "5"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "2",
+            "3",
+            "5"
+          ],
+          "p1-20-w0": [
+            "2",
+            "3",
+            "5"
+          ],
+          "p1-40-w0": [
+            "2",
+            "3",
+            "5"
+          ]
+        }
+      },
+      {
+        "date": "2021-12-09",
+        "eligible": [],
+        "registered": [],
+        "facilities": {
+          "p1-50-w50": [],
+          "p1-20-w0": [],
+          "p1-40-w0": []
+        }
+      },
+      {
+        "date": "2021-12-10",
+        "eligible": [
+          "3",
+          "4"
+        ],
+        "registered": [
+          "3",
+          "4"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "3",
+            "4"
+          ],
+          "p1-20-w0": [
+            "3",
+            "4"
+          ],
+          "p1-40-w0": [
+            "3",
+            "4"
+          ]
+        }
+      },
+      {
+        "date": "2021-12-11",
+        "eligible": [],
+        "registered": [],
+        "facilities": {
+          "p1-50-w50": [],
+          "p1-20-w0": [],
+          "p1-40-w0": []
+        }
+      },
+      {
+        "date": "2021-12-12",
+        "eligible": [],
+        "registered": [],
+        "facilities": {
+          "p1-50-w50": [],
+          "p1-20-w0": [],
+          "p1-40-w0": []
+        }
+      },
+      {
+        "date": "2021-12-13",
+        "eligible": [
+          "5"
+        ],
+        "registered": [
+          "5"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "5"
+          ],
+          "p1-20-w0": [
+            "5"
+          ],
+          "p1-40-w0": [
+            "5"
+          ]
+        }
+      },
+      {
+        "date": "2021-12-14",
+        "eligible": [
+          "4"
+        ],
+        "registered": [
+          "4"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "4"
+          ],
+          "p1-20-w0": [
+            "4"
+          ],
+          "p1-40-w0": [
+            "4"
+          ]
+        }
+      },
+      {
+        "date": "2021-12-15",
+        "eligible": [
+          "3",
+          "4",
+          "5"
+        ],
+        "registered": [
+          "3",
+          "4",
+          "5"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "3",
+            "4",
+            "5"
+          ],
+          "p1-20-w0": [
+            "3",
+            "4",
+            "5"
+          ],
+          "p1-40-w0": [
+            "3",
+            "4",
+            "5"
+          ]
+        }
+      },
+      {
+        "date": "2021-12-16",
+        "eligible": [
+          "3",
+          "4",
+          "5"
+        ],
+        "registered": [
+          "3",
+          "4",
+          "5"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "3",
+            "4",
+            "5"
+          ],
+          "p1-20-w0": [
+            "3",
+            "4",
+            "5"
+          ],
+          "p1-40-w0": [
+            "3",
+            "4",
+            "5"
+          ]
+        }
+      },
+      {
+        "date": "2021-12-17",
+        "eligible": [
+          "4"
+        ],
+        "registered": [
+          "4"
+        ],
+        "facilities": {
+          "p1-50-w50": [
+            "4"
+          ],
+          "p1-20-w0": [
+            "4"
+          ],
+          "p1-40-w0": [
+            "4"
+          ]
+        }
+      },
+      {
+        "date": "2021-12-18",
+        "eligible": [],
+        "registered": [],
+        "facilities": {
+          "p1-50-w50": [],
+          "p1-20-w0": [],
+          "p1-40-w0": []
+        }
+      },
+      {
+        "date": "2021-12-19",
+        "eligible": [],
+        "registered": [],
+        "facilities": {
+          "p1-50-w50": [],
+          "p1-20-w0": [],
+          "p1-40-w0": []
+        }
+      }
+    ],
+    "weekly": [
+      {
+        "week": "2021-11-08",
+        "eligible": 9,
+        "registered": 7,
+        "served": {
+          "p1-20-w0": 7,
+          "p1-40-w0": 7,
+          "p1-50-w50": 7
+        }
+      },
+      {
+        "week": "2021-11-15",
+        "eligible": 16,
+        "registered": 13,
+        "served": {
+          "p1-20-w0": 13,
+          "p1-40-w0": 13,
+          "p1-50-w50": 13
+        }
+      },
+      {
+        "week": "2021-11-22",
+        "eligible": 13,
+        "registered": 7,
+        "served": {
+          "p1-20-w0": 6,
+          "p1-40-w0": 6,
+          "p1-50-w50": 7
+        }
+      },
+      {
+        "week": "2021-11-29",
+        "eligible": 8,
+        "registered": 8,
+        "served": {
+          "p1-20-w0": 8,
+          "p1-40-w0": 8,
+          "p1-50-w50": 8
+        }
+      },
+      {
+        "week": "2021-12-06",
+        "eligible": 8,
+        "registered": 8,
+        "served": {
+          "p1-20-w0": 8,
+          "p1-40-w0": 8,
+          "p1-50-w50": 8
+        }
+      },
+      {
+        "week": "2021-12-13",
+        "eligible": 9,
+        "registered": 9,
+        "served": {
+          "p1-20-w0": 9,
+          "p1-40-w0": 9,
+          "p1-50-w50": 9
+        }
+      }
+    ],
+    "missing": {
+      "p1-20-w0": [
+        [
+          "2021-11-26",
+          "1"
+        ]
+      ],
+      "p1-40-w0": [
+        [
+          "2021-11-26",
+          "1"
+        ]
+      ],
+      "p1-50-w50": []
+    },
+    "added": {
+      "p1-20-w0": [],
+      "p1-40-w0": [],
+      "p1-50-w50": []
+    },
+    "service_status": {
+      "p1-20-w0": "service_gap",
+      "p1-40-w0": "service_gap",
+      "p1-50-w50": "matched"
+    },
+    "outside": [
+      {
+        "date": "2021-11-08",
+        "vehicle_id": "1",
+        "classification": "infeasible_unlimited_power",
+        "reasons": [
+          "trip_soc_boundary"
+        ]
+      },
+      {
+        "date": "2021-11-12",
+        "vehicle_id": "3",
+        "classification": "infeasible_unlimited_power",
+        "reasons": [
+          "trip_soc_boundary"
+        ]
+      },
+      {
+        "date": "2021-11-15",
+        "vehicle_id": "1",
+        "classification": "infeasible_unlimited_power",
+        "reasons": [
+          "trip_soc_boundary"
+        ]
+      },
+      {
+        "date": "2021-11-15",
+        "vehicle_id": "4",
+        "classification": "infeasible_unlimited_power",
+        "reasons": [
+          "trip_exceeds_usable_battery"
+        ]
+      },
+      {
+        "date": "2021-11-17",
+        "vehicle_id": "1",
+        "classification": "infeasible_unlimited_power",
+        "reasons": [
+          "trip_soc_boundary"
+        ]
+      },
+      {
+        "date": "2021-11-22",
+        "vehicle_id": "1",
+        "classification": "infeasible_unlimited_power",
+        "reasons": [
+          "trip_exceeds_usable_battery"
+        ]
+      },
+      {
+        "date": "2021-11-23",
+        "vehicle_id": "1",
+        "classification": "infeasible_unlimited_power",
+        "reasons": [
+          "trip_exceeds_usable_battery"
+        ]
+      },
+      {
+        "date": "2021-11-24",
+        "vehicle_id": "1",
+        "classification": "infeasible_unlimited_power",
+        "reasons": [
+          "trip_exceeds_usable_battery",
+          "trip_soc_boundary"
+        ]
+      },
+      {
+        "date": "2021-11-24",
+        "vehicle_id": "3",
+        "classification": "infeasible_unlimited_power",
+        "reasons": [
+          "trip_exceeds_usable_battery"
+        ]
+      },
+      {
+        "date": "2021-11-24",
+        "vehicle_id": "4",
+        "classification": "infeasible_unlimited_power",
+        "reasons": [
+          "trip_soc_boundary"
+        ]
+      },
+      {
+        "date": "2021-11-25",
+        "vehicle_id": "1",
+        "classification": "infeasible_unlimited_power",
+        "reasons": [
+          "trip_exceeds_usable_battery",
+          "trip_soc_boundary"
+        ]
+      }
+    ],
+    "annual_grid_kwh": 59335.60037407406,
+    "m8_annual_grid_kwh": 58387.79,
+    "fixed_diagnostics": {
+      "p1-20-w0": [
+        {
+          "date": "2021-11-26",
+          "vehicle_id": "1",
+          "classification": "single_truck_infeasible_at_facility",
+          "reasons": [
+            "trip_exceeds_usable_battery",
+            "trip_soc_boundary"
+          ],
+          "fixed_R_week": "infeasible"
+        }
+      ],
+      "p1-40-w0": [
+        {
+          "date": "2021-11-26",
+          "vehicle_id": "1",
+          "classification": "single_truck_infeasible_at_facility",
+          "reasons": [
+            "trip_exceeds_usable_battery",
+            "trip_soc_boundary"
+          ],
+          "fixed_R_week": "infeasible"
+        }
+      ],
+      "p1-50-w50": []
+    }
+  },
+  "stop_reason": "recommendation_changed",
+  "sensitivity": {
+    "status": "stopped_recommendation_changed"
+  },
+  "solve_count": 170,
+  "status_counts": {
+    "certified": 161,
+    "infeasible": 8,
+    "bounded": 1
+  },
+  "call_counts": {
+    "main": 84,
+    "main_dispatch": 18,
+    "fixed_R": 12,
+    "repair_service": 56
+  },
+  "audited_primals": 162,
+  "ledger_sha256": "8188ca08c2d608c7c6e28f371f9857e50d7abdf2c2b49007aaf5d17d4b5b5887",
+  "formal_seconds": 389.42039600000135
+}
