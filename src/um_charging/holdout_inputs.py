@@ -20,12 +20,13 @@ INPUT_HASHES = {
 }
 
 
-def _exclude_mapped_intervals(days, registered):
+def _exclude_mapped_intervals(days, registered, *, expected_count=20, expected_vehicles=frozenset({"5"})):
     def interval(day, vehicle, stop):
         return day, vehicle, stop["site"], stop["arrival_track_id"], stop["next_track_id"]
 
     blocked = {interval(row["date"], row["vehicle_id"], row) for row in registered}
-    if len(blocked) != 20 or {key[1] for key in blocked} != {"5"}:
+    if (len(blocked) != expected_count or len(registered) != expected_count
+            or {key[1] for key in blocked} != expected_vehicles):
         raise ValueError("Unexpected registered mapped intervals")
     remaining = blocked.copy()
     for day in days:
