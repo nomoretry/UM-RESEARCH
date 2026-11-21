@@ -2,17 +2,21 @@
 
 [运输样本 / Sample](DATA.md#six-holdout-weeks-for-the-fixed-m8-facilities) · [留出结果 / Holdout data](holdout_test.json) · [规划期 / M8 study](site_sizing.md)
 
-2021-11-08 至 2021-12-19，基准登记 **52/63** 个完整车日。登记任务的网侧年电量为 **59,335.60 kWh/年**，M8 为 **58,387.79 kWh/年**。两者按各自六周任务重复至 52 周，反映运输任务量的差别。
+2021-11-08 至 2021-12-19，基准登记 **52/63** 个完整车日。登记任务的网侧年电量为 **59,335.60 kWh/年**，M8 为 **58,387.79 kWh/年**。两者按各自六周任务重复至 52 周，反映运输任务量的差别。关闭 5 号车的 20 个断点区间后，重新登记 50 个车日，港区 20 kW 的修复遗漏 12 月 7 日的 5 号车，六个配置中只有港区 40 kW 加仓库机的两个配置保留全部服务。
 
-Over 8 November–19 December 2021 the baseline registered **52/63** complete vehicle-days. Registered grid energy is **59,335.60 kWh/year** in the holdout and **58,387.79 kWh/year** in M8. Each annualization repeats its own six-week transport workload.
+Over 8 November–19 December 2021 the baseline registered **52/63** complete vehicle-days. Registered grid energy is **59,335.60 kWh/year** in the holdout and **58,387.79 kWh/year** in M8. Each annualization repeats its own six-week transport workload. When charging was disabled during vehicle 5’s 20 gap intervals, the baseline registered 50 days, repairs with a 20 kW port missed vehicle 5 on 7 December, and only the two configurations combining a 40 kW port with a warehouse charger retained the full register.
 
 **两套港区单站方案都少完成 11 月 26 日的 1 号车。** 两者各完成 51 个登记车日。双站基准完成全部 52 个，因此是三套固定设施中唯一可列入 12 个口径年费比较的设施。在原港区保留 20 或 40 kW 的条件下，仓库增加 15 kW 均恢复六周全部服务。留出期比 M8 少登记 2 个车日，但按 52 周重复后，所需网侧电量多 947.81 kWh（1.62%）。
 
 **Both port-only facilities missed vehicle 1 on 26 November.** Each served 51 registered vehicle-days. Only the two-site baseline served all 52 and qualified for annual billing under all twelve cases. Adding 15 kW at the warehouse restored the full six-week service with either original port rating. The holdout registered two fewer vehicle-days than M8 and required 947.81 more grid kWh per year (1.62%).
 
-最初的留出检验比较三套事先固定的设施。设施固定后按周全信息优化，调度时已知一周全部任务和原生 DE-LU 日前小时价格。留出期没有重新选型，排名即使保持，也可能有更便宜的其他设计。
+最初的留出检验比较三套事先固定的设施。设施固定后按周全信息优化，调度时已知一周全部任务和原生 DE-LU 日前小时价格。留出期没有重新选型，排名即使保持，也可能有更便宜的其他设计。留出期 DE-LU 日前均价为 €206.16/MWh，M8 规划期为 €138.23/MWh，以下年费均只比较留出期内完成同一组任务的设施。[电价与样本范围](DATA.md#six-holdout-weeks-for-the-fixed-m8-facilities)
 
-The original holdout comparison covers three prespecified facilities. With facilities fixed, each weekly schedule uses all tasks and native DE-LU day-ahead hourly prices for that week. Designs were not reselected in the holdout, so even an unchanged ranking allows for a cheaper untested design.
+The original holdout comparison covers three prespecified facilities. With facilities fixed, each weekly schedule uses all tasks and native DE-LU day-ahead hourly prices for that week. Designs were not reselected in the holdout, so even an unchanged ranking allows for a cheaper untested design. DE-LU day-ahead prices averaged €206.16/MWh in the holdout and €138.23/MWh in M8 planning. Annual bills are compared only among facilities serving the same holdout duties. [Prices and sample coverage](DATA.md#six-holdout-weeks-for-the-fixed-m8-facilities)
+
+原固定设施取自 M8 六周规划网格。港区单站 20 kW 能保留 54/73 个车日，降到 15 kW 后仅完成 53 个，遗漏 2021-10-29 的 3 号车。港区维持 15 kW 时，仓库增加 10 kW 即补回该日。港区 10 kW 配仓库 50 kW 最多完成 50 个，仓库单站最多完成 6 个。官方网费下，规划期已核验有价方案中最低年费对应新建接入的港区单站 20 kW、既有接入的港区单站 40 kW。[规划期功率网格](site_sizing.md#中文)
+
+The original fixed facilities came from the six-week M8 planning grid. A 20 kW port alone retained 54 of 73 truck-days. At 15 kW it served 53 and missed vehicle 3 on 29 October 2021. Keeping the port at 15 kW and adding 10 kW at the warehouse restored that day. A 10 kW port with a 50 kW warehouse served at most 50 days, and warehouse-only facilities served at most six. Among the verified priced builds under the official tariff, the lowest planning-period annual bills used one port charger at 20 kW for new connections or 40 kW for existing access. [Planning-period power grid](site_sizing.md#english)
 
 仓库安装 20 kW 充电机后，两套有价修复均保留全部 52 个登记车日。按主运行规则，20/20 kW 在 7 个口径年费最低，40/20 kW 在另 5 个口径最低，双站基准均为第三。Netze BW 官方网费下，40/20 kW 新建和既有接入的回放年费分别为 €19,708.03 和 €18,906.61。
 
@@ -39,9 +43,9 @@ Amounts are annual 2025 euros, rounded to cents. The upper endpoint is the repla
 | 208.38 | 新建 / New | 缺口 / gap | 缺口 / gap | 46,386.13–46,386.44 | —, —, 1 | 20 | 少完成登记服务，未出账单 / Service shortfall, no bill |
 | 208.38 | 既有 / Existing | 缺口 / gap | 缺口 / gap | 44,048.64–44,048.96 | —, —, 1 | 20 | 少完成登记服务，未出账单 / Service shortfall, no bill |
 
-B 完成了全部 52 个登记车日，是原三套设施中唯一取得同服务账单的设施。建设选择还取决于修复设施完成这些任务的成本。[修复方案的同服务年费 / Bills after repair](#repair-bills)
+三套事先固定的设施中，只有 B 完成全部 52 个登记车日并取得同服务账单，建设选择还需比较修复原有港区设施的费用。[修复方案的同服务年费](#repair-bills)
 
-B is the only one of the three with a bill for the full register. Its first place alone provides no basis for a new build recommendation.
+Of the three prespecified facilities, only B served all 52 registered vehicle-days and qualified for a bill for that service. Choosing a build also requires comparing the cost of repairing the original port facilities. [Annual bills after repair](#repair-bills)
 
 无网费沿用基准的 50/50 kW 运行点。其余五种网费原定的 50/0 或 20/0 kW 限峰都在 11 月 22 日当周被证实无法保留服务，因此按预登记对整个六周采用 50/50 kW 额定后备。表中三个固定需量价的单位为 €/kW·年。
 
@@ -89,9 +93,9 @@ Each rated point is checked against the fixed weekly register R. The eleven duti
 
 ✓ 已证明可服务 / proved feasible · × 已证明不可行 / infeasible · ? 未判定 / open.
 
-这些账单衡量 M8 单站方案加上最低有价修复的费用。留出期未重新选择设施，更便宜的其他设计仍有可能。
+两套修复根据留出期暴露的服务缺口确定。上述账单衡量补齐服务的费用。验证修复能否推广，还需在设施预先固定后用独立样本检验。留出期未重新选择设施，更便宜的其他设计仍有可能。
 
-These bills price the smallest quoted repairs to the M8 facilities. The holdout did not repeat facility selection, so other designs could cost less.
+The service shortfall observed in the holdout guided the choice of both repairs. Their bills measure the cost of restoring service. Out-of-sample validation requires fixing these facilities before testing an independent sample. The holdout did not repeat facility selection, so other designs could cost less.
 
 ## 逐日运输服务 · Daily registered service
 
@@ -177,11 +181,11 @@ All eleven vehicle-days outside the baseline register violated a trip energy bou
 
 恢复标准是在六周内完成全部登记车日。按相对原设施增加的额定 kW 比较，固定全周登记集合的物理可行性与逐日优先级选出的车日分别记录。
 
+Restoration requires the entire register across all six weeks. Increments are rated kW relative to the starting facility. Weekly register feasibility and daily selection are checked separately.
+
 **两套原设施的最小单站改动都是仓库增加 15 kW。** 仓库增加 10 kW、或仅将港区增至网格上限 50 kW，均无法完成登记集合。下表保留只用直接逐日记录得到的界。对本样本，登记外 11 个车日全部独立不可行，因此任何覆盖登记集合的逐日方案都只能恰好完成该集合。由此也可排除全部更小档位的逐日恢复可能性。两种 15 kW 修复均通过六周逐日核验，该次检验只评估其服务。
 
 **The minimum single-site change from either port-only design is a 15 kW warehouse charger.** The 10 kW warehouse step and every port-only increase through 50 kW fail the fixed register. The table retains the bounds available from direct daily-selection records. In this sample all eleven outside duties are independently infeasible, so every daily selection covering the register must equal it. The fixed-register exclusions therefore rule out daily restoration at every smaller step. Both 15 kW warehouse designs also passed direct daily selection across all six weeks. The original 15 kW hardware checks assessed service only.
-
-Restoration requires the entire register across all six weeks. Increments are rated kW relative to the starting facility. Weekly register feasibility and daily selection are checked separately.
 
 | 原设施 / Start | 方向 / Site | 恢复条件 / Restoration requirement | 最小增量 / Minimum kW | 下界 / Lower kW | 已验证 / Verified kW | 达到上界 / Witness |
 |---|---|---|---:|---:|---:|---|
@@ -237,19 +241,23 @@ Removed and added duties compare each configuration with its own main result. Mi
 
 | 范围 / Scope | 车日 / Duty | 原因 / Diagnosis | 单车证据 / Single-truck limits |
 |---|---|---|---|
-| 新登记 / Register | 2021-12-15 (5) | 单车充电功率限制 / truck charging-power limit | 无可充窗口 / no charging window · 段末 SOC 无法恢复 / terminal SOC unreachable |
-| 新登记 / Register | 2021-12-16 (5) | 单车充电功率限制 / truck charging-power limit | 段末 SOC 无法恢复 / terminal SOC unreachable |
+| 新登记 / Register | 2021-12-15 (5) | 剩余窗口在单车 50 kW 下补能不足 / insufficient charging time at 50 kW | 15 日单独服务时无可充窗口，连同 16 日仍达不到段末电量 / no eligible window on the 15th alone, terminal energy short over both days |
+| 新登记 / Register | 2021-12-16 (5) | 剩余窗口在单车 50 kW 下补能不足 / insufficient charging time at 50 kW | 16 日单独服务或连同 15 日均达不到段末电量 / terminal energy short on the 16th alone and over both days |
 | p1-20-w0 @ [20,0] | 2021-11-26 (1) | 该设施即使只服务该车也不可行 / infeasible even with exclusive access | 单趟超可用电量 / trip exceeds usable battery · 行程处 SOC 越界 / trip SOC limit |
 | p1-20-w0 @ [20,0] | 2021-12-07 (5) | 该设施即使只服务该车也不可行 / infeasible even with exclusive access | 行程处 SOC 越界 / trip SOC limit |
 | p1-40-w0 @ [40,0] | 2021-11-26 (1) | 该设施即使只服务该车也不可行 / infeasible even with exclusive access | 单趟超可用电量 / trip exceeds usable battery · 行程处 SOC 越界 / trip SOC limit |
 | p1-20-w20 @ [20,20] | 2021-12-07 (5) | 该设施即使只服务该车也不可行 / infeasible even with exclusive access | 行程处 SOC 越界 / trip SOC limit |
 | p1-20-w20 @ [20,15] | 2021-12-07 (5) | 该设施即使只服务该车也不可行 / infeasible even with exclusive access | 行程处 SOC 越界 / trip SOC limit |
 
-11 月 26 日的 1 号车仍在新登记集合中，两套港区单站仍遗漏这一天。12 月 7 日，5 号车在 20/20 kW 设施上即使独占两站、放开刻钟限峰，在包含该日的两种允许连续段中，行程 9855 后的电量上限也都只有 24.27 kWh，低于 30 kWh 储备。仓库限至 15 kW 时仍有这个缺口。12 月 15、16 日则是基准本身也失去的车日，缩短后的可充时间与单车 50 kW 上限使连续段无法回到规定的 150 kWh 段末电量。
+11 月 26 日的 1 号车仍在新登记集合中，两套港区单站仍遗漏这一天。12 月 7 日，5 号车在 20/20 kW 设施上即使独占两站、放开刻钟限峰，在包含该日的两种允许连续段中，行程 9855 后的电量上限也都只有 24.27 kWh，低于 30 kWh 储备。仓库限至 15 kW 时仍有这个缺口。12 月 15、16 日的 5 号车退出了基准登记。单独服务 15 日没有可充窗口，单独服务 16 日或把两日相连时仍有可充窗口。不限充电功率时，两日联段可行。施加单车 50 kW 上限后，两个车日都没有能回到 150 kWh 段末电量的服务段。
 
-Vehicle 1 on 26 November remained in the new register and both port-only facilities still missed it. On 7 December, even with both 20 kW chargers reserved for vehicle 5 and the quarter-hour caps relaxed, SOC after trip 9855 could reach at most 24.27 kWh in either allowable segment, below the 30 kWh reserve. The 15 kW warehouse cap also leaves that gap. On 15 and 16 December the baseline itself lost vehicle 5's duties. The remaining windows at the 50 kW vehicle limit could not restore the required 150 kWh segment-end SOC.
+Vehicle 1 on 26 November remained in the new register and both port-only facilities still missed it. On 7 December, even with both 20 kW chargers reserved for vehicle 5 and the quarter-hour caps relaxed, SOC after trip 9855 could reach at most 24.27 kWh in either allowable segment, below the 30 kWh reserve. The 15 kW warehouse cap also leaves that gap. The baseline dropped vehicle 5 on 15 and 16 December. No eligible charging window remained on the 15th alone. Windows remained on the 16th alone and across the linked days. The two-day segment was feasible with unlimited power, but at the 50 kW truck limit no segment containing either day could restore the required 150 kWh at its end.
 
 ## 复现 · Reproduction
+
+从干净提交 `f39d6d61f11e4e63da92556029ffdf78fb826c01` 重新求解 UM-R005（170 次，406.76 秒）和 UM-R006（220 次，57.04 秒），逐次独立回放并按预登记规则比对后，服务集合、运行点、周购电区间、年费区间和名次均与原归档一致。核验记录在离线库 `runs/20261121_holdout_release_check/`。
+
+Both studies were solved again from clean commit `f39d6d61f11e4e63da92556029ffdf78fb826c01`. UM-R005 took 170 calls and 406.76 seconds, and UM-R006 took 220 calls and 57.04 seconds. Independent replay and preregistered checks matched the original service sets, operating points, weekly purchase bounds, annual bill bounds and ranks. The offline evidence is in `runs/20261121_holdout_release_check/`.
 
 正式运行源码 / Source — `bd75ba0cf9e421d53184fe4a1ad23468b14c5ea1`. 墙钟 / Wall time — 389.42 s. 求解 / Solver calls — 170.
 
