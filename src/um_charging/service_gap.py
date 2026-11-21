@@ -33,20 +33,21 @@ def scaled_spec(capacity, power):
     return VehicleSpec(capacity, 0.1 * capacity, 0.5 * capacity, power, DEFAULT_SPEC.efficiency)
 
 
-def reachable(truck, spec):
+def reachable(truck, spec, *, site_power_kw=None):
     """Propagate the interval in kWh. Only roundoff at a closed endpoint is tolerated."""
-    events = [(a, b, None, None) for a, b, _ in truck["windows"]]
+    events = [(a, b, None, site) for a, b, site in truck["windows"]]
     events.extend(truck["trips"])
     low = high = spec.boundary_kwh
-    for a, b, energy, track in sorted(events, key=lambda event: event[:2]):
+    for a, b, energy, source in sorted(events, key=lambda event: event[:2]):
         if energy is None:
             if b > a:
-                high = min(spec.capacity_kwh, high + (b-a)/60 * spec.truck_kw * spec.efficiency)
+                power = spec.truck_kw if site_power_kw is None else min(spec.truck_kw, site_power_kw[source])
+                high = min(spec.capacity_kwh, high + (b-a)/60 * power * spec.efficiency)
         else:
             low = max(spec.reserve_kwh, low - energy)
             high = min(spec.capacity_kwh, high - energy)
             if low > high + 1e-10:
-                return False, {"cause": "single_truck_leg_boundary", "track_id": track,
+                return False, {"cause": "single_truck_leg_boundary", "track_id": source,
                                "trip_end_min": b, "low_kwh": low, "high_kwh": high}
     if not low - 1e-10 <= spec.boundary_kwh <= high + 1e-10:
         return False, {"cause": "single_truck_terminal_energy", "low_kwh": low, "high_kwh": high}
