@@ -1,4 +1,4 @@
-"""Rebuild the native DE-LU delivery hours for the UM port connector comparison."""
+"""Rebuild native DE-LU delivery hours for the planning or holdout sample."""
 import argparse
 import csv
 from datetime import date, datetime, time, timedelta
@@ -15,6 +15,8 @@ from extract_fleet_week import hourly_points
 HERE = Path(__file__).resolve().parent
 SOURCE = HERE / "native_2021_source.json"
 PRICES = HERE / "native_2021_prices.csv"
+HOLDOUT_SOURCE = HERE / "native_2021_holdout_source.json"
+HOLDOUT_PRICES = HERE / "native_2021_holdout_prices.csv"
 
 
 def selected_dates(meta):
@@ -73,16 +75,18 @@ def fetch_missing(meta, directory):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("raw_dir", type=Path, help="External directory holding the seven source weeks")
+    parser.add_argument("raw_dir", type=Path, help="External directory holding the source weeks")
+    parser.add_argument("--holdout", action="store_true", help="Verify the six later, fixed-facility test weeks")
     parser.add_argument("--fetch", action="store_true", help="Download missing files from the pinned official URLs")
     parser.add_argument("--output", type=Path, help="Save rebuilt CSV to a new file")
     args = parser.parse_args()
-    metadata = json.loads(SOURCE.read_text(encoding="utf-8"))
+    source, prices = (HOLDOUT_SOURCE, HOLDOUT_PRICES) if args.holdout else (SOURCE, PRICES)
+    metadata = json.loads(source.read_text(encoding="utf-8"))
     if args.fetch:
         fetch_missing(metadata, args.raw_dir)
     rebuilt = extract(metadata, args.raw_dir)
     checksum = hashlib.sha256(rebuilt).hexdigest()
-    if metadata["price_csv_sha256"] != checksum or PRICES.read_bytes() != rebuilt:
+    if metadata["price_csv_sha256"] != checksum or prices.read_bytes() != rebuilt:
         raise ValueError("The published CSV and source reconstruction differ")
     if args.output:
         with args.output.open("xb") as out:

@@ -1,4 +1,4 @@
-"""Extend the published German duties to the first six full weeks after the original holdout."""
+"""Extract six full calendar weeks after the original duties or the M8 operating weeks."""
 import argparse
 from collections import Counter
 import csv
@@ -11,6 +11,7 @@ from prepare import HERE, classify, day_bounds, duty, read_cohort
 
 WEEKS = 6
 BASELINE = HERE / "duties.json"
+OPERATING = HERE / "operating_weeks.json"
 STATUSES = ("complete_tasks", "observed_excluded_only", "no_recorded_tasks")
 
 
@@ -32,9 +33,19 @@ def summary(days):
     }
 
 
-def collect_weeks(path):
+def collect_weeks(path, *, after=BASELINE.name):
+    if after not in (BASELINE.name, OPERATING.name):
+        raise ValueError(f"Unknown calendar anchor: {after}")
     baseline = json.loads(BASELINE.read_text(encoding="utf-8"))
-    last = max(date.fromisoformat(d["date"]) for d in baseline["days"])
+    previous_days = baseline["days"]
+    holdout = after == OPERATING.name
+    if holdout:
+        operating = json.loads(OPERATING.read_text(encoding="utf-8"))
+        if (operating["source"] != baseline["source"]
+                or operating["cohort"]["cohort_vehicle_ids"] != baseline["coverage"]["cohort_vehicle_ids"]):
+            raise ValueError("The operating weeks must use the original source and cohort")
+        previous_days = previous_days + operating["days"]
+    last = max(date.fromisoformat(d["date"]) for d in previous_days)
     first_monday = last + timedelta(days=7-last.weekday())
     cohort, source_coverage = read_cohort(path)
     if baseline["coverage"]["cohort_vehicle_ids"] != source_coverage["cohort_vehicle_ids"]:
@@ -70,30 +81,39 @@ def collect_weeks(path):
         return [t["track_id"] for d in period for v in d["vehicles"] for t in v["trips"]]
 
     tracks = track_ids(days)
-    if len(tracks) != len(set(tracks)) or set(tracks).intersection(track_ids(baseline["days"])):
+    if len(tracks) != len(set(tracks)) or set(tracks).intersection(track_ids(previous_days)):
         raise ValueError("A transport task occurs more than once in the chronological split")
 
     with path.open(encoding="utf-8", newline="") as handle:
         distances = {r["track_id"]: float(r["track_gap"]) if r["track_gap"] else None
                      for r in csv.DictReader(handle)}
-    spatial_gaps = []
-    stop_counts = Counter()
-    missing_distance = 0
+    spatial_gaps, unmapped_spatial_gaps = [], []
+    weekly_mapping = {w["week_start"]: Counter() for w in weeks}
+    missing_distance = Counter()
     for d in days:
+        counts = weekly_mapping[d["week_start"]]
         for v in d["vehicles"]:
-            stop_counts["unmapped"] += len(v["unmapped_gaps"])
-            for stop in v["stops"]:
-                stop_counts[stop["site"]] += 1
+            counts["unmapped"] += len(v["unmapped_gaps"])
+            counts.update(stop["site"] for stop in v["stops"])
+            for stop in v["stops"] + (v["unmapped_gaps"] if holdout else []):
                 distance = distances[stop["arrival_track_id"]]
+                site = stop.get("site")
                 if distance is None:
-                    missing_distance += 1
+                    missing_distance["mapped" if site else "unmapped"] += 1
                 elif distance >= 1000:
-                    spatial_gaps.append({
-                        "date": d["date"], "vehicle_id": v["vehicle_id"], "site": stop["site"],
+                    gaps = spatial_gaps if site else unmapped_spatial_gaps
+                    gaps.append({
+                        "date": d["date"], "vehicle_id": v["vehicle_id"], "site": site,
                         "arrival_track_id": stop["arrival_track_id"], "next_track_id": stop["next_track_id"],
                         "track_gap_m": distance,
                     })
-    return {
+    stop_counts = Counter()
+    for week in weeks:
+        counts = weekly_mapping[week["week_start"]]
+        stop_counts.update(counts)
+        if holdout:
+            week["intervals_by_mapping"] = dict(sorted(counts.items()))
+    result = {
         "source": baseline["source"], "timezone": baseline["timezone"],
         "baseline_duties_sha256": hashlib.sha256(BASELINE.read_bytes()).hexdigest(),
         "period_rule": "First six consecutive full Monday–Sunday blocks after the last baseline date. "
@@ -101,18 +121,30 @@ def collect_weeks(path):
         "cohort": source_coverage,
         "coverage": summary(days),
         "parking_bounds": {"intervals_by_mapping": dict(sorted(stop_counts.items())),
-                           "mapped_intervals_missing_gap_distance": missing_distance,
+                           "mapped_intervals_missing_gap_distance": missing_distance["mapped"],
                            "mapped_intervals_at_least_1km": spatial_gaps},
         "weeks": weeks, "days": days,
     }
+    if holdout:
+        result["period_rule"] = (
+            "First six complete consecutive Monday–Sunday weeks after the M8 operating weeks. "
+            "Keep every date in the denominator. Include all complete vehicle-days from the original carrier "
+            "and vehicles under the same quality rules, including singleton dates."
+        )
+        result["operating_weeks_sha256"] = hashlib.sha256(OPERATING.read_bytes()).hexdigest()
+        result["parking_bounds"]["unmapped_intervals_missing_gap_distance"] = missing_distance["unmapped"]
+        result["parking_bounds"]["unmapped_intervals_at_least_1km"] = unmapped_spatial_gaps
+    return result
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("tracks", type=Path)
+    parser.add_argument("--after", choices=(BASELINE.name, OPERATING.name), default=BASELINE.name,
+                        help="Start at the first full week after this committed sample")
     parser.add_argument("--output", type=Path, help="Write a new UTF-8 JSON file; default prints the input")
     args = parser.parse_args()
-    text = json.dumps(collect_weeks(args.tracks), indent=2, ensure_ascii=False, allow_nan=False) + "\n"
+    text = json.dumps(collect_weeks(args.tracks, after=args.after), indent=2, ensure_ascii=False, allow_nan=False) + "\n"
     if args.output:
         with args.output.open("xb") as out:
             out.write(text.encode("utf-8"))

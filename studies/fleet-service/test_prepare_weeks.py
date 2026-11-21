@@ -1,12 +1,15 @@
 """Independent checks of chronological sampling and the raw trip/stop evidence."""
 import csv
-from collections import defaultdict
+from collections import Counter, defaultdict
 from datetime import date, datetime, timedelta, timezone
 from decimal import Decimal
 import json
+import hashlib
 import math
 import os
 from pathlib import Path
+import subprocess
+import sys
 
 import pytest
 
@@ -19,13 +22,18 @@ def read_duties(name):
     return json.loads((HERE / name).read_text(encoding="utf-8"))
 
 
-def test_calendar_partition_and_disjoint_trips():
-    result = read_duties("operating_weeks.json")
-    first = date(2021, 9, 27)
+@pytest.mark.parametrize(("filename", "first", "statuses", "trip_count", "weekly_complete", "previous_files"), [
+    ("operating_weeks.json", date(2021, 9, 27), (30, 4, 8), 355, [12, 13, 12, 14, 16, 6], ["duties.json"]),
+    ("holdout_weeks.json", date(2021, 11, 8), (28, 10, 4), 282, [9, 16, 13, 8, 8, 9],
+     ["duties.json", "operating_weeks.json"]),
+])
+def test_calendar_partition_and_disjoint_trips(filename, first, statuses, trip_count, weekly_complete, previous_files):
+    result = read_duties(filename)
     assert [d["date"] for d in result["days"]] == [str(first + timedelta(days=i)) for i in range(42)]
     assert [w["week_start"] for w in result["weeks"]] == [str(first + timedelta(weeks=i)) for i in range(6)]
     assert result["coverage"]["date_status_counts"] == {
-        "complete_tasks": 30, "observed_excluded_only": 4, "no_recorded_tasks": 8}
+        "complete_tasks": statuses[0], "observed_excluded_only": statuses[1], "no_recorded_tasks": statuses[2]}
+    assert all(day["split"] == "holdout" for day in result["days"])
     ids = set()
     for week in result["weeks"]:
         days = [d for d in result["days"] if d["week_start"] == week["week_start"]]
@@ -34,6 +42,13 @@ def test_calendar_partition_and_disjoint_trips():
         assert week["complete_vehicle_days"] == sum(len(d["vehicles"]) for d in days)
         assert week["quality_excluded_vehicle_days"] == sum(len(d["other_observed_vehicle_days_excluded"]) for d in days)
         assert week["unobserved_vehicle_date_slots"] == sum(len(d["unobserved_vehicle_ids"]) for d in days)
+        if filename == "holdout_weeks.json":
+            trucks = [truck for day in days for truck in day["vehicles"]]
+            mapped = Counter(stop["site"] for truck in trucks for stop in truck["stops"])
+            mapped["unmapped"] = sum(len(truck["unmapped_gaps"]) for truck in trucks)
+            assert week["intervals_by_mapping"] == mapped
+            assert week["counts_by_exclusion"] == Counter(
+                reason for day in days for reason in day["other_observed_vehicle_days_excluded"].values())
         for d in days:
             categories = ([v["vehicle_id"] for v in d["vehicles"]] + d["unobserved_vehicle_ids"]
                           + list(d["other_observed_vehicle_days_excluded"]))
@@ -45,14 +60,17 @@ def test_calendar_partition_and_disjoint_trips():
                 for trip in truck["trips"]:
                     assert trip["track_id"] not in ids
                     ids.add(trip["track_id"])
-    previous = {t["track_id"] for d in read_duties("duties.json")["days"] for v in d["vehicles"] for t in v["trips"]}
-    assert len(ids) == 355 and not ids.intersection(previous)
-    assert sum(w["complete_vehicle_days"] for w in result["weeks"]) == 73
+    for previous_file in previous_files:
+        previous = {t["track_id"] for d in read_duties(previous_file)["days"] for v in d["vehicles"] for t in v["trips"]}
+        assert ids.isdisjoint(previous)
+    assert len(ids) == trip_count
+    assert [w["complete_vehicle_days"] for w in result["weeks"]] == weekly_complete
 
 
 @pytest.mark.skipif("UM_TUM_TRACKS" not in os.environ, reason="set UM_TUM_TRACKS to the pinned source CSV")
-def test_every_vehicle_day_trip_and_adjacent_window_against_source():
-    data = read_duties("operating_weeks.json")
+@pytest.mark.parametrize("filename", ["operating_weeks.json", "holdout_weeks.json"])
+def test_every_vehicle_day_trip_and_adjacent_window_against_source(filename):
+    data = read_duties(filename)
     rows = defaultdict(list)
     with Path(os.environ["UM_TUM_TRACKS"]).open(encoding="utf-8", newline="") as stream:
         for row in csv.DictReader(stream):
@@ -61,7 +79,7 @@ def test_every_vehicle_day_trip_and_adjacent_window_against_source():
                 rows[row["vehicle_id"]].append((start, end, row))
     for trips in rows.values():
         trips.sort(key=lambda t: (t[0], int(t[2]["track_id"])))
-    far = []
+    far = defaultdict(list)
     for day in data["days"]:
         left, right = [datetime.fromisoformat(day[k]).astimezone(BERLIN) for k in ("start","end")]
         included = {v["vehicle_id"]:v for v in day["vehicles"]}
@@ -98,9 +116,26 @@ def test_every_vehicle_day_trip_and_adjacent_window_against_source():
                 assert [t.isoformat() for t in (end,start,a,b)] == [entry[k] for k in ("arrival","next_departure","start","end")]
                 site = "PORT" if prev["home_base"]=="True" else ("WAREHOUSE" if prev["industrial_area"]=="True" else None)
                 assert entry.get("site") == site
-                if site and prev["track_gap"] and float(prev["track_gap"]) >= 1000:
-                    far.append((day["date"],v,prev["track_id"],nxt["track_id"],float(prev["track_gap"])))
+                if prev["track_gap"] and float(prev["track_gap"]) >= 1000:
+                    far["mapped" if site else "unmapped"].append(
+                        (day["date"],v,site,prev["track_id"],nxt["track_id"],float(prev["track_gap"])))
             assert not intervals
-    expected = [(r["date"],r["vehicle_id"],r["arrival_track_id"],r["next_track_id"],r["track_gap_m"])
-                for r in data["parking_bounds"]["mapped_intervals_at_least_1km"]]
-    assert sorted(far) == sorted(expected)
+    for mapping in (("mapped", "unmapped") if filename == "holdout_weeks.json" else ("mapped",)):
+        expected = [(r["date"],r["vehicle_id"],r["site"],r["arrival_track_id"],r["next_track_id"],r["track_gap_m"])
+                    for r in data["parking_bounds"][f"{mapping}_intervals_at_least_1km"]]
+        assert sorted(far[mapping]) == sorted(expected)
+
+
+@pytest.mark.skipif("UM_TUM_TRACKS" not in os.environ, reason="set UM_TUM_TRACKS to the pinned source CSV")
+@pytest.mark.parametrize(("args", "filename", "expected_hash"), [
+    ([], "operating_weeks.json", "901b0dcf25f3af092c3400bd4982498d9a0b026e56495d365f5c78be6abd2c07"),
+    (["--after", "operating_weeks.json"], "holdout_weeks.json",
+     "6c4c4483961f957604b564ee7b1b423895d016526535e807d384be60cde69413"),
+])
+def test_script_reproduces_exact_published_bytes(args, filename, expected_hash, tmp_path):
+    rebuilt = tmp_path / filename
+    subprocess.run([sys.executable, HERE / "prepare_weeks.py", os.environ["UM_TUM_TRACKS"],
+                    *args, "--output", rebuilt], check=True)
+    result = rebuilt.read_bytes()
+    assert hashlib.sha256(result).hexdigest() == expected_hash
+    assert result == (HERE / filename).read_bytes()

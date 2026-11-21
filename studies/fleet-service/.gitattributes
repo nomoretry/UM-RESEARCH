@@ -1,3 +1,4 @@
 duties.json text eol=lf
 selected.json text eol=lf
 operating_weeks.json text eol=lf
+holdout_weeks.json text eol=lf

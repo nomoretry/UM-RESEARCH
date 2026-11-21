@@ -1,0 +1,74 @@
+{
+  "series": 4169,
+  "market_area": "DE-LU",
+  "product": "Day-ahead wholesale electricity price",
+  "currency_unit": "EUR/MWh",
+  "timezone": "Europe/Berlin",
+  "native_interval_minutes": 60,
+  "market_definition_url": "https://www.smard.de/page/en/wiki-article/6076/5976",
+  "download_url": "https://www.smard.de/en/downloadcenter/download-market-data/",
+  "index_url": "https://www.smard.de/app/chart_data/4169/DE-LU/index_hour.json",
+  "terms": "https://www.smard.de/en/datennutzung",
+  "attribution": "Bundesnetzagentur | SMARD.de",
+  "terms_checked_utc": "2026-11-12T06:33:04+00:00",
+  "data_use": "The SMARD market-data download and data-use pages describe CC BY 4.0 and state that wholesale-price licensing is under examination in HEDWIG proceedings. The source responses are retained in the offline archive. This CSV is an attributed date subset with local start timestamps; price values are unchanged.",
+  "index_sha256": "c6f0678668a6e9f05f6087cf57109b58a2e7b2a2c9d0f4cec6f89ca11ef96051",
+  "downloaded_utc": "2026-11-21T10:04:09+00:00",
+  "service_date_ranges_inclusive": [
+    [
+      "2021-11-08",
+      "2021-12-19"
+    ]
+  ],
+  "timestamps": "start_berlin gives the start of the physical delivery hour with its local UTC offset. All 42 dates are in CET (UTC+01:00).",
+  "processing": "Six consecutive local calendar weeks after the planning period. Select every native hourly price on all 42 calendar dates. Retain the original EUR/MWh quotes and UTC delivery order.",
+  "reproduction_powershell": ".\\.venv\\Scripts\\python.exe studies/day-ahead/extract_native_2021.py <external-SMARD-directory> --holdout",
+  "offline_raw_directory": "conversations/0001_records/runs/20261121_holdout_weeks/smard",
+  "sources": [
+    {
+      "url": "https://www.smard.de/app/chart_data/4169/DE-LU/4169_DE-LU_hour_1636326000000.json",
+      "first_utc_ms": 1636326000000,
+      "hour_count": 168,
+      "sha256": "e07fd3139ea2e60ef0868d35b9811d5a7be7cbb3c6cd54940636de99b3c4e36c"
+    },
+    {
+      "url": "https://www.smard.de/app/chart_data/4169/DE-LU/4169_DE-LU_hour_1636930800000.json",
+      "first_utc_ms": 1636930800000,
+      "hour_count": 168,
+      "sha256": "03c8e1b1006b653e2696273f9ab10ec9a34e6aff9152097e0cd5ce2071a63454"
+    },
+    {
+      "url": "https://www.smard.de/app/chart_data/4169/DE-LU/4169_DE-LU_hour_1637535600000.json",
+      "first_utc_ms": 1637535600000,
+      "hour_count": 168,
+      "sha256": "34e365750cc757c172c0552e2f7e0dc31cf378983e6f41664d7647fc01982c29"
+    },
+    {
+      "url": "https://www.smard.de/app/chart_data/4169/DE-LU/4169_DE-LU_hour_1638140400000.json",
+      "first_utc_ms": 1638140400000,
+      "hour_count": 168,
+      "sha256": "3d4f8afaafc7a1bc067e999f5e6cbd8d4be8eb63ba12e031be5d5cbc0a800ce8"
+    },
+    {
+      "url": "https://www.smard.de/app/chart_data/4169/DE-LU/4169_DE-LU_hour_1638745200000.json",
+      "first_utc_ms": 1638745200000,
+      "hour_count": 168,
+      "sha256": "f7d7dad2b6200b8763713291e6b8792fae0148739618afc62e6c1085cacd7f88"
+    },
+    {
+      "url": "https://www.smard.de/app/chart_data/4169/DE-LU/4169_DE-LU_hour_1639350000000.json",
+      "first_utc_ms": 1639350000000,
+      "hour_count": 168,
+      "sha256": "a9fae51bed86502348f4857c98575e618207651fbd80d2938ca55db6025bc5b8"
+    }
+  ],
+  "selected_days": 42,
+  "native_intervals": 1008,
+  "missing_intervals": 0,
+  "negative_price_intervals": 0,
+  "price_range_eur_per_mwh": [
+    21.83,
+    425.0
+  ],
+  "price_csv_sha256": "28e3f8a242625ddd59338ec340e756d49c07d0d7ca8b6bbfb627906ee0c908dc"
+}
