@@ -67,7 +67,7 @@ def audit_service_certificate(period, day, locked, reference, result):
     return proof
 
 
-def solve_service_day(period, design, day, locked, reference, deadline):
+def solve_service_day(period, design, day, locked, reference, deadline, *, caps=None):
     """Maximize today's count, overlap and numeric-ID order with earlier choices fixed."""
     began = perf_counter()
     today = {key for key in period.keys if key[0] == day}
@@ -76,7 +76,10 @@ def solve_service_day(period, design, day, locked, reference, deadline):
     if any(type(value) is not bool for value in locked.values()):
         raise ValueError("Earlier service choices must be Boolean")
     weights, _ = _day_weights(today, set(reference))
-    spec, caps, hardware = eb.DEFAULT_SPEC, design.caps, design.hardware()
+    spec, hardware = eb.DEFAULT_SPEC, design.hardware()
+    caps = design.caps if caps is None else caps
+    if any(not 0 <= p <= k for p, k in zip(caps, design.caps, strict=True)):
+        raise ValueError("A quarter cap must be between zero and the installed kW")
     model, levels, decisions, _ = ss._grouped_zero_delay_matrix(
         period, hardware, spec, dict(zip(SITES, caps, strict=True)), None, set())
     for key, (serve, _, _) in levels.items():

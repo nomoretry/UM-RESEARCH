@@ -45,7 +45,7 @@ class Certificates:
             if perf_counter() >= self.deadline:
                 raise WallLimit("Formal wall-clock budget exhausted")
             if service:
-                result = solve_service_day(period, design, day, locked, reference, self.deadline)
+                result = solve_service_day(period, design, day, locked, reference, self.deadline, caps=caps)
             else:
                 result = ss.solve(period, design, caps=caps, fixed=fixed, deadline=self.deadline)
                 stats = result["stats"]

@@ -22,12 +22,12 @@ def pairs(keys):
     return [list(k) for k in sorted(keys)]
 
 
-def service_week(log, sample, period, design, reference):
+def service_week(log, sample, period, design, reference, *, caps=None):
     locked = {}
     rows = {}
     for day in sorted(period.cases):
         duty = {key for key in period.keys if key[0] == day}
-        result = log.call(sample, period, design, design.caps, day=day,
+        result = log.call(sample, period, design, design.caps if caps is None else caps, day=day,
                           locked=locked, reference=reference & period.keys)
         if result["stats"]["status"] != "certified" or not result["audit"]:
             break
