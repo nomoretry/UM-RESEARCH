@@ -1,0 +1,1967 @@
+{
+  "schema_version": 1,
+  "first_holdout": {
+    "period": {
+      "start_date": "2021-11-08",
+      "end_date": "2021-12-19",
+      "weeks": 6
+    },
+    "eligible_vehicle_days": 63,
+    "registered_vehicle_days": 52,
+    "planning_eligible_vehicle_days": 73,
+    "planning_registered_vehicle_days": 54,
+    "missing_duties": [
+      [
+        "2021-11-26",
+        "1"
+      ]
+    ],
+    "decisive_constraint": "trip_reserve",
+    "decisive_site": "warehouse",
+    "first_trip_id": "787",
+    "first_trip_energy_kwh": 204.578336,
+    "starting_soc_kwh": 150,
+    "reserve_kwh": 30,
+    "pre_trip_shortfall_kwh": 84.578336,
+    "isolated_port_capacity_kw": 50,
+    "all_tested_segments_infeasible": true,
+    "minimum_warehouse_repair_kw": 15,
+    "minimum_priced_warehouse_kw": 20
+  },
+  "selection": {
+    "weeks": 12,
+    "annualization": 4.333333333333333,
+    "first_week": "2021-09-27",
+    "last_week": "2021-12-13",
+    "eligible_vehicle_days": 136,
+    "registered_vehicle_days": 106,
+    "unresolved_fine_grid_points": 534,
+    "winner_counts": {
+      "p1-40-w20": 5,
+      "p1-20-w20": 7
+    },
+    "annual_costs": [
+      {
+        "tariff": "N0",
+        "basis": "new",
+        "design": "p1-40-w20",
+        "caps_kw": [
+          40,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          10975.757147000322,
+          10975.926997431387
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ]
+      },
+      {
+        "tariff": "N0",
+        "basis": "existing",
+        "design": "p1-40-w20",
+        "caps_kw": [
+          40,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          10174.333286164001,
+          10174.503136595065
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ]
+      },
+      {
+        "tariff": "frank",
+        "basis": "new",
+        "design": "p1-20-w20",
+        "caps_kw": [
+          20,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          17542.67903071474,
+          17542.853834727986
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ]
+      },
+      {
+        "tariff": "frank",
+        "basis": "existing",
+        "design": "p1-40-w20",
+        "caps_kw": [
+          40,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          16984.540404604144,
+          16984.710255035207
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ]
+      },
+      {
+        "tariff": "official",
+        "basis": "new",
+        "design": "p1-40-w20",
+        "caps_kw": [
+          40,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          17641.617431301343,
+          17641.78728173241
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ]
+      },
+      {
+        "tariff": "official",
+        "basis": "existing",
+        "design": "p1-40-w20",
+        "caps_kw": [
+          40,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          16840.193570465024,
+          16840.363420896087
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ]
+      },
+      {
+        "tariff": "capacity_0",
+        "basis": "new",
+        "design": "p1-20-w20",
+        "caps_kw": [
+          20,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          12818.517588361165,
+          12818.69239237441
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ]
+      },
+      {
+        "tariff": "capacity_0",
+        "basis": "existing",
+        "design": "p1-20-w20",
+        "caps_kw": [
+          20,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          12284.235014470285,
+          12284.409818483531
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ]
+      },
+      {
+        "tariff": "capacity_22_79",
+        "basis": "new",
+        "design": "p1-20-w20",
+        "caps_kw": [
+          20,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          13749.984813909865,
+          13750.159617923111
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ]
+      },
+      {
+        "tariff": "capacity_22_79",
+        "basis": "existing",
+        "design": "p1-20-w20",
+        "caps_kw": [
+          20,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          13215.702240018985,
+          13215.877044032231
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ]
+      },
+      {
+        "tariff": "capacity_208_38",
+        "basis": "new",
+        "design": "p1-20-w20",
+        "caps_kw": [
+          20,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          21335.373246976265,
+          21335.548050989513
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ]
+      },
+      {
+        "tariff": "capacity_208_38",
+        "basis": "existing",
+        "design": "p1-20-w20",
+        "caps_kw": [
+          20,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          20801.090673085386,
+          20801.26547709863
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "operating_policies": {
+    "official_new": {
+      "full_information": {
+        "tariff": "official",
+        "basis": "new",
+        "design": "p1-40-w20",
+        "caps_kw": [
+          40,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          17641.617431301343,
+          17641.78728173241
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ]
+      },
+      "rolling": {
+        "policy": "rolling",
+        "tariff": "official",
+        "basis": "new",
+        "design": "p1-40-w20",
+        "caps_kw": [
+          40,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          18171.442821261102,
+          18171.843207509955
+        ]
+      },
+      "immediate": {
+        "policy": "immediate",
+        "tariff": "official",
+        "basis": "new",
+        "design": "p2-100-w20",
+        "caps_kw": [
+          100,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          41725.583001341205,
+          41725.583001341205
+        ],
+        "terminal_surplus_eur_2025_per_year": 11430.880046841963,
+        "annual_terminal_surplus_kwh": 36400.0,
+        "annual_terminal_surplus_grid_kwh": 40444.444444444445
+      }
+    },
+    "official_existing": {
+      "full_information": {
+        "tariff": "official",
+        "basis": "existing",
+        "design": "p1-40-w20",
+        "caps_kw": [
+          40,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          16840.193570465024,
+          16840.363420896087
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ]
+      },
+      "rolling": {
+        "policy": "rolling",
+        "tariff": "official",
+        "basis": "existing",
+        "design": "p1-40-w20",
+        "caps_kw": [
+          40,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          17370.01896042478,
+          17370.419346673632
+        ]
+      },
+      "immediate": {
+        "policy": "immediate",
+        "tariff": "official",
+        "basis": "existing",
+        "design": "p2-100-w20",
+        "caps_kw": [
+          100,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          40122.73527966856,
+          40122.73527966856
+        ],
+        "terminal_surplus_eur_2025_per_year": 11430.880046841963,
+        "annual_terminal_surplus_kwh": 36400.0,
+        "annual_terminal_surplus_grid_kwh": 40444.444444444445
+      }
+    },
+    "minima": [
+      {
+        "policy": "immediate",
+        "tariff": "N0",
+        "basis": "existing",
+        "design": "p2-100-w20",
+        "caps_kw": [
+          100,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          28439.526853428586,
+          28439.526853428586
+        ]
+      },
+      {
+        "policy": "immediate",
+        "tariff": "N0",
+        "basis": "new",
+        "design": "p2-100-w20",
+        "caps_kw": [
+          100,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          30042.37457510123,
+          30042.37457510123
+        ]
+      },
+      {
+        "policy": "immediate",
+        "tariff": "capacity_0",
+        "basis": "existing",
+        "design": "p2-100-w20",
+        "caps_kw": [
+          100,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          37571.862555271786,
+          37571.862555271786
+        ]
+      },
+      {
+        "policy": "immediate",
+        "tariff": "capacity_0",
+        "basis": "new",
+        "design": "p2-100-w20",
+        "caps_kw": [
+          100,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          39174.710276944425,
+          39174.710276944425
+        ]
+      },
+      {
+        "policy": "immediate",
+        "tariff": "capacity_208_38",
+        "basis": "existing",
+        "design": "p2-100-w20",
+        "caps_kw": [
+          100,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          63122.42952928687,
+          63122.42952928687
+        ]
+      },
+      {
+        "policy": "immediate",
+        "tariff": "capacity_208_38",
+        "basis": "new",
+        "design": "p2-100-w20",
+        "caps_kw": [
+          100,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          64725.27725095951,
+          64725.27725095951
+        ]
+      },
+      {
+        "policy": "immediate",
+        "tariff": "capacity_22_79",
+        "basis": "existing",
+        "design": "p2-100-w20",
+        "caps_kw": [
+          100,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          40366.264231717716,
+          40366.264231717716
+        ]
+      },
+      {
+        "policy": "immediate",
+        "tariff": "capacity_22_79",
+        "basis": "new",
+        "design": "p2-100-w20",
+        "caps_kw": [
+          100,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          41969.111953390355,
+          41969.111953390355
+        ]
+      },
+      {
+        "policy": "immediate",
+        "tariff": "frank",
+        "basis": "existing",
+        "design": "p2-100-w20",
+        "caps_kw": [
+          100,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          40366.264231717716,
+          40366.264231717716
+        ]
+      },
+      {
+        "policy": "immediate",
+        "tariff": "frank",
+        "basis": "new",
+        "design": "p2-100-w20",
+        "caps_kw": [
+          100,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          41969.111953390355,
+          41969.111953390355
+        ]
+      },
+      {
+        "policy": "immediate",
+        "tariff": "official",
+        "basis": "existing",
+        "design": "p2-100-w20",
+        "caps_kw": [
+          100,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          40122.73527966856,
+          40122.73527966856
+        ]
+      },
+      {
+        "policy": "immediate",
+        "tariff": "official",
+        "basis": "new",
+        "design": "p2-100-w20",
+        "caps_kw": [
+          100,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          41725.583001341205,
+          41725.583001341205
+        ]
+      },
+      {
+        "policy": "rolling",
+        "tariff": "N0",
+        "basis": "existing",
+        "design": "p1-40-w20",
+        "caps_kw": [
+          40,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          10704.15867612371,
+          10704.559062372562
+        ]
+      },
+      {
+        "policy": "rolling",
+        "tariff": "N0",
+        "basis": "new",
+        "design": "p1-40-w20",
+        "caps_kw": [
+          40,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          11505.58253696003,
+          11505.982923208881
+        ]
+      },
+      {
+        "policy": "rolling",
+        "tariff": "capacity_0",
+        "basis": "existing",
+        "design": "p1-40-w20",
+        "caps_kw": [
+          40,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          16117.16495634075,
+          16117.565342589602
+        ]
+      },
+      {
+        "policy": "rolling",
+        "tariff": "capacity_0",
+        "basis": "new",
+        "design": "p1-40-w20",
+        "caps_kw": [
+          40,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          16918.58881717707,
+          16918.989203425925
+        ]
+      },
+      {
+        "policy": "rolling",
+        "tariff": "capacity_208_38",
+        "basis": "existing",
+        "design": "p1-30-w20",
+        "caps_kw": [
+          30,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          27253.19804371854,
+          27253.86744795868
+        ]
+      },
+      {
+        "policy": "rolling",
+        "tariff": "capacity_208_38",
+        "basis": "new",
+        "design": "p1-30-w20",
+        "caps_kw": [
+          30,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          27921.051261082142,
+          27921.720665322282
+        ]
+      },
+      {
+        "policy": "rolling",
+        "tariff": "capacity_22_79",
+        "basis": "existing",
+        "design": "p1-40-w20",
+        "caps_kw": [
+          40,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          17514.3657945639,
+          17514.766180812752
+        ]
+      },
+      {
+        "policy": "rolling",
+        "tariff": "capacity_22_79",
+        "basis": "new",
+        "design": "p1-40-w20",
+        "caps_kw": [
+          40,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          18315.78965540022,
+          18316.190041649075
+        ]
+      },
+      {
+        "policy": "rolling",
+        "tariff": "frank",
+        "basis": "existing",
+        "design": "p1-40-w20",
+        "caps_kw": [
+          40,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          17514.3657945639,
+          17514.766180812752
+        ]
+      },
+      {
+        "policy": "rolling",
+        "tariff": "frank",
+        "basis": "new",
+        "design": "p1-40-w20",
+        "caps_kw": [
+          40,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          18315.78965540022,
+          18316.190041649075
+        ]
+      },
+      {
+        "policy": "rolling",
+        "tariff": "official",
+        "basis": "existing",
+        "design": "p1-40-w20",
+        "caps_kw": [
+          40,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          17370.01896042478,
+          17370.419346673632
+        ]
+      },
+      {
+        "policy": "rolling",
+        "tariff": "official",
+        "basis": "new",
+        "design": "p1-40-w20",
+        "caps_kw": [
+          40,
+          20
+        ],
+        "annual_cost_eur_2025": [
+          18171.442821261102,
+          18171.843207509955
+        ]
+      }
+    ],
+    "robust_union": {
+      "design": "p1-40-w20",
+      "caps_kw": [
+        40,
+        20
+      ],
+      "annual_costs": [
+        {
+          "tariff": "N0",
+          "basis": "new",
+          "design": "p1-40-w20",
+          "caps_kw": [
+            40,
+            20
+          ],
+          "annual_cost_eur_2025": [
+            10975.757147000322,
+            10975.926997431387
+          ]
+        },
+        {
+          "tariff": "N0",
+          "basis": "existing",
+          "design": "p1-40-w20",
+          "caps_kw": [
+            40,
+            20
+          ],
+          "annual_cost_eur_2025": [
+            10174.333286164001,
+            10174.503136595065
+          ]
+        },
+        {
+          "tariff": "frank",
+          "basis": "new",
+          "design": "p1-40-w20",
+          "caps_kw": [
+            40,
+            20
+          ],
+          "annual_cost_eur_2025": [
+            17785.964265440467,
+            17786.13411587153
+          ]
+        },
+        {
+          "tariff": "frank",
+          "basis": "existing",
+          "design": "p1-40-w20",
+          "caps_kw": [
+            40,
+            20
+          ],
+          "annual_cost_eur_2025": [
+            16984.540404604144,
+            16984.710255035207
+          ]
+        },
+        {
+          "tariff": "official",
+          "basis": "new",
+          "design": "p1-40-w20",
+          "caps_kw": [
+            40,
+            20
+          ],
+          "annual_cost_eur_2025": [
+            17641.617431301343,
+            17641.78728173241
+          ]
+        },
+        {
+          "tariff": "official",
+          "basis": "existing",
+          "design": "p1-40-w20",
+          "caps_kw": [
+            40,
+            20
+          ],
+          "annual_cost_eur_2025": [
+            16840.193570465024,
+            16840.363420896087
+          ]
+        },
+        {
+          "tariff": "capacity_0",
+          "basis": "new",
+          "design": "p1-40-w20",
+          "caps_kw": [
+            40,
+            20
+          ],
+          "annual_cost_eur_2025": [
+            16388.76342721736,
+            16388.933277648423
+          ]
+        },
+        {
+          "tariff": "capacity_0",
+          "basis": "existing",
+          "design": "p1-40-w20",
+          "caps_kw": [
+            40,
+            20
+          ],
+          "annual_cost_eur_2025": [
+            15587.339566381037,
+            15587.509416812103
+          ]
+        },
+        {
+          "tariff": "capacity_22_79",
+          "basis": "new",
+          "design": "p1-40-w20",
+          "caps_kw": [
+            40,
+            20
+          ],
+          "annual_cost_eur_2025": [
+            17785.964265440467,
+            17786.13411587153
+          ]
+        },
+        {
+          "tariff": "capacity_22_79",
+          "basis": "existing",
+          "design": "p1-40-w20",
+          "caps_kw": [
+            40,
+            20
+          ],
+          "annual_cost_eur_2025": [
+            16984.540404604144,
+            16984.710255035207
+          ]
+        },
+        {
+          "tariff": "capacity_208_38",
+          "basis": "new",
+          "design": "p1-40-w20",
+          "caps_kw": [
+            40,
+            20
+          ],
+          "annual_cost_eur_2025": [
+            29164.04691422617,
+            29164.216764657238
+          ]
+        },
+        {
+          "tariff": "capacity_208_38",
+          "basis": "existing",
+          "design": "p1-40-w20",
+          "caps_kw": [
+            40,
+            20
+          ],
+          "annual_cost_eur_2025": [
+            28362.623053389852,
+            28362.792903820915
+          ]
+        }
+      ],
+      "ex_ante_premiums": [
+        {
+          "basis": "new",
+          "annual_premium_eur_2025": [
+            -0.16985043106615194,
+            0.16985043106615194
+          ]
+        },
+        {
+          "basis": "existing",
+          "annual_premium_eur_2025": [
+            -0.16985043106251396,
+            0.16985043106251396
+          ]
+        }
+      ]
+    },
+    "frozen_facility_cross_checks": [
+      {
+        "policy": "immediate",
+        "design": "p1-20-w20",
+        "caps_kw": [
+          20,
+          20
+        ],
+        "classification": "infeasible",
+        "same_service": false,
+        "registered_vehicle_days": 106,
+        "known_completed_vehicle_days": 93,
+        "completed_vehicle_days": 93,
+        "unclassified_vehicle_days": 0,
+        "failed_weeks": [
+          "2021-09-27",
+          "2021-10-04",
+          "2021-10-25",
+          "2021-11-08",
+          "2021-11-22",
+          "2021-11-29",
+          "2021-12-06",
+          "2021-12-13"
+        ],
+        "unresolved_weeks": [],
+        "frozen_caps_kw": [
+          20,
+          20
+        ],
+        "at_frozen_caps": true
+      },
+      {
+        "policy": "immediate",
+        "design": "p1-40-w20",
+        "caps_kw": [
+          40,
+          20
+        ],
+        "classification": "infeasible",
+        "same_service": false,
+        "registered_vehicle_days": 106,
+        "known_completed_vehicle_days": 103,
+        "completed_vehicle_days": 103,
+        "unclassified_vehicle_days": 0,
+        "failed_weeks": [
+          "2021-11-08"
+        ],
+        "unresolved_weeks": [],
+        "frozen_caps_kw": [
+          40,
+          20
+        ],
+        "at_frozen_caps": true
+      },
+      {
+        "policy": "rolling",
+        "design": "p1-20-w20",
+        "caps_kw": [
+          20,
+          20
+        ],
+        "classification": "infeasible",
+        "same_service": false,
+        "registered_vehicle_days": 106,
+        "known_completed_vehicle_days": 84,
+        "completed_vehicle_days": null,
+        "unclassified_vehicle_days": 22,
+        "failed_weeks": [
+          "2021-09-27",
+          "2021-10-25",
+          "2021-11-08",
+          "2021-11-29",
+          "2021-12-13"
+        ],
+        "unresolved_weeks": [],
+        "frozen_caps_kw": [
+          20,
+          20
+        ],
+        "at_frozen_caps": true
+      },
+      {
+        "policy": "rolling",
+        "design": "p1-40-w20",
+        "caps_kw": [
+          20,
+          20
+        ],
+        "classification": "infeasible",
+        "same_service": false,
+        "registered_vehicle_days": 106,
+        "known_completed_vehicle_days": 84,
+        "completed_vehicle_days": null,
+        "unclassified_vehicle_days": 22,
+        "failed_weeks": [
+          "2021-09-27",
+          "2021-10-25",
+          "2021-11-08",
+          "2021-11-29",
+          "2021-12-13"
+        ],
+        "unresolved_weeks": [],
+        "frozen_caps_kw": [
+          40,
+          20
+        ],
+        "at_frozen_caps": false
+      },
+      {
+        "policy": "rolling",
+        "design": "p1-40-w20",
+        "caps_kw": [
+          40,
+          20
+        ],
+        "classification": "certified",
+        "same_service": true,
+        "registered_vehicle_days": 106,
+        "known_completed_vehicle_days": 106,
+        "completed_vehicle_days": 106,
+        "unclassified_vehicle_days": 0,
+        "failed_weeks": [],
+        "unresolved_weeks": [],
+        "frozen_caps_kw": [
+          40,
+          20
+        ],
+        "at_frozen_caps": true
+      }
+    ]
+  },
+  "breakpoint_sensitivity": {
+    "excluded_windows": 23,
+    "eligible_vehicle_days": 136,
+    "registered_vehicle_days": 104,
+    "removed_duties": [
+      [
+        "2021-12-15",
+        "5"
+      ],
+      [
+        "2021-12-16",
+        "5"
+      ]
+    ],
+    "added_duties": [],
+    "f40": {
+      "design": "p1-40-w20",
+      "caps_kw": [
+        40,
+        20
+      ],
+      "classification": "passed",
+      "failed_weeks": [],
+      "annual_costs": [
+        {
+          "basis": "new",
+          "annual_cost_eur_2025": [
+            17407.966754966277,
+            17408.185922187506
+          ]
+        },
+        {
+          "basis": "existing",
+          "annual_cost_eur_2025": [
+            16606.542894129958,
+            16606.762061351186
+          ]
+        }
+      ]
+    },
+    "f20": {
+      "design": "p1-20-w20",
+      "caps_kw": [
+        20,
+        20
+      ],
+      "classification": "infeasible",
+      "failed_weeks": [
+        "2021-12-06"
+      ]
+    }
+  },
+  "warehouse_15kw": {
+    "annualization_factor": 0.17187027663854476,
+    "official_thresholds": [
+      {
+        "design": "p1-20-w15",
+        "basis": "new",
+        "caps_kw": [
+          20,
+          15
+        ],
+        "comparison_design": "p1-20-w20",
+        "annual_allowance_eur_2025": [
+          941.1964033901968,
+          941.7418664442448
+        ],
+        "net_equipment_eur_2026": [
+          5476.2022951158615,
+          5479.375985556792
+        ]
+      },
+      {
+        "design": "p1-40-w15",
+        "basis": "new",
+        "caps_kw": [
+          40,
+          15
+        ],
+        "comparison_design": "p1-40-w20",
+        "annual_allowance_eur_2025": [
+          929.7926052300536,
+          930.2818353466537
+        ],
+        "net_equipment_eur_2026": [
+          5409.851100580193,
+          5412.697608575459
+        ]
+      },
+      {
+        "design": "p1-20-w15",
+        "basis": "existing",
+        "caps_kw": [
+          20,
+          15
+        ],
+        "comparison_design": "p1-20-w20",
+        "annual_allowance_eur_2025": [
+          874.4110816538341,
+          874.956544707884
+        ],
+        "net_equipment_eur_2026": [
+          5087.6224717598025,
+          5090.796162200744
+        ]
+      },
+      {
+        "design": "p1-40-w15",
+        "basis": "existing",
+        "caps_kw": [
+          40,
+          15
+        ],
+        "comparison_design": "p1-40-w20",
+        "annual_allowance_eur_2025": [
+          863.0072834936964,
+          863.4965136102928
+        ],
+        "net_equipment_eur_2026": [
+          5021.271277224166,
+          5024.1177852194105
+        ]
+      }
+    ]
+  },
+  "holdout": {
+    "period": {
+      "start_date": "2021-12-20",
+      "end_date": "2022-02-06",
+      "weeks": 7,
+      "annualization": 7.428571428571429,
+      "timezone": "Europe/Berlin"
+    },
+    "registration": {
+      "eligible_vehicle_days": 57,
+      "registered_vehicle_days": 49,
+      "weekly_counts": [
+        7,
+        0,
+        5,
+        11,
+        8,
+        8,
+        10
+      ],
+      "baseline_design": "p1-50-w50",
+      "baseline_caps_kw": [
+        50,
+        50
+      ]
+    },
+    "primary": {
+      "design": "p1-40-w20",
+      "caps_kw": [
+        40,
+        20
+      ],
+      "classification": "failure_independent",
+      "failed_weeks": [
+        "2022-01-17"
+      ],
+      "proof_id": "7162e76b600ce18ad3e1cd9843c7e4686700327bfcc4590fd4b9f1daf1d62d89",
+      "bases": [
+        "new",
+        "existing"
+      ],
+      "missing_duties": [
+        [
+          "2022-01-19",
+          "1"
+        ]
+      ],
+      "decisive_constraint": "terminal_soc",
+      "decisive_site": "warehouse",
+      "terminal_target_kwh": 150.0,
+      "terminal_upper_kwh": 103.76287600000008,
+      "terminal_shortfall_kwh": 46.23712399999992,
+      "route_replay_trip_failure": null,
+      "grid_kwh_by_site": {
+        "PORT": 0.0,
+        "WAREHOUSE": 96.25006111111118
+      },
+      "diagnostic_charging_windows": 2
+    },
+    "f20": {
+      "design": "p1-20-w20",
+      "caps_kw": [
+        20,
+        20
+      ],
+      "classification": "failure_independent",
+      "failed_weeks": [
+        "2022-01-17",
+        "2022-01-31"
+      ],
+      "missing_duties": [
+        [
+          "2022-01-19",
+          "1"
+        ],
+        [
+          "2022-01-31",
+          "4"
+        ]
+      ]
+    },
+    "secondary": [
+      {
+        "classification": "failure_solver_only",
+        "endpoint": "S1",
+        "failed_weeks": [
+          "2022-01-17"
+        ],
+        "point_id": "rolling:p1-40-w20:40:20"
+      },
+      {
+        "classification": "failure_independent",
+        "endpoint": "S2",
+        "failed_weeks": [
+          "2022-01-17"
+        ],
+        "point_id": "immediate:p2-100-w20:100:20"
+      },
+      {
+        "classification": "failure_independent",
+        "endpoint": "S3",
+        "failed_weeks": [
+          "2022-01-17",
+          "2022-01-31"
+        ],
+        "point_id": "immediate:p1-40-w20:40:20"
+      }
+    ],
+    "annual_costs": [
+      {
+        "tariff": "N0",
+        "basis": "new",
+        "design": "p1-50-w50",
+        "caps_kw": [
+          50,
+          50
+        ],
+        "annual_cost_eur_2025": [
+          16190.726692789318,
+          16190.805536434476
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ],
+        "point_source": "frozen",
+        "frozen_point_id": "full:p1-50-w50:50:50",
+        "rated_point_id": "full:p1-50-w50:50:50"
+      },
+      {
+        "tariff": "N0",
+        "basis": "existing",
+        "design": "p1-50-w50",
+        "caps_kw": [
+          50,
+          50
+        ],
+        "annual_cost_eur_2025": [
+          13853.240432016715,
+          13853.319275661874
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ],
+        "point_source": "frozen",
+        "frozen_point_id": "full:p1-50-w50:50:50",
+        "rated_point_id": "full:p1-50-w50:50:50"
+      },
+      {
+        "tariff": "frank",
+        "basis": "new",
+        "design": "p1-50-w50",
+        "caps_kw": [
+          50,
+          50
+        ],
+        "annual_cost_eur_2025": [
+          22334.48671596947,
+          22334.565559614628
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ],
+        "point_source": "rated_fallback",
+        "frozen_point_id": "full:p1-50-w50:50:20",
+        "rated_point_id": "full:p1-50-w50:50:50"
+      },
+      {
+        "tariff": "frank",
+        "basis": "existing",
+        "design": "p1-50-w50",
+        "caps_kw": [
+          50,
+          50
+        ],
+        "annual_cost_eur_2025": [
+          19997.000455196867,
+          19997.079298842025
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ],
+        "point_source": "rated_fallback",
+        "frozen_point_id": "full:p1-50-w50:50:20",
+        "rated_point_id": "full:p1-50-w50:50:50"
+      },
+      {
+        "tariff": "official",
+        "basis": "new",
+        "design": "p1-50-w50",
+        "caps_kw": [
+          50,
+          50
+        ],
+        "annual_cost_eur_2025": [
+          22232.750930383467,
+          22232.829774028625
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ],
+        "point_source": "rated_fallback",
+        "frozen_point_id": "full:p1-50-w50:50:20",
+        "rated_point_id": "full:p1-50-w50:50:50"
+      },
+      {
+        "tariff": "official",
+        "basis": "existing",
+        "design": "p1-50-w50",
+        "caps_kw": [
+          50,
+          50
+        ],
+        "annual_cost_eur_2025": [
+          19895.264669610864,
+          19895.343513256023
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ],
+        "point_source": "rated_fallback",
+        "frozen_point_id": "full:p1-50-w50:50:20",
+        "rated_point_id": "full:p1-50-w50:50:50"
+      },
+      {
+        "tariff": "capacity_0",
+        "basis": "new",
+        "design": "p1-50-w50",
+        "caps_kw": [
+          50,
+          50
+        ],
+        "annual_cost_eur_2025": [
+          20005.818652264497,
+          20005.897495909652
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ],
+        "point_source": "rated_fallback",
+        "frozen_point_id": "full:p1-50-w50:20:20",
+        "rated_point_id": "full:p1-50-w50:50:50"
+      },
+      {
+        "tariff": "capacity_0",
+        "basis": "existing",
+        "design": "p1-50-w50",
+        "caps_kw": [
+          50,
+          50
+        ],
+        "annual_cost_eur_2025": [
+          17668.33239149189,
+          17668.41123513705
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ],
+        "point_source": "rated_fallback",
+        "frozen_point_id": "full:p1-50-w50:20:20",
+        "rated_point_id": "full:p1-50-w50:50:50"
+      },
+      {
+        "tariff": "capacity_22_79",
+        "basis": "new",
+        "design": "p1-50-w50",
+        "caps_kw": [
+          50,
+          50
+        ],
+        "annual_cost_eur_2025": [
+          22334.48671596947,
+          22334.565559614628
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ],
+        "point_source": "rated_fallback",
+        "frozen_point_id": "full:p1-50-w50:20:20",
+        "rated_point_id": "full:p1-50-w50:50:50"
+      },
+      {
+        "tariff": "capacity_22_79",
+        "basis": "existing",
+        "design": "p1-50-w50",
+        "caps_kw": [
+          50,
+          50
+        ],
+        "annual_cost_eur_2025": [
+          19997.000455196867,
+          19997.079298842025
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ],
+        "point_source": "rated_fallback",
+        "frozen_point_id": "full:p1-50-w50:20:20",
+        "rated_point_id": "full:p1-50-w50:50:50"
+      },
+      {
+        "tariff": "capacity_208_38",
+        "basis": "new",
+        "design": "p1-50-w50",
+        "caps_kw": [
+          50,
+          50
+        ],
+        "annual_cost_eur_2025": [
+          41297.95779727734,
+          41298.0366409225
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ],
+        "point_source": "rated_fallback",
+        "frozen_point_id": "full:p1-50-w50:20:20",
+        "rated_point_id": "full:p1-50-w50:50:50"
+      },
+      {
+        "tariff": "capacity_208_38",
+        "basis": "existing",
+        "design": "p1-50-w50",
+        "caps_kw": [
+          50,
+          50
+        ],
+        "annual_cost_eur_2025": [
+          38960.471536504745,
+          38960.5503801499
+        ],
+        "rank_bounds": [
+          1,
+          1
+        ],
+        "point_source": "rated_fallback",
+        "frozen_point_id": "full:p1-50-w50:20:20",
+        "rated_point_id": "full:p1-50-w50:50:50"
+      }
+    ],
+    "official_differences": [
+      {
+        "basis": "new",
+        "role": "I",
+        "comparator": "F40",
+        "classification": "unidentified",
+        "including_surplus_eur_2025": null,
+        "excluding_surplus_eur_2025": null
+      },
+      {
+        "basis": "new",
+        "role": "D40",
+        "comparator": "F40",
+        "classification": "unidentified",
+        "including_surplus_eur_2025": null,
+        "excluding_surplus_eur_2025": null
+      },
+      {
+        "basis": "existing",
+        "role": "I",
+        "comparator": "F40",
+        "classification": "unidentified",
+        "including_surplus_eur_2025": null,
+        "excluding_surplus_eur_2025": null
+      },
+      {
+        "basis": "existing",
+        "role": "D40",
+        "comparator": "F40",
+        "classification": "unidentified",
+        "including_surplus_eur_2025": null,
+        "excluding_surplus_eur_2025": null
+      }
+    ],
+    "official_immediate_surplus": [
+      {
+        "scope": "sample",
+        "point_id": "immediate:p2-100-w20:100:20",
+        "complete_disclosure": true,
+        "known_battery_kwh": 4500.000000000001,
+        "known_grid_kwh": 5000.000000000001,
+        "known_cost_eur_2025": 1557.2408406088841,
+        "unobserved_segments": 0
+      },
+      {
+        "scope": "annual",
+        "point_id": "immediate:p2-100-w20:100:20",
+        "complete_disclosure": true,
+        "known_battery_kwh": 33428.571428571435,
+        "known_grid_kwh": 37142.85714285715,
+        "known_cost_eur_2025": 11568.074815951712,
+        "unobserved_segments": null
+      },
+      {
+        "scope": "sample",
+        "point_id": "immediate:p1-40-w20:40:20",
+        "complete_disclosure": false,
+        "known_battery_kwh": 4350.000000000001,
+        "known_grid_kwh": 4833.333333333334,
+        "known_cost_eur_2025": 1555.0942589468175,
+        "unobserved_segments": 1
+      },
+      {
+        "scope": "annual",
+        "point_id": "immediate:p1-40-w20:40:20",
+        "complete_disclosure": false,
+        "known_battery_kwh": 32314.28571428572,
+        "known_grid_kwh": 35904.76190476191,
+        "known_cost_eur_2025": 11552.128780747787,
+        "unobserved_segments": null
+      },
+      {
+        "scope": "sample",
+        "point_id": "immediate:p1-20-w20:20:20",
+        "complete_disclosure": false,
+        "known_battery_kwh": 3569.48963,
+        "known_grid_kwh": 3966.099588888889,
+        "known_cost_eur_2025": 1013.3023045165463,
+        "unobserved_segments": 1
+      },
+      {
+        "scope": "annual",
+        "point_id": "immediate:p1-20-w20:20:20",
+        "complete_disclosure": false,
+        "known_battery_kwh": 26516.20868,
+        "known_grid_kwh": 29462.454088888888,
+        "known_cost_eur_2025": 7527.388547837201,
+        "unobserved_segments": null
+      }
+    ],
+    "robust_union": {
+      "design": "p1-40-w20",
+      "caps_kw": [
+        40,
+        20
+      ],
+      "classification": "failure_independent",
+      "failed_weeks": [
+        "2022-01-17"
+      ],
+      "annual_cost_eur_2025": null
+    },
+    "repairs": {
+      "physical": {
+        "counted_designs": [
+          "p1-20-w25",
+          "p1-45-w20",
+          "p1-40-w25",
+          "p1-20-w30",
+          "p1-50-w20",
+          "p1-40-w30"
+        ],
+        "containment_exclusions": [
+          {
+            "base": "p1-20-w20",
+            "design": "p1-25-w20"
+          },
+          {
+            "base": "p1-20-w20",
+            "design": "p1-30-w20"
+          },
+          {
+            "base": "p1-20-w20",
+            "design": "p1-35-w20"
+          },
+          {
+            "base": "p1-20-w20",
+            "design": "p1-40-w20"
+          },
+          {
+            "base": "p1-20-w20",
+            "design": "p1-45-w20"
+          },
+          {
+            "base": "p1-20-w20",
+            "design": "p1-50-w20"
+          }
+        ],
+        "untested_designs": [
+          {
+            "base": "p1-20-w20",
+            "design": "p1-20-w35"
+          },
+          {
+            "base": "p1-40-w20",
+            "design": "p1-40-w35"
+          },
+          {
+            "base": "p1-20-w20",
+            "design": "p1-20-w40"
+          },
+          {
+            "base": "p1-40-w20",
+            "design": "p1-40-w40"
+          },
+          {
+            "base": "p1-20-w20",
+            "design": "p1-20-w45"
+          },
+          {
+            "base": "p1-40-w20",
+            "design": "p1-40-w45"
+          },
+          {
+            "base": "p1-20-w20",
+            "design": "p1-20-w50"
+          },
+          {
+            "base": "p1-40-w20",
+            "design": "p1-40-w50"
+          }
+        ],
+        "minima": [
+          {
+            "base": "p1-40-w20",
+            "both": {
+              "minimum_added_kw": null,
+              "minimum_possible_added_kw": 15,
+              "verified_added_kw": null,
+              "verified_designs": []
+            },
+            "daily_service": {
+              "minimum_added_kw": null,
+              "minimum_possible_added_kw": 5,
+              "verified_added_kw": null,
+              "verified_designs": []
+            },
+            "fixed_service": {
+              "minimum_added_kw": null,
+              "minimum_possible_added_kw": 15,
+              "verified_added_kw": null,
+              "verified_designs": []
+            }
+          },
+          {
+            "base": "p1-20-w20",
+            "both": {
+              "minimum_added_kw": null,
+              "minimum_possible_added_kw": 15,
+              "verified_added_kw": null,
+              "verified_designs": []
+            },
+            "daily_service": {
+              "minimum_added_kw": null,
+              "minimum_possible_added_kw": 5,
+              "verified_added_kw": null,
+              "verified_designs": []
+            },
+            "fixed_service": {
+              "minimum_added_kw": null,
+              "minimum_possible_added_kw": 15,
+              "verified_added_kw": null,
+              "verified_designs": []
+            }
+          }
+        ],
+        "warehouse_35_kw_tested": false
+      },
+      "priced": {
+        "options": [
+          {
+            "design": "p1-50-w20",
+            "classification": "infeasible",
+            "counted": true,
+            "bills": {}
+          },
+          {
+            "design": "p1-40-w30",
+            "classification": "infeasible",
+            "counted": true,
+            "bills": {}
+          },
+          {
+            "design": "p1-40-w40",
+            "classification": "certified",
+            "counted": true,
+            "bills": {
+              "existing": {
+                "extra_fixed_eur_2025": 489.76529545809854,
+                "annual_cost_eur_2025": [
+                  14776.992420875074,
+                  14777.191092596786
+                ],
+                "added_total_eur_2025": null
+              },
+              "new": {
+                "extra_fixed_eur_2025": 756.9065824035388,
+                "annual_cost_eur_2025": [
+                  15845.557568656835,
+                  15845.756240378549
+                ],
+                "added_total_eur_2025": null
+              }
+            }
+          },
+          {
+            "design": "p1-40-w50",
+            "classification": "certified",
+            "counted": true,
+            "bills": {
+              "existing": {
+                "extra_fixed_eur_2025": 2960.400522137179,
+                "annual_cost_eur_2025": [
+                  17468.168341822846,
+                  17468.238891963003
+                ],
+                "added_total_eur_2025": null
+              },
+              "new": {
+                "extra_fixed_eur_2025": 3361.1124525553396,
+                "annual_cost_eur_2025": [
+                  18670.304133077327,
+                  18670.374683217484
+                ],
+                "added_total_eur_2025": null
+              }
+            }
+          }
+        ],
+        "minima": {
+          "existing": {
+            "designs": [
+              "p1-40-w40"
+            ],
+            "extra_fixed_eur_2025": 489.76529545809854,
+            "status": "restored",
+            "unresolved_options": []
+          },
+          "new": {
+            "designs": [
+              "p1-40-w40"
+            ],
+            "extra_fixed_eur_2025": 756.9065824035388,
+            "status": "restored",
+            "unresolved_options": []
+          }
+        }
+      }
+    },
+    "sensitivities": {
+      "parking": {
+        "excluded_windows": 30,
+        "registered_vehicle_days": 46,
+        "added_duties": [],
+        "removed_duties": [
+          [
+            "2022-01-26",
+            "5"
+          ],
+          [
+            "2022-01-29",
+            "5"
+          ],
+          [
+            "2022-02-01",
+            "5"
+          ]
+        ],
+        "passed_designs": [
+          "p1-50-w50"
+        ]
+      },
+      "energy_margins": [
+        {
+          "percent_increase": 10,
+          "baseline_missing_duties": [
+            [
+              "2022-01-31",
+              "4"
+            ]
+          ],
+          "baseline_daily_order_omissions": [
+            [
+              "2022-01-31",
+              "4"
+            ]
+          ],
+          "classifications": {
+            "p1-50-w50": "failure_independent",
+            "p1-40-w20": "failure_independent",
+            "p1-20-w20": "failure_independent"
+          }
+        },
+        {
+          "percent_increase": 20,
+          "baseline_missing_duties": [
+            [
+              "2022-01-06",
+              "1"
+            ],
+            [
+              "2022-01-19",
+              "1"
+            ],
+            [
+              "2022-01-31",
+              "4"
+            ]
+          ],
+          "baseline_daily_order_omissions": [
+            [
+              "2022-01-06",
+              "1"
+            ],
+            [
+              "2022-01-19",
+              "1"
+            ],
+            [
+              "2022-01-31",
+              "4"
+            ]
+          ],
+          "classifications": {
+            "p1-50-w50": "failure_independent",
+            "p1-40-w20": "failure_independent",
+            "p1-20-w20": "failure_independent"
+          }
+        }
+      ]
+    }
+  },
+  "chronology": {
+    "selection_preregistration": {
+      "commit": "22b843ace908b5b57d7ed1f89720811cc2060282",
+      "time": "2026-11-22T02:58:58+08:00"
+    },
+    "selection_coarse": {
+      "commit": "e89e7ba495df90ed2131ff6f693ec35e68f9154a",
+      "time": "2026-11-22T13:39:25+08:00"
+    },
+    "selection_freeze": {
+      "commit": "4f7d19ea41d2f209d00c8be75d3a5087841eb803",
+      "time": "2026-11-22T14:59:22+08:00"
+    },
+    "policy_preregistration": {
+      "commit": "ce0c4adc77f5038233705aafd707f1b81bff1c6d",
+      "time": "2026-11-22T18:24:38+08:00"
+    },
+    "holdout_addendum_1": {
+      "commit": "719a93870e286c285e43316a22db0365c93e4dea",
+      "time": "2026-11-22T21:35:59+08:00"
+    },
+    "holdout_addendum_2": {
+      "commit": "da79ea420dddd4294dd9a4815fff10a2e1ad3c9d",
+      "time": "2026-11-22T23:44:30+08:00"
+    },
+    "preopening_checks": {
+      "commit": "c6822a0719d1ab02005f59b0143930c9e105f49f",
+      "time": "2026-11-23T02:11:47+08:00"
+    },
+    "first_raw_read": {
+      "time": "2026-11-23T02:13:13.562180+08:00"
+    },
+    "input_hash_commit": {
+      "commit": "34e847e96f0ee53c384bbb0b84ce581b6f52f2d3",
+      "time": "2026-11-23T02:13:20+08:00"
+    },
+    "primary_commit": {
+      "commit": "f016db2406fb27df7e810a5f27a8da181b29e266",
+      "time": "2026-11-23T02:14:16+08:00"
+    },
+    "final_seal": {
+      "commit": "5f1c94de3a2056e3a4830da3b8ec8fcfd9ebead7",
+      "time": "2026-11-23T02:26:27+08:00"
+    }
+  },
+  "external_timestamps": [
+    {
+      "manifest": "prereg_manifest_20261122.txt",
+      "files": 13,
+      "sha256": "050def390b0fde75fe8537d7c20b0f62ac9ba4cd9492ac5c2781e70eafca1164",
+      "bitcoin_proof_at_opening": true,
+      "bitcoin_block_heights": [
+        977068,
+        977072,
+        977073
+      ]
+    },
+    {
+      "manifest": "prereg_manifest_20261123_v2.txt",
+      "files": 16,
+      "sha256": "698efc2bf101326ebd055f949a26c358d72d1c4fa6fecc18f6dc55484095d4fd",
+      "bitcoin_proof_at_opening": false,
+      "bitcoin_block_heights": [],
+      "calendar_pending_at_opening": true,
+      "proof_timing": "calendar attestation only at opening; any Bitcoin attestation is post-opening"
+    }
+  ],
+  "verification": {
+    "native_requests": 595,
+    "feasible_replayed": 550,
+    "infeasible_certificates": 45,
+    "unresolved_weekly_groups": 0,
+    "determinism": {
+      "seed": 20261122,
+      "sampled": 20,
+      "matched": 20,
+      "all_match": true
+    }
+  },
+  "provenance": {
+    "offline_run_products_sha256": {
+      "20261122_m10_selection_coarse2/formal/selection.json": "9f2294635628a99df43e2f244c63adc4c4238c5721678be74077e0fc19ad16ec",
+      "20261122_m10_refine/formal/frozen_facilities.csv": "42f37d4596b330752a3ce25c2c0ec281cbf4fd64969acdb20dfe71a1f4b9599e",
+      "20261122_m10_refine/formal/freeze_evidence.json": "af7583d2e8bf7deaadb88b0e315cf500f3ed1b1b34732d0487b9a1e8f1fc058c",
+      "20261122_m10_refine/formal/screen_summary.json": "eaa024285c15966748c13839439d5427a55bfa85a878f5da2adff6aea210ad5c",
+      "20261122_m10_policies_continuation/formal/policy_minima.csv": "9971af8e9852c415df1a61d6fdcfac71b958a8963c80359ea8c0277d26084a71",
+      "20261122_m10_policies_continuation/formal/policy_comparison.csv": "566a418c578f99f120fbc624c6408963d49d1b0e0039294d63a499bb9c398107",
+      "20261122_m10_policies_continuation/formal/union_facilities.csv": "389434c79aa2ccc8d2c7b9d9b64deb575b88acae1fd42f22b374c4bce995724d",
+      "20261122_m10_policies_continuation/formal/union_costs.csv": "18c4355c51508b3824a37bd10747137dd8dc5f877a13f221f880cedd10252183",
+      "20261122_m10_policies_continuation/formal/ex_ante_premiums.csv": "336679c9d9bbca8f0beed3c3cc168c8e762b3759d29d438359473e38fbcca8f2",
+      "20261122_m10_policies_continuation/formal/policy_cross_checks.csv": "3770290ce88c73e2a7e43cf34bc338efd95cc58a45adf86a85e66c47dbbaecfc",
+      "20261122_m10_policies_continuation/formal/warehouse_thresholds.csv": "3b92198af109a14fb14de81d3b2a37f9aeb4b236cbe7a601dfaaa0bde1a0b2f4",
+      "20261122_m10_holdout_prep/breakpoint_sensitivity/summary.json": "460ebd6adc1000d5377485eb1b1e758683b61a95a01d0c8e5390a137183be8e1",
+      "20261122_m10_holdout_prep/breakpoint_sensitivity/weekly_points.csv": "c5e109bf0c36852fa7219700fb69f77773cf12b92e219dc46e41564b5ea5daa3",
+      "20261122_m10_holdout_prep/breakpoint_sensitivity/annual_bills.csv": "182243762f7168ce73dc18b17e61731ee353bbfb0987bae582bdbbcb0cb6aff8",
+      "20261122_m10_policies_continuation/formal/exact_no_warehouse.json": "c08b7118098c3d59f6d634715e8e250a379340ad9710bd9e5d749cb38578df90",
+      "20261123_m10_second_holdout/formal/outcome.json": "c93cd0571c85d3d88fb7d8767eb7c87d9aee5c05cc52ae917a2f08ed92dc0cda",
+      "20261123_m10_second_holdout/formal/repairs.json": "3d0e699e795ad076b3e31cd229267ba8239aa36d96789291ec7b6d75bb76112c",
+      "20261123_m10_second_holdout/seal_audit.json": "f1d8b179d919a3443cdf9352feef76752f1af00a16a9065d0b4aed53dbdc840e",
+      "20261123_m10_second_holdout/formal/binding.json": "95a2934a66adad6cde0ce2f07b05bbcb4548ad37d13e5c0ca578fd5e410f9a87",
+      "20261123_m10_second_holdout/preflight.json": "040fd1e11edbc8a530d7a64f64113665cf36e0746b8c161af452f794dff4cc39",
+      "20261123_m10_second_holdout/reporting/reference_weeks.csv": "3537eb2d3fc730fae828b9ac17f0fa74dfc51cfeac19876a2ebd8d1aa69416f9",
+      "20261123_m10_second_holdout/reporting/annual_ranked.csv": "623b91eccb44b1b176383631b75d39e0e96369a1a3d11359210bdb8d3d3ce13d",
+      "20261123_m10_second_holdout/reporting/official_differences.csv": "017e2b81c0d2497dc82bfc408516e3f78661d6e79fa2d6da4ea7f0a542af07d0",
+      "20261123_m10_second_holdout/reporting/immediate_surplus_totals.csv": "99bc06ec657e0ea35f779e0e0fff66c47ce0c2ce193632035ba270ac34577240"
+    },
+    "first_holdout_repository_file": "studies/fleet-service/holdout_test.json",
+    "offline_archive_root": "conversations/0001_records/runs"
+  }
+}

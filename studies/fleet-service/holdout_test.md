@@ -97,6 +97,8 @@ Each rated point is checked against the fixed weekly register R. The eleven duti
 
 The service shortfall observed in the holdout guided the choice of both repairs. Their bills measure the cost of restoring service. Out-of-sample validation requires fixing these facilities before testing an independent sample. The holdout did not repeat facility selection, so other designs could cost less.
 
+第二次留出的登记与结果见 [第二次留出检验](second_holdout.md) / See the [second holdout](second_holdout.md) for its registration and results.
+
 ## 逐日运输服务 · Daily registered service
 
 每格列出车辆数值 ID。∅ 表示空集，? 表示未判定。 / Cells list numeric vehicle IDs. ∅ is an empty set and ? is unresolved.
