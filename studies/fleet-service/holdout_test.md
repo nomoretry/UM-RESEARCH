@@ -2,25 +2,21 @@
 
 [运输样本 / Sample](DATA.md#six-holdout-weeks-for-the-fixed-m8-facilities) · [留出结果 / Holdout data](holdout_test.json) · [规划期 / M8 study](site_sizing.md)
 
-2021-11-08 至 2021-12-19，基准登记 **52/63** 个完整车日。登记任务的网侧年电量为 **59,335.60 kWh/年**，M8 为 **58,387.79 kWh/年**。两者按各自六周任务重复至 52 周，反映运输任务量的差别。关闭 5 号车的 20 个断点区间后，重新登记 50 个车日，港区 20 kW 的修复遗漏 12 月 7 日的 5 号车，六个配置中只有港区 40 kW 加仓库机的两个配置保留全部服务。
+**两套规划期选出的港区单站方案（20 kW、40 kW）均漏掉 11 月 26 日的 1 号车，各完成 51 个登记车日。** 2021-11-08 至 2021-12-19 期间，双站基准（两站各 50 kW 充电机、100/75 kW 接入）从 63 个完整车日中登记 **52/63** 个，是三套事先固定设施中唯一完成全部服务、可列入 12 个计费口径年费比较的方案。本折登记任务的网侧年电量为 **59,335.60 kWh/年**，较 M8 规划期的 **58,387.79 kWh/年** 多 947.81 kWh/年（+1.62%），反映两段六周各自重复至 52 周后的运输任务量差异。
 
-Over 8 November–19 December 2021 the baseline registered **52/63** complete vehicle-days. Registered grid energy is **59,335.60 kWh/year** in the holdout and **58,387.79 kWh/year** in M8. Each annualization repeats its own six-week transport workload. When charging was disabled during vehicle 5’s 20 gap intervals, the baseline registered 50 days, repairs with a 20 kW port missed vehicle 5 on 7 December, and only the two configurations combining a 40 kW port with a warehouse charger retained the full register.
+**Both port-only facilities selected in planning (20 and 40 kW) missed vehicle 1 on 26 November, serving 51 registered vehicle-days each.** Over 8 November–19 December 2021, the two-site baseline (one 50 kW charger per site on 100/75 kW connections) registered **52/63** complete vehicle-days and was the sole prespecified facility to serve all 52 and qualify for same-service annual billing across all 12 cases. Registered grid energy is **59,335.60 kWh/year** in this holdout versus **58,387.79 kWh/year** in M8 (+947.81 kWh/year, or +1.62%), reflecting the difference in six-week transport workloads annualized to 52 weeks.
 
-**两套港区单站方案都少完成 11 月 26 日的 1 号车。** 两者各完成 51 个登记车日。双站基准完成全部 52 个，因此是三套固定设施中唯一可列入 12 个口径年费比较的设施。在原港区保留 20 或 40 kW 的条件下，仓库增加 15 kW 均恢复六周全部服务。留出期比 M8 少登记 2 个车日，但按 52 周重复后，所需网侧电量多 947.81 kWh（1.62%）。
+**保留原港区额定功率并在仓库增加 15 kW 即可恢复全部六周服务；最小有报价的仓库档为 20 kW。** 仓库安装 20 kW 充电机后，两套有价修复（港/仓 20/20 kW、40/20 kW）均保留全部 52 个登记车日。按主运行规则，20/20 kW 在 7 个口径年费最低，40/20 kW 在另 5 个口径最低，双站基准均为第三；Netze BW 官方网费下，40/20 kW 新建与既有接入的回放年费分别为 €19,708.03 和 €18,906.61（2025 年欧元）。两套修复系观察到本折缺口后确定，不构成样本外验证；后续 12 周重选与独立检验见[第二次留出检验](second_holdout.md)。
 
-**Both port-only facilities missed vehicle 1 on 26 November.** Each served 51 registered vehicle-days. Only the two-site baseline served all 52 and qualified for annual billing under all twelve cases. Adding 15 kW at the warehouse restored the full six-week service with either original port rating. The holdout registered two fewer vehicle-days than M8 and required 947.81 more grid kWh per year (1.62%).
+**Adding 15 kW at the warehouse restored full six-week service with either original port rating; 20 kW was the smallest priced warehouse charger.** Both priced repairs (20/20 and 40/20 kW, port/warehouse) served all 52 registered vehicle-days. Under the primary operating rule, 20/20 kW had the lowest annual bill in seven cases and 40/20 kW in the other five, with the baseline third throughout; under the official Netze BW tariff, replayed bills for 40/20 kW were €19,708.03 with new connections and €18,906.61 with existing access (2025 euros). Because these repairs were guided by the holdout shortfall, they do not constitute out-of-sample validation; see the [second holdout](second_holdout.md) for the subsequent 12-week reselection and preregistered test.
 
-最初的留出检验比较三套事先固定的设施。设施固定后按周全信息优化，调度时已知一周全部任务和原生 DE-LU 日前小时价格。留出期没有重新选型，排名即使保持，也可能有更便宜的其他设计。留出期 DE-LU 日前均价为 €206.16/MWh，M8 规划期为 €138.23/MWh，以下年费均只比较留出期内完成同一组任务的设施。[电价与样本范围](DATA.md#six-holdout-weeks-for-the-fixed-m8-facilities)
+**停靠断点敏感性**：关闭 5 号车的 20 个记录断点区间后，基准重新登记 50 个车日；港区 20 kW 的修复遗漏 12 月 7 日的 5 号车，六套检验配置中仅港区 40 kW 配仓库机的两套保留全部 50 个车日。
 
-The original holdout comparison covers three prespecified facilities. With facilities fixed, each weekly schedule uses all tasks and native DE-LU day-ahead hourly prices for that week. Designs were not reselected in the holdout, so even an unchanged ranking allows for a cheaper untested design. DE-LU day-ahead prices averaged €206.16/MWh in the holdout and €138.23/MWh in M8 planning. Annual bills are compared only among facilities serving the same holdout duties. [Prices and sample coverage](DATA.md#six-holdout-weeks-for-the-fixed-m8-facilities)
+**Recording-gap sensitivity:** Disabling charging across vehicle 5’s 20 recording-gap intervals lowered the baseline register to 50 vehicle-days. Repairs with a 20 kW port missed vehicle 5 on 7 December, and only the two configurations combining a 40 kW port with a warehouse charger retained all 50 vehicle-days.
 
-原固定设施取自 M8 六周规划网格。港区单站 20 kW 能保留 54/73 个车日，降到 15 kW 后仅完成 53 个，遗漏 2021-10-29 的 3 号车。港区维持 15 kW 时，仓库增加 10 kW 即补回该日。港区 10 kW 配仓库 50 kW 最多完成 50 个，仓库单站最多完成 6 个。官方网费下，规划期已核验有价方案中最低年费对应新建接入的港区单站 20 kW、既有接入的港区单站 40 kW。[规划期功率网格](site_sizing.md#中文)
+**实验背景与比较口径**：三套原固定设施取自 M8 六周规划网格——规划期内港区单站 20 kW 保住 54/73 个车日（降到 15 kW 完成 53 个，漏掉 2021-10-29 的 3 号车，仓库加 10 kW 可补回；港区 10 kW 配仓库 50 kW 最多完成 50 个，仓库单站最多 6 个），官方网费最低有价方案为新建 20/0 kW、既有 40/0 kW。本折设施固定后按周全信息离线排程（非在线策略），已知当周全部任务与原生 DE-LU 日前小时价；本折均价为 €206.16/MWh（M8 规划期为 €138.23/MWh）。留出期不重新选型，名次不变也不排除存在更便宜的未测方案；以下年费仅在留出期内完成同一组任务的设施间比较。[规划期功率网格](site_sizing.md#中文) · [电价与样本范围](DATA.md#six-holdout-weeks-for-the-fixed-m8-facilities)
 
-The original fixed facilities came from the six-week M8 planning grid. A 20 kW port alone retained 54 of 73 truck-days. At 15 kW it served 53 and missed vehicle 3 on 29 October 2021. Keeping the port at 15 kW and adding 10 kW at the warehouse restored that day. A 10 kW port with a 50 kW warehouse served at most 50 days, and warehouse-only facilities served at most six. Among the verified priced builds under the official tariff, the lowest planning-period annual bills used one port charger at 20 kW for new connections or 40 kW for existing access. [Planning-period power grid](site_sizing.md#english)
-
-仓库安装 20 kW 充电机后，两套有价修复均保留全部 52 个登记车日。按主运行规则，20/20 kW 在 7 个口径年费最低，40/20 kW 在另 5 个口径最低，双站基准均为第三。Netze BW 官方网费下，40/20 kW 新建和既有接入的回放年费分别为 €19,708.03 和 €18,906.61。
-
-Both priced warehouse repairs served the full register of 52 vehicle-days. Under the primary operating rule, the 20/20 kW repair had the lowest annual bill in seven cases and the 40/20 kW repair in the other five. The baseline ranked third throughout. Under the official Netze BW tariff, the 40/20 kW repair's replayed bills were €19,708.03 with new connections and €18,906.61 with existing access.
+**Setup and comparison basis:** The three prespecified facilities came from the six-week M8 planning grid, where a 20 kW port alone retained 54 of 73 vehicle-days (15 kW served 53 and missed vehicle 3 on 29 October 2021, restored by adding 10 kW at the warehouse; a 10 kW port with a 50 kW warehouse served at most 50, and warehouse-only builds served at most six), and the lowest official-tariff priced bills were 20/0 kW for new connections and 40/0 kW for existing access. With facilities fixed, weekly full-information offline optimization—not an online policy—uses each week’s tasks and native DE-LU hourly day-ahead prices (mean €206.16/MWh in this first holdout versus €138.23/MWh in M8 planning). Designs were not reselected in the holdout, so an unchanged ranking does not rule out cheaper untested builds; annual bills are compared only among facilities serving the same holdout duties. [Planning-period power grid](site_sizing.md#english) · [Prices and sample coverage](DATA.md#six-holdout-weeks-for-the-fixed-m8-facilities)
 
 ## 同服务年费与排名 · Annual cost for the same service
 
@@ -93,11 +89,11 @@ Each rated point is checked against the fixed weekly register R. The eleven duti
 
 ✓ 已证明可服务 / proved feasible · × 已证明不可行 / infeasible · ? 未判定 / open.
 
-两套修复根据留出期暴露的服务缺口确定。上述账单衡量补齐服务的费用。验证修复能否推广，还需在设施预先固定后用独立样本检验。留出期未重新选择设施，更便宜的其他设计仍有可能。
+两套修复系根据本折暴露的服务缺口事后确定，上述账单仅衡量在本折内补齐服务的费用，不构成样本外验证。本折检验完成后已与 M8 合并为 12 周选型样本，不再作为独立留出期；且本折未重新选型，仍可能存在更便宜的未测配置。
 
-The service shortfall observed in the holdout guided the choice of both repairs. Their bills measure the cost of restoring service. Out-of-sample validation requires fixing these facilities before testing an independent sample. The holdout did not repeat facility selection, so other designs could cost less.
+Both repairs were chosen after observing this holdout’s shortfall; their bills measure the cost of restoring service here rather than out-of-sample validation. Following this test, these six weeks were merged with M8 into the 12-week selection sample and are no longer independent. Facility selection was not repeated in this holdout, so cheaper untested designs remain possible.
 
-第二次留出的登记与结果见 [第二次留出检验](second_holdout.md) / See the [second holdout](second_holdout.md) for its registration and results.
+后续 12 周重新选型与第二次留出的预登记及结果见[第二次留出检验](second_holdout.md) / See the [second holdout](second_holdout.md) for the subsequent 12-week reselection, preregistration, and results.
 
 ## 逐日运输服务 · Daily registered service
 
@@ -159,9 +155,9 @@ The service shortfall observed in the holdout guided the choice of both repairs.
 
 基准未登记的 11 个车日即使没有枪数、站点或单车功率限制，仍会在行程中越过电池可行范围。逐个检查包含这些车日的 52 个连续段组合，每段首尾电量均取 150 kWh。
 
-11 月 26 日的 1 号车可以由双站基准服务。单独检查当天时，首趟行程 787 于柏林时间 10:14 出发，耗电 204.58 kWh；从 150 kWh 起点到 30 kWh 储备线可用 120 kWh。出发前只有仓库停靠，首次港区停靠在 15:23 后。把之前的连续日期也纳入时，两套港区单站设施各自的五种允许连续段也全部失败。
+11 月 26 日的 1 号车可以由双站基准服务。单独检查当天时，首趟行程 787 于柏林时间 10:14 出发，耗电 204.58 kWh；从 150 kWh 起点到 30 kWh 储备线仅有 120 kWh 可用。出发前只有仓库停靠，首次港区停靠在 15:23 后。把之前的连续日期也纳入时，两套港区单站设施各自的五种候选连续段全部失败。下表“单车检验中遇到的限制”汇总了包含该日的全部五种候选连续段：其中“单趟超可用电量”来自 11 月 22–25 日含超 270 kWh 单趟的多日联段，26 日单日段本身的约束是首趟行程储备越界。
 
-All eleven vehicle-days outside the baseline register violated a trip energy bound even with unlimited station and vehicle power and unrestricted connector access. All 52 combinations of an omitted duty and a continuous segment containing it were checked with 150 kWh at each segment boundary. On 26 November, vehicle 1's first trip (787) left at 10:14 Berlin time and used 204.58 kWh. A standalone day starts with 120 kWh available above reserve. Only the warehouse was available before departure, and the first port stop began after 15:23. All five possible continuous segments containing this day also failed at both port-only facilities.
+All eleven vehicle-days outside the baseline register violated a trip energy bound even with unlimited station and vehicle power and unrestricted connector access. All 52 combinations of an omitted duty and a continuous segment containing it were checked with 150 kWh at each segment boundary. On 26 November, vehicle 1’s first trip (787) left at 10:14 Berlin time and used 204.58 kWh, exceeding the 120 kWh available between the 150 kWh start and the 30 kWh reserve. Only the warehouse was available before departure, and the first port stop began after 15:23. All five candidate continuous segments containing this day also failed at both port-only facilities. The limits column below aggregates all five candidate segments containing 26 November: “trip exceeds usable battery” stems from multi-day segments including 22–25 November (which contain single trips above 270 kWh), whereas on 26 November alone the binding limit is the in-trip SOC reserve.
 
 | 范围 / Scope | 日期 (ID) / Date (ID) | 判别 / Classification | 单车检验中遇到的限制 / Limits observed | 固定全周集合 / Full weekly register |
 |---|---|---|---|---|
@@ -257,11 +253,11 @@ Vehicle 1 on 26 November remained in the new register and both port-only facilit
 
 ## 复现 · Reproduction
 
-从干净提交 `f39d6d61f11e4e63da92556029ffdf78fb826c01` 重新求解 UM-R005（170 次，406.76 秒）和 UM-R006（220 次，57.04 秒），逐次独立回放并按预登记规则比对后，服务集合、运行点、周购电区间、年费区间和名次均与原归档一致。核验记录在离线库 `runs/20261121_holdout_release_check/`。
+**发布前独立重解**：从干净提交 `f39d6d61f11e4e63da92556029ffdf78fb826c01` 重新求解主留出（UM-R005：170 次，406.76 秒）和仓库修复与敏感性（UM-R006：220 次，57.04 秒），逐次独立回放并按预登记规则比对后，服务集合、运行点、周购电区间、年费区间和名次均与原正式归档一致，核验记录见离线库 `runs/20261121_holdout_release_check/`。以下分列两次原正式运行的源码提交与复现命令。
 
-Both studies were solved again from clean commit `f39d6d61f11e4e63da92556029ffdf78fb826c01`. UM-R005 took 170 calls and 406.76 seconds, and UM-R006 took 220 calls and 57.04 seconds. Independent replay and preregistered checks matched the original service sets, operating points, weekly purchase bounds, annual bill bounds and ranks. The offline evidence is in `runs/20261121_holdout_release_check/`.
+**Release re-verification:** Both studies were re-solved from clean commit `f39d6d61f11e4e63da92556029ffdf78fb826c01` (UM-R005: 170 calls, 406.76 s; UM-R006: 220 calls, 57.04 s). Independent replay and preregistered checks matched the original formal archives on service sets, operating points, weekly purchase bounds, annual bill bounds, and ranks; offline evidence is in `runs/20261121_holdout_release_check/`. The original formal run commits and reproduction commands follow below.
 
-正式运行源码 / Source — `bd75ba0cf9e421d53184fe4a1ad23468b14c5ea1`. 墙钟 / Wall time — 389.42 s. 求解 / Solver calls — 170.
+原正式运行源码 / Original formal source — `bd75ba0cf9e421d53184fe4a1ad23468b14c5ea1`. 墙钟 / Wall time — 389.42 s. 求解 / Solver calls — 170.
 
 从仓库根执行。下列两条 Python 命令分别重新求解至新目录和独立回放已有正式归档。 / From the repository root, the two Python commands reproduce the solves in a fresh directory and independently replay the existing formal archive.
 
