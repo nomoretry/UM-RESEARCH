@@ -2,11 +2,13 @@
 
 from collections import Counter
 from concurrent.futures import FIRST_COMPLETED, ProcessPoolExecutor, wait
+import csv
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from functools import lru_cache
 import gzip
 import hashlib
+import io
 import json
 import math
 import multiprocessing
@@ -24,6 +26,7 @@ from . import site_sizing as ss
 
 WORKERS = 8
 AUDIT_SEED = 20261122
+CONTINUATION_TIMEOUT_GAP_EUR = 0.10
 WORKER_ENV = {"PYTHONHASHSEED": "0", "OPENBLAS_NUM_THREADS": "1",
               "OMP_NUM_THREADS": "1", "MKL_NUM_THREADS": "1"}
 SOLVER_OPTIONS = {"threads": 1, "random_seed": 0}
@@ -187,6 +190,23 @@ def replay(period, req, result):
         ss.close(upper, checked["purchase_eur"], "fixed-service incumbent")
 
 
+def _admitted_result(period, req, original):
+    """Apply the continuation's analytical rule to the original native evidence."""
+    stats = original["stats"]
+    status = stats["status"]
+    lower, upper = stats["objective_lower"], stats["objective_upper"]
+    widened = (status == "unresolved" and req.fixed is not None and original["audit"] is not None
+               and stats["status_code"] == 1 and "time limit" in stats["message"].lower()
+               and lower is not None and upper is not None and math.isfinite(lower) and math.isfinite(upper)
+               and 0 <= upper - lower <= CONTINUATION_TIMEOUT_GAP_EUR)
+    if widened:
+        # A recorded gap is insufficient on its own. Independently validate the
+        # fixed duties, physical schedule, price replay and both bounds.
+        replay(period, req, original)
+    return {**original, "stats": {**stats, "original_status": status, "widened_interval": widened,
+                                  "status": "bounded" if widened else status}}
+
+
 def _schedule_digest(result):
     def normalized(row):
         return {key: round(value, 9) if isinstance(value, float) else value for key, value in row.items()}
@@ -198,24 +218,32 @@ def _summary(result):
     stats = result["stats"]
     fields = ("status", "status_code", "message", "objective_lower", "objective_upper", "relative_gap",
               "absolute_gap", "worker_pid", "started_utc", "seconds", "cpu_seconds")
+    if "original_status" in stats:
+        fields += ("original_status", "widened_interval")
     return {**{key: stats[key] for key in fields}, "objective": stats["objective_upper"],
             "schedule_sha256": _schedule_digest(result)}
 
 
-def _repeat(period, request, deadline, path, original_checksum, sample_hash):
+def _repeat(period, request, deadline, path, original_checksum, sample_hash, continuation):
     result = _solve(period, request, deadline)
     replay(period, request, result)
+    if continuation:
+        result = _admitted_result(period, request, result)
     body = {"sample_sha256": sample_hash, "certificate_sha256": original_checksum,
             "repeated": _summary(result)}
     _publish(path, _encoded({"body": body, "sha256": _hash(body)}))
 
 
 class M10Evidence:
-    def __init__(self, output, inputs, *, workers=WORKERS, deadline=math.inf, verify=False):
+    def __init__(self, output, inputs, *, workers=WORKERS, deadline=math.inf, verify=False, parent_archive=None):
         if not isinstance(workers, int) or workers < 1:
             raise ValueError("Expected a positive number of worker processes")
         self.periods = {p.days[0]["week_start"]: p for p in inputs.periods}
         self.directory = Path(output) / "certificates"
+        self.parent_archive = Path(parent_archive).resolve() if parent_archive is not None else None
+        if self.parent_archive is not None and self.directory.resolve().is_relative_to(self.parent_archive):
+            raise ValueError("The continuation must use its own certificate directory")
+        self._parent_hashes = {}
         self.workers = workers
         self.deadline = deadline
         self.verify = verify
@@ -235,8 +263,28 @@ class M10Evidence:
             raise ValueError("The M10 certificate directory is absent")
         if not self.verify:
             self.directory.mkdir(exist_ok=True, parents=True)
+        if self.parent_archive is not None:
+            checkpoint = json.loads((self.parent_archive / "checkpoint.json").read_bytes())
+            ledger = (self.parent_archive / "solves.csv").read_bytes()
+            if hashlib.sha256(ledger).hexdigest() != checkpoint["files"]["solves.csv"]:
+                raise ValueError("The parent solve ledger differs from its checkpoint")
+            for row in csv.DictReader(io.StringIO(ledger.decode("utf-8"))):
+                label = row["id"]
+                if label in self._parent_hashes:
+                    raise ValueError(f"Duplicate parent request {label}")
+                self._parent_hashes[label] = row["certificate_sha256"]
+            discovered = {p.name.removesuffix(".json.gz")
+                          for p in (self.parent_archive / "certificates").glob("*.json.gz")}
+            if (discovered != self._parent_hashes.keys()
+                    or len(discovered) != checkpoint["audit"]["certificates"]):
+                raise ValueError("Parent certificate inventory does not match the checkpoint")
+            for label in sorted(self._parent_hashes):
+                self._index(label)
         for path in sorted(self.directory.glob("*.json.gz")):
-            self._index(path.name.removesuffix(".json.gz"))
+            label = path.name.removesuffix(".json.gz")
+            if label in self._parent_hashes:
+                raise ValueError(f"Current directory duplicates a parent certificate {label}")
+            self._index(label)
         if not self.verify:
             self._environment = patch.dict(os.environ, WORKER_ENV)
             self._environment.__enter__()
@@ -252,14 +300,21 @@ class M10Evidence:
                 self._environment.__exit__(*exc)
 
     def _read(self, label):
-        content = (self.directory / (label + ".json.gz")).read_bytes()
+        directory = self.parent_archive / "certificates" if label in self._parent_hashes else self.directory
+        content = (directory / (label + ".json.gz")).read_bytes()
+        checksum = hashlib.sha256(content).hexdigest()
+        if label in self._parent_hashes and checksum != self._parent_hashes[label]:
+            raise ValueError(f"Certificate differs from parent solve ledger: {label}")
         envelope = json.loads(gzip.decompress(content))
         body = envelope["body"]
         req = Request.from_json(body["request"])
         if (envelope["sha256"] != _hash(body) or body["scope"] != self.scope
                 or req.identifier(self.scope) != label):
             raise ValueError(f"Certificate hash or input scope differs: {label}")
-        return req, body["result"], hashlib.sha256(content).hexdigest()
+        result = body["result"]
+        if self.parent_archive is not None:
+            result = _admitted_result(self.periods[req.week], req, result)
+        return req, result, checksum
 
     def _index(self, label):
         req, result, sha256 = self._read_cached(label)
@@ -271,6 +326,10 @@ class M10Evidence:
                              "objective_unit": "EUR_2021" if req.fixed is not None else "negative_weighted_service_score",
                              **{key: stats[key] for key in fields}, "audited": result["audit"] is not None,
                              "certificate_sha256": sha256}
+        if self.parent_archive is not None:
+            self._rows[label].update(original_status=stats["original_status"],
+                                     widened_interval=stats["widened_interval"],
+                                     certificate_origin="parent" if label in self._parent_hashes else "current")
         self._requests[label] = req
         if stats["status"] == "unresolved":
             self.unresolved.add((req.week, req.design, req.caps))
@@ -283,6 +342,9 @@ class M10Evidence:
         if label not in self._rows:
             raise KeyError(label)
         return self._read_cached(label)[1]
+
+    def request_for(self, label):
+        return self._requests[label]
 
     def check(self):
         if len(self.unresolved) > ss.fc.MAX_UNRESOLVED:
@@ -342,15 +404,28 @@ class M10Evidence:
             req, result, checksum = self._read_cached(label)
             if checksum != self._rows[label]["certificate_sha256"]:
                 raise ValueError(f"Changed certificate {label}")
+            # Validate the unaltered status against the policy under which the
+            # proof was produced. _read replays every newly admitted interval.
+            if self.parent_archive is not None:
+                result = {**result, "stats": {**result["stats"], "status": result["stats"]["original_status"]}}
             replay(self.periods[req.week], req, result)
-        return {"certificates": len(self._rows), "feasible_replayed": sum(r["audited"] for r in self._rows.values()),
-                "status_counts": dict(Counter(r["status"] for r in self._rows.values())),
-                "unresolved_weekly_groups": len(self.unresolved)}
+        rows = self._rows.values()
+        audit = {"certificates": len(self._rows), "feasible_replayed": sum(r["audited"] for r in rows),
+                 "status_counts": dict(Counter(r["status"] for r in rows)),
+                 "unresolved_weekly_groups": len(self.unresolved)}
+        if self.parent_archive is not None:
+            audit.update(original_status_counts=dict(Counter(r["original_status"] for r in rows)),
+                         certificate_origins=dict(Counter(r["certificate_origin"] for r in rows)),
+                         widened_intervals=sum(r["widened_interval"] for r in rows))
+        return audit
 
     def determinism(self, seed=AUDIT_SEED, count=20):
         self.check()
         labels = random.Random(seed).sample(sorted(self._rows), count)
-        sample_hash = _hash({"seed": seed, "scope": self.scope, "labels": labels})
+        sample = {"seed": seed, "scope": self.scope, "labels": labels}
+        if self.parent_archive is not None:
+            sample["timeout_interval_eur"] = CONTINUATION_TIMEOUT_GAP_EUR
+        sample_hash = _hash(sample)
         directory = self.directory.parent / "determinism" / sample_hash
         if not self.verify:
             directory.mkdir(parents=True, exist_ok=True)
@@ -370,7 +445,8 @@ class M10Evidence:
                                      max_tasks_per_child=1) as pool:
                 futures = [pool.submit(_repeat, self.periods[self._requests[key].week],
                                        self._requests[key], self.deadline, directory / (key + ".json"),
-                                       self._rows[key]["certificate_sha256"], sample_hash) for key in batch]
+                                       self._rows[key]["certificate_sha256"], sample_hash,
+                                       self.parent_archive is not None) for key in batch]
                 for future in futures:
                     future.result()
         for label in labels:
@@ -387,6 +463,8 @@ class M10Evidence:
             comparisons.append({"id": label, "status_equal": status_equal, "objective_equal": objective_equal,
                                 "schedule_equal": schedule_equal, "match": status_equal and objective_equal and schedule_equal,
                                 "original": prior, "repeated": repeated})
+            if self.parent_archive is not None:
+                comparisons[-1]["original_status_equal"] = prior["original_status"] == repeated["original_status"]
         matched = sum(row["match"] for row in comparisons)
         return {"seed": seed, "requested": count, "comparisons": comparisons, "matched": matched,
                 "all_match": matched == count}

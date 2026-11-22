@@ -40,6 +40,15 @@ SOLVE_COLUMNS = {
 }
 
 
+def solve_columns(continuation):
+    if not continuation:
+        return SOLVE_COLUMNS
+    return {**SOLVE_COLUMNS,
+            "original_status": "Status under the earlier weekly timeout interval rule (EUR 0.05, 2021).",
+            "certificate_origin": "parent for a byte-exact inherited certificate, current for a new solve.",
+            "widened_interval": "True only if the new EUR 0.10 rule admits a formerly unresolved interval."}
+
+
 def json_bytes(data):
     return (json.dumps(data, ensure_ascii=False, sort_keys=True, indent=2, allow_nan=False)
             + "\n").encode("utf-8")
@@ -96,9 +105,14 @@ def solve_statistics(records):
 def products(output, service, matrix, proofs, costs, records, audit, *, verify=False):
     from .m10_costs import OPERATING_COLUMNS, ANNUAL_COLUMNS
 
+    continuation = bool(records and "certificate_origin" in records[0])
     schemas = {"service_matrix.csv": SERVICE_COLUMNS, "operating_points.csv": OPERATING_COLUMNS,
-               "annual_costs.csv": ANNUAL_COLUMNS, "solves.csv": SOLVE_COLUMNS}
+               "annual_costs.csv": ANNUAL_COLUMNS, "solves.csv": solve_columns(continuation)}
     tables = [matrix, costs["operating_points"], costs["annual_costs"], records]
+    if continuation:
+        from .m10_transparency import OLD_POINT_COLUMNS, TRANSPARENCY_COLUMNS
+        schemas.update({"old_rule_transparency.csv": TRANSPARENCY_COLUMNS, "old_rule_points.csv": OLD_POINT_COLUMNS})
+        tables.extend([costs["old_rule_transparency"], costs["old_rule_points"]])
     files = {name: csv_bytes(columns, rows) for (name, columns), rows in zip(schemas.items(), tables, strict=True)}
     files["TABLES_README.md"] = table_dictionary(schemas)
     files["service_proofs.json"] = json_bytes(proofs)
@@ -106,7 +120,17 @@ def products(output, service, matrix, proofs, costs, records, audit, *, verify=F
     files["selection.json"] = json_bytes({k: v for k, v in costs.items()
                                           if k not in ("annual_costs", "operating_points")})
     files["audit.json"] = json_bytes(audit)
-    files["compute_statistics.json"] = json_bytes(solve_statistics(records))
+    stats = solve_statistics(records)
+    if continuation:
+        stats["by_origin"] = {}
+        for origin in ("parent", "current"):
+            subset = [row for row in records if row["certificate_origin"] == origin]
+            expanded = [row["absolute_gap"] for row in subset if row["widened_interval"]]
+            stats["by_origin"][origin] = dict(**solve_statistics(subset),
+                                              widened_intervals=len(expanded),
+                                              maximum_widened_gap=max(expanded, default=None))
+        files["old_rule_evidence.json"] = json_bytes(costs["old_rule_evidence"])
+    files["compute_statistics.json"] = json_bytes(stats)
     for name, content in files.items():
         artifact(output / name, content, verify=verify)
     hashes = {name: digest(output / name) for name in files}

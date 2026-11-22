@@ -10,8 +10,9 @@ from time import monotonic
 
 from . import m10_inputs, site_sizing as ss
 from .__main__ import checked_output, digest
-from .m10_tables import (SERVICE_COLUMNS, SOLVE_COLUMNS, artifact, csv_bytes, json_bytes,
-                         products, solve_statistics)
+from .m10_continuation import compare_batch, materialize_parent, parent_identity, verify_parent_products
+from .m10_tables import (SERVICE_COLUMNS, artifact, csv_bytes, json_bytes, products, solve_columns,
+                         solve_statistics)
 
 
 WORKERS = 8
@@ -65,7 +66,7 @@ def frozen_inputs(inputs, previous):
                                  for name in ("solves.jsonl", "summary.json", "manifest.json")})
 
 
-def source_manifest(inputs, previous, output, mode):
+def source_manifest(inputs, previous, output, mode, *, parent=None):
     source = ss.source_state()
     if mode != "verify" and source["dirty"]:
         raise ValueError("Commit the research source before starting or resuming")
@@ -74,20 +75,46 @@ def source_manifest(inputs, previous, output, mode):
                     reserve_seconds=CLOSE_SECONDS, repeat_seed=REPEAT_SEED)
     name = output / "run_manifest.json"
     if mode == "output":
-        checked_output(output, ss.eb.ROOT).mkdir()
+        if parent is not None and (output.parent.is_relative_to(parent.parent)
+                                   or parent.parent.is_relative_to(output.parent)):
+            raise ValueError("The continuation and its parent must use separate directories")
+        checked_output(output, ss.eb.ROOT)
         manifest = dict(source_commit=source["commit"], inputs=binding, **settings,
                         first_started_utc=utc_now().isoformat())
-        artifact(name, json_bytes(manifest))
+        if parent is not None:
+            manifest.update(parent_checkpoint=parent_identity(parent), timeout_interval_eur_2021=0.10)
+            preflight_file = output.parent / "preflight.json"
+            forecast = read(preflight_file)
+            if (forecast["source_checkpoint_sha256"] != manifest["parent_checkpoint"]["checkpoint.json"]
+                    or forecast["source_ledger_sha256"] != digest(parent / "solves.csv")
+                    or forecast["budget_seconds"] != WALL_SECONDS or forecast["admit"] is not True
+                    or not 0 < forecast["projected_wall_seconds"] <= WALL_SECONDS):
+                raise ValueError("Preflight failed the registered four-hour admission gate")
+            manifest["preflight_sha256"] = digest(preflight_file)
+        # A visible run directory always contains its identity and original clock.
+        with TemporaryDirectory(prefix="um-selection-start-", dir=output.parent) as temp:
+            ready = Path(temp) / "prepared"
+            ready.mkdir()
+            artifact(ready / name.name, json_bytes(manifest))
+            if parent is not None:
+                artifact(ready / "preflight.json", preflight_file.read_bytes())
+            ready.rename(output)
     else:
         manifest = read(name)
         if manifest["inputs"] != binding or any(manifest[k] != v for k, v in settings.items()):
             raise ValueError("Input or parent certificate archive differs from the frozen run")
         if mode == "resume" and manifest["source_commit"] != source["commit"]:
             raise ValueError("Resume requires the original source commit")
+        if parent is not None and manifest.get("parent_checkpoint") != parent_identity(parent):
+            raise ValueError("Cannot switch the parent of a continuation")
+        if "parent_checkpoint" in manifest and manifest.get("timeout_interval_eur_2021") != 0.10:
+            raise ValueError("Continuation timeout interval policy differs")
+        if "parent_checkpoint" in manifest and digest(output / "preflight.json") != manifest["preflight_sha256"]:
+            raise ValueError("Registered preflight differs")
     return manifest
 
 
-def run(output, previous, *, mode="output", new_round=False):
+def run(output, previous, *, mode="output", new_round=False, from_checkpoint=None):
     from .m10_costs import OPERATING_COLUMNS, cost_results
     from .m10_evidence import M10Evidence
     from .m10_service import service_grid
@@ -97,18 +124,31 @@ def run(output, previous, *, mode="output", new_round=False):
     verify = mode == "verify"
     output = output.resolve()
     inputs = m10_inputs.load_inputs()
-    manifest = source_manifest(inputs, previous, output, mode)
+    if from_checkpoint is not None:
+        from_checkpoint = from_checkpoint.resolve()
+        if mode != "resume" or (not output.exists() and not new_round):
+            raise ValueError("Import a checkpoint with --resume and an explicit new round")
+    create = mode == "output" or (from_checkpoint is not None and not output.exists())
+    manifest = source_manifest(inputs, previous, output, "output" if create else mode, parent=from_checkpoint)
     if mode == "resume" and (output / "seal.json").exists():
         return run(output, previous, mode="verify")
     opened = utc_now()
     clock_file = output / "sessions.json"
-    sessions = [] if mode == "output" else read(clock_file)
-    if mode == "output" or new_round:
-        sessions.append(dict(started_utc=manifest["first_started_utc"] if mode == "output" else opened.isoformat()))
+    sessions = read(clock_file) if clock_file.exists() else []
+    if not sessions and verify:
+        raise ValueError("Missing run session clock")
+    if not sessions or (new_round and not create and "parent_checkpoint" not in manifest):
+        sessions.append(dict(started_utc=manifest["first_started_utc"] if not sessions else opened.isoformat()))
         artifact(clock_file, json_bytes(sessions))
     start = datetime.fromisoformat(sessions[-1]["started_utc"])
     hard_end = start + timedelta(seconds=WALL_SECONDS)
     cutoff = math.inf if verify else monotonic() + (hard_end - opened).total_seconds() - CLOSE_SECONDS
+    parent = None
+    if "parent_checkpoint" in manifest:
+        parent = output / "inherited"
+        if from_checkpoint is not None:
+            materialize_parent(from_checkpoint, parent, manifest["parent_checkpoint"], manifest["inputs"])
+        verify_parent_products(parent, manifest["parent_checkpoint"], manifest["inputs"])
 
     def progress(message):
         if not verify:
@@ -121,6 +161,10 @@ def run(output, previous, *, mode="output", new_round=False):
 
     def batch_checkpoint(design, weekly):
         batches = output / "operating_batches"
+        if parent is not None:
+            prior = parent / "operating_batches" / (design.label + ".csv")
+            if prior.exists():
+                compare_batch(prior, weekly)
         if not verify:
             batches.mkdir(exist_ok=True)
         artifact(batches / (design.label + ".csv"), csv_bytes(OPERATING_COLUMNS, weekly), verify=verify)
@@ -129,11 +173,11 @@ def run(output, previous, *, mode="output", new_round=False):
     progress(f"正式{('开跑' if mode == 'output' else '续算')}，源码 {manifest['source_commit']}，"
              f"{len(inputs.periods)} 周、{len(inputs.main_reference)} 个登记车日、{WORKERS} 进程。")
     with (without_solver() if verify else nullcontext()), M10Evidence(
-            output, inputs, workers=WORKERS, deadline=cutoff, verify=verify) as evidence:
+            output, inputs, workers=WORKERS, deadline=cutoff, verify=verify, parent_archive=parent) as evidence:
         if stopped:
             audit = evidence.verify_all()
             counts = solve_statistics(evidence.records)
-            artifact(output / "solves.csv", csv_bytes(SOLVE_COLUMNS, evidence.records), verify=True)
+            artifact(output / "solves.csv", csv_bytes(solve_columns(parent is not None), evidence.records), verify=True)
             if counts != stopped["solve_statistics"] or audit != stopped["audit"]:
                 raise ValueError("Partial certificate archive differs from its checkpoint")
             for name, expected in stopped["files"].items():
@@ -145,6 +189,10 @@ def run(output, previous, *, mode="output", new_round=False):
             save("service_summary.json", {d.label: row for d, row in service.items()})
             save("service_proofs.json", proofs)
             artifact(output / "service_matrix.csv", csv_bytes(SERVICE_COLUMNS, matrix), verify=verify)
+            if parent is not None:
+                for name in ("service_summary.json", "service_proofs.json", "service_matrix.csv"):
+                    if digest(output / name) != digest(parent / name):
+                        raise ValueError(f"Continuation changed the inherited service results: {name}")
             progress(f"服务网格完成，35 套硬件，逐设计状态 {dict(Counter(r['status'] for r in service.values()))}。")
             costs = cost_results(inputs, service, evidence, progress=progress, checkpoint=batch_checkpoint)
             audit = evidence.verify_all()
@@ -159,6 +207,7 @@ def run(output, previous, *, mode="output", new_round=False):
                 return dict(status="verified", audit=audit, product_count=len(hashes))
             checks = evidence.determinism(seed=REPEAT_SEED, count=20)
             save("determinism.json", checks)
+            progress(f"新进程确定性抽查 {checks['requested']} 次，一致 {checks['matched']} 次。")
             details = ["# 新进程确定性复核", "",
                        f"固定抽样种子 {REPEAT_SEED}。共比较 {len(checks['comparisons'])} 次，"
                        f"状态、目标与排程摘要均相符 {checks['matched']} 次。", "",
@@ -178,7 +227,7 @@ def run(output, previous, *, mode="output", new_round=False):
                 raise
             records = evidence.records
             audit = evidence.verify_all()
-            artifact(output / "solves.csv", csv_bytes(SOLVE_COLUMNS, records))
+            artifact(output / "solves.csv", csv_bytes(solve_columns(parent is not None), records))
             names = ["solves.csv", "service_summary.json", "service_proofs.json", "service_matrix.csv"]
             names.extend(p.relative_to(output).as_posix() for p in (output / "operating_batches").glob("*.csv"))
             if (output / "product_hashes.json").is_file():
@@ -200,9 +249,10 @@ def main(argv=None):
     parser.add_argument("--previous", type=Path, help="Original M9 registration archive")
     parser.add_argument("--legacy", choices=["m8", "m9", "m9-repair"], help="Study to replay with --verify")
     parser.add_argument("--new-round", action="store_true", help="Record a fresh four-hour budget on explicit resumption")
+    parser.add_argument("--from-checkpoint", type=Path, help="Import the earlier checked archive under the M10 0.10 EUR policy")
     args = parser.parse_args(argv)
     if args.legacy:
-        if args.verify is None or args.new_round:
+        if args.verify is None or args.new_round or args.from_checkpoint is not None:
             parser.error("--legacy requires --verify")
         result = verify_legacy(args.legacy, args.verify.resolve(), args.previous)
     else:
@@ -211,7 +261,7 @@ def main(argv=None):
         mode = next(m for m in ("output", "resume", "verify") if getattr(args, m) is not None)
         target = getattr(args, mode).resolve()
         previous = args.previous or target.parent.parent / "20261121_holdout_weeks" / "formal"
-        result = run(target, previous, mode=mode, new_round=args.new_round)
+        result = run(target, previous, mode=mode, new_round=args.new_round, from_checkpoint=args.from_checkpoint)
     print(json.dumps(result, ensure_ascii=False, allow_nan=False), flush=True)
     return 2 if result.get("status") == "stopped" else 0
 

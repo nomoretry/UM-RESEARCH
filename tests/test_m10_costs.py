@@ -90,3 +90,65 @@ def test_partial_ranking_considers_each_hardware_once_and_keeps_unresolved_compe
     assert ranks["d"]["rank_best"] is None
     assert winners[0]["incumbent"]["caps_kw"] == [20, 0]
     assert winners[0]["possible_minimum_designs"] == ["a", "b"]
+
+
+def test_solve_windows_exclude_wait_between_rounds_but_keep_in_session_barriers():
+    rows = [dict(started_utc="2026-11-22T00:00:00+00:00", seconds=3, certificate_origin="parent"),
+            dict(started_utc="2026-11-22T00:00:08+00:00", seconds=2, certificate_origin="parent"),
+            dict(started_utc="2026-11-22T10:00:00+00:00", seconds=4, certificate_origin="current")]
+    assert costs._solve_windows(rows) == {"parent": 10, "current": 4}
+
+
+def test_pinned_meters_and_original_threshold_use_issued_proofs_without_resolving():
+    from um_charging.m10_evidence import Request
+    from um_charging.m10_transparency import OLD_POINT_COLUMNS, TRANSPARENCY_COLUMNS, original_rule
+    period = two_sites(13.5)
+    week = period.days[0]["date"]
+    period.days[0]["week_start"] = week
+    inputs = SimpleNamespace(periods=[period], registered=period.keys)
+    large, small = ss.Design(1, 50, 50), ss.Design(1, 40, 50)
+    caps = (40, 50)
+    results, requests, ledger = {}, {}, []
+    for label, design, old_status in (("wide", large, "unresolved"), ("exact", small, "certified")):
+        req = Request.make(period, design, "energy", caps, fixed=period.keys)
+        solved = ss.solve(period, design, caps=caps, fixed=period.keys)
+        stats = solved["stats"]
+        stats.update(original_status=old_status, widened_interval=label == "wide")
+        if label == "wide":
+            stats.update(status="bounded", objective_lower=stats["objective_upper"] - .06)
+        requests[label], results[label] = req, solved
+        ledger.append(dict(id=label, phase="energy", original_status=old_status, widened_interval=label == "wide",
+                           objective_lower=stats["objective_lower"], certificate_origin="parent",
+                           started_utc="2026-11-22T00:00:00+00:00", seconds=1))
+    def archived(requests):
+        assert not requests
+        return []
+    evidence = SimpleNamespace(trial=False, batch=archived, get=results.__getitem__,
+                               request_for=requests.__getitem__, records=ledger)
+    network, materials = costs._parameters(inputs.periods)
+    bounds = AnnualBillBounds(inputs.periods, inputs.registered, network, materials)
+    dispatch = costs.CoarseDispatch(inputs, {}, network, evidence)
+    dispatch.parent_batches[(large.label, caps)] = {week: dict(evidence_id="wide", status="unresolved", method="weekly_request")}
+    dispatch.parent_batches[(small.label, caps)] = {week: dict(evidence_id="exact", status="certified", method="weekly_request")}
+    assert dispatch.dispatch(large, caps)["status"] == "bounded"
+    original = dispatch.dispatch(small, caps)
+    assert original["weeks"][0]["solve"] == "exact" and original["weeks"][0]["method"] == "weekly_request"
+
+    # At a new (unsealed) target the relaxed scan can pick a wider donor.
+    # Its exact strict certificate, already issued, remains available for the
+    # original-rule comparison; the large hardware lacks a fitting strict donor.
+    del dispatch.parent_batches[(small.label, caps)]
+    del dispatch.cache[week, caps, 0][small]
+    operations = {d: [dispatch.dispatch(d, caps)] for d in (large, small)}
+    assert operations[small][0]["weeks"][0]["solve"] == "wide"
+    annual = [r for d, (point,) in operations.items() for r in costs._invoice_rows(d, point, bounds, dispatch.records)]
+    ranked, minima = costs._rank_designs(annual)
+    checked = original_rule(dispatch, bounds, operations, annual, ranked, minima)
+    assert len(checked["old_rule_transparency"]) == 12
+    assert all(r.keys() == TRANSPARENCY_COLUMNS.keys() for r in checked["old_rule_transparency"])
+    points = checked["old_rule_points"]
+    assert all(r.keys() == OLD_POINT_COLUMNS.keys() for r in points)
+    assert all(r["original_upper"] is None and r["witness_upper"] is not None
+               for r in points if r["design"] == large.label)
+    assert all(r["alternative_ids"] == "exact" and r["original_upper"] is not None
+               for r in points if r["design"] == small.label)

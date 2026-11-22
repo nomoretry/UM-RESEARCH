@@ -1,5 +1,6 @@
 """Coarse operating limits and twelve-week fixed-service invoices."""
 from collections import Counter, defaultdict
+import csv
 from datetime import datetime
 from itertools import product
 import math
@@ -66,6 +67,21 @@ def _row(label, result):
     return row
 
 
+def _archived_batches(directory):
+    batches = defaultdict(dict)
+    if directory is not None:
+        for path in sorted((directory / "operating_batches").glob("*.csv")):
+            with path.open(encoding="utf-8", newline="") as stream:
+                for row in csv.DictReader(stream):
+                    if row["design"] != path.stem:
+                        raise ValueError(f"Archived design differs in {path.name}")
+                    key = (row["design"], (int(row["port_cap_kw"]), int(row["warehouse_cap_kw"])))
+                    if row["week"] in batches[key]:
+                        raise ValueError(("Duplicate archived operating week", key, row["week"]))
+                    batches[key][row["week"]] = row
+    return batches
+
+
 class CoarseDispatch(ss.DispatchGrid):
     """Run the M8 grid order, scheduling independent weeks together at each point."""
     def __init__(self, inputs, service, network, evidence):
@@ -75,6 +91,7 @@ class CoarseDispatch(ss.DispatchGrid):
         self.verified = set()
         self.records = defaultdict(list)
         self.records_seen = set()
+        self.parent_batches = _archived_batches(getattr(evidence, "parent_archive", None))
         for design, item in sorted(service.items(), reverse=True):
             for w in item["weeks"]:
                 if w["status"] == "shortfall":
@@ -96,19 +113,54 @@ class CoarseDispatch(ss.DispatchGrid):
                 continue
             # The wider solve supplies a lower bound. Independently confirm
             # that its physical schedule supplies the upper bound on this build.
-            key = row["solve"], design, caps
-            if key not in self.verified:
-                result = self.evidence.get(row["solve"])
-                replay = ss.meter_replay(period, design.hardware(), ss.eb.DEFAULT_SPEC, caps, result)
-                if ss.eb.selected(result) != self.reference & period.keys:
-                    raise ValueError(("fixed service reuse", week, design, caps))
-                ss.close(replay["purchase_eur"], row["purchase_eur"], key)
-                for s in ss.SITES:
-                    for measurement in ("site_grid_kwh", "site_quarter_peak_kw"):
-                        ss.close(replay[measurement][s], row[measurement][s], key)
-                self.verified.add(key)
+            self.replay_transfer(period, design, caps, row)
             return {**row, "method": "larger_hardware_schedule"}
         return None
+
+    def replay_transfer(self, period, design, caps, row):
+        key = row["solve"], design, caps
+        if key in self.verified:
+            return
+        result = self.evidence.get(row["solve"])
+        replay = ss.meter_replay(period, design.hardware(), ss.eb.DEFAULT_SPEC, caps, result)
+        if ss.eb.selected(result) != self.reference & period.keys:
+            raise ValueError(("fixed service reuse", period.days[0]["week_start"], design, caps))
+        ss.close(replay["purchase_eur"], row["purchase_eur"], key)
+        for s in ss.SITES:
+            for measurement in ("site_grid_kwh", "site_quarter_peak_kw"):
+                ss.close(replay[measurement][s], row[measurement][s], key)
+        self.verified.add(key)
+
+    def _archived_weeks(self, design, caps, saved):
+        active = ss._active_build(design, caps)
+        rows = []
+        if set(saved) != {p.days[0]["week_start"] for p in self.periods}:
+            raise ValueError(("Incomplete archived operating point", design, caps))
+        for p in self.periods:
+            week = p.days[0]["week_start"]
+            original = saved[week]
+            label, method = original["evidence_id"], original["method"]
+            if method == "excluded_point":
+                row = dict(status="not_required", method=method)
+            elif method == "infeasible_superset":
+                if not any(w == week and proof == label and _contains(larger, high, active, caps)
+                           for larger, high, w, proof in self.failures):
+                    raise ValueError(("Missing archived infeasible superset", week, label))
+                row = dict(status="infeasible", solve=label, method=method)
+            else:
+                req = self.evidence.request_for(label)
+                if (req.phase != "energy" or req.week != week or req.caps != caps
+                        or req.fixed != tuple(sorted(self.reference & p.keys))
+                        or not ss._dominates(req.design, active)):
+                    raise ValueError(("Archived operating witness scope differs", week, label))
+                result = self.evidence.get(label)
+                if original["status"] != result["stats"]["original_status"]:
+                    raise ValueError(("Archived weekly admission differs", week, label))
+                row = dict(_row(label, result), method=method)
+                if "purchase_eur" in row and req.design != active:
+                    self.replay_transfer(p, active, caps, row)
+            rows.append(row)
+        return rows
 
     def _weeks(self, design, caps):
         active = ss._active_build(design, caps)
@@ -122,8 +174,14 @@ class CoarseDispatch(ss.DispatchGrid):
                 requests.append(Request.make(period, active, "energy", caps, fixed=self.reference & period.keys))
         for i, (label, result) in zip(missing, self.evidence.batch(requests), strict=True):
             rows[i] = _row(label, result)
+        return rows
+
+    def _remember(self, design, caps, rows):
+        active = ss._active_build(design, caps)
         for period, row in zip(self.periods, rows, strict=True):
             week = period.days[0]["week_start"]
+            if row["method"] in ("excluded_point", "infeasible_superset"):
+                continue
             self.cache[week, caps, 0][active] = row
             self.counts[row["method"]] += 1
             if row["solve"] not in self.records_seen and row["lower_eur"] is not None:
@@ -131,13 +189,13 @@ class CoarseDispatch(ss.DispatchGrid):
                 self.records_seen.add(row["solve"])
             if row["status"] == "infeasible":
                 self.failures.append((active, caps, week, row["solve"]))
-        return rows
 
     def weekly(self, period, design, caps, delay, exact):
         return self.cache[period.days[0]["week_start"], caps, delay][ss._active_build(design, caps)]
 
     def dispatch(self, design, caps, *, delay=0, exact=False):
-        failure = self.excluded(design, caps)
+        saved = self.parent_batches.get((design.label, caps))
+        failure = self.excluded(design, caps) if saved is None else None
         if failure is not None:
             week, label = failure
             rows = [(dict(status="infeasible", solve=label, method="infeasible_superset")
@@ -145,7 +203,10 @@ class CoarseDispatch(ss.DispatchGrid):
                     for p in self.periods]
             self.counts["points_excluded_by_inclusion"] += 1
             return dict(design=design.label, caps_kw=caps, status="infeasible", weeks=rows)
-        weeks = self._weeks(design, caps)
+        weeks = self._archived_weeks(design, caps, saved) if saved else self._weeks(design, caps)
+        self._remember(design, caps, weeks)
+        if saved and any(r["method"] == "infeasible_superset" for r in weeks):
+            self.counts["points_excluded_by_inclusion"] += 1
         if any(w["status"] not in ss.ENERGY_ACCEPTED for w in weeks):
             status = "infeasible" if any(w["status"] == "infeasible" for w in weeks) else "unresolved"
             return dict(design=design.label, caps_kw=caps, status=status, weeks=weeks)
@@ -309,6 +370,15 @@ def _neighbours(service, operations, bounds, winners):
     return sorted((added | extra) - service.keys())
 
 
+def _solve_windows(observations):
+    timing = defaultdict(list)
+    for r in observations:
+        start = datetime.fromisoformat(r["started_utc"]).timestamp()
+        timing[r.get("certificate_origin", "current")].append((start, start + r["seconds"]))
+    return {origin: max(b for _, b in spans) - min(a for a, _ in spans)
+            for origin, spans in sorted(timing.items())}
+
+
 def _estimate(service, operations, dispatch, bounds, winners):
     audit = _hold_one_week_out(operations, dispatch, bounds)
     added = _neighbours(service, operations, bounds, winners)
@@ -362,16 +432,16 @@ def _estimate(service, operations, dispatch, bounds, winners):
         work.append(mean(samples))
     projected = None
     elapsed = cpu = 0.
+    windows = _solve_windows(observations)
     if observations:
-        starts = [datetime.fromisoformat(r["started_utc"]).timestamp() for r in observations]
-        elapsed = max(s + r["seconds"] for s, r in zip(starts, observations, strict=True)) - min(starts)
+        elapsed = math.fsum(windows.values())
         cpu = math.fsum(r["seconds"] for r in observations)
         # Account for observed batch barriers and certificate I/O. Include
         # a long-tail allowance and the same closing reserve as round two.
         if cpu > 0:
             projected = math.fsum(work) * max(elapsed / cpu, 1 / dispatch.evidence.workers)
             projected += max((r["seconds"] for r in observations), default=0.) + 900
-    return dict(additional_hardware=[d.label for d in added], new_operating_points=sum(reasons.values()),
+    result = dict(additional_hardware=[d.label for d in added], new_operating_points=sum(reasons.values()),
                 point_counts=dict(reasons), unique_weekly_requests=len(jobs),
                 request_counts=dict(Counter(phase for phase, *_ in jobs)),
                 estimated_solver_seconds=math.fsum(work), observed_solver_seconds=cpu,
@@ -381,6 +451,9 @@ def _estimate(service, operations, dispatch, bounds, winners):
                                "Includes unquoted comparisons, up to two service calls per newly ambiguous hardware-week, "
                                "one observed longest solve and 900 closing seconds. Same machine and workers assumed.",
                 leave_one_week_out=audit)
+    if getattr(dispatch.evidence, "parent_archive", None) is not None:
+        result["observed_solve_windows"] = windows
+    return result
 
 
 def cost_results(inputs, service, evidence, *, progress=None, checkpoint=None):
@@ -447,6 +520,10 @@ def cost_results(inputs, service, evidence, *, progress=None, checkpoint=None):
                  monotone_energy_checks=dispatch.energy_checks, replayed_schedule_transfers=len(dispatch.verified),
                  audited_operating_tariffs=dispatch.settlement_checks, annual_cross_checks=len(checked))
     estimate = _estimate(service, operations, dispatch, bounds, winners)
-    return dict(operating_points=weekly, annual_costs=annual, design_ranks=designs, winners=winners,
-                network_infeasibility_proofs=relaxation_proofs,
-                historical_comparison=historical, statistics=stats, refinement_estimate=estimate)
+    result = dict(operating_points=weekly, annual_costs=annual, design_ranks=designs, winners=winners,
+                  network_infeasibility_proofs=relaxation_proofs,
+                  historical_comparison=historical, statistics=stats, refinement_estimate=estimate)
+    if getattr(evidence, "parent_archive", None) is not None:
+        from .m10_transparency import original_rule
+        result.update(original_rule(dispatch, bounds, operations, annual, designs, winners))
+    return result
