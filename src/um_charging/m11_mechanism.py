@@ -73,3 +73,35 @@ def rolling_terminal_bound(source, cohort):
                 required_kwh=150, signed_draw_kwh=str(draw), relaxed_grid_kwh=str(charge),
                 windows=windows, upper_kwh=str(upper), deficit_kwh=str(150-upper),
                 upper_decimal_kwh=float(upper), independently_infeasible=upper < 150)
+
+
+if __name__ == "__main__":
+    import argparse
+    import csv
+    from pathlib import Path
+    import sys
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--posthoc-outcome", type=Path)
+    parser.add_argument("--rolling-bound", action="store_true")
+    args = parser.parse_args()
+    if args.posthoc_outcome:
+        from . import m10_final_run
+        outcome = json.loads(args.posthoc_outcome.read_bytes())
+        periods = m10_final_run._sealed_periods()[0]
+        reference = set(map(tuple, outcome["reference"]))
+        if not outcome["reference_complete"] or len(reference) != 49:
+            raise ValueError("Incomplete post hoc cohort")
+    else:
+        from . import m10_inputs
+        if args.rolling_bound:
+            parser.error("--rolling-bound requires --posthoc-outcome")
+        train = m10_inputs.load_inputs()
+        periods, reference = train.periods, train.main_reference
+    if args.rolling_bound:
+        print(json.dumps(rolling_terminal_bound(next(iter(m10_final_run.SEALED)), reference), indent=2))
+    else:
+        rows = census(periods, reference)
+        writer = csv.DictWriter(sys.stdout, fieldnames=list(rows[0]), lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
