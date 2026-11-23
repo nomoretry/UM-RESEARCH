@@ -5,6 +5,7 @@ from contextlib import ExitStack
 from datetime import datetime, timezone
 import csv
 import gzip
+import hashlib
 import json
 import math
 import os
@@ -104,6 +105,21 @@ def audit_repeats(folder,ps,ids):
 
 def second_round(archive,deadline,verify):
     folder=archive/"formal"
+    binding=json_file(archive/"binding.json")
+    def digest(path):
+        return hashlib.sha256(path.read_bytes()).hexdigest()
+    if binding["method_sha256"]!=digest(archive/"PREREG_M11_R2.md"):
+        raise ValueError("Rule or monthly-demand preregistration differs")
+    root=archive.parent.resolve()
+    for relative,expected in binding["archives"].items():
+        path=(root/relative).resolve()
+        if not path.is_relative_to(root) or digest(path)!=expected:
+            raise ValueError("Historical sizing evidence differs")
+    if m10_inputs.load_inputs().source_sha256!=binding["training_sha256"]:
+        raise ValueError("Training input hashes differ")
+    post={p.relative_to(ss.eb.ROOT).as_posix():digest(p) for p in m10_final_run.SEALED}
+    if post!=binding["posthoc_sha256"]:
+        raise ValueError("Post hoc input hashes differ")
     used=set()
     if verify:
         for stage in ("rules","sensitivity","fine"):
