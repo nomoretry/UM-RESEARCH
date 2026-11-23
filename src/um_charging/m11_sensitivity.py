@@ -117,7 +117,7 @@ def sensitivity(study,outputs):
     return dict(energy=values,settlements=repricing(study))
 
 
-def fine(study):
+def fine(study, checkpoint=None):
     periods=study.periods[:12]
     all_designs=study.designs
     materials=m10_costs._parameters(periods)[1]
@@ -186,10 +186,13 @@ def fine(study):
                 bills.append(dict(b,port_cap_kw=caps[0],warehouse_cap_kw=caps[1]))
                 caps_best[b["connection_basis"]]=min(caps_best[b["connection_basis"]],b["total_upper"])
             rows.append(dict(design=d.label,caps=caps,status=status if paid or status=="infeasible" else "unresolved",weeks=week_rows))
+        snapshot=dict(last_design=d.label,points=rows,bills=bills,other_tariffs=others)
+        if checkpoint is not None:
+            checkpoint(snapshot)
         if not study.ledger.verify:
             target=study.ledger.folder/"fine_checkpoint.json"
             temp=target.with_suffix(".tmp")
-            temp.write_bytes(evidence._encoded(dict(last_design=d.label,points=rows,bills=bills,other_tariffs=others)))
+            temp.write_bytes(evidence._encoded(snapshot))
             temp.replace(target)
     ranks,minima=m10_costs._rank_designs(bills)
     return dict(points=rows,bills=bills,facilities=sorted(d.label for d in facilities),billed_ranks=ranks,

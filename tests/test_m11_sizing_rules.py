@@ -19,3 +19,18 @@ def test_fixed_service_invoice_rejects_nonzero_cross_year_week():
 
 def test_no_same_service_bill_for_infeasible_week():
     assert study.settle([None],ss.BASELINE,[dict(status="infeasible")]) == []
+
+
+def test_fine_point_preserves_terminal_uncertainty_even_with_an_infeasible_week():
+    from um_charging.m11_robustness import Point
+    point=Point(ss.Design(1,20,20),(15,5))
+    point.rows={"week1":{"status":"infeasible"},"week2":{"status":"unresolved","physical":True}}
+    assert point.status()=="unresolved"
+
+
+def test_partial_quarter_cap_applies_to_the_integral():
+    from um_charging.m11_robustness import relaxed_segment
+    truck={"trips":[(0,1,1.8,"trip")],"windows":[(14,17,ss.PORT)]}
+    # One minute plus two minutes at 40 kW gives 2 grid kWh, split across two quarters.
+    assert relaxed_segment(truck,ss.Design(1,40,0),(6,0))
+    assert not relaxed_segment(truck,ss.Design(1,40,0),(2,0))

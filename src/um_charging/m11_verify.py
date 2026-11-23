@@ -32,8 +32,8 @@ def compare(a,b):
         raise ValueError("Repeated schedule differs")
 
 
-def sample(folder):
-    ids=sorted(p.name.removesuffix(".json.gz") for p in (folder/"certificates").glob("*.json.gz"))
+def sample(folder, excluded=()):
+    ids=sorted({p.name.removesuffix(".json.gz") for p in (folder/"certificates").glob("*.json.gz")}-set(excluded))
     return random.Random(20261122).sample(ids,20)
 
 
@@ -78,9 +78,8 @@ def first_round(archive):
                 feasible_replayed=result["feasible_replayed"],repeats=len(sampled),new_solves=0)
 
 
-def repeat_one(folder,label,p,deadline):
+def repeat_one(folder,label,p,deadline,repeats):
     job=read_envelope(folder,label)["job"]
-    repeats=folder/"repeat"
     path=repeats/"certificates"/(label+".json.gz")
     if not path.exists():
         from .m11_rule_evidence import work
@@ -88,11 +87,15 @@ def repeat_one(folder,label,p,deadline):
     return label
 
 
-def audit_repeats(folder,ps,ids):
+def audit_repeats(folder,ps,ids,repeats):
+    pids=set()
     results=[]
     for label in ids:
         a=read_envelope(folder,label)
-        b=read_envelope(folder/"repeat",label)
+        b=read_envelope(repeats,label)
+        if json_file(repeats/"starts"/(label+".json"))["job"]!=b["job"]:
+            raise ValueError("Repeated start differs")
+        pids.add(b["result"]["stats"]["worker_pid"])
         job=a["job"]
         if job!=b["job"]:
             raise ValueError("Repeat input differs")
@@ -100,7 +103,50 @@ def audit_repeats(folder,ps,ids):
         e.replay(priced_period(p,job["mode"]),e.Request.from_json(job["request"]),b["result"])
         compare(a["result"],b["result"])
         results.append(dict(id=label,matched=True,seconds=b["result"]["stats"]["seconds"]))
+    if len(pids)!=len(ids):
+        raise ValueError("Expected distinct fresh repeat workers")
     return dict(seed=20261122,matched=len(results),checks=results)
+
+
+def stopped_fine(archive,stop):
+    from . import m11_rule_study, m11_sensitivity
+    from .m11_rule_evidence import Ledger
+    folder=archive/"formal"
+    ledger=Ledger(folder,None,verify=True)
+    saved=json_file(folder/"fine_checkpoint.json")
+    last=[]
+    def observe(snapshot):
+        last[:]=[snapshot["last_design"]]
+        if last[0]==saved["last_design"] and e._encoded(snapshot)!=(folder/"fine_checkpoint.json").read_bytes():
+            raise ValueError("Partial fine grid differs")
+    try:
+        m11_sensitivity.fine(m11_rule_study.Study(archive.parent,ledger),observe)
+    except ss.fc.StudyLimit as exc:
+        if str(exc)!="Fourth unresolved weekly group":
+            raise
+    else:
+        raise ValueError("Expected the archived fourth-group stop")
+    if (stop["stop"]!="fourth_unresolved_weekly_group" or last!=[saved["last_design"]]
+        or stop["last_full_design"]!=last[0] or stop["last_full_point_count"]!=len(saved["points"])):
+        raise ValueError("Stop boundary differs")
+    entries={r["group"]:r for r in stop["unknown"]}
+    if len(entries)!=4 or set(entries)!=ledger.unknown or set(entries)!={p.stem for p in (folder/"unresolved").glob("*.json")}:
+        raise ValueError("Terminal weekly groups differ")
+    for group,r in entries.items():
+        label=r["id"]
+        body=read_envelope(folder,label)
+        job=body["job"]
+        req=job["request"]
+        s=body["result"]["stats"]
+        expected=e._hash([job["input"],req["week"],req["design"],req["caps"],req["fixed"]])
+        if (group!=expected or ledger.rows[label]["status"]!="unresolved" or
+            json_file(folder/"unresolved"/(group+".json"))!={"group":group,"request":label} or
+            any(req[k]!=r[k] for k in ("week","design","caps")) or
+            any(s[k]!=r[a] for k,a in (("objective_lower","lower"),("objective_upper","upper"),
+                ("absolute_gap","gap"),("status_code","status_code"),("seconds","seconds"),("started_utc","started_utc"))) or
+            r["audited"]!=(body["result"]["audit"] is not None)):
+            raise ValueError("Terminal week differs: "+label)
+    return set(ledger.rows)
 
 
 def second_round(archive,deadline,verify):
@@ -121,9 +167,13 @@ def second_round(archive,deadline,verify):
     if post!=binding["posthoc_sha256"]:
         raise ValueError("Post hoc input hashes differ")
     used=set()
+    stopped=(folder/"stop.json").is_file()
+    stop=json_file(folder/"stop.json") if stopped else {}
     if verify:
-        for stage in ("rules","sensitivity","fine"):
+        for stage in (("rules","sensitivity") if stopped else ("rules","sensitivity","fine")):
             used.update(m11_round2.execute(archive.parent,folder,stage,deadline,True))
+        if stopped:
+            used.update(stopped_fine(archive,stop))
         if used!={p.stem for p in (folder/"starts").glob("*.json")}:
             raise ValueError("Replayed request set differs from archived starts")
     outputs={**tables.distributions(folder),**tables.inventory(folder)}
@@ -133,20 +183,35 @@ def second_round(archive,deadline,verify):
         for p in periods if f in (1,1.2) else periods[:12]:
             q=rules.scaled(p,f)
             ps[period_digest(q)]=q
-    ids=sample(folder)
+    if stopped and stop["summary"]!=json.loads(outputs["compute_statistics.json"]):
+        raise ValueError("Stop inventory differs")
+    ids=sample(folder,[x["id"] for x in stop.get("unknown",[])])
+    repeats=archive/"continuation"/"repeat" if stopped else folder/"repeat"
     if not verify:
         for sub in ("certificates","starts"):
-            (folder/"repeat"/sub).mkdir(exist_ok=True,parents=True)
+            (repeats/sub).mkdir(exist_ok=True,parents=True)
         os.environ.update(e.WORKER_ENV)
         with ProcessPoolExecutor(max_workers=4,max_tasks_per_child=1) as pool:
             for start in range(0,len(ids),4):
                 if (deadline-datetime.now(timezone.utc)).total_seconds()<=320:
                     raise ss.fc.StudyLimit("Another repeat batch no longer fits")
-                jobs=[pool.submit(repeat_one,folder,i,ps[read_envelope(folder,i)["job"]["input"]],deadline)
+                jobs=[pool.submit(repeat_one,folder,i,ps[read_envelope(folder,i)["job"]["input"]],deadline,repeats)
                       for i in ids[start:start+4]]
                 for j in jobs:
                     j.result()
-    outputs["determinism.json"]=e._encoded(audit_repeats(folder,ps,ids))
+    repeat_count=0
+    if not stopped or not verify or repeats.exists():
+        replay=e._encoded(audit_repeats(folder,ps,ids,repeats))
+        repeat_count=len(ids)
+        if stopped:
+            report=repeats/"determinism.json"
+            if verify or report.exists():
+                if report.read_bytes()!=replay:
+                    raise ValueError("Stopped repeat table differs")
+            else:
+                e._publish(report,replay)
+        else:
+            outputs["determinism.json"]=replay
     for name,value in outputs.items():
         path=folder/name
         if verify or path.exists():
@@ -154,9 +219,51 @@ def second_round(archive,deadline,verify):
                 raise ValueError("R021 table changed: "+name)
         else:
             e._publish(path,value)
-    return dict(status="verified" if verify else "finalized",round=2,requests=len(used) if verify else
+    robustness={}
+    if verify and (archive/"continuation"/"fine").is_dir():
+        from . import m11_robustness
+        robustness["robustness"]=m11_robustness.verify(archive)
+    if verify and stopped:
+        audit_other_bounds(archive)
+    return dict(**robustness,status="verified" if verify else "finalized",round=2,requests=len(used) if verify else
                 json.loads(outputs["compute_statistics.json"])["unique_requests"],tables=len(outputs),
-                repeats=len(ids),new_solves=0 if verify else "see repeat/starts")
+                terminal_groups=len(stop.get("unknown",[])),repeats=repeat_count,
+                new_solves=0 if verify else "see repeat/starts")
+
+
+def audit_other_bounds(archive):
+    from . import m10_costs, m11_robustness, m11_rule_study as study
+    from itertools import product
+    coarse=archive.parent/"20261122_m10_selection_coarse2"/"formal"
+    refine=archive.parent/"20261122_m10_refine"/"formal"
+    def key(r):
+        return r["design"],int(r["port_cap_kw"]),int(r["warehouse_cap_kw"])
+    coarse_keys={key(r) for r in study.csv_rows(coarse/"annual_costs.csv")}
+    screens={key(r):r["reason"] for r in study.csv_rows(refine/"screen_points.csv")}
+    fees={(*key(r),r["scenario"],r["connection_basis"]):r for r in study.csv_rows(refine/"screen_tariffs.csv")}
+    cases=[(r["scenario"],r["connection_basis"]) for r in json_file(coarse/"selection.json")["winners"]
+           if r["scenario"]!="official"]
+    designs=m11_robustness.hardware(m10_costs._parameters(m10_inputs.load_inputs().periods)[1])
+    expected={(d.label,p,w,*c) for d in designs
+              for p,w in product(range(0,d.port_kw+1,5),range(0,d.warehouse_kw+1,5))
+              if (d.label,p,w) not in coarse_keys for c in cases}
+    for row in study.csv_rows(archive/"formal"/"other_tariff_bounds.csv"):
+        k=key(row)
+        scope=(*k,row["scenario"],row["basis"])
+        expected.remove(scope)
+        fee=fees.get(scope,{})
+        low=fee.get("annual_lower_eur_2025","")
+        upper=fee.get("incumbent_upper_eur_2025","")
+        if not fee:
+            reason="no_R013_row"
+        elif screens[k] in ("infeasible_superset","weekly_window_capacity","infeasible_network_relaxation"):
+            reason="physical_bound"
+        else:
+            reason="annual_lower_bound" if low and float(low)>float(upper)+1e-6 else "not_excluded"
+        if (row["annual_lower"],row["incumbent_upper"],row["reason"])!=(low,upper,reason):
+            raise ValueError("Historical tariff bound differs: "+str(scope))
+    if expected:
+        raise ValueError("Incomplete other-tariff coverage")
 
 
 def main():
