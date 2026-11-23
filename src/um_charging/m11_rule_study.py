@@ -32,7 +32,7 @@ def archived_row(row):
     return obj
 
 
-def settle(periods,design,rows):
+def settle(periods,design,rows,*,omit_unquoted=None):
     if len(periods)!=len(rows) or any(r["status"] not in ss.ENERGY_ACCEPTED for r in rows):
         return []
     network,materials=m10_costs._parameters(periods)
@@ -53,7 +53,7 @@ def settle(periods,design,rows):
     bill=ss.settle(network,0.,grid,peak,"official")
     ss.audit_settlement(network,0.,grid,peak,"official",bill)
     equip,missing,conn=ss.annual_capital_costs(design,materials)
-    if missing:
+    if missing != ([] if omit_unquoted is None else [omit_unquoted]):
         raise ValueError("Unquoted facility in cost comparison")
     out=[]
     for basis in ("new","existing"):
