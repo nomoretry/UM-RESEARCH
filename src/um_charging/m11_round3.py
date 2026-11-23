@@ -171,8 +171,8 @@ def execute(archive,deadline=None,verify=False):
     publish(folder/"unresolved.csv",tables.table(unknown,list(journal[0])),verify)
     publish(folder/"compute_statistics.json",e._encoded(stats),verify)
     checks=repeats(folder,journal,ledger,deadline,verify)
-    return dict(status="verified" if verify else "complete",round=3,**stats,repeats=checks["matches"],
-                new_solves=0 if verify else len(journal)+checks["matches"])
+    return {**stats,"native_status_counts":stats["status"],"status":"verified" if verify else "complete",
+            "round":3,"repeats":checks["matches"],"new_solves":0 if verify else len(journal)+checks["matches"]}
 
 
 def main():
