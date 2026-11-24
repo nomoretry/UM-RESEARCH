@@ -96,6 +96,41 @@ def test_service_endpoint_and_registration_gates():
     assert study.gate({"week":None},1)=="unresolved"
 
 
+def test_evaluation_projection_never_decodes_training_or_post_period_energy(tmp_path):
+    source=tmp_path/"synthetic.csv"
+    write_fixture(source)
+    text=source.read_text(encoding="utf-8").replace("1.75","private-train").replace("2.25","private-train")
+    source.write_text(text.replace("private-later","3.75"),encoding="utf-8",newline="")
+    counts,boundaries,sections=prep.project(source,"1",{"101"})
+    assert sum(w["complete"] for w in counts)==4
+    records=prep.read_period(source,sections["evaluation"],{"101"},*prep.BOUNDS["evaluation"])
+    assert [t.energy for t in records["101"]]==[3.75,7.]
+    preceding={"101":{"track_id":"3","arrival":"2021-12-17T10:20:00+01:00",
+                      "home_base":True,"industrial_area":False}}
+    args=(records,"evaluation",sections["evaluation"],boundaries)
+    days=prep.period_days(*args,preceding=preceding)
+    clipped=prep.period_days(*args,preceding=preceding,truncate=True)
+    assert prep.effective_windows(days)==prep.effective_windows(clipped)
+
+
+def test_opening_requires_exact_committed_synthetic_registration(tmp_path,monkeypatch):
+    reg=tmp_path/"PREREG_M11_EXTERNAL.md"
+    reg.write_bytes(b"synthetic preregistration\n")
+    with pytest.raises(PermissionError):
+        seals.authorize("6-10",reg)
+    monkeypatch.setattr(seals,"FROZEN_SHA256",seals.digest(reg.read_bytes()))
+    subprocess.run(["git","init","-q",str(tmp_path)],check=True)
+    with pytest.raises(subprocess.CalledProcessError):
+        seals.authorize("6-10",reg)
+    subprocess.run(["git","-C",str(tmp_path),"add","--",reg.name],check=True)
+    subprocess.run(["git","-C",str(tmp_path),"-c","user.name=Test","-c","user.email=test@example.invalid",
+                    "commit","-qm","synthetic registration"],check=True)
+    seals.authorize("6-10",reg)
+    reg.write_bytes(b"changed")
+    with pytest.raises(PermissionError):
+        seals.authorize("6-10",reg)
+
+
 def test_mechanism_compares_against_every_training_segment():
     from um_charging.m11_external_mechanism import compare
     rows = [dict(week="train",sites=["WAREHOUSE"],required={"PORT":0,"WAREHOUSE":10}),
