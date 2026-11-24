@@ -94,3 +94,16 @@ def test_service_endpoint_and_registration_gates():
     assert study.gate({"week":[["day","v"]]},1)=="passed"
     assert study.gate({"week":[]},1)=="not_evaluable"
     assert study.gate({"week":None},1)=="unresolved"
+
+
+def test_mechanism_compares_against_every_training_segment():
+    from um_charging.m11_external_mechanism import compare
+    rows = [dict(week="train",sites=["WAREHOUSE"],required={"PORT":0,"WAREHOUSE":10}),
+            dict(week="train",sites=["PORT","WAREHOUSE"],required={"PORT":10,"WAREHOUSE":40}),
+            dict(week="test",sites=["WAREHOUSE"],required={"PORT":None,"WAREHOUSE":30})]
+    outcome=compare(rows,{"train"},{"test"})
+    assert outcome["training_segments"]==2
+    assert outcome["training_max_kw"]["WAREHOUSE"]==40
+    assert outcome["new_proven"]==0 and outcome["unknown"]==0
+    rows[1]["required"]["WAREHOUSE"]=None
+    assert compare(rows,{"train"},{"test"})["unknown"]==1

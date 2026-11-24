@@ -198,15 +198,26 @@ def diagnostic(periods,ref,services):
     return output
 
 
-def evaluate(periods,selection,ledger):
-    ref,journal=register(periods,ledger,primary=True)
+def evaluate(periods,selection,ledger, *, primary=True):
+    ref,journal=register(periods,ledger,primary=primary)
     state=gate(ref,20)
     result=dict(reference=ref,registration=journal,registration_gate=state)
     if state!="passed":
         return dict(result,verdict="不可评" if state=="not_evaluable" else "未定")
     labels=selection["choices"]["new"]
     services=matrix(periods,ref,labels,ledger,"fixed_service")
-    undecided=[label for label in labels if service(services[label].values())=="unresolved"]
-    retry(periods,ref,services,undecided,"fixed_service",ledger)
+    if primary:
+        # A tie between a known survivor and a known failure already fixes the
+        # cohort verdict. Within a hardware, one failed week is decisive.
+        for label in labels:
+            for p in periods:
+                statuses={service(services[l].values()) for l in labels}
+                if {"feasible","infeasible"}<=statuses or service(services[label].values())!="unresolved":
+                    break
+                w=rules.week(p)
+                row=services[label][w]
+                if row["status"]=="unresolved" and not row["physical"] and row["id"]:
+                    extended,=ledger.batch([(p,job(p,GRID[label],"fixed_service",seconds=1800,fixed=ref[w]))])
+                    services[label][w]=dict(extended,initial_id=row["id"])
     return dict(result,verdict=verdict(labels,services),choices=labels,service=services,
                 diagnostics=diagnostic(periods,ref,services))

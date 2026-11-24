@@ -43,13 +43,13 @@ def main_results(root,stage,days,ledger):
     if stage==2:
         if days is None:
             return dict(registration_gate="not_evaluable")
-        return study.select(inputs.periods(days),ledger,primary=True)
+        return study.select(inputs.periods(days),ledger,primary=root.name!="16+")
     selection=inputs.read(root/"stage2"/"selection.json")
     if stage==3:
         if days is None:
             return dict(verdict="未定" if selection["registration_gate"]=="unresolved" else "不可评",
                         reason=selection["registration_gate"])
-        return study.evaluate(inputs.periods(days),selection,ledger)
+        return study.evaluate(inputs.periods(days),selection,ledger,primary=root.name!="16+")
     endpoint=inputs.read(root/"stage3"/"primary.json")
     if endpoint.get("registration_gate")!="passed":
         return dict(verdict=endpoint["verdict"],reason="previous_gate")
@@ -138,6 +138,10 @@ def execute(archive,cohort,stage,source,registration,deadline):
         put(folder,"operating_19_weeks.json",dict(days=inputs.read(root/"stage2"/"tasks.json")
                                                    +inputs.read(root/"stage3"/"tasks.json")))
         names.append("operating_19_weeks.json")
+    if stage==4:
+        from . import m11_external_mechanism
+        put(folder,"all_segments.json",m11_external_mechanism.from_archive(root))
+        names.append("all_segments.json")
     proofs={k:digest((ledger.folder/"certificates"/(k+".json.gz")).read_bytes()) for k in sorted(ledger.used)}
     put(folder,"proofs.json",proofs)
     put(folder,"execution.json",dict(source_commit=head,started=begin.isoformat(),finished=utc().isoformat(),
@@ -171,6 +175,18 @@ def verify(archive,cohort="1-5"):
                                                !=h for l,h in inventory.items()):
             raise ValueError("Certificate inventory mismatch")
         totals.append(len(inventory))
+    from . import m11_external_mechanism
+    detail=root/"stage4"/"all_segments.json"
+    if not detail.exists():
+        # The rehearsal's pre-review stage-four seal is immutable. Its
+        # companion binds the full-segment calculation to that same seal.
+        detail=root/"secondary_review"/"all_segments.json"
+        binding=root/"secondary_review"/"binding.json"
+        committed(binding)
+        if inputs.read(binding)!={"stage4":previous,"all_segments":digest(detail.read_bytes())}:
+            raise ValueError("Mechanism supplement is not bound to stage four")
+    if detail.read_bytes()!=e._encoded(m11_external_mechanism.from_archive(root))+b"\n":
+        raise ValueError("Full-segment mechanism replay differs")
     repeat_count=0
     if cohort=="1-5":
         from . import m11_external_audit
