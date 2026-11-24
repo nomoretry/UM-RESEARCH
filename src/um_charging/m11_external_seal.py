@@ -7,7 +7,7 @@ import subprocess
 from .m10_evidence import _encoded, _publish
 
 
-FROZEN_SHA256 = ""
+FROZEN_SHA256 = "5bc8060e64be82a1493e4252e53b37fed97365023c905407a4df0d327c086161"
 RANKS = {"1-5": (0, 5), "6-10": (5, 10), "11-15": (10, 15), "16+": (15, 20)}
 
 
