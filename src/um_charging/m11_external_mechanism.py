@@ -22,17 +22,17 @@ def thresholds(truck, design):
     return result
 
 
-def segment_rows(periods, ref, design):
+def segment_rows(periods, ref, design, *, revised=False):
     rows = []
     for p in periods:
         week = rules.week(p)
         for days,truck in rules.trucks(p,set(map(tuple,ref[week]))):
             rows.append(dict(week=week,days=days,sites=sorted({s for _,_,s in truck["windows"]}),
-                             solo_feasible=rules.reachable(truck,design),required=thresholds(truck,design)))
+                             solo_feasible=rules.reachable(truck,design),required=thresholds(truck,ss.LARGEST if revised else design)))
     return rows
 
 
-def compare(rows, training, evaluation):
+def compare(rows, training, evaluation, *, revised=False):
     baseline = [r for r in rows if r["week"] in training]
     maximum = {}
     for site in ss.SITES:
@@ -43,7 +43,7 @@ def compare(rows, training, evaluation):
         if row["week"] not in evaluation:
             continue
         hits = {}
-        for site in row["sites"]:
+        for site in (ss.SITES if revised else row["sites"]):
             level, old = row["required"][site], maximum[site]
             hits[site] = None if level is None or old is None else level > old
         hit = True if any(v is True for v in hits.values()) else None if None in hits.values() else False
@@ -53,7 +53,16 @@ def compare(rows, training, evaluation):
                 unknown=sum(r["new_requirement"] is None for r in evaluated),segments=evaluated)
 
 
-def evaluate(train,test,selection,endpoint,secondary):
+def per_segment(label,week,failed):
+    if not failed:
+        return [dict(design=label,week=week,prediction_one="未命中",prediction_two="不适用")]
+    outcomes = {True:"命中", False:"未命中", None:"未识别"}
+    return [dict(design=label,week=week,days=row["days"],prediction_one="命中",
+                 prediction_two=outcomes[row["new_requirement"]],required=row["required"],
+                 higher_by_station=row["higher_by_station"]) for row in failed]
+
+
+def evaluate(train,test,selection,endpoint,secondary, *, revised=False):
     ref={**selection["reference"],**endpoint["reference"]}
     ps=train+test
     weeks=[rules.week(p) for p in ps]
@@ -62,8 +71,8 @@ def evaluate(train,test,selection,endpoint,secondary):
         out={}
         for label in labels:
             if label not in cache:
-                cache[label]=segment_rows(ps,ref,GRID[label])
-            out[label]=compare(cache[label],set(weeks[:k]),set(weeks[k:end]))
+                cache[label]=segment_rows(ps,ref,GRID[label],revised=revised)
+            out[label]=compare(cache[label],set(weeks[:k]),set(weeks[k:end]),revised=revised)
         return out
     main=comparisons(12,19,selection["choices"]["new"])
     predictions=[]
@@ -72,6 +81,9 @@ def evaluate(train,test,selection,endpoint,secondary):
             if row["status"]!="infeasible":
                 continue
             failed=[r for r in comparison["segments"] if r["week"]==week and not r["solo_feasible"]]
+            if revised:
+                predictions.extend(per_segment(label,week,failed))
+                continue
             hits=[r["new_requirement"] for r in failed]
             two=True if True in hits else None if None in hits or not failed else False
             predictions.append(dict(design=label,week=week,prediction_one=bool(failed),prediction_two=two,
@@ -98,14 +110,14 @@ def evaluate(train,test,selection,endpoint,secondary):
                 minimum_proven_rating_gap_kw=gap)
 
 
-def from_archive(root):
+def from_archive(root, *, revised=False):
     selection=inputs.read(root/"stage2"/"selection.json")
     endpoint=inputs.read(root/"stage3"/"primary.json")
     if endpoint.get("registration_gate")!="passed":
         return dict(status="not_evaluable")
     return evaluate(inputs.periods(inputs.read(root/"stage2"/"tasks.json")),
                     inputs.periods(inputs.read(root/"stage3"/"tasks.json")),selection,endpoint,
-                    inputs.read(root/"stage4"/"secondary.json"))
+                    inputs.read(root/"stage4"/"secondary.json"),revised=revised)
 
 
 def supplement(archive):

@@ -17,10 +17,20 @@ from .m11_rule_evidence import period_digest
 def inventory(folder):
     starts={p.stem for p in (folder/"starts").glob("*.json")}
     ids={p.name.removesuffix(".json.gz") for p in (folder/"certificates").glob("*.json.gz")}
-    if starts!=ids:
+    if not ids<=starts:
         raise ValueError("Incomplete started request inventory")
     rows=[]
-    for label in sorted(ids):
+    for label in sorted(starts):
+        marker=api.read(folder/"starts"/(label+".json"))
+        if label not in ids:
+            spec=marker["job"]
+            if e._hash(spec)!=label:
+                raise ValueError("Invalid interrupted request identity")
+            req=spec["request"]
+            rows.append(dict(id=label,week=req["week"],design=req["design"],phase=req["phase"],
+                             input=spec["input"],budget_s=spec["seconds"],status="unresolved",
+                             reason="interrupted",started=marker["started"]))
+            continue
         body=proof(folder,label)
         spec,raw=body["job"],body["result"]
         req=spec["request"]
@@ -33,6 +43,11 @@ def inventory(folder):
                          started=marker["started"],seconds=stat["seconds"],cpu_seconds=stat["cpu_seconds"],
                          pid=stat["worker_pid"],lower=stat["objective_lower"],upper=stat["objective_upper"]))
     return rows
+
+
+def check_inventory(root):
+    if api.read(root/"stage4"/"request_manifest.json")!=inventory(root/"evidence"):
+        raise ValueError("Request inventory differs from the sealed ledger")
 
 
 def execute(archive,deadline,verify=False):

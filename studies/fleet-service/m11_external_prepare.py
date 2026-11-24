@@ -47,12 +47,13 @@ def csv_rows(stream):
 def identities(path, cohort):
     published = json.loads((HERE / "duties.json").read_bytes())["coverage"]
     carrier = str(published["freight_forwarder"])
-    if cohort == "1-5":
-        return carrier, frozenset(map(str, published["cohort_vehicle_ids"]))
+    original = frozenset(map(str, published["cohort_vehicle_ids"]))
     # Only the gated path may discover ranks; task columns never enter the ranking.
     with path.open("rb") as stream:
-        return carrier, rank_slice((row["vehicle_id"] for row, _, _ in csv_rows(stream)
-                                    if row["freight_forwarder"] == carrier), cohort)
+        ids = {row["vehicle_id"] for row, _, _ in csv_rows(stream) if row["freight_forwarder"] == carrier}
+    if rank_slice(ids, "1-5") != original:
+        raise ValueError("STOP: published rank self-check failed")
+    return carrier, rank_slice(ids, cohort)
 
 
 def presence(value):
@@ -81,13 +82,14 @@ def witnesses(records):
     return output
 
 
-def index_source(path, cohort, registration=None):
-    authorize(cohort, registration)
+def index_source(path, cohort, registration=None, authorization=None):
+    authorize(cohort, registration, authorization)
     with path.open("rb") as stream:
         if hashlib.file_digest(stream, "sha256").hexdigest() != SHA256:
             raise ValueError("Pinned trip export required")
     carrier, vehicles = identities(path, cohort)
-    return project(path, carrier, vehicles)
+    counts, boundaries, indexes = project(path, carrier, vehicles)
+    return counts, boundaries, indexes, sorted(vehicles, key=int)
 
 
 def project(path, carrier, vehicles):

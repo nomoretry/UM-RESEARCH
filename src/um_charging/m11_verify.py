@@ -283,7 +283,10 @@ def main():
         with ExitStack() as stack:
             for module,name in ((e,"_solve"),(e,"milp"),(ss,"milp"),(ss,"solve"),(m11_boundary,"solve")):
                 stack.enter_context(patch.object(module,name,deny))
-            if (args.verify/"PREREG_M11_R4.md").is_file():
+            if (args.verify/"PREREG_M11_R5.md").is_file():
+                from . import m11_external_run
+                result=m11_external_run.verify(args.verify/"rehearsal")
+            elif (args.verify/"PREREG_M11_R4.md").is_file():
                 from . import m11_external_run
                 result=m11_external_run.verify(args.verify)
             elif (args.verify/"PREREG_M11_R3.md").is_file():

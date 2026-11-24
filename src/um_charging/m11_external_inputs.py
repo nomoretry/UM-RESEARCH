@@ -24,11 +24,11 @@ def read(path):
     return json.loads(path.read_bytes())
 
 
-def first(folder, path, cohort, registration, *, head, begin):
+def first(folder, path, cohort, registration, *, head, begin, authorization=None):
     from .m11_external_evidence import utc
-    authorize(cohort, registration)
+    authorize(cohort, registration, authorization)
     prep = preparation()
-    counts, bounds, sections = prep.index_source(path, cohort, registration)
+    counts, bounds, sections, roster = prep.index_source(path, cohort, registration, authorization)
     total = [sum(w["complete"] for w in weeks) for weeks in (counts[:12], counts[12:])]
     values = {"counts.json": dict(weeks=counts, selection=total[0], evaluation=total[1],
                                   passed=total[0] >= 68 and total[1] >= 28),
@@ -36,13 +36,14 @@ def first(folder, path, cohort, registration, *, head, begin):
               "evaluation_index.json": sections["evaluation"],
               "execution.json": dict(source_commit=head,started=begin.isoformat(),finished=utc().isoformat(),
                                      seconds=(utc()-begin).total_seconds(),requests_started=0,requests_used=0)}
+    values["roster.json"] = roster
     for name, value in values.items():
         put(folder, name, value)
     return seal(folder, cohort, 1, values, None)
 
 
-def prepare_phase(root, path, cohort, stage, registration=None):
-    authorize(cohort, registration)
+def prepare_phase(root, path, cohort, stage, registration=None, authorization=None):
+    authorize(cohort, registration, authorization)
     prev = check(root / f"stage{stage-1}", cohort, stage-1)
     first_folder = root / "stage1"
     if stage == 3 and read(root/"stage2"/"manifest.json")["previous"] != check(first_folder, cohort, 1):
@@ -55,12 +56,15 @@ def prepare_phase(root, path, cohort, stage, registration=None):
     name = {2: "selection", 3: "evaluation"}[stage]
     section = read(first_folder / (name+"_index.json"))
     bounds = read(first_folder / "boundary.json")
-    vehicles = None
-    if cohort == "1-5":
-        _, vehicles = prep.identities(path, cohort)
+    vehicles = set(read(first_folder/"roster.json"))
     records = prep.read_period(path, section, vehicles, *prep.BOUNDS[name])
     preceding = None if stage == 2 else read(root/"stage2"/"last_selection_arrivals.json")
     days = prep.period_days(records, name, section, bounds, preceding=preceding)
+    expected_counts = read(first_folder/"counts.json")["weeks"]
+    weekly = {week["week"]: week["complete"] for week in expected_counts}
+    if any(sum(len(day["vehicles"]) for day in days[i:i+7]) != weekly[days[i]["date"]]
+           for i in range(0, len(days), 7)):
+        raise ValueError("Reconstructed weeks differ from the sealed counts")
     substituted = prep.period_days(records, name, section, bounds, preceding=preceding, truncate=True)
     if prep.effective_windows(days) != prep.effective_windows(substituted):
         raise ValueError("STOP: replacing the post-period departure changed an in-period window")

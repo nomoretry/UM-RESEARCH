@@ -47,9 +47,12 @@ def margin_rule(train,ref,ledger):
                 feasible.append(keys)
             elif row["status"]!="infeasible":
                 return None,dict(week=w,reason="unresolved",retained=kept)
-        if len(feasible)!=1:
-            raise ValueError("STOP: frozen rule 4 has no unique jointly certified maximum subset")
+        if len(feasible)!=1 or (original and not feasible[0]):
+            return None,dict(week=w, status="不适用（歧义）",
+                             reason="nonunique" if len(feasible)>1 else "empty", retained=kept)
         kept[w]=sorted(feasible[0])
+    if not any(kept.values()):
+        return None,dict(status="不适用（歧义）",reason="empty",retained=kept)
     rows=matrix(stressed,kept,GRID,ledger,"fixed_service")
     return first_design(rows),dict(retained=kept,service=rows)
 
@@ -82,7 +85,7 @@ def novelty(tiers,train_weeks,test_weeks):
     return dict(segments=len(rows),new=sum(r["new"] for r in rows),rows=rows)
 
 
-def execute(train,test,strict,selection,endpoint,ledger):
+def execute(train,test,strict,selection,endpoint,ledger, *, revised=False):
     ref={**selection["reference"],**endpoint["reference"]}
     all_periods=train+test
     test_rows=matrix(test,ref,GRID,ledger,"fixed_service",existing=endpoint["service"])
@@ -128,7 +131,8 @@ def execute(train,test,strict,selection,endpoint,ledger):
             premium=([b["lower"]-min(uppers),b["upper"]-min(r["lower"] for r in best)]
                      if b and b["upper"] is not None and uppers else None)
             comparisons.append(dict(method=name,basis=basis,design=label,bill=b,premium=premium,
-                                    test=verdict([label],test_rows) if label in test_rows else "未定"))
+                                    test=verdict([label],test_rows) if label in test_rows else
+                                    margin.get("status","未定") if name=="rule4" else "未定"))
     nested=[]
     for k in (4,6,8,10,12,14,16):
         choices,_=rank(all_periods[:k],services,energy)
@@ -146,7 +150,7 @@ def execute(train,test,strict,selection,endpoint,ledger):
         s={tuple(map(tuple,t["days"])) for t in row["failed_segments"]}
         row["prediction_one"]=bool(s)
         row["prediction_two"]=any(tuple(t["segment"]) in s and t["new"] for t in novel["rows"])
-    return dict(evaluation_service=test_rows,weekly_energy=energy,evaluation_bills=test_bills,
+    result=dict(evaluation_service=test_rows,weekly_energy=energy,evaluation_bills=test_bills,
                 existing_endpoint=verdict(selection["choices"]["existing"],test_rows),
                 selection_feasible=train_ok,evaluation_feasible=recovered,all_feasible=full_ok,
                 minimum_test_kw={site:min((getattr(GRID[l],attr) for l in recovered),default=None)
@@ -154,3 +158,12 @@ def execute(train,test,strict,selection,endpoint,ledger):
                 strict=contrast,comparisons=comparisons,margin=margin,warehouse_thresholds=thresholds,
                 transfer={l:service(services[l].values()) for l in ("p1-40-w20","p1-40-w40")},
                 predictions=failure,site_classes=census,nested=nested,weekly_choices=by_week)
+    if revised:
+        from . import m11_external_mechanism as mechanism
+        detail=mechanism.evaluate(train,test,selection,endpoint,result,revised=True)
+        for row in failure:
+            row["prediction_two"]=[outcome for outcome in detail["predictions"]
+                                   if (outcome["design"],outcome["week"])==(row["design"],row["week"])]
+        for row,new in zip(nested,detail["nested"],strict=True):
+            row["new_demand"]=new["new_demand"]
+    return result

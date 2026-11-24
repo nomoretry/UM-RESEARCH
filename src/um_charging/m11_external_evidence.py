@@ -96,8 +96,14 @@ class Ledger:
             if (self.folder/"certificates"/(label+".json.gz")).is_file():
                 body = proof(self.folder,label)
                 self.rows[label] = replay(p,spec,body["result"])
-            elif self.verify or (self.folder/"starts"/(label+".json")).is_file():
-                raise ValueError("Missing or interrupted external request " + label)
+            elif (self.folder/"starts"/(label+".json")).is_file():
+                marker = json.loads((self.folder/"starts"/(label+".json")).read_bytes())
+                if marker["job"] != spec:
+                    raise ValueError("Interrupted request differs from its start record")
+                self.rows[label] = dict(id=label, week=spec["request"]["week"], status="unresolved",
+                                        reason="interrupted", physical=False, lower=None, upper=None)
+            elif self.verify:
+                raise ValueError("Request has neither a certificate nor a start record")
             else:
                 pending[label] = (p,spec)
         items = list(pending.items())

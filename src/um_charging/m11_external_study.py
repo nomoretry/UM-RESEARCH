@@ -23,10 +23,14 @@ def register(periods,ledger, *, primary=False):
         for (p,spec),row in zip(requests,ledger.batch(requests),strict=True):
             w, day = rules.week(p),spec["request"]["date"]
             journal.append(dict(week=w,date=day,id=row["id"],status=row["status"]))
+            if "reason" in row:
+                journal[-1]["reason"]=row["reason"]
             if primary and row["status"]=="unresolved":
                 longer=dict(spec,seconds=1800)
                 row,=ledger.batch([(p,longer)])
                 journal.append(dict(week=w,date=day,id=row["id"],status=row["status"],seconds=1800))
+            if "reason" in row:
+                journal[-1]["reason"]=row["reason"]
             if row["status"] != "certified":
                 locked[w] = None
                 continue
@@ -173,6 +177,25 @@ def verdict(choices,services):
     if statuses and all(s=="infeasible" for s in statuses):
         return "未守住"
     return "未定"
+
+
+def annotate(result):
+    choices = result.get("choices", [])
+    labels = choices.get("new", []) if isinstance(choices, dict) else choices
+    baseline = ss.BASELINE.hardware()
+    constructed = []
+    for label in labels:
+        hardware = GRID[label].hardware()
+        if all(hardware[site][field] >= value for site,limits in baseline.items()
+               for field,value in limits.items()):
+            constructed.append(label)
+    result["按构造"] = constructed
+    if result.get("verdict") == "守住" and labels and len(constructed) == len(labels):
+        result["标注"] = "按构造，无信息"
+    if result.get("verdict") == "未定":
+        states = {service(result["service"][l].values()) for l in labels}
+        result["未定原因"] = "多个最低成员结论不同" if {"feasible","infeasible"} <= states else "计算未判出"
+    return result
 
 
 def diagnostic(periods,ref,services):
