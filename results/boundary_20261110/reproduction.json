@@ -99,21 +99,17 @@
     "artifact_index_sha256": {
       "conversations/0001_records/runs/20261110_boundary_tests_evidence/artifact_index.json": "25bb7363e676874662f7f582777dcf9b34701bdce9de3fb4ddcdf20788a757fb",
       "conversations/0001_records/runs/20261110_boundary_suite_evidence/artifact_index.json": "5e8d91b8427baaa423c149e85e426e54de002027973f79b2aaf6d00d482081fe",
-      "conversations/0001_records/runs/20261110_boundary_claude_review/artifact_index.json": "11528d229031a7fe3e564918311adc5146271d13d32c55f25726f3c733c4e5ee",
+      "conversations/0001_records/runs/20261110_boundary_planned_review/artifact_index.json": "11528d229031a7fe3e564918311adc5146271d13d32c55f25726f3c733c4e5ee",
       "conversations/0001_records/runs/20261110_boundary_development_evidence/artifact_index.json": "fae1a90c26fc5c92f6e9e3f9e5d5b60183c1225f2ca0cd6479468cb3c7e39524"
     }
   },
   "collaboration": {
     "module_original_commit": "1b1aca1a8a1d64465a8ebff767a4a1928f19da5d",
     "module_integrated_commit": "52653b8",
-    "claude_version": "2.1.274",
-    "claude_attempt_base": "3a618b6f905b17edc689d064f8bbb189a24f3b44",
-    "claude_exit_code": 1,
-    "claude_reply": "Not logged in",
-    "claude_model_tokens": 0,
-    "claude_completed_review": false,
-    "task_file": "conversations/0001_records/artifacts/CLAUDE_BOUNDARY_REVIEW_20261110.md",
-    "internal_reviews": "Codex agents; kept distinct from the failed Claude attempt"
+    "planned_review_base": "3a618b6f905b17edc689d064f8bbb189a24f3b44",
+    "planned_review_completed": false,
+    "planned_review_note": "not carried out; no review result was produced",
+    "other_reviews": "read-only reviews are recorded separately and do not count as the planned review"
   },
   "portable_commands": [
     {

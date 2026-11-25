@@ -6,7 +6,7 @@
 
 | 来源 | 日期（UTC） | 用法 | 原始结果位置 |
 |---|---|---|---|
-| OpenAlex API（经 citation-management 技能 `search_openalex.py`；技能库见 Kassis 等 2026） | 2026-11-18 09:35 | 8 组检索式，年份 2021–2026，按相关性各取前 25 条 | 离线 `sources/q*.json`、`queries.tsv` |
+| OpenAlex API（检索脚本 `search_openalex.py`） | 2026-11-18 09:35 | 8 组检索式，年份 2021–2026，按相关性各取前 25 条 | 离线 `sources/q*.json`、`queries.tsv` |
 | 通用网页检索 | 2026-11-18 | 6 组，补充跨日 SOC、接枪/准备时间、电池与设施、未完成服务价值、两条书目核实 | 本文件下表 |
 | 用户已有 PDF | 2026-11-18 | 研究仓库 `reserach/`、`文献学习/` 与父目录未提交资料中的 40 个 PDF，抽取首页识别 | 离线 `extracts/index.json`；这 18 个仓库内 PDF 已于 2026-11-19 移出仓库，新旧文件名对照见离线库 `literature/papers/INDEX.md` |
 | 已有项目笔记 | 2026-11-09 | Ye 2024、Wang/Moura 2025、Xiao 2025（当时仅预览） | `docs/literature/20261109/` |
@@ -116,13 +116,13 @@
 | 纳入表记录 | 24 | 上表 #1–#24 |
 | 作品（研究或数据集） | 23 | #4 与 #12 为 Bertucci 等同一研究的期刊版与会议版，合并计一项 |
 | 精读材料 | 9 | 精读卡 P1–P9 对应 #1–#9。P2 读的是 Ye 刊版并对照 arXiv v1；P9 读的是 2023 年 UC Davis 报告，2025 年期刊版未读 |
-| BibTeX 条目 | 28 | 纳入表 24 条各 1 条；补充 2 个报告版本（`Ye2024jointArxiv`、`Wang2023infrastructureReport`）；表外 2 条：`Frank2025optimizing`（UM 接口成本来源）、`Kassis2026scientific`（工具与研究流程引用） |
+| BibTeX 条目 | 27 | 纳入表 24 条各 1 条；补充 2 个报告版本（`Ye2024jointArxiv`、`Wang2023infrastructureReport`）；表外 1 条：`Frank2025optimizing`（UM 接口成本来源） |
 
 同一作品的多个报告在 BibTeX 中互相注明：Bertucci（`Bertucci2025battery` ↔ `Bertucci2024joint`）、Ye（`Ye2024joint` ↔ `Ye2024jointArxiv`）、Wang/Miller/Fulton（`Wang2025infrastructure` ↔ `Wang2023infrastructureReport`）。校验脚本报告的 2 条“可能重复”就是后两组，属于有意保留的版本记录。
 
-**工具引用不计入研究数量。** Kassis 等（2026，arXiv:2609.00065）是本轮检索与引用核对所用技能库（literature-review、citation-management 等）的来源，只在方法说明中作为工具引用，不在纳入表中，不计入 24 条记录或 23 项作品。Frank 等（2025，EVS38）是 UM 既有成本参数的来源，本轮只核实了题录，同样不在纳入表中。
+**表外引用不计入研究数量。** Frank 等（2025，EVS38）是 UM 既有成本参数的来源，本轮只核实了题录，不在纳入表中，不计入 24 条记录或 23 项作品。
 
-**校验与阅读程度分开。** `validate_citations.py --check-dois`（2026-11-18）显示 28 条全部有效、DOI 均可解析，只有 1 个缺页码提示（EVS38）。这说明书目信息可以解析到对应作品，不说明文中的论点已经与原文核对。论点是否核实，以精读卡标注的阅读程度和页码为准：只读到元数据或摘要的记录，不用于支持模型或实验层面的判断。
+**校验与阅读程度分开。** `validate_citations.py --check-dois`（2026-11-18）显示当时的 28 条全部有效（其中 1 条非研究条目后来移出书目）、DOI 均可解析，只有 1 个缺页码提示（EVS38）。这说明书目信息可以解析到对应作品，不说明文中的论点已经与原文核对。论点是否核实，以精读卡标注的阅读程度和页码为准：只读到元数据或摘要的记录，不用于支持模型或实验层面的判断。
 
 全文缺口（保留标签）：#15 Wang 等 2025（IJPR，HTTP 403）、#18 Link 等 2026（SSRN，OpenAlex 无摘要）；Frank 等 2025（EVS38）已于 2026-11-18 从机构库取得全文，核对了 §2.2.2 与表 2、表 4（pp. 5–6），见精读卡 S1，其余章节未读；#10 Froger 2022、#19 Bragin 2024、#20 Zhao 2023 本地有全文，但本轮只读到摘要级。
 
