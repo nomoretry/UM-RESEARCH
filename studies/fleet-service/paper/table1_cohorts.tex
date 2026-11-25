@@ -1,0 +1,17 @@
+% Requires booktabs and graphicx.
+\begin{minipage}{\linewidth}
+\small\setlength{\tabcolsep}{3pt}
+\sbox0{%
+\begin{tabular}{llllll}
+\toprule
+Ranks & Role & Complete days & Registered days & Feasible builds & Outcome \\
+\midrule
+1-5 & Post hoc reference & 136 / 57 & 106 / 49 & 24 / 8 & Failed \\
+6-10 & Primary & 138 / 50 & 83 / 33 & 22 / 9 & Failed \\
+11-15 & Primary & 165 / 55 & 112 / 45 & 20 / 7 & Failed \\
+16-18 & Secondary & 72 / 21 & --- & --- & Not evaluable \\
+\bottomrule
+\end{tabular}}%
+\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\usebox0}\else\usebox0\fi
+\par\smallskip\footnotesize Pairs give selection / evaluation. Feasible builds are counted among the 35 rated designs. Blank cells follow the complete-duty gate.
+\end{minipage}

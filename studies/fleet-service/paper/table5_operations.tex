@@ -1,0 +1,19 @@
+% Requires booktabs and graphicx.
+\begin{minipage}{\linewidth}
+\small\setlength{\tabcolsep}{3pt}
+\sbox0{%
+\begin{tabular}{llllll}
+\toprule
+Connection & Policy & Build & Caps (kW) & Bill (EUR/yr) & Of which surplus (EUR/yr) \\
+\midrule
+New & Full Information & p1-40-w20 & 40 / 20 & 17,641.62 to 17,641.79 & --- \\
+New & Rolling & p1-40-w20 & 40 / 20 & 18,171.44 to 18,171.84 & --- \\
+New & Immediate & p2-100-w20 & 100 / 20 & 41,725.58 to 41,725.58 & 11,430.88 \\
+Existing & Full Information & p1-40-w20 & 40 / 20 & 16,840.19 to 16,840.36 & --- \\
+Existing & Rolling & p1-40-w20 & 40 / 20 & 17,370.02 to 17,370.42 & --- \\
+Existing & Immediate & p2-100-w20 & 100 / 20 & 40,122.74 to 40,122.74 & 11,430.88 \\
+\bottomrule
+\end{tabular}}%
+\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\usebox0}\else\usebox0\fi
+\par\smallskip\footnotesize Ranks 1--5, selection period, official network charges, policy-specific minima. Surplus is the disclosed portion of the metered bill.
+\end{minipage}

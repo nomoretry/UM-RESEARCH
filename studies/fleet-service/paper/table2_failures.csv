@@ -1,0 +1,5 @@
+Ranks,Selected build,Bill (EUR/yr),Outcome,Failed segment,Constraint,Gap (kWh)
+1-5,p1-40-w20,"17,641.58 to 17,641.79",Failed,2022-01-19,Terminal energy,46.237
+6-10,p1-30-w20,"11,859.57 to 11,859.65",Failed,2022-01-03 to 2022-01-04,Terminal energy,23.678
+6-10,p1-30-w20,"11,859.57 to 11,859.65",Failed,2022-01-31,Post-trip reserve,0.701
+11-15,p1-40-w20,"25,790.48 to 25,790.61",Failed,2022-01-14,Terminal energy,25.952
