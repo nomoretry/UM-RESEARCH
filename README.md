@@ -8,6 +8,8 @@
 
 **三项核心结论**：（1）返港集中补电受接口时段制约时，单独扩容无效，须增设接口；（2）300 kWh 德国车队情景下，第二个独立 50 kW 港区接口不能多完成车日，运行节费远低于整机年成本；（3）两次按时间顺序的留出检验中，样本内年费最低的设施均未守住后续运营周的同一组任务，数据已用完，本项目**没有经样本外验证的推荐规模**。文末给出 [Windows 快速复算](#6-windows-快速复算) 与 [研究报告与证据索引](#5-研究报告与证据索引)。
 
+初次访问请先阅读 [仓库导览](docs/GUIDE.md#中文)（5 分钟／半小时／完整复核路线、目录地图与证据等级说明）。
+
 ### 1. 什么时候必须增加接口
 
 **结论：当返港补电集中在同一小时、所需接口时段超过现有枪数时，单独扩大电网接入容量无效，必须增加充电接口。**
@@ -90,6 +92,8 @@ python -m um_charging.connector_value
 This repository studies **two-site (port and warehouse) charging infrastructure sizing for heavy-duty electric trucks under fixed transport duties**. Holding service, battery limits, grid connections, connector counts, and charging windows fixed, it compares total investment and operating cost for completing the same service to test when operational flexibility substitutes for capacity expansion. Empirical cases pair recorded German trips and simulated trip energies for five trucks from one carrier (DT-CARGO / TUMFTM) with contemporaneous native DE-LU day-ahead prices (SMARD), alongside a four-hour three-truck synthetic benchmark and a separate Milan urban-delivery paper replication.
 
 **Three headline findings:** (1) when bunched port returns exceed available connector-slots, grid expansion alone fails and an added connector is required; (2) in the 300 kWh German fleet scenario, a second independent 50 kW port connector adds zero vehicle-days and its operating savings fall far short of standalone charger cost; (3) across two chronological holdout tests, the lowest-cost in-sample facilities failed to retain the same service in later weeks—all cohort weeks are exhausted, and the study has **no sizing recommendation validated out of sample**. See [Reproduce in Windows PowerShell](#6-reproduce-in-windows-powershell) and the [Studies and evidence index](#5-studies-and-evidence-index) below.
+
+New readers can start with the [Repository Guide](docs/GUIDE.md#english) (five-minute, half-hour, and full-audit paths, directory map, and evidence tiers).
 
 ### 1. When a connector is necessary
 
