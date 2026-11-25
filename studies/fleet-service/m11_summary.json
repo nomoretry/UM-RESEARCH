@@ -1,0 +1,3472 @@
+{
+  "posthoc_reference_cohort": "1-5",
+  "sections": {
+    "segment_site_class_duty_days": {
+      "source": "20261123_m11_mechanism/REPORT_zh.md",
+      "values": {
+        "selection": {
+          "port_only": 16,
+          "warehouse_only": 0,
+          "both": 90,
+          "neither": 0,
+          "total": 106
+        },
+        "evaluation_posthoc": {
+          "port_only": 10,
+          "warehouse_only": 1,
+          "both": 38,
+          "neither": 0,
+          "total": 49
+        }
+      }
+    },
+    "boundary_variants": {
+      "source": "20261123_m11_mechanism/formal/results.json",
+      "values": {
+        "registered_service": {
+          "open": {
+            "p1-20-w20": {
+              "failed_weeks": [
+                "2021-10-18"
+              ],
+              "status": "infeasible"
+            },
+            "p1-40-w20": {
+              "failed_weeks": [
+                "2021-10-18"
+              ],
+              "status": "infeasible"
+            }
+          },
+          "weekly": {
+            "p1-20-w20": {
+              "failed_weeks": [],
+              "status": "feasible"
+            },
+            "p1-40-w20": {
+              "failed_weeks": [],
+              "status": "feasible"
+            }
+          }
+        },
+        "posthoc": {
+          "open": "certified",
+          "weekly": "infeasible"
+        },
+        "billed_minima": [
+          {
+            "connection_basis": "new",
+            "incumbent": {
+              "caps_kw": [
+                40,
+                20
+              ],
+              "connection_basis": "new",
+              "design": "p1-40-w20",
+              "missing_ratings_kw": [],
+              "rank_best": 1,
+              "rank_worst": 1,
+              "scenario": "official",
+              "total_lower": 17408.685593083308,
+              "total_upper": 17408.96068546285
+            },
+            "minimum_lower": 17408.685593083308,
+            "minimum_upper": 17408.96068546285,
+            "possible_minimum_designs": [
+              "p1-40-w20"
+            ],
+            "scenario": "official"
+          },
+          {
+            "connection_basis": "existing",
+            "incumbent": {
+              "caps_kw": [
+                40,
+                20
+              ],
+              "connection_basis": "existing",
+              "design": "p1-40-w20",
+              "missing_ratings_kw": [],
+              "rank_best": 1,
+              "rank_worst": 1,
+              "scenario": "official",
+              "total_lower": 16607.261732246985,
+              "total_upper": 16607.536824626528
+            },
+            "minimum_lower": 16607.261732246985,
+            "minimum_upper": 16607.536824626528,
+            "possible_minimum_designs": [
+              "p1-40-w20"
+            ],
+            "scenario": "official"
+          }
+        ]
+      }
+    },
+    "four_rules": {
+      "source": "20261123_m11_rules/formal/rule_outputs.csv",
+      "values": [
+        {
+          "input_weeks": 12,
+          "posthoc": "False",
+          "registered": 106,
+          "rule": 1,
+          "design": "p1-20-w20",
+          "basis": "new",
+          "annual_lower": 17725.647838356286,
+          "annual_upper": 17725.822642369538,
+          "premium_lower": 83.86055662387662,
+          "premium_upper": 84.20521106819433,
+          "posthoc_49": "infeasible"
+        },
+        {
+          "input_weeks": 12,
+          "posthoc": "False",
+          "registered": 106,
+          "rule": 1,
+          "design": "p1-20-w20",
+          "basis": "existing",
+          "annual_lower": 17191.365264465407,
+          "annual_upper": 17191.540068478655,
+          "premium_lower": 351.00184356932004,
+          "premium_upper": 351.3464980136305,
+          "posthoc_49": "infeasible"
+        },
+        {
+          "input_weeks": 12,
+          "posthoc": "False",
+          "registered": 106,
+          "rule": 2,
+          "design": "p1-20-w20",
+          "basis": "new",
+          "annual_lower": 17725.647838356286,
+          "annual_upper": 17725.822642369538,
+          "premium_lower": 83.86055662387662,
+          "premium_upper": 84.20521106819433,
+          "posthoc_49": "infeasible"
+        },
+        {
+          "input_weeks": 12,
+          "posthoc": "False",
+          "registered": 106,
+          "rule": 2,
+          "design": "p1-20-w20",
+          "basis": "existing",
+          "annual_lower": 17191.365264465407,
+          "annual_upper": 17191.540068478655,
+          "premium_lower": 351.00184356932004,
+          "premium_upper": 351.3464980136305,
+          "posthoc_49": "infeasible"
+        },
+        {
+          "input_weeks": 12,
+          "posthoc": "False",
+          "registered": 106,
+          "rule": 3,
+          "design": "p1-20-w50",
+          "basis": "new",
+          "annual_lower": 21828.221295877625,
+          "annual_upper": 21828.477954671587,
+          "premium_lower": 4186.434014145216,
+          "premium_upper": 4186.860523370244,
+          "posthoc_49": "infeasible"
+        },
+        {
+          "input_weeks": 12,
+          "posthoc": "False",
+          "registered": 106,
+          "rule": 3,
+          "design": "p1-20-w50",
+          "basis": "existing",
+          "annual_lower": 20893.226791568584,
+          "annual_upper": 20893.483450362546,
+          "premium_lower": 4052.8633706724977,
+          "premium_upper": 4053.289879897522,
+          "posthoc_49": "infeasible"
+        },
+        {
+          "input_weeks": 12,
+          "posthoc": "False",
+          "registered": 106,
+          "rule": 4,
+          "design": "p1-30-w30",
+          "basis": "new",
+          "annual_lower": 18330.221689624545,
+          "annual_upper": 18330.583973550616,
+          "premium_lower": 688.4344078921349,
+          "premium_upper": 688.9665422492726,
+          "posthoc_49": "infeasible"
+        },
+        {
+          "input_weeks": 12,
+          "posthoc": "False",
+          "registered": 106,
+          "rule": 4,
+          "design": "p1-30-w30",
+          "basis": "existing",
+          "annual_lower": 17528.797828788225,
+          "annual_upper": 17529.160112714297,
+          "premium_lower": 688.4344078921386,
+          "premium_upper": 688.9665422492726,
+          "posthoc_49": "infeasible"
+        },
+        {
+          "input_weeks": 19,
+          "posthoc": "True",
+          "registered": 155,
+          "rule": 1,
+          "design": "p1-40-w40",
+          "basis": "new",
+          "annual_lower": 17742.327102727817,
+          "annual_upper": 17742.52420205389,
+          "premium_lower": 0.0,
+          "premium_upper": 0.0,
+          "posthoc_49": ""
+        },
+        {
+          "input_weeks": 19,
+          "posthoc": "True",
+          "registered": 155,
+          "rule": 1,
+          "design": "p1-40-w40",
+          "basis": "existing",
+          "annual_lower": 16673.761954946054,
+          "annual_upper": 16673.959054272127,
+          "premium_lower": 0.0,
+          "premium_upper": 0.0,
+          "posthoc_49": ""
+        },
+        {
+          "input_weeks": 19,
+          "posthoc": "True",
+          "registered": 155,
+          "rule": 2,
+          "design": "p1-40-w40",
+          "basis": "new",
+          "annual_lower": 17742.327102727817,
+          "annual_upper": 17742.52420205389,
+          "premium_lower": 0.0,
+          "premium_upper": 0.0,
+          "posthoc_49": ""
+        },
+        {
+          "input_weeks": 19,
+          "posthoc": "True",
+          "registered": 155,
+          "rule": 2,
+          "design": "p1-40-w40",
+          "basis": "existing",
+          "annual_lower": 16673.761954946054,
+          "annual_upper": 16673.959054272127,
+          "premium_lower": 0.0,
+          "premium_upper": 0.0,
+          "posthoc_49": ""
+        },
+        {
+          "input_weeks": 19,
+          "posthoc": "True",
+          "registered": 155,
+          "rule": 3,
+          "design": "p1-40-w50",
+          "basis": "new",
+          "annual_lower": 20571.934874660004,
+          "annual_upper": 20572.109247068925,
+          "premium_lower": 2829.4106726061145,
+          "premium_upper": 2829.7821443411085,
+          "posthoc_49": ""
+        },
+        {
+          "input_weeks": 19,
+          "posthoc": "True",
+          "registered": 155,
+          "rule": 3,
+          "design": "p1-40-w50",
+          "basis": "existing",
+          "annual_lower": 19369.799083405524,
+          "annual_upper": 19369.97345581445,
+          "premium_lower": 2695.8400291333965,
+          "premium_upper": 2696.211500868394,
+          "posthoc_49": ""
+        },
+        {
+          "input_weeks": 19,
+          "posthoc": "True",
+          "registered": 155,
+          "rule": 4,
+          "design": "p1-30-w30",
+          "basis": "new",
+          "annual_lower": null,
+          "annual_upper": null,
+          "premium_lower": null,
+          "premium_upper": null,
+          "posthoc_49": ""
+        },
+        {
+          "input_weeks": 19,
+          "posthoc": "True",
+          "registered": 155,
+          "rule": 4,
+          "design": "p1-30-w30",
+          "basis": "existing",
+          "annual_lower": null,
+          "annual_upper": null,
+          "premium_lower": null,
+          "premium_upper": null,
+          "posthoc_49": ""
+        }
+      ]
+    },
+    "missing_day_break_even_eur_per_day": {
+      "source": "20261123_m11_leftovers/formal/penalty.json",
+      "values": [
+        {
+          "basis": "new",
+          "design": "p1-20-w0",
+          "f20_penalty": [
+            434.6787306423026,
+            434.7768137816956
+          ],
+          "f20_savings": [
+            1883.607832783311,
+            1884.0328597206808
+          ],
+          "f40_penalty": [
+            415.28709824500726,
+            415.38403825005145
+          ],
+          "f40_savings": [
+            1799.5774257283647,
+            1799.9974990835562
+          ],
+          "lower": 15841.789782648853,
+          "possible_caps": [
+            [
+              20,
+              0
+            ]
+          ],
+          "rank_best": 1,
+          "rank_worst": 1,
+          "upper": 15842.040005572979
+        },
+        {
+          "basis": "new",
+          "design": "p1-30-w0",
+          "f20_penalty": [
+            428.4085088127921,
+            428.51513901114174
+          ],
+          "f20_savings": [
+            1856.436871522099,
+            1856.8989357149476
+          ],
+          "f40_penalty": [
+            409.01687641549677,
+            409.1223634794976
+          ],
+          "f40_savings": [
+            1772.4064644671525,
+            1772.863575077823
+          ],
+          "lower": 15868.923706654587,
+          "possible_caps": [
+            [
+              30,
+              0
+            ]
+          ],
+          "rank_best": 3,
+          "rank_worst": 3,
+          "upper": 15869.210966834191
+        },
+        {
+          "basis": "new",
+          "design": "p1-40-w0",
+          "f20_penalty": [
+            433.6130625046574,
+            433.6981946795867
+          ],
+          "f20_savings": [
+            1878.9899375201821,
+            1879.3588436115424
+          ],
+          "f40_penalty": [
+            414.2214301073621,
+            414.3054191479426
+          ],
+          "f40_savings": [
+            1794.9595304652357,
+            1795.3234829744179
+          ],
+          "lower": 15846.463798757992,
+          "possible_caps": [
+            [
+              40,
+              0
+            ]
+          ],
+          "rank_best": 2,
+          "rank_worst": 2,
+          "upper": 15846.657900836108
+        },
+        {
+          "basis": "new",
+          "design": "p1-50-w0",
+          "f20_penalty": [
+            -151.73238636598538,
+            -151.62560320378122
+          ],
+          "f20_savings": [
+            -657.5070075859367,
+            -657.0442805497187
+          ],
+          "f40_penalty": [
+            -171.1240187632807,
+            -171.01837873542536
+          ],
+          "f40_savings": [
+            -741.5374146408831,
+            -741.0796411868432
+          ],
+          "lower": 18382.866922919253,
+          "possible_caps": [
+            [
+              50,
+              0
+            ]
+          ],
+          "rank_best": 4,
+          "rank_worst": 4,
+          "upper": 18383.154845942227
+        },
+        {
+          "basis": "new",
+          "design": "p2-50-w0",
+          "f20_penalty": [
+            -1010.8673097026848,
+            -1010.8177123687573
+          ],
+          "f20_savings": [
+            -4380.425008711634,
+            -4380.210086931282
+          ],
+          "f40_penalty": [
+            -1030.2589420999802,
+            -1030.2104879004014
+          ],
+          "f40_savings": [
+            -4464.455415766581,
+            -4464.245447568406
+          ],
+          "lower": 22106.032729300816,
+          "possible_caps": [
+            [
+              50,
+              0
+            ]
+          ],
+          "rank_best": 5,
+          "rank_worst": 5,
+          "upper": 22106.072847067924
+        },
+        {
+          "basis": "new",
+          "design": "p2-100-w0",
+          "f20_penalty": [
+            -1164.9880497932245,
+            -1164.9376856065164
+          ],
+          "f20_savings": [
+            -5048.281549103973,
+            -5048.063304294905
+          ],
+          "f40_penalty": [
+            -1184.3796821905198,
+            -1184.3304611381607
+          ],
+          "f40_savings": [
+            -5132.311956158919,
+            -5132.098664932029
+          ],
+          "lower": 22773.88594666444,
+          "possible_caps": [
+            [
+              50,
+              0
+            ]
+          ],
+          "rank_best": 6,
+          "rank_worst": 6,
+          "upper": 22773.929387460263
+        },
+        {
+          "basis": "existing",
+          "design": "p1-20-w0",
+          "f20_penalty": [
+            373.03074134720066,
+            373.1288244865945
+          ],
+          "f20_savings": [
+            1616.4665458378695,
+            1616.8915727752428
+          ],
+          "f40_penalty": [
+            291.99111965480466,
+            292.08805965984806
+          ],
+          "f40_savings": [
+            1265.294851837487,
+            1265.7149251926749
+          ],
+          "lower": 15574.648495703412,
+          "possible_caps": [
+            [
+              20,
+              0
+            ]
+          ],
+          "rank_best": 3,
+          "rank_worst": 3,
+          "upper": 15574.898718627537
+        },
+        {
+          "basis": "existing",
+          "design": "p1-30-w0",
+          "f20_penalty": [
+            397.5845141652405,
+            397.691144363591
+          ],
+          "f20_savings": [
+            1722.8662280493754,
+            1723.3282922422277
+          ],
+          "f40_penalty": [
+            316.5448924728445,
+            316.6503795368445
+          ],
+          "f40_savings": [
+            1371.6945340489929,
+            1372.1516446596597
+          ],
+          "lower": 15468.211776236427,
+          "possible_caps": [
+            [
+              30,
+              0
+            ]
+          ],
+          "rank_best": 2,
+          "rank_worst": 2,
+          "upper": 15468.499036416031
+        },
+        {
+          "basis": "existing",
+          "design": "p1-40-w0",
+          "f20_penalty": [
+            433.61306250465657,
+            433.6981946795867
+          ],
+          "f20_savings": [
+            1878.9899375201785,
+            1879.3588436115424
+          ],
+          "f40_penalty": [
+            352.5734408122606,
+            352.65742985284027
+          ],
+          "f40_savings": [
+            1527.818243519796,
+            1528.1821960289744
+          ],
+          "lower": 15312.181224867112,
+          "possible_caps": [
+            [
+              40,
+              0
+            ]
+          ],
+          "rank_best": 1,
+          "rank_worst": 1,
+          "upper": 15312.375326945228
+        },
+        {
+          "basis": "existing",
+          "design": "p1-50-w0",
+          "f20_penalty": [
+            -120.9083917184359,
+            -120.80160855623006
+          ],
+          "f20_savings": [
+            -523.9363641132222,
+            -523.473637076997
+          ],
+          "f40_penalty": [
+            -201.94801341083186,
+            -201.84237338297652
+          ],
+          "f40_savings": [
+            -875.1080581136048,
+            -874.6502846595649
+          ],
+          "lower": 17715.01370555565,
+          "possible_caps": [
+            [
+              50,
+              0
+            ]
+          ],
+          "rank_best": 4,
+          "rank_worst": 4,
+          "upper": 17715.30162857863
+        },
+        {
+          "basis": "existing",
+          "design": "p2-50-w0",
+          "f20_penalty": [
+            -980.0433150551354,
+            -979.9937177212062
+          ],
+          "f20_savings": [
+            -4246.85436523892,
+            -4246.63944345856
+          ],
+          "f40_penalty": [
+            -1061.0829367475312,
+            -1061.0344825479526
+          ],
+          "f40_savings": [
+            -4598.026059239302,
+            -4597.816091041128
+          ],
+          "lower": 21438.179511937215,
+          "possible_caps": [
+            [
+              50,
+              0
+            ]
+          ],
+          "rank_best": 5,
+          "rank_worst": 6,
+          "upper": 21438.219629704327
+        },
+        {
+          "basis": "existing",
+          "design": "p2-100-w0",
+          "f20_penalty": [
+            -980.04408190792,
+            -979.9937177212112
+          ],
+          "f20_savings": [
+            -4246.857688267653,
+            -4246.639443458582
+          ],
+          "f40_penalty": [
+            -1061.083703600316,
+            -1061.0344825479576
+          ],
+          "f40_savings": [
+            -4598.029382268036,
+            -4597.81609104115
+          ],
+          "lower": 21438.179511937236,
+          "possible_caps": [
+            [
+              50,
+              0
+            ]
+          ],
+          "rank_best": 5,
+          "rank_worst": 6,
+          "upper": 21438.22295273306
+        }
+      ]
+    },
+    "breakpoint_sensitivity": {
+      "source": "20261123_m11_leftovers/formal/breakpoint.json",
+      "values": [
+        {
+          "basis": "new",
+          "design": "p1-40-w20",
+          "lower": 17407.965606257727,
+          "possible_caps": [
+            [
+              40,
+              20
+            ]
+          ],
+          "rank_best": 1,
+          "rank_worst": 1,
+          "upper": 17408.18592218751
+        },
+        {
+          "basis": "new",
+          "design": "p1-50-w20",
+          "lower": 19936.889082694914,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 4,
+          "rank_worst": 4,
+          "upper": 19937.162220349346
+        },
+        {
+          "basis": "new",
+          "design": "p1-40-w30",
+          "lower": 17858.332522597906,
+          "possible_caps": [
+            [
+              40,
+              20
+            ]
+          ],
+          "rank_best": 2,
+          "rank_worst": 2,
+          "upper": 17858.56086985225
+        },
+        {
+          "basis": "new",
+          "design": "p2-50-w20",
+          "lower": 23658.293439704063,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 9,
+          "rank_worst": 9,
+          "upper": 23658.293439704066
+        },
+        {
+          "basis": "new",
+          "design": "p1-50-w30",
+          "lower": 20387.845888276865,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 5,
+          "rank_worst": 5,
+          "upper": 20388.067822421643
+        },
+        {
+          "basis": "new",
+          "design": "p1-40-w40",
+          "lower": 18163.344621729775,
+          "possible_caps": [
+            [
+              40,
+              20
+            ]
+          ],
+          "rank_best": 3,
+          "rank_worst": 3,
+          "upper": 18163.57999574748
+        },
+        {
+          "basis": "new",
+          "design": "p2-50-w30",
+          "lower": 24109.284199624795,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 10,
+          "rank_worst": 10,
+          "upper": 24109.284199624795
+        },
+        {
+          "basis": "new",
+          "design": "p1-50-w40",
+          "lower": 20693.05134297138,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 6,
+          "rank_worst": 6,
+          "upper": 20693.222372963843
+        },
+        {
+          "basis": "new",
+          "design": "p1-40-w50",
+          "lower": 20767.31343265166,
+          "possible_caps": [
+            [
+              40,
+              20
+            ]
+          ],
+          "rank_best": 7,
+          "rank_worst": 7,
+          "upper": 20767.510039729448
+        },
+        {
+          "basis": "new",
+          "design": "p2-50-w40",
+          "lower": 24414.436153277635,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 12,
+          "rank_worst": 12,
+          "upper": 24414.436153277635
+        },
+        {
+          "basis": "new",
+          "design": "p1-50-w50",
+          "lower": 23297.00247484644,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 8,
+          "rank_worst": 8,
+          "upper": 23297.233872120312
+        },
+        {
+          "basis": "new",
+          "design": "p2-50-w50",
+          "lower": 27018.44947214179,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 15,
+          "rank_worst": 15,
+          "upper": 27018.44947214179
+        },
+        {
+          "basis": "new",
+          "design": "p2-100-w20",
+          "lower": 24326.146657069134,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 11,
+          "rank_worst": 11,
+          "upper": 24326.15581845979
+        },
+        {
+          "basis": "new",
+          "design": "p2-100-w30",
+          "lower": 24777.137416988393,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 13,
+          "rank_worst": 13,
+          "upper": 24777.17147491197
+        },
+        {
+          "basis": "new",
+          "design": "p2-100-w40",
+          "lower": 25082.289370641232,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 14,
+          "rank_worst": 14,
+          "upper": 25082.326025454153
+        },
+        {
+          "basis": "new",
+          "design": "p2-100-w50",
+          "lower": 27686.302689505945,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 16,
+          "rank_worst": 16,
+          "upper": 27686.341941208204
+        },
+        {
+          "basis": "existing",
+          "design": "p1-40-w20",
+          "lower": 16606.541745421408,
+          "possible_caps": [
+            [
+              40,
+              20
+            ]
+          ],
+          "rank_best": 1,
+          "rank_worst": 1,
+          "upper": 16606.76206135119
+        },
+        {
+          "basis": "existing",
+          "design": "p1-50-w20",
+          "lower": 19001.894578385873,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 4,
+          "rank_worst": 4,
+          "upper": 19002.167716040305
+        },
+        {
+          "basis": "existing",
+          "design": "p1-40-w30",
+          "lower": 16923.338018288865,
+          "possible_caps": [
+            [
+              40,
+              20
+            ]
+          ],
+          "rank_best": 2,
+          "rank_worst": 2,
+          "upper": 16923.566365543207
+        },
+        {
+          "basis": "existing",
+          "design": "p2-50-w20",
+          "lower": 22723.29893539502,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 9,
+          "rank_worst": 10,
+          "upper": 22723.298935395025
+        },
+        {
+          "basis": "existing",
+          "design": "p1-50-w30",
+          "lower": 19319.2807404951,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 5,
+          "rank_worst": 5,
+          "upper": 19319.50267463988
+        },
+        {
+          "basis": "existing",
+          "design": "p1-40-w40",
+          "lower": 17094.779473948012,
+          "possible_caps": [
+            [
+              40,
+              20
+            ]
+          ],
+          "rank_best": 3,
+          "rank_worst": 3,
+          "upper": 17095.014847965722
+        },
+        {
+          "basis": "existing",
+          "design": "p2-50-w30",
+          "lower": 23040.719051843033,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 11,
+          "rank_worst": 12,
+          "upper": 23040.719051843033
+        },
+        {
+          "basis": "existing",
+          "design": "p1-50-w40",
+          "lower": 19490.9155517169,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 6,
+          "rank_worst": 6,
+          "upper": 19491.08658170936
+        },
+        {
+          "basis": "existing",
+          "design": "p1-40-w50",
+          "lower": 19565.177641397175,
+          "possible_caps": [
+            [
+              40,
+              20
+            ]
+          ],
+          "rank_best": 7,
+          "rank_worst": 7,
+          "upper": 19565.374248474967
+        },
+        {
+          "basis": "existing",
+          "design": "p2-50-w40",
+          "lower": 23212.30036202315,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 13,
+          "rank_worst": 14,
+          "upper": 23212.300362023154
+        },
+        {
+          "basis": "existing",
+          "design": "p1-50-w50",
+          "lower": 21961.296040119236,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 8,
+          "rank_worst": 8,
+          "upper": 21961.52743739311
+        },
+        {
+          "basis": "existing",
+          "design": "p2-50-w50",
+          "lower": 25682.743037414588,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 15,
+          "rank_worst": 16,
+          "upper": 25682.743037414588
+        },
+        {
+          "basis": "existing",
+          "design": "p2-100-w20",
+          "lower": 22723.298935396495,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 9,
+          "rank_worst": 10,
+          "upper": 22723.308096787146
+        },
+        {
+          "basis": "existing",
+          "design": "p2-100-w30",
+          "lower": 23040.71905184303,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 11,
+          "rank_worst": 12,
+          "upper": 23040.75310976661
+        },
+        {
+          "basis": "existing",
+          "design": "p2-100-w40",
+          "lower": 23212.30036202315,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 13,
+          "rank_worst": 14,
+          "upper": 23212.33701683607
+        },
+        {
+          "basis": "existing",
+          "design": "p2-100-w50",
+          "lower": 25682.743037415144,
+          "possible_caps": [
+            [
+              50,
+              20
+            ]
+          ],
+          "rank_best": 15,
+          "rank_worst": 16,
+          "upper": 25682.782289117404
+        }
+      ]
+    },
+    "registration_energy_0.8": {
+      "source": "20261123_m11_leftovers/formal/scale_0.8.json",
+      "values": {
+        "factor": 0.8,
+        "registered_days": 109,
+        "ranks": [
+          {
+            "basis": "new",
+            "design": "p1-30-w50",
+            "lower": 19335.27403675905,
+            "possible_caps": [
+              [
+                30,
+                50
+              ]
+            ],
+            "rank_best": 2,
+            "rank_worst": 2,
+            "upper": 19335.57085082102
+          },
+          {
+            "basis": "new",
+            "design": "p1-50-w40",
+            "lower": 19212.111929171777,
+            "possible_caps": [
+              [
+                50,
+                40
+              ]
+            ],
+            "rank_best": 1,
+            "rank_worst": 1,
+            "upper": 19212.32318344508
+          },
+          {
+            "basis": "new",
+            "design": "p1-40-w50",
+            "lower": 19463.05988699292,
+            "possible_caps": [
+              [
+                40,
+                50
+              ]
+            ],
+            "rank_best": 3,
+            "rank_worst": 3,
+            "upper": 19463.38663823423
+          },
+          {
+            "basis": "new",
+            "design": "p2-50-w40",
+            "lower": 22934.19520945961,
+            "possible_caps": [
+              [
+                50,
+                40
+              ]
+            ],
+            "rank_best": 5,
+            "rank_worst": 5,
+            "upper": 22934.202709654655
+          },
+          {
+            "basis": "new",
+            "design": "p1-50-w50",
+            "lower": 22038.794390811923,
+            "possible_caps": [
+              [
+                50,
+                50
+              ]
+            ],
+            "rank_best": 4,
+            "rank_worst": 4,
+            "upper": 22039.007478220465
+          },
+          {
+            "basis": "new",
+            "design": "p2-50-w50",
+            "lower": 25760.931358447597,
+            "possible_caps": [
+              [
+                50,
+                50
+              ]
+            ],
+            "rank_best": 7,
+            "rank_worst": 7,
+            "upper": 25760.931358447604
+          },
+          {
+            "basis": "new",
+            "design": "p2-100-w40",
+            "lower": 24377.4755054174,
+            "possible_caps": [
+              [
+                100,
+                40
+              ]
+            ],
+            "rank_best": 6,
+            "rank_worst": 6,
+            "upper": 24377.529624314542
+          },
+          {
+            "basis": "new",
+            "design": "p2-100-w50",
+            "lower": 27205.60466116147,
+            "possible_caps": [
+              [
+                100,
+                50
+              ]
+            ],
+            "rank_best": 8,
+            "rank_worst": 8,
+            "upper": 27205.672028613975
+          },
+          {
+            "basis": "existing",
+            "design": "p1-30-w50",
+            "lower": 18266.708888977286,
+            "possible_caps": [
+              [
+                30,
+                50
+              ]
+            ],
+            "rank_best": 3,
+            "rank_worst": 3,
+            "upper": 18267.005703039256
+          },
+          {
+            "basis": "existing",
+            "design": "p1-50-w40",
+            "lower": 18009.976137917296,
+            "possible_caps": [
+              [
+                50,
+                40
+              ]
+            ],
+            "rank_best": 1,
+            "rank_worst": 1,
+            "upper": 18010.1873921906
+          },
+          {
+            "basis": "existing",
+            "design": "p1-40-w50",
+            "lower": 18260.92409573844,
+            "possible_caps": [
+              [
+                40,
+                50
+              ]
+            ],
+            "rank_best": 2,
+            "rank_worst": 2,
+            "upper": 18261.250846979747
+          },
+          {
+            "basis": "existing",
+            "design": "p2-50-w40",
+            "lower": 21732.059418205128,
+            "possible_caps": [
+              [
+                50,
+                40
+              ]
+            ],
+            "rank_best": 5,
+            "rank_worst": 5,
+            "upper": 21732.066918400174
+          },
+          {
+            "basis": "existing",
+            "design": "p1-50-w50",
+            "lower": 20703.08795608472,
+            "possible_caps": [
+              [
+                50,
+                50
+              ]
+            ],
+            "rank_best": 4,
+            "rank_worst": 4,
+            "upper": 20703.301043493262
+          },
+          {
+            "basis": "existing",
+            "design": "p2-50-w50",
+            "lower": 24425.224923720394,
+            "possible_caps": [
+              [
+                50,
+                50
+              ]
+            ],
+            "rank_best": 7,
+            "rank_worst": 7,
+            "upper": 24425.2249237204
+          },
+          {
+            "basis": "existing",
+            "design": "p2-100-w40",
+            "lower": 22507.486496799316,
+            "possible_caps": [
+              [
+                100,
+                40
+              ]
+            ],
+            "rank_best": 6,
+            "rank_worst": 6,
+            "upper": 22507.54061569646
+          },
+          {
+            "basis": "existing",
+            "design": "p2-100-w50",
+            "lower": 25202.045009070665,
+            "possible_caps": [
+              [
+                100,
+                50
+              ]
+            ],
+            "rank_best": 8,
+            "rank_worst": 8,
+            "upper": 25202.11237652317
+          }
+        ]
+      }
+    },
+    "registration_energy_0.9": {
+      "source": "20261123_m11_leftovers/formal/scale_0.9.json",
+      "values": {
+        "factor": 0.9,
+        "registered_days": 107,
+        "ranks": [
+          {
+            "basis": "new",
+            "design": "p1-20-w20",
+            "lower": 16570.165262803057,
+            "possible_caps": [
+              [
+                20,
+                20
+              ]
+            ],
+            "rank_best": 3,
+            "rank_worst": 3,
+            "upper": 16570.427579381765
+          },
+          {
+            "basis": "new",
+            "design": "p1-30-w20",
+            "lower": 16357.004964224618,
+            "possible_caps": [
+              [
+                30,
+                20
+              ]
+            ],
+            "rank_best": 1,
+            "rank_worst": 1,
+            "upper": 16357.36753601529
+          },
+          {
+            "basis": "new",
+            "design": "p1-20-w30",
+            "lower": 17273.75832930123,
+            "possible_caps": [
+              [
+                20,
+                30
+              ]
+            ],
+            "rank_best": 6,
+            "rank_worst": 6,
+            "upper": 17274.11735866035
+          },
+          {
+            "basis": "new",
+            "design": "p1-40-w20",
+            "lower": 16412.3643958561,
+            "possible_caps": [
+              [
+                40,
+                20
+              ]
+            ],
+            "rank_best": 2,
+            "rank_worst": 2,
+            "upper": 16412.722918055362
+          },
+          {
+            "basis": "new",
+            "design": "p1-30-w30",
+            "lower": 17029.34066141537,
+            "possible_caps": [
+              [
+                30,
+                30
+              ]
+            ],
+            "rank_best": 4,
+            "rank_worst": 4,
+            "upper": 17029.690805089318
+          },
+          {
+            "basis": "new",
+            "design": "p1-20-w40",
+            "lower": 17835.37995722762,
+            "possible_caps": [
+              [
+                20,
+                40
+              ]
+            ],
+            "rank_best": 9,
+            "rank_worst": 9,
+            "upper": 17835.663703083417
+          },
+          {
+            "basis": "new",
+            "design": "p1-50-w20",
+            "lower": 18963.78889206731,
+            "possible_caps": [
+              [
+                50,
+                20
+              ]
+            ],
+            "rank_best": 10,
+            "rank_worst": 10,
+            "upper": 18964.02746120425
+          },
+          {
+            "basis": "new",
+            "design": "p1-40-w30",
+            "lower": 17090.512403679197,
+            "possible_caps": [
+              [
+                40,
+                30
+              ]
+            ],
+            "rank_best": 5,
+            "rank_worst": 5,
+            "upper": 17090.85792323464
+          },
+          {
+            "basis": "new",
+            "design": "p1-30-w40",
+            "lower": 17559.426086361236,
+            "possible_caps": [
+              [
+                30,
+                40
+              ]
+            ],
+            "rank_best": 7,
+            "rank_worst": 7,
+            "upper": 17559.718350079085
+          },
+          {
+            "basis": "new",
+            "design": "p1-20-w50",
+            "lower": 20691.513489316734,
+            "possible_caps": [
+              [
+                20,
+                50
+              ]
+            ],
+            "rank_best": 15,
+            "rank_worst": 15,
+            "upper": 20691.791997929588
+          },
+          {
+            "basis": "new",
+            "design": "p2-50-w20",
+            "lower": 22687.24797514037,
+            "possible_caps": [
+              [
+                50,
+                20
+              ]
+            ],
+            "rank_best": 16,
+            "rank_worst": 16,
+            "upper": 22687.272782577445
+          },
+          {
+            "basis": "new",
+            "design": "p1-50-w30",
+            "lower": 19643.745838730767,
+            "possible_caps": [
+              [
+                50,
+                30
+              ]
+            ],
+            "rank_best": 11,
+            "rank_worst": 11,
+            "upper": 19643.99695127569
+          },
+          {
+            "basis": "new",
+            "design": "p1-40-w40",
+            "lower": 17624.61374183229,
+            "possible_caps": [
+              [
+                40,
+                40
+              ]
+            ],
+            "rank_best": 8,
+            "rank_worst": 8,
+            "upper": 17624.937919460244
+          },
+          {
+            "basis": "new",
+            "design": "p1-30-w50",
+            "lower": 20389.893175777594,
+            "possible_caps": [
+              [
+                30,
+                50
+              ]
+            ],
+            "rank_best": 13,
+            "rank_worst": 13,
+            "upper": 20390.18347120863
+          },
+          {
+            "basis": "new",
+            "design": "p2-50-w30",
+            "lower": 23367.161276454997,
+            "possible_caps": [
+              [
+                50,
+                30
+              ]
+            ],
+            "rank_best": 18,
+            "rank_worst": 18,
+            "upper": 23367.219483256504
+          },
+          {
+            "basis": "new",
+            "design": "p1-50-w40",
+            "lower": 20178.715257898686,
+            "possible_caps": [
+              [
+                50,
+                40
+              ]
+            ],
+            "rank_best": 12,
+            "rank_worst": 12,
+            "upper": 20178.94589620845
+          },
+          {
+            "basis": "new",
+            "design": "p1-40-w50",
+            "lower": 20457.999388880213,
+            "possible_caps": [
+              [
+                40,
+                50
+              ]
+            ],
+            "rank_best": 14,
+            "rank_worst": 14,
+            "upper": 20458.328412499093
+          },
+          {
+            "basis": "new",
+            "design": "p2-50-w40",
+            "lower": 23902.23083814139,
+            "possible_caps": [
+              [
+                50,
+                40
+              ]
+            ],
+            "rank_best": 19,
+            "rank_worst": 19,
+            "upper": 23902.240047746953
+          },
+          {
+            "basis": "new",
+            "design": "p1-50-w50",
+            "lower": 23013.017811512596,
+            "possible_caps": [
+              [
+                50,
+                50
+              ]
+            ],
+            "rank_best": 17,
+            "rank_worst": 17,
+            "upper": 23013.23238200143
+          },
+          {
+            "basis": "new",
+            "design": "p2-50-w50",
+            "lower": 26736.499358773268,
+            "possible_caps": [
+              [
+                50,
+                50
+              ]
+            ],
+            "rank_best": 23,
+            "rank_worst": 23,
+            "upper": 26736.508568378827
+          },
+          {
+            "basis": "new",
+            "design": "p2-100-w20",
+            "lower": 24081.223730661855,
+            "possible_caps": [
+              [
+                100,
+                20
+              ]
+            ],
+            "rank_best": 20,
+            "rank_worst": 20,
+            "upper": 24081.31151240572
+          },
+          {
+            "basis": "new",
+            "design": "p2-100-w30",
+            "lower": 24762.376571845405,
+            "possible_caps": [
+              [
+                100,
+                30
+              ]
+            ],
+            "rank_best": 21,
+            "rank_worst": 21,
+            "upper": 24762.508633193385
+          },
+          {
+            "basis": "new",
+            "design": "p2-100-w40",
+            "lower": 25298.583366163373,
+            "possible_caps": [
+              [
+                100,
+                40
+              ]
+            ],
+            "rank_best": 22,
+            "rank_worst": 22,
+            "upper": 25298.696494006712
+          },
+          {
+            "basis": "new",
+            "design": "p2-100-w50",
+            "lower": 28133.827696922544,
+            "possible_caps": [
+              [
+                100,
+                50
+              ]
+            ],
+            "rank_best": 24,
+            "rank_worst": 24,
+            "upper": 28133.892165716272
+          },
+          {
+            "basis": "existing",
+            "design": "p1-20-w20",
+            "lower": 16035.882688912174,
+            "possible_caps": [
+              [
+                20,
+                20
+              ]
+            ],
+            "rank_best": 3,
+            "rank_worst": 3,
+            "upper": 16036.145005490882
+          },
+          {
+            "basis": "existing",
+            "design": "p1-30-w20",
+            "lower": 15689.151746861016,
+            "possible_caps": [
+              [
+                30,
+                20
+              ]
+            ],
+            "rank_best": 2,
+            "rank_worst": 2,
+            "upper": 15689.514318651689
+          },
+          {
+            "basis": "existing",
+            "design": "p1-20-w30",
+            "lower": 16605.90511193763,
+            "possible_caps": [
+              [
+                20,
+                30
+              ]
+            ],
+            "rank_best": 7,
+            "rank_worst": 7,
+            "upper": 16606.26414129675
+          },
+          {
+            "basis": "existing",
+            "design": "p1-40-w20",
+            "lower": 15610.940535019781,
+            "possible_caps": [
+              [
+                40,
+                20
+              ]
+            ],
+            "rank_best": 1,
+            "rank_worst": 1,
+            "upper": 15611.29905721904
+          },
+          {
+            "basis": "existing",
+            "design": "p1-30-w30",
+            "lower": 16227.916800579045,
+            "possible_caps": [
+              [
+                30,
+                30
+              ]
+            ],
+            "rank_best": 5,
+            "rank_worst": 5,
+            "upper": 16228.266944252999
+          },
+          {
+            "basis": "existing",
+            "design": "p1-20-w40",
+            "lower": 17033.956096391295,
+            "possible_caps": [
+              [
+                20,
+                40
+              ]
+            ],
+            "rank_best": 9,
+            "rank_worst": 9,
+            "upper": 17034.239842247098
+          },
+          {
+            "basis": "existing",
+            "design": "p1-50-w20",
+            "lower": 18028.79438775827,
+            "possible_caps": [
+              [
+                50,
+                20
+              ]
+            ],
+            "rank_best": 10,
+            "rank_worst": 10,
+            "upper": 18029.032956895207
+          },
+          {
+            "basis": "existing",
+            "design": "p1-40-w30",
+            "lower": 16155.517899370152,
+            "possible_caps": [
+              [
+                40,
+                30
+              ]
+            ],
+            "rank_best": 4,
+            "rank_worst": 4,
+            "upper": 16155.863418925597
+          },
+          {
+            "basis": "existing",
+            "design": "p1-30-w40",
+            "lower": 16624.431582052195,
+            "possible_caps": [
+              [
+                30,
+                40
+              ]
+            ],
+            "rank_best": 8,
+            "rank_worst": 8,
+            "upper": 16624.723845770044
+          },
+          {
+            "basis": "existing",
+            "design": "p1-20-w50",
+            "lower": 19756.518985007693,
+            "possible_caps": [
+              [
+                20,
+                50
+              ]
+            ],
+            "rank_best": 15,
+            "rank_worst": 15,
+            "upper": 19756.797493620546
+          },
+          {
+            "basis": "existing",
+            "design": "p2-50-w20",
+            "lower": 21752.25347083133,
+            "possible_caps": [
+              [
+                50,
+                20
+              ]
+            ],
+            "rank_best": 17,
+            "rank_worst": 17,
+            "upper": 21752.278278268404
+          },
+          {
+            "basis": "existing",
+            "design": "p1-50-w30",
+            "lower": 18575.180690949004,
+            "possible_caps": [
+              [
+                50,
+                30
+              ]
+            ],
+            "rank_best": 11,
+            "rank_worst": 11,
+            "upper": 18575.431803493928
+          },
+          {
+            "basis": "existing",
+            "design": "p1-40-w40",
+            "lower": 16556.04859405053,
+            "possible_caps": [
+              [
+                40,
+                40
+              ]
+            ],
+            "rank_best": 6,
+            "rank_worst": 6,
+            "upper": 16556.372771678485
+          },
+          {
+            "basis": "existing",
+            "design": "p1-30-w50",
+            "lower": 19321.32802799583,
+            "possible_caps": [
+              [
+                30,
+                50
+              ]
+            ],
+            "rank_best": 14,
+            "rank_worst": 14,
+            "upper": 19321.61832342687
+          },
+          {
+            "basis": "existing",
+            "design": "p2-50-w30",
+            "lower": 22298.596128673238,
+            "possible_caps": [
+              [
+                50,
+                30
+              ]
+            ],
+            "rank_best": 18,
+            "rank_worst": 18,
+            "upper": 22298.654335474745
+          },
+          {
+            "basis": "existing",
+            "design": "p1-50-w40",
+            "lower": 18976.5794666442,
+            "possible_caps": [
+              [
+                50,
+                40
+              ]
+            ],
+            "rank_best": 12,
+            "rank_worst": 12,
+            "upper": 18976.810104953965
+          },
+          {
+            "basis": "existing",
+            "design": "p1-40-w50",
+            "lower": 19255.86359762573,
+            "possible_caps": [
+              [
+                40,
+                50
+              ]
+            ],
+            "rank_best": 13,
+            "rank_worst": 13,
+            "upper": 19256.192621244612
+          },
+          {
+            "basis": "existing",
+            "design": "p2-50-w40",
+            "lower": 22700.09504688691,
+            "possible_caps": [
+              [
+                50,
+                40
+              ]
+            ],
+            "rank_best": 20,
+            "rank_worst": 20,
+            "upper": 22700.104256492472
+          },
+          {
+            "basis": "existing",
+            "design": "p1-50-w50",
+            "lower": 21677.311376785394,
+            "possible_caps": [
+              [
+                50,
+                50
+              ]
+            ],
+            "rank_best": 16,
+            "rank_worst": 16,
+            "upper": 21677.52594727423
+          },
+          {
+            "basis": "existing",
+            "design": "p2-50-w50",
+            "lower": 25400.792924046065,
+            "possible_caps": [
+              [
+                50,
+                50
+              ]
+            ],
+            "rank_best": 23,
+            "rank_worst": 23,
+            "upper": 25400.802133651625
+          },
+          {
+            "basis": "existing",
+            "design": "p2-100-w20",
+            "lower": 22478.376008989213,
+            "possible_caps": [
+              [
+                100,
+                20
+              ]
+            ],
+            "rank_best": 19,
+            "rank_worst": 19,
+            "upper": 22478.463790733076
+          },
+          {
+            "basis": "existing",
+            "design": "p2-100-w30",
+            "lower": 23025.958206700045,
+            "possible_caps": [
+              [
+                100,
+                30
+              ]
+            ],
+            "rank_best": 21,
+            "rank_worst": 21,
+            "upper": 23026.090268048025
+          },
+          {
+            "basis": "existing",
+            "design": "p2-100-w40",
+            "lower": 23428.59435754529,
+            "possible_caps": [
+              [
+                100,
+                40
+              ]
+            ],
+            "rank_best": 22,
+            "rank_worst": 22,
+            "upper": 23428.70748538863
+          },
+          {
+            "basis": "existing",
+            "design": "p2-100-w50",
+            "lower": 26130.26804483174,
+            "possible_caps": [
+              [
+                100,
+                50
+              ]
+            ],
+            "rank_best": 24,
+            "rank_worst": 24,
+            "upper": 26130.332513625468
+          }
+        ]
+      }
+    },
+    "registration_energy_1.1": {
+      "source": "20261123_m11_leftovers/formal/scale_1.1.json",
+      "values": {
+        "factor": 1.1,
+        "registered_days": 104,
+        "ranks": [
+          {
+            "basis": "new",
+            "design": "p1-30-w20",
+            "lower": 18963.806347040372,
+            "possible_caps": [
+              [
+                30,
+                20
+              ]
+            ],
+            "rank_best": 2,
+            "rank_worst": 2,
+            "upper": 18964.116004080253
+          },
+          {
+            "basis": "new",
+            "design": "p1-40-w20",
+            "lower": 18860.945951027537,
+            "possible_caps": [
+              [
+                40,
+                20
+              ]
+            ],
+            "rank_best": 1,
+            "rank_worst": 1,
+            "upper": 18861.20405171375
+          },
+          {
+            "basis": "new",
+            "design": "p1-30-w30",
+            "lower": 19626.04207195816,
+            "possible_caps": [
+              [
+                30,
+                30
+              ]
+            ],
+            "rank_best": 4,
+            "rank_worst": 4,
+            "upper": 19626.345217228954
+          },
+          {
+            "basis": "new",
+            "design": "p1-50-w20",
+            "lower": 21343.32190201466,
+            "possible_caps": [
+              [
+                50,
+                20
+              ]
+            ],
+            "rank_best": 7,
+            "rank_worst": 7,
+            "upper": 21343.59078472775
+          },
+          {
+            "basis": "new",
+            "design": "p1-40-w30",
+            "lower": 19528.604502344482,
+            "possible_caps": [
+              [
+                40,
+                30
+              ]
+            ],
+            "rank_best": 3,
+            "rank_worst": 3,
+            "upper": 19528.793928854924
+          },
+          {
+            "basis": "new",
+            "design": "p1-30-w40",
+            "lower": 20155.06663494321,
+            "possible_caps": [
+              [
+                30,
+                40
+              ]
+            ],
+            "rank_best": 6,
+            "rank_worst": 6,
+            "upper": 20155.304461852178
+          },
+          {
+            "basis": "new",
+            "design": "p2-50-w20",
+            "lower": 25066.10251882328,
+            "possible_caps": [
+              [
+                50,
+                20
+              ]
+            ],
+            "rank_best": 12,
+            "rank_worst": 12,
+            "upper": 25066.10251882328
+          },
+          {
+            "basis": "new",
+            "design": "p1-50-w30",
+            "lower": 22011.92306478438,
+            "possible_caps": [
+              [
+                50,
+                30
+              ]
+            ],
+            "rank_best": 8,
+            "rank_worst": 8,
+            "upper": 22012.20211932289
+          },
+          {
+            "basis": "new",
+            "design": "p1-40-w40",
+            "lower": 20060.617375266935,
+            "possible_caps": [
+              [
+                40,
+                40
+              ]
+            ],
+            "rank_best": 5,
+            "rank_worst": 5,
+            "upper": 20060.889911092112
+          },
+          {
+            "basis": "new",
+            "design": "p1-30-w50",
+            "lower": 22985.05045412407,
+            "possible_caps": [
+              [
+                30,
+                50
+              ]
+            ],
+            "rank_best": 11,
+            "rank_worst": 11,
+            "upper": 22985.236949296966
+          },
+          {
+            "basis": "new",
+            "design": "p2-50-w30",
+            "lower": 25734.78921533876,
+            "possible_caps": [
+              [
+                50,
+                30
+              ]
+            ],
+            "rank_best": 14,
+            "rank_worst": 14,
+            "upper": 25734.78921533876
+          },
+          {
+            "basis": "new",
+            "design": "p1-50-w40",
+            "lower": 22545.110877494164,
+            "possible_caps": [
+              [
+                50,
+                40
+              ]
+            ],
+            "rank_best": 9,
+            "rank_worst": 9,
+            "upper": 22545.36067973455
+          },
+          {
+            "basis": "new",
+            "design": "p1-40-w50",
+            "lower": 22893.23821470596,
+            "possible_caps": [
+              [
+                40,
+                50
+              ]
+            ],
+            "rank_best": 10,
+            "rank_worst": 10,
+            "upper": 22893.4653235549
+          },
+          {
+            "basis": "new",
+            "design": "p2-50-w40",
+            "lower": 26268.033436290632,
+            "possible_caps": [
+              [
+                50,
+                40
+              ]
+            ],
+            "rank_best": 15,
+            "rank_worst": 15,
+            "upper": 26268.051259753694
+          },
+          {
+            "basis": "new",
+            "design": "p1-50-w50",
+            "lower": 25379.16757892725,
+            "possible_caps": [
+              [
+                50,
+                50
+              ]
+            ],
+            "rank_best": 13,
+            "rank_worst": 13,
+            "upper": 25379.392907894595
+          },
+          {
+            "basis": "new",
+            "design": "p2-50-w50",
+            "lower": 29102.106990743065,
+            "possible_caps": [
+              [
+                50,
+                50
+              ]
+            ],
+            "rank_best": 19,
+            "rank_worst": 19,
+            "upper": 29102.106990743065
+          },
+          {
+            "basis": "new",
+            "design": "p2-100-w20",
+            "lower": 26411.796734153475,
+            "possible_caps": [
+              [
+                100,
+                20
+              ]
+            ],
+            "rank_best": 16,
+            "rank_worst": 16,
+            "upper": 26411.864066842052
+          },
+          {
+            "basis": "new",
+            "design": "p2-100-w30",
+            "lower": 27082.10150764681,
+            "possible_caps": [
+              [
+                100,
+                30
+              ]
+            ],
+            "rank_best": 17,
+            "rank_worst": 17,
+            "upper": 27082.182622880606
+          },
+          {
+            "basis": "new",
+            "design": "p2-100-w40",
+            "lower": 27616.925420552972,
+            "possible_caps": [
+              [
+                100,
+                40
+              ]
+            ],
+            "rank_best": 18,
+            "rank_worst": 18,
+            "upper": 27616.99275324155
+          },
+          {
+            "basis": "new",
+            "design": "p2-100-w50",
+            "lower": 30451.672675619957,
+            "possible_caps": [
+              [
+                100,
+                50
+              ]
+            ],
+            "rank_best": 20,
+            "rank_worst": 20,
+            "upper": 30451.753790853752
+          },
+          {
+            "basis": "existing",
+            "design": "p1-30-w20",
+            "lower": 18295.953129676767,
+            "possible_caps": [
+              [
+                30,
+                20
+              ]
+            ],
+            "rank_best": 2,
+            "rank_worst": 2,
+            "upper": 18296.262786716652
+          },
+          {
+            "basis": "existing",
+            "design": "p1-40-w20",
+            "lower": 18059.522090191218,
+            "possible_caps": [
+              [
+                40,
+                20
+              ]
+            ],
+            "rank_best": 1,
+            "rank_worst": 1,
+            "upper": 18059.78019087743
+          },
+          {
+            "basis": "existing",
+            "design": "p1-30-w30",
+            "lower": 18824.618211121837,
+            "possible_caps": [
+              [
+                30,
+                30
+              ]
+            ],
+            "rank_best": 4,
+            "rank_worst": 4,
+            "upper": 18824.92135639263
+          },
+          {
+            "basis": "existing",
+            "design": "p1-50-w20",
+            "lower": 20408.32739770562,
+            "possible_caps": [
+              [
+                50,
+                20
+              ]
+            ],
+            "rank_best": 7,
+            "rank_worst": 7,
+            "upper": 20408.596280418707
+          },
+          {
+            "basis": "existing",
+            "design": "p1-40-w30",
+            "lower": 18593.60999803544,
+            "possible_caps": [
+              [
+                40,
+                30
+              ]
+            ],
+            "rank_best": 3,
+            "rank_worst": 3,
+            "upper": 18593.799424545883
+          },
+          {
+            "basis": "existing",
+            "design": "p1-30-w40",
+            "lower": 19220.07213063417,
+            "possible_caps": [
+              [
+                30,
+                40
+              ]
+            ],
+            "rank_best": 6,
+            "rank_worst": 6,
+            "upper": 19220.309957543137
+          },
+          {
+            "basis": "existing",
+            "design": "p2-50-w20",
+            "lower": 24131.108014514244,
+            "possible_caps": [
+              [
+                50,
+                20
+              ]
+            ],
+            "rank_best": 13,
+            "rank_worst": 13,
+            "upper": 24131.108014514244
+          },
+          {
+            "basis": "existing",
+            "design": "p1-50-w30",
+            "lower": 20943.357917002617,
+            "possible_caps": [
+              [
+                50,
+                30
+              ]
+            ],
+            "rank_best": 8,
+            "rank_worst": 8,
+            "upper": 20943.636971541127
+          },
+          {
+            "basis": "existing",
+            "design": "p1-40-w40",
+            "lower": 18992.052227485176,
+            "possible_caps": [
+              [
+                40,
+                40
+              ]
+            ],
+            "rank_best": 5,
+            "rank_worst": 5,
+            "upper": 18992.324763310353
+          },
+          {
+            "basis": "existing",
+            "design": "p1-30-w50",
+            "lower": 21916.485306342307,
+            "possible_caps": [
+              [
+                30,
+                50
+              ]
+            ],
+            "rank_best": 11,
+            "rank_worst": 11,
+            "upper": 21916.671801515207
+          },
+          {
+            "basis": "existing",
+            "design": "p2-50-w30",
+            "lower": 24666.224067557,
+            "possible_caps": [
+              [
+                50,
+                30
+              ]
+            ],
+            "rank_best": 14,
+            "rank_worst": 14,
+            "upper": 24666.224067557
+          },
+          {
+            "basis": "existing",
+            "design": "p1-50-w40",
+            "lower": 21342.975086239683,
+            "possible_caps": [
+              [
+                50,
+                40
+              ]
+            ],
+            "rank_best": 9,
+            "rank_worst": 9,
+            "upper": 21343.22488848007
+          },
+          {
+            "basis": "existing",
+            "design": "p1-40-w50",
+            "lower": 21691.10242345148,
+            "possible_caps": [
+              [
+                40,
+                50
+              ]
+            ],
+            "rank_best": 10,
+            "rank_worst": 10,
+            "upper": 21691.32953230042
+          },
+          {
+            "basis": "existing",
+            "design": "p2-50-w40",
+            "lower": 25065.89764503615,
+            "possible_caps": [
+              [
+                50,
+                40
+              ]
+            ],
+            "rank_best": 16,
+            "rank_worst": 16,
+            "upper": 25065.915468499217
+          },
+          {
+            "basis": "existing",
+            "design": "p1-50-w50",
+            "lower": 24043.46114420005,
+            "possible_caps": [
+              [
+                50,
+                50
+              ]
+            ],
+            "rank_best": 12,
+            "rank_worst": 12,
+            "upper": 24043.686473167392
+          },
+          {
+            "basis": "existing",
+            "design": "p2-50-w50",
+            "lower": 27766.400556015862,
+            "possible_caps": [
+              [
+                50,
+                50
+              ]
+            ],
+            "rank_best": 19,
+            "rank_worst": 19,
+            "upper": 27766.400556015862
+          },
+          {
+            "basis": "existing",
+            "design": "p2-100-w20",
+            "lower": 24808.949012480833,
+            "possible_caps": [
+              [
+                100,
+                20
+              ]
+            ],
+            "rank_best": 15,
+            "rank_worst": 15,
+            "upper": 24809.01634516941
+          },
+          {
+            "basis": "existing",
+            "design": "p2-100-w30",
+            "lower": 25345.68314250145,
+            "possible_caps": [
+              [
+                100,
+                30
+              ]
+            ],
+            "rank_best": 17,
+            "rank_worst": 17,
+            "upper": 25345.764257735245
+          },
+          {
+            "basis": "existing",
+            "design": "p2-100-w40",
+            "lower": 25746.93641193489,
+            "possible_caps": [
+              [
+                100,
+                40
+              ]
+            ],
+            "rank_best": 18,
+            "rank_worst": 18,
+            "upper": 25747.003744623467
+          },
+          {
+            "basis": "existing",
+            "design": "p2-100-w50",
+            "lower": 28448.113023529157,
+            "possible_caps": [
+              [
+                100,
+                50
+              ]
+            ],
+            "rank_best": 20,
+            "rank_worst": 20,
+            "upper": 28448.194138762952
+          }
+        ]
+      }
+    },
+    "registration_energy_1.2": {
+      "source": "20261123_m11_leftovers/formal/scale_1.2.json",
+      "values": {
+        "factor": 1.2,
+        "registered_days": 101,
+        "ranks": [
+          {
+            "basis": "new",
+            "design": "p1-30-w30",
+            "lower": 20328.814963433935,
+            "possible_caps": [
+              [
+                30,
+                30
+              ]
+            ],
+            "rank_best": 2,
+            "rank_worst": 2,
+            "upper": 20329.126067449615
+          },
+          {
+            "basis": "new",
+            "design": "p1-40-w30",
+            "lower": 20170.971230254534,
+            "possible_caps": [
+              [
+                40,
+                30
+              ]
+            ],
+            "rank_best": 1,
+            "rank_worst": 1,
+            "upper": 20171.234185184345
+          },
+          {
+            "basis": "new",
+            "design": "p1-30-w40",
+            "lower": 20855.33943910218,
+            "possible_caps": [
+              [
+                30,
+                40
+              ]
+            ],
+            "rank_best": 4,
+            "rank_worst": 4,
+            "upper": 20855.59257934863
+          },
+          {
+            "basis": "new",
+            "design": "p1-50-w30",
+            "lower": 22620.781892165036,
+            "possible_caps": [
+              [
+                50,
+                30
+              ]
+            ],
+            "rank_best": 5,
+            "rank_worst": 5,
+            "upper": 22620.973361996686
+          },
+          {
+            "basis": "new",
+            "design": "p1-40-w40",
+            "lower": 20702.162387324388,
+            "possible_caps": [
+              [
+                40,
+                40
+              ]
+            ],
+            "rank_best": 3,
+            "rank_worst": 3,
+            "upper": 20702.441851868192
+          },
+          {
+            "basis": "new",
+            "design": "p1-30-w50",
+            "lower": 23684.190801173158,
+            "possible_caps": [
+              [
+                30,
+                50
+              ]
+            ],
+            "rank_best": 8,
+            "rank_worst": 8,
+            "upper": 23684.47963512988
+          },
+          {
+            "basis": "new",
+            "design": "p2-50-w30",
+            "lower": 26343.163702124915,
+            "possible_caps": [
+              [
+                50,
+                30
+              ]
+            ],
+            "rank_best": 10,
+            "rank_worst": 10,
+            "upper": 26343.163702124915
+          },
+          {
+            "basis": "new",
+            "design": "p1-50-w40",
+            "lower": 23153.416216031655,
+            "possible_caps": [
+              [
+                50,
+                40
+              ]
+            ],
+            "rank_best": 6,
+            "rank_worst": 6,
+            "upper": 23153.529929742937
+          },
+          {
+            "basis": "new",
+            "design": "p1-40-w50",
+            "lower": 23534.123493062747,
+            "possible_caps": [
+              [
+                40,
+                50
+              ]
+            ],
+            "rank_best": 7,
+            "rank_worst": 7,
+            "upper": 23534.546727601
+          },
+          {
+            "basis": "new",
+            "design": "p2-50-w40",
+            "lower": 26875.700315779846,
+            "possible_caps": [
+              [
+                50,
+                40
+              ]
+            ],
+            "rank_best": 11,
+            "rank_worst": 11,
+            "upper": 26875.700315779846
+          },
+          {
+            "basis": "new",
+            "design": "p1-50-w50",
+            "lower": 25985.935617557065,
+            "possible_caps": [
+              [
+                50,
+                50
+              ]
+            ],
+            "rank_best": 9,
+            "rank_worst": 9,
+            "upper": 25986.208301424915
+          },
+          {
+            "basis": "new",
+            "design": "p2-50-w50",
+            "lower": 29708.548328948207,
+            "possible_caps": [
+              [
+                50,
+                50
+              ]
+            ],
+            "rank_best": 14,
+            "rank_worst": 14,
+            "upper": 29708.565620776535
+          },
+          {
+            "basis": "new",
+            "design": "p2-100-w30",
+            "lower": 27667.20029344096,
+            "possible_caps": [
+              [
+                100,
+                30
+              ]
+            ],
+            "rank_best": 12,
+            "rank_worst": 12,
+            "upper": 27667.266971817255
+          },
+          {
+            "basis": "new",
+            "design": "p2-100-w40",
+            "lower": 28201.646457081944,
+            "possible_caps": [
+              [
+                100,
+                40
+              ]
+            ],
+            "rank_best": 13,
+            "rank_worst": 13,
+            "upper": 28201.742765770163
+          },
+          {
+            "basis": "new",
+            "design": "p2-100-w50",
+            "lower": 31036.237107474633,
+            "possible_caps": [
+              [
+                100,
+                50
+              ]
+            ],
+            "rank_best": 15,
+            "rank_worst": 15,
+            "upper": 31036.31458384735
+          },
+          {
+            "basis": "existing",
+            "design": "p1-30-w30",
+            "lower": 19527.391102597612,
+            "possible_caps": [
+              [
+                30,
+                30
+              ]
+            ],
+            "rank_best": 2,
+            "rank_worst": 2,
+            "upper": 19527.702206613296
+          },
+          {
+            "basis": "existing",
+            "design": "p1-40-w30",
+            "lower": 19235.976725945493,
+            "possible_caps": [
+              [
+                40,
+                30
+              ]
+            ],
+            "rank_best": 1,
+            "rank_worst": 1,
+            "upper": 19236.239680875304
+          },
+          {
+            "basis": "existing",
+            "design": "p1-30-w40",
+            "lower": 19920.34493479314,
+            "possible_caps": [
+              [
+                30,
+                40
+              ]
+            ],
+            "rank_best": 4,
+            "rank_worst": 4,
+            "upper": 19920.59807503959
+          },
+          {
+            "basis": "existing",
+            "design": "p1-50-w30",
+            "lower": 21552.216744383273,
+            "possible_caps": [
+              [
+                50,
+                30
+              ]
+            ],
+            "rank_best": 5,
+            "rank_worst": 5,
+            "upper": 21552.408214214924
+          },
+          {
+            "basis": "existing",
+            "design": "p1-40-w40",
+            "lower": 19633.597239542625,
+            "possible_caps": [
+              [
+                40,
+                40
+              ]
+            ],
+            "rank_best": 3,
+            "rank_worst": 3,
+            "upper": 19633.876704086433
+          },
+          {
+            "basis": "existing",
+            "design": "p1-30-w50",
+            "lower": 22615.625653391395,
+            "possible_caps": [
+              [
+                30,
+                50
+              ]
+            ],
+            "rank_best": 8,
+            "rank_worst": 8,
+            "upper": 22615.914487348116
+          },
+          {
+            "basis": "existing",
+            "design": "p2-50-w30",
+            "lower": 25274.598554343153,
+            "possible_caps": [
+              [
+                50,
+                30
+              ]
+            ],
+            "rank_best": 10,
+            "rank_worst": 10,
+            "upper": 25274.598554343153
+          },
+          {
+            "basis": "existing",
+            "design": "p1-50-w40",
+            "lower": 21951.28042477718,
+            "possible_caps": [
+              [
+                50,
+                40
+              ]
+            ],
+            "rank_best": 6,
+            "rank_worst": 6,
+            "upper": 21951.394138488453
+          },
+          {
+            "basis": "existing",
+            "design": "p1-40-w50",
+            "lower": 22331.98770180827,
+            "possible_caps": [
+              [
+                40,
+                50
+              ]
+            ],
+            "rank_best": 7,
+            "rank_worst": 7,
+            "upper": 22332.410936346518
+          },
+          {
+            "basis": "existing",
+            "design": "p2-50-w40",
+            "lower": 25673.56452452537,
+            "possible_caps": [
+              [
+                50,
+                40
+              ]
+            ],
+            "rank_best": 11,
+            "rank_worst": 11,
+            "upper": 25673.56452452537
+          },
+          {
+            "basis": "existing",
+            "design": "p1-50-w50",
+            "lower": 24650.229182829866,
+            "possible_caps": [
+              [
+                50,
+                50
+              ]
+            ],
+            "rank_best": 9,
+            "rank_worst": 9,
+            "upper": 24650.501866697712
+          },
+          {
+            "basis": "existing",
+            "design": "p2-50-w50",
+            "lower": 28372.841894221012,
+            "possible_caps": [
+              [
+                50,
+                50
+              ]
+            ],
+            "rank_best": 14,
+            "rank_worst": 14,
+            "upper": 28372.859186049332
+          },
+          {
+            "basis": "existing",
+            "design": "p2-100-w30",
+            "lower": 25930.781928295597,
+            "possible_caps": [
+              [
+                100,
+                30
+              ]
+            ],
+            "rank_best": 12,
+            "rank_worst": 12,
+            "upper": 25930.84860667189
+          },
+          {
+            "basis": "existing",
+            "design": "p2-100-w40",
+            "lower": 26331.657448463862,
+            "possible_caps": [
+              [
+                100,
+                40
+              ]
+            ],
+            "rank_best": 13,
+            "rank_worst": 13,
+            "upper": 26331.75375715208
+          },
+          {
+            "basis": "existing",
+            "design": "p2-100-w50",
+            "lower": 29032.677455383833,
+            "possible_caps": [
+              [
+                100,
+                50
+              ]
+            ],
+            "rank_best": 15,
+            "rank_worst": 15,
+            "upper": 29032.75493175655
+          }
+        ]
+      }
+    },
+    "equipment_price_thresholds": {
+      "source": "20261123_m11_leftovers/formal/prices.json",
+      "values": {
+        "factor": 0.17187027663854476,
+        "thresholds": [
+          {
+            "annual_allowance_lower_eur_2025": 1200.0747454137163,
+            "annual_allowance_upper_eur_2025": null,
+            "basis": "new",
+            "design": "p1-35-w20",
+            "feasible_minimum_points": [
+              [
+                35,
+                20
+              ]
+            ],
+            "net_equipment_lower_eur_2026": 6982.444951418549,
+            "net_equipment_upper_eur_2026": null,
+            "unresolved_points": [
+              [
+                15,
+                20
+              ]
+            ]
+          },
+          {
+            "annual_allowance_lower_eur_2025": 1133.2894236773573,
+            "annual_allowance_upper_eur_2025": null,
+            "basis": "existing",
+            "design": "p1-35-w20",
+            "feasible_minimum_points": [
+              [
+                35,
+                20
+              ]
+            ],
+            "net_equipment_lower_eur_2026": 6593.865128062512,
+            "net_equipment_upper_eur_2026": null,
+            "unresolved_points": [
+              [
+                15,
+                20
+              ]
+            ]
+          },
+          {
+            "annual_allowance_lower_eur_2025": 664.6160184208748,
+            "annual_allowance_upper_eur_2025": 664.982799780566,
+            "basis": "new",
+            "design": "p1-40-w35",
+            "feasible_minimum_points": [
+              [
+                40,
+                15
+              ]
+            ],
+            "net_equipment_lower_eur_2026": 3866.9631039147557,
+            "net_equipment_upper_eur_2026": 3869.097163199844,
+            "unresolved_points": []
+          },
+          {
+            "annual_allowance_lower_eur_2025": 864.9719836299591,
+            "annual_allowance_upper_eur_2025": 865.3387649896467,
+            "basis": "existing",
+            "design": "p1-40-w35",
+            "feasible_minimum_points": [
+              [
+                40,
+                15
+              ]
+            ],
+            "net_equipment_lower_eur_2026": 5032.7025739829105,
+            "net_equipment_upper_eur_2026": 5034.836633267978,
+            "unresolved_points": []
+          }
+        ],
+        "upgrade": [
+          {
+            "basis": "new",
+            "caps": [
+              40,
+              20
+            ],
+            "design": "p1-40-w40",
+            "lower": 18397.42951279741,
+            "point": "selected",
+            "premium": [
+              755.6422310650014,
+              756.0495081376721
+            ],
+            "upper": 18397.666939439016
+          },
+          {
+            "basis": "new",
+            "caps": [
+              40,
+              40
+            ],
+            "design": "p1-40-w40",
+            "lower": 18848.775997541317,
+            "point": "rated",
+            "premium": [
+              1206.9887158089077,
+              1207.3547483352595
+            ],
+            "upper": 18848.972179636603
+          },
+          {
+            "basis": "existing",
+            "caps": [
+              40,
+              20
+            ],
+            "design": "p1-40-w40",
+            "lower": 17328.864365015652,
+            "point": "selected",
+            "premium": [
+              488.50094411956525,
+              488.90822119222867
+            ],
+            "upper": 17329.101791657253
+          },
+          {
+            "basis": "existing",
+            "caps": [
+              40,
+              40
+            ],
+            "design": "p1-40-w40",
+            "lower": 17780.21084975956,
+            "point": "rated",
+            "premium": [
+              939.8474288634716,
+              940.2134613898197
+            ],
+            "upper": 17780.407031854844
+          }
+        ]
+      }
+    },
+    "equipment_and_demand_repricing_minima": {
+      "source": "20261123_m11_rules/formal/sensitivity.json",
+      "values": {
+        "annual": [
+          {
+            "connection_basis": "new",
+            "incumbent": {
+              "caps_kw": [
+                40,
+                20
+              ],
+              "connection_basis": "new",
+              "design": "p1-40-w20",
+              "missing_ratings_kw": "",
+              "rank_best": 1,
+              "rank_worst": 1,
+              "scenario": "official",
+              "total_lower": 17641.617431301343,
+              "total_upper": 17641.78728173241
+            },
+            "minimum_lower": 17641.617431301343,
+            "minimum_upper": 17641.78728173241,
+            "possible_minimum_designs": [
+              "p1-40-w20"
+            ],
+            "scenario": "official"
+          },
+          {
+            "connection_basis": "existing",
+            "incumbent": {
+              "caps_kw": [
+                40,
+                20
+              ],
+              "connection_basis": "existing",
+              "design": "p1-40-w20",
+              "missing_ratings_kw": "",
+              "rank_best": 1,
+              "rank_worst": 1,
+              "scenario": "official",
+              "total_lower": 16840.193570465024,
+              "total_upper": 16840.363420896087
+            },
+            "minimum_lower": 16840.193570465024,
+            "minimum_upper": 16840.363420896087,
+            "possible_minimum_designs": [
+              "p1-40-w20"
+            ],
+            "scenario": "official"
+          }
+        ],
+        "equipment_0.7": [
+          {
+            "connection_basis": "new",
+            "incumbent": {
+              "caps_kw": [
+                40,
+                20
+              ],
+              "connection_basis": "new",
+              "design": "p1-40-w20",
+              "missing_ratings_kw": "",
+              "rank_best": 1,
+              "rank_worst": 1,
+              "scenario": "official",
+              "total_lower": 17036.270819091864,
+              "total_upper": 17036.44066952293
+            },
+            "minimum_lower": 17036.270819091864,
+            "minimum_upper": 17036.44066952293,
+            "possible_minimum_designs": [
+              "p1-40-w20"
+            ],
+            "scenario": "official"
+          },
+          {
+            "connection_basis": "existing",
+            "incumbent": {
+              "caps_kw": [
+                40,
+                20
+              ],
+              "connection_basis": "existing",
+              "design": "p1-40-w20",
+              "missing_ratings_kw": "",
+              "rank_best": 1,
+              "rank_worst": 1,
+              "scenario": "official",
+              "total_lower": 16234.846958255543,
+              "total_upper": 16235.016808686605
+            },
+            "minimum_lower": 16234.846958255543,
+            "minimum_upper": 16235.016808686605,
+            "possible_minimum_designs": [
+              "p1-40-w20"
+            ],
+            "scenario": "official"
+          }
+        ],
+        "equipment_1.3": [
+          {
+            "connection_basis": "new",
+            "incumbent": {
+              "caps_kw": [
+                20,
+                20
+              ],
+              "connection_basis": "new",
+              "design": "p1-20-w20",
+              "missing_ratings_kw": "",
+              "rank_best": 1,
+              "rank_worst": 1,
+              "scenario": "official",
+              "total_lower": 18184.064861928342,
+              "total_upper": 18184.239665941586
+            },
+            "minimum_lower": 18184.064861928342,
+            "minimum_upper": 18184.239665941586,
+            "possible_minimum_designs": [
+              "p1-20-w20"
+            ],
+            "scenario": "official"
+          },
+          {
+            "connection_basis": "existing",
+            "incumbent": {
+              "caps_kw": [
+                40,
+                20
+              ],
+              "connection_basis": "existing",
+              "design": "p1-40-w20",
+              "missing_ratings_kw": "",
+              "rank_best": 1,
+              "rank_worst": 1,
+              "scenario": "official",
+              "total_lower": 17445.540182674504,
+              "total_upper": 17445.710033105566
+            },
+            "minimum_lower": 17445.540182674504,
+            "minimum_upper": 17445.710033105566,
+            "possible_minimum_designs": [
+              "p1-40-w20"
+            ],
+            "scenario": "official"
+          }
+        ],
+        "monthly": [
+          {
+            "connection_basis": "new",
+            "incumbent": {
+              "caps_kw": [
+                40,
+                20
+              ],
+              "connection_basis": "new",
+              "design": "p1-40-w20",
+              "missing_ratings_kw": "",
+              "rank_best": 1,
+              "rank_worst": 1,
+              "scenario": "official",
+              "total_lower": 17641.617431301303,
+              "total_upper": 17641.78728173237
+            },
+            "minimum_lower": 17641.617431301303,
+            "minimum_upper": 17641.78728173237,
+            "possible_minimum_designs": [
+              "p1-40-w20"
+            ],
+            "scenario": "official"
+          },
+          {
+            "connection_basis": "existing",
+            "incumbent": {
+              "caps_kw": [
+                40,
+                20
+              ],
+              "connection_basis": "existing",
+              "design": "p1-40-w20",
+              "missing_ratings_kw": "",
+              "rank_best": 1,
+              "rank_worst": 1,
+              "scenario": "official",
+              "total_lower": 16840.193570464984,
+              "total_upper": 16840.363420896047
+            },
+            "minimum_lower": 16840.193570464984,
+            "minimum_upper": 16840.363420896047,
+            "possible_minimum_designs": [
+              "p1-40-w20"
+            ],
+            "scenario": "official"
+          }
+        ]
+      }
+    },
+    "monthly_demand_eur_per_year": {
+      "source": "20261123_m11_rules/formal/repriced_points.csv",
+      "values": [
+        {
+          "connection_basis": "new",
+          "demand": 1397.2008382230676,
+          "design": "p1-40-w20",
+          "original_demand": 1397.200838223106,
+          "port_cap_kw": "40",
+          "warehouse_cap_kw": "20"
+        },
+        {
+          "connection_basis": "existing",
+          "demand": 1397.2008382230676,
+          "design": "p1-40-w20",
+          "original_demand": 1397.200838223106,
+          "port_cap_kw": "40",
+          "warehouse_cap_kw": "20"
+        },
+        {
+          "connection_basis": "new",
+          "demand": 4724.161441947024,
+          "design": "p1-20-w20",
+          "original_demand": 4724.161442353573,
+          "port_cap_kw": "20",
+          "warehouse_cap_kw": "20"
+        },
+        {
+          "connection_basis": "existing",
+          "demand": 4724.161441947024,
+          "design": "p1-20-w20",
+          "original_demand": 4724.161442353573,
+          "port_cap_kw": "20",
+          "warehouse_cap_kw": "20"
+        }
+      ]
+    },
+    "fine_neighbourhood": {
+      "source": "20261123_m11_rules/continuation/fine/summary.json",
+      "values": {
+        "decided_billed_minima": {
+          "existing": {
+            "minimum_lower": 16740.17460650018,
+            "minimum_upper": 16740.383068753366,
+            "possible_points": [
+              {
+                "design": "p1-40-w20",
+                "port_cap_kw": 40,
+                "total_lower": 16740.17460650018,
+                "total_upper": 16740.383068753366,
+                "warehouse_cap_kw": 15
+              }
+            ]
+          },
+          "new": {
+            "minimum_lower": 17541.598467336502,
+            "minimum_upper": 17541.806929589686,
+            "possible_points": [
+              {
+                "design": "p1-40-w20",
+                "port_cap_kw": 40,
+                "total_lower": 17541.598467336502,
+                "total_upper": 17541.806929589686,
+                "warehouse_cap_kw": 15
+              }
+            ]
+          }
+        },
+        "status": {
+          "billed": 52,
+          "excluded_cost": 4,
+          "infeasible": 217,
+          "unresolved": 4
+        },
+        "time_deferred_requests": 0
+      }
+    },
+    "mechanism_bounds": {
+      "source": "20261123_m11_mechanism/REPORT_zh.md",
+      "values": {
+        "selection_port_only_reserve_deficit_kwh": 84.578336,
+        "posthoc_warehouse_only_infeasible_kw": 30.67523092031479,
+        "posthoc_warehouse_only_feasible_kw": 30.67523166537285
+      }
+    }
+  }
+}
