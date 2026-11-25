@@ -1,0 +1,20 @@
+UM M11 external sub-fleet test: preregistration package manifest (SHA-256)
+created_utc: 2026-11-25T09:43:08.992675+00:00
+package: runs/20261125_m11_external_open
+offline_records_head: d9a9c6575b8945a7877e03f10ab425079bbfb3b6
+execution code P: 51ccfe5a2528299e8a21b1e5d03348ef31fbf1f8
+execution commit F: 2fb11e4403fca2c5305ef8f1b260e5ad098fe3c1 (differs from P only in the FROZEN_SHA256 line, which holds the digest of PREREG_M11_EXTERNAL.md)
+sealed cohorts (vehicle ranks 6-18): not opened; none of their records was read when this manifest was made
+the single formal run is binding: a request that ends at the wall-clock limit is not solved again and no certificate is replaced
+
+c5907af318cf231f7499fb0ae829b80b5728f0bfa907e7d284f685c62c3ded20  runs/20261125_m11_external_open/PREREG_M11_EXTERNAL.md
+98b4d1e699f60e6e0112fe0e007675544e7f4da38ab3171bbf88db9651bc05aa  runs/20261125_m11_external_open/EXECUTION_PLAN.md
+2d716b9ab7b80d1adf7aaeb0ee88cc38958e6f2bf258c6b5e5b410fd5ecdc359  runs/20261125_m11_external_open/APPENDIX_EXECUTION_RULES.md
+511ad16324aa7ab1704fdaab5f16851377e236a0b5aa88d45864121ccc9f60ca  runs/20261125_m11_external_open/rehearsal/1-5/stage1/manifest.json
+ae3215081a4181b71194aee013ca5a93dd00daadbd5dfe4492e6df5db929efe5  runs/20261125_m11_external_open/rehearsal/1-5/stage2/manifest.json
+9ff52a07525adfc37a3d09b25dad0c99d186685529652344f47b818eaf4db3ac  runs/20261125_m11_external_open/rehearsal/1-5/stage3/manifest.json
+f2e3f07a1fe9747e579df2bc12c6ede60496cec9b49d73107a782809c5929156  runs/20261125_m11_external_open/rehearsal/1-5/stage4/manifest.json
+b3709fa3bd7b49697a38bf15fa5ed18ec3ccefc8e8ccf4f7c8413ddc2475beac  runs/20261125_m11_external_open/PREREG_M11_R5.md
+9415fb8c918d5a0cacf92ab91cd60dba9d317bf425d5b0a8b67c20a5ebfd360d  runs/20261125_m11_external_open/REFREEZE_NOTE.md
+d70c96d5af82cfa5384f6fc32378742ea34659683f5459f9983c3714b35892bb  runs/20261125_m11_external_open/DEVIATIONS.md
+b305731bae33d8c02ecf9550f12fbe94e52435327b91d434d09e9b73a5f92b9c  runs/20261125_m11_external_open/FILE_COMPARISON.csv

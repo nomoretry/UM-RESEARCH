@@ -1,0 +1,8 @@
+checked_utc: 2026-11-25T10:33:35.819074+00:00
+manifest sha256: 0bcccae8bfb39756a3098f72d78133a4dbdb11634bb7e3c683343665b42f5b2a
+  still pending: https://btc.calendar.catallaxy.com CommitmentNotFoundError
+  still pending: https://bob.btc.calendar.opentimestamps.org CommitmentNotFoundError
+  still pending: https://finney.calendar.eternitywall.com CommitmentNotFoundError
+calendars upgraded this run: 1 | bitcoin attestations: 1
+  block 977496: merkle root in proof e5c8e6c48750d6b7051256b41f91adaa4092d4117196f87266cb68f731e5edfd | explorer: match, block time 2026-11-25T09:54:39+00:00
+GATE: PASS
