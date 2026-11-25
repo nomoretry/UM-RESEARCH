@@ -1,6 +1,6 @@
 # 项目诊断：研究进展、局限、潜在贡献与下一步（2026-11-18）
 
-依据：本地提交 `3c835e5`、离线运行记录、独立只读代码核查，以及本轮文献（[CARDS.md](CARDS.md)、[EVIDENCE_MATRIX.md](EVIDENCE_MATRIX.md)）。
+依据：本地提交 `3c835e5`、离线运行记录、只读代码核查，以及本轮文献（[CARDS.md](CARDS.md)、[EVIDENCE_MATRIX.md](EVIDENCE_MATRIX.md)）。
 
 ## 1. 当前研究进展
 
