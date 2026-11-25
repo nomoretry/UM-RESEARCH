@@ -1,0 +1,362 @@
+{
+  "time_origin": "hours since local midnight of the first service day",
+  "initial_kwh": 150.0,
+  "reserve_kwh": 30.0,
+  "capacity_kwh": 300.0,
+  "efficiency": 0.9,
+  "segments": [
+    {
+      "label": "Reference",
+      "cohort": "1-5",
+      "dates": [
+        "2022-01-19"
+      ],
+      "selected": "p1-40-w20",
+      "baseline": "p1-50-w50",
+      "constraint": "single_truck_terminal_energy",
+      "upper_kwh": 103.76287600000008,
+      "deficit_kwh": 46.23712399999992,
+      "events": [
+        {
+          "start_h": 7.751616944444444,
+          "end_h": 9.280262499999996,
+          "kind": "trip",
+          "trip_kwh": 80.932352,
+          "selected_upper_kwh": 69.067648,
+          "baseline_upper_kwh": 69.067648
+        },
+        {
+          "start_h": 10.030262499999996,
+          "end_h": 10.256262500000002,
+          "kind": "window",
+          "site": "WAREHOUSE",
+          "selected_upper_kwh": 73.13564800000013,
+          "baseline_upper_kwh": 79.2376480000003
+        },
+        {
+          "start_h": 10.256262500000002,
+          "end_h": 11.24725888888889,
+          "kind": "trip",
+          "trip_kwh": 32.047221,
+          "selected_upper_kwh": 41.08842700000013,
+          "baseline_upper_kwh": 47.190427000000305
+        },
+        {
+          "start_h": 11.99725888888889,
+          "end_h": 16.583761944444444,
+          "kind": "window",
+          "site": "WAREHOUSE",
+          "selected_upper_kwh": 123.64548200000007,
+          "baseline_upper_kwh": 253.58306450000018
+        },
+        {
+          "start_h": 16.583761944444444,
+          "end_h": 17.187585000000006,
+          "kind": "trip",
+          "trip_kwh": 19.882606,
+          "selected_upper_kwh": 103.76287600000008,
+          "baseline_upper_kwh": 233.70045850000017
+        }
+      ]
+    },
+    {
+      "label": "A",
+      "cohort": "6-10",
+      "dates": [
+        "2022-01-03",
+        "2022-01-04"
+      ],
+      "selected": "p1-30-w20",
+      "baseline": "p1-50-w50",
+      "constraint": "single_truck_terminal_energy",
+      "upper_kwh": 126.32227350000012,
+      "deficit_kwh": 23.677726499999878,
+      "events": [
+        {
+          "start_h": 0.0,
+          "end_h": 14.835193333333333,
+          "kind": "window",
+          "site": "PORT",
+          "selected_upper_kwh": 300.0,
+          "baseline_upper_kwh": 300.0
+        },
+        {
+          "start_h": 14.835193333333333,
+          "end_h": 16.036433888888887,
+          "kind": "trip",
+          "trip_kwh": 36.772158,
+          "selected_upper_kwh": 263.227842,
+          "baseline_upper_kwh": 263.227842
+        },
+        {
+          "start_h": 30.884975277777777,
+          "end_h": 31.630884444444444,
+          "kind": "trip",
+          "trip_kwh": 27.010756,
+          "selected_upper_kwh": 236.217086,
+          "baseline_upper_kwh": 236.217086
+        },
+        {
+          "start_h": 32.308820555555556,
+          "end_h": 33.78802833333334,
+          "kind": "trip",
+          "trip_kwh": 61.257269,
+          "selected_upper_kwh": 174.959817,
+          "baseline_upper_kwh": 174.959817
+        },
+        {
+          "start_h": 34.53802833333334,
+          "end_h": 34.691269444444444,
+          "kind": "window",
+          "site": "WAREHOUSE",
+          "selected_upper_kwh": 177.71815700000002,
+          "baseline_upper_kwh": 181.8556670000001
+        },
+        {
+          "start_h": 34.691269444444444,
+          "end_h": 35.08668277777778,
+          "kind": "trip",
+          "trip_kwh": 7.617807,
+          "selected_upper_kwh": 170.10035000000002,
+          "baseline_upper_kwh": 174.2378600000001
+        },
+        {
+          "start_h": 35.174913611111116,
+          "end_h": 35.807787222222224,
+          "kind": "trip",
+          "trip_kwh": 19.806701,
+          "selected_upper_kwh": 150.29364900000002,
+          "baseline_upper_kwh": 154.4311590000001
+        },
+        {
+          "start_h": 36.90819944444444,
+          "end_h": 37.447561388888886,
+          "kind": "trip",
+          "trip_kwh": 17.176553,
+          "selected_upper_kwh": 133.117096,
+          "baseline_upper_kwh": 137.25460600000008
+        },
+        {
+          "start_h": 37.59387666666667,
+          "end_h": 38.444627777777775,
+          "kind": "trip",
+          "trip_kwh": 26.964358,
+          "selected_upper_kwh": 106.152738,
+          "baseline_upper_kwh": 110.29024800000008
+        },
+        {
+          "start_h": 38.444627777777775,
+          "end_h": 40.3481125,
+          "kind": "window",
+          "site": "PORT",
+          "selected_upper_kwh": 157.54682550000012,
+          "baseline_upper_kwh": 195.9470605000003
+        },
+        {
+          "start_h": 40.3481125,
+          "end_h": 41.16531861111112,
+          "kind": "trip",
+          "trip_kwh": 31.224552,
+          "selected_upper_kwh": 126.32227350000012,
+          "baseline_upper_kwh": 164.72250850000032
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "cohort": "6-10",
+      "dates": [
+        "2022-01-31"
+      ],
+      "selected": "p1-30-w20",
+      "baseline": "p1-50-w50",
+      "constraint": "single_truck_leg_boundary",
+      "upper_kwh": 29.299369999999996,
+      "deficit_kwh": 0.7006300000000039,
+      "events": [
+        {
+          "start_h": 0.0,
+          "end_h": 6.562913611111111,
+          "kind": "window",
+          "site": "PORT",
+          "selected_upper_kwh": 300.0,
+          "baseline_upper_kwh": 300.0
+        },
+        {
+          "start_h": 6.562913611111111,
+          "end_h": 7.952352777777778,
+          "kind": "trip",
+          "trip_kwh": 60.046292,
+          "selected_upper_kwh": 239.953708,
+          "baseline_upper_kwh": 239.953708
+        },
+        {
+          "start_h": 8.702352777777778,
+          "end_h": 9.538231944444444,
+          "kind": "window",
+          "site": "WAREHOUSE",
+          "selected_upper_kwh": 254.99953299999999,
+          "baseline_upper_kwh": 277.5682705
+        },
+        {
+          "start_h": 9.538231944444444,
+          "end_h": 11.356038333333334,
+          "kind": "trip",
+          "trip_kwh": 118.622124,
+          "selected_upper_kwh": 136.377409,
+          "baseline_upper_kwh": 158.9461465
+        },
+        {
+          "start_h": 11.918411666666666,
+          "end_h": 12.227108055555556,
+          "kind": "trip",
+          "trip_kwh": 16.34448,
+          "selected_upper_kwh": 120.032929,
+          "baseline_upper_kwh": 142.6016665
+        },
+        {
+          "start_h": 12.812255555555556,
+          "end_h": 13.931498333333334,
+          "kind": "trip",
+          "trip_kwh": 90.733559,
+          "selected_upper_kwh": 29.299369999999996,
+          "baseline_upper_kwh": 51.868107499999994
+        },
+        {
+          "start_h": 13.931498333333334,
+          "end_h": 14.320440277777777,
+          "kind": "window",
+          "site": "PORT",
+          "selected_upper_kwh": null,
+          "baseline_upper_kwh": 69.37049499999996
+        },
+        {
+          "start_h": 14.320440277777777,
+          "end_h": 14.513669444444444,
+          "kind": "trip",
+          "trip_kwh": 6.78017,
+          "selected_upper_kwh": null,
+          "baseline_upper_kwh": 62.590324999999964
+        },
+        {
+          "start_h": 14.513669444444444,
+          "end_h": 24.0,
+          "kind": "window",
+          "site": "PORT",
+          "selected_upper_kwh": null,
+          "baseline_upper_kwh": 300.0
+        }
+      ]
+    },
+    {
+      "label": "C",
+      "cohort": "11-15",
+      "dates": [
+        "2022-01-14"
+      ],
+      "selected": "p1-40-w20",
+      "baseline": "p1-50-w50",
+      "constraint": "single_truck_terminal_energy",
+      "upper_kwh": 124.04784400000044,
+      "deficit_kwh": 25.95215599999956,
+      "events": [
+        {
+          "start_h": 7.122299166666668,
+          "end_h": 7.417590000000003,
+          "kind": "trip",
+          "trip_kwh": 9.733615,
+          "selected_upper_kwh": 140.266385,
+          "baseline_upper_kwh": 140.266385
+        },
+        {
+          "start_h": 7.6838666666666695,
+          "end_h": 8.319765277777773,
+          "kind": "trip",
+          "trip_kwh": 29.083873,
+          "selected_upper_kwh": 111.18251200000002,
+          "baseline_upper_kwh": 111.18251200000002
+        },
+        {
+          "start_h": 8.319765277777773,
+          "end_h": 8.874630555555557,
+          "kind": "window",
+          "site": "PORT",
+          "selected_upper_kwh": 131.15766200000024,
+          "baseline_upper_kwh": 136.1514495000003
+        },
+        {
+          "start_h": 8.874630555555557,
+          "end_h": 9.265475,
+          "kind": "trip",
+          "trip_kwh": 4.437136,
+          "selected_upper_kwh": 126.72052600000025,
+          "baseline_upper_kwh": 131.7143135000003
+        },
+        {
+          "start_h": 10.015475,
+          "end_h": 10.917494999999994,
+          "kind": "window",
+          "site": "WAREHOUSE",
+          "selected_upper_kwh": 142.9568860000001,
+          "baseline_upper_kwh": 172.30521349999998
+        },
+        {
+          "start_h": 10.917494999999994,
+          "end_h": 11.175988888888893,
+          "kind": "trip",
+          "trip_kwh": 5.934426,
+          "selected_upper_kwh": 137.0224600000001,
+          "baseline_upper_kwh": 166.37078749999998
+        },
+        {
+          "start_h": 11.175988888888893,
+          "end_h": 11.544677500000004,
+          "kind": "window",
+          "site": "PORT",
+          "selected_upper_kwh": 150.2952500000001,
+          "baseline_upper_kwh": 182.96177499999996
+        },
+        {
+          "start_h": 11.544677500000004,
+          "end_h": 12.110140555555548,
+          "kind": "trip",
+          "trip_kwh": 16.411472,
+          "selected_upper_kwh": 133.8837780000001,
+          "baseline_upper_kwh": 166.55030299999996
+        },
+        {
+          "start_h": 12.860140555555548,
+          "end_h": 13.0142725,
+          "kind": "window",
+          "site": "WAREHOUSE",
+          "selected_upper_kwh": 136.65815300000023,
+          "baseline_upper_kwh": 173.48624050000032
+        },
+        {
+          "start_h": 13.0142725,
+          "end_h": 13.532877777777776,
+          "kind": "trip",
+          "trip_kwh": 21.374031,
+          "selected_upper_kwh": 115.28412200000022,
+          "baseline_upper_kwh": 152.11220950000032
+        },
+        {
+          "start_h": 13.532877777777776,
+          "end_h": 14.246388611111115,
+          "kind": "window",
+          "site": "PORT",
+          "selected_upper_kwh": 140.97051200000044,
+          "baseline_upper_kwh": 184.22019700000058
+        },
+        {
+          "start_h": 14.246388611111115,
+          "end_h": 14.823926111111117,
+          "kind": "trip",
+          "trip_kwh": 16.922668,
+          "selected_upper_kwh": 124.04784400000044,
+          "baseline_upper_kwh": 167.29752900000057
+        }
+      ]
+    }
+  ]
+}

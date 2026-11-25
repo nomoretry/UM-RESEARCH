@@ -1,0 +1,4623 @@
+{
+  "billing_basis": "official network charges; 2025 EUR/year at rated operation",
+  "cohorts": {
+    "1-5": {
+      "selected": "p1-40-w20",
+      "reference_role": "post_hoc",
+      "designs": {
+        "p0-0-w0": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "infeasible",
+            "2021-10-04": "infeasible",
+            "2021-10-11": "infeasible",
+            "2021-10-18": "infeasible",
+            "2021-10-25": "infeasible",
+            "2021-11-01": "infeasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "infeasible",
+            "2021-11-29": "infeasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "infeasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "infeasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p0-0-w20": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "infeasible",
+            "2021-10-04": "infeasible",
+            "2021-10-11": "infeasible",
+            "2021-10-18": "infeasible",
+            "2021-10-25": "infeasible",
+            "2021-11-01": "infeasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "infeasible",
+            "2021-11-29": "infeasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "infeasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "infeasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p0-0-w30": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "infeasible",
+            "2021-10-04": "infeasible",
+            "2021-10-11": "infeasible",
+            "2021-10-18": "infeasible",
+            "2021-10-25": "infeasible",
+            "2021-11-01": "infeasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "infeasible",
+            "2021-11-29": "infeasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "infeasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "infeasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p0-0-w40": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "infeasible",
+            "2021-10-04": "infeasible",
+            "2021-10-11": "infeasible",
+            "2021-10-18": "infeasible",
+            "2021-10-25": "infeasible",
+            "2021-11-01": "infeasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "infeasible",
+            "2021-11-29": "infeasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "infeasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "infeasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p0-0-w50": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "infeasible",
+            "2021-10-04": "infeasible",
+            "2021-10-11": "infeasible",
+            "2021-10-18": "infeasible",
+            "2021-10-25": "infeasible",
+            "2021-11-01": "infeasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "infeasible",
+            "2021-11-29": "infeasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "infeasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "infeasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-20-w0": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "infeasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-20-w20": {
+          "selection_bill": {
+            "new": [
+              17725.647838356286,
+              17725.822642369534
+            ],
+            "existing": [
+              17191.365264465407,
+              17191.540068478655
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-20-w30": {
+          "selection_bill": {
+            "new": [
+              18420.683645327776,
+              18421.048265575577
+            ],
+            "existing": [
+              17752.830427964174,
+              17753.195048211976
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-20-w40": {
+          "selection_bill": {
+            "new": [
+              18972.001345124438,
+              18972.251954215204
+            ],
+            "existing": [
+              18170.57748428812,
+              18170.828093378885
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-20-w50": {
+          "selection_bill": {
+            "new": [
+              21828.221295877625,
+              21828.477954671587
+            ],
+            "existing": [
+              20893.226791568584,
+              20893.483450362546
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-30-w0": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "infeasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-30-w20": {
+          "selection_bill": {
+            "new": [
+              17662.504578004027,
+              17662.718190424945
+            ],
+            "existing": [
+              16994.651360640426,
+              16994.86497306134
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-30-w30": {
+          "selection_bill": {
+            "new": [
+              18330.275839005655,
+              18330.58397355167
+            ],
+            "existing": [
+              17528.851978169336,
+              17529.160112715348
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-30-w40": {
+          "selection_bill": {
+            "new": [
+              18858.65590750226,
+              18858.92902080661
+            ],
+            "existing": [
+              17923.66140319322,
+              17923.934516497568
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-30-w50": {
+          "selection_bill": {
+            "new": [
+              21687.804295372225,
+              21688.105112007965
+            ],
+            "existing": [
+              20619.239147590462,
+              20619.539964226205
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-40-w0": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "infeasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-40-w20": {
+          "selection_bill": {
+            "new": [
+              17641.58344855511,
+              17641.78728173241
+            ],
+            "existing": [
+              16840.15958771879,
+              16840.363420896087
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-40-w30": {
+          "selection_bill": {
+            "new": [
+              18316.525890099296,
+              18316.77965536664
+            ],
+            "existing": [
+              17381.531385790255,
+              17381.7851510576
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-40-w40": {
+          "selection_bill": {
+            "new": [
+              18848.736088420872,
+              18848.98049479605
+            ],
+            "existing": [
+              17780.170940639113,
+              17780.41534701429
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-40-w50": {
+          "selection_bill": {
+            "new": [
+              21681.219473915913,
+              21681.454409314945
+            ],
+            "existing": [
+              20479.083682661432,
+              20479.318618060464
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-50-w0": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "infeasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-50-w20": {
+          "selection_bill": {
+            "new": [
+              20177.099097389088,
+              20177.415644564047
+            ],
+            "existing": [
+              19242.104593080046,
+              19242.421140255006
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-50-w30": {
+          "selection_bill": {
+            "new": [
+              20853.81994903037,
+              20854.142368875935
+            ],
+            "existing": [
+              19785.254801248608,
+              19785.577221094172
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-50-w40": {
+          "selection_bill": {
+            "new": [
+              21387.993465782536,
+              21388.37317513622
+            ],
+            "existing": [
+              20185.857674528055,
+              20186.237383881744
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-50-w50": {
+          "selection_bill": {
+            "new": [
+              24221.866626525927,
+              24222.180922002
+            ],
+            "existing": [
+              22886.160191798725,
+              22886.474487274798
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-100-w0": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "infeasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-100-w20": {
+          "selection_bill": {
+            "new": [
+              25291.564685189296,
+              25291.716718766183
+            ],
+            "existing": [
+              23688.716963516657,
+              23688.868997093545
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-100-w30": {
+          "selection_bill": {
+            "new": [
+              25969.875201873125,
+              25970.028302277366
+            ],
+            "existing": [
+              24233.45683672776,
+              24233.609937132
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-100-w40": {
+          "selection_bill": {
+            "new": [
+              26505.600461559792,
+              26505.670314215633
+            ],
+            "existing": [
+              24635.61145294171,
+              24635.68130559755
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-100-w50": {
+          "selection_bill": {
+            "new": [
+              29340.541709365745,
+              29340.61623302434
+            ],
+            "existing": [
+              27336.982057274938,
+              27337.05658093353
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-50-w0": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "infeasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-50-w20": {
+          "selection_bill": {
+            "new": [
+              23900.194774539435,
+              23900.287411621655
+            ],
+            "existing": [
+              22965.200270230394,
+              22965.292907312614
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-50-w30": {
+          "selection_bill": {
+            "new": [
+              24576.88989210606,
+              24576.989198087995
+            ],
+            "existing": [
+              23508.324744324298,
+              23508.424050306232
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-50-w40": {
+          "selection_bill": {
+            "new": [
+              25111.30197309459,
+              25111.363240493312
+            ],
+            "existing": [
+              23909.166181840104,
+              23909.22744923883
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-50-w50": {
+          "selection_bill": {
+            "new": [
+              27945.11419327608,
+              27945.175639349534
+            ],
+            "existing": [
+              26609.407758548878,
+              26609.46920462233
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        }
+      },
+      "registered_days": [
+        106,
+        49
+      ],
+      "complete_days": [
+        136,
+        57
+      ],
+      "comparisons": [
+        {
+          "basis": "new",
+          "method": "rule1",
+          "design": "p1-20-w20",
+          "premium": [
+            83.86055662387662,
+            84.23919381442465
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "new",
+          "method": "rule2",
+          "design": "p1-20-w20",
+          "premium": [
+            83.86055662387662,
+            84.23919381442465
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "new",
+          "method": "rule3",
+          "design": "p1-20-w50",
+          "premium": [
+            4186.434014145216,
+            4186.894506116478
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "new",
+          "method": "rule4",
+          "design": "p1-30-w30",
+          "premium": [
+            688.4885572732455,
+            689.0005249965616
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "new",
+          "method": "weekly_union",
+          "design": "p1-40-w20",
+          "premium": [
+            -0.20383317730011186,
+            0.20383317730011186
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "new",
+          "method": "dual_site_baseline",
+          "design": "p1-50-w50",
+          "premium": [
+            7581.859170838918,
+            7582.377299492291
+          ],
+          "test": "守住"
+        },
+        {
+          "basis": "existing",
+          "method": "rule1",
+          "design": "p1-20-w20",
+          "premium": [
+            351.00184356932004,
+            351.38048075986444
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "existing",
+          "method": "rule2",
+          "design": "p1-20-w20",
+          "premium": [
+            351.00184356932004,
+            351.38048075986444
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "existing",
+          "method": "rule3",
+          "design": "p1-20-w50",
+          "premium": [
+            4052.8633706724977,
+            4053.323862643756
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "existing",
+          "method": "rule4",
+          "design": "p1-30-w30",
+          "premium": [
+            688.4885572732492,
+            689.0005249965579
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "existing",
+          "method": "weekly_union",
+          "design": "p1-40-w20",
+          "premium": [
+            -0.20383317729647388,
+            0.20383317729647388
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "existing",
+          "method": "dual_site_baseline",
+          "design": "p1-50-w50",
+          "premium": [
+            6045.796770902638,
+            6046.314899556008
+          ],
+          "test": "守住"
+        }
+      ],
+      "required_ratings_kw": {
+        "selection": [
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 20
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          }
+        ],
+        "evaluation": [
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 40
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 40,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          }
+        ]
+      }
+    },
+    "6-10": {
+      "selected": "p1-30-w20",
+      "reference_role": "primary",
+      "designs": {
+        "p0-0-w0": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "infeasible",
+            "2021-10-04": "infeasible",
+            "2021-10-11": "infeasible",
+            "2021-10-18": "infeasible",
+            "2021-10-25": "infeasible",
+            "2021-11-01": "infeasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "infeasible",
+            "2021-11-29": "infeasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "infeasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "infeasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p0-0-w20": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "infeasible",
+            "2021-10-04": "infeasible",
+            "2021-10-11": "infeasible",
+            "2021-10-18": "infeasible",
+            "2021-10-25": "infeasible",
+            "2021-11-01": "infeasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "infeasible",
+            "2021-11-29": "infeasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "infeasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "infeasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p0-0-w30": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "infeasible",
+            "2021-10-04": "infeasible",
+            "2021-10-11": "infeasible",
+            "2021-10-18": "infeasible",
+            "2021-10-25": "infeasible",
+            "2021-11-01": "infeasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "infeasible",
+            "2021-11-29": "infeasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "infeasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "infeasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p0-0-w40": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "infeasible",
+            "2021-10-04": "infeasible",
+            "2021-10-11": "infeasible",
+            "2021-10-18": "infeasible",
+            "2021-10-25": "infeasible",
+            "2021-11-01": "infeasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "infeasible",
+            "2021-11-29": "infeasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "infeasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "infeasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p0-0-w50": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "infeasible",
+            "2021-10-04": "infeasible",
+            "2021-10-11": "infeasible",
+            "2021-10-18": "infeasible",
+            "2021-10-25": "infeasible",
+            "2021-11-01": "infeasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "infeasible",
+            "2021-11-29": "infeasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "infeasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "infeasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-20-w0": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "infeasible",
+            "2021-10-18": "infeasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-20-w20": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "infeasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-20-w30": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "infeasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-20-w40": {
+          "selection_bill": {
+            "new": [
+              12885.803382421924,
+              12885.933474027053
+            ],
+            "existing": [
+              12084.379521585604,
+              12084.509613190734
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-20-w50": {
+          "selection_bill": {
+            "new": [
+              15703.968062404332,
+              15704.125393357408
+            ],
+            "existing": [
+              14768.973558095291,
+              14769.130889048367
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-30-w0": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "infeasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-30-w20": {
+          "selection_bill": {
+            "new": [
+              11859.57484023133,
+              11859.645423154292
+            ],
+            "existing": [
+              11191.721622867728,
+              11191.79220579069
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-30-w30": {
+          "selection_bill": {
+            "new": [
+              12524.253395903941,
+              12524.318463340722
+            ],
+            "existing": [
+              11722.82953506762,
+              11722.894602504402
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-30-w40": {
+          "selection_bill": {
+            "new": [
+              13048.247552676668,
+              13048.345260152599
+            ],
+            "existing": [
+              12113.253048367627,
+              12113.350755843558
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-30-w50": {
+          "selection_bill": {
+            "new": [
+              15876.058292230106,
+              15876.14015701681
+            ],
+            "existing": [
+              14807.493144448345,
+              14807.575009235046
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-40-w0": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "infeasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-40-w20": {
+          "selection_bill": {
+            "new": [
+              12146.298485827729,
+              12146.411112720836
+            ],
+            "existing": [
+              11344.874624991407,
+              11344.987251884515
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-40-w30": {
+          "selection_bill": {
+            "new": [
+              12814.198417556843,
+              12814.385712369309
+            ],
+            "existing": [
+              11879.203913247802,
+              11879.391208060268
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-40-w40": {
+          "selection_bill": {
+            "new": [
+              13341.24060771355,
+              13341.370878930455
+            ],
+            "existing": [
+              12272.675459931786,
+              12272.805731148692
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-40-w50": {
+          "selection_bill": {
+            "new": [
+              16171.66890324651,
+              16171.825589352771
+            ],
+            "existing": [
+              14969.533111992028,
+              14969.68979809829
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-50-w0": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "infeasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-50-w20": {
+          "selection_bill": {
+            "new": [
+              14848.919138838688,
+              14849.007719471896
+            ],
+            "existing": [
+              13913.924634529647,
+              13914.013215162855
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-50-w30": {
+          "selection_bill": {
+            "new": [
+              15517.691404565696,
+              15517.79569817734
+            ],
+            "existing": [
+              14449.126256783935,
+              14449.23055039558
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-50-w40": {
+          "selection_bill": {
+            "new": [
+              16045.116893022914,
+              16045.170278221995
+            ],
+            "existing": [
+              14842.981101768433,
+              14843.034486967514
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-50-w50": {
+          "selection_bill": {
+            "new": [
+              18875.925457564023,
+              18876.023903655874
+            ],
+            "existing": [
+              17540.21902283682,
+              17540.31746892867
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-100-w0": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "infeasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p2-100-w20": {
+          "selection_bill": {
+            "new": [
+              20299.553479923357,
+              20299.610938259786
+            ],
+            "existing": [
+              18696.705758250715,
+              18696.763216587147
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p2-100-w30": {
+          "selection_bill": {
+            "new": [
+              20968.588028930753,
+              20968.59977392537
+            ],
+            "existing": [
+              19232.16966378539,
+              19232.18140878001
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-100-w40": {
+          "selection_bill": {
+            "new": [
+              21496.21092838861,
+              21496.210928388613
+            ],
+            "existing": [
+              19626.221919770527,
+              19626.221919770527
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-100-w50": {
+          "selection_bill": {
+            "new": [
+              24327.30741796594,
+              24327.307417965945
+            ],
+            "existing": [
+              22323.747765875138,
+              22323.74776587514
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-50-w0": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "infeasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p2-50-w20": {
+          "selection_bill": {
+            "new": [
+              18571.786763594588,
+              18571.786763594588
+            ],
+            "existing": [
+              17636.792259285547,
+              17636.792259285547
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p2-50-w30": {
+          "selection_bill": {
+            "new": [
+              19240.578448458164,
+              19240.578448458164
+            ],
+            "existing": [
+              18172.0133006764,
+              18172.0133006764
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-50-w40": {
+          "selection_bill": {
+            "new": [
+              19767.946738777267,
+              19767.946738777267
+            ],
+            "existing": [
+              18565.810947522787,
+              18565.81094752279
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-50-w50": {
+          "selection_bill": {
+            "new": [
+              22598.80036421116,
+              22598.80036421116
+            ],
+            "existing": [
+              21263.09392948396,
+              21263.09392948396
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        }
+      },
+      "registered_days": [
+        83,
+        33
+      ],
+      "complete_days": [
+        138,
+        50
+      ],
+      "comparisons": [
+        {
+          "basis": "new",
+          "method": "rule1",
+          "design": "p1-30-w20",
+          "premium": [
+            -0.07058292296278523,
+            0.07058292296278523
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "new",
+          "method": "rule2",
+          "design": "p1-30-w20",
+          "premium": [
+            -0.07058292296278523,
+            0.07058292296278523
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "new",
+          "method": "rule3",
+          "design": "p1-30-w40",
+          "premium": [
+            1188.6021295223763,
+            1188.7704199212694
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "new",
+          "method": "rule4",
+          "design": "p1-30-w30",
+          "premium": [
+            664.607972749649,
+            664.7436231093925
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "new",
+          "method": "weekly_union",
+          "design": "p1-40-w20",
+          "premium": [
+            286.6530626734366,
+            286.8362724895069
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "new",
+          "method": "dual_site_baseline",
+          "design": "p1-50-w50",
+          "premium": [
+            8018.059860455131,
+            8018.228889469945
+          ],
+          "test": "守住"
+        },
+        {
+          "basis": "existing",
+          "method": "rule1",
+          "design": "p1-30-w20",
+          "premium": [
+            -0.07058292296278523,
+            0.07058292296278523
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "existing",
+          "method": "rule2",
+          "design": "p1-30-w20",
+          "premium": [
+            -0.07058292296278523,
+            0.07058292296278523
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "existing",
+          "method": "rule3",
+          "design": "p1-30-w40",
+          "premium": [
+            921.4608425769366,
+            921.6291329758296
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "existing",
+          "method": "rule4",
+          "design": "p1-30-w30",
+          "premium": [
+            531.0373292769291,
+            531.1729796366744
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "existing",
+          "method": "weekly_union",
+          "design": "p1-40-w20",
+          "premium": [
+            153.08241920071669,
+            153.265629016787
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "existing",
+          "method": "dual_site_baseline",
+          "design": "p1-50-w50",
+          "premium": [
+            6348.426817046129,
+            6348.595846060944
+          ],
+          "test": "守住"
+        }
+      ],
+      "required_ratings_kw": {
+        "selection": [
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 20
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 20
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 20
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 20
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 20
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          }
+        ],
+        "evaluation": [
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 50,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 20
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 30,
+            "WAREHOUSE": 30
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          }
+        ]
+      }
+    },
+    "11-15": {
+      "selected": "p1-40-w20",
+      "reference_role": "primary",
+      "designs": {
+        "p0-0-w0": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "infeasible",
+            "2021-10-04": "infeasible",
+            "2021-10-11": "infeasible",
+            "2021-10-18": "infeasible",
+            "2021-10-25": "infeasible",
+            "2021-11-01": "infeasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "infeasible",
+            "2021-11-29": "infeasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "infeasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "infeasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p0-0-w20": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "infeasible",
+            "2021-10-04": "infeasible",
+            "2021-10-11": "infeasible",
+            "2021-10-18": "infeasible",
+            "2021-10-25": "infeasible",
+            "2021-11-01": "infeasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "infeasible",
+            "2021-11-29": "infeasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "infeasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "infeasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p0-0-w30": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "infeasible",
+            "2021-10-04": "infeasible",
+            "2021-10-11": "infeasible",
+            "2021-10-18": "infeasible",
+            "2021-10-25": "infeasible",
+            "2021-11-01": "infeasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "infeasible",
+            "2021-11-29": "infeasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "infeasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "infeasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p0-0-w40": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "infeasible",
+            "2021-10-04": "infeasible",
+            "2021-10-11": "infeasible",
+            "2021-10-18": "infeasible",
+            "2021-10-25": "infeasible",
+            "2021-11-01": "infeasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "infeasible",
+            "2021-11-29": "infeasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "infeasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "infeasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p0-0-w50": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "infeasible",
+            "2021-10-04": "infeasible",
+            "2021-10-11": "infeasible",
+            "2021-10-18": "infeasible",
+            "2021-10-25": "infeasible",
+            "2021-11-01": "infeasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "infeasible",
+            "2021-11-29": "infeasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "infeasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "infeasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "infeasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-20-w0": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "infeasible",
+            "2021-10-04": "infeasible",
+            "2021-10-11": "infeasible",
+            "2021-10-18": "infeasible",
+            "2021-10-25": "infeasible",
+            "2021-11-01": "infeasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "infeasible",
+            "2021-11-29": "infeasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "infeasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-20-w20": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "infeasible",
+            "2021-10-04": "infeasible",
+            "2021-10-11": "infeasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "infeasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "infeasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "infeasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-20-w30": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "infeasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "infeasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "infeasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-20-w40": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "infeasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "infeasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-20-w50": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "infeasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-30-w0": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "infeasible",
+            "2021-10-04": "infeasible",
+            "2021-10-11": "infeasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "infeasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "infeasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "infeasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "infeasible",
+            "2022-01-31": "infeasible"
+          }
+        },
+        "p1-30-w20": {
+          "selection_bill": {
+            "new": [
+              26113.032557571016,
+              26113.214529421366
+            ],
+            "existing": [
+              25445.17934020741,
+              25445.361312057765
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-30-w30": {
+          "selection_bill": {
+            "new": [
+              26784.805172935132,
+              26785.04877351615
+            ],
+            "existing": [
+              25983.381312098812,
+              25983.62491267983
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-30-w40": {
+          "selection_bill": {
+            "new": [
+              27330.40519745991,
+              27330.675019953997
+            ],
+            "existing": [
+              26395.41069315087,
+              26395.680515644955
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-30-w50": {
+          "selection_bill": {
+            "new": [
+              30162.553340675433,
+              30162.75827133047
+            ],
+            "existing": [
+              29093.988192893674,
+              29094.193123548706
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-40-w0": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "infeasible",
+            "2021-10-11": "infeasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "infeasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "infeasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-40-w20": {
+          "selection_bill": {
+            "new": [
+              25790.483331804615,
+              25790.60944386453
+            ],
+            "existing": [
+              24989.059470968292,
+              24989.185583028207
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-40-w30": {
+          "selection_bill": {
+            "new": [
+              26392.106342894418,
+              26392.268298906078
+            ],
+            "existing": [
+              25457.111838585377,
+              25457.273794597037
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-40-w40": {
+          "selection_bill": {
+            "new": [
+              26864.63440419876,
+              26864.80663530789
+            ],
+            "existing": [
+              25796.069256417002,
+              25796.24148752613
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-40-w50": {
+          "selection_bill": {
+            "new": [
+              29647.118296568537,
+              29647.297678899227
+            ],
+            "existing": [
+              28444.982505314056,
+              28445.161887644746
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-50-w0": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "infeasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "infeasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-50-w20": {
+          "selection_bill": {
+            "new": [
+              27897.90421723673,
+              27898.424601410537
+            ],
+            "existing": [
+              26962.90971292769,
+              26963.430097101496
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-50-w30": {
+          "selection_bill": {
+            "new": [
+              28534.984462499342,
+              28535.18252982456
+            ],
+            "existing": [
+              27466.41931471758,
+              27466.6173820428
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-50-w40": {
+          "selection_bill": {
+            "new": [
+              29038.05960062458,
+              29038.195364068386
+            ],
+            "existing": [
+              27835.9238093701,
+              27836.059572813905
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p1-50-w50": {
+          "selection_bill": {
+            "new": [
+              31846.01490154671,
+              31846.269387305132
+            ],
+            "existing": [
+              30510.308466819508,
+              30510.56295257793
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-100-w0": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "infeasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "infeasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-100-w20": {
+          "selection_bill": {
+            "new": [
+              32454.17951989037,
+              32454.245717409034
+            ],
+            "existing": [
+              30851.331798217732,
+              30851.39799573639
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-100-w30": {
+          "selection_bill": {
+            "new": [
+              33100.28107214731,
+              33100.32917203582
+            ],
+            "existing": [
+              31363.862707001943,
+              31363.910806890457
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-100-w40": {
+          "selection_bill": {
+            "new": [
+              33613.76220396535,
+              33613.81824590491
+            ],
+            "existing": [
+              31743.773195347272,
+              31743.82923728683
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-100-w50": {
+          "selection_bill": {
+            "new": [
+              36430.07672658289,
+              36430.172370285916
+            ],
+            "existing": [
+              34426.51707449209,
+              34426.612718195116
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-50-w0": {
+          "selection_bill": null,
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "infeasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "infeasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "infeasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "infeasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "infeasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-50-w20": {
+          "selection_bill": {
+            "new": [
+              31619.493366034134,
+              31619.536581331995
+            ],
+            "existing": [
+              30684.498861725093,
+              30684.542077022954
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-50-w30": {
+          "selection_bill": {
+            "new": [
+              32256.64754341467,
+              32256.647543414674
+            ],
+            "existing": [
+              31188.082395632908,
+              31188.08239563291
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "infeasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-50-w40": {
+          "selection_bill": {
+            "new": [
+              32760.12943246159,
+              32760.167138512927
+            ],
+            "existing": [
+              31557.99364120711,
+              31558.031347258446
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        },
+        "p2-50-w50": {
+          "selection_bill": {
+            "new": [
+              35568.17577241555,
+              35568.18946046517
+            ],
+            "existing": [
+              34232.469337688344,
+              34232.483025737965
+            ]
+          },
+          "selection": {
+            "2021-09-27": "feasible",
+            "2021-10-04": "feasible",
+            "2021-10-11": "feasible",
+            "2021-10-18": "feasible",
+            "2021-10-25": "feasible",
+            "2021-11-01": "feasible",
+            "2021-11-08": "feasible",
+            "2021-11-15": "feasible",
+            "2021-11-22": "feasible",
+            "2021-11-29": "feasible",
+            "2021-12-06": "feasible",
+            "2021-12-13": "feasible"
+          },
+          "evaluation": {
+            "2021-12-20": "feasible",
+            "2021-12-27": "feasible",
+            "2022-01-03": "feasible",
+            "2022-01-10": "feasible",
+            "2022-01-17": "feasible",
+            "2022-01-24": "feasible",
+            "2022-01-31": "feasible"
+          }
+        }
+      },
+      "registered_days": [
+        112,
+        45
+      ],
+      "complete_days": [
+        165,
+        55
+      ],
+      "comparisons": [
+        {
+          "basis": "new",
+          "method": "rule1",
+          "design": "p1-30-w20",
+          "premium": [
+            322.4231137064853,
+            322.73119761675116
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "new",
+          "method": "rule2",
+          "design": "p1-30-w20",
+          "premium": [
+            322.4231137064853,
+            322.73119761675116
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "new",
+          "method": "rule3",
+          "design": "p1-30-w40",
+          "premium": [
+            1539.7957535953792,
+            1540.1916881493817
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "new",
+          "method": "rule4",
+          "design": "p1-40-w40",
+          "premium": [
+            1074.0249603342309,
+            1074.3233035032754
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "new",
+          "method": "weekly_union",
+          "design": "p1-40-w20",
+          "premium": [
+            -0.12611205991561292,
+            0.12611205991561292
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "new",
+          "method": "dual_site_baseline",
+          "design": "p1-50-w50",
+          "premium": [
+            7057.18528372758,
+            7057.565881545917
+          ],
+          "test": "守住"
+        },
+        {
+          "basis": "existing",
+          "method": "rule1",
+          "design": "p1-30-w20",
+          "premium": [
+            455.9937571792034,
+            456.3018410894729
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "existing",
+          "method": "rule2",
+          "design": "p1-30-w20",
+          "premium": [
+            455.9937571792034,
+            456.3018410894729
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "existing",
+          "method": "rule3",
+          "design": "p1-30-w40",
+          "premium": [
+            1406.2251101226611,
+            1406.6210446766636
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "existing",
+          "method": "rule4",
+          "design": "p1-40-w40",
+          "premium": [
+            806.8836733887947,
+            807.1820165578392
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "existing",
+          "method": "weekly_union",
+          "design": "p1-40-w20",
+          "premium": [
+            -0.12611205991561292,
+            0.12611205991561292
+          ],
+          "test": "未守住"
+        },
+        {
+          "basis": "existing",
+          "method": "dual_site_baseline",
+          "design": "p1-50-w50",
+          "premium": [
+            5521.1228837913,
+            5521.503481609638
+          ],
+          "test": "守住"
+        }
+      ],
+      "required_ratings_kw": {
+        "selection": [
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 20
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 20
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 20
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 20
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          }
+        ],
+        "evaluation": [
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 30,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 20
+          },
+          {
+            "PORT": 40,
+            "WAREHOUSE": 40
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 20
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 20
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 0,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          },
+          {
+            "PORT": 20,
+            "WAREHOUSE": 0
+          }
+        ]
+      }
+    }
+  }
+}
