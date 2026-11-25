@@ -1,0 +1,1347 @@
+{
+  "cohorts": {
+    "6-10": {
+      "role": "primary",
+      "complete_days": [
+        138,
+        50
+      ],
+      "registered_days": [
+        83,
+        33
+      ],
+      "gates": [
+        true,
+        "passed",
+        "passed"
+      ],
+      "primary": "未守住",
+      "unresolved_reason": null,
+      "constructed_members": [],
+      "construction_uninformative": false,
+      "choices": {
+        "existing": {
+          "p1-30-w20": [
+            11191.721622867728,
+            11191.79220579069
+          ]
+        },
+        "new": {
+          "p1-30-w20": [
+            11859.57484023133,
+            11859.645423154292
+          ]
+        }
+      },
+      "selection_service": {
+        "feasible": 22,
+        "infeasible": 13,
+        "unresolved": 0
+      },
+      "phases": [
+        {
+          "seconds": 2.815825,
+          "requests_started": 0,
+          "requests_used": 0
+        },
+        {
+          "seconds": 64.602718,
+          "requests_started": 740,
+          "requests_used": 740
+        },
+        {
+          "seconds": 7.174242,
+          "requests_started": 33,
+          "requests_used": 33
+        },
+        {
+          "seconds": 179.205886,
+          "requests_started": 1025,
+          "requests_used": 1579
+        }
+      ],
+      "native_unresolved_requests": [],
+      "unresolved_requests": [],
+      "secondary": {
+        "evaluation_service": {
+          "feasible": 9,
+          "infeasible": 26,
+          "unresolved": 0
+        },
+        "all_service": {
+          "feasible": 9,
+          "infeasible": 26,
+          "unresolved": 0
+        },
+        "evaluation_feasible": [
+          "p1-50-w30",
+          "p2-50-w30",
+          "p1-50-w40",
+          "p2-50-w40",
+          "p1-50-w50",
+          "p2-50-w50",
+          "p2-100-w30",
+          "p2-100-w40",
+          "p2-100-w50"
+        ],
+        "all_feasible": [
+          "p1-50-w30",
+          "p2-50-w30",
+          "p1-50-w40",
+          "p2-50-w40",
+          "p1-50-w50",
+          "p2-50-w50",
+          "p2-100-w30",
+          "p2-100-w40",
+          "p2-100-w50"
+        ],
+        "existing_endpoint": "未守住",
+        "min_test_kw": {
+          "PORT": 50,
+          "WAREHOUSE": 30
+        },
+        "gap_kw": {
+          "p1-30-w20": {
+            "PORT": 20,
+            "WAREHOUSE": 10
+          }
+        },
+        "training_max_kw": {
+          "p1-30-w20": {
+            "PORT": 20,
+            "WAREHOUSE": 20
+          }
+        },
+        "failures": [
+          {
+            "week": "2022-01-03",
+            "design": "p1-30-w20",
+            "segment": 1,
+            "dates": [
+              "2022-01-03",
+              "2022-01-04"
+            ],
+            "sites": [
+              "PORT",
+              "WAREHOUSE"
+            ],
+            "deficit_kwh": 23.677726499999878,
+            "cause": "single_truck_terminal_energy",
+            "solo_low_kwh": 30.0,
+            "solo_high_kwh": 126.32227350000012,
+            "prediction_one": "命中",
+            "prediction_two": "命中",
+            "required_kw": {
+              "PORT": 50,
+              "WAREHOUSE": 0
+            }
+          },
+          {
+            "week": "2022-01-31",
+            "design": "p1-30-w20",
+            "segment": 1,
+            "dates": [
+              "2022-01-31"
+            ],
+            "sites": [
+              "PORT",
+              "WAREHOUSE"
+            ],
+            "deficit_kwh": 0.7006300000000039,
+            "cause": "single_truck_leg_boundary",
+            "solo_low_kwh": 30.0,
+            "solo_high_kwh": 29.299369999999996,
+            "prediction_one": "命中",
+            "prediction_two": "命中",
+            "required_kw": {
+              "PORT": 30,
+              "WAREHOUSE": 30
+            }
+          }
+        ],
+        "site_classes": {
+          "evaluation": {
+            "both": 28,
+            "port_only": 5
+          },
+          "selection": {
+            "both": 74,
+            "port_only": 8,
+            "warehouse_only": 1
+          }
+        },
+        "transfer": {
+          "p1-40-w20": "infeasible",
+          "p1-40-w40": "infeasible"
+        },
+        "comparisons": [
+          {
+            "basis": "new",
+            "bill": [
+              11859.57484023133,
+              11859.645423154292
+            ],
+            "design": "p1-30-w20",
+            "method": "rule1",
+            "premium": [
+              -0.07058292296278523,
+              0.07058292296278523
+            ],
+            "test": "未守住"
+          },
+          {
+            "basis": "new",
+            "bill": [
+              11859.57484023133,
+              11859.645423154292
+            ],
+            "design": "p1-30-w20",
+            "method": "rule2",
+            "premium": [
+              -0.07058292296278523,
+              0.07058292296278523
+            ],
+            "test": "未守住"
+          },
+          {
+            "basis": "new",
+            "bill": [
+              13048.247552676668,
+              13048.345260152599
+            ],
+            "design": "p1-30-w40",
+            "method": "rule3",
+            "premium": [
+              1188.6021295223763,
+              1188.7704199212694
+            ],
+            "test": "未守住"
+          },
+          {
+            "basis": "new",
+            "bill": [
+              12524.253395903941,
+              12524.318463340722
+            ],
+            "design": "p1-30-w30",
+            "method": "rule4",
+            "premium": [
+              664.607972749649,
+              664.7436231093925
+            ],
+            "test": "未守住"
+          },
+          {
+            "basis": "new",
+            "bill": [
+              12146.298485827729,
+              12146.411112720836
+            ],
+            "design": "p1-40-w20",
+            "method": "weekly_union",
+            "premium": [
+              286.6530626734366,
+              286.8362724895069
+            ],
+            "test": "未守住"
+          },
+          {
+            "basis": "new",
+            "bill": [
+              19877.705283609423,
+              19877.803729701274
+            ],
+            "design": "p1-50-w50",
+            "method": "dual_site_baseline",
+            "premium": [
+              8018.059860455131,
+              8018.228889469945
+            ],
+            "test": "守住"
+          },
+          {
+            "basis": "existing",
+            "bill": [
+              11191.721622867728,
+              11191.79220579069
+            ],
+            "design": "p1-30-w20",
+            "method": "rule1",
+            "premium": [
+              -0.07058292296278523,
+              0.07058292296278523
+            ],
+            "test": "未守住"
+          },
+          {
+            "basis": "existing",
+            "bill": [
+              11191.721622867728,
+              11191.79220579069
+            ],
+            "design": "p1-30-w20",
+            "method": "rule2",
+            "premium": [
+              -0.07058292296278523,
+              0.07058292296278523
+            ],
+            "test": "未守住"
+          },
+          {
+            "basis": "existing",
+            "bill": [
+              12113.253048367627,
+              12113.350755843558
+            ],
+            "design": "p1-30-w40",
+            "method": "rule3",
+            "premium": [
+              921.4608425769366,
+              921.6291329758296
+            ],
+            "test": "未守住"
+          },
+          {
+            "basis": "existing",
+            "bill": [
+              11722.82953506762,
+              11722.894602504402
+            ],
+            "design": "p1-30-w30",
+            "method": "rule4",
+            "premium": [
+              531.0373292769291,
+              531.1729796366744
+            ],
+            "test": "未守住"
+          },
+          {
+            "basis": "existing",
+            "bill": [
+              11344.874624991407,
+              11344.987251884515
+            ],
+            "design": "p1-40-w20",
+            "method": "weekly_union",
+            "premium": [
+              153.08241920071669,
+              153.265629016787
+            ],
+            "test": "未守住"
+          },
+          {
+            "basis": "existing",
+            "bill": [
+              17540.21902283682,
+              17540.31746892867
+            ],
+            "design": "p1-50-w50",
+            "method": "dual_site_baseline",
+            "premium": [
+              6348.426817046129,
+              6348.595846060944
+            ],
+            "test": "守住"
+          }
+        ],
+        "margin": {
+          "status": null,
+          "reason": null,
+          "week": null,
+          "retained_days": 81
+        },
+        "evaluation_bills": {
+          "p1-50-w30": {
+            "existing": [
+              13560.366607231315,
+              13560.376566782455
+            ],
+            "new": [
+              14628.931755013076,
+              14628.941714564218
+            ]
+          },
+          "p1-50-w40": {
+            "existing": [
+              13957.573664462567,
+              13957.584868957601
+            ],
+            "new": [
+              15159.709455717048,
+              15159.720660212082
+            ]
+          },
+          "p1-50-w50": {
+            "existing": [
+              16655.226790423723,
+              16655.320315077573
+            ],
+            "new": [
+              17990.933225150926,
+              17991.026749804776
+            ]
+          },
+          "p2-100-w30": {
+            "existing": [
+              18401.312721854316,
+              18401.35339892897
+            ],
+            "new": [
+              20137.73108699968,
+              20137.771764074336
+            ]
+          },
+          "p2-100-w40": {
+            "existing": [
+              18798.51977908557,
+              18798.561701104118
+            ],
+            "new": [
+              20668.508787703653,
+              20668.5507097222
+            ]
+          },
+          "p2-100-w50": {
+            "existing": [
+              21496.24346155525,
+              21496.286628517686
+            ],
+            "new": [
+              23499.803113646052,
+              23499.846280608494
+            ]
+          },
+          "p2-50-w30": {
+            "existing": [
+              17284.65341174139,
+              17284.663371292532
+            ],
+            "new": [
+              18353.21855952315,
+              18353.22851907429
+            ]
+          },
+          "p2-50-w40": {
+            "existing": [
+              17681.860468972664,
+              17681.871673467696
+            ],
+            "new": [
+              18883.996260227144,
+              18884.007464722177
+            ]
+          },
+          "p2-50-w50": {
+            "existing": [
+              20379.58415144234,
+              20379.59660088127
+            ],
+            "new": [
+              21715.290586169544,
+              21715.30303560847
+            ]
+          }
+        },
+        "nested": [
+          {
+            "choices": [
+              "p1-30-w20"
+            ],
+            "end": 19,
+            "k": 4,
+            "new_demand": {
+              "p1-30-w20": {
+                "denominator": 47,
+                "fraction_lower": 0.0425531914893617,
+                "fraction_upper": 0.0425531914893617,
+                "new_proven": 2,
+                "training_max_kw": {
+                  "PORT": 20,
+                  "WAREHOUSE": 20
+                },
+                "unknown": 0
+              }
+            },
+            "verdict": "未守住"
+          },
+          {
+            "choices": [
+              "p1-30-w20"
+            ],
+            "end": 12,
+            "k": 6,
+            "new_demand": {
+              "p1-30-w20": {
+                "denominator": 19,
+                "fraction_lower": 0.0,
+                "fraction_upper": 0.0,
+                "new_proven": 0,
+                "training_max_kw": {
+                  "PORT": 20,
+                  "WAREHOUSE": 20
+                },
+                "unknown": 0
+              }
+            },
+            "verdict": "守住"
+          },
+          {
+            "choices": [
+              "p1-30-w20"
+            ],
+            "end": 19,
+            "k": 6,
+            "new_demand": {
+              "p1-30-w20": {
+                "denominator": 40,
+                "fraction_lower": 0.05,
+                "fraction_upper": 0.05,
+                "new_proven": 2,
+                "training_max_kw": {
+                  "PORT": 20,
+                  "WAREHOUSE": 20
+                },
+                "unknown": 0
+              }
+            },
+            "verdict": "未守住"
+          },
+          {
+            "choices": [
+              "p1-30-w20"
+            ],
+            "end": 19,
+            "k": 8,
+            "new_demand": {
+              "p1-30-w20": {
+                "denominator": 35,
+                "fraction_lower": 0.05714285714285714,
+                "fraction_upper": 0.05714285714285714,
+                "new_proven": 2,
+                "training_max_kw": {
+                  "PORT": 20,
+                  "WAREHOUSE": 20
+                },
+                "unknown": 0
+              }
+            },
+            "verdict": "未守住"
+          },
+          {
+            "choices": [
+              "p1-30-w20"
+            ],
+            "end": 19,
+            "k": 10,
+            "new_demand": {
+              "p1-30-w20": {
+                "denominator": 28,
+                "fraction_lower": 0.07142857142857142,
+                "fraction_upper": 0.07142857142857142,
+                "new_proven": 2,
+                "training_max_kw": {
+                  "PORT": 20,
+                  "WAREHOUSE": 20
+                },
+                "unknown": 0
+              }
+            },
+            "verdict": "未守住"
+          },
+          {
+            "choices": [
+              "p1-30-w20"
+            ],
+            "end": 19,
+            "k": 12,
+            "new_demand": {
+              "p1-30-w20": {
+                "denominator": 21,
+                "fraction_lower": 0.09523809523809523,
+                "fraction_upper": 0.09523809523809523,
+                "new_proven": 2,
+                "training_max_kw": {
+                  "PORT": 20,
+                  "WAREHOUSE": 20
+                },
+                "unknown": 0
+              }
+            },
+            "verdict": "未守住"
+          },
+          {
+            "choices": [
+              "p1-30-w20"
+            ],
+            "end": 19,
+            "k": 14,
+            "new_demand": {
+              "p1-30-w20": {
+                "denominator": 18,
+                "fraction_lower": 0.1111111111111111,
+                "fraction_upper": 0.1111111111111111,
+                "new_proven": 2,
+                "training_max_kw": {
+                  "PORT": 20,
+                  "WAREHOUSE": 20
+                },
+                "unknown": 0
+              }
+            },
+            "verdict": "未守住"
+          },
+          {
+            "choices": [
+              "p1-50-w20"
+            ],
+            "end": 19,
+            "k": 16,
+            "new_demand": {
+              "p1-50-w20": {
+                "denominator": 13,
+                "fraction_lower": 0.07692307692307693,
+                "fraction_upper": 0.07692307692307693,
+                "new_proven": 1,
+                "training_max_kw": {
+                  "PORT": 50,
+                  "WAREHOUSE": 20
+                },
+                "unknown": 0
+              }
+            },
+            "verdict": "未守住"
+          }
+        ],
+        "all_later_pass_from_k": null,
+        "strict": {
+          "added_dates": [],
+          "removed_dates": [
+            "2021-09-27",
+            "2021-10-18",
+            "2021-12-17"
+          ],
+          "choices": {
+            "existing": [
+              "p1-30-w20"
+            ],
+            "new": [
+              "p1-30-w20"
+            ]
+          },
+          "verdict": "未守住",
+          "selected_changed": false,
+          "verdict_changed": false,
+          "registered_days": 80
+        }
+      }
+    },
+    "11-15": {
+      "role": "primary",
+      "complete_days": [
+        165,
+        55
+      ],
+      "registered_days": [
+        112,
+        45
+      ],
+      "gates": [
+        true,
+        "passed",
+        "passed"
+      ],
+      "primary": "未守住",
+      "unresolved_reason": null,
+      "constructed_members": [],
+      "construction_uninformative": false,
+      "choices": {
+        "existing": {
+          "p1-40-w20": [
+            24989.059470968292,
+            24989.185583028207
+          ]
+        },
+        "new": {
+          "p1-40-w20": [
+            25790.483331804615,
+            25790.60944386453
+          ]
+        }
+      },
+      "selection_service": {
+        "feasible": 20,
+        "infeasible": 15,
+        "unresolved": 0
+      },
+      "phases": [
+        {
+          "seconds": 2.85843,
+          "requests_started": 0,
+          "requests_used": 0
+        },
+        {
+          "seconds": 536.400511,
+          "requests_started": 722,
+          "requests_used": 722
+        },
+        {
+          "seconds": 8.550007,
+          "requests_started": 33,
+          "requests_used": 33
+        },
+        {
+          "seconds": 163.091654,
+          "requests_started": 927,
+          "requests_used": 1448
+        }
+      ],
+      "native_unresolved_requests": [
+        {
+          "id": "c55b3da481abe3a515f216b1f8e2c5f8a17922a2ad106101fcc047e0e79c5994",
+          "phase": "energy",
+          "week": "2021-12-06",
+          "design": {
+            "port_kw": 50,
+            "port_plugs": 1,
+            "warehouse_kw": 20
+          },
+          "lower": 417.788735088646,
+          "upper": 417.85396740721274,
+          "reason": "unresolved",
+          "limit_seconds": 300,
+          "effective_states": [
+            "bounded"
+          ]
+        }
+      ],
+      "unresolved_requests": [],
+      "secondary": {
+        "evaluation_service": {
+          "feasible": 7,
+          "infeasible": 28,
+          "unresolved": 0
+        },
+        "all_service": {
+          "feasible": 7,
+          "infeasible": 28,
+          "unresolved": 0
+        },
+        "evaluation_feasible": [
+          "p1-50-w40",
+          "p1-40-w50",
+          "p2-50-w40",
+          "p1-50-w50",
+          "p2-50-w50",
+          "p2-100-w40",
+          "p2-100-w50"
+        ],
+        "all_feasible": [
+          "p1-50-w40",
+          "p1-40-w50",
+          "p2-50-w40",
+          "p1-50-w50",
+          "p2-50-w50",
+          "p2-100-w40",
+          "p2-100-w50"
+        ],
+        "existing_endpoint": "未守住",
+        "min_test_kw": {
+          "PORT": 40,
+          "WAREHOUSE": 40
+        },
+        "gap_kw": {
+          "p1-40-w20": {
+            "PORT": 0,
+            "WAREHOUSE": 20
+          }
+        },
+        "training_max_kw": {
+          "p1-40-w20": {
+            "PORT": 20,
+            "WAREHOUSE": 20
+          }
+        },
+        "failures": [
+          {
+            "week": "2022-01-10",
+            "design": "p1-40-w20",
+            "segment": 1,
+            "dates": [
+              "2022-01-14"
+            ],
+            "sites": [
+              "PORT",
+              "WAREHOUSE"
+            ],
+            "deficit_kwh": 25.95215599999956,
+            "cause": "single_truck_terminal_energy",
+            "solo_low_kwh": 46.10277900000001,
+            "solo_high_kwh": 124.04784400000044,
+            "prediction_one": "命中",
+            "prediction_two": "命中",
+            "required_kw": {
+              "PORT": 40,
+              "WAREHOUSE": 40
+            }
+          }
+        ],
+        "site_classes": {
+          "evaluation": {
+            "both": 41,
+            "port_only": 2,
+            "warehouse_only": 2
+          },
+          "selection": {
+            "both": 102,
+            "port_only": 9,
+            "warehouse_only": 1
+          }
+        },
+        "transfer": {
+          "p1-40-w20": "infeasible",
+          "p1-40-w40": "infeasible"
+        },
+        "comparisons": [
+          {
+            "basis": "new",
+            "bill": [
+              26113.032557571016,
+              26113.214529421366
+            ],
+            "design": "p1-30-w20",
+            "method": "rule1",
+            "premium": [
+              322.4231137064853,
+              322.73119761675116
+            ],
+            "test": "未守住"
+          },
+          {
+            "basis": "new",
+            "bill": [
+              26113.032557571016,
+              26113.214529421366
+            ],
+            "design": "p1-30-w20",
+            "method": "rule2",
+            "premium": [
+              322.4231137064853,
+              322.73119761675116
+            ],
+            "test": "未守住"
+          },
+          {
+            "basis": "new",
+            "bill": [
+              27330.40519745991,
+              27330.675019953997
+            ],
+            "design": "p1-30-w40",
+            "method": "rule3",
+            "premium": [
+              1539.7957535953792,
+              1540.1916881493817
+            ],
+            "test": "未守住"
+          },
+          {
+            "basis": "new",
+            "bill": [
+              26864.63440419876,
+              26864.80663530789
+            ],
+            "design": "p1-40-w40",
+            "method": "rule4",
+            "premium": [
+              1074.0249603342309,
+              1074.3233035032754
+            ],
+            "test": "未守住"
+          },
+          {
+            "basis": "new",
+            "bill": [
+              25790.483331804615,
+              25790.60944386453
+            ],
+            "design": "p1-40-w20",
+            "method": "weekly_union",
+            "premium": [
+              -0.12611205991561292,
+              0.12611205991561292
+            ],
+            "test": "未守住"
+          },
+          {
+            "basis": "new",
+            "bill": [
+              32847.79472759211,
+              32848.04921335053
+            ],
+            "design": "p1-50-w50",
+            "method": "dual_site_baseline",
+            "premium": [
+              7057.18528372758,
+              7057.565881545917
+            ],
+            "test": "守住"
+          },
+          {
+            "basis": "existing",
+            "bill": [
+              25445.17934020741,
+              25445.361312057765
+            ],
+            "design": "p1-30-w20",
+            "method": "rule1",
+            "premium": [
+              455.9937571792034,
+              456.3018410894729
+            ],
+            "test": "未守住"
+          },
+          {
+            "basis": "existing",
+            "bill": [
+              25445.17934020741,
+              25445.361312057765
+            ],
+            "design": "p1-30-w20",
+            "method": "rule2",
+            "premium": [
+              455.9937571792034,
+              456.3018410894729
+            ],
+            "test": "未守住"
+          },
+          {
+            "basis": "existing",
+            "bill": [
+              26395.41069315087,
+              26395.680515644955
+            ],
+            "design": "p1-30-w40",
+            "method": "rule3",
+            "premium": [
+              1406.2251101226611,
+              1406.6210446766636
+            ],
+            "test": "未守住"
+          },
+          {
+            "basis": "existing",
+            "bill": [
+              25796.069256417002,
+              25796.24148752613
+            ],
+            "design": "p1-40-w40",
+            "method": "rule4",
+            "premium": [
+              806.8836733887947,
+              807.1820165578392
+            ],
+            "test": "未守住"
+          },
+          {
+            "basis": "existing",
+            "bill": [
+              24989.059470968292,
+              24989.185583028207
+            ],
+            "design": "p1-40-w20",
+            "method": "weekly_union",
+            "premium": [
+              -0.12611205991561292,
+              0.12611205991561292
+            ],
+            "test": "未守住"
+          },
+          {
+            "basis": "existing",
+            "bill": [
+              30510.308466819508,
+              30510.56295257793
+            ],
+            "design": "p1-50-w50",
+            "method": "dual_site_baseline",
+            "premium": [
+              5521.1228837913,
+              5521.503481609638
+            ],
+            "test": "守住"
+          }
+        ],
+        "margin": {
+          "status": null,
+          "reason": null,
+          "week": null,
+          "retained_days": 107
+        },
+        "evaluation_bills": {
+          "p1-40-w50": {
+            "existing": [
+              23456.084535156562,
+              23456.335961775763
+            ],
+            "new": [
+              24658.220326411043,
+              24658.471753030244
+            ]
+          },
+          "p1-50-w40": {
+            "existing": [
+              23126.895406014304,
+              23127.001967839184
+            ],
+            "new": [
+              24329.031197268785,
+              24329.137759093664
+            ]
+          },
+          "p1-50-w50": {
+            "existing": [
+              25802.09168559785,
+              25802.216958347926
+            ],
+            "new": [
+              27137.798120325053,
+              27137.92339307513
+            ]
+          },
+          "p2-100-w40": {
+            "existing": [
+              27592.723408400758,
+              27592.740837615253
+            ],
+            "new": [
+              29462.71241701884,
+              29462.729846233335
+            ]
+          },
+          "p2-100-w50": {
+            "existing": [
+              30279.40207043034,
+              30279.42074458873
+            ],
+            "new": [
+              32282.961722521144,
+              32282.980396679533
+            ]
+          },
+          "p2-50-w40": {
+            "existing": [
+              26848.247094304617,
+              26848.25829879965
+            ],
+            "new": [
+              28050.3828855591,
+              28050.394090054135
+            ]
+          },
+          "p2-50-w50": {
+            "existing": [
+              29524.14532178149,
+              29524.157771220416
+            ],
+            "new": [
+              30859.85175650869,
+              30859.86420594762
+            ]
+          }
+        },
+        "nested": [
+          {
+            "choices": [
+              "p1-30-w20"
+            ],
+            "end": 19,
+            "k": 4,
+            "new_demand": {
+              "p1-30-w20": {
+                "denominator": 52,
+                "fraction_lower": 0.038461538461538464,
+                "fraction_upper": 0.038461538461538464,
+                "new_proven": 2,
+                "training_max_kw": {
+                  "PORT": 20,
+                  "WAREHOUSE": 20
+                },
+                "unknown": 0
+              }
+            },
+            "verdict": "未守住"
+          },
+          {
+            "choices": [
+              "p1-40-w20"
+            ],
+            "end": 12,
+            "k": 6,
+            "new_demand": {
+              "p1-40-w20": {
+                "denominator": 26,
+                "fraction_lower": 0.0,
+                "fraction_upper": 0.0,
+                "new_proven": 0,
+                "training_max_kw": {
+                  "PORT": 20,
+                  "WAREHOUSE": 20
+                },
+                "unknown": 0
+              }
+            },
+            "verdict": "守住"
+          },
+          {
+            "choices": [
+              "p1-40-w20"
+            ],
+            "end": 19,
+            "k": 6,
+            "new_demand": {
+              "p1-40-w20": {
+                "denominator": 46,
+                "fraction_lower": 0.043478260869565216,
+                "fraction_upper": 0.043478260869565216,
+                "new_proven": 2,
+                "training_max_kw": {
+                  "PORT": 20,
+                  "WAREHOUSE": 20
+                },
+                "unknown": 0
+              }
+            },
+            "verdict": "未守住"
+          },
+          {
+            "choices": [
+              "p1-30-w20"
+            ],
+            "end": 19,
+            "k": 8,
+            "new_demand": {
+              "p1-30-w20": {
+                "denominator": 39,
+                "fraction_lower": 0.05128205128205128,
+                "fraction_upper": 0.05128205128205128,
+                "new_proven": 2,
+                "training_max_kw": {
+                  "PORT": 20,
+                  "WAREHOUSE": 20
+                },
+                "unknown": 0
+              }
+            },
+            "verdict": "未守住"
+          },
+          {
+            "choices": [
+              "p1-40-w20"
+            ],
+            "end": 19,
+            "k": 10,
+            "new_demand": {
+              "p1-40-w20": {
+                "denominator": 29,
+                "fraction_lower": 0.06896551724137931,
+                "fraction_upper": 0.06896551724137931,
+                "new_proven": 2,
+                "training_max_kw": {
+                  "PORT": 20,
+                  "WAREHOUSE": 20
+                },
+                "unknown": 0
+              }
+            },
+            "verdict": "未守住"
+          },
+          {
+            "choices": [
+              "p1-40-w20"
+            ],
+            "end": 19,
+            "k": 12,
+            "new_demand": {
+              "p1-40-w20": {
+                "denominator": 20,
+                "fraction_lower": 0.1,
+                "fraction_upper": 0.1,
+                "new_proven": 2,
+                "training_max_kw": {
+                  "PORT": 20,
+                  "WAREHOUSE": 20
+                },
+                "unknown": 0
+              }
+            },
+            "verdict": "未守住"
+          },
+          {
+            "choices": [
+              "p1-40-w20"
+            ],
+            "end": 19,
+            "k": 14,
+            "new_demand": {
+              "p1-40-w20": {
+                "denominator": 19,
+                "fraction_lower": 0.10526315789473684,
+                "fraction_upper": 0.10526315789473684,
+                "new_proven": 2,
+                "training_max_kw": {
+                  "PORT": 20,
+                  "WAREHOUSE": 20
+                },
+                "unknown": 0
+              }
+            },
+            "verdict": "未守住"
+          },
+          {
+            "choices": [
+              "p1-50-w40"
+            ],
+            "end": 19,
+            "k": 16,
+            "new_demand": {
+              "p1-50-w40": {
+                "denominator": 12,
+                "fraction_lower": 0.0,
+                "fraction_upper": 0.0,
+                "new_proven": 0,
+                "training_max_kw": {
+                  "PORT": 40,
+                  "WAREHOUSE": 40
+                },
+                "unknown": 0
+              }
+            },
+            "verdict": "守住"
+          }
+        ],
+        "all_later_pass_from_k": 16,
+        "strict": {
+          "added_dates": [],
+          "removed_dates": [
+            "2021-09-27"
+          ],
+          "choices": {
+            "existing": [
+              "p1-50-w20"
+            ],
+            "new": [
+              "p1-50-w20"
+            ]
+          },
+          "verdict": "未守住",
+          "selected_changed": true,
+          "verdict_changed": false,
+          "registered_days": 111
+        }
+      }
+    },
+    "16-18": {
+      "role": "secondary",
+      "complete_days": [
+        72,
+        21
+      ],
+      "registered_days": [
+        null,
+        null
+      ],
+      "gates": [
+        false,
+        "not_evaluable",
+        null
+      ],
+      "primary": "不可评",
+      "unresolved_reason": null,
+      "constructed_members": [],
+      "construction_uninformative": false,
+      "choices": {},
+      "selection_service": null,
+      "phases": [
+        {
+          "seconds": 2.736365,
+          "requests_started": 0,
+          "requests_used": 0
+        },
+        {
+          "seconds": 1.731728,
+          "requests_started": 0,
+          "requests_used": 0
+        },
+        {
+          "seconds": 2.38062,
+          "requests_started": 0,
+          "requests_used": 0
+        },
+        {
+          "seconds": 2.071433,
+          "requests_started": 0,
+          "requests_used": 0
+        }
+      ],
+      "native_unresolved_requests": [],
+      "unresolved_requests": [],
+      "secondary": null
+    }
+  },
+  "model": {
+    "selection_dates": [
+      "2021-09-27",
+      "2021-12-19"
+    ],
+    "evaluation_dates": [
+      "2021-12-20",
+      "2022-02-06"
+    ],
+    "calendar_weeks": [
+      12,
+      7
+    ],
+    "hardware_count": 35,
+    "complete_day_thresholds": [
+      68,
+      28
+    ],
+    "registration_thresholds": [
+      50,
+      20
+    ],
+    "baseline_kw": [
+      50,
+      50
+    ],
+    "boundary_kwh": 150,
+    "annualisation_numerator": 52,
+    "connection_basis": "official_new",
+    "energy_units": "kWh",
+    "power_units": "kW",
+    "cost_units": "EUR_2025/year",
+    "margin_energy_factor": 1.2
+  },
+  "original_posthoc_reference": {
+    "cohort": "1-5",
+    "selection_registered": 106,
+    "evaluation_registered": 49,
+    "design": "p1-40-w20",
+    "evaluation_feasible": 8,
+    "verdict": "未守住",
+    "gap_kwh": 46.237124
+  },
+  "registration": {
+    "digest_algorithm": "SHA-256",
+    "P": "51ccfe5a2528299e8a21b1e5d03348ef31fbf1f8",
+    "F": "2fb11e4403fca2c5305ef8f1b260e5ad098fe3c1",
+    "hashes": {
+      "PREREG_M11_EXTERNAL.md": "c5907af318cf231f7499fb0ae829b80b5728f0bfa907e7d284f685c62c3ded20",
+      "EXECUTION_PLAN.md": "98b4d1e699f60e6e0112fe0e007675544e7f4da38ab3171bbf88db9651bc05aa",
+      "APPENDIX_EXECUTION_RULES.md": "2d716b9ab7b80d1adf7aaeb0ee88cc38958e6f2bf258c6b5e5b410fd5ecdc359"
+    },
+    "manifest_sha256": "0bcccae8bfb39756a3098f72d78133a4dbdb11634bb7e3c683343665b42f5b2a",
+    "block_height": 977496,
+    "block_time_utc": "2026-11-25T09:54:39+00:00"
+  }
+}
