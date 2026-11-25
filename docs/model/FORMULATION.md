@@ -1,5 +1,7 @@
 # 固定任务充电与容量投资 MILP
 
+[中文](#固定任务充电与容量投资-milp) · [English](#english)
+
 **状态：2026-11-10 已增加新增接口整数与离散功率扩容，采用 Ye 2024 问题及投资框架的本项目改编，不是严格复现论文公式或案例数字。站点启用仍为输入，年化/多代表日投资尚未实现。正式执行证据以 STATUS 和精选结果为准。旧原型不是本文连续任务链实现。**
 
 同日后续已完成相同物理链的60/30/15分钟检验，新增v2在途边界与C08整窗连接诊断。原v1输入及回归不改；[时间输入与占用政策](TIMEGRID_INPUT.md)、[本轮结果](../../results/timegrid_20261110/README.md)明确换枪、挪车和时间积分假设。
@@ -143,3 +145,151 @@ $F,C,K$ 为年化投资，$w$ 为该日的年度代表天数。单日示例不�
 港三仓一在 20.00 kWh 下需要从仓库至少获得 40 个额定功率分钟，V3 最多提供其中 26⅔，晚车至少需 13⅓。V3 至少占用仓库开头两槽，最早在 09:30 释放接口。晚车 09:45 放行，可利用之前 15 分钟空档，临界间隔为 16⅔ 分钟。高能耗时即便零换车时间，港区最后一小时仍至少需 102.14794 kWh，超过可用的 100 kWh。
 
 **高能耗恢复。** 仓库从 75 扩至 100 kW，两个晚车在最后一槽可各取 15 个额定功率分钟。超过 $30-h$ 后，V3 不能在港口接过别车的枪，晚车要承担两次换车，故 $4h≤90-2δ+30$。在 $δ=60-2h$ 的边界，端点求解及独立检查给出可行排程。对 5 与 10 分钟，从已装港二仓二出发，最低增量均为在港区加一个接口（+20）。此时三辆车可以在港口各用一把枪，仓库仍需协调换车。所有费用为同一周期的合成投资单位。[各档最优配置及枚举范围](../../results/changeover_20261112/metrics.json)
+
+---
+
+## English
+
+**Status (as of 2026-11-10):** Integer connector additions and discrete grid-capacity expansion have been added, adapting the problem structure and investment framework of Ye et al. (2024) rather than strictly reproducing that paper’s equations or numerical case. Site activation remains an input parameter, and annualized multi-representative-day investment is not yet implemented in this core specification. Formal execution evidence is governed by [STATUS.md](../research/STATUS.md) and the curated results packages. The archived legacy prototype is not an implementation of this continuous-duty formulation.
+
+Subsequent 60/30/15-minute time-step checks on the same physical duty chain introduced v2 transit boundaries and the C08 fixed-dwell connection diagnostic while leaving v1 inputs and regressions unchanged; [TIMEGRID_INPUT.md](TIMEGRID_INPUT.md) and the [time-grid results](../../results/timegrid_20261110/README.md) state the assumptions on plug switching, vehicle repositioning, and time integration.
+
+A 15-minute [port-power × warehouse-window boundary study](../../results/boundary_20261110/README.md) was also completed without altering constraints C01–C08 or the core solver code, adding controlled scenario generation, input audits B01–B04, and cross-scenario property checks as a deterministic sensitivity analysis.
+
+The original [minimal instance](MINIMAL_INSTANCE.md) is retained as the fixed-facility regression case. The closed port–warehouse instance (archived in the offline log repository under `runs/20261110_investment_suite/`) likewise models a four-hour synthetic cycle using cycle-equivalent synthetic investment costs plus single-cycle electricity costs with strict weight 1; four-hour results are not extrapolated to an annual horizon. Exact input fields and cost semantics are documented in [INVESTMENT_INPUT.md](INVESTMENT_INPUT.md).
+
+### Operational scope
+
+Task assignment, service order, primary routes, and vehicle location timelines are given exogenously. Transport feasibility is verified first, and charging-eligible slots are constructed afterward. Dwell time for loading or unloading does not automatically confer plug eligibility, and charging is forbidden outside eligible windows. Home-base and overnight charging belong inside the full operating cycle.
+
+Future empirical extensions cover full representative days or continuous multi-day spans; this core benchmark validates the four-hour closed synthetic cycle described above. Under a fixed schedule, waiting costs unaffected by charging decisions are omitted as a common constant; bounded detours require explicit location, time, and energy constraints and must not be smuggled in by inflating charging windows.
+
+### Sets, parameters, and units
+
+- $v\in V$: vehicles; $j\in J$: sites; $t=0,\ldots,T-1$: time slots; $m\in M_j$: discrete capacity-expansion tiers at site $j$.
+- $\Delta t$: slot duration in hours; $d_{vt}\ge0$: battery-side driving energy consumed by vehicle $v$ in slot $t$, in kWh.
+- $A_{vjt}\in\{0,1\}$: binary indicator equal to 1 if vehicle $v$ is eligible to charge at site $j$ across the entire slot $t$. In the fixed-route baseline, each vehicle-slot maps to at most one site; arbitrary site selection is not treated as costless travel.
+- $P_{vj}$: joint grid-side charging power upper bound allowed by vehicle $v$ and the connector at site $j$, in kW; $\eta_v$: grid-to-battery charging efficiency.
+- $H_{jt}$: grid power available to the study fleet at site $j$ in slot $t$ after deducting background load, in kW (not transformer nameplate capacity).
+- $\Delta H_{jm}$: incremental available power from selecting expansion tier $m$ at site $j$, in kW; $N_j^0$: existing connector count at site $j$; $\bar N_j$: upper bound on added connectors at site $j$.
+- $E_v^{\min},E_v^{\max},E_v^0$: lower bound, upper bound, and initial battery energy for vehicle $v$, in kWh.
+- Connector and capacity-expansion costs in the current single-cycle implementation are synthetic cycle-equivalent costs, and electricity prices are in synthetic currency per kWh; annualized costs appear only in the future specification below. Existing infrastructure is treated as sunk and is not charged as new construction.
+
+Partial-slot arrivals and departures: the initial formulation retains only fully available slots and documents this conservative treatment; any finer representation must model the ordering of driving and charging within a slot rather than checking slot-endpoint SOC alone.
+
+### Decision variables
+
+- $x_j\in\{0,1\}$: site activation indicator; existing operating sites are fixed at $x_j=1$.
+- $n_j\in\mathbb Z_{\ge0}$: number of newly added connectors at site $j$.
+- $u_{jm}\in\{0,1\}$: binary indicator for choosing discrete expansion tier $m$ at site $j$.
+- $a_{vjt}\in\{0,1\}$: binary indicator equal to 1 if vehicle $v$ occupies a connector at site $j$ in slot $t$.
+- $p_{vjt}\ge0$: grid-side charging power drawn by vehicle $v$ at site $j$ in slot $t$, in kW.
+- $e_{vt}$: battery energy of vehicle $v$ at the start boundary of slot $t$, in kWh.
+
+The fixed-facility version fixes $x,n,u$; the investment version keeps $x$ fixed as an input and optimizes $n,u$. No expansion variable is created when a site’s tier set is empty. Raw floating-point solver outputs are preserved and checked for integrality by an independent verifier without prior rounding.
+
+### Constraints
+
+**C01 Site activation and expansion linkage**
+
+$$0\le n_j\le\bar N_j x_j,\qquad \sum_m u_{jm}\le x_j.$$
+
+**C02 Charging eligibility, site presence, and single-site exclusivity**
+
+$$a_{vjt}\le A_{vjt},\qquad a_{vjt}\le x_j,\qquad \sum_j a_{vjt}\le1.$$
+
+Input validation ensures that driving slots with $d_{vt}>0$ are never charging-eligible; transport feasibility itself is not inferred solely from these inequalities.
+
+**C03 Vehicle and connector power limit**
+
+$$0\le p_{vjt}\le P_{vj}a_{vjt}.$$
+
+Where multiple plugs share a power cabinet, a separate cabinet-level limit is required; the baseline formulation covers independent connectors or explicitly aggregated power limits.
+
+**C04 Simultaneous connector occupancy**
+
+$$\sum_v a_{vjt}\le N_j^0+n_j.$$
+
+**C05 Available site grid power**
+
+$$\sum_v p_{vjt}\le H_{jt}x_j+\sum_m\Delta H_{jm}u_{jm}.$$
+
+Because $H_{jt}$ is an exogenous parameter, $H_{jt}x_j$ is linear. Background load already deducted from $H_{jt}$ is not subtracted again. Satisfying C05 does not prove AC power-flow, voltage, or interconnection compliance.
+
+**C06 Continuous battery energy balance**
+
+$$e_{v,t+1}=e_{vt}+\eta_v\Delta t\sum_j p_{vjt}-d_{vt}.$$
+
+**C07 Energy bounds and cycle boundary**
+
+$$E_v^{\min}\le e_{vt}\le E_v^{\max},\quad e_{v0}=E_v^0,\quad e_{vT}\ge E_v^0.$$
+
+This enforces energy replenishment over the full cycle (an equality constraint may be used for periodic steady state when documented). All compared configurations share the same boundary so initial charge is never treated as free energy, and missing trip records are never defaulted to zero consumption.
+
+**C08 Optional fixed-dwell connection policy (v2)**
+
+If and only if `connector_policy=fixed_dwell_connection`, whenever two consecutive slots for vehicle $v$ share the same non-empty `charging_site`, add for all sites $j$:
+
+$$a_{v,j,t}=a_{v,j,t-1}.$$
+
+Connector occupancy therefore remains unchanged throughout a continuous eligible dwell; charging power may vary or drop to zero, but the connector cannot be handed over mid-dwell to another truck. Under `slot_boundary_switching`, this equality is omitted, permitting zero-time, zero-energy, zero-cost plug switching and repositioning at slot boundaries without modeling staging-space limits. Neither policy adds dwell time. Connectors at a site are homogeneous and unnamed in this base model.
+
+Time-step refinement preserves physical event boundaries: each original one-hour driving leg is split evenly across 1, 2, or 4 sub-slots, intermediate locations must be listed in `transit_locations` with no dwell or charging allowed, power limits and electricity prices repeat across sub-slots within the parent hour, kWh and electricity costs scale by the new $\Delta t$, and investment costs do not scale. `audit_physical_equivalence` independently re-aggregates sub-slots back to physical events to verify arrival/departure times, eligibility, leg energy, and parameters. Uniform energy distribution across driving sub-slots is an explicit synthetic assumption, not an empirical speed profile.
+
+### Implemented power × window boundary specification
+
+Fix $\Delta t=0.25$ hours and vary existing available port power $H_{P,t}=h$ over $h\in\{50,75,100,125,150\}$ kW; paid expansion tiers in C05 are unchanged, giving post-expansion capacity $h+\sum_m\Delta H_{Pm}u_{Pm}$ (distinct from existing power $h$).
+
+For the three vehicles during their warehouse dwell, vary the warehouse charging window $w\in\{0,15,30,45,60\}$ minutes:
+
+$$A_{v,W,t}(w)=\mathbf1\{60\le15t,\quad15(t+1)\le60+w\}.$$
+
+Physical warehouse arrival and departure remain fixed at 60 and 120 minutes; $w=0$ disables charging eligibility without removing trips or dwell. The port-only scope fixes $x_W=0$ and the two-site scope fixes $x_W=1$, treating existing warehouse hardware as sunk with no site-opening fee. All comparisons hold duties, leg energies, boundary SOC, equipment parameters, and cycle costs identical, comparing the two connection policies separately.
+
+Input audit B01 verifies the physical event chain and per-slot energy after masking eligibility, B02 checks the declared eligible sub-windows, B03 permits only declared changes in existing power or site activation, and B04 checks cost parameters and units. These are input and experiment invariant checks rather than solver constraints; the C01–C08 checker independently verifies every primal solution.
+
+Across 310 cross-scenario property comparisons, scope equivalence/dominance and instance-level monotonicity are verified. Under `fixed_dwell_connection`, window monotonicity relies on all three trucks arriving and extending their windows simultaneously and does not generalize to staggered overlapping windows. Sensitivity sweeps, fixed-facility stress tests, and true stochastic planning with shared ex ante investment and adaptive dispatch must remain distinct.
+
+### Objective
+
+The following annualized representative-day objective is a future specification and is not implemented in this core synthetic module:
+
+$$\min \sum_{j\in J_{\rm new}}F_j x_j+\sum_j C_j n_j+
+\sum_{j,m}K_{jm}u_{jm}
++w\sum_{v,j,t}\pi_{jt}p_{vjt}\Delta t.$$
+
+Here $F,C,K$ denote annualized investment costs and $w$ is the annual representative-day weight. A single-day instance must not be extrapolated to a full year without explicit justification; multi-representative-day formulations share investment variables while dispatching each day separately with documented weights. When reliable quotes are unavailable, transparent parametric scenarios should be reported.
+
+The implemented single-cycle objective is $\min\sum_j C_j^{cycle}n_j+\sum_{j,m}K_{jm}^{cycle}u_{jm}+\sum_{v,j,t}\pi_{jt}p_{vjt}\Delta t$, with site activation fixed and existing facility costs omitted. Added-equipment charges are explicitly synthetic cycle-equivalent costs amortized to the modeled cycle—not one-time CAPEX or annual bills—and accept only weight 1. Lifetimes, discounting, and annual cycle counts are uncalibrated here and do not support real-world economic claims.
+
+### Minimum verification requirements
+
+- Independently recompute every vehicle’s SOC trajectory, per-site connector occupancy, total site power, and all cost terms from primal variables; never treat solver residuals as independent verification.
+- Construct known diagnostic cases isolating “insufficient connectors with ample power,” “insufficient power with ample connectors,” and “insufficient charging window.”
+- Verify optimality on hand-solvable instances and, where feasible, by exhaustive enumeration of facility combinations.
+- Compare base-site only, rule-based sizing with fixed-facility dispatch, and joint investment-and-dispatch on the exact same duty set.
+- Distinguish clearly among infeasible, time-limited with incumbent, no incumbent found, and proven optimal statuses; record dual bounds and optimality gaps.
+- Check time discretization, cycle continuity, and boundary SOC explicitly; independent per-cycle rule-based charging profiles cannot substitute for this formulation.
+
+### Physical connector changeover (English)
+
+Vehicle release timing governs which site and slots are eligible for plugging in. Connector changeover time $\delta$ separately constrains consecutive use of the **same physical plug** by different trucks. Plugs at each site are individually indexed; each vehicle occupies at most one plug per 15-minute slot, and each plug serves at most one vehicle per slot. The first user incurs no setup loss, and consecutive slots by the same vehicle incur no repeated loss. A departing vehicle occupies its plug until the right boundary of its final assigned slot, and full empty slots count toward $\delta$. The next truck may claim the plug at the slot boundary, but power delivery cannot begin until the full turnaround $\delta$ has elapsed. Multiple plugs may turn over concurrently. Because no paired empirical timestamps exist for unplugging and re-plugging at the same physical connector, $\delta$ is treated as a sensitivity parameter. [Verified source fields](../../results/dt_cargo_stop_20261111/event.json)
+
+The model introduces binary variables $x_{vkt}$ assigning vehicle $v$ to named plug $k$ in slot $t$. Let slot length $L=15$ minutes. At offset $b$ minutes from the left boundary of slot $t$, if $(t-t'-1)L+b<\delta$ and plug $k$ was assigned to a different truck in an earlier slot $t'$, then vehicle $v$’s power on plug $k$ must be zero at that offset. Power only needs to be tracked at slot boundaries and at the remainder of $\delta \bmod 15$. Each truck uses a single power setpoint across its active portion of slot $t$, site power caps apply on every sub-interval, and delivered battery energy accumulates as $\eta\sum P\Delta m/60$. These sub-interval cuts account only for turnaround loss—they add zero intra-slot reassignment opportunities and zero extra independent power setpoints. Integrating power at $\delta=0$ recovers the original slot formulation, with identical feasibility across all four baseline configurations. [MILP](../../src/um_charging/changeover.py) · [Independent per-truck, per-plug checker](../../src/um_charging/changeover_check.py)
+
+#### Analytical limits for the two-port / two-warehouse build
+
+Let $h=60E/(50\times0.9)$ be the minutes of 50 kW charging needed to replenish one driving leg of energy $E$. At the warehouse, V1 and V2 can each receive at most 15 rated-power minutes, and because they share 75 kW in the final slot, their combined warehouse replenishment is at most 22.5 rated-power minutes. Even if V3 fully replenishes its first leg at the warehouse, it still requires at least $h$ minutes at the port. At both tested leg energies, the three trucks require at least 3, 3, and 2 port connector-slots respectively—exhausting all eight slots of two port plugs. Both port plugs must switch vehicles; otherwise one truck would occupy four slots and the lower bounds of the other two could not both be met.
+
+If V3 takes over a plug previously used by another truck, V3 gets at most $30-\delta$ minutes. At least one late-released truck must also take over a previously used plug; otherwise the two late trucks occupy the first three slots simultaneously, leaving only one slot for V3. Together, the two late trucks obtain at most $90-\delta$ port minutes plus 22.5 warehouse minutes to cover $4h$ across their four legs. If V3 avoids any changeover loss, both port turnovers fall on the late trucks, tightening the requirement to $2\delta\le112.5-4h$. Across the two tested energies, the exact upper bound is therefore $\min(30-h,112.5-4h)$. The schedule below attains this bound (and remains valid if V1 and V2 are swapped):
+
+| Port plug | 11:00–11:15 | 11:15–11:30 | 11:30–11:45 | 11:45–12:00 |
+|---|---|---|---|---|
+| 1 | V1 | V1 | V1 | V2 waits $\delta$, then charges |
+| 2 | V2 | V2 | V3 waits $\delta$, then charges | V3 |
+
+All three trucks charge at 50 kW whenever active at the port, receiving $45$, $45-\delta$, and $30-\delta$ rated-power minutes respectively. At the warehouse, V3 finishes replenishing in the first two slots and releases the plug, while V1 and V2 share the two plugs in the last slot. At 20.00 kWh per leg, V3 fills exactly at the warehouse and its two port slots set the binding delay limit. At 20.636628905957647 kWh per leg, the two late trucks saturate the 75 kW warehouse cap in the final slot, so any further time loss across their six port slots makes the duty infeasible. [Hand-checked schedule tests](../../tests/test_changeover_bounds.py)
+
+For the three-port / one-warehouse build at 20.00 kWh, the fleet needs at least 40 rated-power minutes from the warehouse: V3 can contribute at most $26\frac{2}{3}$ minutes, leaving at least $13\frac{1}{3}$ minutes for the late trucks. V3 occupies at least the first two warehouse slots and releases the plug no earlier than 09:30; the late trucks become eligible at 09:45, utilizing the 15-minute gap for a critical changeover limit of $16\frac{2}{3}$ minutes. At the higher leg energy, even $\delta=0$ requires at least 102.14794 kWh during the final port hour, exceeding the 100 kW port connection.
+
+**High-energy recovery:** Upgrading the warehouse connection from 75 to 100 kW allows each late truck to draw 15 rated-power minutes in the final warehouse slot. Beyond $\delta>30-h$, V3 can no longer absorb a port handover, so both port turnovers shift onto the late trucks, yielding $4h\le90-2\delta+30$. At the boundary $\delta=60-2h$, endpoint solves and independent verification confirm a feasible schedule. For $\delta=5$ and 10 minutes starting from the installed two-port / two-warehouse build, the minimum incremental addition is a third port connector (+20 synthetic cost units), allowing each truck to keep a dedicated port plug while coordinating warehouse handover. All costs are synthetic cycle-equivalent units. [Optimal builds and enumeration scope](../../results/changeover_20261112/metrics.json)
