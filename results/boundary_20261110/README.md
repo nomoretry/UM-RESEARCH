@@ -1,5 +1,9 @@
 # 港区已有功率×仓库补能窗口：协同补能的适用边界
 
+> **导读**：本文件记录 15 分钟三车合成算例的“港区已有功率 × 仓库窗口”适用边界扫描结果（100 情景／3,150 组合），运行于 **2026-11-10**。本目录属于合成机理边界证据；首页核心合成算例见 [首页 README §1](../../README.md#1-什么时候必须增加接口) 与 [共享服务范围](../shared_investment_20261112/README.md)，德国车队实证结论请以 [规划期选型](../../studies/fleet-service/site_sizing.md) 及 [第二次留出检验](../../studies/fleet-service/second_holdout.md) 为准。
+>
+> **Guide:** This report presents the 15-minute synthetic port-power × warehouse-window boundary sweep (100 scenarios / 3,150 combinations) run on **2026-11-10**. It documents synthetic mechanism bounds; for the headline synthetic case see [README.md §1](../../README.md#1-when-a-connector-is-necessary) and [shared_investment_20261112](../shared_investment_20261112/README.md), and for empirical fleet findings see [site_sizing.md](../../studies/fleet-service/site_sizing.md) and [second_holdout.md](../../studies/fleet-service/second_holdout.md).
+
 **本轮正式运行，2026-11-10。** 源码`a520cac2ea26dd237d4c6cccd32c0518cb8247f7`，运行时干净；222测试、100情景、3150设施枚举、100任务审计、310性质比较、4个历史重叠点和原六情景回归通过。采用Ye 2024问题/投资框架的本项目改编，不声称论文原式或原案例复现。
 
 起始分支与实时远程均为`3a618b6`，工作树干净；上轮149测试/54情景/840组合仅先核对历史证据，未冒充本轮新运行。本次按用户范围完成确定性边界实验，没有同时执行固定设施压力测试或不确定性规划。

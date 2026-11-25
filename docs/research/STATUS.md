@@ -1,5 +1,9 @@
 # 研究状态
 
+> **导读**：本文件为按时间倒序排列的项目里程碑与阶段状态台账，覆盖 **2026-11-04 至 2026-11-23**。其中较早条目的阶段判断已被后续实证检验更新；当前有效结论与阅读入口请以 [首页 README](../../README.md)、[仓库导览](../GUIDE.md) 及三份核心报告（[规划期选型](../../studies/fleet-service/site_sizing.md)、[第一折留出](../../studies/fleet-service/holdout_test.md)、[第二折留出](../../studies/fleet-service/second_holdout.md)）为准。
+>
+> **Guide:** This file is a reverse-chronological milestone and status log covering **2026-11-04 to 2026-11-23**. Earlier stage entries have been superseded by later empirical tests; for current findings and navigation, see [README.md](../../README.md), the [Repository Guide](../GUIDE.md), and the three core studies ([site_sizing.md](../../studies/fleet-service/site_sizing.md), [holdout_test.md](../../studies/fleet-service/holdout_test.md), [second_holdout.md](../../studies/fleet-service/second_holdout.md)).
+
 ## M10 第二次留出与样本外结论（2026-11-23）
 
 12 周有价粗网格选出的 F40、F20 在第二次留出分别少 1、2 个车日，按周设施并集与两种运营方式选出的设施也未完成基准登记的 49 个车日。F40 的决定性缺口为 2022-01-19 车 1，在已完成行程后仍差 46.237 kWh 才能达到 150 kWh 段末要求。基准以自身可行服务登记 R，主情景通过来自这一构造，耗电 +10% 时也少 1 个车日。仓库 40 kW 的恢复结果来自开封后按预登记阶梯作的诊断。两折留出各用一次，研究尚无经样本外验证的推荐规模。[中英报告与结果](../../studies/fleet-service/second_holdout.md)

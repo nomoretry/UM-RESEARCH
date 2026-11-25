@@ -1,5 +1,9 @@
 # UM能力与证据清单
 
+> **导读**：本文件为早期已验证模型能力与未实现范围的阶段快照，覆盖至 **2026-11-11**（不含后续换车时间、德国实证车队、日前市场、需量网费、两站功率选型与两次留出检验）。当前全仓库能力与最新结论请以 [首页 README](../../README.md)、[仓库导览](../GUIDE.md) 及 [第二次留出检验](../../studies/fleet-service/second_holdout.md) 为准。
+>
+> **Guide:** This file is a historical capability snapshot covering work up to **2026-11-11** (predating changeover, German fleet empirical studies, day-ahead markets, demand tariffs, two-site sizing, and both holdouts). For current capabilities and findings, see [README.md](../../README.md), the [Repository Guide](../GUIDE.md), and [second_holdout.md](../../studies/fleet-service/second_holdout.md).
+
 2026-11-11 已增加固定设施压力测试，早先的边界实验记录于 2026-11-10：起始核查基准`3a618b6f905b17edc689d064f8bbb189a24f3b44`；本轮正式运行源码`a520cac2ea26dd237d4c6cccd32c0518cb8247f7`。以下来自UM源码、配置与正式运行记录，不来自申请材料；上轮证据与本轮新运行分开。
 
 | 状态 | 能力 | 证据及边界 |

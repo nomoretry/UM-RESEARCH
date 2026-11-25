@@ -1,5 +1,9 @@
 # 旧原型恢复证据：2026-11-04
 
+> **导读**：本文件记录早期有限方案原型 `truck_charging_v1` 与单基地脚本的定位及按字节恢复审计，完成于 **2026-11-04**（引用 2026-09-10 与 2026-10-15 历史输出）。本文件仅作原型溯源，不代表当前模型或结论；现行连续电量模型与实证结果请以 [数学模型](../model/FORMULATION.md) 及 [首页 README](../../README.md) 为准。
+>
+> **Guide:** This audit documents locating and byte-exact recovering the earlier `truck_charging_v1` prototype and a single-depot script on **2026-11-04** (referencing historical outputs from 2026-09-10 and 2026-10-15). It is preserved for provenance only; for the current continuous-SOC model and empirical findings, see [FORMULATION.md](../model/FORMULATION.md) and [README.md](../../README.md).
+
 本文件记录本轮**读取源码、历史结果与计算文件哈希**所得事实。本文中的 106 项测试、六情景目标和三车单站数值均为历史输出；编写本审计时未重新运行测试或求解器。本轮正式复现应另记源码提交、run_id 和结果包，不能把这里的历史数值改称本次结果。
 
 ## 定位及保存边界

@@ -1,5 +1,9 @@
 # 决策记录
 
+> **导读**：本文件记录研究演进过程中的建模边界、实验设计与口径修订，覆盖 **2026-11-04 至 2026-11-20**。早期条目仅保留历史决策理由，可能已被后续实证结果取代；当前有效结论与方法边界请以 [首页 README](../../README.md)、[仓库导览](../GUIDE.md) 及 [第二次留出检验](../../studies/fleet-service/second_holdout.md) 为准。
+>
+> **Guide:** This file logs research decisions, scope boundaries, and methodological revisions from **2026-11-04 to 2026-11-20**. Earlier entries preserve historical rationale and may be superseded by later evidence; for current findings and boundaries, see [README.md](../../README.md), the [Repository Guide](../GUIDE.md), and [second_holdout.md](../../studies/fleet-service/second_holdout.md).
+
 **第二个港区接口的投资门槛。** 保持港仓接入 100/75 kW、仓库一个接口、45 分钟放行、原电池与整车日任务，比较相同价格下港区一个和两个可同时供电的接口。先仅替换原三天的报价（同期 2021 小时价与原 2025 年 1 月同星期回放），再纳入 2021-09-27 至 11-07 六个连续不重叠自然周，保留单车日、缺测日和不可行；若新增接口的购电差额低于同口径年费用，单凭购电收益就不足以支持该投资。保存逐日服务数、相同任务的即充与优化账单、峰值、周收益与可承受成本，分别核对独立设备价及现柜兼容加枪的增量报价。
 
 记录日期、状态、依据、后果。计划与已完成的结果分开；新证据可以取代旧决定，但保留理由。
