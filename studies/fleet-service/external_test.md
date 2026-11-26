@@ -171,12 +171,14 @@
 
 ### 正式封存时序
 
-| 节点 | 时刻（含时区） |
+本表与下面的封存表统一用 +08:00；区块时间的 UTC 原值见上表。
+
+| 节点 | 时刻（+08:00） |
 | --- | --- |
-| 清单 | 2026-11-25T09:43:08.992675+00:00 |
-| 比特币区块 | 2026-11-25T09:54:39+00:00 |
+| 清单 | 2026-11-25T17:43:08.992675+08:00 |
+| 比特币区块 | 2026-11-25T17:54:39+08:00 |
 | 开封授权 | 2026-11-25T18:34:39+08:00 |
-| 首个求解请求 | 2026-11-25T10:35:30.440502+00:00 |
+| 首个求解请求 | 2026-11-25T18:35:30.440502+08:00 |
 
 | 队列 | 阶段 | 封存时刻 |
 | --- | --- | --- |
@@ -406,12 +408,14 @@ The table ranks sealed selection-period bills at rated operation with official n
 
 ### Formal chronology
 
-| Event | Timestamp with offset |
+This table and the seal table below use +08:00 throughout; the block time in UTC is given above.
+
+| Event | Timestamp (+08:00) |
 | --- | --- |
-| Manifest | 2026-11-25T09:43:08.992675+00:00 |
-| Bitcoin block | 2026-11-25T09:54:39+00:00 |
+| Manifest | 2026-11-25T17:43:08.992675+08:00 |
+| Bitcoin block | 2026-11-25T17:54:39+08:00 |
 | Opening authorisation | 2026-11-25T18:34:39+08:00 |
-| First solve request | 2026-11-25T10:35:30.440502+00:00 |
+| First solve request | 2026-11-25T18:35:30.440502+08:00 |
 
 | Cohort | Stage | Sealed at |
 | --- | --- | --- |

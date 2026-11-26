@@ -14,7 +14,7 @@
 
 [External] Liyang Xiao, Luxian Chen, Peng Sun, Gilbert Laporte, Roberto Baldacci. The container drayage problem for electric trucks with charging resource constraints. TR-C 174 (2025), 105100. [出版社预览](https://www.sciencedirect.com/science/article/pii/S0968090X25001044)；[学校记录](https://researchportal.bath.ac.uk/en/publications/the-container-drayage-problem-for-electric-trucks-with-charging-r/)。
 
-勘误：[TR-C 176, 105167](https://doi.org/10.1016/j.trc.2025.105167)。2026-11-09核查：Bath所列公开接受稿正常HTTP访问403，Undermind无PDF；其他作者库未取得附件。不得把本卡当全文卡。
+勘误：[TR-C 176, 105167](https://doi.org/10.1016/j.trc.2025.105167)。2026-11-09核查：Bath所列公开接受稿正常HTTP访问403，检索服务未提供PDF；其他作者库未取得附件。不得把本卡当全文卡。
 
 ## 02 一句话概括
 

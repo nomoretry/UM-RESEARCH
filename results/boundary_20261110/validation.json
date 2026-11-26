@@ -232,6 +232,6 @@
     "full_raw_validation_matches": true,
     "task_and_property_checks_match": true,
     "investment_and_operating_costs_recomputed": true,
-    "method": "Separate read-only agent rechecked stored results without calling solve; not additional experiments."
+    "method": "Separate read-only recheck of stored results without calling solve; not additional experiments."
   }
 }
