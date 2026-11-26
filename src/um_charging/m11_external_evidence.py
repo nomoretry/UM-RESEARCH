@@ -69,11 +69,12 @@ def work(folder, period, spec, deadline):
 
 
 class Ledger:
-    def __init__(self, folder, deadline, verify=False):
+    def __init__(self, folder, deadline, verify=False, *, worker=None):
         self.folder, self.deadline, self.verify = folder, deadline, verify
         self.rows = {}
         self.used = set()
         self.pool = None
+        self.worker = work if worker is None else worker
         if not verify:
             for name in ("starts","certificates"):
                 (folder/name).mkdir(parents=True, exist_ok=True)
@@ -111,7 +112,7 @@ class Ledger:
             group = items[i:i+e.WORKERS]
             if (self.deadline-utc()).total_seconds() < max(s["seconds"] for _,(_,s) in group)+5:
                 raise ss.fc.StudyLimit("Full batch would exceed the original clock")
-            futures = [(label,self.pool.submit(work,self.folder,p,s,self.deadline)) for label,(p,s) in group]
+            futures = [(label,self.pool.submit(self.worker,self.folder,p,s,self.deadline)) for label,(p,s) in group]
             for label,future in futures:
                 self.rows[label] = future.result()
         return [self.rows[label] for label in labels]

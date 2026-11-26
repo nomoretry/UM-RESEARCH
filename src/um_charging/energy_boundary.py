@@ -86,13 +86,14 @@ def components(days, links):
 
 
 class Period:
-    def __init__(self, days, prices):
+    def __init__(self, days, prices, *, warehouse_release_min=None):
+        release = RELEASE if warehouse_release_min is None else warehouse_release_min
         self.days = days
         self.prices = prices
         self.chains, self.links, self.breaks = calendar(days)
         origin = date.fromisoformat(days[0]["date"])
         self.offset = {d["date"]: 1440 * (date.fromisoformat(d["date"]) - origin).days for d in days}
-        self.cases = {d["date"]: build_case(d, RELEASE) for d in days if d["availability"] == "complete_tasks"}
+        self.cases = {d["date"]: build_case(d, release) for d in days if d["availability"] == "complete_tasks"}
         self.keys = {(d, v) for d, case in self.cases.items() for v in case["trucks"]}
         # Reassemble released dwell bounds by the original arrival record. Each day's
         # event grid still splits the merged window at midnight for accounting.
@@ -110,7 +111,7 @@ class Period:
                     def minute(field):
                         return (datetime.fromisoformat(stop[field]) - origin_time) / timedelta(minutes=1)
                     site = stop["site"]
-                    a = max(minute("start"), minute("arrival") + (RELEASE if site == "WAREHOUSE" else 0))
+                    a = max(minute("start"), minute("arrival") + (release if site == "WAREHOUSE" else 0))
                     b = minute("end")
                     if a >= b:
                         continue
