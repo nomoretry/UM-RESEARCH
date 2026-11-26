@@ -79,7 +79,7 @@ def test_print_fragments_and_raster_resolution():
         for row in rows:
             assert " & ".join(cell or "---" for cell in row) + r" \\" in tex
     figures = sorted(PAPER.glob("figure*.png"))
-    assert len(figures) == 5
+    assert len(figures) == 6
     for path in figures:
         raw = path.read_bytes()
         assert raw[:8] == b"\x89PNG\r\n\x1a\n"
@@ -101,11 +101,12 @@ def check_figure_artists():
     cohorts = load("external_designs.json")["cohorts"]
     payload = load("external_segments.json")
     timeline = figures.design_timeline(report).axes[0]
-    texts = {artist.get_text() for artist in timeline.texts}
+    texts = {artist.get_text().replace("\n", " ") for artist in timeline.texts}
     assert all(" to ".join(report["model"][period]) in texts for period in ("selection_dates", "evaluation_dates"))
-    assert all("Ranks " + label in texts for label in [*cohorts, "16-18"])
+    assert all(figures.trucks(label) in texts for label in [*cohorts, "16-18"])
     assert [p.get_width() for p in timeline.patches] == [w / 19 - .006 for w in report["model"]["calendar_weeks"]]
     for ax, (label, cohort) in zip(figures.cost_outcomes(cohorts, report).axes, cohorts.items(), strict=True):
+        assert [t.get_text().replace("\n", " ") for t in ax.get_yticklabels()] == ["Failed", "Held (completed all registered test duties)"]
         expected = {name: d for name, d in cohort["designs"].items() if d["selection_bill"]}
         assert len(ax.lines) == len(expected)
         for line in ax.lines:
@@ -140,6 +141,13 @@ def check_figure_artists():
             levels = sorted({v for c in cohorts.values() for rows in c["required_ratings_kw"].values() for r in rows for v in r.values()})
             observed = {(levels[a.get_position()[0]], levels[a.get_position()[1]]): int(a.get_text()) for a in ax.texts}
             assert observed == Counter((r["PORT"], r["WAREHOUSE"]) for r in cohort["required_ratings_kw"][phase])
+    spec_report = load("spec_check.json")
+    grid = figures.specification_grid(spec_report).axes[0]
+    assert len(grid.patches) == 24
+    for row, artist in zip(spec_report["rows"], grid.texts, strict=True):
+        expected = {"守住": "Held", "未守住": "Failed", "未定": "Undetermined",
+                    "没做": "Not run", "不可评": "Not evaluable"}[row["verdict"]]
+        assert artist.get_text().splitlines() == [expected, *(figures.ratings(n) for n in row.get("choices", {}).get("new", {}))]
     figures.plt.close("all")
 
 
@@ -147,4 +155,4 @@ if __name__ == "__main__":
     test_paper_tables_reference_the_published_values()
     test_print_fragments_and_raster_resolution()
     check_figure_artists()
-    print("Five plotted figures and four table pairs match the published JSON.")
+    print("Six plotted figures and five table pairs match the published JSON.")

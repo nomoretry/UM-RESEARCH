@@ -30,6 +30,22 @@ def pair(values):
     return " / ".join(map(str, values))
 
 
+def spec_table(report):
+    results = []
+    for row in report["rows"]:
+        label = row["spec"]
+        if row["verdict"] == "没做":
+            results.append([label, row["cohort"], "", "", "", "Not run", ""])
+            continue
+        prices = row["choices"].get("new", {})
+        bills = [(" to ".join("open" if v is None else f"{v:,.2f}" for v in b)) for b in prices.values()]
+        counts = " / ".join("?" if x is None else str(x) for x in row["registered"])
+        tested = row["evaluation_feasible"]
+        results.append([label, row["cohort"], counts, ", ".join(prices), "; ".join(bills),
+                        OUTCOMES[row["verdict"]], "" if tested is None else str(tested)])
+    return (["Spec", "Trucks", "Duty-days", "Least-cost build", "New bill (EUR/yr)", "Test", "Feasible"], results)
+
+
 def tables():
     public = load("external_test.json")
     cohorts = load("external_designs.json")["cohorts"]
@@ -67,6 +83,7 @@ def tables():
         "table2_failures": (["Ranks", "Selected build", "Bill (EUR/yr)", "Outcome", "Failed segment",
                              "Constraint", "Gap (kWh)"], failures),
         "table3_rules": (["Ranks", "Connection", "Rule", "Build", "Premium (EUR/yr)", "Outcome"], rules),
+        "table4_specifications": spec_table(load("spec_check.json")),
         "table5_operations": (["Connection", "Policy", "Build", "Caps (kW)", "Bill (EUR/yr)",
                                "Of which surplus (EUR/yr)"], operations),
     }
@@ -76,6 +93,7 @@ NOTES = {
     "table1_cohorts": "Pairs give selection / evaluation. Feasible builds are counted among the 35 rated designs. Blank cells follow the complete-duty gate.",
     "table2_failures": "Official new connections, rated settings, selection bills in 2025 EUR. The two-day row identifies one failed segment.",
     "table3_rules": "Selection premium against the original minimum for the same cohort and connection basis, in 2025 EUR. Outcome is subsequent service.",
+    "table4_specifications": "Post-opening exploration. Duty-days are registered in the sizing / test periods. Bills use official new connections and rated power. Feasible counts refer to the 35 test-period designs.",
     "table5_operations": "Ranks 1--5, selection period, official network charges, policy-specific minima. Surplus is the disclosed portion of the metered bill.",
 }
 

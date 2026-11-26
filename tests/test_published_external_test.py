@@ -47,6 +47,7 @@ def test_external_report_quantities_match_across_languages():
             for fmt in ("{}", "{:,}", "{:,.2f}", "{:,.3f}"):
                 tokens.update(re.findall(numeric, fmt.format(value)))
     collect(payload)
+    collect(json.loads((CASE / "spec_check.json").read_bytes()))
     assert set(re.findall(numeric, zh)) <= tokens
 
 
