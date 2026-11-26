@@ -1,5 +1,9 @@
 # 固定设施连续SOC：本次结果
 
+> **导读**：本文件记录首个 4 小时三车固定设施连续电量 MILP 回归算例的验证结果（6 情景、37 项测试），运行于 **2026-11-04**。本目录保留基础模型回归证据；现行模型公式请见 [数学模型](../../docs/model/FORMULATION.md)，当前全部研究结论请以 [首页 README](../../README.md) 与 [仓库导览](../../docs/GUIDE.md) 为准。
+>
+> **Guide:** This file records the **2026-11-04** verification of the initial four-hour three-truck fixed-facility continuous-SOC MILP (6 scenarios, 37 tests). Preserved as baseline regression evidence; for the current formulation see [FORMULATION.md](../../docs/model/FORMULATION.md), and for overall conclusions see [README.md](../../README.md) and the [Repository Guide](../../docs/GUIDE.md).
+
 2026-11-04 在提交 `4d3f3a045cc02ddde35acd69249ff08f78270861` 上正式运行；37项测试通过。新建合成实例，非旧原型结果、德国数据优化或真实港口实证。
 
 | 情景 | 求解状态 | 周期费用（模拟货币） | 独立原始解检查 |

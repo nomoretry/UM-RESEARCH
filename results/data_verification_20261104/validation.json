@@ -37,7 +37,7 @@
   "exit_code": 0,
   "environment": {
     "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
-    "executable": "C:\\Users\\27788\\OneDrive\\文档\\ChatGPT\\UM\\UM-RESEARCH-runs-local\\.venv-dataset\\Scripts\\python.exe",
+    "executable": "<local-archive>\\UM\\UM-RESEARCH-runs-local\\.venv-dataset\\Scripts\\python.exe",
     "platform": "Windows-10-10.0.19045-SP0",
     "numpy": "2.5.4",
     "pandas": "2.3.3",

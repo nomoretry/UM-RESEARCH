@@ -1,5 +1,9 @@
 # 德国数据工程审计 — 2026-11-04
 
+> **导读**：本文件为早期德国车队与配电网数据快照（`data/germany-truck-grid-v1/`，DT-CARGO v1.1 + SimBench）的一致性审计记录，覆盖 **2026-11-04**（含 2026-11-19 目录改名注记）。当前德国 5 车实证研究使用 TUMFTM DT-CARGO v2 导出与 BETOS 模拟能耗，现行车队数据口径与电价说明请以 [车队数据说明](../../studies/fleet-service/DATA.md) 及 [首页 README](../../README.md) 为准。
+>
+> **Guide:** This audit verifies the early `data/germany-truck-grid-v1/` dataset snapshot (DT-CARGO v1.1 + SimBench) on **2026-11-04** (with a 2026-11-19 directory-rename note). Current five-truck empirical studies use the TUMFTM DT-CARGO v2 export with BETOS simulated energies; for active fleet inputs and prices, see [DATA.md](../../studies/fleet-service/DATA.md) and [README.md](../../README.md).
+
 数据源码基线：`bc892a70457721b4253066ac07d397287e6a0d0a`。本轮验证已有文件及其一致性，没有运行 `build_dataset.py`，没有重新下载来源，没有改原始清单或数据。
 
 正式复跑入口源码提交：`4d3f3a045cc02ddde35acd69249ff08f78270861`；运行时工作树干净。正式 run `20261104_dataset_snapshot_canonical` 已退出0，在 pandas 2.3.3、numpy 2.5.4 环境中通过验证，符合原依赖声明。

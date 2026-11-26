@@ -1,12 +1,16 @@
 # 旧原型恢复证据：2026-11-04
 
+> **导读**：本文件记录早期有限方案原型 `truck_charging_v1` 与单基地脚本的定位及按字节恢复审计，完成于 **2026-11-04**（引用 2026-09-10 与 2026-10-15 历史输出）。本文件仅作原型溯源，不代表当前模型或结论；现行连续电量模型与实证结果请以 [数学模型](../model/FORMULATION.md) 及 [首页 README](../../README.md) 为准。
+>
+> **Guide:** This audit documents locating and byte-exact recovering the earlier `truck_charging_v1` prototype and a single-depot script on **2026-11-04** (referencing historical outputs from 2026-09-10 and 2026-10-15). It is preserved for provenance only; for the current continuous-SOC model and empirical findings, see [FORMULATION.md](../model/FORMULATION.md) and [README.md](../../README.md).
+
 本文件记录本轮**读取源码、历史结果与计算文件哈希**所得事实。本文中的 106 项测试、六情景目标和三车单站数值均为历史输出；编写本审计时未重新运行测试或求解器。本轮正式复现应另记源码提交、run_id 和结果包，不能把这里的历史数值改称本次结果。
 
 ## 定位及保存边界
 
-本机原始工作目录为 `C:\Users\27788\OneDrive\文档\ChatGPT\UM`。实际定位到：
+在原本地归档工作目录中实际定位到：
 
-1. `truck_charging_v1/`：有源码、测试、合成输入及历史结果，恢复副本位置为本研究仓库的 [legacy/truck_charging_v1](../../legacy/truck_charging_v1/)。这是实际找到的原型，不再仅是聊天线索。
+1. `truck_charging_v1/`：有源码、测试、合成输入及历史结果，恢复副本位置为本研究仓库的 [legacy/truck_charging_v1](../../legacy/truck_charging_v1/)。这是实际找到的原型，不再仅是早期笔记线索。
 2. `outputs/2026-10-15_research_scope_small_case/`：另一个三车单基地连续电量算例，源码和历史验证均存在。本轮仅定位和审阅，未移植、未重跑。
 
 原始目录没有被修改。恢复范围仅包括必要源码、测试、合成输入和说明；`.venv/`、缓存、原始测试 XML、完整历史方案与运行结果不复制到主仓库。本文件保存精选事实和哈希；完整运行记录放在独立的离线记录库 `runs/`。

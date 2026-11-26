@@ -1,8 +1,12 @@
 # 同一物理任务链的60／30／15分钟检验
 
+> **导读**：本文件记录三车合成任务链的 60/30/15 分钟时间粒度与连接政策（槽边界换枪 vs. 整窗固定连接）敏感性检验结果（54 情景／840 组合），运行于 **2026-11-10**。本目录属于早期合成模型机理证据；后续合成边界与共享投资结果见 [边界实验](../boundary_20261110/README.md) 与 [共享服务范围](../shared_investment_20261112/README.md)，德国车队实证结论请以 [首页 README](../../README.md) 与 [第二次留出检验](../../studies/fleet-service/second_holdout.md) 为准。
+>
+> **Guide:** This report documents the **2026-11-10** 60/30/15-minute time-step and connector-policy sensitivity check on the synthetic three-truck chain (54 scenarios / 840 combinations). Preserved as synthetic mechanism evidence; for later synthetic bounds see [boundary_20261110](../boundary_20261110/README.md) and [shared_investment_20261112](../shared_investment_20261112/README.md), and for empirical fleet conclusions see [README.md](../../README.md) and [second_holdout.md](../../studies/fleet-service/second_holdout.md).
+
 **本轮正式新运行，2026-11-10。** 源码`1c4df03c6a6943ce221e09e05a2bce538de304a7`，运行时干净。延续Ye 2024问题及投资框架的本项目改编，不是论文原式或原案例数字复现。
 
-起始研究分支`codex/investment-milp-20261110`的本地与实时远程提交均为`318bf74a04af3e4e978ee53647aa02c17781c9b1`，工作树干净。上轮投资源码`43e34ca`及102测试/9情景/140组合先核查历史证据；本轮新运行另行登记为`20261110_timegrid_tests`和`20261110_timegrid_suite`。旧106项原型测试没有在本轮重跑。
+当时的研究分支的本地与实时远程提交均为`318bf74a04af3e4e978ee53647aa02c17781c9b1`，工作树干净。上轮投资源码`43e34ca`及102测试/9情景/140组合先核查历史证据；本轮新运行另行登记为`20261110_timegrid_tests`和`20261110_timegrid_suite`。旧106项原型测试没有在本轮重跑。
 
 ## 保持什么、改变什么
 

@@ -1,5 +1,9 @@
 # UM能力与证据清单
 
+> **导读**：本文件为早期已验证模型能力与未实现范围的阶段快照，覆盖至 **2026-11-11**（不含后续换车时间、德国实证车队、日前市场、需量网费、两站功率选型与两次留出检验）。当前全仓库能力与最新结论请以 [首页 README](../../README.md)、[仓库导览](../GUIDE.md) 及 [第二次留出检验](../../studies/fleet-service/second_holdout.md) 为准。
+>
+> **Guide:** This file is a historical capability snapshot covering work up to **2026-11-11** (predating changeover, German fleet empirical studies, day-ahead markets, demand tariffs, two-site sizing, and both holdouts). For current capabilities and findings, see [README.md](../../README.md), the [Repository Guide](../GUIDE.md), and [second_holdout.md](../../studies/fleet-service/second_holdout.md).
+
 2026-11-11 已增加固定设施压力测试，早先的边界实验记录于 2026-11-10：起始核查基准`3a618b6f905b17edc689d064f8bbb189a24f3b44`；本轮正式运行源码`a520cac2ea26dd237d4c6cccd32c0518cb8247f7`。以下来自UM源码、配置与正式运行记录，不来自申请材料；上轮证据与本轮新运行分开。
 
 | 状态 | 能力 | 证据及边界 |
@@ -7,7 +11,7 @@
 | 已实现且验证 | 固定车辆任务、闭合位置链、连续电量、在场/插枪资格、接口占用、站点功率和初末电量 | [模型对应](../model/IMPLEMENTATION_MAP.md)，C01–C08、合成实例；没有任意站点独立离站目标输入字段，后续任务通过固定耗能与连续电量检查 |
 | 已实现且验证 | 新增接口、互斥接入扩容及充电运营联合优化 | [投资结果](../../results/investment_20261110/README.md)；两站已有设施为沉没成本，启用是输入，非选址/新站完整CAPEX模型 |
 | 已实现且验证 | 时间粒度/连接政策、解析瓶颈及设施全枚举 | [时间粒度结果](../../results/timegrid_20261110/README.md)，149测试、54情景/840组合为上轮运行；保留全部并列最优硬件，不等于唯一调度 |
-| 已实现且验证 | 原始解独立复算、源码/输入哈希、状态/界限/gap、外部本地记录及精选同步 | [复现清单](../../results/boundary_20261110/reproduction.json)、离线记录库 `runs/20261110_boundary_suite_evidence/`；非自动完整聊天导出 |
+| 已实现且验证 | 原始解独立复算、源码/输入哈希、状态/界限/gap、外部本地记录及精选同步 | [复现清单](../../results/boundary_20261110/reproduction.json)、离线记录库 `runs/20261110_boundary_suite_evidence/`；非原始工作记录的全量自动导出 |
 | 已实现且验证 | 港区已有功率×仓库窗口适用边界、受控输入审计和跨情景性质 | [本轮结果](../../results/boundary_20261110/README.md)：222测试、100情景/3150组合，100任务审计和310性质比较；确定性敏感性，不是不确定性规划 |
 | 已实现且验证 | 固定设施后延迟个别车辆的仓库插枪资格，已知延迟后重新排程 | [10 个 A/B 情景](../../results/eligibility_stress_20261111/metrics.json)，15 分钟网格，车辆实际到离及两站供电容量固定 |
 | 已实现待验证 | 本轮实现均已通过正式验证；本栏暂无独立研究模块 | 保留未来新实现需验证的分类，不把计划列为已实现 |
@@ -16,4 +20,4 @@
 
 换电、V2G、储能、电力市场、多智能体和RL不在本轮范围。其他项目成果或未核实申请表述不归入本表。
 
-Claude CLI的实际只读调用返回未登录，未获得模型回复；已准备任务书，不能列为已完成Claude协作。Codex独立工作树检查器实现与只读审阅属于本轮实际工程过程。
+一项预定的复核未能进行，没有产生复核结果；任务说明保留备查，不列为已完成复核。在单独工作树中完成的检查器实现与只读审阅属于本轮实际工程过程。

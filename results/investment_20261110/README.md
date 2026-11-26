@@ -1,5 +1,9 @@
 # 接口与离散扩容：2026-11-10正式验证
 
+> **导读**：本文件记录 60 分钟三车合成算例首次引入接口与离散扩容投资的验证结果（9 情景／140 组合），运行于 **2026-11-10**。其中部分 60 分钟两地投资结论随后经 [时间粒度检验](../timegrid_20261110/README.md) 限定了适用政策；当前合成算例与实证结论请以 [首页 README](../../README.md) 及 [第二次留出检验](../../studies/fleet-service/second_holdout.md) 为准。
+>
+> **Guide:** This report documents the **2026-11-10** verification of the initial 60-minute synthetic connector-and-capacity investment MILP (9 scenarios / 140 combinations). Several 60-minute two-site conclusions were subsequently narrowed by the [time-grid study](../timegrid_20261110/README.md); for current findings see [README.md](../../README.md) and [second_holdout.md](../../studies/fleet-service/second_holdout.md).
+
 本项目对Ye 2024问题和投资框架的改编；不是论文原式或案例数值复现。固定车辆、任务顺序、路线、位置、耗能及初末电量。全部成本为同一四小时合成周期的等效费用，未校准真实设备成本或年化参数。
 
 源码提交：`43e34cac0d9ad4268dc54e9aa98fcea25e977320`，运行时干净。正式配置：[port_warehouse_investment.json](../../configs/port_warehouse_investment.json)；完整运行证据见离线记录库 `runs/20261110_investment_suite_evidence/`。原[三车配置](../../configs/minimal_three_trucks.json)字节未变。

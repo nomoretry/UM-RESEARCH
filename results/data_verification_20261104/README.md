@@ -1,5 +1,9 @@
 # 德国数据验证精选结果
 
+> **导读**：本文件为早期德国数据工程快照（`data/germany-truck-grid-v1/`，DT-CARGO v1.1 + SimBench）的复跑验证摘要，运行于 **2026-11-04**。仅用于早期数据工程线溯源；当前实证车队数据与电价口径请以 [车队数据说明](../../studies/fleet-service/DATA.md) 为准，整体研究结论见 [首页 README](../../README.md)。
+>
+> **Guide:** This summary records the **2026-11-04** verification rerun of the early `data/germany-truck-grid-v1/` snapshot (DT-CARGO v1.1 + SimBench). Preserved for early data-engineering provenance only; for current empirical fleet inputs and prices see [DATA.md](../../studies/fleet-service/DATA.md), and for headline conclusions see [README.md](../../README.md).
+
 数据源提交：`bc892a70457721b4253066ac07d397287e6a0d0a`。
 
 **正式复跑通过**：入口源码提交 `4d3f3a045cc02ddde35acd69249ff08f78270861`，run_id 为 `20261104_dataset_snapshot_canonical`，退出码0；运行时工作树干净，Python断言开启。环境为 Python 3.12.14、pandas 2.3.3、numpy 2.5.4，满足旧工程依赖声明。

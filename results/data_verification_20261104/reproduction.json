@@ -14,7 +14,7 @@
       "exit_code": 1,
       "environment": {
         "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
-        "executable": "C:\\Users\\27788\\OneDrive\\文档\\ChatGPT\\UM\\truck_charging_v1\\.venv\\Scripts\\python.exe",
+        "executable": "<local-archive>\\UM\\truck_charging_v1\\.venv\\Scripts\\python.exe",
         "platform": "Windows-10-10.0.19045-SP0",
         "numpy": "2.5.3",
         "pandas": "3.0.5",
@@ -28,7 +28,7 @@
       "exit_code": 1,
       "environment": {
         "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
-        "executable": "C:\\Users\\27788\\OneDrive\\文档\\ChatGPT\\UM\\truck_charging_v1\\.venv\\Scripts\\python.exe",
+        "executable": "<local-archive>\\UM\\truck_charging_v1\\.venv\\Scripts\\python.exe",
         "platform": "Windows-10-10.0.19045-SP0",
         "numpy": "2.5.3",
         "pandas": "3.0.5",
@@ -42,7 +42,7 @@
       "exit_code": 0,
       "environment": {
         "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
-        "executable": "C:\\Users\\27788\\OneDrive\\文档\\ChatGPT\\UM\\truck_charging_v1\\.venv\\Scripts\\python.exe",
+        "executable": "<local-archive>\\UM\\truck_charging_v1\\.venv\\Scripts\\python.exe",
         "platform": "Windows-10-10.0.19045-SP0",
         "numpy": "2.5.3",
         "pandas": "3.0.5",
@@ -56,7 +56,7 @@
       "exit_code": 0,
       "environment": {
         "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
-        "executable": "C:\\Users\\27788\\OneDrive\\文档\\ChatGPT\\UM\\truck_charging_v1\\.venv\\Scripts\\python.exe",
+        "executable": "<local-archive>\\UM\\truck_charging_v1\\.venv\\Scripts\\python.exe",
         "platform": "Windows-10-10.0.19045-SP0",
         "numpy": "2.5.3",
         "pandas": "3.0.5",
@@ -81,7 +81,7 @@
     "input_inventory_sha256": "0c552f2eb646dd0ac51e6a1ebd1cb6d9865a27b90c8371d320e84b09d7bb8ab0",
     "environment": {
       "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
-      "executable": "C:\\Users\\27788\\OneDrive\\文档\\ChatGPT\\UM\\UM-RESEARCH-runs-local\\.venv-dataset\\Scripts\\python.exe",
+      "executable": "<local-archive>\\UM\\UM-RESEARCH-runs-local\\.venv-dataset\\Scripts\\python.exe",
       "platform": "Windows-10-10.0.19045-SP0",
       "numpy": "2.5.4",
       "pandas": "2.3.3",
@@ -91,16 +91,16 @@
     "numpy_declared_range_satisfied": true,
     "actual_command": {
       "argv": [
-        "C:\\Users\\27788\\OneDrive\\文档\\ChatGPT\\UM\\truck_charging_v1\\.venv\\Scripts\\python.exe",
+        "<local-archive>\\UM\\truck_charging_v1\\.venv\\Scripts\\python.exe",
         "scripts/verify_dataset_snapshot.py",
         "--source-commit",
         "bc892a70457721b4253066ac07d397287e6a0d0a",
         "--output",
-        "C:\\Users\\27788\\OneDrive\\文档\\ChatGPT\\UM\\UM-RESEARCH-runs-local\\20261104_dataset_snapshot_canonical",
+        "<local-archive>\\UM\\UM-RESEARCH-runs-local\\20261104_dataset_snapshot_canonical",
         "--python-executable",
-        "C:\\Users\\27788\\OneDrive\\文档\\ChatGPT\\UM\\UM-RESEARCH-runs-local\\.venv-dataset\\Scripts\\python.exe"
+        "<local-archive>\\UM\\UM-RESEARCH-runs-local\\.venv-dataset\\Scripts\\python.exe"
       ],
-      "cwd": "C:\\Users\\27788\\OneDrive\\文档\\ChatGPT\\UM\\UM-RESEARCH"
+      "cwd": "<local-archive>\\UM\\UM-RESEARCH"
     },
     "local_manifest_sha256": "1a093e0211cafb2e24ac5260e13a09be966bb60022f0a4c5cd6c55d4a676b073",
     "local_validation_sha256": "975b3a3d0ca83df701cedb289f91a0713a02642cc8fa18f4d284b2ef7d7f1b37",

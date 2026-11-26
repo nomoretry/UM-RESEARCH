@@ -1,5 +1,9 @@
 # 港区已有功率×仓库补能窗口：协同补能的适用边界
 
+> **导读**：本文件记录 15 分钟三车合成算例的“港区已有功率 × 仓库窗口”适用边界扫描结果（100 情景／3,150 组合），运行于 **2026-11-10**。本目录属于合成机理边界证据；首页核心合成算例见 [首页 README §1](../../README.md#1-什么时候必须增加接口) 与 [共享服务范围](../shared_investment_20261112/README.md)，德国车队实证结论请以 [规划期选型](../../studies/fleet-service/site_sizing.md) 及 [第二次留出检验](../../studies/fleet-service/second_holdout.md) 为准。
+>
+> **Guide:** This report presents the 15-minute synthetic port-power × warehouse-window boundary sweep (100 scenarios / 3,150 combinations) run on **2026-11-10**. It documents synthetic mechanism bounds; for the headline synthetic case see [README.md §1](../../README.md#1-when-a-connector-is-necessary) and [shared_investment_20261112](../shared_investment_20261112/README.md), and for empirical fleet findings see [site_sizing.md](../../studies/fleet-service/site_sizing.md) and [second_holdout.md](../../studies/fleet-service/second_holdout.md).
+
 **本轮正式运行，2026-11-10。** 源码`a520cac2ea26dd237d4c6cccd32c0518cb8247f7`，运行时干净；222测试、100情景、3150设施枚举、100任务审计、310性质比较、4个历史重叠点和原六情景回归通过。采用Ye 2024问题/投资框架的本项目改编，不声称论文原式或原案例复现。
 
 起始分支与实时远程均为`3a618b6`，工作树干净；上轮149测试/54情景/840组合仅先核对历史证据，未冒充本轮新运行。本次按用户范围完成确定性边界实验，没有同时执行固定设施压力测试或不确定性规划。
@@ -125,8 +129,8 @@ $output = Join-Path $records.records_root "conversations\0001_records\runs\bound
 
 ## 能力、协作与下一项任务
 
-本轮加强了确定性设施规划的适用边界、任务/资格审计、瓶颈机制解释和可复现证据链；[能力清单](../../docs/research/CAPABILITIES.md)明确已验证和未实现部分。长期研究、记录、同步与协作规则已合并到现有AGENTS和工作流，未改全局配置。
+本轮加强了确定性设施规划的适用边界、任务/资格审计、瓶颈机制解释和可复现证据链；[能力清单](../../docs/research/CAPABILITIES.md)明确已验证和未实现部分。长期研究、记录、同步与复核规则已合并到仓库维护规范（[CONTRIBUTING.md](../../CONTRIBUTING.md)），未改全局配置。
 
-Claude Code2.1.274在独立worktree接受限定UM文件、工具禁用的实际调用，返回`Not logged in`、exit1、模型输入/输出token均0，**没有完成Claude审查**。可转交任务书见离线记录库 `runs/20261110_boundary_claude_review/prompt.txt`，未为登录改变配置。Codex内部独立工作树模块提交与只读审查已完成，不能标为Claude贡献。
+一项预定的复核未能进行，没有产生复核结果；可转交的任务说明保留于离线记录库备查。在单独工作树中完成的检查器模块提交与只读审查已完成，不计入该项复核。
 
 下一项只设计、尚未执行：固定H=100下两套设施快照A=(港2/仓1接口，100/75kW，规划投资20)和B=(港3/仓1接口，100/75kW，投资40)。两套硬件分别冻结，均继续采用槽边界零耗时换枪政策，在相同名义任务中仅将V1/V2仓库可插枪起点改为60+δ，δ=0/15/30/45/60分钟，V3保持[60,120)。到离站、任务与电量不变；这是装卸占用/资格延迟，不能叫车辆实际晚到。只重求运营，不重新选择设施，并记录冻结硬件哈希。其后才根据证据决定是否需要共享事前投资、按信息更新运营的情景模型。
