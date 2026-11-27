@@ -241,6 +241,8 @@ python -B -m pytest -q -p no:cacheprovider tests/test_published_external_test.py
 
 在 8 种规格 × 3 个子车队共 24 个组合里（其中 3 个是登记的规格），选型期年费最低的设施在检验期未守住的有 20 个，守住的有 4 个，未定 0 个。不可评 0 个，未完成 0 个。
 
+本节每次只改一项假设，没有做多项同时改变的组合，也没有换承运人；各规格重新登记，年费不宜跨行比较。
+
 S0 采用仓库放行 45 分钟、段首末 150 kWh 和带符号耗电 ×1.0。L0、L30、L15、L60 分别改变仓库放行分钟数。W 要求每车每周首段从 150 kWh 开始、周内跨断档传递实际电量、全程不低于 30 kWh、周末不低于 150 kWh。E110、E90 对带符号耗电分别乘 1.1、0.9。
 
 | 规格 | 1-5 | 6-10 | 11-15 |
@@ -285,7 +287,7 @@ S0 采用仓库放行 45 分钟、段首末 150 kWh 和带符号耗电 ×1.0。L
 
 按构造成员（规格 / 队列 / 设施）　E110 / 11-15 / p1-50-w50
 
-在 4 个守住的组合中，E110 11-15 (p1-50-w50) 属于“按构造，无信息”。其余 3 个守住的组合提供了独立于登记设施构造的检验信息。
+在 4 个守住的组合中，E110 11-15 (p1-50-w50) 属于“按构造，无信息”。其余 3 个守住的组合不依赖这一构造保证。
 
 ### 登记规格的车日缺口
 
@@ -538,7 +540,9 @@ python -B -m pytest -q -p no:cacheprovider tests/test_published_external_test.py
 
 After sealing the external endpoints, we changed one assumption at a time, registered service in both periods anew and chose among rated facilities using the sizing-period bills. S0 cites the existing registration, bills and fixed-service certificates.
 
-Across 8 specifications × 3 sub-fleets, giving 24 combinations (including 3 under the registered settings), the lowest-cost facilities failed in 20, held in 4 and were undetermined in 0. There were 0 not evaluable and 0 not completed.
+Across 8 specifications × 3 sub-fleets, giving 24 combinations (including 3 under the registered settings), the facility with the lowest sizing-period bill did not hold in the test period in 20, held in 4 and was undetermined in 0. There were 0 not evaluable and 0 not completed.
+
+Each row changes one assumption only; no combined changes and no other carrier were examined. Registration is redone per specification, so bills are not comparable across rows.
 
 S0 uses a 45-minute warehouse wait, 150 kWh at both segment ends and signed trip energy ×1.0. L0, L30, L15 and L60 change the warehouse wait in minutes. W starts each truck-week at 150 kWh, carries charge across gaps without consumption or charging, preserves a 30 kWh reserve and ends the week at or above 150 kWh. E110 and E90 multiply signed trip energy by 1.1 and 0.9 respectively.
 
